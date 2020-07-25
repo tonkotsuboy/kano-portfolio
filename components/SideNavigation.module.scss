@@ -8,6 +8,11 @@
   text-align: left;
 }
 
+.inner {
+  position: sticky;
+  top: 20px;
+}
+
 .author {
   font-style: normal;
   font-weight: bold;
@@ -19,4 +24,17 @@
 .job {
   font-size: 13px;
   color: #7979a9;
+}
+
+.taglist {
+  margin-top: 108px;
+  display: grid;
+  grid-auto-rows: 32px;
+  gap: 8px;
+}
+
+.tag {
+  a {
+    color: #8991a4;
+  }
 }

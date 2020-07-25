@@ -10,10 +10,6 @@
   padding: 32px 24px;
 }
 
-.header {
-  display: flex;
-}
-
 .medium {
   display: grid;
   place-items: center;
@@ -27,12 +23,34 @@
   color: #3f3f9d;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.taglist {
+  display: grid;
+  height: 100%;
+  grid-auto-flow: column;
+  gap: 12px;
+  margin-left: 12px;
+}
+
+.tag {
+  font-size: 11px;
+
+  a {
+    color: #8991a4;
+  }
+}
+
 .title {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 150%;
   color: #30345f;
+  margin-top: 8px;
 }
 
 .link {
