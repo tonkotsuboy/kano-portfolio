@@ -1,41 +1,29 @@
 import Head from "next/head";
 import React from "react";
 import { GetStaticProps } from "next";
-import { BlogType } from "../types/BlogType";
+import { BlogType } from "../types/client/BlogType";
 import styles from "./index.module.scss";
 import { SideNavigation } from "../components/SideNavigation";
 import { EntryList } from "../components/EntryList";
-
-const contentful = require("contentful");
-
-const client = contentful.createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
-});
+import { IndexContext, IndexContextType } from "../contexts/IndexContext";
+import { TagType } from "../types/client/TagType";
+import { PortfolioModel } from "../types/server/PortfolioModel";
+import { TagModel } from "../types/server/TagModel";
+import { fetchEntriesData } from "../util/api/fetchEntriesData";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const entries: {
-    items: {
-      sys: {
-        id: string;
-      };
-      fields: {
-        title: string;
-        published_date: string;
-        url: string;
-        medium: {
-          fields: {
-            title: string;
-            slug: string;
-          };
-        };
-      };
-    }[];
-  } = await client.getEntries({
-    content_type: "portfolio",
-  });
+  const [portfolioData, tagData] = await Promise.all([
+    fetchEntriesData<PortfolioModel>("portfolio"),
+    fetchEntriesData<TagModel>("tag"),
+  ]);
 
-  const blogs: BlogType[] = entries.items.map((entry) => {
+  portfolioData.items;
+
+  const blogList: BlogType[] = portfolioData.items.map((entry) => {
+    const tags: BlogType["tags"] = entry.fields.tags.map(
+      (tagEntry) => tagEntry.fields
+    );
+
     return {
       ...entry.fields,
       id: entry.sys.id,
