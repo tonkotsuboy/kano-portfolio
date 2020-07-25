@@ -14,13 +14,14 @@ h2,
 h3,
 h4,
 p,
-ul[class],
-ol[class],
+ul,
+ol,
 figure,
 blockquote,
 dl,
 dd {
   margin: 0;
+  padding: 0;
 }
 html {
   scroll-behavior: smooth;
@@ -31,8 +32,8 @@ body {
   line-height: 1.5;
   color: #30345f;
 }
-ul[class],
-ol[class] {
+ul,
+ol {
   list-style: none;
 }
 a:not([class]) {
