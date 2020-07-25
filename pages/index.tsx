@@ -25,38 +25,52 @@ export const getStaticProps: GetStaticProps = async () => {
     );
 
     return {
-      ...entry.fields,
       id: entry.sys.id,
+      ...entry.fields,
       medium: entry.fields.medium.fields,
+      tags,
     };
+  });
+
+  const tagList: TagType[] = tagData.items.map((item) => {
+    return item.fields;
   });
 
   return {
     props: {
-      blogs,
+      blogList,
+      tagList,
     },
   };
 };
 
 const Index: React.FC<{
-  blogs: BlogType[];
-}> = ({ blogs }) => {
+  blogList: BlogType[];
+  tagList: TagType[];
+}> = ({ blogList, tagList }) => {
+  const contextValue: IndexContextType = {
+    blogList,
+    tagList,
+  };
+
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>鹿野ポートフォリオ</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <div className={styles.wrapper}>
-        <SideNavigation />
-        <main className={styles.main}>
-          <EntryList blogData={blogs} />
-        </main>
-      </div>
+      <IndexContext.Provider value={contextValue}>
+        <div className={styles.wrapper}>
+          <SideNavigation />
+          <main className={styles.main}>
+            <EntryList />
+          </main>
+        </div>
+      </IndexContext.Provider>
     </div>
   );
 };
