@@ -1,3 +1,5 @@
+import { TagType } from "./TagType";
+
 export type BlogType = {
   id: string;
   title: string;
@@ -5,7 +7,8 @@ export type BlogType = {
   url: string;
   detail?: string;
   medium: {
-    title: string;
+    name: string;
     slug: string;
   };
+  tags: TagType[];
 };
