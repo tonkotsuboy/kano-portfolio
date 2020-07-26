@@ -1,13 +1,16 @@
-import { BlogType } from "../types/client/BlogType";
+import { EntryType } from "../types/EntryType";
 import { createContext } from "react";
-import { TagType } from "../types/client/TagType";
+import { TagType } from "../types/TagType";
+import { MediumType } from "../types/MediumType";
 
 export type IndexContextType = {
-  blogList?: BlogType[];
-  tagList?: TagType[];
+  entryDataList?: EntryType[];
+  mediumDataList?: MediumType[];
+  tagDataList?: TagType[];
 };
 
 export const IndexContext = createContext<IndexContextType>({
-  blogList: undefined,
-  tagList: undefined,
+  entryDataList: undefined,
+  mediumDataList: undefined,
+  tagDataList: undefined,
 });

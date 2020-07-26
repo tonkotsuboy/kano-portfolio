@@ -1,10 +1,10 @@
 import * as React from "react";
-import { BlogType } from "../../types/client/BlogType";
+import { EntryType } from "../../types/EntryType";
 import styles from "./Entry.module.scss";
 import Link from "next/link";
 
 type Props = {
-  entryData: BlogType;
+  entryData: EntryType;
 };
 
 /**
@@ -17,9 +17,7 @@ export const Entry: React.FC<Props> = ({
     <Link href={`/entry/${id}`}>
       <a>
         <header className={styles.header}>
-          <p className={styles.medium} href={medium.slug}>
-            {medium.name}
-          </p>
+          <p className={styles.medium}>{medium.name}</p>
           <ul className={styles.taglist}>
             {tags.map(({ name, slug }) => (
               <li key={slug} className={styles.tag}>

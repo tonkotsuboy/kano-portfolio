@@ -1,11 +1,11 @@
 import { TagType } from "./TagType";
 
-export type BlogType = {
+export type EntryType = {
   id: string;
   title: string;
   published_date: string;
   url: string;
-  detail?: string;
+  detail?: object;
   medium: {
     name: string;
     slug: string;

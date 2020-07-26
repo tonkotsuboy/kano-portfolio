@@ -4,15 +4,15 @@ import styles from "./EntryList.module.scss";
 import { IndexContext } from "../../contexts/IndexContext";
 
 export const EntryList: React.FC = () => {
-  const { blogList } = useContext(IndexContext);
+  const { entryDataList } = useContext(IndexContext);
 
-  if (blogList == null) {
+  if (entryDataList == null) {
     return null;
   }
 
   return (
     <div className={styles["entry-list"]}>
-      {blogList.map((blog, index) => (
+      {entryDataList.map((blog, index) => (
         <Entry key={index} entryData={blog} />
       ))}
     </div>

@@ -1,52 +1,64 @@
 import React from "react";
 import { GetStaticProps } from "next";
-import { BlogType } from "../types/client/BlogType";
+import { EntryType } from "../types/EntryType";
 import { EntryList } from "../components/index/EntryList";
 import { IndexContext, IndexContextType } from "../contexts/IndexContext";
-import { TagType } from "../types/client/TagType";
+import { TagType } from "../types/TagType";
 import { PortfolioModel } from "../types/server/PortfolioModel";
-import { TagModel } from "../types/server/TagModel";
 import { fetchEntriesData } from "../util/api/fetchEntriesData";
 import BasePage from "../components/base/BasePage";
+import { MediumType } from "../types/MediumType";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [portfolioData, tagData] = await Promise.all([
-    fetchEntriesData<PortfolioModel>("portfolio"),
-    fetchEntriesData<TagModel>("tag"),
+  const [entryDataList, mediumDataList, tagDataList] = await Promise.all([
+    fetchEntriesData<PortfolioModel>("portfolio").then((data) => {
+      const blogList: EntryType[] = data.items.map((entry) => {
+        const tags: EntryType["tags"] = entry.fields.tags.map(
+          (tagEntry) => tagEntry.fields
+        );
+
+        return {
+          id: entry.sys.id,
+          ...entry.fields,
+          medium: entry.fields.medium.fields,
+          tags,
+        };
+      });
+
+      return blogList;
+    }),
+    fetchEntriesData<MediumType>("medium").then((data) => {
+      const mediumList: MediumType[] = data.items.map((item) => {
+        return item.fields;
+      });
+      return mediumList;
+    }),
+    fetchEntriesData<TagType>("tag").then((data) => {
+      const tagList: TagType[] = data.items.map((item) => {
+        return item.fields;
+      });
+      return tagList;
+    }),
   ]);
-
-  const blogList: BlogType[] = portfolioData.items.map((entry) => {
-    const tags: BlogType["tags"] = entry.fields.tags.map(
-      (tagEntry) => tagEntry.fields
-    );
-
-    return {
-      id: entry.sys.id,
-      ...entry.fields,
-      medium: entry.fields.medium.fields,
-      tags,
-    };
-  });
-
-  const tagList: TagType[] = tagData.items.map((item) => {
-    return item.fields;
-  });
 
   return {
     props: {
-      blogList,
-      tagList,
+      entryDataList,
+      mediumDataList,
+      tagDataList,
     },
   };
 };
 
 const IndexPage: React.FC<{
-  blogList: BlogType[];
-  tagList: TagType[];
-}> = ({ blogList, tagList }) => {
+  entryDataList: EntryType[];
+  mediumDataList: MediumType[];
+  tagDataList: TagType[];
+}> = ({ entryDataList, mediumDataList, tagDataList }) => {
   const contextValue: IndexContextType = {
-    blogList,
-    tagList,
+    entryDataList,
+    mediumDataList,
+    tagDataList,
   };
 
   return (
