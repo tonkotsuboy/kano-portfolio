@@ -8,8 +8,9 @@ import {
 import React from "react";
 import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
-import { TagType } from "../../types/client/TagType";
-import { TagModel } from "../../types/server/TagModel";
+import { TagType } from "../../types/TagType";
+import DetailArticle from "../../components/detail/DetailArticle";
+import { EntryType } from "../../types/EntryType";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
@@ -28,10 +29,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
   }
-  const [entryData, tagData] = await Promise.all([
+  const [fetchedEntryData, tagData] = await Promise.all([
     fetchEntryData<PortfolioModel>(entryId),
-    fetchEntriesData<TagModel>("tag"),
+    fetchEntriesData<TagType>("tag"),
   ]);
+
+  const tags: EntryType["tags"] = fetchedEntryData.fields.tags.map(
+    (tagEntry) => tagEntry.fields
+  );
+
+  const entryData: EntryType = {
+    id: fetchedEntryData.sys.id,
+    ...fetchedEntryData.fields,
+    medium: fetchedEntryData.fields.medium.fields,
+    tags,
+  };
 
   const tagList: TagType[] = tagData.items.map((item) => {
     return item.fields;
@@ -40,26 +52,26 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       tagList,
-      entryData: entryData.fields,
+      entryData,
     },
   };
 };
 
-const EntryPage: React.FC<{
+const DetailPage: React.FC<{
   tagList: TagType[];
   entryData: PortfolioModel;
 }> = ({ tagList, entryData }) => {
   const contextValue: IndexContextType = {
-    tagList,
+    tagDataList: tagList,
   };
 
   return (
     <IndexContext.Provider value={contextValue}>
       <BasePage>
-        <p>{entryData.title}やで</p>
+        <DetailArticle entryData={entryData} />
       </BasePage>
     </IndexContext.Provider>
   );
 };
 
-export default EntryPage;
+export default DetailPage;
