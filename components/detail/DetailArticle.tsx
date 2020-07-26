@@ -2,6 +2,7 @@ import React from "react";
 import { EntryType } from "../../types/EntryType";
 import styles from "./DetailArticle.module.scss";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+
 type Props = {
   entryData: EntryType;
 };
@@ -23,9 +24,13 @@ const DetailArticle: React.FC<Props> = ({
       </header>
       <h2 className={styles.title}>{title}</h2>
 
-      <div
-        dangerouslySetInnerHTML={{ __html: documentToHtmlString(detail) }}
-      ></div>
+      {detail != null ? (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: documentToHtmlString(detail as any),
+          }}
+        />
+      ) : null}
 
       <time dateTime={published_date} className={styles.published_date}>
         {published_date}

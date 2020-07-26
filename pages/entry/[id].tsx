@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const DetailPage: React.FC<{
   tagList: TagType[];
-  entryData: PortfolioModel;
+  entryData: EntryType;
 }> = ({ tagList, entryData }) => {
   const contextValue: IndexContextType = {
     tagDataList: tagList,

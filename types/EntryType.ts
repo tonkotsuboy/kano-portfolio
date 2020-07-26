@@ -5,7 +5,7 @@ export type EntryType = {
   title: string;
   published_date: string;
   url: string;
-  detail?: object;
+  detail?: Document;
   medium: {
     name: string;
     slug: string;
