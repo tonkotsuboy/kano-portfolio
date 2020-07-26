@@ -1,7 +1,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import { BlogType } from "../types/client/BlogType";
-import { EntryList } from "../components/EntryList";
+import { EntryList } from "../components/index/EntryList";
 import { IndexContext, IndexContextType } from "../contexts/IndexContext";
 import { TagType } from "../types/client/TagType";
 import { PortfolioModel } from "../types/server/PortfolioModel";
@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Index: React.FC<{
+const IndexPage: React.FC<{
   blogList: BlogType[];
   tagList: TagType[];
 }> = ({ blogList, tagList }) => {
@@ -58,4 +58,4 @@ const Index: React.FC<{
   );
 };
 
-export default Index;
+export default IndexPage;

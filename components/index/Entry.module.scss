@@ -1,13 +1,11 @@
+@use "../../styles/mixins/article" as articleMixins;
+
 .entry {
-  width: 720px;
-  left: 440px;
-  top: 80px;
-  background: #ffffff;
-  border: 1px solid #f1f3fa;
-  box-sizing: border-box;
-  box-shadow: 2px 8px 30px rgba(48, 55, 120, 0.04);
-  border-radius: 14px;
-  padding: 32px 24px;
+  @include articleMixins.articleStyle();
+
+  > a {
+    display: contents;
+  }
 }
 
 .medium {
@@ -38,10 +36,7 @@
 
 .tag {
   font-size: 11px;
-
-  a {
-    color: #8991a4;
-  }
+  color: #8991a4;
 }
 
 .title {

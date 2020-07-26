@@ -1,7 +1,7 @@
 import { Entry } from "./Entry";
 import React, { useContext } from "react";
 import styles from "./EntryList.module.scss";
-import { IndexContext } from "../contexts/IndexContext";
+import { IndexContext } from "../../contexts/IndexContext";
 
 export const EntryList: React.FC = () => {
   const { blogList } = useContext(IndexContext);
