@@ -8,7 +8,7 @@ type Props = {
 };
 
 const DetailArticle: React.FC<Props> = ({
-  entryData: { published_date, title, medium, detail, tags },
+  entryData: { published_date, title, medium, detail, tags, slide },
 }) => {
   return (
     <article className={styles.article}>
@@ -30,6 +30,13 @@ const DetailArticle: React.FC<Props> = ({
             __html: documentToHtmlString(detail as any),
           }}
         />
+      ) : null}
+
+      {/* スライドがある場合 */}
+      {slide ? (
+        <iframe src={`https:${slide.file.url}`} width="100%" height="400">
+          <a href={`https:${slide.file.url}`}>{slide.title}</a>
+        </iframe>
       ) : null}
 
       <time dateTime={published_date} className={styles.published_date}>
