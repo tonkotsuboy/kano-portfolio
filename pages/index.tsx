@@ -21,6 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
           id: entry.sys.id,
           ...entry.fields,
           medium: entry.fields.medium.fields,
+          slide: entry.fields.slide?.fields ?? null,
           tags,
         };
       });

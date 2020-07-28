@@ -11,10 +11,10 @@ export type EntryType = {
     slug: string;
   };
   tags: TagType[];
-  slide?: {
+  slide: {
     title: string;
     file: {
       url: string;
     };
-  };
+  } | null;
 };

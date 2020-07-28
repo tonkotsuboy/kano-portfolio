@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     id: fetchedEntryData.sys.id,
     ...fetchedEntryData.fields,
     medium: fetchedEntryData.fields.medium.fields,
-    slide: fetchedEntryData.fields.slide?.fields,
+    slide: fetchedEntryData.fields.slide?.fields ?? null,
     tags,
   };
 
