@@ -1,5 +1,8 @@
 .wrapper {
   display: grid;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
   grid-template-columns: 312px 1fr;
   height: 100%;
 }
