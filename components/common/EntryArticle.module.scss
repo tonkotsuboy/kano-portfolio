@@ -1,13 +1,10 @@
-@use "../../styles/mixins/article" as articleMixins;
-
 .entry {
   display: block;
-  @include articleMixins.articleStyle();
-
-  &:hover {
-    background: #f7f9fc;
-    border: 1px solid #f1f3fa;
-  }
+  background: #ffffff;
+  border: 1px solid #f1f3fa;
+  box-shadow: 2px 8px 30px rgba(48, 55, 120, 0.04);
+  border-radius: 14px;
+  padding: 32px 24px;
 }
 
 .medium {
