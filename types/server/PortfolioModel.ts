@@ -14,4 +14,12 @@ export type PortfolioModel = {
       slug: string;
     };
   }[];
+  slide?: {
+    fields: {
+      title: string;
+      file: {
+        url: string;
+      };
+    };
+  };
 };
