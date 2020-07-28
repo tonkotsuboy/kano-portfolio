@@ -1,23 +1,23 @@
 .entry {
   display: block;
+  padding: 32px 24px;
   background: #ffffff;
   border: 1px solid #f1f3fa;
-  box-shadow: 2px 8px 30px rgba(48, 55, 120, 0.04);
   border-radius: 14px;
-  padding: 32px 24px;
+  box-shadow: 2px 8px 30px rgba(48, 55, 120, 0.04);
 }
 
 .medium {
   display: grid;
-  place-items: center;
   height: 20px;
-  padding-left: 16px;
   padding-right: 16px;
+  padding-left: 16px;
+  font-size: 12px;
+  color: #3f3f9d;
   background: #edeef8;
   border: 1px solid #3f3f9d;
   border-radius: 4px;
-  font-size: 12px;
-  color: #3f3f9d;
+  place-items: center;
 }
 
 .header {
@@ -27,10 +27,10 @@
 
 .taglist {
   display: grid;
-  height: 100%;
   grid-auto-flow: column;
-  gap: 12px;
+  height: 100%;
   margin-left: 12px;
+  gap: 12px;
 }
 
 .tag {
@@ -39,17 +39,17 @@
 }
 
 .title {
+  margin-top: 8px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
   line-height: 150%;
   color: #30345f;
-  margin-top: 8px;
 }
 
 .link {
-  font-weight: 500;
   font-size: 11px;
+  font-weight: 500;
   color: #3f3f9d;
 }
 

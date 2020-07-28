@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useContext } from "react";
+import Link from "next/link";
 import styles from "./SideNavigation.module.scss";
 import { IndexContext } from "../contexts/IndexContext";
-import Link from "next/link";
 
-export const SideNavigation = () => {
+export const SideNavigation: React.FC = () => {
   const { tagDataList } = useContext(IndexContext);
 
   if (tagDataList == null) {

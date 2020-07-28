@@ -1,8 +1,8 @@
-import { EntryArticle } from "../common/EntryArticle";
 import React, { useContext } from "react";
+import Link from "next/link";
+import { EntryArticle } from "../common/EntryArticle";
 import styles from "./EntryList.module.scss";
 import { IndexContext } from "../../contexts/IndexContext";
-import Link from "next/link";
 
 export const EntryList: React.FC = () => {
   const { entryDataList } = useContext(IndexContext);
@@ -13,10 +13,10 @@ export const EntryList: React.FC = () => {
 
   return (
     <div className={styles["entry-list"]}>
-      {entryDataList.map((entryData, index) => (
-        <Link href={`/entry/${entryData.id}`}>
+      {entryDataList.map((entryData) => (
+        <Link key={entryData.id} href={`/entry/${entryData.id}`}>
           <a>
-            <EntryArticle key={index} entryData={entryData} />
+            <EntryArticle entryData={entryData} />
           </a>
         </Link>
       ))}

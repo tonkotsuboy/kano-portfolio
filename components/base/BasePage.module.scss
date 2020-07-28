@@ -1,13 +1,13 @@
 .wrapper {
   display: grid;
-  max-width: 1080px;
-  margin-left: auto;
-  margin-right: auto;
   grid-template-columns: 312px 1fr;
+  max-width: 1080px;
   height: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .main {
-  background: #f8f9fc;
   padding: 128px 80px;
+  background: #f8f9fc;
 }

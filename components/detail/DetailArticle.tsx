@@ -1,6 +1,6 @@
 import React from "react";
-import { EntryType } from "../../types/EntryType";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import { EntryType } from "../../types/EntryType";
 import { EntryArticle } from "../common/EntryArticle";
 
 type Props = {
@@ -21,6 +21,7 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
       {/* スライドがある場合 */}
       {entryData.slide ? (
         <iframe
+          title={entryData.slide.title}
           src={`https:${entryData.slide.file.url}`}
           width="100%"
           height="400"

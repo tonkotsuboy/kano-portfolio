@@ -1,11 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import React from "react";
 import { PortfolioModel } from "../../types/server/PortfolioModel";
 import {
   fetchEntriesData,
   fetchEntryData,
 } from "../../util/api/fetchEntriesData";
 
-import React from "react";
 import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
 import { TagType } from "../../types/TagType";
