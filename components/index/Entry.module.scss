@@ -1,10 +1,12 @@
 @use "../../styles/mixins/article" as articleMixins;
 
 .entry {
+  display: block;
   @include articleMixins.articleStyle();
 
-  > a {
-    display: contents;
+  &:hover {
+    background: #f7f9fc;
+    border: 1px solid #f1f3fa;
   }
 }
 
@@ -52,4 +54,11 @@
   font-weight: 500;
   font-size: 11px;
   color: #3f3f9d;
+}
+
+.published_date {
+  display: block;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #30345f;
 }
