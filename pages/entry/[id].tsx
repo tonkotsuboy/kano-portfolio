@@ -11,6 +11,7 @@ import BasePage from "../../components/base/BasePage";
 import { TagType } from "../../types/TagType";
 import DetailArticle from "../../components/detail/DetailArticle";
 import { EntryType } from "../../types/EntryType";
+import { MediumType } from "../../types/MediumType";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
@@ -29,8 +30,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
   }
-  const [fetchedEntryData, tagData] = await Promise.all([
+  const [fetchedEntryData, mediumData, tagDataList] = await Promise.all([
     fetchEntryData<PortfolioModel>(entryId),
+    fetchEntriesData<MediumType>("medium"),
     fetchEntriesData<TagType>("tag"),
   ]);
 
@@ -46,24 +48,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     tags,
   };
 
-  const tagList: TagType[] = tagData.items.map((item) => {
-    return item.fields;
-  });
+  const mediumList: MediumType[] = mediumData.items.map(
+    (medium) => medium.fields
+  );
 
   return {
     props: {
-      tagList,
       entryData,
+      mediumList,
+      tagDataList,
     },
   };
 };
 
 const DetailPage: React.FC<{
-  tagList: TagType[];
   entryData: EntryType;
-}> = ({ tagList, entryData }) => {
+  mediumList: MediumType[];
+  tagDataList: TagType[];
+}> = ({ entryData, tagDataList, mediumList }) => {
   const contextValue: IndexContextType = {
-    tagDataList: tagList,
+    mediumDataList: mediumList,
+    tagDataList,
   };
 
   return (
