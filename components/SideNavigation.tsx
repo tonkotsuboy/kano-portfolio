@@ -5,9 +5,9 @@ import styles from "./SideNavigation.module.scss";
 import { IndexContext } from "../contexts/IndexContext";
 
 export const SideNavigation: React.FC = () => {
-  const { tagDataList } = useContext(IndexContext);
+  const { mediumDataList, tagDataList } = useContext(IndexContext);
 
-  if (tagDataList == null) {
+  if (mediumDataList == null || tagDataList == null) {
     return null;
   }
 
@@ -20,6 +20,13 @@ export const SideNavigation: React.FC = () => {
           </Link>
         </h1>
         <p className={styles.job}>Frontend Developer</p>
+        <ul className={styles.taglist}>
+          {mediumDataList.map(({ name, slug }) => (
+            <li key={slug} className={styles.tag}>
+              <a href={`/medium/${slug}`}>{name}</a>
+            </li>
+          ))}
+        </ul>
         <ul className={styles.taglist}>
           {tagDataList.map(({ name, slug }) => (
             <li key={slug} className={styles.tag}>
