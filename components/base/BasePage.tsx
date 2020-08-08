@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import styles from "./BasePage.module.scss";
-import { SideNavigation } from "../SideNavigation";
+import { AppNavigation } from "../navigation/AppNavigation";
 
 /**
  * 各ページ共通で使用するテンプレート
@@ -17,7 +17,7 @@ const BasePage: React.FC = ({ children }) => (
       />
     </Head>
     <div className={styles.wrapper}>
-      <SideNavigation />
+      <AppNavigation className={styles.navigation} />
       <main className={styles.main}>{children}</main>
     </div>
   </div>

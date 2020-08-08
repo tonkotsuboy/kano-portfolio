@@ -1,13 +1,30 @@
+@use "./styles/mixins/breakpoints" as breakpoints;
+
 .wrapper {
   display: grid;
-  grid-template-columns: 312px 1fr;
+  grid-template-columns: 256px 1fr;
   max-width: 1080px;
   height: 100%;
   margin-right: auto;
   margin-left: auto;
+
+  @media (max-width: #{breakpoints.$smartPhone}px) {
+    grid-template:
+      80px /
+      1fr;
+  }
 }
 
 .main {
   padding: 128px 80px;
   background: #f8f9fc;
+
+  @media (max-width: 1080px) {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  @media (max-width: #{breakpoints.$smartPhone}px) {
+    padding: 40px;
+  }
 }
