@@ -16,7 +16,7 @@ export const EntryList: React.FC = () => {
       {entryDataList.map((entryData) => (
         <Link key={entryData.id} href={`/entry/${entryData.id}`}>
           <a>
-            <EntryArticle entryData={entryData} />
+            <EntryArticle entryData={entryData} isLinkEntry />
           </a>
         </Link>
       ))}

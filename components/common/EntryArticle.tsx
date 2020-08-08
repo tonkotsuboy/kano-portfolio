@@ -5,6 +5,7 @@ import { parseDate } from "../../logics/date/parseDate";
 
 type Props = {
   entryData: EntryType;
+  isLinkEntry?: boolean;
 };
 
 /**
@@ -13,8 +14,13 @@ type Props = {
 export const EntryArticle: React.FC<Props> = ({
   children,
   entryData: { published_date, title, medium, tags },
+  isLinkEntry = false,
 }) => (
-  <article className={styles.entry}>
+  <article
+    className={[styles.entry, isLinkEntry ? styles.linkentry : null]
+      .filter((value) => value != null)
+      .join(" ")}
+  >
     <header className={styles.header}>
       <p className={styles.medium}>{medium.name}</p>
       <ul className={styles.taglist}>

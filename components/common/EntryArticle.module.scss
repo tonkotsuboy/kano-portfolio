@@ -7,15 +7,25 @@
   box-shadow: 2px 8px 30px rgba(48, 55, 120, 0.04);
 }
 
+.linkentry {
+  &:hover {
+    background-color: #fcfeff;
+
+    * {
+      color: #595dd9 !important;
+    }
+  }
+}
+
 .medium {
   display: grid;
   height: 20px;
   padding-right: 16px;
   padding-left: 16px;
   font-size: 12px;
-  color: #3f3f9d;
+  color: var(--primary-color);
   background: #edeef8;
-  border: 1px solid #3f3f9d;
+  border: 1px solid var(--primary-color);
   border-radius: 4px;
   place-items: center;
 }
@@ -28,9 +38,9 @@
 .taglist {
   display: grid;
   grid-auto-flow: column;
+  gap: 12px;
   height: 100%;
   margin-left: 12px;
-  gap: 12px;
 }
 
 .tag {
@@ -42,7 +52,7 @@
   margin-top: 8px;
   font-size: 18px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 150%;
   color: #30345f;
 }
@@ -50,7 +60,7 @@
 .link {
   font-size: 11px;
   font-weight: 500;
-  color: #3f3f9d;
+  color: var(--primary-color);
 }
 
 .published_date {
