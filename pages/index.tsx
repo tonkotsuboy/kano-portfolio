@@ -5,7 +5,7 @@ import { EntryList } from "../components/index/EntryList";
 import { IndexContext, IndexContextType } from "../contexts/IndexContext";
 import { TagType } from "../types/TagType";
 import { PortfolioModel } from "../types/server/PortfolioModel";
-import { fetchEntriesData } from "../util/api/fetchEntriesData";
+import { fetchEntriesData } from "../logics/api/fetchEntriesData";
 import BasePage from "../components/base/BasePage";
 import { MediumType } from "../types/MediumType";
 
@@ -16,7 +16,6 @@ export const getStaticProps: GetStaticProps = async () => {
         const tags: EntryType["tags"] = entry.fields.tags.map(
           (tagEntry) => tagEntry.fields
         );
-
         return {
           id: entry.sys.id,
           ...entry.fields,

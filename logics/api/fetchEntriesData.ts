@@ -27,5 +27,6 @@ export const fetchEntriesData = async <T>(
  * @param entryId
  */
 export const fetchEntryData = async <T>(entryId: string): Promise<Entry<T>> => {
-  return await client.getEntry(entryId);
+  const result = await client.getEntry<T>(entryId);
+  return result;
 };

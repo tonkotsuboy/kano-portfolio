@@ -1,7 +1,7 @@
 import * as React from "react";
 import { EntryType } from "../../types/EntryType";
 import styles from "./EntryArticle.module.scss";
-import { parseDate } from "../../util/date/parseDate";
+import { parseDate } from "../../logics/date/parseDate";
 
 type Props = {
   entryData: EntryType;

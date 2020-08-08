@@ -4,7 +4,7 @@ import { PortfolioModel } from "../../types/server/PortfolioModel";
 import {
   fetchEntriesData,
   fetchEntryData,
-} from "../../util/api/fetchEntriesData";
+} from "../../logics/api/fetchEntriesData";
 
 import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
@@ -30,32 +30,42 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
   }
-  const [fetchedEntryData, mediumData, tagDataList] = await Promise.all([
-    fetchEntryData<PortfolioModel>(entryId),
-    fetchEntriesData<MediumType>("medium"),
-    fetchEntriesData<TagType>("tag"),
+  const [entryData, mediumDataList, tagDataList]: [
+    EntryType,
+    MediumType[],
+    TagType[]
+  ] = await Promise.all([
+    fetchEntryData<PortfolioModel>(entryId).then((data) => {
+      const tags: EntryType["tags"] = data.fields.tags.map(
+        (tagEntry) => tagEntry.fields
+      );
+
+      return {
+        id: data.sys.id,
+        ...data.fields,
+        medium: data.fields.medium.fields,
+        slide: data.fields.slide?.fields ?? null,
+        tags,
+      };
+    }),
+    fetchEntriesData<MediumType>("medium").then((data) => {
+      const mediumList: MediumType[] = data.items.map((item) => {
+        return item.fields;
+      });
+      return mediumList;
+    }),
+    fetchEntriesData<TagType>("tag").then((data) => {
+      const tagList: TagType[] = data.items.map((item) => {
+        return item.fields;
+      });
+      return tagList;
+    }),
   ]);
-
-  const tags: EntryType["tags"] = fetchedEntryData.fields.tags.map(
-    (tagEntry) => tagEntry.fields
-  );
-
-  const entryData: EntryType = {
-    id: fetchedEntryData.sys.id,
-    ...fetchedEntryData.fields,
-    medium: fetchedEntryData.fields.medium.fields,
-    slide: fetchedEntryData.fields.slide?.fields ?? null,
-    tags,
-  };
-
-  const mediumList: MediumType[] = mediumData.items.map(
-    (medium) => medium.fields
-  );
 
   return {
     props: {
       entryData,
-      mediumList,
+      mediumDataList,
       tagDataList,
     },
   };
@@ -63,11 +73,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const DetailPage: React.FC<{
   entryData: EntryType;
-  mediumList: MediumType[];
+  mediumDataList: MediumType[];
   tagDataList: TagType[];
-}> = ({ entryData, tagDataList, mediumList }) => {
+}> = ({ entryData, mediumDataList, tagDataList }) => {
   const contextValue: IndexContextType = {
-    mediumDataList: mediumList,
+    mediumDataList,
     tagDataList,
   };
 
