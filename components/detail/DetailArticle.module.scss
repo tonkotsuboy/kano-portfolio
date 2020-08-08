@@ -1,1 +1,9 @@
-@use "../../styles/mixins/article" as articleMixins;
+.entryhtml {
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--primary-color);
+  }
+}

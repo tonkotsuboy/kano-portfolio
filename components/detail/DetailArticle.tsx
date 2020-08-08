@@ -2,6 +2,7 @@ import React from "react";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { EntryType } from "../../types/EntryType";
 import { EntryArticle } from "../common/EntryArticle";
+import styles from "./DetailArticle.module.scss";
 
 type Props = {
   entryData: EntryType;
@@ -12,6 +13,7 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
     <EntryArticle entryData={entryData}>
       {entryData.detail != null ? (
         <div
+          className={styles.entryhtml}
           dangerouslySetInnerHTML={{
             __html: documentToHtmlString(entryData.detail as any),
           }}
