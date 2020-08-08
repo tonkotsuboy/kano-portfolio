@@ -55,9 +55,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       return mediumList;
     }),
     fetchEntriesData<TagType>("tag").then((data) => {
-      const tagList: TagType[] = data.items.map((item) => {
-        return item.fields;
-      });
+      const tagList: TagType[] = data.items
+        .map((item) => {
+          return item.fields;
+        })
+        .sort((a, b) => a.order - b.order);
       return tagList;
     }),
   ]);
