@@ -1,0 +1,33 @@
+.mediumlist {
+  display: grid;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.tagheading {
+  padding-left: 24px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4c4f5b;
+}
+
+.taglist {
+  display: grid;
+  grid-auto-rows: 32px;
+  gap: 8px;
+  align-items: center;
+}
+
+.slug {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding-left: 24px;
+  font-size: 14px;
+  color: #8991a4;
+  &:hover {
+    background-color: #f3f6fb;
+  }
+}
