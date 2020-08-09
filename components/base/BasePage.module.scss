@@ -8,9 +8,9 @@
   margin-right: auto;
   margin-left: auto;
 
-  @media (max-width: #{breakpoints.$smartPhone}px) {
+  @media (max-width: #{breakpoints.$medium}px) {
     grid-template:
-      80px /
+      var(--navigation-height-small) /
       1fr;
   }
 }
@@ -24,7 +24,7 @@
     padding-left: 40px;
   }
 
-  @media (max-width: #{breakpoints.$smartPhone}px) {
+  @media (max-width: #{breakpoints.$medium}px) {
     padding: 40px;
   }
 }

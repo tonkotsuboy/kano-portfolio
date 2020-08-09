@@ -2,10 +2,15 @@
 .navigation {
   position: relative;
   width: max(200px, 100%);
-  padding: 64px 24px 0;
   background: #ffffff;
+  box-shadow: 2px 0px 4px rgba(48, 55, 120, 0.05);
 
-  @media (max-width: #{breakpoints.$smartPhone}px) {
+  @media (min-width: #{breakpoints.$medium}px) {
+    width: max(200px, 100%);
+    padding: 64px 24px 0;
+  }
+
+  @media (max-width: #{breakpoints.$medium}px) {
     position: sticky;
     top: 0;
     display: grid;
@@ -13,7 +18,8 @@
     gap: 16px;
     align-items: center;
     justify-content: center;
-    height: 80px;
+    width: 100%;
+    height: var(--navigation-height-small);
     padding-top: 0;
   }
 }
@@ -27,7 +33,7 @@
   height: 40px;
   cursor: pointer;
 
-  @media (max-width: #{breakpoints.$smartPhone}px) {
+  @media (max-width: #{breakpoints.$medium}px) {
     display: block;
   }
 }
@@ -53,4 +59,28 @@
 .job {
   font-size: 13px;
   color: #7979a9;
+}
+
+.largeListWrapper {
+  @media (max-width: #{breakpoints.$medium}px) {
+    display: none;
+  }
+}
+.smallListWrapper {
+  $width: 240px;
+
+  position: absolute;
+  top: var(--navigation-height-small);
+  left: -$width;
+  width: $width;
+  padding: 24px;
+  background-color: #fff;
+  box-shadow: 2px 0px 4px rgba(48, 55, 120, 0.05);
+  @media (min-width: #{breakpoints.$medium}px) {
+    display: none;
+  }
+
+  &.smallListWrapperIsOpen {
+    left: 0;
+  }
 }

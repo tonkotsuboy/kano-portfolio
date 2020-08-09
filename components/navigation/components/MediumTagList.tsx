@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MediumTagList.module.scss";
-import { MediumType } from "../../types/MediumType";
-import { TagType } from "../../types/TagType";
+import { MediumType } from "../../../types/MediumType";
+import { TagType } from "../../../types/TagType";
 
 type Props = {
   mediumDataList: MediumType[];

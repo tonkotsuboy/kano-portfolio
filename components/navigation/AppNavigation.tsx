@@ -3,7 +3,7 @@ import { HTMLAttributes, useContext, useState } from "react";
 import Link from "next/link";
 import styles from "./AppNavigation.module.scss";
 import { IndexContext } from "../../contexts/IndexContext";
-import MediumTagList from "./MediumTagList";
+import MediumTagList from "./components/MediumTagList";
 
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 
@@ -47,7 +47,20 @@ export const AppNavigation: React.FC<Props> = ({ className }) => {
         </Link>
       </h1>
       <p className={styles.job}>Frontend Developer</p>
-      <div className={styles.wrapper}>
+      <div className={styles.largeListWrapper}>
+        <MediumTagList
+          mediumDataList={mediumDataList}
+          tagDataList={tagDataList}
+        />
+      </div>
+      <div
+        className={[
+          styles.smallListWrapper,
+          isOpen ? styles.smallListWrapperIsOpen : null,
+        ]
+          .filter((value) => value != null)
+          .join(" ")}
+      >
         <MediumTagList
           mediumDataList={mediumDataList}
           tagDataList={tagDataList}
