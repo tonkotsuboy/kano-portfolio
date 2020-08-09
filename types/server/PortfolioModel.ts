@@ -12,6 +12,7 @@ export type PortfolioModel = {
     fields: {
       name: string;
       slug: string;
+      order: number;
     };
   }[];
   slide?: {
