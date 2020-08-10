@@ -66,11 +66,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })
   );
 
+  // 選択された媒体の名前を取得します
+  const selectedMediumName =
+    mediumDataList.find((medium) => medium.slug === paramMediumSlug)?.name ??
+    null;
+
   return {
     props: {
       entryDataList,
       mediumDataList,
       tagDataList,
+      selectedMediumName,
     },
   };
 };
@@ -79,7 +85,8 @@ const TagPage: React.FC<{
   entryDataList: EntryType[];
   mediumDataList: MediumType[];
   tagDataList: TagType[];
-}> = ({ entryDataList, mediumDataList, tagDataList }) => {
+  selectedMediumName: string | null;
+}> = ({ entryDataList, mediumDataList, tagDataList, selectedMediumName }) => {
   const contextValue: IndexContextType = {
     entryDataList,
     mediumDataList,
@@ -88,7 +95,7 @@ const TagPage: React.FC<{
 
   return (
     <IndexContext.Provider value={contextValue}>
-      <BasePage>
+      <BasePage pageTitle={selectedMediumName}>
         <EntryList />
       </BasePage>
     </IndexContext.Provider>

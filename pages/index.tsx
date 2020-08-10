@@ -69,7 +69,7 @@ const IndexPage: React.FC<{
 
   return (
     <IndexContext.Provider value={contextValue}>
-      <BasePage>
+      <BasePage pageTitle="鹿野ポートフォリオ">
         <EntryList />
       </BasePage>
     </IndexContext.Provider>

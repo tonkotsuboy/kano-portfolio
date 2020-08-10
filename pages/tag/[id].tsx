@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
   }
+
   const [mediumDataList, tagDataList]: [
     MediumType[],
     TagType[]
@@ -70,11 +71,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })
   );
 
+  // 選択されたタグの名前を取得します
+  const selectedTagName =
+    tagDataList.find((tag) => tag.slug === paramTagSlug)?.name ?? null;
+
   return {
     props: {
       entryDataList,
       mediumDataList,
       tagDataList,
+      selectedTagName,
     },
   };
 };
@@ -83,7 +89,8 @@ const TagPage: React.FC<{
   entryDataList: EntryType[];
   mediumDataList: MediumType[];
   tagDataList: TagType[];
-}> = ({ entryDataList, mediumDataList, tagDataList }) => {
+  selectedTagName: string;
+}> = ({ entryDataList, mediumDataList, tagDataList, selectedTagName }) => {
   const contextValue: IndexContextType = {
     entryDataList,
     mediumDataList,
@@ -92,7 +99,7 @@ const TagPage: React.FC<{
 
   return (
     <IndexContext.Provider value={contextValue}>
-      <BasePage>
+      <BasePage pageTitle={selectedTagName}>
         <EntryList />
       </BasePage>
     </IndexContext.Provider>

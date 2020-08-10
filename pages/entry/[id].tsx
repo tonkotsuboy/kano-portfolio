@@ -93,7 +93,7 @@ const DetailPage: React.FC<{
 
   return (
     <IndexContext.Provider value={contextValue}>
-      <BasePage>
+      <BasePage pageTitle={entryData.title}>
         <DetailArticle entryData={entryData} />
       </BasePage>
     </IndexContext.Provider>
