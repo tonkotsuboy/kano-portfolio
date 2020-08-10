@@ -1,4 +1,4 @@
-import { Asset, Entry } from "contentful";
+import { Asset } from "contentful";
 
 export type PortfolioModel = {
   title: string;

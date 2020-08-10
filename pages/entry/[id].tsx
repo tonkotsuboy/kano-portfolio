@@ -82,11 +82,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const DetailPage: React.FC<{
-  ogImage: string;
   entryData: EntryType;
   mediumDataList: MediumType[];
   tagDataList: TagType[];
-}> = ({ ogImage, entryData, mediumDataList, tagDataList }) => {
+}> = ({ entryData, mediumDataList, tagDataList }) => {
   const contextValue: IndexContextType = {
     mediumDataList,
     tagDataList,
