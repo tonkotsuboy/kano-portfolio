@@ -13,7 +13,7 @@ type Props = {
  */
 export const EntryArticle: React.FC<Props> = ({
   children,
-  entryData: { published_date, title, medium, tags },
+  entryData: { keyvisual, published_date, title, medium, tags },
   isLinkEntry = false,
 }) => (
   <article
@@ -21,6 +21,18 @@ export const EntryArticle: React.FC<Props> = ({
       .filter((value) => value != null)
       .join(" ")}
   >
+    {keyvisual ? (
+      <picture className={styles.keyvisual}>
+        <source srcSet={`${keyvisual.fields.file.url}?fm=webp`} />
+        <img
+          src={keyvisual.fields.file.url}
+          alt={keyvisual.fields.title}
+          width={keyvisual.fields.file.details.image?.width ?? "auto"}
+          height={keyvisual.fields.file.details.image?.height ?? "auto"}
+        />
+      </picture>
+    ) : null}
+
     <header className={styles.header}>
       <p className={styles.medium}>{medium.name}</p>
       <ul className={styles.taglist}>

@@ -35,13 +35,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     MediumType[],
     TagType[]
   ] = await Promise.all([
-    fetchEntryData<PortfolioModel>(entryId).then((data) => {
+    fetchEntryData<PortfolioModel>(entryId).then(async (data) => {
       const tags: EntryType["tags"] = data.fields.tags.map(
         (tagEntry) => tagEntry.fields
       );
 
+      const urlString = await (await fetch(data.fields.url)).text();
+      const result = urlString.match(
+        /property="og:image" content="(?<ogimage>.*)"/u
+      );
+
+      const ogImage = result?.groups?.ogimage ?? null;
+
       return {
         id: data.sys.id,
+        ogImage,
         ...data.fields,
         medium: data.fields.medium.fields,
         slide: data.fields.slide?.fields ?? null,
@@ -74,10 +82,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const DetailPage: React.FC<{
+  ogImage: string;
   entryData: EntryType;
   mediumDataList: MediumType[];
   tagDataList: TagType[];
-}> = ({ entryData, mediumDataList, tagDataList }) => {
+}> = ({ ogImage, entryData, mediumDataList, tagDataList }) => {
   const contextValue: IndexContextType = {
     mediumDataList,
     tagDataList,

@@ -1,10 +1,25 @@
 .entry {
   display: block;
-  padding: 32px 24px;
+  padding-bottom: 32px;
+  overflow: hidden;
   background: #ffffff;
   border: 1px solid #f1f3fa;
   border-radius: 14px;
   box-shadow: 2px 8px 30px rgba(48, 55, 120, 0.04);
+
+  > *:not(.keyvisual) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+
+.keyvisual {
+  box-shadow: 0px 2px 4px rgba(48, 55, 120, 0.05);
+
+  > img {
+    object-fit: cover;
+    height: auto;
+  }
 }
 
 .linkentry {
@@ -15,6 +30,19 @@
       color: #595dd9 !important;
     }
   }
+
+  .keyvisual {
+    > img {
+      object-position: top center;
+      height: 204px;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
 }
 
 .medium {
@@ -28,11 +56,6 @@
   border: 1px solid var(--primary-color);
   border-radius: 4px;
   place-items: center;
-}
-
-.header {
-  display: flex;
-  align-items: center;
 }
 
 .taglist {

@@ -12,20 +12,24 @@ import { MediumType } from "../types/MediumType";
 export const getStaticProps: GetStaticProps = async () => {
   const [entryDataList, mediumDataList, tagDataList] = await Promise.all([
     fetchEntriesData<PortfolioModel>("portfolio").then((data) => {
-      const blogList: EntryType[] = data.items.map((entry) => {
-        const tags: EntryType["tags"] = entry.fields.tags.map(
-          (tagEntry) => tagEntry.fields
+      return data.items
+        .map((entry) => {
+          const tags: EntryType["tags"] = entry.fields.tags.map(
+            (tagEntry) => tagEntry.fields
+          );
+          return {
+            id: entry.sys.id,
+            ...entry.fields,
+            medium: entry.fields.medium.fields,
+            slide: entry.fields.slide?.fields ?? null,
+            tags,
+          };
+        })
+        .sort(
+          (a, b) =>
+            new Date(b.published_date).getTime() -
+            new Date(a.published_date).getTime()
         );
-        return {
-          id: entry.sys.id,
-          ...entry.fields,
-          medium: entry.fields.medium.fields,
-          slide: entry.fields.slide?.fields ?? null,
-          tags,
-        };
-      });
-
-      return blogList;
     }),
     fetchEntriesData<MediumType>("medium").then((data) => {
       const mediumList: MediumType[] = data.items.map((item) => {
