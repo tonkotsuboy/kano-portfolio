@@ -1,3 +1,5 @@
+import { Asset, Entry } from "contentful";
+
 export type PortfolioModel = {
   title: string;
   published_date: string;
@@ -15,6 +17,7 @@ export type PortfolioModel = {
       order: number;
     };
   }[];
+  keyvisual: Asset;
   slide?: {
     fields: {
       title: string;

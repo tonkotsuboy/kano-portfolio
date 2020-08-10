@@ -1,10 +1,11 @@
 import { TagType } from "./TagType";
+import { Asset } from "contentful";
 
 export type EntryType = {
   id: string;
   title: string;
   published_date: string;
-  url: string;
+  ogImage?: string;
   detail?: Document;
   medium: {
     name: string;
@@ -17,4 +18,5 @@ export type EntryType = {
       url: string;
     };
   } | null;
+  keyvisual?: Asset;
 };
