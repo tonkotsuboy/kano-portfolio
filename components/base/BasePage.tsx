@@ -17,6 +17,7 @@ const BasePage: React.FC<Props> = ({ pageTitle, children }) => {
     <div className="container">
       <Head>
         <title>{title}</title>
+        <meta name="robots" content="noindex" />
         <link rel="icon" href="/favicon.ico" />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
