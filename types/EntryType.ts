@@ -1,7 +1,8 @@
-import { TagType } from "./TagType";
 import { Asset } from "contentful";
+import { TagType } from "./TagType";
 
 export type EntryType = {
+  slug: string;
   id: string;
   title: string;
   published_date: string;

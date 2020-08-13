@@ -1,10 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import { PortfolioModel } from "../../types/server/PortfolioModel";
-import {
-  fetchEntriesData,
-  fetchEntryData,
-} from "../../logics/api/fetchEntriesData";
+import { fetchEntriesData } from "../../logics/api/fetchEntriesData";
 
 import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
@@ -16,26 +13,32 @@ import { MediumType } from "../../types/MediumType";
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
   const portfolioData = await fetchEntriesData<PortfolioModel>("portfolio");
-  const paths = portfolioData.items.map((entry) => `/entry/${entry.sys.id}`);
+  const paths = portfolioData.items.map(
+    (entry) => `/entry/${entry.fields.slug}`
+  );
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const entryId = params?.id as string;
-  if (entryId == null) {
+  const targetSlug = params?.id as string;
+  if (targetSlug == null) {
     return {
       props: {
         entryData: null,
       },
     };
   }
+
   const [entryData, mediumDataList, tagDataList]: [
     EntryType,
     MediumType[],
     TagType[]
   ] = await Promise.all([
-    fetchEntryData<PortfolioModel>(entryId).then(async (data) => {
+    fetchEntriesData<PortfolioModel>("portfolio", {
+      "fields.slug": targetSlug,
+    }).then(async (dataList) => {
+      const data = dataList.items[0];
       const tags: EntryType["tags"] = data.fields.tags.map(
         (tagEntry) => tagEntry.fields
       );

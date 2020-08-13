@@ -14,7 +14,7 @@ export const EntryList: React.FC = () => {
   return (
     <div className={styles["entry-list"]}>
       {entryDataList.map((entryData) => (
-        <Link key={entryData.id} href={`/entry/${entryData.id}`}>
+        <Link key={entryData.id} href={`/entry/${entryData.slug}`}>
           <a>
             <EntryArticle entryData={entryData} isLinkEntry />
           </a>

@@ -1,6 +1,7 @@
 import { Asset } from "contentful";
 
 export type PortfolioModel = {
+  slug: string;
   title: string;
   published_date: string;
   url: string;
