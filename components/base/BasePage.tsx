@@ -25,7 +25,7 @@ const BasePage: React.FC<Props> = ({ pageTitle, children }) => {
         />
       </Head>
       <div className={styles.wrapper}>
-        <AppNavigation className={styles.navigation} />
+        <AppNavigation />
         <main className={styles.main}>{children}</main>
       </div>
     </div>
