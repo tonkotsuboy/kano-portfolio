@@ -6,6 +6,7 @@ export type EntryType = {
   id: string;
   title: string;
   published_date: string;
+  url?: string;
   ogImage: string | null;
   detail?: Document;
   medium: {

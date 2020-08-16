@@ -13,13 +13,23 @@ export const EntryList: React.FC = () => {
 
   return (
     <div className={styles["entry-list"]}>
-      {entryDataList.map((entryData) => (
-        <Link key={entryData.id} href={`/entry/${entryData.slug}`}>
-          <a>
-            <EntryArticle entryData={entryData} isLinkEntry />
-          </a>
-        </Link>
-      ))}
+      {entryDataList.map((entryData) => {
+        if (entryData.medium.slug === "writing") {
+          return (
+            <a href={entryData.url} rel="noreferrer" target="_blank">
+              <EntryArticle entryData={entryData} isLinkEntry />
+            </a>
+          );
+        }
+
+        return (
+          <Link key={entryData.id} href={`/entry/${entryData.slug}`}>
+            <a>
+              <EntryArticle entryData={entryData} isLinkEntry />
+            </a>
+          </Link>
+        );
+      })}
     </div>
   );
 };
