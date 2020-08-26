@@ -9,6 +9,7 @@ import { TagType } from "../../types/TagType";
 import DetailArticle from "../../components/detail/DetailArticle";
 import { EntryType } from "../../types/EntryType";
 import { MediumType } from "../../types/MediumType";
+import { fetchOgInfo } from "../../logics/scraping/fetchOgInfo";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
@@ -20,6 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
 };
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const targetSlug = params?.id as string;
   if (targetSlug == null) {
@@ -42,22 +44,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       const tags: EntryType["tags"] = data.fields.tags.map(
         (tagEntry) => tagEntry.fields
       );
-
-      const urlString = await (await fetch(data.fields.url)).text();
-      const result = urlString.match(
-        /property="og:image" content="(?<ogimage>.*)"/u
-      );
-
-      const ogImage = result?.groups?.ogimage ?? null;
+      const { ogImage, ogTitle } = await fetchOgInfo(data.fields.url);
 
       return {
         id: data.sys.id,
-        ogImage,
         ...data.fields,
         medium: data.fields.medium.fields,
         slide: data.fields.slide?.fields ?? null,
+        ogInfo: {
+          title: ogTitle,
+          image: ogImage,
+        },
         tags,
-      };
+      } as EntryType;
     }),
     fetchEntriesData<MediumType>("medium").then((data) => {
       const mediumList: MediumType[] = data.items.map((item) => {

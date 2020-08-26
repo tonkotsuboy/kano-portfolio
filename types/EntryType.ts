@@ -7,7 +7,6 @@ export type EntryType = {
   title: string;
   published_date: string;
   url?: string;
-  ogImage: string | null;
   detail?: Document;
   medium: {
     name: string;
@@ -21,4 +20,8 @@ export type EntryType = {
     };
   } | null;
   keyvisual?: Asset;
+  ogInfo?: {
+    title?: string;
+    image?: string;
+  };
 };
