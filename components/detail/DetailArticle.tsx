@@ -19,7 +19,16 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
           }}
         />
       ) : null}
-      {entryData.ogImage ? <img alt="" src={entryData.ogImage} /> : null}
+
+      {entryData.ogInfo ? (
+        <aside>
+          {entryData.ogInfo.image ? (
+            <img alt="" src={entryData.ogInfo.image} />
+          ) : null}
+          <h3>{entryData.ogInfo.title}</h3>
+        </aside>
+      ) : null}
+
       {/* スライドがある場合 */}
       {entryData.slide ? (
         <iframe
