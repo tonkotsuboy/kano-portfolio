@@ -9,7 +9,8 @@
     "export": "yarn run build && next export",
     "lint": "yarn run lint:js && yarn run lint:js",
     "lint:js": "eslint --ext .tsx . --fix",
-    "lint-fix:css": "stylelint \"**/*.module.scss\" --fix"
+    "lint-fix:css": "stylelint \"**/*.module.scss\" --fix",
+    "test": "jest --no-cache"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.1",
@@ -21,6 +22,7 @@
     "sass": "^1.26.10"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.10",
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.46",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
@@ -35,6 +37,8 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "4.0.8",
+    "jest": "^26.4.2",
+    "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.0.5",
     "stylelint": "13.6.1",
     "stylelint-config-prettier": "8.0.2",
@@ -43,6 +47,7 @@
     "stylelint-prettier": "1.1.2",
     "stylelint-scss": "3.18.0",
     "stylelint-webpack-plugin": "2.1.0",
+    "ts-jest": "^26.3.0",
     "typescript": "^4.0.1-rc"
   }
 }
