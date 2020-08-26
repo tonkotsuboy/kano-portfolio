@@ -1,5 +1,6 @@
 :root {
   --primary-color: #3f3f9d;
+  --text-color: #30345f;
   --navigation-height-small: 56px;
 }
 
@@ -17,7 +18,7 @@ body {
     "Helvetica", "Arial", sans-serif;
   text-rendering: optimizeSpeed;
   line-height: 1.8;
-  color: #30345f;
+  color: var(--text-color);
 }
 
 body > *,

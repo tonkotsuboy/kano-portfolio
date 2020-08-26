@@ -20,15 +20,6 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
         />
       ) : null}
 
-      {entryData.ogInfo ? (
-        <aside>
-          {entryData.ogInfo.image ? (
-            <img alt="" src={entryData.ogInfo.image} />
-          ) : null}
-          <h3>{entryData.ogInfo.title}</h3>
-        </aside>
-      ) : null}
-
       {/* スライドがある場合 */}
       {entryData.slide ? (
         <iframe
@@ -41,6 +32,24 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
             {entryData.slide.title}
           </a>
         </iframe>
+      ) : null}
+
+      {entryData.ogInfo ? (
+        <aside className={styles.ogInfo}>
+          <a href={entryData.url} rel="noopener noreferrer" target="_blank">
+            {entryData.ogInfo.image ? (
+              <img
+                className={styles.ogImage}
+                src={entryData.ogInfo.image}
+                alt="entryData.ogInfo.title"
+              />
+            ) : null}
+            <div className={styles.ogDetail}>
+              <h4 className={styles.ogTitle}>{entryData.ogInfo.title}</h4>
+              <p className={styles.linkUrl}>{entryData.url}</p>
+            </div>
+          </a>
+        </aside>
       ) : null}
     </EntryArticle>
   );
