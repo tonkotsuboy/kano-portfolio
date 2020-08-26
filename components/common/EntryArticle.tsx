@@ -44,9 +44,9 @@ export const EntryArticle: React.FC<Props> = ({
       </ul>
     </header>
     <h2 className={styles.title}>{title}</h2>
-    {children}
     <time dateTime={published_date} className={styles.published_date}>
       発表日：{parseDate(published_date)}
     </time>
+    {children}
   </article>
 );

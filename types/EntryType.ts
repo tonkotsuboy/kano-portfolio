@@ -12,6 +12,7 @@ export type EntryType = {
     name: string;
     slug: string;
   };
+  videoUrl?: string;
   tags: TagType[];
   slide: {
     title: string;

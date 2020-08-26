@@ -6,6 +6,11 @@
   a {
     color: var(--primary-color);
   }
+
+  img {
+    object-fit: cover;
+    height: auto;
+  }
 }
 
 .ogInfo {
