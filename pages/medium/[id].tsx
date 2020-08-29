@@ -21,8 +21,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const paramMediumSlug = params?.id as string;
-  if (paramMediumSlug == null) {
+  // 選択済みの媒体
+  const selectedMedium = params?.id as string;
+  if (selectedMedium == null) {
     throw new Error("データなし");
   }
 
@@ -50,36 +51,37 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       // 全エントリーデータより、特定のmediumを絞り込む
       .filter((entryData) => {
         // タグ内に、paramのmediumが含まれているかどうか？
-        return entryData.medium.slug === paramMediumSlug;
+        return entryData.medium.slug === selectedMedium;
       })
   );
 
-  // 選択された媒体の名前を取得します
-  const selectedMediumName =
-    mediumDataList.find((medium) => medium.slug === paramMediumSlug)?.name ??
-    null;
-
   return {
     props: {
+      selectedMedium,
       entryDataList,
       mediumDataList,
       tagDataList,
-      selectedMediumName,
     },
   };
 };
 
 const TagPage: React.FC<{
+  selectedMedium: string;
   entryDataList: EntryType[];
   mediumDataList: MediumType[];
   tagDataList: TagType[];
-  selectedMediumName: string | null;
-}> = ({ entryDataList, mediumDataList, tagDataList, selectedMediumName }) => {
+}> = ({ selectedMedium, entryDataList, mediumDataList, tagDataList }) => {
   const contextValue: IndexContextType = {
     entryDataList,
     mediumDataList,
     tagDataList,
+    selectedMedium,
   };
+
+  // 選択された媒体の名前を取得します
+  const selectedMediumName =
+    mediumDataList.find((medium) => medium.slug === selectedMedium)?.name ??
+    null;
 
   return (
     <IndexContext.Provider value={contextValue}>

@@ -22,8 +22,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const paramTagSlug = params?.id as string;
-  if (paramTagSlug == null) {
+  // 選択されたタグ
+  const selectedTagSlag = params?.id as string;
+  if (selectedTagSlag == null) {
     return {
       props: {
         tagData: null,
@@ -55,31 +56,34 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       // 全エントリーデータより、特定のタグを絞り込む
       .filter((entryData) => {
         // タグ内に、paramのタグが含まれているかどうか？
-        return entryData.tags.some((tagData) => tagData.slug === paramTagSlug);
+        return entryData.tags.some(
+          (tagData) => tagData.slug === selectedTagSlag
+        );
       })
   );
 
-  // 選択されたタグの名前を取得します
-  const selectedTagName =
-    tagDataList.find((tag) => tag.slug === paramTagSlug)?.name ?? null;
-
   return {
     props: {
+      selectedTagSlag,
       entryDataList,
       mediumDataList,
       tagDataList,
-      selectedTagName,
     },
   };
 };
 
 const TagPage: React.FC<{
+  selectedTagSlag: string;
   entryDataList: EntryType[];
   mediumDataList: MediumType[];
   tagDataList: TagType[];
-  selectedTagName: string;
-}> = ({ entryDataList, mediumDataList, tagDataList, selectedTagName }) => {
+}> = ({ selectedTagSlag, entryDataList, mediumDataList, tagDataList }) => {
+  // 選択されたタグの名前を取得します
+  const selectedTagName =
+    tagDataList.find((tag) => tag.slug === selectedTagSlag)?.name ?? null;
+
   const contextValue: IndexContextType = {
+    selectedTag: selectedTagSlag,
     entryDataList,
     mediumDataList,
     tagDataList,

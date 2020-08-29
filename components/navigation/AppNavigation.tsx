@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HTMLAttributes, useContext, useState } from "react";
+import { HTMLAttributes, useCallback, useContext, useState } from "react";
 import Link from "next/link";
 import styles from "./AppNavigation.module.scss";
 import { IndexContext } from "../../contexts/IndexContext";
@@ -8,8 +8,17 @@ import MediumTagList from "./components/MediumTagList";
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 
 export const AppNavigation: React.FC<Props> = ({ className }) => {
-  const { mediumDataList, tagDataList } = useContext(IndexContext);
+  const {
+    mediumDataList,
+    tagDataList,
+    selectedTag,
+    selectedMedium,
+  } = useContext(IndexContext);
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
 
   if (mediumDataList == null || tagDataList == null) {
     return null;
@@ -21,11 +30,7 @@ export const AppNavigation: React.FC<Props> = ({ className }) => {
         .filter((value) => value != null)
         .join(" ")}
     >
-      <button
-        type="button"
-        className={styles.menubutton}
-        onClick={() => setIsOpen(!isOpen)}
-      >
+      <button type="button" className={styles.menubutton} onClick={handleClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -68,6 +73,8 @@ export const AppNavigation: React.FC<Props> = ({ className }) => {
         <MediumTagList
           mediumDataList={mediumDataList}
           tagDataList={tagDataList}
+          selectedTag={selectedTag}
+          selectedMedium={selectedMedium}
         />
       </div>
       <div
@@ -81,6 +88,8 @@ export const AppNavigation: React.FC<Props> = ({ className }) => {
         <MediumTagList
           mediumDataList={mediumDataList}
           tagDataList={tagDataList}
+          selectedTag={selectedTag}
+          selectedMedium={selectedMedium}
         />
       </div>
     </nav>
