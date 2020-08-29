@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import { PortfolioModel } from "../../types/server/PortfolioModel";
-import { fetchEntriesData } from "../../logics/api/fetchEntriesData";
+import { fetchDataFromAPI } from "../../logics/api/fetchDataFromAPI";
 
 import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
@@ -15,7 +15,7 @@ import { fetchTagList } from "../../logics/api/fetchTagList";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
-  const portfolioData = await fetchEntriesData<PortfolioModel>("portfolio");
+  const portfolioData = await fetchDataFromAPI<PortfolioModel>("portfolio");
   const paths = portfolioData.items.map(
     (entry) => `/entry/${entry.fields.slug}`
   );
@@ -25,8 +25,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const targetSlug = params?.id as string;
-  if (targetSlug == null) {
+  // 表示する記事のIDをパラメータから取得
+  const targetEntryId = params?.id as string;
+  if (targetEntryId == null) {
     return {
       props: {
         entryData: null,
@@ -39,8 +40,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     MediumType[],
     TagType[]
   ] = await Promise.all([
-    fetchEntriesData<PortfolioModel>("portfolio", {
-      "fields.slug": targetSlug,
+    // slugを指定して記事詳細データを取得する
+    fetchDataFromAPI<PortfolioModel>("portfolio", {
+      "fields.slug": targetEntryId,
     }).then(async (dataList) => {
       const data = dataList.items[0];
       const tags: EntryType["tags"] = data.fields.tags.map(

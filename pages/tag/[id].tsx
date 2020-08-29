@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
-import { fetchEntriesData } from "../../logics/api/fetchEntriesData";
+import { fetchDataFromAPI } from "../../logics/api/fetchDataFromAPI";
 
 import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
@@ -14,7 +14,7 @@ import { fetchTagList } from "../../logics/api/fetchTagList";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
-  const tagData = await fetchEntriesData<TagType>("tag");
+  const tagData = await fetchDataFromAPI<TagType>("tag");
   const paths = tagData.items.map((tag) => `/tag/${tag.fields.slug}`);
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     TagType[]
   ] = await Promise.all([fetchMedia(), fetchTagList()]);
 
-  const entryDataList = await fetchEntriesData<PortfolioModel>(
+  const entryDataList = await fetchDataFromAPI<PortfolioModel>(
     "portfolio"
   ).then((data) =>
     data.items

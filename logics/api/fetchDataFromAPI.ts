@@ -14,7 +14,7 @@ const client: ContentfulClientApi = contentful.createClient({
  * content_typeを指定して、エントリーデータをフェッチします
  * @param contentType
  */
-export const fetchEntriesData = async <T>(
+export const fetchDataFromAPI = async <T>(
   contentType: string,
   optionalQuery?: any
 ): Promise<EntryCollection<T>> => {

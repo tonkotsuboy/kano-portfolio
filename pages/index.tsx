@@ -5,7 +5,7 @@ import { EntryList } from "../components/index/EntryList";
 import { IndexContext, IndexContextType } from "../contexts/IndexContext";
 import { TagType } from "../types/TagType";
 import { PortfolioModel } from "../types/server/PortfolioModel";
-import { fetchEntriesData } from "../logics/api/fetchEntriesData";
+import { fetchDataFromAPI } from "../logics/api/fetchDataFromAPI";
 import BasePage from "../components/base/BasePage";
 import { MediumType } from "../types/MediumType";
 import { fetchMedia } from "../logics/api/fetchMedia";
@@ -13,7 +13,7 @@ import { fetchTagList } from "../logics/api/fetchTagList";
 
 export const getStaticProps: GetStaticProps = async () => {
   const [entryDataList, mediumDataList, tagDataList] = await Promise.all([
-    fetchEntriesData<PortfolioModel>("portfolio").then((data) => {
+    fetchDataFromAPI<PortfolioModel>("portfolio").then((data) => {
       return data.items
         .map((entry) => {
           const tags: EntryType["tags"] = entry.fields.tags.map(

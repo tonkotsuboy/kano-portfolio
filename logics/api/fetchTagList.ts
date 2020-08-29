@@ -1,11 +1,11 @@
 import { TagType } from "../../types/TagType";
-import { fetchEntriesData } from "./fetchEntriesData";
+import { fetchDataFromAPI } from "./fetchDataFromAPI";
 
 /**
  * タグ一覧を取得します
  */
 export const fetchTagList = (): Promise<TagType[]> =>
-  fetchEntriesData<TagType>("tag").then((data) => {
+  fetchDataFromAPI<TagType>("tag").then((data) => {
     const tagList: TagType[] = data.items
       .map((item) => {
         return item.fields;
