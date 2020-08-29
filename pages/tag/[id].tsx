@@ -9,6 +9,8 @@ import { MediumType } from "../../types/MediumType";
 import { PortfolioModel } from "../../types/server/PortfolioModel";
 import { EntryType } from "../../types/EntryType";
 import { EntryList } from "../../components/index/EntryList";
+import { fetchMedia } from "../../logics/api/fetchMedia";
+import { fetchTagList } from "../../logics/api/fetchTagList";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
@@ -18,6 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
 };
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const paramTagSlug = params?.id as string;
   if (paramTagSlug == null) {
@@ -31,22 +34,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const [mediumDataList, tagDataList]: [
     MediumType[],
     TagType[]
-  ] = await Promise.all([
-    fetchEntriesData<MediumType>("medium").then((data) => {
-      const mediumList: MediumType[] = data.items.map((item) => {
-        return item.fields;
-      });
-      return mediumList;
-    }),
-    fetchEntriesData<TagType>("tag").then((data) => {
-      const tagList: TagType[] = data.items
-        .map((item) => {
-          return item.fields;
-        })
-        .sort((a, b) => a.order - b.order);
-      return tagList;
-    }),
-  ]);
+  ] = await Promise.all([fetchMedia(), fetchTagList()]);
 
   const entryDataList = await fetchEntriesData<PortfolioModel>(
     "portfolio"

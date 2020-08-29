@@ -8,6 +8,8 @@ import { PortfolioModel } from "../types/server/PortfolioModel";
 import { fetchEntriesData } from "../logics/api/fetchEntriesData";
 import BasePage from "../components/base/BasePage";
 import { MediumType } from "../types/MediumType";
+import { fetchMedia } from "../logics/api/fetchMedia";
+import { fetchTagList } from "../logics/api/fetchTagList";
 
 export const getStaticProps: GetStaticProps = async () => {
   const [entryDataList, mediumDataList, tagDataList] = await Promise.all([
@@ -31,20 +33,8 @@ export const getStaticProps: GetStaticProps = async () => {
             new Date(a.published_date).getTime()
         );
     }),
-    fetchEntriesData<MediumType>("medium").then((data) => {
-      const mediumList: MediumType[] = data.items.map((item) => {
-        return item.fields;
-      });
-      return mediumList;
-    }),
-    fetchEntriesData<TagType>("tag").then((data) => {
-      const tagList: TagType[] = data.items
-        .map((item) => {
-          return item.fields;
-        })
-        .sort((a, b) => a.order - b.order);
-      return tagList;
-    }),
+    fetchMedia(),
+    fetchTagList(),
   ]);
 
   return {

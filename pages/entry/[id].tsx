@@ -10,6 +10,8 @@ import DetailArticle from "../../components/detail/DetailArticle";
 import { EntryType } from "../../types/EntryType";
 import { MediumType } from "../../types/MediumType";
 import { fetchOgInfo } from "../../logics/scraping/fetchOgInfo";
+import { fetchMedia } from "../../logics/api/fetchMedia";
+import { fetchTagList } from "../../logics/api/fetchTagList";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
@@ -58,20 +60,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         tags,
       } as EntryType;
     }),
-    fetchEntriesData<MediumType>("medium").then((data) => {
-      const mediumList: MediumType[] = data.items.map((item) => {
-        return item.fields;
-      });
-      return mediumList;
-    }),
-    fetchEntriesData<TagType>("tag").then((data) => {
-      const tagList: TagType[] = data.items
-        .map((item) => {
-          return item.fields;
-        })
-        .sort((a, b) => a.order - b.order);
-      return tagList;
-    }),
+    fetchMedia(),
+    fetchTagList(),
   ]);
 
   return {
