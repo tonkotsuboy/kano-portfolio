@@ -39,14 +39,32 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
       {/* ビデオ */}
       {entryData.videoUrl ? (
         <iframe
+          className={styles.video}
           title={entryData.title}
           src={entryData.videoUrl}
-          width="640"
+          loading="lazy"
+          width="100%"
           height="360"
           frameBorder="0"
           allow="autoplay; fullscreen"
           allowFullScreen
         />
+      ) : null}
+
+      {/* スライドがある場合 */}
+      {entryData.slide ? (
+        <iframe
+          className={styles.slide}
+          title={entryData.slide.title}
+          src={`https:${entryData.slide.file.url}?view=Fit`}
+          loading="lazy"
+          width="100%"
+          height="360"
+        >
+          <a href={`https:${entryData.slide.file.url}`}>
+            {entryData.slide.title}
+          </a>
+        </iframe>
       ) : null}
 
       {entryData.detail != null ? (
@@ -61,19 +79,6 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
         />
       ) : null}
 
-      {/* スライドがある場合 */}
-      {entryData.slide ? (
-        <iframe
-          title={entryData.slide.title}
-          src={`https:${entryData.slide.file.url}`}
-          width="100%"
-          height="400"
-        >
-          <a href={`https:${entryData.slide.file.url}`}>
-            {entryData.slide.title}
-          </a>
-        </iframe>
-      ) : null}
       {entryData.ogInfo ? (
         <aside className={styles.ogInfo}>
           <a href={entryData.url} rel="noopener noreferrer" target="_blank">
