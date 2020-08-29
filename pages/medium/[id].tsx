@@ -6,11 +6,11 @@ import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
 import { TagType } from "../../types/TagType";
 import { MediumType } from "../../types/MediumType";
-import { PortfolioModel } from "../../types/server/PortfolioModel";
 import { EntryType } from "../../types/EntryType";
 import { EntryList } from "../../components/index/EntryList";
 import { fetchMedia } from "../../logics/api/fetchMedia";
 import { fetchTagList } from "../../logics/api/fetchTagList";
+import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
@@ -20,6 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
 };
+
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // 選択済みの媒体
   const selectedMedium = params?.id as string;
@@ -32,28 +33,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     TagType[]
   ] = await Promise.all([fetchMedia(), fetchTagList()]);
 
-  const entryDataList = await fetchDataFromAPI<PortfolioModel>(
-    "portfolio"
-  ).then((data) =>
-    data.items
-      .map((entry) => {
-        const tags: EntryType["tags"] = entry.fields.tags.map(
-          (tagEntry) => tagEntry.fields
-        );
-        return {
-          id: entry.sys.id,
-          ...entry.fields,
-          medium: entry.fields.medium.fields,
-          slide: entry.fields.slide?.fields ?? null,
-          tags,
-        };
-      })
-      // 全エントリーデータより、特定のmediumを絞り込む
-      .filter((entryData) => {
-        // タグ内に、paramのmediumが含まれているかどうか？
-        return entryData.medium.slug === selectedMedium;
-      })
-  );
+  const allEntryDataList = await fetchAllEntryData();
+  // 全エントリーデータより、特定のmediumを絞り込む
+  const entryDataList = allEntryDataList.filter((entryData) => {
+    // タグ内に、paramのmediumが含まれているかどうか？
+    return entryData.medium.slug === selectedMedium;
+  });
 
   return {
     props: {
