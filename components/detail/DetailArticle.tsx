@@ -37,7 +37,7 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
   return (
     <EntryArticle entryData={entryData}>
       {/* ビデオ */}
-      {entryData.videoUrl ? (
+      {entryData.videoUrl && (
         <iframe
           className={styles.video}
           title={entryData.title}
@@ -49,10 +49,10 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
           allow="autoplay; fullscreen"
           allowFullScreen
         />
-      ) : null}
+      )}
 
       {/* スライドがある場合 */}
-      {entryData.slide ? (
+      {entryData.slide && (
         <iframe
           className={styles.slide}
           title={entryData.slide.title}
@@ -65,9 +65,9 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
             {entryData.slide.title}
           </a>
         </iframe>
-      ) : null}
+      )}
 
-      {entryData.detail != null ? (
+      {entryData.detail != null && (
         <div
           className={styles.entryhtml}
           dangerouslySetInnerHTML={{
@@ -77,25 +77,25 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
             ),
           }}
         />
-      ) : null}
+      )}
 
-      {entryData.ogInfo ? (
+      {entryData.ogInfo && (
         <aside className={styles.ogInfo}>
           <a href={entryData.url} rel="noopener noreferrer" target="_blank">
-            {entryData.ogInfo.image ? (
+            {entryData.ogInfo.image && (
               <img
                 className={styles.ogImage}
                 src={entryData.ogInfo.image}
                 alt="entryData.ogInfo.title"
               />
-            ) : null}
+            )}
             <div className={styles.ogDetail}>
               <h4 className={styles.ogTitle}>{entryData.ogInfo.title}</h4>
               <p className={styles.linkUrl}>{entryData.url}</p>
             </div>
           </a>
         </aside>
-      ) : null}
+      )}
     </EntryArticle>
   );
 };

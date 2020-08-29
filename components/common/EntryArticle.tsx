@@ -21,7 +21,7 @@ export const EntryArticle: React.FC<Props> = ({
       .filter((value) => value != null)
       .join(" ")}
   >
-    {keyvisual ? (
+    {keyvisual && (
       <picture className={styles.keyvisual}>
         <source srcSet={`${keyvisual.fields.file.url}?fm=webp`} />
         <img
@@ -31,7 +31,7 @@ export const EntryArticle: React.FC<Props> = ({
           height={keyvisual.fields.file.details.image?.height ?? "auto"}
         />
       </picture>
-    ) : null}
+    )}
 
     <header className={styles.header}>
       <p className={styles.medium}>{medium.name}</p>
