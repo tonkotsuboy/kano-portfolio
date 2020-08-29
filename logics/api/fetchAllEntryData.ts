@@ -9,6 +9,8 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
   const allPortfolioData = await fetchDataFromAPI<PortfolioModel>("portfolio", {
     // 発表日の新しい順にソートする
     order: "-fields.published_date",
+    // 最大取得件数を200に
+    limit: 200,
   });
 
   return allPortfolioData.items.map((entry) => {
