@@ -1,0 +1,17 @@
+.appHeader {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 10px;
+  align-items: baseline;
+  justify-content: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: white;
+}
+
+.menuButton {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
