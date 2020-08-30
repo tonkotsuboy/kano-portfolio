@@ -1,12 +1,25 @@
 import * as React from "react";
-import { HTMLAttributes, useCallback, useContext, useState } from "react";
+import { HTMLAttributes, useCallback, useContext } from "react";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { Dispatch } from "redux";
 import styles from "./AppNavigation.module.scss";
 import { IndexContext } from "../../contexts/IndexContext";
 import MediumTagList from "./components/MediumTagList";
+import {
+  ActionType,
+  closeNavigation,
+  openNavigation,
+  RootState,
+} from "../../store";
 
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 
+/**
+ * ナビゲーション用コンポーネント
+ * @param className
+ * @constructor
+ */
 export const AppNavigation: React.FC<Props> = ({ className }) => {
   const {
     mediumDataList,
@@ -14,11 +27,25 @@ export const AppNavigation: React.FC<Props> = ({ className }) => {
     selectedTag,
     selectedMedium,
   } = useContext(IndexContext);
-  const [isOpen, setIsOpen] = useState(false);
 
+  const dispatch: Dispatch<ActionType> = useDispatch();
+
+  const navigationIsOpened = useSelector<
+    RootState,
+    RootState["navigationIsOpened"]
+  >((state) => {
+    return state.navigationIsOpened;
+  });
+
+  // 閉じるボタンクリック時の処理
   const handleClick = useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen]);
+    if (navigationIsOpened) {
+      dispatch(closeNavigation());
+      return;
+    }
+
+    dispatch(openNavigation());
+  }, [dispatch, navigationIsOpened]);
 
   if (mediumDataList == null || tagDataList == null) {
     return null;
@@ -80,7 +107,7 @@ export const AppNavigation: React.FC<Props> = ({ className }) => {
       <div
         className={[
           styles.smallListWrapper,
-          isOpen ? styles.smallListWrapperIsOpen : null,
+          navigationIsOpened ? styles.smallListWrapperIsOpen : null,
         ]
           .filter((value) => value != null)
           .join(" ")}
