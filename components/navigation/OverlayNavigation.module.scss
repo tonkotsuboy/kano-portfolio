@@ -24,49 +24,10 @@
   }
 }
 
-.menubutton {
-  $height: 44;
-  position: absolute;
-  top: calc(50% - #{$height / 2}px);
-  left: 16px;
-  display: none;
-  width: 44px;
-  height: #{$height}px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  border-radius: 50%;
-
-  &:hover {
-    background-color: #f3f6fb;
-  }
-
-  @media (max-width: #{breakpoints.$medium}px) {
-    display: block;
-  }
-}
-
 .menuborder {
   fill: #30345f;
   transition: 200ms all ease;
   transform-origin: 250px 250px;
-}
-
-.author {
-  font-size: 24px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 33px;
-  color: var(--primary-color);
-
-  > a {
-    color: var(--primary-color);
-  }
-}
-
-.job {
-  font-size: 13px;
-  color: #7979a9;
 }
 
 .largeListWrapper {

@@ -1,0 +1,23 @@
+@use "../../../styles/mixins/breakpoints" as breakpoints;
+
+.closeButton {
+  $height: 44;
+  position: absolute;
+  top: calc(50% - #{$height / 2}px);
+  left: 16px;
+  display: none;
+  width: 44px;
+  height: #{$height}px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: #f3f6fb;
+  }
+
+  @media (max-width: #{breakpoints.$medium}px) {
+    display: block;
+  }
+}

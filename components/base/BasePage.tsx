@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import styles from "./BasePage.module.scss";
-import { AppNavigation } from "../navigation/AppNavigation";
+import { OverlayNavigation } from "../navigation/OverlayNavigation";
 
 type Props = {
   pageTitle?: string | null;
@@ -25,7 +25,7 @@ const BasePage: React.FC<Props> = ({ pageTitle, children }) => {
         />
       </Head>
       <div className={styles.wrapper}>
-        <AppNavigation />
+        <OverlayNavigation />
         <main className={styles.main}>{children}</main>
       </div>
     </div>

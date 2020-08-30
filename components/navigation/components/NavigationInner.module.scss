@@ -1,0 +1,18 @@
+@use "../../../styles/mixins/breakpoints" as breakpoints;
+
+.author {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 33px;
+  color: var(--primary-color);
+
+  > a {
+    color: var(--primary-color);
+  }
+}
+
+.job {
+  font-size: 13px;
+  color: #7979a9;
+}
