@@ -1,19 +1,54 @@
 @use "../../styles/mixins/breakpoints" as breakpoints;
 
-.closeButton {
-  $height: 44;
+.menuButton {
+  --height: 44px;
+  position: absolute;
   width: 44px;
-  height: #{$height}px;
+  height: var(--height);
   cursor: pointer;
   background-color: transparent;
   border: none;
   border-radius: 50%;
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #f3f6fb;
   }
 
   @media (max-width: #{breakpoints.$medium}px) {
     display: block;
+  }
+}
+
+.border {
+  position: absolute;
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 2px;
+  background-color: #3f3f9d;
+  border-radius: 1px;
+  transition: 200ms all ease;
+}
+
+.border1 {
+  top: calc(50% - 5px);
+}
+.border2 {
+  top: calc(50%);
+}
+.border3 {
+  top: calc(50% + 5px);
+}
+
+.menuButton__closed {
+  .border1 {
+    transform: translate(0, 5px) rotate(45deg);
+  }
+  .border2 {
+    opacity: 0;
+  }
+  .border3 {
+    transform: translate(0, -5px) rotate(-45deg);
   }
 }

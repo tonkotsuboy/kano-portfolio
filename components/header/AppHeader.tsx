@@ -1,11 +1,11 @@
 import React, { HTMLAttributes, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Author } from "../common/Author";
 import { Job } from "../common/Job";
 import { MenuButton } from "./MenuButton";
 
 import styles from "./AppHeader.module.scss";
-import { openNavigation } from "../../store";
+import { closeNavigation, openNavigation, RootState } from "../../store";
 
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 
@@ -17,14 +17,26 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 const AppHeader: React.FC<Props> = ({ className }) => {
   const dispatch = useDispatch();
 
+  const navigationIsOpened = useSelector<RootState>(
+    (state) => state.navigationIsOpened
+  );
+
   // メニューボタンクリック時の処理
   const handleClick = useCallback(() => {
+    if (navigationIsOpened) {
+      dispatch(closeNavigation());
+      return;
+    }
     dispatch(openNavigation());
-  }, [dispatch]);
+  }, [navigationIsOpened, dispatch]);
 
   return (
     <header className={[className, styles.appHeader].join(" ")}>
-      <MenuButton className={styles.menuButton} onClick={handleClick} />
+      <MenuButton
+        className={styles.menuButton}
+        onClick={handleClick}
+        isClosedStyle={navigationIsOpened === true}
+      />
       <Author />
       <Job />
     </header>

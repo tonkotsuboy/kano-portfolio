@@ -4,8 +4,7 @@
   display: grid;
   grid-template:
     "navigation main" 100% /
-    256px 1fr;
-  grid-template-columns: 256px 1fr;
+    auto 1fr;
   max-width: 1080px;
   height: 100%;
   margin-right: auto;
@@ -13,7 +12,7 @@
 
   @media (max-width: #{breakpoints.$medium}px) {
     grid-template:
-      "header" auto
+      "header" var(--app-header-height)
       "main" 1fr /
       100%;
   }
@@ -27,6 +26,8 @@
 }
 
 .appHeader {
+  position: fixed;
+  top: 0;
   grid-area: header;
 }
 
@@ -46,6 +47,7 @@
 
 .sideNavigation {
   grid-area: navigation;
+  box-shadow: 2px 0 4px rgba(48, 55, 120, 0.05);
   @media (max-width: #{breakpoints.$medium}px) {
     display: none;
   }
