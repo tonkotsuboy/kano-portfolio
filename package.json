@@ -14,17 +14,20 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.1",
+    "@reduxjs/toolkit": "^1.4.0",
     "axios": "0.19.2",
     "contentful": "^7.14.6",
     "next": "9.5.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-redux": "^7.2.1",
     "sass": "^1.26.10"
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",
     "@types/node": "^14.0.27",
     "@types/react": "^16.9.46",
+    "@types/react-redux": "^7.1.9",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
     "babel-eslint": "^10.1.0",
@@ -40,6 +43,7 @@
     "jest": "^26.4.2",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "stylelint": "13.6.1",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-recess-order": "2.1.0",
