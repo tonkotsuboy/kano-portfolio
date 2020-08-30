@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
-import Link from "next/link";
-import styles from "./NavigationInner.module.scss";
+import React, { HTMLAttributes, useContext } from "react";
 import MediumTagList from "./MediumTagList";
 import { IndexContext } from "../../../contexts/IndexContext";
+import { Author } from "../../common/Author";
+import { Job } from "../../common/Job";
+import styles from "./NavigationInner.module.scss";
 
-const NavigationInner: React.FC = () => {
+type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
+
+const NavigationInner: React.FC<Props> = ({ className }) => {
   const {
     mediumDataList,
     tagDataList,
@@ -17,20 +20,20 @@ const NavigationInner: React.FC = () => {
   }
 
   return (
-    <>
-      <h1 className={styles.author}>
-        <Link href="/">
-          <a>Takeshi Kano</a>
-        </Link>
-      </h1>
-      <p className={styles.job}>Frontend Developer</p>
+    <div
+      className={[className, styles.navigationInner]
+        .filter((value) => value != null)
+        .join(" ")}
+    >
+      <Author />
+      <Job />
       <MediumTagList
         mediumDataList={mediumDataList}
         tagDataList={tagDataList}
         selectedTag={selectedTag}
         selectedMedium={selectedMedium}
       />
-    </>
+    </div>
   );
 };
 

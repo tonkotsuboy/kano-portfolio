@@ -1,18 +1,9 @@
 @use "../../../styles/mixins/breakpoints" as breakpoints;
 
-.author {
-  font-size: 24px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 33px;
-  color: var(--primary-color);
-
-  > a {
-    color: var(--primary-color);
-  }
-}
-
-.job {
-  font-size: 13px;
-  color: #7979a9;
+.navigationInner {
+  position: relative;
+  width: max(200px, 100%);
+  padding: 64px 24px 0;
+  background: #ffffff;
+  box-shadow: 2px 0px 4px rgba(48, 55, 120, 0.05);
 }

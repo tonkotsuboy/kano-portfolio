@@ -2,6 +2,9 @@
 
 .wrapper {
   display: grid;
+  grid-template:
+    "navigation main" 100% /
+    256px 1fr;
   grid-template-columns: 256px 1fr;
   max-width: 1080px;
   height: 100%;
@@ -10,15 +13,27 @@
 
   @media (max-width: #{breakpoints.$medium}px) {
     grid-template:
-      var(--navigation-height-small) /
-      1fr;
+      "header" auto
+      "main" 1fr /
+      100%;
   }
 }
 
+@media (min-width: #{breakpoints.$medium}px) {
+  .appHeader,
+  .overlayNavigation {
+    display: none !important;
+  }
+}
+
+.appHeader {
+  grid-area: header;
+}
+
 .main {
+  grid-area: main;
   padding: 80px;
   background: #f8f9fc;
-
   @media (max-width: 1080px) {
     padding-right: 40px;
     padding-left: 40px;
@@ -26,5 +41,12 @@
 
   @media (max-width: #{breakpoints.$medium}px) {
     padding: 40px;
+  }
+}
+
+.sideNavigation {
+  grid-area: navigation;
+  @media (max-width: #{breakpoints.$medium}px) {
+    display: none;
   }
 }

@@ -1,15 +1,23 @@
 import * as React from "react";
-import styles from "./CloseButton.module.scss";
+import { HTMLAttributes } from "react";
+import styles from "./MenuButton.module.scss";
 
-type Props = { onClick: () => void };
+type Props = { onClick: () => void } & Pick<
+  HTMLAttributes<HTMLElement>,
+  "className"
+>;
 
 /**
  * 閉じるボタン用コンポーネント
- * @param onClick
- * @constructor
  */
-export const CloseButton: React.FC<Props> = ({ onClick }) => (
-  <button type="button" className={styles.closeButton} onClick={onClick}>
+export const MenuButton: React.FC<Props> = ({ className, onClick }) => (
+  <button
+    type="button"
+    className={[className, styles.closeButton]
+      .filter((value) => value != null)
+      .join(" ")}
+    onClick={onClick}
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="20"

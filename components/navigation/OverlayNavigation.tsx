@@ -3,19 +3,14 @@ import { HTMLAttributes, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import styles from "./OverlayNavigation.module.scss";
-import {
-  ActionType,
-  closeNavigation,
-  openNavigation,
-  RootState,
-} from "../../store";
-import { CloseButton } from "./components/CloseButton";
+import { ActionType, closeNavigation, RootState } from "../../store";
+import { MenuButton } from "../header/MenuButton";
 import NavigationInner from "./components/NavigationInner";
 
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 
 /**
- * 画面サイズが大きいときに、画面左側に表示するナビゲーション用コンポーネント
+ * 画面サイズが小さいときに、画面全面に表示するナビゲーション用コンポーネント
  * @param className
  * @constructor
  */
@@ -31,33 +26,21 @@ export const OverlayNavigation: React.FC<Props> = ({ className }) => {
 
   // 閉じるボタンクリック時の処理
   const handleClick = useCallback(() => {
-    if (navigationIsOpened) {
-      dispatch(closeNavigation());
-      return;
-    }
-
-    dispatch(openNavigation());
-  }, [dispatch, navigationIsOpened]);
+    dispatch(closeNavigation());
+  }, [dispatch]);
 
   return (
     <nav
-      className={[className, styles.navigation]
+      className={[
+        className,
+        styles.overlayNavigation,
+        navigationIsOpened ? styles.isNavigationOpened : null,
+      ]
         .filter((value) => value != null)
         .join(" ")}
     >
-      <CloseButton onClick={handleClick} />
-
-      <NavigationInner />
-
-      <div className={styles.largeListWrapper} />
-      <div
-        className={[
-          styles.smallListWrapper,
-          navigationIsOpened ? styles.smallListWrapperIsOpen : null,
-        ]
-          .filter((value) => value != null)
-          .join(" ")}
-       />
+      <NavigationInner className={styles.navigationInner} />
+      <MenuButton className={styles.menuButton} onClick={handleClick} />
     </nav>
   );
 };

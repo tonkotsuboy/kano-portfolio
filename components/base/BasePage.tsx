@@ -2,6 +2,8 @@ import React from "react";
 import Head from "next/head";
 import styles from "./BasePage.module.scss";
 import { OverlayNavigation } from "../navigation/OverlayNavigation";
+import { SideNavigation } from "../navigation/SideNavigation";
+import AppHeader from "../header/AppHeader";
 
 type Props = {
   pageTitle?: string | null;
@@ -25,8 +27,10 @@ const BasePage: React.FC<Props> = ({ pageTitle, children }) => {
         />
       </Head>
       <div className={styles.wrapper}>
-        <OverlayNavigation />
+        <AppHeader className={styles.appHeader} />
         <main className={styles.main}>{children}</main>
+        <OverlayNavigation className={styles.overlayNavigation} />
+        <SideNavigation className={styles.sideNavigation} />
       </div>
     </div>
   );

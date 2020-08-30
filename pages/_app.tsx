@@ -12,7 +12,7 @@ const AppComponent = ({ Component, pageProps }: AppProps): ReactElement => {
 
   return (
     <Provider store={store}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Provider>
   );
 };

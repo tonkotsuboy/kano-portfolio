@@ -1,11 +1,7 @@
-@use "../../../styles/mixins/breakpoints" as breakpoints;
+@use "../../styles/mixins/breakpoints" as breakpoints;
 
 .closeButton {
   $height: 44;
-  position: absolute;
-  top: calc(50% - #{$height / 2}px);
-  left: 16px;
-  display: none;
   width: 44px;
   height: #{$height}px;
   cursor: pointer;

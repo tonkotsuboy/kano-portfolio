@@ -16,7 +16,12 @@ export const EntryList: React.FC = () => {
       {entryDataList.map((entryData) => {
         if (entryData.medium.slug === "writing") {
           return (
-            <a key={entryData.id} href={entryData.url} rel="noopener noreferrer" target="_blank">
+            <a
+              key={entryData.id}
+              href={entryData.url}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <EntryArticle entryData={entryData} isLinkEntry />
             </a>
           );
