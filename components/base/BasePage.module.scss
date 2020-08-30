@@ -1,5 +1,8 @@
 @use "./styles/mixins/breakpoints" as breakpoints;
 
+.appRoot {
+  height: 100%;
+}
 .wrapper {
   display: grid;
   grid-template:

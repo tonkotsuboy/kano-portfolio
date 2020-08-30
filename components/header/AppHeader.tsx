@@ -24,9 +24,15 @@ const AppHeader: React.FC<Props> = ({ className }) => {
   // メニューボタンクリック時の処理
   const handleClick = useCallback(() => {
     if (navigationIsOpened) {
+      // メニュー以外のスクロールを禁止
+      document.body.style.overflow = "visible";
       dispatch(closeNavigation());
       return;
     }
+
+    // メニュー以外のスクロールを復活
+    document.body.style.overflow = "hidden";
+
     dispatch(openNavigation());
   }, [navigationIsOpened, dispatch]);
 
