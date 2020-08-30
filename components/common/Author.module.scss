@@ -1,0 +1,11 @@
+.author {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 33px;
+  color: var(--primary-color);
+
+  > a {
+    color: var(--primary-color);
+  }
+}
