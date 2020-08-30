@@ -30,7 +30,10 @@ export const OverlayNavigation: React.FC<Props> = ({ className }) => {
         .filter((value) => value != null)
         .join(" ")}
     >
-      <NavigationInner className={styles.navigationInner} />
+      <NavigationInner
+        className={styles.navigationInner}
+        isVisibleProfile={false}
+      />
     </nav>
   );
 };

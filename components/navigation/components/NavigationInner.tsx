@@ -5,9 +5,15 @@ import { Author } from "../../common/Author";
 import { Job } from "../../common/Job";
 import styles from "./NavigationInner.module.scss";
 
-type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
+type Props = {
+  /** 名前と職業を表示するかどうか */
+  isVisibleProfile?: boolean;
+} & Pick<HTMLAttributes<HTMLElement>, "className">;
 
-const NavigationInner: React.FC<Props> = ({ className }) => {
+const NavigationInner: React.FC<Props> = ({
+  className,
+  isVisibleProfile = true,
+}) => {
   const {
     mediumDataList,
     tagDataList,
@@ -25,8 +31,14 @@ const NavigationInner: React.FC<Props> = ({ className }) => {
         .filter((value) => value != null)
         .join(" ")}
     >
-      <Author />
-      <Job />
+      {isVisibleProfile && (
+        <>
+          {" "}
+          <Author />
+          <Job />
+        </>
+      )}
+
       <MediumTagList
         mediumDataList={mediumDataList}
         tagDataList={tagDataList}

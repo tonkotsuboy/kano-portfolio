@@ -28,6 +28,9 @@
 .navigationInner {
   $width: 240px;
   width: $width;
+  padding-top: 0 !important;
+  // スクロール用に余白を確保
+  padding-bottom: 96px !important;
   overflow-y: scroll;
   transition: 300ms all;
   transform: translateX(-#{$width});
