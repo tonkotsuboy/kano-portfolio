@@ -1,11 +1,58 @@
+@use "./styles/mixins/breakpoints" as breakpoints;
+
+.appRoot {
+  height: 100%;
+}
 .wrapper {
   display: grid;
-  grid-template-columns: 312px 1fr;
+  grid-template:
+    "navigation main" 100% /
+    auto 1fr;
+  max-width: 1080px;
   height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (max-width: #{breakpoints.$medium}px) {
+    grid-template:
+      "header" var(--app-header-height)
+      "main" 1fr /
+      100%;
+  }
+}
+
+@media (min-width: #{breakpoints.$medium}px) {
+  .appHeader,
+  .overlayNavigation {
+    display: none !important;
+  }
+}
+
+.appHeader {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  grid-area: header;
 }
 
 .main {
+  grid-area: main;
+  padding: 80px;
   background: #f8f9fc;
-  padding-top: 127px;
-  padding-left: 80px;
+  @media (max-width: 1080px) {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  @media (max-width: #{breakpoints.$medium}px) {
+    padding: 40px;
+  }
+}
+
+.sideNavigation {
+  grid-area: navigation;
+  box-shadow: 2px 0 4px rgba(48, 55, 120, 0.05);
+  @media (max-width: #{breakpoints.$medium}px) {
+    display: none;
+  }
 }

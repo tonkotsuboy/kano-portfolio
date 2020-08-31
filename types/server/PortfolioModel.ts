@@ -1,4 +1,7 @@
+import { Asset } from "contentful";
+
 export type PortfolioModel = {
+  slug: string;
   title: string;
   published_date: string;
   url: string;
@@ -12,6 +15,16 @@ export type PortfolioModel = {
     fields: {
       name: string;
       slug: string;
+      order: number;
     };
   }[];
+  keyvisual: Asset;
+  slide?: {
+    fields: {
+      title: string;
+      file: {
+        url: string;
+      };
+    };
+  };
 };

@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "stylelint-config-recommended-scss",
+    "stylelint-config-recess-order",
+    "stylelint-prettier/recommended"
+  ],
+  "selector-pseudo-class-no-unknown": [
+    true,
+    {
+      "ignorePseudoClasses": [
+        "export",
+        "import",
+        "global",
+        "local",
+        "external"
+      ]
+    }
+  ],
+  "selector-type-no-unknown": [
+    true,
+    {
+      "ignoreTypes": [
+        "from"
+      ]
+    }
+  ],
+  "property-no-unknown": [
+    true,
+    {
+      "ignoreProperties": [
+        "composes",
+        "compose-with"
+      ]
+    }
+  ],
+  "rules": {
+    "no-descending-specificity": null
+  }
+}

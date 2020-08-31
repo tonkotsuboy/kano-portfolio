@@ -1,0 +1,9 @@
+@use "../../../styles/mixins/breakpoints" as breakpoints;
+
+.navigationInner {
+  position: relative;
+  width: 240px;
+  height: 100%;
+  padding: 64px 24px 24px;
+  background: #ffffff;
+}

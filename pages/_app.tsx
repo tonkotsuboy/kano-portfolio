@@ -1,6 +1,20 @@
-import React from "react";
+import React, { ReactElement } from "react";
+import { Provider } from "react-redux";
+import { AppProps } from "next/app";
+import { useStore } from "../store";
 
-import "../assets/reset.scss";
-import "../assets/style.scss";
+import "../styles/reset.scss";
+import "../styles/base.scss";
 
-export default ({ Component, pageProps }: any) => <Component {...pageProps} />;
+const AppComponent = ({ Component, pageProps }: AppProps): ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  const store = useStore(pageProps.initialReduxState);
+
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
+};
+
+export default AppComponent;

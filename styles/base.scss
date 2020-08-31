@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #3f3f9d;
+  --text-color: #30345f;
+  --navigation-height-small: 56px;
+  --app-header-height: 80px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Noto Sans JP", "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+  text-rendering: optimizeSpeed;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+picture {
+  display: block;
+  margin: 0;
+  padding: 0;
+}

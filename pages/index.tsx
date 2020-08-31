@@ -1,61 +1,49 @@
 import React from "react";
 import { GetStaticProps } from "next";
-import { BlogType } from "../types/client/BlogType";
-import { EntryList } from "../components/EntryList";
+import { EntryType } from "../types/EntryType";
+import { EntryList } from "../components/index/EntryList";
 import { IndexContext, IndexContextType } from "../contexts/IndexContext";
-import { TagType } from "../types/client/TagType";
-import { PortfolioModel } from "../types/server/PortfolioModel";
-import { TagModel } from "../types/server/TagModel";
-import { fetchEntriesData } from "../util/api/fetchEntriesData";
+import { TagType } from "../types/TagType";
 import BasePage from "../components/base/BasePage";
+import { MediumType } from "../types/MediumType";
+import { fetchMedia } from "../logics/api/fetchMedia";
+import { fetchTagList } from "../logics/api/fetchTagList";
+import { fetchAllEntryData } from "../logics/api/fetchAllEntryData";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [portfolioData, tagData] = await Promise.all([
-    fetchEntriesData<PortfolioModel>("portfolio"),
-    fetchEntriesData<TagModel>("tag"),
+  const [entryDataList, mediumDataList, tagDataList] = await Promise.all([
+    fetchAllEntryData(),
+    fetchMedia(),
+    fetchTagList(),
   ]);
-
-  const blogList: BlogType[] = portfolioData.items.map((entry) => {
-    const tags: BlogType["tags"] = entry.fields.tags.map(
-      (tagEntry) => tagEntry.fields
-    );
-
-    return {
-      id: entry.sys.id,
-      ...entry.fields,
-      medium: entry.fields.medium.fields,
-      tags,
-    };
-  });
-
-  const tagList: TagType[] = tagData.items.map((item) => {
-    return item.fields;
-  });
 
   return {
     props: {
-      blogList,
-      tagList,
+      entryDataList,
+      mediumDataList,
+      tagDataList,
     },
   };
 };
 
-const Index: React.FC<{
-  blogList: BlogType[];
-  tagList: TagType[];
-}> = ({ blogList, tagList }) => {
+const IndexPage: React.FC<{
+  entryDataList: EntryType[];
+  mediumDataList: MediumType[];
+  tagDataList: TagType[];
+}> = ({ entryDataList, mediumDataList, tagDataList }) => {
   const contextValue: IndexContextType = {
-    blogList,
-    tagList,
+    entryDataList,
+    mediumDataList,
+    tagDataList,
   };
 
   return (
     <IndexContext.Provider value={contextValue}>
-      <BasePage>
+      <BasePage pageTitle="鹿野ポートフォリオ">
         <EntryList />
       </BasePage>
     </IndexContext.Provider>
   );
 };
 
-export default Index;
+export default IndexPage;

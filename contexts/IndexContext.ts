@@ -1,13 +1,25 @@
-import { BlogType } from "../types/client/BlogType";
 import { createContext } from "react";
-import { TagType } from "../types/client/TagType";
+import { EntryType } from "../types/EntryType";
+import { TagType } from "../types/TagType";
+import { MediumType } from "../types/MediumType";
 
 export type IndexContextType = {
-  blogList?: BlogType[];
-  tagList?: TagType[];
+  /** 記事データ一覧 */
+  entryDataList?: EntryType[];
+  /** 媒体データ一覧 */
+  mediumDataList?: MediumType[];
+  /** タグデータ一覧 */
+  tagDataList?: TagType[];
+  /** 選択されている媒体 */
+  selectedMedium?: string;
+  /** 選択されているタグ */
+  selectedTag?: string;
 };
 
 export const IndexContext = createContext<IndexContextType>({
-  blogList: undefined,
-  tagList: undefined,
+  entryDataList: undefined,
+  mediumDataList: undefined,
+  tagDataList: undefined,
+  selectedMedium: undefined,
+  selectedTag: undefined,
 });

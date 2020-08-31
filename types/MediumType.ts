@@ -1,4 +1,4 @@
-export type TagModel = {
+export type MediumType = {
   name: string;
   slug: string;
 };
