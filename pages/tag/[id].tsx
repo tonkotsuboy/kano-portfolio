@@ -61,10 +61,6 @@ const TagPage: React.FC<{
   mediumDataList: MediumType[];
   tagDataList: TagType[];
 }> = ({ selectedTagSlag, entryDataList, mediumDataList, tagDataList }) => {
-  // 選択されたタグの名前を取得します
-  const selectedTagName =
-    tagDataList.find((tag) => tag.slug === selectedTagSlag)?.name ?? null;
-
   const contextValue: IndexContextType = {
     selectedTag: selectedTagSlag,
     entryDataList,
@@ -72,10 +68,19 @@ const TagPage: React.FC<{
     tagDataList,
   };
 
+  // 選択されたタグの名前を取得します
+  const selectedTagName = tagDataList.find(
+    (tag) => tag.slug === selectedTagSlag
+  )?.name;
+
+  if (selectedTagName == null) {
+    return null;
+  }
+
   return (
     <IndexContext.Provider value={contextValue}>
       <BasePage pageTitle={selectedTagName}>
-        <EntryList />
+        <EntryList listTitle={`タグ：${selectedTagName}`} />
       </BasePage>
     </IndexContext.Provider>
   );
