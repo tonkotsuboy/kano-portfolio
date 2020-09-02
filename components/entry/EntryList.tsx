@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Link from "next/link";
-import { EntryArticle } from "../common/EntryArticle";
+import { EntryArticle } from "./EntryArticle";
 import styles from "./EntryList.module.scss";
 import { IndexContext } from "../../contexts/IndexContext";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import { EntryType } from "../types/EntryType";
-import { EntryList } from "../components/index/EntryList";
+import { EntryList } from "../components/entry/EntryList";
 import { IndexContext, IndexContextType } from "../contexts/IndexContext";
 import { TagType } from "../types/TagType";
 import BasePage from "../components/base/BasePage";

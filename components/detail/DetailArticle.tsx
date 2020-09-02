@@ -5,7 +5,7 @@ import {
 } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { EntryType } from "../../types/EntryType";
-import { EntryArticle } from "../common/EntryArticle";
+import { EntryArticle } from "../entry/EntryArticle";
 import styles from "./DetailArticle.module.scss";
 
 type Props = {
