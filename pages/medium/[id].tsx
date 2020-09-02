@@ -74,7 +74,7 @@ const TagPage: React.FC<{
   return (
     <IndexContext.Provider value={contextValue}>
       <BasePage pageTitle={selectedMediumName}>
-        <EntryList listTitle={`発表場所：${selectedMediumName}`} />
+        <EntryList listTitle={`${selectedMediumName}`} />
       </BasePage>
     </IndexContext.Provider>
   );
