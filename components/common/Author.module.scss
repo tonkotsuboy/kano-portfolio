@@ -1,3 +1,5 @@
+@use "./styles/mixins/breakpoints" as breakpoints;
+
 .author {
   display: block;
   font-size: 24px;
@@ -8,5 +10,9 @@
 
   > a {
     color: var(--primary-color);
+  }
+
+  @media (max-width: #{breakpoints.$medium}px) {
+    font-size: 18px;
   }
 }

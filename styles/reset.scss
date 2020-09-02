@@ -20,8 +20,8 @@ figure,
 blockquote,
 dl,
 dd {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 html {
   scroll-behavior: smooth;
@@ -40,8 +40,8 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 article > * + * {
   margin-top: 1em;
@@ -58,9 +58,9 @@ img:not([alt]) {
 
 @media (prefers-reduced-motion: reduce) {
   * {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }

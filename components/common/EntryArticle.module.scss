@@ -1,3 +1,5 @@
+@use "./styles/mixins/breakpoints" as breakpoints;
+
 .entry {
   display: block;
   padding-bottom: 32px;
@@ -6,6 +8,10 @@
   border: 1px solid #f1f3fa;
   border-radius: 14px;
   box-shadow: 2px 8px 30px rgba(48, 55, 120, 0.04);
+
+  @media (max-width: #{breakpoints.$medium}px) {
+    padding-bottom: 16px;
+  }
 
   > *:not(.keyvisual) {
     margin-right: 24px;
@@ -34,8 +40,11 @@
 
   .keyvisual {
     > img {
-      object-position: top center;
       height: 204px;
+
+      @media (max-width: #{breakpoints.$medium}px) {
+        height: 120px;
+      }
     }
   }
 }
@@ -48,7 +57,6 @@
 
 .medium {
   display: grid;
-  height: 20px;
   padding-right: 16px;
   padding-left: 16px;
   font-size: 12px;
@@ -79,6 +87,10 @@
   font-weight: bold;
   line-height: 150%;
   color: #30345f;
+
+  @media (max-width: #{breakpoints.$medium}px) {
+    font-size: 16px;
+  }
 }
 
 .link {
@@ -89,7 +101,6 @@
 
 .published_date {
   display: block;
-  margin-top: 16px;
   font-size: 11px;
   color: #30345f;
 }
