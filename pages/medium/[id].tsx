@@ -64,14 +64,17 @@ const TagPage: React.FC<{
   };
 
   // 選択された媒体の名前を取得します
-  const selectedMediumName =
-    mediumDataList.find((medium) => medium.slug === selectedMedium)?.name ??
-    null;
+  const selectedMediumName = mediumDataList.find(
+    (medium) => medium.slug === selectedMedium
+  )?.name;
 
+  if (selectedMediumName == null) {
+    return null;
+  }
   return (
     <IndexContext.Provider value={contextValue}>
       <BasePage pageTitle={selectedMediumName}>
-        <EntryList />
+        <EntryList listTitle={`発表場所：${selectedMediumName}`} />
       </BasePage>
     </IndexContext.Provider>
   );

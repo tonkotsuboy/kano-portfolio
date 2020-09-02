@@ -1,5 +1,10 @@
-.entry-list {
+.entryList {
   display: grid;
   gap: 32px;
   align-content: start;
+}
+
+.listTitle {
+  font-size: 24px;
+  font-weight: bold;
 }

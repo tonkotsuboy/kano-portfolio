@@ -4,7 +4,11 @@ import { EntryArticle } from "../common/EntryArticle";
 import styles from "./EntryList.module.scss";
 import { IndexContext } from "../../contexts/IndexContext";
 
-export const EntryList: React.FC = () => {
+type Props = {
+  listTitle?: string;
+};
+
+export const EntryList: React.FC<Props> = ({ listTitle }) => {
   const { entryDataList } = useContext(IndexContext);
 
   if (entryDataList == null) {
@@ -12,7 +16,8 @@ export const EntryList: React.FC = () => {
   }
 
   return (
-    <div className={styles["entry-list"]}>
+    <div className={styles.entryList}>
+      {listTitle && <h1 className={styles.listTitle}>{listTitle}</h1>}
       {entryDataList.map((entryData) => {
         if (entryData.medium.slug === "writing") {
           return (

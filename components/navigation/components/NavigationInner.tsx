@@ -33,7 +33,6 @@ const NavigationInner: React.FC<Props> = ({
     >
       {isVisibleProfile && (
         <>
-          {" "}
           <Author />
           <Job />
         </>
