@@ -24,18 +24,7 @@ const MediumTagList: React.FC<Props> = ({
       <ul className={styles.mediumList}>
         <li>
           <Link href="/">
-            <a
-              className={[
-                styles.slug,
-                selectedMedium == null && selectedTag == null
-                  ? styles.slug__selected
-                  : null,
-              ]
-                .filter((value) => value != null)
-                .join(" ")}
-            >
-              すべて
-            </a>
+            <a className={styles.slug}>すべて</a>
           </Link>
         </li>
         {mediumDataList.map(({ name, slug }) => (
