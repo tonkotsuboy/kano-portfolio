@@ -1,7 +1,13 @@
+@use "./styles/mixins/breakpoints" as breakpoints;
+
 .entryList {
   display: grid;
   gap: 32px;
   align-content: start;
+
+  @media (max-width: #{breakpoints.$medium}px) {
+    gap: 16px;
+  }
 }
 
 .listTitle {
