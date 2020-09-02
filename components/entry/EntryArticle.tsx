@@ -17,7 +17,7 @@ export const EntryArticle: React.FC<Props> = ({
   isLinkEntry = false,
 }) => (
   <article
-    className={[styles.entry, isLinkEntry ? styles.linkentry : null]
+    className={[styles.entry, isLinkEntry ? styles.linkEntry : null]
       .filter((value) => value != null)
       .join(" ")}
   >
@@ -35,12 +35,14 @@ export const EntryArticle: React.FC<Props> = ({
 
     <header className={styles.header}>
       <p className={styles.medium}>{medium.name}</p>
-      <ul className={styles.taglist}>
-        {tags.map(({ name, slug }) => (
-          <li key={slug} className={styles.tag}>
-            #{name}
-          </li>
-        ))}
+      <ul className={styles.tagList}>
+        {tags
+          .sort((a, b) => a.order - b.order)
+          .map(({ name, slug }) => (
+            <li key={slug} className={styles.tag}>
+              #{name}
+            </li>
+          ))}
       </ul>
     </header>
     <h2 className={styles.title}>{title}</h2>

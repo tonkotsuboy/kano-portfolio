@@ -21,7 +21,7 @@ const MediumTagList: React.FC<Props> = ({
 }) => {
   return (
     <div>
-      <ul className={styles.mediumlist}>
+      <ul className={styles.mediumList}>
         <li>
           <Link href="/">
             <a
@@ -56,7 +56,7 @@ const MediumTagList: React.FC<Props> = ({
         ))}
       </ul>
       <h2 className={styles.tagheading}>tags</h2>
-      <ul className={styles.taglist}>
+      <ul className={styles.tagList}>
         {tagDataList.map(({ name, slug }) => (
           <li key={slug}>
             <Link href={`/tag/${slug}`}>
