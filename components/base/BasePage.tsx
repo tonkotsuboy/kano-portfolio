@@ -39,10 +39,6 @@ const BasePage: React.FC<Props> = ({ pageTitle, children }) => {
         <meta name="og:title" content={title} />
         <meta name="og:image" content={ogImageUrl} />
         <meta name="og:description" content={title} />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
-          rel="stylesheet"
-        />
       </Head>
       <div className={styles.wrapper}>
         <AppHeader className={styles.appHeader} />
