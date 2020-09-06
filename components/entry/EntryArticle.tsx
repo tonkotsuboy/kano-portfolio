@@ -21,7 +21,7 @@ export const EntryArticle: React.FC<Props> = ({
       .filter((value) => value != null)
       .join(" ")}
   >
-    {keyvisual && (
+    {isLinkEntry && keyvisual && (
       <picture className={styles.keyvisual}>
         <source srcSet={`${keyvisual.fields.file.url}?fm=webp`} />
         <img
