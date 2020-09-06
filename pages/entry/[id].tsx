@@ -89,7 +89,10 @@ const DetailPage: React.FC<{
 
   return (
     <IndexContext.Provider value={contextValue}>
-      <BasePage pageTitle={entryData.title}>
+      <BasePage
+        pageTitle={entryData.title}
+        pageDescription={entryData.metaInfo?.ogDescription}
+      >
         <DetailArticle entryData={entryData} />
       </BasePage>
     </IndexContext.Provider>

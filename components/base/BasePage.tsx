@@ -6,17 +6,28 @@ import { OverlayNavigation } from "../navigation/OverlayNavigation";
 import { SideNavigation } from "../navigation/SideNavigation";
 import AppHeader from "../header/AppHeader";
 import { RootState } from "../../store";
-import { ogImageUrl, TwitterId } from "../../constants/Constants";
+import {
+  basicDescription,
+  ogImageUrl,
+  TwitterId,
+} from "../../constants/Constants";
 
 type Props = {
   pageTitle?: string | null;
+  pageDescription?: string | null;
 };
 
 /**
  * 各ページ共通で使用するテンプレート
  */
-const BasePage: React.FC<Props> = ({ pageTitle, children }) => {
+const BasePage: React.FC<Props> = ({
+  pageTitle,
+  pageDescription,
+  children,
+}) => {
   const title = `${pageTitle ? `${pageTitle} - ` : ""}鹿野ポートフォリオ`;
+
+  const description = pageDescription ?? basicDescription;
 
   const navigationIsOpened = useSelector<RootState>(
     (state) => state.navigationIsOpened
@@ -34,11 +45,12 @@ const BasePage: React.FC<Props> = ({ pageTitle, children }) => {
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content={description} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={`@${TwitterId}`} />
         <meta name="og:title" content={title} />
         <meta name="og:image" content={ogImageUrl} />
-        <meta name="og:description" content={title} />
+        <meta name="og:description" content={description} />
       </Head>
       <div className={styles.wrapper}>
         <AppHeader className={styles.appHeader} />
