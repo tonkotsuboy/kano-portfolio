@@ -1,4 +1,4 @@
-@use "./styles/mixins/breakpoints" as breakpoints;
+@use "../../styles/mixins/breakpoints" as breakpoints;
 
 .entry {
   display: block;
@@ -29,7 +29,7 @@
   }
 }
 
-.linkentry {
+.linkEntry {
   &:hover {
     background-color: #fcfeff;
 
@@ -67,10 +67,10 @@
   place-items: center;
 }
 
-.taglist {
+.tagList {
   display: grid;
   grid-auto-flow: column;
-  gap: 12px;
+  gap: 6px;
   height: 100%;
   margin-left: 12px;
 }

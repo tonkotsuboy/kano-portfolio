@@ -9,9 +9,11 @@ import { TagType } from "../../types/TagType";
 import DetailArticle from "../../components/detail/DetailArticle";
 import { EntryType } from "../../types/EntryType";
 import { MediumType } from "../../types/MediumType";
-import { fetchOgInfo } from "../../logics/scraping/fetchOgInfo";
+import { creteHTMLDocument } from "../../logics/scraping/creteHTMLDocument";
 import { fetchMedia } from "../../logics/api/fetchMedia";
 import { fetchTagList } from "../../logics/api/fetchTagList";
+import { fetchHTMLText } from "../../logics/scraping/fetchHTMLText";
+import { parseMetaInfo } from "../../logics/scraping/parseMetaInfo";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
@@ -48,17 +50,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       const tags: EntryType["tags"] = data.fields.tags.map(
         (tagEntry) => tagEntry.fields
       );
-      const { ogImage, ogTitle } = await fetchOgInfo(data.fields.url);
+
+      const htmlText = await fetchHTMLText(data.fields.url);
+      const htmlDocument = creteHTMLDocument(htmlText);
+      const metaInfo = parseMetaInfo(htmlDocument);
 
       return {
         id: data.sys.id,
         ...data.fields,
+        metaInfo,
         medium: data.fields.medium.fields,
         slide: data.fields.slide?.fields ?? null,
-        ogInfo: {
-          title: ogTitle,
-          image: ogImage,
-        },
         tags,
       } as EntryType;
     }),

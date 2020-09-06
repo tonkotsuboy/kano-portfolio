@@ -1,0 +1,25 @@
+.detailHTML {
+  p,
+  img {
+    margin-bottom: 1rem;
+  }
+
+  ul,
+  ol {
+    padding: inherit;
+    margin: inherit;
+    list-style: revert;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: var(--primary-color);
+  }
+
+  img {
+    object-fit: cover;
+    height: auto;
+  }
+}

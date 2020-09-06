@@ -7,7 +7,7 @@ import BasePage from "../../components/base/BasePage";
 import { TagType } from "../../types/TagType";
 import { MediumType } from "../../types/MediumType";
 import { EntryType } from "../../types/EntryType";
-import { EntryList } from "../../components/index/EntryList";
+import { EntryList } from "../../components/entry/EntryList";
 import { fetchMedia } from "../../logics/api/fetchMedia";
 import { fetchTagList } from "../../logics/api/fetchTagList";
 import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
@@ -74,7 +74,7 @@ const TagPage: React.FC<{
   return (
     <IndexContext.Provider value={contextValue}>
       <BasePage pageTitle={selectedMediumName}>
-        <EntryList listTitle={`発表場所：${selectedMediumName}`} />
+        <EntryList listTitle={`${selectedMediumName}`} />
       </BasePage>
     </IndexContext.Provider>
   );

@@ -1,39 +1,19 @@
 import React from "react";
-import {
-  documentToHtmlString,
-  Options,
-} from "@contentful/rich-text-html-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import { EntryType } from "../../types/EntryType";
-import { EntryArticle } from "../common/EntryArticle";
+import { EntryArticle } from "../entry/EntryArticle";
 import styles from "./DetailArticle.module.scss";
+import { DetailHTML } from "./components/DetailHTML";
+import { LinkCard } from "./components/LinkCard";
 
 type Props = {
   entryData: EntryType;
 };
 
+/**
+ * 記事詳細
+ * @param entryData
+ */
 const DetailArticle: React.FC<Props> = ({ entryData }) => {
-  const renderingHTMLOption: Partial<Options> = {
-    renderNode: {
-      [INLINES.HYPERLINK]: (node, next) => {
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        return `<a href="${node.data.uri}"${
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-          node.data.uri.startsWith("https://mydomain.com")
-            ? ""
-            : ' target="_blank"'
-        }>${next(node.content)}</a>`;
-      },
-      [BLOCKS.EMBEDDED_ASSET]: ({
-        data: {
-          target: { fields },
-        },
-      }) =>
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions
-        `<img src="${fields.file.url}" height="${fields.file.details.image.height}" width="${fields.file.details.image.width}" alt="${fields.description}"/>`,
-    },
-  };
-
   return (
     <EntryArticle entryData={entryData}>
       {/* ビデオ */}
@@ -67,35 +47,18 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
         </iframe>
       )}
 
+      {/* 記事詳細HTML */}
       {entryData.detail != null && (
-        <div
-          className={styles.entryhtml}
-          dangerouslySetInnerHTML={{
-            __html: documentToHtmlString(
-              entryData.detail as any,
-              renderingHTMLOption
-            ),
-          }}
-        />
+        <DetailHTML detailDocument={entryData.detail} />
       )}
 
-      {entryData.ogInfo && (
-        <aside className={styles.ogInfo}>
-          <a href={entryData.url} rel="noopener noreferrer" target="_blank">
-            {entryData.ogInfo.image && (
-              <img
-                className={styles.ogImage}
-                src={entryData.ogInfo.image}
-                alt="entryData.ogInfo.title"
-              />
-            )}
-            <div className={styles.ogDetail}>
-              <h4 className={styles.ogTitle}>{entryData.ogInfo.title}</h4>
-              <p className={styles.linkUrl}>{entryData.url}</p>
-            </div>
-          </a>
-        </aside>
-      )}
+      {entryData.medium.slug !== "lesson" &&
+        entryData.metaInfo?.ogDescription && (
+          <p>{entryData.metaInfo.ogDescription}</p>
+        )}
+
+      {/* リンクカード */}
+      <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
     </EntryArticle>
   );
 };
