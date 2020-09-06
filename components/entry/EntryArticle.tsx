@@ -23,7 +23,7 @@ export const EntryArticle: React.FC<Props> = ({
   >
     {isLinkEntry && keyvisual && (
       <picture className={styles.keyvisual}>
-        <source srcSet={`${keyvisual.fields.file.url}?fm=webp`} />
+        <source srcSet={`${keyvisual.fields.file.url}?fm=jpg&q=40`} />
         <img
           loading={isLinkEntry ? "lazy" : "eager"}
           src={keyvisual.fields.file.url}
