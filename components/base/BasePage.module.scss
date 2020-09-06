@@ -6,7 +6,7 @@
 .wrapper {
   display: grid;
   grid-template:
-    "navigation main" 100% /
+    "navigation main" 1fr /
     auto 1fr;
   max-width: 1080px;
   height: 100%;
