@@ -7,7 +7,7 @@ export type EntryType = {
   title: string;
   published_date: string;
   url?: string;
-  metaInfo: {
+  metaInfo?: {
     ogTitle: string | null;
     ogImage: string | null;
     ogDescription: string | null;

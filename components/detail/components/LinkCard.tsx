@@ -11,27 +11,29 @@ type Props = {
  * リンクカード。
  * og:image, og:titleが表示され、URLへのリンクを備えます
  */
-export const LinkCard: React.FC<Props> = ({
-  linkUrl,
-  metaInfo: { ogTitle, ogImage },
-}) => {
-  if (linkUrl == null && ogTitle == null && ogImage == null) {
+export const LinkCard: React.FC<Props> = ({ linkUrl, metaInfo }) => {
+  if (
+    linkUrl == null &&
+    (metaInfo == null || (metaInfo.ogTitle == null && metaInfo.ogImage == null))
+  ) {
     return null;
   }
 
   return (
     <aside className={styles.linkCard}>
       <a href={linkUrl} rel="noopener noreferrer" target="_blank">
-        {ogImage && (
+        {metaInfo?.ogImage && (
           <img
             className={styles.ogImage}
-            src={ogImage}
+            src={metaInfo.ogImage}
             alt="entryData.ogInfo.title"
           />
         )}
         <div className={styles.ogDetail}>
-          <h4 className={styles.ogTitle}>{ogTitle}</h4>
-          <p className={styles.linkUrl}>{linkUrl}</p>
+          {metaInfo?.ogTitle && (
+            <h4 className={styles.ogTitle}>{metaInfo?.ogTitle}</h4>
+          )}
+          {linkUrl && <p className={styles.linkUrl}>{linkUrl}</p>}
         </div>
       </a>
     </aside>

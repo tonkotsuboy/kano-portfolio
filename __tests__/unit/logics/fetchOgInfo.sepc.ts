@@ -11,7 +11,7 @@ describe("parseMetaInfo", () => {
     });
 
     const htmlDocument = creteHTMLDocument(htmlText);
-    const { ogImage, ogTitle, ogDescription } = parseMetaInfo(htmlDocument);
+    const { ogImage, ogTitle, ogDescription } = parseMetaInfo(htmlDocument)!;
     expect(ogTitle?.includes("九州大学")).toBeTruthy();
     expect(ogImage?.includes(".png")).toBeTruthy();
     expect(ogDescription?.includes("九州大学")).toBeTruthy();
