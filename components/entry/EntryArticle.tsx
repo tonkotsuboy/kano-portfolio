@@ -25,6 +25,7 @@ export const EntryArticle: React.FC<Props> = ({
       <picture className={styles.keyvisual}>
         <source srcSet={`${keyvisual.fields.file.url}?fm=webp`} />
         <img
+          loading={isLinkEntry ? "lazy" : "eager"}
           src={keyvisual.fields.file.url}
           alt={keyvisual.fields.title}
           width={keyvisual.fields.file.details.image?.width ?? "auto"}
