@@ -2,7 +2,7 @@
 
 .job {
   font-size: 13px;
-  color: #7979a9;
+  color: var(--primary-color);
 
   @media (max-width: #{breakpoints.$medium}px) {
     font-size: 11px;
