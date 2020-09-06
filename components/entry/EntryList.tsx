@@ -21,7 +21,7 @@ export const EntryList: React.FC<Props> = ({ listTitle }) => {
       {entryDataList.map((entryData) => {
         return (
           <Link key={entryData.id} href={`/entry/${entryData.slug}`}>
-            <a>
+            <a aria-label={entryData.title}>
               <EntryArticle entryData={entryData} isLinkEntry />
             </a>
           </Link>

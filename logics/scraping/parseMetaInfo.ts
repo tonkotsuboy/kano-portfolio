@@ -21,8 +21,9 @@ export const parseMetaInfo = (document?: Document): EntryType["metaInfo"] => {
     null;
 
   const ogImage =
-    meta.querySelector<HTMLMetaElement>(`meta[property="og:image"]`)?.content ??
-    null;
+    meta
+      .querySelector<HTMLMetaElement>(`meta[property="og:image"]`)
+      ?.content.replace(/http:/, "") ?? null;
 
   // descriptionについて、og:descriptionがない場合はdescriptionを取得
   const ogDescription =

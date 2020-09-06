@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions */
 import React from "react";
 import {
   documentToHtmlString,
@@ -26,8 +27,16 @@ const createDetailHTML = (detailDocument: Document): string => {
           target: { fields },
         },
       }) =>
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions
-        `<img loading="lazy" src="${fields.file.url}" width="${fields.file.details.image.width}" height="${fields.file.details.image.height}" alt="${fields.title}"/>`,
+        `<picture>
+            <source srcset="${fields.file.url}?fm=webp" />
+            <img
+              loading="lazy"
+              src="${fields.file.url}"
+              alt="${fields.title}"
+              width="${fields.file.details.image.width}"
+              height="${fields.file.details.image.height}"
+            />
+          </picture>`,
     },
   };
 
