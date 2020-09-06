@@ -6,6 +6,7 @@ import { OverlayNavigation } from "../navigation/OverlayNavigation";
 import { SideNavigation } from "../navigation/SideNavigation";
 import AppHeader from "../header/AppHeader";
 import { RootState } from "../../store";
+import { ogImageUrl, TwitterId } from "../../constants/Constants";
 
 type Props = {
   pageTitle?: string | null;
@@ -32,8 +33,12 @@ const BasePage: React.FC<Props> = ({ pageTitle, children }) => {
     >
       <Head>
         <title>{title}</title>
-        <meta name="robots" content="noindex" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={`@${TwitterId}`} />
+        <meta name="og:title" content={title} />
+        <meta name="og:image" content={ogImageUrl} />
+        <meta name="og:description" content={title} />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
           rel="stylesheet"
