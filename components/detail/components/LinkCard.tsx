@@ -26,6 +26,8 @@ export const LinkCard: React.FC<Props> = ({ linkUrl, metaInfo }) => {
           <img
             className={styles.ogImage}
             src={metaInfo.ogImage}
+            width="628"
+            height="257"
             alt="entryData.ogInfo.title"
           />
         )}
