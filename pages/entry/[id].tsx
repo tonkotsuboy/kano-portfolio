@@ -52,18 +52,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       );
 
       const htmlText = await fetchHTMLText(data.fields.url);
-
       const htmlDocument = creteHTMLDocument(htmlText);
-
-      const { ogImage, ogTitle } = parseMetaInfo(htmlDocument);
+      const metaInfo = parseMetaInfo(htmlDocument);
 
       return {
         id: data.sys.id,
         ...data.fields,
-        metaInfo: {
-          ogImage,
-          ogTitle,
-        },
+        metaInfo,
         medium: data.fields.medium.fields,
         slide: data.fields.slide?.fields ?? null,
         tags,

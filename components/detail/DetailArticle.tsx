@@ -52,6 +52,10 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
         <DetailHTML detailDocument={entryData.detail} />
       )}
 
+      {entryData.medium.slug !== "lesson" && (
+        <p>{entryData.metaInfo.ogDescription}</p>
+      )}
+
       {/* リンクカード */}
       <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
     </EntryArticle>

@@ -10,6 +10,7 @@ export type EntryType = {
   metaInfo: {
     ogTitle: string | null;
     ogImage: string | null;
+    ogDescription: string | null;
   };
   detail?: Document;
   medium: {

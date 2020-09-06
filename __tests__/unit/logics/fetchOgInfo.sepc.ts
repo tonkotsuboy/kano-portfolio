@@ -3,7 +3,7 @@ import { creteHTMLDocument } from "../../../logics/scraping/creteHTMLDocument";
 import { parseMetaInfo } from "../../../logics/scraping/parseMetaInfo";
 
 describe("parseMetaInfo", () => {
-  test("og:title, og:imageの正常取得", async (done) => {
+  test("meta情報回りの正常取得", async (done) => {
     const htmlText = await new Promise<string>((resolve) => {
       request.get("https://www.kyushu-u.ac.jp/ja/", (_err, _response, body) => {
         resolve(body);
@@ -11,9 +11,10 @@ describe("parseMetaInfo", () => {
     });
 
     const htmlDocument = creteHTMLDocument(htmlText);
-    const { ogImage, ogTitle } = parseMetaInfo(htmlDocument);
+    const { ogImage, ogTitle, ogDescription } = parseMetaInfo(htmlDocument);
     expect(ogTitle?.includes("九州大学")).toBeTruthy();
     expect(ogImage?.includes(".png")).toBeTruthy();
+    expect(ogDescription?.includes("九州大学")).toBeTruthy();
     done();
   });
 });
