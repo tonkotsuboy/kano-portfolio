@@ -47,6 +47,18 @@ const AboutPageComponent: React.FC = () => {
             linkText="Qiita（13,500Contributionsで全体約40位）"
           />
         </li>
+        <li>
+          <ExternalLink
+            url="https://github.com/tonkotsuboy"
+            linkText="GitHub"
+          />
+        </li>
+        <li>
+          <ExternalLink
+            url="https://github.com/ics-kano"
+            linkText="GitHub（社用）"
+          />
+        </li>
       </ul>
       <h2>作品</h2>
       <ul>
