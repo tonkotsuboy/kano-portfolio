@@ -28,7 +28,8 @@ const createDetailHTML = (detailDocument: Document): string => {
         },
       }) =>
         `<picture>
-            <source srcset="${fields.file.url}?fm=webp" />
+            <source srcset="${fields.file.url}?fm=webp" type="image/webp" />
+            <source srcset="${fields.file.url}?fm=jpg&q=50" type="image/jpeg" />
             <img
               loading="lazy"
               src="${fields.file.url}"
