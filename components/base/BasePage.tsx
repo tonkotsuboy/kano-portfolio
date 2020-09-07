@@ -72,7 +72,10 @@ const BasePage: React.FC<Props> = ({
       </Head>
       <div className={styles.wrapper}>
         <AppHeader className={styles.appHeader} />
-        <main className={styles.main}>{children}</main>
+        <main className={styles.main}>
+          {children}
+          <address className={styles.copyright}>© 2020 Takeshi Kano</address>
+        </main>
         <OverlayNavigation className={styles.overlayNavigation} />
         <SideNavigation className={styles.sideNavigation} />
       </div>

@@ -37,7 +37,7 @@
 
 .main {
   grid-area: main;
-  padding: 64px 80px;
+  padding: 64px 80px 40px;
   background: #f8f9fc;
   @media (max-width: 1080px) {
     padding-right: 40px;
@@ -55,4 +55,12 @@
   @media (max-width: #{breakpoints.$medium}px) {
     display: none;
   }
+}
+
+.copyright {
+  margin-top: 40px;
+  font-size: 14px;
+  font-style: normal;
+  color: var(--secondary-color);
+  text-align: center;
 }
