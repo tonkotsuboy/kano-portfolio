@@ -52,7 +52,7 @@ const BasePage: React.FC<Props> = ({
         <meta name="og:title" content={title} />
         <meta name="og:image" content={ogImageUrl} />
         <meta name="og:description" content={description} />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -72,7 +72,10 @@ const BasePage: React.FC<Props> = ({
       </Head>
       <div className={styles.wrapper}>
         <AppHeader className={styles.appHeader} />
-        <main className={styles.main}>{children}</main>
+        <main className={styles.main}>
+          {children}
+          <address className={styles.copyright}>© 2020 Takeshi Kano</address>
+        </main>
         <OverlayNavigation className={styles.overlayNavigation} />
         <SideNavigation className={styles.sideNavigation} />
       </div>
