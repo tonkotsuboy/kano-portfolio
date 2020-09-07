@@ -59,6 +59,18 @@ const AboutPageComponent: React.FC = () => {
             linkText="GitHub（社用）"
           />
         </li>
+        <li>
+          <ExternalLink
+            url="https://github.com/tonkotsuboy"
+            linkText="GitHub"
+          />
+        </li>
+        <li>
+          <ExternalLink
+            url="https://github.com/ics-kano"
+            linkText="GitHub（社用）"
+          />
+        </li>
       </ul>
       <h2>作品</h2>
       <ul>

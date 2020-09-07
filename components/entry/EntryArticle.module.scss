@@ -56,15 +56,14 @@
 }
 
 .medium {
-  display: grid;
   padding-right: 16px;
   padding-left: 16px;
   font-size: 12px;
+  line-height: 20px;
   color: var(--primary-color);
   background: #edeef8;
   border: 1px solid var(--primary-color);
   border-radius: 4px;
-  place-items: center;
 }
 
 .tagList {
