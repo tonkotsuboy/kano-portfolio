@@ -18,9 +18,9 @@
     padding: 16px;
 
     .ogTitle {
-      font-size: 16px;
+      font-size: var(-fs-base);
       font-weight: normal;
-      color: #707073;
+      color: var(--secondary-color);
     }
 
     .linkUrl {
@@ -28,7 +28,7 @@
       gap: 4px;
       align-items: center;
       margin-top: 4px;
-      font-size: 14px;
+      font-size: var(--fs-s);
       color: var(--secondary-color);
       &::before {
         display: block;

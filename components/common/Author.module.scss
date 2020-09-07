@@ -2,7 +2,7 @@
 
 .author {
   display: block;
-  font-size: 24px;
+  font-size: var(--fs-2xl);
   font-style: normal;
   font-weight: bold;
   line-height: 33px;
@@ -13,6 +13,6 @@
   }
 
   @media (max-width: #{breakpoints.$medium}px) {
-    font-size: 18px;
+    font-size: var(--fs-l);
   }
 }
