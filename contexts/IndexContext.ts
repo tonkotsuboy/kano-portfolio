@@ -10,6 +10,7 @@ export type IndexContextType = {
   mediumDataList?: MediumType[];
   /** タグデータ一覧 */
   tagDataList?: TagType[];
+  isSelectedAbout?: boolean;
   /** 選択されている媒体 */
   selectedMedium?: string;
   /** 選択されているタグ */

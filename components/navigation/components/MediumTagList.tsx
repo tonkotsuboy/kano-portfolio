@@ -7,6 +7,7 @@ import { TagType } from "../../../types/TagType";
 type Props = {
   mediumDataList: MediumType[];
   tagDataList: TagType[];
+  isSelectedAbout?: boolean;
   /** 選択されている媒体 */
   selectedMedium?: string;
   /** 選択されているタグ */
@@ -16,15 +17,32 @@ type Props = {
 const MediumTagList: React.FC<Props> = ({
   mediumDataList,
   tagDataList,
+  isSelectedAbout,
   selectedMedium,
   selectedTag,
 }) => {
   return (
     <div>
+      <ul className={styles.about}>
+        <li>
+          <Link href="/about">
+            <a
+              className={[
+                styles.slug,
+                isSelectedAbout ? styles.slug__selected : null,
+              ]
+                .filter((value) => value != null)
+                .join(" ")}
+            >
+              自己紹介
+            </a>
+          </Link>
+        </li>
+      </ul>
       <ul className={styles.mediumList}>
         <li>
           <Link href="/">
-            <a className={styles.slug}>すべて</a>
+            <a className={styles.slug}>すべての実績</a>
           </Link>
         </li>
         {mediumDataList.map(({ name, slug }) => (
@@ -44,7 +62,7 @@ const MediumTagList: React.FC<Props> = ({
           </li>
         ))}
       </ul>
-      <h2 className={styles.tagheading}>tags</h2>
+      <h2 className={styles.tagheading}>タグ</h2>
       <ul className={styles.tagList}>
         {tagDataList.map(({ name, slug }) => (
           <li key={slug}>

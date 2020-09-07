@@ -17,6 +17,7 @@ const NavigationInner: React.FC<Props> = ({
   const {
     mediumDataList,
     tagDataList,
+    isSelectedAbout,
     selectedTag,
     selectedMedium,
   } = useContext(IndexContext);
@@ -41,6 +42,7 @@ const NavigationInner: React.FC<Props> = ({
       <MediumTagList
         mediumDataList={mediumDataList}
         tagDataList={tagDataList}
+        isSelectedAbout={isSelectedAbout}
         selectedTag={selectedTag}
         selectedMedium={selectedMedium}
       />
