@@ -1,6 +1,8 @@
 import * as React from "react";
 import { HTMLAttributes } from "react";
+import classNames from "classnames";
 import styles from "./MenuButton.module.scss";
+
 
 type Props = {
   /** ボタンが閉じられている見た目にするかどうか？ 閉じられている場合はバツ印になる */
@@ -18,17 +20,15 @@ export const MenuButton: React.FC<Props> = ({
 }) => (
   <button
     type="button"
-    className={[
+    className={classNames(
       className,
       styles.menuButton,
-      isClosedStyle ? styles.menuButton__closed : null,
-    ]
-      .filter((value) => value != null)
-      .join(" ")}
+      isClosedStyle ? styles.menuButton__closed : null
+    )}
     onClick={onClick}
   >
-    <div className={[styles.border, styles.border1].join(" ")} />
-    <div className={[styles.border, styles.border2].join(" ")} />
-    <div className={[styles.border, styles.border3].join(" ")} />
+    <div className={classNames(styles.border, styles.border1)} />
+    <div className={classNames(styles.border, styles.border2)} />
+    <div className={classNames(styles.border, styles.border3)} />
   </button>
 );

@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 import { EntryType } from "../../types/EntryType";
 import styles from "./EntryArticle.module.scss";
 import { parseDate } from "../../logics/date/parseDate";
@@ -17,9 +18,7 @@ export const EntryArticle: React.FC<Props> = ({
   isLinkEntry = false,
 }) => (
   <article
-    className={[styles.entry, isLinkEntry ? styles.linkEntry : null]
-      .filter((value) => value != null)
-      .join(" ")}
+    className={classNames(styles.entry, isLinkEntry ? styles.linkEntry : null)}
   >
     {isLinkEntry && keyvisual && (
       <picture className={styles.keyvisual}>
