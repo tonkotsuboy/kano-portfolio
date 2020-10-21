@@ -1,6 +1,7 @@
 import * as React from "react";
 import { HTMLAttributes } from "react";
 import { useSelector } from "react-redux";
+import classNames from "classnames";
 import styles from "./OverlayNavigation.module.scss";
 import { RootState } from "../../store";
 import NavigationInner from "./components/NavigationInner";
@@ -22,13 +23,11 @@ export const OverlayNavigation: React.FC<Props> = ({ className }) => {
 
   return (
     <nav
-      className={[
+      className={classNames(
         className,
         styles.overlayNavigation,
-        navigationIsOpened ? styles.isNavigationOpened : null,
-      ]
-        .filter((value) => value != null)
-        .join(" ")}
+        navigationIsOpened ? styles.isNavigationOpened : null
+      )}
     >
       <NavigationInner
         className={styles.navigationInner}

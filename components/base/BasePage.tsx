@@ -1,6 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { useSelector } from "react-redux";
+import classNames from "classnames";
 import styles from "./BasePage.module.scss";
 import { OverlayNavigation } from "../navigation/OverlayNavigation";
 import { SideNavigation } from "../navigation/SideNavigation";
@@ -35,12 +36,10 @@ const BasePage: React.FC<Props> = ({
 
   return (
     <div
-      className={[
+      className={classNames(
         styles.appRoot,
-        navigationIsOpened ? styles.appRoot__navigationOpened : null,
-      ]
-        .filter((value) => value != null)
-        .join(" ")}
+        navigationIsOpened ? styles.appRoot__navigationOpened : null
+      )}
     >
       <Head>
         <meta charSet="utf-8" />

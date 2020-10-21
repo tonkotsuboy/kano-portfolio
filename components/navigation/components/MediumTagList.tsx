@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import classNames from "classnames";
 import styles from "./MediumTagList.module.scss";
 import { MediumType } from "../../../types/MediumType";
 import { TagType } from "../../../types/TagType";
@@ -27,12 +28,10 @@ const MediumTagList: React.FC<Props> = ({
         <li>
           <Link href="/about">
             <a
-              className={[
+              className={classNames(
                 styles.slug,
-                isSelectedAbout ? styles.slug__selected : null,
-              ]
-                .filter((value) => value != null)
-                .join(" ")}
+                isSelectedAbout ? styles.slug__selected : null
+              )}
             >
               自己紹介
             </a>
@@ -49,12 +48,10 @@ const MediumTagList: React.FC<Props> = ({
           <li key={slug}>
             <Link href={`/medium/${slug}`}>
               <a
-                className={[
+                className={classNames(
                   styles.slug,
-                  selectedMedium === slug ? styles.slug__selected : null,
-                ]
-                  .filter((value) => value != null)
-                  .join(" ")}
+                  selectedMedium === slug ? styles.slug__selected : null
+                )}
               >
                 {name}
               </a>
@@ -68,12 +65,10 @@ const MediumTagList: React.FC<Props> = ({
           <li key={slug}>
             <Link href={`/tag/${slug}`}>
               <a
-                className={[
+                className={classNames(
                   styles.slug,
-                  selectedTag === slug ? styles.slug__selected : null,
-                ]
-                  .filter((value) => value != null)
-                  .join(" ")}
+                  selectedTag === slug ? styles.slug__selected : null
+                )}
               >
                 #{name}
               </a>

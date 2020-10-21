@@ -1,5 +1,6 @@
 import * as React from "react";
 import { HTMLAttributes } from "react";
+import classNames from "classnames";
 import styles from "./SideNavigation.module.scss";
 import NavigationInner from "./components/NavigationInner";
 
@@ -12,11 +13,7 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
  */
 export const SideNavigation: React.FC<Props> = ({ className }) => {
   return (
-    <nav
-      className={[className, styles.sideNavigation]
-        .filter((value) => value != null)
-        .join(" ")}
-    >
+    <nav className={classNames(className, styles.sideNavigation)}>
       <NavigationInner />
     </nav>
   );

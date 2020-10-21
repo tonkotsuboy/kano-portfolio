@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, useContext } from "react";
+import classNames from "classnames";
 import MediumTagList from "./MediumTagList";
 import { IndexContext } from "../../../contexts/IndexContext";
 import { Author } from "../../common/Author";
@@ -27,11 +28,7 @@ const NavigationInner: React.FC<Props> = ({
   }
 
   return (
-    <div
-      className={[className, styles.navigationInner]
-        .filter((value) => value != null)
-        .join(" ")}
-    >
+    <div className={classNames(className, styles.navigationInner)}>
       {isVisibleProfile && (
         <>
           <Author />
