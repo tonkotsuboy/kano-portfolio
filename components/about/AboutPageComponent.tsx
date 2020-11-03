@@ -19,13 +19,13 @@ const AboutPageComponent: React.FC = () => {
       <ul>
         <li>
           <ExternalLink
-            url=" https://ics.media/entry/19765/"
+            url="https://ics.media/entry/19765/"
             linkText="JavaScriptコードレシピ集"
           />
         </li>
         <li>
           <ExternalLink
-            url=" https://ics.media/entry/19765/"
+            url="https://shop.nikkeibp.co.jp/front/commodity/0000/SW1250/"
             linkText="日経ソフトウェア2020年9月号「JavaScript最新仕様 -ECMAScript2020-」"
           />
         </li>
