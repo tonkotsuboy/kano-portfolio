@@ -9,7 +9,7 @@ const AboutPageComponent: React.FC = () => {
       <img src="/ogimage.png" width="1200" height="630" alt="鹿野 壮" />
       <p>鹿野 壮（かの たけし）といいます。</p>
       <p>
-        九州大学芸術工学部音響設計学科を卒業後、株式会社ICSでリードエンジニアとしてフロントエンドの仕事をしています。とくにTypeScript・JavaScriptが好きで、暇があればコードを書いています。勉強会・技術SNS・ICS
+        九州大学芸術工学部音響設計学科を卒業後、Money Forwardでフロントエンドの仕事をしています。とくにTypeScript・JavaScriptが好きで、暇があればコードを書いています。勉強会・技術SNS・ICS
         MEDIA・Twitterなどで積極的に技術情報を発信中。
       </p>
       <p>
@@ -32,9 +32,6 @@ const AboutPageComponent: React.FC = () => {
       </ul>
       <h2>技術発信</h2>
       <ul>
-        <li>
-          <ExternalLink url="https://ics.media/" linkText="ICS MEDIA" />
-        </li>
         <li>
           <ExternalLink
             url="https://twitter.com/tonkotsuboy_com"
