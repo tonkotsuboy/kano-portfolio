@@ -6,8 +6,6 @@ import { fetchDataFromAPI } from "./fetchDataFromAPI";
  */
 export const fetchMedia = (): Promise<MediumType[]> =>
   fetchDataFromAPI<MediumType>("medium").then((data) => {
-    const mediumList: MediumType[] = data.items.map((item) => {
-      return item.fields;
-    });
+    const mediumList: MediumType[] = data.map((item) => item.fields);
     return mediumList;
   });

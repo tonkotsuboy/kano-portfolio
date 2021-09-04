@@ -15,7 +15,7 @@ import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
   const mediumData = await fetchDataFromAPI<MediumType>("medium");
-  const paths = mediumData.items.map((item) => `/medium/${item.fields.slug}`);
+  const paths = mediumData.map((item) => `/medium/${item.fields.slug}`);
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
@@ -33,9 +33,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const allEntryDataList = await fetchAllEntryData();
   // 全エントリーデータより、特定のmediumを絞り込む
-  const entryDataList = allEntryDataList.filter((entryData) => 
-    // タグ内に、paramのmediumが含まれているかどうか？
-     entryData.medium.slug === selectedMedium
+  const entryDataList = allEntryDataList.filter(
+    (entryData) =>
+      // タグ内に、paramのmediumが含まれているかどうか？
+      entryData.medium.slug === selectedMedium
   );
 
   return {

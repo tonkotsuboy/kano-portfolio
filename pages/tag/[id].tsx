@@ -15,7 +15,7 @@ import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
   const tagData = await fetchDataFromAPI<TagType>("tag");
-  const paths = tagData.items.map((tag) => `/tag/${tag.fields.slug}`);
+  const paths = tagData.map((tag) => `/tag/${tag.fields.slug}`);
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
@@ -38,9 +38,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allEntryDataList = await fetchAllEntryData();
 
   // 全エントリーデータより、特定のタグを絞り込む
-  const entryDataList = allEntryDataList.filter((entryData) => 
+  const entryDataList = allEntryDataList.filter((entryData) =>
     // タグ内に、paramのタグが含まれているかどうか？
-     entryData.tags.some((tagData) => tagData.slug === selectedTagSlag)
+    entryData.tags.some((tagData) => tagData.slug === selectedTagSlag)
   );
 
   return {
