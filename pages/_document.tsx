@@ -1,13 +1,15 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
-import { NextPageContext } from "next";
-import {
+import Document, {
+  DocumentContext,
   DocumentInitialProps,
-  RenderPage,
-} from "next/dist/next-server/lib/utils";
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from "next/document";
 
 class MyDocument extends Document {
   static async getInitialProps(
-    ctx: NextPageContext & { renderPage: RenderPage }
+    ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
