@@ -1,51 +1,40 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions */
-import {
-  documentToHtmlString,
-  Options,
-} from "@contentful/rich-text-html-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+/* eslint-disable @typescript-eslint/no-unsafe-call, react/jsx-no-target-blank, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/restrict-template-expressions,@typescript-eslint/no-explicit-any */
+import { BLOCKS, Document, INLINES } from "@contentful/rich-text-types";
 import { VFC } from "react";
+import {
+  documentToReactComponents,
+  Options,
+} from "@contentful/rich-text-react-renderer";
 import styles from "./DetailHTML.module.scss";
+import ExternalLink from "../../common/ExternalLink";
 
-/**
- * 記事詳細用HTMLを作成します
- */
-const createDetailHTML = (detailDocument: Document): string => {
-  const renderingHTMLOption: Partial<Options> = {
-    renderNode: {
-      [INLINES.HYPERLINK]: (node, next) => 
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-         `<a href="${node.data.uri}"${
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
-          node.data.uri.startsWith("https://mydomain.com")
-            ? ""
-            : ' target="_blank"'
-        }>${next(node.content)}</a>`
-      ,
-      [BLOCKS.EMBEDDED_ASSET]: ({
-        data: {
-          target: { fields },
-        },
-      }) =>
-        `<picture>
-            <source srcset="${fields.file.url}?fm=webp" type="image/webp" />
-            <source srcset="${fields.file.url}?fm=jpg&q=50" type="image/jpeg" />
-            <img
-              loading="lazy"
-              src="${fields.file.url}"
-              alt="${fields.title}"
-              width="${fields.file.details.image.width}"
-              height="${fields.file.details.image.height}"
-            />
-          </picture>`,
+const renderOptions: Options = {
+  renderNode: {
+    [INLINES.HYPERLINK]: ({ content, data }) => {
+      const linkText = (content[0] as any).value as string;
+      return <ExternalLink url={data.uri} linkText={linkText} />;
     },
-  };
-
-  const detailHTML = documentToHtmlString(
-    detailDocument as any,
-    renderingHTMLOption
-  );
-  return detailHTML;
+    [BLOCKS.EMBEDDED_ASSET]: ({
+      data: {
+        target: {
+          fields: { file, title },
+        },
+      },
+    }) => (
+      // TODO: Imageコンポーネントを使いたい
+      <picture>
+        <source srcSet={`${file.url}?fm=webp`} type="image/webp" />
+        <source srcSet={`${file.url}?fm=jpg&q=50`} type="image/jpeg" />
+        <img
+          loading="lazy"
+          src={file.url}
+          alt={title}
+          width={file.details.image.width}
+          height={file.details.image.height}
+        />
+      </picture>
+    ),
+  },
 };
 /**
  * 記事詳細用HTML用コンポーネント
@@ -53,15 +42,8 @@ const createDetailHTML = (detailDocument: Document): string => {
  */
 export const DetailHTML: VFC<{ detailDocument: Document }> = ({
   detailDocument,
-}) => {
-  const detailHTML = createDetailHTML(detailDocument);
-
-  return (
-    <div
-      className={styles.detailHTML}
-      dangerouslySetInnerHTML={{
-        __html: detailHTML,
-      }}
-    />
-  );
-};
+}) => (
+  <div className={styles.detailHTML}>
+    {documentToReactComponents(detailDocument, renderOptions)}
+  </div>
+);
