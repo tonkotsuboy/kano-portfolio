@@ -1,6 +1,4 @@
-import { GetStaticProps } from "next";
-import React from "react";
-
+import { GetStaticProps, NextPage } from "next";
 import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
 import { TagType } from "../../types/TagType";
@@ -23,7 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const AboutPage: React.FC<{
+const AboutPage: NextPage<{
   mediumDataList: MediumType[];
   tagDataList: TagType[];
 }> = ({ mediumDataList, tagDataList }) => {

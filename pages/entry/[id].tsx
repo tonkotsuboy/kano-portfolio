@@ -1,5 +1,5 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+
 import { PortfolioModel } from "../../types/server/PortfolioModel";
 import { fetchDataFromAPI } from "../../logics/api/fetchDataFromAPI";
 
@@ -77,7 +77,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-const DetailPage: React.FC<{
+const DetailPage: NextPage<{
   entryData: EntryType;
   mediumDataList: MediumType[];
   tagDataList: TagType[];

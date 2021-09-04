@@ -1,5 +1,4 @@
-import React from "react";
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { EntryType } from "../types/EntryType";
 import { EntryList } from "../components/entry/EntryList";
 import { IndexContext, IndexContextType } from "../contexts/IndexContext";
@@ -26,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const IndexPage: React.FC<{
+const IndexPage: NextPage<{
   entryDataList: EntryType[];
   mediumDataList: MediumType[];
   tagDataList: TagType[];

@@ -1,5 +1,5 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+
 import { fetchDataFromAPI } from "../../logics/api/fetchDataFromAPI";
 
 import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
@@ -28,17 +28,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     throw new Error("データなし");
   }
 
-  const [mediumDataList, tagDataList]: [
-    MediumType[],
-    TagType[]
-  ] = await Promise.all([fetchMedia(), fetchTagList()]);
+  const [mediumDataList, tagDataList]: [MediumType[], TagType[]] =
+    await Promise.all([fetchMedia(), fetchTagList()]);
 
   const allEntryDataList = await fetchAllEntryData();
   // 全エントリーデータより、特定のmediumを絞り込む
-  const entryDataList = allEntryDataList.filter((entryData) => {
+  const entryDataList = allEntryDataList.filter((entryData) => 
     // タグ内に、paramのmediumが含まれているかどうか？
-    return entryData.medium.slug === selectedMedium;
-  });
+     entryData.medium.slug === selectedMedium
+  );
 
   return {
     props: {
@@ -50,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-const TagPage: React.FC<{
+const TagPage: NextPage<{
   selectedMedium: string;
   entryDataList: EntryType[];
   mediumDataList: MediumType[];
