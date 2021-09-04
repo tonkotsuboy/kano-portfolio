@@ -1,4 +1,4 @@
-import React from "react";
+import { VFC } from "react";
 import styles from "./LinkCard.module.scss";
 import { EntryType } from "../../../types/EntryType";
 
@@ -11,7 +11,7 @@ type Props = {
  * リンクカード。
  * og:image, og:titleが表示され、URLへのリンクを備えます
  */
-export const LinkCard: React.FC<Props> = ({ linkUrl, metaInfo }) => {
+export const LinkCard: VFC<Props> = ({ linkUrl, metaInfo }) => {
   if (
     linkUrl == null &&
     (metaInfo == null || (metaInfo.ogTitle == null && metaInfo.ogImage == null))

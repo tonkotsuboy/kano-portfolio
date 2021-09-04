@@ -1,15 +1,15 @@
-import React from "react";
+import { VFC } from "react";
 import ExternalLink from "../common/ExternalLink";
 import styles from "./AboutPageComponent.module.scss";
 
-const AboutPageComponent: React.FC = () => {
-  return (
+const AboutPageComponent: VFC = () => (
     <div className={styles.about}>
       <h1>自己紹介</h1>
       <img src="/ogimage.png" width="1200" height="630" alt="鹿野 壮" />
       <p>鹿野 壮（かの たけし）といいます。</p>
       <p>
-        九州大学芸術工学部音響設計学科を卒業後、Money Forwardでフロントエンドの仕事をしています。とくにTypeScript・JavaScriptが好きで、暇があればコードを書いています。勉強会・技術SNS・ICS
+        九州大学芸術工学部音響設計学科を卒業後、Money
+        Forwardでフロントエンドの仕事をしています。とくにTypeScript・JavaScriptが好きで、暇があればコードを書いています。勉強会・技術SNS・ICS
         MEDIA・Twitterなどで積極的に技術情報を発信中。
       </p>
       <p>
@@ -105,10 +105,11 @@ const AboutPageComponent: React.FC = () => {
         <li>HTML</li>
         <li>CSS</li>
         <li>git</li>
+        <li>Open API</li>
+        <li>ActionScript 3.0</li>
         <li>その他フロントエンド技術全般</li>
       </ul>
     </div>
   );
-};
 
 export default AboutPageComponent;

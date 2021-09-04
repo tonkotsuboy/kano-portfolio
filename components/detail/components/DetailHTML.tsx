@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions */
-import React from "react";
 import {
   documentToHtmlString,
   Options,
 } from "@contentful/rich-text-html-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { VFC } from "react";
 import styles from "./DetailHTML.module.scss";
 
 /**
@@ -13,15 +13,15 @@ import styles from "./DetailHTML.module.scss";
 const createDetailHTML = (detailDocument: Document): string => {
   const renderingHTMLOption: Partial<Options> = {
     renderNode: {
-      [INLINES.HYPERLINK]: (node, next) => {
+      [INLINES.HYPERLINK]: (node, next) => 
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        return `<a href="${node.data.uri}"${
+         `<a href="${node.data.uri}"${
           // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
           node.data.uri.startsWith("https://mydomain.com")
             ? ""
             : ' target="_blank"'
-        }>${next(node.content)}</a>`;
-      },
+        }>${next(node.content)}</a>`
+      ,
       [BLOCKS.EMBEDDED_ASSET]: ({
         data: {
           target: { fields },
@@ -51,7 +51,7 @@ const createDetailHTML = (detailDocument: Document): string => {
  * 記事詳細用HTML用コンポーネント
  * @param detailDocument
  */
-export const DetailHTML: React.FC<{ detailDocument: Document }> = ({
+export const DetailHTML: VFC<{ detailDocument: Document }> = ({
   detailDocument,
 }) => {
   const detailHTML = createDetailHTML(detailDocument);

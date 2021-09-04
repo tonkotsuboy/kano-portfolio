@@ -1,7 +1,7 @@
-import React from "react";
 import Head from "next/head";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
+import { ReactNode, VFC } from "react";
 import styles from "./BasePage.module.scss";
 import { OverlayNavigation } from "../navigation/OverlayNavigation";
 import { SideNavigation } from "../navigation/SideNavigation";
@@ -16,16 +16,13 @@ import {
 type Props = {
   pageTitle?: string | null;
   pageDescription?: string | null;
+  children: ReactNode;
 };
 
 /**
  * 各ページ共通で使用するテンプレート
  */
-const BasePage: React.FC<Props> = ({
-  pageTitle,
-  pageDescription,
-  children,
-}) => {
+const BasePage: VFC<Props> = ({ pageTitle, pageDescription, children }) => {
   const title = `${pageTitle ? `${pageTitle} - ` : ""}鹿野ポートフォリオ`;
 
   const description = pageDescription ?? basicDescription;

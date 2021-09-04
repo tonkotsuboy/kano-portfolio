@@ -1,6 +1,6 @@
-import React from "react";
 import Link from "next/link";
 import classNames from "classnames";
+import { VFC } from "react";
 import styles from "./MediumTagList.module.scss";
 import { MediumType } from "../../../types/MediumType";
 import { TagType } from "../../../types/TagType";
@@ -15,14 +15,13 @@ type Props = {
   selectedTag?: string;
 };
 
-const MediumTagList: React.FC<Props> = ({
+const MediumTagList: VFC<Props> = ({
   mediumDataList,
   tagDataList,
   isSelectedAbout,
   selectedMedium,
   selectedTag,
-}) => {
-  return (
+}) => (
     <div>
       <ul className={styles.about}>
         <li>
@@ -78,6 +77,5 @@ const MediumTagList: React.FC<Props> = ({
       </ul>
     </div>
   );
-};
 
 export default MediumTagList;

@@ -1,4 +1,4 @@
-import React from "react";
+import { VFC } from "react";
 import { EntryType } from "../../types/EntryType";
 import { EntryArticle } from "../entry/EntryArticle";
 import styles from "./DetailArticle.module.scss";
@@ -13,8 +13,7 @@ type Props = {
  * 記事詳細
  * @param entryData
  */
-const DetailArticle: React.FC<Props> = ({ entryData }) => {
-  return (
+const DetailArticle: VFC<Props> = ({ entryData }) => (
     <EntryArticle entryData={entryData}>
       {/* ビデオ */}
       {entryData.videoUrl && (
@@ -61,6 +60,5 @@ const DetailArticle: React.FC<Props> = ({ entryData }) => {
       <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
     </EntryArticle>
   );
-};
 
 export default DetailArticle;
