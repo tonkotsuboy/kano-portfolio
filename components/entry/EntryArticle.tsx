@@ -1,6 +1,6 @@
 import * as React from "react";
-import classNames from "classnames";
 import { ReactNode, VFC } from "react";
+import classNames from "classnames";
 import { EntryType } from "../../types/EntryType";
 import styles from "./EntryArticle.module.scss";
 import { parseDate } from "../../logics/date/parseDate";

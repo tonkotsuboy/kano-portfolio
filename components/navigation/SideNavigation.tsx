@@ -12,7 +12,7 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
  * @constructor
  */
 export const SideNavigation: VFC<Props> = ({ className }) => (
-    <nav className={classNames(className, styles.sideNavigation)}>
-      <NavigationInner />
-    </nav>
-  );
+  <nav className={classNames(className, styles.sideNavigation)}>
+    <NavigationInner />
+  </nav>
+);
