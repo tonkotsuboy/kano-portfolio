@@ -1,8 +1,7 @@
 import * as React from "react";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, VFC } from "react";
 import classNames from "classnames";
 import styles from "./MenuButton.module.scss";
-
 
 type Props = {
   /** ボタンが閉じられている見た目にするかどうか？ 閉じられている場合はバツ印になる */
@@ -13,7 +12,7 @@ type Props = {
 /**
  * 閉じるボタン用コンポーネント
  */
-export const MenuButton: React.FC<Props> = ({
+export const MenuButton: VFC<Props> = ({
   className,
   isClosedStyle,
   onClick,

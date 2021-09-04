@@ -6,10 +6,8 @@ import { fetchDataFromAPI } from "./fetchDataFromAPI";
  */
 export const fetchTagList = (): Promise<TagType[]> =>
   fetchDataFromAPI<TagType>("tag").then((data) => {
-    const tagList: TagType[] = data.items
-      .map((item) => {
-        return item.fields;
-      })
+    const tagList: TagType[] = data
+      .map((item) => item.fields)
       .sort((a, b) => a.order - b.order);
     return tagList;
   });

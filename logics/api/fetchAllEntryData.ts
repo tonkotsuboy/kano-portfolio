@@ -13,10 +13,11 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
     limit: 200,
   });
 
-  return allPortfolioData.items.map((entry) => {
+  return allPortfolioData.map((entry) => {
     const tags: EntryType["tags"] = entry.fields.tags.map(
       (tagEntry) => tagEntry.fields
     );
+
     return {
       id: entry.sys.id,
       ...entry.fields,

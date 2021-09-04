@@ -1,4 +1,5 @@
 import { Asset } from "contentful";
+import { Document } from "@contentful/rich-text-types";
 import { TagType } from "./TagType";
 
 export type EntryType = {

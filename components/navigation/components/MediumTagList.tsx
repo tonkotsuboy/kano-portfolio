@@ -1,6 +1,6 @@
-import React from "react";
 import Link from "next/link";
 import classNames from "classnames";
+import { VFC } from "react";
 import styles from "./MediumTagList.module.scss";
 import { MediumType } from "../../../types/MediumType";
 import { TagType } from "../../../types/TagType";
@@ -15,69 +15,67 @@ type Props = {
   selectedTag?: string;
 };
 
-const MediumTagList: React.FC<Props> = ({
+const MediumTagList: VFC<Props> = ({
   mediumDataList,
   tagDataList,
   isSelectedAbout,
   selectedMedium,
   selectedTag,
-}) => {
-  return (
-    <div>
-      <ul className={styles.about}>
-        <li>
-          <Link href="/about">
+}) => (
+  <div>
+    <ul className={styles.about}>
+      <li>
+        <Link href="/about">
+          <a
+            className={classNames(
+              styles.slug,
+              isSelectedAbout ? styles.slug__selected : null
+            )}
+          >
+            自己紹介
+          </a>
+        </Link>
+      </li>
+    </ul>
+    <ul className={styles.mediumList}>
+      <li>
+        <Link href="/">
+          <a className={styles.slug}>すべての実績</a>
+        </Link>
+      </li>
+      {mediumDataList.map(({ name, slug }) => (
+        <li key={slug}>
+          <Link href={`/medium/${slug}`}>
             <a
               className={classNames(
                 styles.slug,
-                isSelectedAbout ? styles.slug__selected : null
+                selectedMedium === slug ? styles.slug__selected : null
               )}
             >
-              自己紹介
+              {name}
             </a>
           </Link>
         </li>
-      </ul>
-      <ul className={styles.mediumList}>
-        <li>
-          <Link href="/">
-            <a className={styles.slug}>すべての実績</a>
+      ))}
+    </ul>
+    <h2 className={styles.tagheading}>タグ</h2>
+    <ul className={styles.tagList}>
+      {tagDataList.map(({ name, slug }) => (
+        <li key={slug}>
+          <Link href={`/tag/${slug}`}>
+            <a
+              className={classNames(
+                styles.slug,
+                selectedTag === slug ? styles.slug__selected : null
+              )}
+            >
+              #{name}
+            </a>
           </Link>
         </li>
-        {mediumDataList.map(({ name, slug }) => (
-          <li key={slug}>
-            <Link href={`/medium/${slug}`}>
-              <a
-                className={classNames(
-                  styles.slug,
-                  selectedMedium === slug ? styles.slug__selected : null
-                )}
-              >
-                {name}
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <h2 className={styles.tagheading}>タグ</h2>
-      <ul className={styles.tagList}>
-        {tagDataList.map(({ name, slug }) => (
-          <li key={slug}>
-            <Link href={`/tag/${slug}`}>
-              <a
-                className={classNames(
-                  styles.slug,
-                  selectedTag === slug ? styles.slug__selected : null
-                )}
-              >
-                #{name}
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+      ))}
+    </ul>
+  </div>
+);
 
 export default MediumTagList;

@@ -81,7 +81,7 @@ if (!self.define) {
     });
   };
 }
-define("./sw.js",['./workbox-8c6a447f'], function (workbox) { 'use strict';
+define("./sw.js",['./workbox-202dc43a'], function (workbox) { 'use strict';
 
   /**
   * Welcome to your Workbox-powered service worker!
@@ -96,8 +96,29 @@ define("./sw.js",['./workbox-8c6a447f'], function (workbox) { 'use strict';
   */
 
   importScripts();
-  workbox.skipWaiting();
+  self.skipWaiting();
   workbox.clientsClaim();
+  workbox.registerRoute("/", new workbox.NetworkFirst({
+    "cacheName": "start-url",
+    plugins: [{
+      cacheWillUpdate: async ({
+        request,
+        response,
+        event,
+        state
+      }) => {
+        if (response && response.type === 'opaqueredirect') {
+          return new Response(response.body, {
+            status: 200,
+            statusText: 'OK',
+            headers: response.headers
+          });
+        }
+
+        return response;
+      }
+    }]
+  }), 'GET');
   workbox.registerRoute(/.*/i, new workbox.NetworkOnly({
     "cacheName": "dev",
     plugins: []
