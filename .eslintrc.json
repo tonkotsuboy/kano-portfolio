@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "airbnb/hooks", "prettier", "prettier/react"],
+  "extends": ["airbnb", "airbnb/hooks", "prettier"],
   "env": {
     "browser": true
   },
@@ -36,9 +36,7 @@
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "prettier",
-        "prettier/@typescript-eslint",
-        "prettier/react"
+        "prettier"
       ],
       "rules": {
         "react/react-in-jsx-scope": 0,

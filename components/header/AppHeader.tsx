@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useCallback } from "react";
+import { HTMLAttributes, useCallback, VFC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 import { Author } from "../common/Author";
@@ -15,7 +15,7 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
  * @param className
  * @constructor
  */
-const AppHeader: React.FC<Props> = ({ className }) => {
+const AppHeader: VFC<Props> = ({ className }) => {
   const dispatch = useDispatch();
 
   const navigationIsOpened = useSelector<RootState>(

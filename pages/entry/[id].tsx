@@ -1,5 +1,5 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+
 import { PortfolioModel } from "../../types/server/PortfolioModel";
 import { fetchDataFromAPI } from "../../logics/api/fetchDataFromAPI";
 
@@ -18,9 +18,7 @@ import { parseMetaInfo } from "../../logics/scraping/parseMetaInfo";
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on posts
   const portfolioData = await fetchDataFromAPI<PortfolioModel>("portfolio");
-  const paths = portfolioData.items.map(
-    (entry) => `/entry/${entry.fields.slug}`
-  );
+  const paths = portfolioData.map((entry) => `/entry/${entry.fields.slug}`);
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
@@ -46,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     fetchDataFromAPI<PortfolioModel>("portfolio", {
       "fields.slug": targetEntryId,
     }).then(async (dataList) => {
-      const data = dataList.items[0];
+      const data = dataList[0];
       const tags: EntryType["tags"] = data.fields.tags.map(
         (tagEntry) => tagEntry.fields
       );
@@ -77,7 +75,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-const DetailPage: React.FC<{
+const DetailPage: NextPage<{
   entryData: EntryType;
   mediumDataList: MediumType[];
   tagDataList: TagType[];
