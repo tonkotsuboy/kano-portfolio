@@ -14,16 +14,16 @@
     "test": "jest --no-cache"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^15.2.0",
-    "@reduxjs/toolkit": "^1.6.1",
+    "@contentful/rich-text-react-renderer": "^15.4.0",
+    "@reduxjs/toolkit": "^1.6.2",
     "classnames": "2.3.1",
-    "contentful": "^8.5.3",
+    "contentful": "^9.1.2",
     "next": "11.1.2",
     "next-pwa": "^5.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-redux": "^7.2.4",
-    "sass": "^1.39.0"
+    "react-redux": "^7.2.5",
+    "sass": "^1.42.1"
   },
   "devDependencies": {
     "@types/classnames": "2.3.1",
@@ -59,6 +59,6 @@
     "stylelint-scss": "3.20.1",
     "stylelint-webpack-plugin": "3.0.1",
     "ts-jest": "^27.0.5",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   }
 }
