@@ -22,6 +22,7 @@
     "next-pwa": "^5.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-gtm-module": "^2.0.11",
     "react-redux": "^7.2.5",
     "sass": "^1.42.1"
   },
@@ -31,6 +32,7 @@
     "@types/jsdom": "^16.2.13",
     "@types/node": "^16.7.10",
     "@types/react": "^17.0.19",
+    "@types/react-gtm-module": "^2.0.1",
     "@types/react-redux": "^7.1.18",
     "@types/request": "^2.48.7",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
