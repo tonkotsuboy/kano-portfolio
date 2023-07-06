@@ -1,26 +1,53 @@
 import { useEffect, VFC } from "react";
 import { Provider } from "react-redux";
 import { AppProps } from "next/app";
-import TagManager from "react-gtm-module";
-import { useStore } from "../store";
 
 import "../styles/reset.scss";
 import "../styles/base.scss";
+import Script from "next/script";
+import { useRouter } from "next/router";
+import { useStore } from "../store";
 
 const AppComponent: VFC<AppProps> = ({ Component, pageProps }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const store = useStore(pageProps.initialReduxState);
 
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID as string;
+
+  const router = useRouter();
   useEffect(() => {
-    const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
-    if (gtmId == null) {
-      throw new Error("no gtm");
-    }
-    TagManager.initialize({ gtmId });
-  }, []);
+    const handleRouteChange = (url: string) => {
+      if (!window) return;
+      window.gtag("config", GA_TRACKING_ID, {
+        page_location: url,
+      });
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on("hashChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("hashChangeComplete", handleRouteChange);
+    };
+  }, [GA_TRACKING_ID, router.events]);
 
   return (
     <Provider store={store}>
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+      />
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GA_TRACKING_ID}', {
+            page_path: window.location.pathname,
+          });
+        `,
+        }}
+      />
       <Component {...pageProps} />
     </Provider>
   );
