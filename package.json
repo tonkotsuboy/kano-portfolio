@@ -22,12 +22,12 @@
     "next-pwa": "^5.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-gtm-module": "^2.0.11",
     "react-redux": "^7.2.5",
     "sass": "^1.42.1"
   },
   "devDependencies": {
     "@types/classnames": "2.3.1",
+    "@types/gtag.js": "^0.0.12",
     "@types/jest": "^27.0.1",
     "@types/jsdom": "^16.2.13",
     "@types/node": "^16.7.10",
@@ -62,5 +62,8 @@
     "stylelint-webpack-plugin": "3.0.1",
     "ts-jest": "^27.0.5",
     "typescript": "^4.4.3"
+  },
+  "volta": {
+    "node": "16.15.0"
   }
 }
