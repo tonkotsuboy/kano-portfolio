@@ -59,7 +59,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true
     /* Disallow inconsistently-cased references to the same file. */,
-    "incremental": true
+    "incremental": true,
+    "exactOptionalPropertyTypes": true /* Interpret optional property types as written, rather than adding 'undefined'. */,
+    "noUncheckedIndexedAccess": true /* Include 'undefined' in index signature results */,
+    "noImplicitOverride": true /* Ensure overriding members in derived classes are marked with an override modifier. */,
+    "noPropertyAccessFromIndexSignature": true /* Enforces using indexed accessors for keys declared using an indexed type */
   },
   "exclude": [
     "node_modules"
