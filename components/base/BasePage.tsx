@@ -1,12 +1,10 @@
 import Head from "next/head";
-import { useSelector } from "react-redux";
-import type { ReactNode, FC } from "react";
+import type { FC, ReactNode } from "react";
 import clsx from "clsx";
 import styles from "./BasePage.module.scss";
 import { OverlayNavigation } from "../navigation/OverlayNavigation";
 import { SideNavigation } from "../navigation/SideNavigation";
 import AppHeader from "../header/AppHeader";
-import type { RootState } from "../../store";
 import {
   basicDescription,
   ogImageUrl,
@@ -27,15 +25,17 @@ const BasePage: FC<Props> = ({ pageTitle, pageDescription, children }) => {
 
   const description = pageDescription ?? basicDescription;
 
-  const navigationIsOpened = useSelector<RootState>(
-    (state) => state.navigationIsOpened
-  );
+  // const navigationIsOpened = useSelector<RootState>(
+  //   (state) => state.navigationIsOpened
+  // );
+  //
+  const navigationIsOpened = false;
 
   return (
     <div
       className={clsx(
         styles.appRoot,
-        navigationIsOpened ? styles.appRoot__navigationOpened : null
+        navigationIsOpened ? styles.appRoot__navigationOpened : null,
       )}
     >
       <Head>

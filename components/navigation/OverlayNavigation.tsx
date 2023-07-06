@@ -1,9 +1,7 @@
-import type { HTMLAttributes, FC } from "react";
-import { useSelector } from "react-redux";
+import type { FC, HTMLAttributes } from "react";
 import clsx from "clsx";
 import styles from "./OverlayNavigation.module.scss";
-import type { RootState } from "../../store";
-import NavigationInner from "./components/NavigationInner";
+import { NavigationInner } from "./components/NavigationInner";
 
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 
@@ -13,17 +11,19 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
  * @constructor
  */
 export const OverlayNavigation: FC<Props> = ({ className }) => {
-  const navigationIsOpened = useSelector<
-    RootState,
-    RootState["navigationIsOpened"]
-  >((state) => state.navigationIsOpened);
+  // const navigationIsOpened = useSelector<
+  //   RootState,
+  //   RootState["navigationIsOpened"]
+  // >((state) => state.navigationIsOpened);
+
+  const navigationIsOpened = false;
 
   return (
     <nav
       className={clsx(
         className,
         styles.overlayNavigation,
-        navigationIsOpened ? styles.isNavigationOpened : null
+        navigationIsOpened ? styles.isNavigationOpened : null,
       )}
     >
       <NavigationInner

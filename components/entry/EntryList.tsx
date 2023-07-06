@@ -1,24 +1,26 @@
-import type { FC} from "react";
-import { useContext } from "react";
+import type { FC } from "react";
 import Link from "next/link";
 import { EntryArticle } from "./EntryArticle";
-import styles from "./EntryList.module.scss";
-import { IndexContext } from "../../contexts/IndexContext";
+import type { EntryType } from "../../types/EntryType";
+import type { MediumType } from "../../types/MediumType";
+import type { TagType } from "../../types/TagType";
+import { entryList, listTitle as listTitleStyle } from "./EntryList.css";
 
 type Props = {
   listTitle?: string;
+  postData: {
+    entryDataList: EntryType[];
+    mediumDataList: MediumType[];
+    tagDataList: TagType[];
+  };
 };
 
-export const EntryList: FC<Props> = ({ listTitle }) => {
-  const { entryDataList } = useContext(IndexContext);
-
-  if (entryDataList == null) {
-    return null;
-  }
+export const EntryList: FC<Props> = ({ listTitle, postData }) => {
+  const { entryDataList } = postData;
 
   return (
-    <div className={styles.entryList}>
-      {listTitle && <h1 className={styles.listTitle}>{listTitle}</h1>}
+    <div className={entryList}>
+      {listTitle && <h1 className={listTitleStyle}>{listTitle}</h1>}
       {entryDataList.map((entryData) => (
         <Link
           key={entryData.id}

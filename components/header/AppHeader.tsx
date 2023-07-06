@@ -1,13 +1,11 @@
-import type { HTMLAttributes, FC } from "react";
+import type { FC, HTMLAttributes } from "react";
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import { Author } from "../common/Author";
 import { Job } from "../common/Job";
 import { MenuButton } from "./MenuButton";
 
 import styles from "./AppHeader.module.scss";
-import type { RootState } from "../../store";
 import { closeNavigation, openNavigation } from "../../store";
 
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
@@ -18,26 +16,28 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
  * @constructor
  */
 const AppHeader: FC<Props> = ({ className }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const navigationIsOpened = useSelector<RootState>(
-    (state) => state.navigationIsOpened
-  );
+  // const navigationIsOpened = useSelector<RootState>(
+  //   (state) => state.navigationIsOpened
+  // );
+  //
+  const navigationIsOpened = false;
 
   // メニューボタンクリック時の処理
   const handleClick = useCallback(() => {
     if (navigationIsOpened) {
       // メニュー以外のスクロールを禁止
       document.body.style.overflow = "visible";
-      dispatch(closeNavigation());
+      // dispatch(closeNavigation());
       return;
     }
 
     // メニュー以外のスクロールを復活
     document.body.style.overflow = "hidden";
 
-    dispatch(openNavigation());
-  }, [navigationIsOpened, dispatch]);
+    // dispatch(openNavigation());
+  }, [navigationIsOpened]);
 
   return (
     <header className={clsx(className, styles.appHeader)}>

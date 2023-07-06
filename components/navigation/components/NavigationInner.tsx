@@ -12,37 +12,38 @@ type Props = {
   isVisibleProfile?: boolean;
 } & Pick<HTMLAttributes<HTMLElement>, "className">;
 
-const NavigationInner: FC<Props> = ({ className, isVisibleProfile = true }) => {
-  const {
-    mediumDataList,
-    tagDataList,
-    isSelectedAbout,
-    selectedTag,
-    selectedMedium,
-  } = useContext(IndexContext);
+export const NavigationInner: FC<Props> = ({
+  className,
+  isVisibleProfile = true,
+}) => {
+  return <div>constructing</div>;
+  // const {
+  //   mediumDataList,
+  //   tagDataList,
+  //   isSelectedAbout,
+  //   selectedTag,
+  //   selectedMedium,
+  // } = useContext(IndexContext);
 
-  if (mediumDataList == null || tagDataList == null) {
-    return null;
-  }
-
-  return (
-    <div className={clsx(className, styles.navigationInner)}>
-      {isVisibleProfile && (
-        <>
-          <Author />
-          <Job />
-        </>
-      )}
-
-      <MediumTagList
-        mediumDataList={mediumDataList}
-        tagDataList={tagDataList}
-        isSelectedAbout={isSelectedAbout}
-        selectedTag={selectedTag}
-        selectedMedium={selectedMedium}
-      />
-    </div>
-  );
+  // if (mediumDataList == null || tagDataList == null) {
+  //   return null;
+  // }
+  //
+  // return (
+  //   <div className={clsx(className, styles.navigationInner)}>
+  //     {isVisibleProfile && (
+  //       <>
+  //         <Author />
+  //         <Job />
+  //       </>
+  //     )}
+  //
+  //     <MediumTagList
+  //       mediumDataList={mediumDataList}
+  //       tagDataList={tagDataList}
+  //       isSelectedAbout={isSelectedAbout}
+  //       selectedTag={selectedTag}
+  //       selectedMedium={selectedMedium}
+  //     />
+  //   </div>
 };
-
-export default NavigationInner;

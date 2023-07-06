@@ -21,9 +21,9 @@ export const MenuButton: FC<Props> = ({
     className={clsx(
       className,
       styles.menuButton,
-      isClosedStyle ? styles.menuButton__closed : null
+      isClosedStyle ? styles.menuButton__closed : null,
     )}
-    onClick={onClick}
+    // onClick={onClick}
   >
     <div className={clsx(styles.border, styles.border1)} />
     <div className={clsx(styles.border, styles.border2)} />

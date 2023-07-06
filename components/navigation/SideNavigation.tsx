@@ -1,7 +1,7 @@
 import type { HTMLAttributes, FC } from "react";
 import clsx from "clsx";
 import styles from "./SideNavigation.module.scss";
-import NavigationInner from "./components/NavigationInner";
+import { NavigationInner } from "./components/NavigationInner";
 
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 
