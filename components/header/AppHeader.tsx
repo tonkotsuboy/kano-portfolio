@@ -1,4 +1,5 @@
-import { HTMLAttributes, useCallback, FC } from "react";
+import type { HTMLAttributes, FC } from "react";
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import { Author } from "../common/Author";
@@ -6,7 +7,8 @@ import { Job } from "../common/Job";
 import { MenuButton } from "./MenuButton";
 
 import styles from "./AppHeader.module.scss";
-import { closeNavigation, openNavigation, RootState } from "../../store";
+import type { RootState } from "../../store";
+import { closeNavigation, openNavigation } from "../../store";
 
 type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
 

@@ -1,12 +1,13 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 import { fetchDataFromAPI } from "../../logics/api/fetchDataFromAPI";
 
-import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
+import type { IndexContextType } from "../../contexts/IndexContext";
+import { IndexContext } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
-import { TagType } from "../../types/TagType";
-import { MediumType } from "../../types/MediumType";
-import { EntryType } from "../../types/EntryType";
+import type { TagType } from "../../types/TagType";
+import type { MediumType } from "../../types/MediumType";
+import type { EntryType } from "../../types/EntryType";
 import { EntryList } from "../../components/entry/EntryList";
 import { fetchMedia } from "../../logics/api/fetchMedia";
 import { fetchTagList } from "../../logics/api/fetchTagList";

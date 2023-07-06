@@ -1,8 +1,9 @@
-import { GetStaticProps, NextPage } from "next";
-import { IndexContext, IndexContextType } from "../../contexts/IndexContext";
+import type { GetStaticProps, NextPage } from "next";
+import type { IndexContextType } from "../../contexts/IndexContext";
+import { IndexContext } from "../../contexts/IndexContext";
 import BasePage from "../../components/base/BasePage";
-import { TagType } from "../../types/TagType";
-import { MediumType } from "../../types/MediumType";
+import type { TagType } from "../../types/TagType";
+import type { MediumType } from "../../types/MediumType";
 import { fetchMedia } from "../../logics/api/fetchMedia";
 import { fetchTagList } from "../../logics/api/fetchTagList";
 import AboutPageComponent from "../../components/about/AboutPageComponent";

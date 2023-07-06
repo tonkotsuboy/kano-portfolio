@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import ExternalLink from "../common/ExternalLink";
 import styles from "./AboutPageComponent.module.scss";
 

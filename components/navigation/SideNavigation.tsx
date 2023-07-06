@@ -1,4 +1,4 @@
-import { HTMLAttributes, FC } from "react";
+import type { HTMLAttributes, FC } from "react";
 import clsx from "clsx";
 import styles from "./SideNavigation.module.scss";
 import NavigationInner from "./components/NavigationInner";

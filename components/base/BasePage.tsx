@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useSelector } from "react-redux";
-import { ReactNode, FC } from "react";
+import type { ReactNode, FC } from "react";
 import clsx from "clsx";
 import styles from "./BasePage.module.scss";
 import { OverlayNavigation } from "../navigation/OverlayNavigation";
 import { SideNavigation } from "../navigation/SideNavigation";
 import AppHeader from "../header/AppHeader";
-import { RootState } from "../../store";
+import type { RootState } from "../../store";
 import {
   basicDescription,
   ogImageUrl,

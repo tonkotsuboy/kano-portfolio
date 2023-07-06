@@ -1,4 +1,5 @@
-import { HTMLAttributes, useContext, FC } from "react";
+import type { HTMLAttributes, FC } from "react";
+import { useContext } from "react";
 import clsx from "clsx";
 import MediumTagList from "./MediumTagList";
 import { IndexContext } from "../../../contexts/IndexContext";

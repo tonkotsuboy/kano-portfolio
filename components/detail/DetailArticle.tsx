@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { EntryType } from "../../types/EntryType";
+import type { FC } from "react";
+import type { EntryType } from "../../types/EntryType";
 import { EntryArticle } from "../entry/EntryArticle";
 import styles from "./DetailArticle.module.scss";
 import { DetailHTML } from "./components/DetailHTML";

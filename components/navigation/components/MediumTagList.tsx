@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { FC } from "react";
+import type { FC } from "react";
 import clsx from "clsx";
 import styles from "./MediumTagList.module.scss";
-import { MediumType } from "../../../types/MediumType";
-import { TagType } from "../../../types/TagType";
+import type { MediumType } from "../../../types/MediumType";
+import type { TagType } from "../../../types/TagType";
 
 type Props = {
   mediumDataList: MediumType[];

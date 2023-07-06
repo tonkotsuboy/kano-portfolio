@@ -1,6 +1,7 @@
-import { useEffect, FC } from "react";
+import type { FC } from "react";
+import { useEffect } from "react";
 import { Provider } from "react-redux";
-import { AppProps } from "next/app";
+import type { AppProps } from "next/app";
 
 import "../styles/reset.scss";
 import "../styles/base.scss";
@@ -12,7 +13,7 @@ const AppComponent: FC<AppProps> = ({ Component, pageProps }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const store = useStore(pageProps.initialReduxState);
 
-  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID as string;
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID!;
 
   const router = useRouter();
   useEffect(() => {

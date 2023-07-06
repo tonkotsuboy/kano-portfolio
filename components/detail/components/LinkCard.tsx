@@ -1,6 +1,6 @@
-import { FC } from "react";
+import type { FC } from "react";
 import styles from "./LinkCard.module.scss";
-import { EntryType } from "../../../types/EntryType";
+import type { EntryType } from "../../../types/EntryType";
 
 type Props = {
   linkUrl?: string;
@@ -33,7 +33,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
         )}
         <div className={styles.ogDetail}>
           {metaInfo?.ogTitle && (
-            <h4 className={styles.ogTitle}>{metaInfo?.ogTitle}</h4>
+            <h4 className={styles.ogTitle}>{metaInfo.ogTitle}</h4>
           )}
           {linkUrl && <p className={styles.linkUrl}>{linkUrl}</p>}
         </div>

@@ -1,6 +1,7 @@
-import Document, {
+import type {
   DocumentContext,
-  DocumentInitialProps,
+  DocumentInitialProps} from "next/document";
+import Document, {
   Head,
   Html,
   Main,

@@ -1,4 +1,5 @@
-import { FC, useContext } from "react";
+import type { FC} from "react";
+import { useContext } from "react";
 import Link from "next/link";
 import { EntryArticle } from "./EntryArticle";
 import styles from "./EntryList.module.scss";
