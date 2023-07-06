@@ -1,5 +1,5 @@
 import { HTMLAttributes, useContext, FC } from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import MediumTagList from "./MediumTagList";
 import { IndexContext } from "../../../contexts/IndexContext";
 import { Author } from "../../common/Author";
@@ -25,7 +25,7 @@ const NavigationInner: FC<Props> = ({ className, isVisibleProfile = true }) => {
   }
 
   return (
-    <div className={classNames(className, styles.navigationInner)}>
+    <div className={clsx(className, styles.navigationInner)}>
       {isVisibleProfile && (
         <>
           <Author />

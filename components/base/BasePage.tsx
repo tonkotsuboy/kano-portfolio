@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useSelector } from "react-redux";
-import classNames from "classnames";
 import { ReactNode, FC } from "react";
+import clsx from "clsx";
 import styles from "./BasePage.module.scss";
 import { OverlayNavigation } from "../navigation/OverlayNavigation";
 import { SideNavigation } from "../navigation/SideNavigation";
@@ -33,7 +33,7 @@ const BasePage: FC<Props> = ({ pageTitle, pageDescription, children }) => {
 
   return (
     <div
-      className={classNames(
+      className={clsx(
         styles.appRoot,
         navigationIsOpened ? styles.appRoot__navigationOpened : null
       )}

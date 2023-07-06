@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ReactNode, FC } from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import { EntryType } from "../../types/EntryType";
 import styles from "./EntryArticle.module.scss";
 import { parseDate } from "../../logics/date/parseDate";
@@ -20,7 +20,7 @@ export const EntryArticle: FC<Props> = ({
   isLinkEntry = false,
 }) => (
   <article
-    className={classNames(styles.entry, isLinkEntry ? styles.linkEntry : null)}
+    className={clsx(styles.entry, isLinkEntry ? styles.linkEntry : null)}
   >
     {isLinkEntry && keyvisual && (
       <picture className={styles.keyvisual}>
