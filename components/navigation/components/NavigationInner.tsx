@@ -1,4 +1,4 @@
-import { HTMLAttributes, useContext, VFC } from "react";
+import { HTMLAttributes, useContext, FC } from "react";
 import classNames from "classnames";
 import MediumTagList from "./MediumTagList";
 import { IndexContext } from "../../../contexts/IndexContext";
@@ -11,10 +11,7 @@ type Props = {
   isVisibleProfile?: boolean;
 } & Pick<HTMLAttributes<HTMLElement>, "className">;
 
-const NavigationInner: VFC<Props> = ({
-  className,
-  isVisibleProfile = true,
-}) => {
+const NavigationInner: FC<Props> = ({ className, isVisibleProfile = true }) => {
   const {
     mediumDataList,
     tagDataList,

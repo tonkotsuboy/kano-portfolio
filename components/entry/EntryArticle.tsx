@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ReactNode, VFC } from "react";
+import { ReactNode, FC } from "react";
 import classNames from "classnames";
 import { EntryType } from "../../types/EntryType";
 import styles from "./EntryArticle.module.scss";
@@ -14,7 +14,7 @@ type Props = {
 /**
  * 各記事のエントリー
  */
-export const EntryArticle: VFC<Props> = ({
+export const EntryArticle: FC<Props> = ({
   children,
   entryData: { keyvisual, published_date, title, medium, tags },
   isLinkEntry = false,

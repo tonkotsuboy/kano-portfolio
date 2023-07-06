@@ -1,5 +1,5 @@
 import * as React from "react";
-import { HTMLAttributes, VFC } from "react";
+import { HTMLAttributes, FC } from "react";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 import styles from "./OverlayNavigation.module.scss";
@@ -13,7 +13,7 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
  * @param className
  * @constructor
  */
-export const OverlayNavigation: VFC<Props> = ({ className }) => {
+export const OverlayNavigation: FC<Props> = ({ className }) => {
   const navigationIsOpened = useSelector<
     RootState,
     RootState["navigationIsOpened"]

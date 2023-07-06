@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call, react/jsx-no-target-blank, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/restrict-template-expressions,@typescript-eslint/no-explicit-any */
 import { BLOCKS, Document, INLINES } from "@contentful/rich-text-types";
-import { VFC } from "react";
+import { FC } from "react";
 import {
   documentToReactComponents,
   Options,
@@ -40,7 +40,7 @@ const renderOptions: Options = {
  * 記事詳細用HTML用コンポーネント
  * @param detailDocument
  */
-export const DetailHTML: VFC<{ detailDocument: Document }> = ({
+export const DetailHTML: FC<{ detailDocument: Document }> = ({
   detailDocument,
 }) => (
   <div className={styles.detailHTML}>

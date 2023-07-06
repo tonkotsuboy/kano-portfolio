@@ -1,4 +1,4 @@
-import { useEffect, VFC } from "react";
+import { useEffect, FC } from "react";
 import { Provider } from "react-redux";
 import { AppProps } from "next/app";
 
@@ -8,7 +8,7 @@ import Script from "next/script";
 import { useRouter } from "next/router";
 import { useStore } from "../store";
 
-const AppComponent: VFC<AppProps> = ({ Component, pageProps }) => {
+const AppComponent: FC<AppProps> = ({ Component, pageProps }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const store = useStore(pageProps.initialReduxState);
 

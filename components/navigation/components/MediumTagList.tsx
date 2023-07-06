@@ -1,6 +1,6 @@
 import Link from "next/link";
 import classNames from "classnames";
-import { VFC } from "react";
+import { FC } from "react";
 import styles from "./MediumTagList.module.scss";
 import { MediumType } from "../../../types/MediumType";
 import { TagType } from "../../../types/TagType";
@@ -15,7 +15,7 @@ type Props = {
   selectedTag?: string;
 };
 
-const MediumTagList: VFC<Props> = ({
+const MediumTagList: FC<Props> = ({
   mediumDataList,
   tagDataList,
   isSelectedAbout,

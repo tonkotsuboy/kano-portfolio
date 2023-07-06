@@ -1,8 +1,8 @@
-import { VFC } from "react";
+import { FC } from "react";
 import ExternalLink from "../common/ExternalLink";
 import styles from "./AboutPageComponent.module.scss";
 
-const AboutPageComponent: VFC = () => (
+const AboutPageComponent: FC = () => (
   <div className={styles.about}>
     <h1>自己紹介</h1>
     <img src="/ogimage.png" width="1200" height="630" alt="鹿野 壮" />

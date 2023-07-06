@@ -1,6 +1,6 @@
-import { VFC } from "react";
+import { FC } from "react";
 
-const ExternalLink: VFC<{ url: string; linkText: string }> = ({
+const ExternalLink: FC<{ url: string; linkText: string }> = ({
   url,
   linkText,
 }) => (
