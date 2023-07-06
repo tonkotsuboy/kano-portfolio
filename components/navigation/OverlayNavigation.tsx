@@ -1,4 +1,3 @@
-import * as React from "react";
 import { HTMLAttributes, FC } from "react";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
