@@ -1,4 +1,3 @@
-import * as React from "react";
 import { ReactNode, FC } from "react";
 import clsx from "clsx";
 import { EntryType } from "../../types/EntryType";
