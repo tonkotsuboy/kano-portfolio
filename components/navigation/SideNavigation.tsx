@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLAttributes, FC } from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "./SideNavigation.module.scss";
 import NavigationInner from "./components/NavigationInner";
 
@@ -12,7 +12,7 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
  * @constructor
  */
 export const SideNavigation: FC<Props> = ({ className }) => (
-  <nav className={classNames(className, styles.sideNavigation)}>
+  <nav className={clsx(className, styles.sideNavigation)}>
     <NavigationInner />
   </nav>
 );

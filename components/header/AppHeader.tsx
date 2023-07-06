@@ -1,6 +1,6 @@
 import { HTMLAttributes, useCallback, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import classNames from "classnames";
+import clsx from "clsx";
 import { Author } from "../common/Author";
 import { Job } from "../common/Job";
 import { MenuButton } from "./MenuButton";
@@ -38,7 +38,7 @@ const AppHeader: FC<Props> = ({ className }) => {
   }, [navigationIsOpened, dispatch]);
 
   return (
-    <header className={classNames(className, styles.appHeader)}>
+    <header className={clsx(className, styles.appHeader)}>
       <MenuButton
         className={styles.menuButton}
         onClick={handleClick}

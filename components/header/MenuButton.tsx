@@ -1,6 +1,6 @@
 import * as React from "react";
 import { HTMLAttributes, FC } from "react";
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "./MenuButton.module.scss";
 
 type Props = {
@@ -19,15 +19,15 @@ export const MenuButton: FC<Props> = ({
 }) => (
   <button
     type="button"
-    className={classNames(
+    className={clsx(
       className,
       styles.menuButton,
       isClosedStyle ? styles.menuButton__closed : null
     )}
     onClick={onClick}
   >
-    <div className={classNames(styles.border, styles.border1)} />
-    <div className={classNames(styles.border, styles.border2)} />
-    <div className={classNames(styles.border, styles.border3)} />
+    <div className={clsx(styles.border, styles.border1)} />
+    <div className={clsx(styles.border, styles.border2)} />
+    <div className={clsx(styles.border, styles.border3)} />
   </button>
 );
