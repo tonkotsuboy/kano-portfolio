@@ -1,4 +1,4 @@
-import { useContext, VFC } from "react";
+import { FC, useContext } from "react";
 import Link from "next/link";
 import { EntryArticle } from "./EntryArticle";
 import styles from "./EntryList.module.scss";
@@ -8,7 +8,7 @@ type Props = {
   listTitle?: string;
 };
 
-export const EntryList: VFC<Props> = ({ listTitle }) => {
+export const EntryList: FC<Props> = ({ listTitle }) => {
   const { entryDataList } = useContext(IndexContext);
 
   if (entryDataList == null) {
