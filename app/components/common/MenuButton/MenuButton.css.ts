@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "../../../styles/vars.css";
 
 export const menuButton = style({
-  position: "absolute",
+  position: "relative",
   width: "44px",
   height: "44px",
   border: "none",
@@ -21,7 +21,7 @@ export const menuButton = style({
 
 export const border = style({
   position: "absolute",
-  left: "calc(50%  10px)",
+  left: "calc(50% - 10px)",
   width: "20px",
   height: "2px",
   borderRadius: "1px",
@@ -30,7 +30,7 @@ export const border = style({
 });
 
 export const border1 = style({
-  top: "calc(50%  5px)",
+  top: "calc(50% - 5px)",
 });
 
 export const border2 = style({

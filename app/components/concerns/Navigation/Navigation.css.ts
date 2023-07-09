@@ -5,23 +5,29 @@ import { vars } from "../../../styles/vars.css";
 export const container = style({
   display: "grid",
   gap: vars.spacing["32px"],
-  padding: 0,
+  gridAutoFlow: "column",
+  padding: vars.spacing["16px"],
   boxShadow: "2px 0 4px rgba(48,55,120,.05)",
   zIndex: 1,
-  placeContent: "center",
+  placeContent: "center stretch",
   position: "relative",
+  gridTemplate: `"menuButton profile ." auto / 1fr auto 1fr`,
 
   "@container": {
     "(800px < width)": {
+      gridAutoFlow: "row",
       placeContent: "start",
       padding: `${vars.spacing["64px"]} ${vars.spacing["24px"]} ${vars.spacing["24px"]}`,
     },
   },
 });
 
-export const menuButton = style({});
+export const menuButton = style({
+  gridArea: "menuButton",
+});
 
 export const profile = style({
+  gridArea: "profile",
   display: "flex",
   alignItems: "center",
   gap: vars.spacing["8px"],
