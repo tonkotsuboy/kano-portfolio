@@ -5,17 +5,16 @@ import { vars } from "../../../styles/vars.css";
 export const container = style({
   display: "grid",
   gap: vars.spacing["32px"],
-  gridAutoFlow: "column",
   padding: vars.spacing["16px"],
   boxShadow: "2px 0 4px rgba(48,55,120,.05)",
   zIndex: 1,
   placeContent: "center stretch",
   position: "relative",
-  gridTemplate: `"menuButton profile ." auto / 1fr auto 1fr`,
+  gridTemplateColumns: `1fr auto 1fr`,
 
   "@container": {
     "(800px < width)": {
-      gridAutoFlow: "row",
+      gridTemplate: "none",
       placeContent: "start",
       padding: `${vars.spacing["64px"]} ${vars.spacing["24px"]} ${vars.spacing["24px"]}`,
     },
@@ -23,11 +22,14 @@ export const container = style({
 });
 
 export const menuButton = style({
-  gridArea: "menuButton",
+  "@container": {
+    "(800px < width)": {
+      display: "none",
+    },
+  },
 });
 
 export const profile = style({
-  gridArea: "profile",
   display: "flex",
   alignItems: "center",
   gap: vars.spacing["8px"],
@@ -62,18 +64,6 @@ export const job = style({
   },
 });
 
-export const slug = style({
-  display: "flex",
-  alignItems: "center",
-  height: "32px",
-  paddingLeft: vars.spacing["24px"],
-  fontSize: vars.font.size.s,
-  color: vars.color.secondary,
-  ":hover": {
-    backgroundColor: "#f3f6fb",
-  },
-});
-
 export const category = style({
   display: "none",
   gap: vars.spacing["8px"],
@@ -95,4 +85,16 @@ export const categoryList = style({
   display: "grid",
   gap: vars.spacing["8px"],
   gridAutoRows: vars.spacing["32px"],
+});
+
+export const slug = style({
+  display: "flex",
+  alignItems: "center",
+  height: "32px",
+  paddingLeft: vars.spacing["24px"],
+  fontSize: vars.font.size.s,
+  color: vars.color.secondary,
+  ":hover": {
+    backgroundColor: "#f3f6fb",
+  },
 });
