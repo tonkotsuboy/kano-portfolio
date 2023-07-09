@@ -2,7 +2,8 @@ import type { NextPage } from "next";
 import type { EntryType } from "../types/EntryType";
 import { EntryList } from "../components/entry/EntryList";
 import { fetchAllEntryData } from "../logics/api/fetchAllEntryData";
-import { copyright } from "./page.css";
+import { Copyright } from "./components/concerns/Copyright";
+import { container } from "./page.css";
 
 const getEntryData = async (): Promise<{
   entryDataList: EntryType[];
@@ -18,9 +19,9 @@ const Page: NextPage = async () => {
   const { entryDataList } = await getEntryData();
 
   return (
-    <div>
+    <div className={container}>
       <EntryList entryDataList={entryDataList} />
-      <address className={copyright}>© 2020 Takeshi Kano</address>
+      <Copyright />
     </div>
   );
 };
