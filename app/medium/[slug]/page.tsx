@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import { EntryList } from "../../../components/entry/EntryList";
+import { EntryList } from "../../components/concerns/EntryList";
 import { fetchAllEntryData } from "../../../logics/api/fetchAllEntryData";
 import { container } from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
@@ -17,7 +17,7 @@ const getEntryData = async (params: { slug: string }) => {
   const entryDataList = (await fetchAllEntryData()).filter(
     (entryData) =>
       // paramのmediaが含まれているかどうか？
-      entryData.medium?.fields.slug === params.slug,
+      entryData.medium?.slug === params.slug,
   );
 
   return {

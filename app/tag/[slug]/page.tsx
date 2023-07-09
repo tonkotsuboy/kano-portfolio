@@ -16,9 +16,7 @@ export const generateStaticParams = async (): Promise<string[]> => {
 const getEntryData = async (params: { slug: string }) => {
   const entryDataList = (await fetchAllEntryData()).filter((entryData) => {
     // タグ内に、paramのタグが含まれているかどうか？
-    return entryData.tags.some(
-      (tagData) => tagData?.fields.slug === params.slug,
-    );
+    return entryData.tags?.some((tagData) => tagData.slug === params.slug);
   });
 
   return {
