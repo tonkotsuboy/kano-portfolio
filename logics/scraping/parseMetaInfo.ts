@@ -1,8 +1,8 @@
+import type { EntryType } from "../../types/EntryType";
+
 /**
  * og:titleやog:imageを取得する
  */
-import { EntryType } from "../../types/EntryType";
-
 export const parseMetaInfo = (document?: Document): EntryType["metaInfo"] => {
   if (document == null) {
     return {
@@ -21,9 +21,8 @@ export const parseMetaInfo = (document?: Document): EntryType["metaInfo"] => {
     null;
 
   const ogImage =
-    meta
-      .querySelector<HTMLMetaElement>(`meta[property="og:image"]`)
-      ?.content.replace(/http:/, "") ?? null;
+    meta.querySelector<HTMLMetaElement>(`meta[property="og:image"]`)?.content ??
+    null;
 
   // descriptionについて、og:descriptionがない場合はdescriptionを取得
   const ogDescription =
