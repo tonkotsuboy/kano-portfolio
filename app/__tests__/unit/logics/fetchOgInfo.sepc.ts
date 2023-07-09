@@ -4,8 +4,7 @@ import { parseMetaInfo } from "../../../logics/scraping/parseMetaInfo";
 
 describe("parseMetaInfo", () => {
   test("meta情報回りの正常取得", async () => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const htmlText = await new Promise<any>((resolve) => {
+    const htmlText = await new Promise((resolve) => {
       request.get("https://www.kyushu-u.ac.jp/ja/", (_err, _response, body) => {
         resolve(body);
       });

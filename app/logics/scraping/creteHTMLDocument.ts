@@ -5,5 +5,5 @@ import { JSDOM } from "jsdom";
  */
 export const creteHTMLDocument = (htmlText: string): Document => {
   const jsdom = new JSDOM(htmlText);
-  return jsdom.window.document as Document;
+  return jsdom.window.document;
 };

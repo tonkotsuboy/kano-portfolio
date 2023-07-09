@@ -17,8 +17,7 @@ export const parseMetaInfo = (document?: Document): EntryType["metaInfo"] => {
   // titleについて、og:titleがない場合はtitleタグから参照する
   const ogTitle =
     meta.querySelector<HTMLMetaElement>(`meta[property="og:title"]`)?.content ??
-    document.title ??
-    null;
+    document.title;
 
   const ogImage =
     meta.querySelector<HTMLMetaElement>(`meta[property="og:image"]`)?.content ??
