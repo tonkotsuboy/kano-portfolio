@@ -7,3 +7,8 @@ export const wrapper = style({
   height: "100%",
   marginInline: "auto",
 });
+
+export const main = style({
+  padding: "64px 80px 40px",
+  background: "#f8f9fc",
+});

@@ -7,7 +7,7 @@ import type { TagType } from "../types/TagType";
 import { fetchMedia } from "../logics/api/fetchMedia";
 import { fetchTagList } from "../logics/api/fetchTagList";
 import type { Metadata, NextPage } from "next";
-import { wrapper } from "./layout.css";
+import { wrapper, main } from "./layout.css";
 import "./styles/reset.css";
 import "./styles/base.css";
 
@@ -55,7 +55,7 @@ const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
             mediumDataList={mediumDataList}
             tagDataList={tagDataList}
           />
-          {children}
+          <main className={main}>{children}</main>
         </div>
         <Script
           async
