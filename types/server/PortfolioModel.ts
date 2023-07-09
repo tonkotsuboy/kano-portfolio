@@ -1,5 +1,9 @@
-import { Asset } from "contentful";
+import type { Asset } from "contentful";
 
+/**
+ * @deprecated
+ * 自動生成されるため、不要
+ */
 export type PortfolioModel = {
   slug: string;
   title: string;
