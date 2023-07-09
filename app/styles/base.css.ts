@@ -1,4 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
+import { vars } from "./vars.css";
 
 globalStyle("*", {
   boxSizing: "border-box",
@@ -9,9 +10,13 @@ globalStyle("body", {
     "Hiragino Sans", Meiryo, sans-serif`,
   textRendering: "optimizeSpeed",
   lineHeight: "1.8",
-  color: "#30345f",
+  color: vars.color.text,
 });
 
 globalStyle("a", {
   textDecoration: "none",
+});
+
+globalStyle("img", {
+  objectFit: "cover",
 });

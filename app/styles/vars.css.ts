@@ -4,6 +4,7 @@ export const vars = createGlobalTheme(":root", {
   color: {
     primary: "#3f3f9d",
     secondary: "#4a4e5a",
+    text: "#30345f",
   },
   spacing: {
     "8px": "8px",
@@ -18,8 +19,10 @@ export const vars = createGlobalTheme(":root", {
   font: {
     body: "arial",
     size: {
+      xs: "0.75rem", // 12px
       s: "0.875rem", // 14px
       base: "1rem",
+      l: "1.125rem", // 18px
       "2xl": "1.5rem", // // 24px
     },
   },
