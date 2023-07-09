@@ -1,10 +1,12 @@
-import type { NextPage } from "next";
+import type { NextPage, Metadata } from "next";
 
 import { EntryList } from "../../components/concerns/EntryList";
 import { fetchAllEntryData } from "../../../logics/api/fetchAllEntryData";
 import { container } from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
 import { fetchMedia } from "../../../logics/api/fetchMedia";
+import { WithSiteTitle } from "../../constants";
+import { metadata } from "../../layout";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const mediumData = await fetchMedia();
@@ -13,11 +15,11 @@ export const generateStaticParams = async (): Promise<string[]> => {
   });
 };
 
-const getEntryData = async (params: { slug: string }) => {
+const getEntryData = async (slug: string) => {
   const entryDataList = (await fetchAllEntryData()).filter(
     (entryData) =>
       // paramのmediaが含まれているかどうか？
-      entryData.medium?.slug === params.slug,
+      entryData.medium?.slug === slug,
   );
 
   return {
@@ -27,8 +29,29 @@ const getEntryData = async (params: { slug: string }) => {
 
 type Params = { params: { slug: string } };
 
+export const generateMetadata = async ({
+  params,
+}: Params): Promise<Metadata> => {
+  const { entryDataList } = await getEntryData(params.slug);
+
+  const title = `${entryDataList[0]?.medium?.name ?? ""}${WithSiteTitle}`;
+
+  return {
+    ...metadata,
+    title: title,
+    twitter: {
+      ...metadata.twitter,
+      title,
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      title,
+    },
+  };
+};
+
 const Page: NextPage<Params> = async ({ params }) => {
-  const { entryDataList } = await getEntryData(params);
+  const { entryDataList } = await getEntryData(params.slug);
 
   return (
     <div className={container}>

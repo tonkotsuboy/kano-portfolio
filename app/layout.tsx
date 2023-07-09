@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
 import Head from "next/head";
-import { basicDescription, ogImageUrl, TwitterId } from "./constants";
+import {
+  basicDescription,
+  ogImageUrl,
+  SiteTitle,
+  TwitterId,
+} from "./constants";
 import { Navigation } from "./components/concerns/Navigation";
 import type { MediumType } from "../types/MediumType";
 import type { TagType } from "../types/TagType";
@@ -14,19 +19,20 @@ import "./styles/base.css";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "鹿野ポートフォリオ",
+  title: SiteTitle,
   viewport: "width=device-width,initial-scale=1",
   icons: ["/favicon.ico", "/favicon-16x16.png", "/favicon-32x32.png"],
   manifest: "/manifest.json",
   themeColor: "#3f3f9d",
   description: basicDescription,
   twitter: {
-    title: "鹿野ポートフォリオ",
+    title: SiteTitle,
     card: "summary_large_image",
     images: [ogImageUrl],
     site: `@${TwitterId}`,
   },
   openGraph: {
+    title: SiteTitle,
     images: [ogImageUrl],
     description: basicDescription,
   },

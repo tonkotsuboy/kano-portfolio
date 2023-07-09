@@ -1,4 +1,4 @@
-import type { NextPage } from "next";
+import type { Metadata, NextPage } from "next";
 import {
   fetchAllEntryData,
   fetchEntryData,
@@ -11,14 +11,16 @@ import { LinkCard } from "../../components/common/LinkCard";
 import { fetchHTMLText } from "../../../logics/scraping/fetchHTMLText";
 import { creteHTMLDocument } from "../../../logics/scraping/creteHTMLDocument";
 import { parseMetaInfo } from "../../../logics/scraping/parseMetaInfo";
+import { WithSiteTitle } from "../../constants";
+import { metadata } from "../../layout";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const portfolioData = await fetchAllEntryData();
   return portfolioData.map((entry) => `/entry/${entry.slug}`);
 };
 
-const getEntryData = async (params: { slug: string }) => {
-  const entryData = await fetchEntryData(params.slug);
+const getEntryData = async (slug: string) => {
+  const entryData = await fetchEntryData(slug);
 
   if (entryData == null) {
     throw new Error("entryData is null");
@@ -38,8 +40,29 @@ const getEntryData = async (params: { slug: string }) => {
 
 type Params = { params: { slug: string } };
 
+export const generateMetadata = async ({
+  params,
+}: Params): Promise<Metadata> => {
+  const { entryData } = await getEntryData(params.slug);
+
+  const title = `${entryData.title ?? ""}${WithSiteTitle}`;
+
+  return {
+    ...metadata,
+    title: title,
+    twitter: {
+      ...metadata.twitter,
+      title,
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      title,
+    },
+  };
+};
+
 const Page: NextPage<Params> = async ({ params }) => {
-  const { entryData } = await getEntryData(params);
+  const { entryData } = await getEntryData(params.slug);
 
   return (
     <div className={container}>
