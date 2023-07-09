@@ -12,6 +12,9 @@ export const fetchTagList = async (): Promise<TagType[]> => {
     });
 
   return result.items
-    .map((item) => item.fields)
+    .map((item) => ({
+      id: item.sys.id,
+      ...item.fields,
+    }))
     .sort((a, b) => a.order - b.order);
 };
