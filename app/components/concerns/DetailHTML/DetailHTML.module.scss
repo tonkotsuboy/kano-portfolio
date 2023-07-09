@@ -9,12 +9,13 @@
     padding: inherit;
     margin: inherit;
     list-style: revert;
+
     p {
       margin-bottom: 0;
     }
   }
 
-  ul ul {
+  ul {
     padding-left: 1rem;
   }
 
@@ -23,7 +24,7 @@
   }
 
   img {
-    object-fit: cover;
     height: auto;
+    object-fit: cover;
   }
 }
