@@ -20,7 +20,12 @@ export const keyvisual = style({
   boxShadow: "0px 2px 4px rgba(48, 55, 120, 0.05)",
   width: "100%",
   height: "auto",
-  aspectRatio: "16/7",
+  aspectRatio: "16/5",
+  "@container": {
+    "(800px < width)": {
+      aspectRatio: "16/7",
+    },
+  },
 });
 
 export const linkEntry = style({
