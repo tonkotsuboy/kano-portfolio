@@ -4,10 +4,12 @@
 *::after {
   box-sizing: border-box;
 }
+
 ul[class],
 ol[class] {
   padding: 0;
 }
+
 body,
 h1,
 h2,
@@ -26,38 +28,44 @@ dd {
 
 body {
   min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
   color: #30345f;
+  line-height: 1.5;
+  text-rendering: optimizespeed;
 }
+
 ul,
 ol {
   list-style: none;
 }
+
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
+
 img {
   display: block;
   max-width: 100%;
 }
+
 article > * + * {
   margin-top: 1em;
 }
+
 input,
 button,
 textarea,
 select {
   font: inherit;
 }
+
 img:not([alt]) {
   filter: blur(10px);
 }
 
 @media (prefers-reduced-motion: reduce) {
   * {
-    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
