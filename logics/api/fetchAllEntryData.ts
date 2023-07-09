@@ -49,3 +49,11 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
       return dayjs(a.published_date).isAfter(dayjs(b.published_date)) ? -1 : 1;
     });
 };
+
+/**
+ * 記事データをひとつ取得します
+ */
+export const fetchEntryData = async (id: string): Promise<EntryType | null> => {
+  const allEntries = await fetchAllEntryData();
+  return allEntries.find((entry) => entry.slug === id) ?? null;
+};
