@@ -2,8 +2,6 @@ import { useEffect, FC } from "react";
 import { Provider } from "react-redux";
 import { AppProps } from "next/app";
 
-import "../styles/reset.scss";
-import "../styles/base.scss";
 import Script from "next/script";
 import { useRouter } from "next/router";
 import { useStore } from "../store";
