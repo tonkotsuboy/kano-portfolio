@@ -1,6 +1,6 @@
 import type { EntryType } from "../../types/EntryType";
 import { client } from "./contentfulClient";
-import type { TypePortfolioSkeleton } from "../../@types/generated/contentful";
+import type { TypePortfolioSkeleton } from "../../../@types/generated/contentful";
 import type { AssetFile } from "contentful/dist/types/types/asset";
 import dayjs from "dayjs";
 

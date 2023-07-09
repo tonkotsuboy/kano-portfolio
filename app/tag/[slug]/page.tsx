@@ -1,10 +1,10 @@
 import type { Metadata, NextPage } from "next";
 
 import { EntryList } from "../../components/concerns/EntryList";
-import { fetchAllEntryData } from "../../../logics/api/fetchAllEntryData";
+import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
 import { container } from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
-import { fetchTagList } from "../../../logics/api/fetchTagList";
+import { fetchTagList } from "../../logics/api/fetchTagList";
 import { metadata } from "../../layout";
 import { WithSiteTitle } from "../../constants";
 

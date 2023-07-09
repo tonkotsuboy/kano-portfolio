@@ -1,6 +1,6 @@
 import type { MediumType } from "../../types/MediumType";
 import { client } from "./contentfulClient";
-import type { TypeMediumSkeleton } from "../../@types/generated/contentful";
+import type { TypeMediumSkeleton } from "../../../@types/generated/contentful";
 
 /**
  * 媒体一覧を取得します

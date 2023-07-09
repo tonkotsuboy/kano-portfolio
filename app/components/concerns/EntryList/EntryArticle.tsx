@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from "react";
 import clsx from "clsx";
-import type { EntryType } from "../../../../types/EntryType";
-import { parseDate } from "../../../../logics/date/parseDate";
+import type { EntryType } from "../../../types/EntryType";
+import { parseDate } from "../../../logics/date/parseDate";
 import {
   entry,
   header,

@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { EntryType } from "../../../../types/EntryType";
+import type { EntryType } from "../../../types/EntryType";
 import Image from "next/image";
 import {
   linkCard,

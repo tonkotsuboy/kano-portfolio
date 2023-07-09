@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import type { MediumType } from "../../../../types/MediumType";
-import type { TagType } from "../../../../types/TagType";
+import type { MediumType } from "../../../types/MediumType";
+import type { TagType } from "../../../types/TagType";
 import {
   author,
   container,

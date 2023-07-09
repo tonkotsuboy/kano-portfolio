@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import type { EntryType } from "../types/EntryType";
+import type { EntryType } from "./types/EntryType";
 import { EntryList } from "./components/concerns/EntryList";
-import { fetchAllEntryData } from "../logics/api/fetchAllEntryData";
+import { fetchAllEntryData } from "./logics/api/fetchAllEntryData";
 import { Copyright } from "./components/concerns/Copyright";
 import { container } from "./page.css";
 

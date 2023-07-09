@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import Link from "next/link";
 import { EntryArticle } from "./EntryArticle";
-import type { EntryType } from "../../../../types/EntryType";
+import type { EntryType } from "../../../types/EntryType";
 import { entryList, listTitle as listTitleStyle } from "./EntryList.css";
 
 type Props = {

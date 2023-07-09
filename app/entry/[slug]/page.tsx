@@ -2,15 +2,15 @@ import type { Metadata, NextPage } from "next";
 import {
   fetchAllEntryData,
   fetchEntryData,
-} from "../../../logics/api/fetchAllEntryData";
+} from "../../logics/api/fetchAllEntryData";
 import { container, video } from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
 import { EntryArticle } from "../../components/concerns/EntryList";
 import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
 import { LinkCard } from "../../components/common/LinkCard";
-import { fetchHTMLText } from "../../../logics/scraping/fetchHTMLText";
-import { creteHTMLDocument } from "../../../logics/scraping/creteHTMLDocument";
-import { parseMetaInfo } from "../../../logics/scraping/parseMetaInfo";
+import { fetchHTMLText } from "../../logics/scraping/fetchHTMLText";
+import { creteHTMLDocument } from "../../logics/scraping/creteHTMLDocument";
+import { parseMetaInfo } from "../../logics/scraping/parseMetaInfo";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
 

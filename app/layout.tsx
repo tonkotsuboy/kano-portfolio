@@ -7,10 +7,10 @@ import {
   TwitterId,
 } from "./constants";
 import { Navigation } from "./components/concerns/Navigation";
-import type { MediumType } from "../types/MediumType";
-import type { TagType } from "../types/TagType";
-import { fetchMedia } from "../logics/api/fetchMedia";
-import { fetchTagList } from "../logics/api/fetchTagList";
+import type { MediumType } from "./types/MediumType";
+import type { TagType } from "./types/TagType";
+import { fetchMedia } from "./logics/api/fetchMedia";
+import { fetchTagList } from "./logics/api/fetchTagList";
 import type { Metadata, NextPage } from "next";
 import { wrapper, main } from "./layout.css";
 import "./styles/reset.css";
