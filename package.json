@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": "18.16.1"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
