@@ -1,7 +1,8 @@
 import type { EntryType } from "../../types/EntryType";
 import { client } from "./contentfulClient";
 import type { TypePortfolioSkeleton } from "../../@types/generated/contentful";
-import type { TagType } from "../../types/TagType";
+import type { AssetFile } from "contentful/dist/types/types/asset";
+import dayjs from "dayjs";
 
 /**
  * 記事データをすべて取得します
@@ -16,19 +17,35 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
       limit: 200,
     });
 
-  return allPortfolioData.items.map((entry) => {
-    const tags: TagType[] = entry.fields.tags
-      .map((tagEntry) => {
-        return tagEntry?.fields;
-      })
-      .filter((tag): tag is TagType => tag != null);
+  return allPortfolioData.items
+    .map((entry) => {
+      return {
+        id: entry.sys.id,
+        ...entry.fields,
+        medium: entry.fields.medium?.fields ?? undefined,
+        tags: entry.fields.tags.map((tag) => {
+          if (tag == null) {
+            throw new Error("tag is null");
+          }
 
-    return {
-      id: entry.sys.id,
-      ...entry.fields,
-      medium: entry.fields.medium?.fields,
-      slide: entry.fields.slide?.fields ?? null,
-      tags,
-    };
-  });
+          return {
+            id: tag.sys.id,
+            slug: tag.fields.slug,
+            name: tag.fields.name,
+            order: tag.fields.order,
+          };
+        }),
+        keyvisual: entry.fields.keyvisual?.fields as
+          | {
+              title?: string;
+              description?: string;
+              file?: AssetFile;
+            }
+          | undefined,
+      };
+    })
+    .sort((a, b) => {
+      // 日付順でソート
+      return dayjs(a.published_date).isAfter(dayjs(b.published_date)) ? -1 : 1;
+    });
 };
