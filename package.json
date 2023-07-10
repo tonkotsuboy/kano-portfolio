@@ -16,7 +16,7 @@
     "markuplint": "markuplint -p './**/*.tsx'",
     "test": "jest --no-cache",
     "cf-export": "node ./node-scripts/cfExport.mjs",
-    "cf-generate-types": "cf-content-types-generator contentful/export.json --out @types/generated/contentful --v10"
+    "cf-generate-types": "cf-content-types-generator contentful/export.json --out app/@types/generated/contentful --v10"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.4.0",
