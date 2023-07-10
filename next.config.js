@@ -1,7 +1,69 @@
-const withPWA = require("next-pwa");
+const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
+const withVanillaExtract = createVanillaExtractPlugin();
 
-module.exports = withPWA({
-  pwa: {
-    dest: "public",
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  swcMinify: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.ctfassets.net",
+      },
+      {
+        protocol: "https",
+        hostname: "doorkeeper.jp",
+      },
+      {
+        protocol: "http",
+        hostname: "cssnite-kobe.jp",
+      },
+      {
+        protocol: "https",
+        hostname: "s3-ap-northeast-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "connpass-tokyo.s3.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "files.speakerdeck.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cssnite-osaka.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cssnite.jp",
+      },
+      {
+        protocol: "https",
+        hostname: "qiita-user-contents.imgix.net",
+      },
+      {
+        protocol: "https",
+        hostname: "connpass-tokyo.s3.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "media.licdn.com",
+      },
+      {
+        protocol: "https",
+        hostname: "techfeed.io",
+      },
+      {
+        protocol: "https",
+        hostname: "findy-code-images.s3.ap-northeast-1.amazonaws.com",
+      },
+    ],
   },
-});
+};
+
+module.exports = withVanillaExtract(nextConfig);

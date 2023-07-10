@@ -1,0 +1,29 @@
+.detailHTML {
+  p,
+  img {
+    margin-bottom: 1rem;
+  }
+
+  ul,
+  ol {
+    padding: inherit;
+    margin: inherit;
+    list-style: revert;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  ul {
+    padding-left: 1rem;
+  }
+
+  a {
+    color: #3f3f9d;
+  }
+
+  img {
+    height: auto;
+  }
+}

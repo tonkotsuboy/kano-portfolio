@@ -1,9 +1,0 @@
-@use "./styles/mixins/breakpoints" as breakpoints;
-
-.job {
-  font-size: 0.812rem; // 13px
-  color: var(--primary-color);
-  @media (max-width: #{breakpoints.$medium}px) {
-    font-size: var(--fs-xs);
-  }
-}

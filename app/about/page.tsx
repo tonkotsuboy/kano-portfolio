@@ -1,0 +1,166 @@
+import type { Metadata, NextPage } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { container, list, mainVisual, h1, h2 } from "./page.css";
+import { WithSiteTitle } from "../constants";
+
+export const metadata: Metadata = {
+  title: `自己紹介${WithSiteTitle}`,
+  twitter: {
+    title: `自己紹介${WithSiteTitle}`,
+  },
+};
+
+const AboutPage: NextPage = () => {
+  return (
+    <div className={container}>
+      <h1 className={h1}>自己紹介</h1>
+      <Image
+        className={mainVisual}
+        src="/ogimage.png"
+        width="1200"
+        height="630"
+        alt="鹿野 壮"
+      />
+      <p>鹿野 壮（かの たけし）といいます。</p>
+      <p>
+        九州大学芸術工学部音響設計学科を卒業後、Money
+        Forwardでフロントエンドの仕事をしています。とくにTypeScript・JavaScriptが好きで、暇があればコードを書いています。勉強会・技術SNS・ICS
+        MEDIA・Twitterなどで積極的に技術情報を発信中。
+      </p>
+      <p>
+        CSS Nite 2017〜2019ベストセッション受賞。
+        <Link
+          href="https://techfeed.io/people/@tonkotsuboy_com"
+          target="_blank"
+        >
+          TechFeed Pro公認エキスパート
+        </Link>
+      </p>
+      <h2 className={h2}>書籍</h2>
+      <ul className={list}>
+        <li>
+          <Link
+            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/"
+            target="_blank"
+          >
+            日経ソフトウエア 2022年7月号「表現力をアップするWebコーディング術」
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/"
+            target="_blank"
+          >
+            日経ソフトウェア2021年9月号「最新CSS」
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/"
+            target="_blank"
+          >
+            日経ソフトウェア2020年9月号「JavaScript最新仕様 -ECMAScript2020-」
+          </Link>
+        </li>
+        <li>
+          <Link href="https://ics.media/entry/19765/" target="_blank">
+            JavaScriptコードレシピ集
+          </Link>
+        </li>
+      </ul>
+      <h2 className={h2}>技術発信</h2>
+      <ul>
+        <li>
+          <Link href="https://twitter.com/tonkotsuboy_com" target="_blank">
+            Twitter
+          </Link>
+        </li>
+        <li>
+          <Link href="https://github.com/tonkotsuboy" target="_blank">
+            GitHub
+          </Link>
+        </li>
+        <li>
+          <Link href="https://zenn.dev/tonkotsuboy_com" target="_blank">
+            Zenn
+          </Link>
+        </li>
+        <li>
+          <Link href="https://qiita.com/tonkotsuboy_com" target="_blank">
+            Qiita（21,374Contributionsで全体約40位）
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="https://techfeed.io/people/@tonkotsuboy_com"
+            target="_blank"
+          >
+            TechFeed
+          </Link>
+        </li>
+      </ul>
+      <h2 className={h2}>作品</h2>
+      <ul>
+        <li>
+          <Link href="https://codepen.io/tonkotsuboy" target="_blank">
+            codepen
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="https://qiita.com/tonkotsuboy_com/items/cb9e9254a888455b9f8b"
+            target="_blank"
+          >
+            #今日のスダクリエイト
+          </Link>
+        </li>
+      </ul>
+      <h2 className={h2}>講師</h2>
+      <ul>
+        <li>
+          <Link
+            href="https://jp.linkedin.com/learning/learning-flexbox/646317"
+            target="_blank"
+          >
+            LinkedIn Learning
+          </Link>
+        </li>
+        <li>
+          <Link href="https://schoo.jp/class/3570" target="_blank">
+            Schoo
+          </Link>
+        </li>
+      </ul>
+      <h2 className={h2}>寄稿</h2>
+      <ul>
+        <li>
+          <Link
+            href="https://ascii.jp/elem/000/001/546/1546451/"
+            target="_blank"
+          >
+            鹿野壮のWebデザイナーのためのiOSアプリ開発入門 - WPJ
+          </Link>
+        </li>
+      </ul>
+      <h2>使用可能なスキル</h2>
+      <ul>
+        <li>TypeScript</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Next.js</li>
+        <li>Angular</li>
+        <li>NuxtJS</li>
+        <li>Vue.js</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>git</li>
+        <li>Open API</li>
+        <li>ActionScript 3.0</li>
+        <li>その他フロントエンド技術全般</li>
+      </ul>
+    </div>
+  );
+};
+
+export default AboutPage;
