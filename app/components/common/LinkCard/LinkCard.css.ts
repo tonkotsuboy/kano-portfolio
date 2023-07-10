@@ -2,21 +2,37 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "../../../styles/vars.css";
 
 export const linkCard = style({
+  containerType: "inline-size",
+  ":hover": {
+    color: vars.color.primary,
+  },
+});
+
+export const linkInner = style({
   display: "grid",
-  gridTemplate: `
-      "thumbs title" auto
-      "thumbs url"  auto /
-      140px 1fr`,
   overflow: "hidden",
+  gridTemplate: `
+      "thumbs" auto
+      "title"  auto
+      "url"  auto / 
+      1fr`,
   background: "#ffffff",
   border: "1px solid rgba(48, 55, 120, 0.2)",
   borderRadius: "14px",
-  height: "120px",
-  paddingRight: vars.spacing["16px"],
-  gap: `${vars.spacing["8px"]} ${vars.spacing["24px"]}`,
+  paddingBottom: vars.spacing["16px"],
+  rowGap: vars.spacing["8px"],
   color: vars.color.secondary,
-  ":hover": {
-    color: vars.color.primary,
+  "@container": {
+    "(500px < width)": {
+      columnGap: vars.spacing["24px"],
+      paddingRight: vars.spacing["16px"],
+      paddingBottom: 0,
+      height: "120px",
+      gridTemplate: `
+      "thumbs title" auto
+      "thumbs url"  auto /
+      140px 1fr`,
+    },
   },
 });
 
@@ -39,15 +55,29 @@ export const ogTitle = style({
   // @ts-expect-error
   webkitBoxOrient: "vertical",
   webkitLineClamp: "2",
+  paddingInline: vars.spacing["16px"],
+  lineHeight: "1.4",
+  "@container": {
+    "(500px < width)": {
+      paddingInline: 0,
+    },
+  },
 });
 
 export const linkUrl = style({
   gridArea: "url",
-  display: "flex",
+  display: "grid",
   gap: "4px",
+  gridAutoFlow: "column",
   alignItems: "center",
   fontSize: vars.font.size.s,
   alignSelf: "start",
+  paddingInline: vars.spacing["16px"],
+  "@container": {
+    "(500px < width)": {
+      paddingInline: 0,
+    },
+  },
   selectors: {
     "&::before": {
       display: "block",
@@ -60,4 +90,10 @@ export const linkUrl = style({
       maskSize: "cover",
     },
   },
+});
+
+export const linkText = style({
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
 });
