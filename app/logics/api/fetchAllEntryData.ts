@@ -2,9 +2,6 @@ import type { EntryType } from "../../types/EntryType";
 import { client } from "./contentfulClient";
 import type { TypePortfolioSkeleton } from "../../@types/generated/contentful";
 import dayjs from "dayjs";
-import { fetchHTMLText } from "../scraping/fetchHTMLText";
-import { creteHTMLDocument } from "../scraping/creteHTMLDocument";
-import { parseMetaInfo } from "../scraping/parseMetaInfo";
 
 /**
  * 記事データをすべて取得します
@@ -19,7 +16,7 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
       limit: 200,
     });
 
-  const result = allPortfolioData.items
+  return allPortfolioData.items
     .map((entry) => {
       return {
         id: entry.sys.id,
@@ -43,21 +40,6 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
       // 日付順でソート
       return dayjs(a.published_date).isAfter(dayjs(b.published_date)) ? -1 : 1;
     });
-
-  await Promise.allSettled(
-    (result as EntryType[])
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      .filter((_, index) => index < 10)
-      .map(async (entry) => {
-        if (entry.url) {
-          const htmlText = await fetchHTMLText(entry.url);
-          const htmlDocument = creteHTMLDocument(htmlText);
-          entry.metaInfo = parseMetaInfo(htmlDocument);
-        }
-      }),
-  );
-
-  return result;
 };
 
 /**

@@ -10,6 +10,9 @@ import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
 import { LinkCard } from "../../components/common/LinkCard";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
+import { fetchHTMLText } from "../../logics/scraping/fetchHTMLText";
+import { creteHTMLDocument } from "../../logics/scraping/creteHTMLDocument";
+import { parseMetaInfo } from "../../logics/scraping/parseMetaInfo";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const portfolioData = await fetchAllEntryData();
@@ -21,6 +24,12 @@ const getEntryData = async (slug: string) => {
 
   if (entryData == null) {
     throw new Error("entryData is null");
+  }
+
+  if (entryData.url) {
+    const htmlText = await fetchHTMLText(entryData.url);
+    const htmlDocument = creteHTMLDocument(htmlText);
+    entryData.metaInfo = parseMetaInfo(htmlDocument);
   }
 
   return {
@@ -76,7 +85,7 @@ const Page: NextPage<Params> = async ({ params }) => {
         )}
 
         {/* リンクカード */}
-        {entryData.url && entryData.metaInfo && (
+        {entryData.url && (
           <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
         )}
       </EntryArticle>

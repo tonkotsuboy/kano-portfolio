@@ -14,7 +14,6 @@ export const wrapper = style({
       "main" auto / 
       1fr`,
   minHeight: "100dvh",
-
   "@container": {
     "(800px < width)": {
       gridTemplate: `"navigation main" 1fr/240px 1fr`,
@@ -26,7 +25,10 @@ export const main = style({
   background: "#f8f9fc",
   padding: vars.spacing["16px"],
   "@container": {
-    "(800px < width)": {
+    "(400px < width <= 900px)": {
+      padding: vars.spacing["32px"],
+    },
+    "(900px < width)": {
       padding: `${vars.spacing["64px"]} ${vars.spacing["80px"]} ${vars.spacing["40px"]}`,
     },
   },
