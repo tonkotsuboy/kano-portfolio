@@ -16,7 +16,6 @@ import { main, root, wrapper } from "./layout.css";
 import "./styles/reset.css";
 import "./styles/base.css";
 import { GoogleAnalytics } from "./components/common/GoogleAnalytics";
-import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: SiteTitle,
@@ -64,7 +63,6 @@ const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
           </div>
         </div>
         <GoogleAnalytics />
-        <Analytics />
       </body>
     </html>
   );
