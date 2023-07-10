@@ -1,19 +1,27 @@
 import type { Metadata, NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { container, list, mainVisual, h1, h2 } from "./page.css";
+import { WithSiteTitle } from "../constants";
 
 export const metadata: Metadata = {
-  title: "自己紹介 - 鹿野ポートフォリオ",
+  title: `自己紹介${WithSiteTitle}`,
   twitter: {
-    title: "自己紹介 -鹿野ポートフォリオ",
+    title: `自己紹介${WithSiteTitle}`,
   },
 };
 
 const AboutPage: NextPage = () => {
   return (
-    <main>
-      <h1>自己紹介</h1>
-      <Image src="/ogimage.png" width="1200" height="630" alt="鹿野 壮" />
+    <div className={container}>
+      <h1 className={h1}>自己紹介</h1>
+      <Image
+        className={mainVisual}
+        src="/ogimage.png"
+        width="1200"
+        height="630"
+        alt="鹿野 壮"
+      />
       <p>鹿野 壮（かの たけし）といいます。</p>
       <p>
         九州大学芸術工学部音響設計学科を卒業後、Money
@@ -29,17 +37,19 @@ const AboutPage: NextPage = () => {
           TechFeed Pro公認エキスパート
         </Link>
       </p>
-      <h2>書籍</h2>
-      <ul>
+      <h2 className={h2}>書籍</h2>
+      <ul className={list}>
         <li>
           <Link
-            href="https://shop.nikkeibp.co.jp/front/commodity/0000/SW1256/"
+            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/"
             target="_blank"
           >
-            日経ソフトウェア2021年9月号「最新CSS」
+            日経ソフトウエア 2022年7月号「表現力をアップするWebコーディング術」
           </Link>
+        </li>
+        <li>
           <Link
-            href="https://shop.nikkeibp.co.jp/front/commodity/0000/SW1256/"
+            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/"
             target="_blank"
           >
             日経ソフトウェア2021年9月号「最新CSS」
@@ -47,7 +57,7 @@ const AboutPage: NextPage = () => {
         </li>
         <li>
           <Link
-            href="https://shop.nikkeibp.co.jp/front/commodity/0000/SW1250/"
+            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/"
             target="_blank"
           >
             日経ソフトウェア2020年9月号「JavaScript最新仕様 -ECMAScript2020-」
@@ -59,7 +69,7 @@ const AboutPage: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h2>技術発信</h2>
+      <h2 className={h2}>技術発信</h2>
       <ul>
         <li>
           <Link href="https://twitter.com/tonkotsuboy_com" target="_blank">
@@ -72,25 +82,25 @@ const AboutPage: NextPage = () => {
           </Link>
         </li>
         <li>
-          <Link
-            href="https://techfeed.io/people/@tonkotsuboy_com"
-            target="_blank"
-          >
-            TechFeed Pro
-          </Link>
-        </li>
-        <li>
           <Link href="https://zenn.dev/tonkotsuboy_com" target="_blank">
             Zenn
           </Link>
         </li>
         <li>
           <Link href="https://qiita.com/tonkotsuboy_com" target="_blank">
-            Qiita（13,500Contributionsで全体約40位）
+            Qiita（21,374Contributionsで全体約40位）
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="https://techfeed.io/people/@tonkotsuboy_com"
+            target="_blank"
+          >
+            TechFeed
           </Link>
         </li>
       </ul>
-      <h2>作品</h2>
+      <h2 className={h2}>作品</h2>
       <ul>
         <li>
           <Link href="https://codepen.io/tonkotsuboy" target="_blank">
@@ -106,7 +116,7 @@ const AboutPage: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h2>講師</h2>
+      <h2 className={h2}>講師</h2>
       <ul>
         <li>
           <Link
@@ -122,7 +132,7 @@ const AboutPage: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h2>寄稿</h2>
+      <h2 className={h2}>寄稿</h2>
       <ul>
         <li>
           <Link
@@ -149,7 +159,7 @@ const AboutPage: NextPage = () => {
         <li>ActionScript 3.0</li>
         <li>その他フロントエンド技術全般</li>
       </ul>
-    </main>
+    </div>
   );
 };
 

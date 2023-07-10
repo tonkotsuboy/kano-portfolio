@@ -1,8 +1,10 @@
 import type { EntryType } from "../../types/EntryType";
 import { client } from "./contentfulClient";
 import type { TypePortfolioSkeleton } from "../../../@types/generated/contentful";
-import type { AssetFile } from "contentful/dist/types/types/asset";
 import dayjs from "dayjs";
+import { fetchHTMLText } from "../scraping/fetchHTMLText";
+import { creteHTMLDocument } from "../scraping/creteHTMLDocument";
+import { parseMetaInfo } from "../scraping/parseMetaInfo";
 
 /**
  * 記事データをすべて取得します
@@ -17,7 +19,7 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
       limit: 200,
     });
 
-  return allPortfolioData.items
+  const result = allPortfolioData.items
     .map((entry) => {
       return {
         id: entry.sys.id,
@@ -35,19 +37,24 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
             order: tag.fields.order,
           };
         }),
-        keyvisual: entry.fields.keyvisual?.fields as
-          | {
-              title?: string;
-              description?: string;
-              file?: AssetFile;
-            }
-          | undefined,
       };
     })
     .sort((a, b) => {
       // 日付順でソート
       return dayjs(a.published_date).isAfter(dayjs(b.published_date)) ? -1 : 1;
     });
+
+  await Promise.allSettled(
+    (result as EntryType[]).map(async (entry) => {
+      if (entry.url) {
+        const htmlText = await fetchHTMLText(entry.url);
+        const htmlDocument = creteHTMLDocument(htmlText);
+        entry.metaInfo = parseMetaInfo(htmlDocument);
+      }
+    }),
+  );
+
+  return result;
 };
 
 /**

@@ -15,6 +15,7 @@ globalStyle("body", {
 
 globalStyle("a", {
   textDecoration: "none",
+  color: vars.color.primary,
 });
 
 globalStyle("img", {
