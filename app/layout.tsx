@@ -12,11 +12,11 @@ import type { TagType } from "./types/TagType";
 import { fetchMedia } from "./logics/api/fetchMedia";
 import { fetchTagList } from "./logics/api/fetchTagList";
 import type { Metadata, NextPage } from "next";
-import { wrapper, main, root } from "./layout.css";
+import { main, root, wrapper } from "./layout.css";
 import "./styles/reset.css";
 import "./styles/base.css";
-
-import Script from "next/script";
+import { GoogleAnalytics } from "./components/common/GoogleAnalytics";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: SiteTitle,
@@ -47,8 +47,6 @@ const getEntryData = async (): Promise<
 const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
   const [mediumDataList, tagDataList] = await getEntryData();
 
-  const GA_TRACKING_ID = process.env["NEXT_PUBLIC_GA_TRACKING_ID"] ?? "";
-
   return (
     <html lang="ja">
       <Head>
@@ -65,23 +63,8 @@ const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
             <main className={main}>{children}</main>
           </div>
         </div>
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-        />
-        <Script
-          id="google-analytics"
-          dangerouslySetInnerHTML={{
-            __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${GA_TRACKING_ID}', {
-            page_path: window.location.pathname,
-          });
-        `,
-          }}
-        />
+        <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   );
