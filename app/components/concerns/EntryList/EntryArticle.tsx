@@ -28,18 +28,18 @@ type Props = {
  */
 export const EntryArticle: FC<Props> = ({
   children,
-  entryData: { keyvisual, published_date, title, medium, tags },
+  entryData: { metaInfo, published_date, title, medium, tags },
   isLinkEntry = false,
 }) => {
   return (
     <article className={clsx(entry, isLinkEntry ? linkEntry : null)}>
-      {isLinkEntry && keyvisual && keyvisual.file && (
+      {isLinkEntry && metaInfo?.ogImage && (
         <Image
           className={keyvisualStyle}
-          src={createHttpsImage(keyvisual.file.url)}
-          alt={keyvisual.title ?? ""}
-          width={keyvisual.file.details.image?.width}
-          height={keyvisual.file.details.image?.height}
+          src={createHttpsImage(metaInfo.ogImage)}
+          alt={metaInfo.ogTitle ?? ""}
+          width={960}
+          height={540}
         />
       )}
       <div className={info}>
