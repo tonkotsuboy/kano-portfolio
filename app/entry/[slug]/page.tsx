@@ -8,9 +8,6 @@ import { Copyright } from "../../components/concerns/Copyright";
 import { EntryArticle } from "../../components/concerns/EntryList";
 import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
 import { LinkCard } from "../../components/common/LinkCard";
-import { fetchHTMLText } from "../../logics/scraping/fetchHTMLText";
-import { creteHTMLDocument } from "../../logics/scraping/creteHTMLDocument";
-import { parseMetaInfo } from "../../logics/scraping/parseMetaInfo";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
 
@@ -24,13 +21,6 @@ const getEntryData = async (slug: string) => {
 
   if (entryData == null) {
     throw new Error("entryData is null");
-  }
-
-  if (entryData.url) {
-    const htmlText = await fetchHTMLText(entryData.url);
-    const htmlDocument = creteHTMLDocument(htmlText);
-    const metaInfo = parseMetaInfo(htmlDocument);
-    entryData.metaInfo = metaInfo;
   }
 
   return {
