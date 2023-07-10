@@ -1,13 +1,17 @@
-import { TagType } from "../../types/TagType";
-import { fetchDataFromAPI } from "./fetchDataFromAPI";
+import type { TagType } from "../../types/TagType";
+import { client } from "./contentfulClient";
+import type { TypeTagSkeleton } from "../../@types/generated/contentful";
 
 /**
  * タグ一覧を取得します
  */
-export const fetchTagList = (): Promise<TagType[]> =>
-  fetchDataFromAPI<TagType>("tag").then((data) => {
-    const tagList: TagType[] = data
-      .map((item) => item.fields)
-      .sort((a, b) => a.order - b.order);
-    return tagList;
-  });
+export const fetchTagList = async (): Promise<TagType[]> => {
+  const result =
+    await client.withoutUnresolvableLinks.getEntries<TypeTagSkeleton>({
+      content_type: "tag",
+    });
+
+  return result.items
+    .map((item) => item.fields)
+    .sort((a, b) => a.order - b.order);
+};
