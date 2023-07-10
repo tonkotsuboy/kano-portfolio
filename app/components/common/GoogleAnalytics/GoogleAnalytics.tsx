@@ -1,8 +1,6 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
-import { Suspense, useEffect } from "react";
 
 const GA_TRACKING_ID = process.env["NEXT_PUBLIC_GA_TRACKING_ID"] ?? "";
 
@@ -13,13 +11,6 @@ export const pageView = (path: string): void => {
 };
 
 export const GoogleAnalytics = (): JSX.Element => {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  useEffect(() => {
-    const url = `${pathname}${searchParams.toString()}`;
-    pageView(url);
-  }, [pathname, searchParams]);
-
   return (
     <>
       <Script
@@ -43,15 +34,3 @@ export const GoogleAnalytics = (): JSX.Element => {
     </>
   );
 };
-
-export default function Analytics(): JSX.Element {
-  return (
-    <>
-      {GA_TRACKING_ID && (
-        <Suspense>
-          <GoogleAnalytics />
-        </Suspense>
-      )}
-    </>
-  );
-}
