@@ -1,6 +1,6 @@
 import type { EntryType } from "../../types/EntryType";
 import { client } from "./contentfulClient";
-import type { TypePortfolioSkeleton } from "../../../@types/generated/contentful";
+import type { TypePortfolioSkeleton } from "../../@types/generated/contentful";
 import dayjs from "dayjs";
 import { fetchHTMLText } from "../scraping/fetchHTMLText";
 import { creteHTMLDocument } from "../scraping/creteHTMLDocument";

@@ -1,6 +1,6 @@
 import type { TagType } from "../../types/TagType";
 import { client } from "./contentfulClient";
-import type { TypeTagSkeleton } from "../../../@types/generated/contentful";
+import type { TypeTagSkeleton } from "../../@types/generated/contentful";
 
 /**
  * タグ一覧を取得します
