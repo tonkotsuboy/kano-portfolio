@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   themeColor: "#3f3f9d",
   description: basicDescription,
+  metadataBase: new URL("https://kano.codes"),
   twitter: {
     title: SiteTitle,
     card: "summary_large_image",
