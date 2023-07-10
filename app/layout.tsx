@@ -12,7 +12,7 @@ import type { TagType } from "./types/TagType";
 import { fetchMedia } from "./logics/api/fetchMedia";
 import { fetchTagList } from "./logics/api/fetchTagList";
 import type { Metadata, NextPage } from "next";
-import { wrapper, main } from "./layout.css";
+import { wrapper, main, root } from "./layout.css";
 import "./styles/reset.css";
 import "./styles/base.css";
 
@@ -56,12 +56,14 @@ const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </Head>
       <body>
-        <div className={wrapper}>
-          <Navigation
-            mediumDataList={mediumDataList}
-            tagDataList={tagDataList}
-          />
-          <main className={main}>{children}</main>
+        <div className={root}>
+          <div className={wrapper}>
+            <Navigation
+              mediumDataList={mediumDataList}
+              tagDataList={tagDataList}
+            />
+            <main className={main}>{children}</main>
+          </div>
         </div>
         <Script
           async

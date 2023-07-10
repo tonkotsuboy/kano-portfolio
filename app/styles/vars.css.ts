@@ -15,6 +15,7 @@ export const vars = createGlobalTheme(":root", {
     "48px": "48px",
     "56px": "56px",
     "64px": "64px",
+    "80px": "80px",
   },
   font: {
     body: "arial",

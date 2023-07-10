@@ -20,14 +20,12 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.4.0",
-    "@reduxjs/toolkit": "^1.6.2",
     "clsx": "^1.2.1",
     "contentful": "^10.3.1",
     "eslint-config-next": "^13.4.8",
     "next": "^13.4.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.1.1",
     "sass": "^1.42.1"
   },
   "devDependencies": {
@@ -40,7 +38,6 @@
     "@types/node": "^20.4.0",
     "@types/react": "^18.2.14",
     "@types/react-gtm-module": "^2.0.1",
-    "@types/react-redux": "^7.1.18",
     "@types/request": "^2.48.7",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
@@ -65,7 +62,6 @@
     "markuplint": "^3.11.0",
     "npm-check": "^6.0.1",
     "prettier": "^3.0.0",
-    "redux-devtools-extension": "^2.13.9",
     "request": "^2.88.2",
     "stylelint": "^15.10.1",
     "stylelint-config-idiomatic-order": "^9.0.0",

@@ -75,7 +75,7 @@ const Page: NextPage<Params> = async ({ params }) => {
             height="315"
             src={entryData.videoUrl}
             title={entryData.title}
-            frameBorder="0"
+            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />

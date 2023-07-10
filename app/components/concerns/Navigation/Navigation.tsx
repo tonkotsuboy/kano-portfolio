@@ -5,12 +5,13 @@ import {
   author,
   container,
   job,
-  mediumList,
-  slug,
-  tagHeading,
-  tagList,
+  overlayNavigation,
+  profile,
+  sideNavigation,
 } from "./Navigation.css";
 import Link from "next/link";
+import { SideNavigation } from "./SideNavigation";
+import { OverLayMenu } from "./OverLayMenu";
 
 type Props = {
   mediumDataList: MediumType[];
@@ -23,45 +24,22 @@ type Props = {
 export const Navigation: FC<Props> = ({ mediumDataList, tagDataList }) => {
   return (
     <nav className={container}>
-      <div>
+      <OverLayMenu
+        mediumDataList={mediumDataList}
+        tagDataList={tagDataList}
+        className={overlayNavigation}
+      />
+      <div className={profile}>
         <Link href="/" className={author}>
           Takeshi Kano
         </Link>
         <p className={job}>Frontend Developer</p>
       </div>
-      <ul>
-        <li>
-          <Link href="/about" className={slug}>
-            自己紹介
-          </Link>
-        </li>
-      </ul>
-      <ul className={mediumList}>
-        <li>
-          <Link href="/" className={slug}>
-            すべての実績
-          </Link>
-        </li>
-        {mediumDataList.map(({ name, slug: slugData }) => (
-          <li key={slugData}>
-            <Link href={`/medium/${slugData}`} className={slug}>
-              {name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <div>
-        <h2 className={tagHeading}>タグ</h2>
-        <ul className={tagList}>
-          {tagDataList.map(({ name, slug: slugData }) => (
-            <li key={slugData}>
-              <Link href={`/tag/${slugData}`} className={slug}>
-                #{name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <SideNavigation
+        className={sideNavigation}
+        mediumDataList={mediumDataList}
+        tagDataList={tagDataList}
+      />
     </nav>
   );
 };
