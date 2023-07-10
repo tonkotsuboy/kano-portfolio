@@ -1,10 +1,16 @@
 import type { FC, HTMLAttributes } from "react";
-import { category, categoryHeading, categoryList } from "./SideNavigation.css";
+import {
+  category,
+  categoryHeading,
+  categoryList,
+  container,
+} from "./SideNavigation.css";
 
 import Link from "next/link";
 import type { MediumType } from "../../../types/MediumType";
 import type { TagType } from "../../../types/TagType";
 import { slug } from "./Navigation.css";
+import clsx from "clsx";
 
 type Props = {
   mediumDataList: MediumType[];
@@ -17,7 +23,7 @@ export const SideNavigation: FC<Props> = ({
   className,
 }) => {
   return (
-    <div className={className}>
+    <div className={clsx(container, className)}>
       <div className={category}>
         <ul className={categoryList}>
           <li>

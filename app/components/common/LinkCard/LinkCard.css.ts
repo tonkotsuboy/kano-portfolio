@@ -37,8 +37,8 @@ export const ogTitle = style({
   display: "-webkit-box",
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
-  "-webkit-box-orient": "vertical",
-  "-webkit-line-clamp": "2",
+  webkitBoxOrient: "vertical",
+  webkitLineClamp: "2",
 });
 
 export const linkUrl = style({
