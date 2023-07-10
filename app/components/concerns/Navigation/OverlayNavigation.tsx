@@ -19,10 +19,11 @@ type Props = {
   mediumDataList: MediumType[];
   tagDataList: TagType[];
   onClickCloseButton: () => void;
+  onChangePage: () => void;
 } & Pick<HTMLAttributes<HTMLElement>, "className">;
 
 const _OverlayNavigation: ForwardRefRenderFunction<HTMLDialogElement, Props> = (
-  { mediumDataList, tagDataList, onClickCloseButton, className },
+  { mediumDataList, tagDataList, onClickCloseButton, className, onChangePage },
   ref,
 ) => (
   <dialog ref={ref} className={clsx(container, className)}>
@@ -35,13 +36,17 @@ const _OverlayNavigation: ForwardRefRenderFunction<HTMLDialogElement, Props> = (
       <h2 className={categoryHeading}>カテゴリ</h2>
       <ul className={categoryList}>
         <li>
-          <Link href="/" className={slug}>
+          <Link href="/" className={slug} onClick={onChangePage}>
             すべての実績
           </Link>
         </li>
         {mediumDataList.map(({ name, slug: slugData }) => (
           <li key={slugData}>
-            <Link href={`/medium/${slugData}`} className={slug}>
+            <Link
+              href={`/medium/${slugData}`}
+              className={slug}
+              onClick={onChangePage}
+            >
               {name}
             </Link>
           </li>
@@ -53,7 +58,11 @@ const _OverlayNavigation: ForwardRefRenderFunction<HTMLDialogElement, Props> = (
       <ul className={categoryList}>
         {tagDataList.map(({ name, slug: slugData }) => (
           <li key={slugData}>
-            <Link href={`/tag/${slugData}`} className={slug}>
+            <Link
+              href={`/tag/${slugData}`}
+              className={slug}
+              onClick={onChangePage}
+            >
               #{name}
             </Link>
           </li>

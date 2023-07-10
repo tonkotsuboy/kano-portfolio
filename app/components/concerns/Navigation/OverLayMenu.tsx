@@ -30,15 +30,15 @@ export const OverLayMenu: FC<Props> = ({
       ref.current.close();
     }
   }, []);
-
   return (
     <div className={className}>
-      <MenuButton onClick={showModal} isClosed={ref.current?.open ?? false} />
+      <MenuButton onClick={showModal} isClosed={false} />
       <OverlayNavigation
         ref={ref}
         mediumDataList={mediumDataList}
         tagDataList={tagDataList}
         onClickCloseButton={closeModal}
+        onChangePage={closeModal}
       />
     </div>
   );
