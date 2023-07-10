@@ -26,8 +26,8 @@ export const MenuButton: FC<Props> = ({ className, isClosed, onClick }) => (
     className={clsx(className, menuButton)}
     onClick={onClick}
   >
-    <div className={clsx(border, border1, isClosed && border1Closed)} />
-    <div className={clsx(border, border2, isClosed && border2Closed)} />
-    <div className={clsx(border, border3, isClosed && border3Closed)} />
+    <span className={clsx(border, border1, isClosed && border1Closed)} />
+    <span className={clsx(border, border2, isClosed && border2Closed)} />
+    <span className={clsx(border, border3, isClosed && border3Closed)} />
   </button>
 );
