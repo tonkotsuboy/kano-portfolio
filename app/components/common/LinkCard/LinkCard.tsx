@@ -19,16 +19,9 @@ type Props = {
  * og:image, og:titleが表示され、URLへのリンクを備えます
  */
 export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
-  if (
-    metaInfo == null ||
-    (metaInfo.ogTitle == null && metaInfo.ogImage == null)
-  ) {
-    return null;
-  }
-
   return (
     <Link className={linkCard} href={linkUrl} rel="noreferrer" target="_blank">
-      {metaInfo.ogImage && (
+      {metaInfo?.ogImage && (
         <Image
           className={ogImage}
           src={metaInfo.ogImage}
@@ -37,8 +30,8 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
           alt="entryData.ogInfo.title"
         />
       )}
-      {metaInfo.ogTitle && <h4 className={ogTitle}>{metaInfo.ogTitle}</h4>}
-      {linkUrl && <p className={linkUrlStyle}>{linkUrl}</p>}
+      {metaInfo?.ogTitle && <h4 className={ogTitle}>{metaInfo.ogTitle}</h4>}
+      <p className={linkUrlStyle}>{linkUrl}</p>
     </Link>
   );
 };

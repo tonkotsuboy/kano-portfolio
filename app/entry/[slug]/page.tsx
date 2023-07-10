@@ -85,7 +85,7 @@ const Page: NextPage<Params> = async ({ params }) => {
         )}
 
         {/* リンクカード */}
-        {entryData.url && entryData.metaInfo && (
+        {entryData.url && (
           <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
         )}
       </EntryArticle>
