@@ -21,7 +21,7 @@ export const container = style({
   },
 });
 
-export const menuButton = style({
+export const overlayNavigation = style({
   "@container": {
     "(800px < width)": {
       display: "none",
@@ -64,29 +64,6 @@ export const job = style({
   },
 });
 
-export const category = style({
-  display: "none",
-  gap: vars.spacing["8px"],
-  "@container": {
-    "(800px < width)": {
-      display: "grid",
-    },
-  },
-});
-
-export const categoryHeading = style({
-  fontSize: vars.font.size.l,
-  fontWeight: "bold",
-  color: "#4c4f5b",
-  paddingLeft: vars.spacing["24px"],
-});
-
-export const categoryList = style({
-  display: "grid",
-  gap: vars.spacing["8px"],
-  gridAutoRows: vars.spacing["32px"],
-});
-
 export const slug = style({
   display: "flex",
   alignItems: "center",
@@ -96,5 +73,13 @@ export const slug = style({
   color: vars.color.secondary,
   ":hover": {
     backgroundColor: "#f3f6fb",
+  },
+});
+
+export const sideNavigation = style({
+  "@container": {
+    "(width <= 800px)": {
+      display: "none",
+    },
   },
 });

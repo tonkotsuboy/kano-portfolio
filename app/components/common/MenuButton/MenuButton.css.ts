@@ -50,5 +50,5 @@ export const border2Closed = style({
 });
 
 export const border3Closed = style({
-  transform: "translate(0, 5px) rotate(45deg)",
+  transform: "translate(0, -5px) rotate(-45deg)",
 });
