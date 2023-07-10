@@ -81,19 +81,7 @@ if (!self.define) {
     });
   };
 }
-define("./sw.js",['./workbox-202dc43a'], function (workbox) { 'use strict';
-
-  /**
-  * Welcome to your Workbox-powered service worker!
-  *
-  * You'll need to register this file in your web app.
-  * See https://goo.gl/nhQhGp
-  *
-  * The rest of the code is auto-generated. Please don't update this file
-  * directly; instead, make changes to your Workbox build configuration
-  * and re-run your build process.
-  * See https://goo.gl/2aRDsh
-  */
+define("./sw.js",['./workbox-507bad30'], function (workbox) { 'use strict';
 
   importScripts();
   self.skipWaiting();
@@ -114,7 +102,6 @@ define("./sw.js",['./workbox-202dc43a'], function (workbox) { 'use strict';
             headers: response.headers
           });
         }
-
         return response;
       }
     }]

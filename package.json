@@ -7,8 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "yarn run build && next export",
-    "lint": "yarn run lint:js && yarn run lint:js",
+    "export": "npm run build && next export",
+    "lint": "npm run lint:js && npm run lint:js",
     "lint:js": "eslint --ext .tsx . --fix",
     "lint-fix:css": "stylelint \"**/*.module.scss\" --fix",
     "test": "jest --no-cache"
@@ -62,5 +62,8 @@
     "stylelint-webpack-plugin": "3.0.1",
     "ts-jest": "^27.0.5",
     "typescript": "^4.4.3"
+  },
+  "volta": {
+    "node": "16.20.1"
   }
 }
