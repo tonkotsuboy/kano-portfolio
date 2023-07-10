@@ -67,6 +67,7 @@ export const ogTitle = style({
 export const linkUrl = style({
   gridArea: "url",
   display: "grid",
+  justifyContent: "start",
   gap: "4px",
   gridAutoFlow: "column",
   alignItems: "center",
