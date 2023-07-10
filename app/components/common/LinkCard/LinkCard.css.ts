@@ -6,13 +6,18 @@ export const linkCard = style({
   gridTemplate: `
       "thumbs title" auto
       "thumbs url"  auto /
-      auto 1fr`,
+      140px 1fr`,
   overflow: "hidden",
   background: "#ffffff",
   border: "1px solid rgba(48, 55, 120, 0.2)",
   borderRadius: "14px",
   height: "120px",
+  paddingRight: vars.spacing["16px"],
   gap: `${vars.spacing["8px"]} ${vars.spacing["24px"]}`,
+  color: vars.color.secondary,
+  ":hover": {
+    color: vars.color.primary,
+  },
 });
 
 export const ogImage = style({
@@ -27,8 +32,13 @@ export const ogTitle = style({
   gridArea: "title",
   fontSize: vars.font.size.base,
   fontWeight: "normal",
-  color: vars.color.secondary,
   alignSelf: "end",
+  overflow: "hidden",
+  display: "-webkit-box",
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  "-webkit-box-orient": "vertical",
+  "-webkit-line-clamp": "2",
 });
 
 export const linkUrl = style({
@@ -37,7 +47,6 @@ export const linkUrl = style({
   gap: "4px",
   alignItems: "center",
   fontSize: vars.font.size.s,
-  color: vars.color.secondary,
   alignSelf: "start",
   selectors: {
     "&::before": {
