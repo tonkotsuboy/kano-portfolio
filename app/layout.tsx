@@ -15,7 +15,6 @@ import type { Metadata, NextPage } from "next";
 import { main, root, wrapper } from "./layout.css";
 import "./styles/reset.css";
 import "./styles/base.css";
-import { GoogleAnalytics } from "./components/common/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: SiteTitle,
@@ -62,7 +61,7 @@ const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
             <main className={main}>{children}</main>
           </div>
         </div>
-        <GoogleAnalytics />
+        {/*<GoogleAnalytics />*/}
       </body>
     </html>
   );
