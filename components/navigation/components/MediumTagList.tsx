@@ -25,35 +25,33 @@ const MediumTagList: VFC<Props> = ({
   <div>
     <ul className={styles.about}>
       <li>
-        <Link href="/about">
-          <a
-            className={classNames(
-              styles.slug,
-              isSelectedAbout ? styles.slug__selected : null
-            )}
-          >
-            自己紹介
-          </a>
+        <Link
+          href="/about"
+          className={classNames(
+            styles.slug,
+            isSelectedAbout ? styles.slug__selected : null
+          )}
+        >
+          自己紹介
         </Link>
       </li>
     </ul>
     <ul className={styles.mediumList}>
       <li>
-        <Link href="/">
-          <a className={styles.slug}>すべての実績</a>
+        <Link href="/" className={styles.slug}>
+          すべての実績
         </Link>
       </li>
       {mediumDataList.map(({ name, slug }) => (
         <li key={slug}>
-          <Link href={`/medium/${slug}`}>
-            <a
-              className={classNames(
-                styles.slug,
-                selectedMedium === slug ? styles.slug__selected : null
-              )}
-            >
-              {name}
-            </a>
+          <Link
+            href={`/medium/${slug}`}
+            className={classNames(
+              styles.slug,
+              selectedMedium === slug ? styles.slug__selected : null
+            )}
+          >
+            {name}
           </Link>
         </li>
       ))}
@@ -62,15 +60,14 @@ const MediumTagList: VFC<Props> = ({
     <ul className={styles.tagList}>
       {tagDataList.map(({ name, slug }) => (
         <li key={slug}>
-          <Link href={`/tag/${slug}`}>
-            <a
-              className={classNames(
-                styles.slug,
-                selectedTag === slug ? styles.slug__selected : null
-              )}
-            >
-              #{name}
-            </a>
+          <Link
+            href={`/tag/${slug}`}
+            className={classNames(
+              styles.slug,
+              selectedTag === slug ? styles.slug__selected : null
+            )}
+          >
+            #{name}
           </Link>
         </li>
       ))}
