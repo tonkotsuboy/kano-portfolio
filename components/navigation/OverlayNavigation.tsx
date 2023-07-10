@@ -1,7 +1,6 @@
-import * as React from "react";
-import { HTMLAttributes, VFC } from "react";
+import { HTMLAttributes, FC } from "react";
 import { useSelector } from "react-redux";
-import classNames from "classnames";
+import clsx from "clsx";
 import styles from "./OverlayNavigation.module.scss";
 import { RootState } from "../../store";
 import NavigationInner from "./components/NavigationInner";
@@ -13,7 +12,7 @@ type Props = Pick<HTMLAttributes<HTMLElement>, "className">;
  * @param className
  * @constructor
  */
-export const OverlayNavigation: VFC<Props> = ({ className }) => {
+export const OverlayNavigation: FC<Props> = ({ className }) => {
   const navigationIsOpened = useSelector<
     RootState,
     RootState["navigationIsOpened"]
@@ -21,7 +20,7 @@ export const OverlayNavigation: VFC<Props> = ({ className }) => {
 
   return (
     <nav
-      className={classNames(
+      className={clsx(
         className,
         styles.overlayNavigation,
         navigationIsOpened ? styles.isNavigationOpened : null

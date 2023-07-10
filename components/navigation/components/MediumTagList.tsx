@@ -1,6 +1,6 @@
 import Link from "next/link";
-import classNames from "classnames";
-import { VFC } from "react";
+import { FC } from "react";
+import clsx from "clsx";
 import styles from "./MediumTagList.module.scss";
 import { MediumType } from "../../../types/MediumType";
 import { TagType } from "../../../types/TagType";
@@ -15,7 +15,7 @@ type Props = {
   selectedTag?: string;
 };
 
-const MediumTagList: VFC<Props> = ({
+const MediumTagList: FC<Props> = ({
   mediumDataList,
   tagDataList,
   isSelectedAbout,
@@ -27,7 +27,7 @@ const MediumTagList: VFC<Props> = ({
       <li>
         <Link
           href="/about"
-          className={classNames(
+          className={clsx(
             styles.slug,
             isSelectedAbout ? styles.slug__selected : null
           )}
@@ -46,7 +46,7 @@ const MediumTagList: VFC<Props> = ({
         <li key={slug}>
           <Link
             href={`/medium/${slug}`}
-            className={classNames(
+            className={clsx(
               styles.slug,
               selectedMedium === slug ? styles.slug__selected : null
             )}
@@ -62,7 +62,7 @@ const MediumTagList: VFC<Props> = ({
         <li key={slug}>
           <Link
             href={`/tag/${slug}`}
-            className={classNames(
+            className={clsx(
               styles.slug,
               selectedTag === slug ? styles.slug__selected : null
             )}

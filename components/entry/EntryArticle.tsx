@@ -1,6 +1,5 @@
-import * as React from "react";
-import { ReactNode, VFC } from "react";
-import classNames from "classnames";
+import { ReactNode, FC } from "react";
+import clsx from "clsx";
 import { EntryType } from "../../types/EntryType";
 import styles from "./EntryArticle.module.scss";
 import { parseDate } from "../../logics/date/parseDate";
@@ -14,13 +13,13 @@ type Props = {
 /**
  * 各記事のエントリー
  */
-export const EntryArticle: VFC<Props> = ({
+export const EntryArticle: FC<Props> = ({
   children,
   entryData: { keyvisual, published_date, title, medium, tags },
   isLinkEntry = false,
 }) => (
   <article
-    className={classNames(styles.entry, isLinkEntry ? styles.linkEntry : null)}
+    className={clsx(styles.entry, isLinkEntry ? styles.linkEntry : null)}
   >
     {isLinkEntry && keyvisual && (
       <picture className={styles.keyvisual}>

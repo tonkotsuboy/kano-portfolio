@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import { FC } from "react";
 import { EntryType } from "../../types/EntryType";
 import { EntryArticle } from "../entry/EntryArticle";
 import styles from "./DetailArticle.module.scss";
@@ -13,7 +13,7 @@ type Props = {
  * 記事詳細
  * @param entryData
  */
-const DetailArticle: VFC<Props> = ({ entryData }) => (
+const DetailArticle: FC<Props> = ({ entryData }) => (
   <EntryArticle entryData={entryData}>
     {/* ビデオ */}
     {entryData.videoUrl && (

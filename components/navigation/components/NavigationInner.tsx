@@ -1,5 +1,5 @@
-import { HTMLAttributes, useContext, VFC } from "react";
-import classNames from "classnames";
+import { HTMLAttributes, useContext, FC } from "react";
+import clsx from "clsx";
 import MediumTagList from "./MediumTagList";
 import { IndexContext } from "../../../contexts/IndexContext";
 import { Author } from "../../common/Author";
@@ -11,10 +11,7 @@ type Props = {
   isVisibleProfile?: boolean;
 } & Pick<HTMLAttributes<HTMLElement>, "className">;
 
-const NavigationInner: VFC<Props> = ({
-  className,
-  isVisibleProfile = true,
-}) => {
+const NavigationInner: FC<Props> = ({ className, isVisibleProfile = true }) => {
   const {
     mediumDataList,
     tagDataList,
@@ -28,7 +25,7 @@ const NavigationInner: VFC<Props> = ({
   }
 
   return (
-    <div className={classNames(className, styles.navigationInner)}>
+    <div className={clsx(className, styles.navigationInner)}>
       {isVisibleProfile && (
         <>
           <Author />

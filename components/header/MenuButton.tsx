@@ -1,6 +1,5 @@
-import * as React from "react";
-import { HTMLAttributes, VFC } from "react";
-import classNames from "classnames";
+import { HTMLAttributes, FC } from "react";
+import clsx from "clsx";
 import styles from "./MenuButton.module.scss";
 
 type Props = {
@@ -12,22 +11,22 @@ type Props = {
 /**
  * 閉じるボタン用コンポーネント
  */
-export const MenuButton: VFC<Props> = ({
+export const MenuButton: FC<Props> = ({
   className,
   isClosedStyle,
   onClick,
 }) => (
   <button
     type="button"
-    className={classNames(
+    className={clsx(
       className,
       styles.menuButton,
       isClosedStyle ? styles.menuButton__closed : null
     )}
     onClick={onClick}
   >
-    <div className={classNames(styles.border, styles.border1)} />
-    <div className={classNames(styles.border, styles.border2)} />
-    <div className={classNames(styles.border, styles.border3)} />
+    <div className={clsx(styles.border, styles.border1)} />
+    <div className={clsx(styles.border, styles.border2)} />
+    <div className={clsx(styles.border, styles.border3)} />
   </button>
 );

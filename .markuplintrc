@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "markuplint:recommended"
+  ],
+  "parser": {
+    ".[jt]sx?$": "@markuplint/jsx-parser"
+  },
+  "specs": {
+    ".[jt]sx?$": "@markuplint/react-spec"
+  },
+  "nodeRules": [
+    {
+      "selector": "img",
+      "rules": {
+        "required-attr": [
+          "alt",
+          "src"
+        ]
+      }
+    }
+  ]
+}
