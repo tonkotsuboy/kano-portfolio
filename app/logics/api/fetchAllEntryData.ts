@@ -45,13 +45,16 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
     });
 
   await Promise.allSettled(
-    (result as EntryType[]).map(async (entry) => {
-      if (entry.url) {
-        const htmlText = await fetchHTMLText(entry.url);
-        const htmlDocument = creteHTMLDocument(htmlText);
-        entry.metaInfo = parseMetaInfo(htmlDocument);
-      }
-    }),
+    (result as EntryType[])
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      .filter((_, index) => index < 10)
+      .map(async (entry) => {
+        if (entry.url) {
+          const htmlText = await fetchHTMLText(entry.url);
+          const htmlDocument = creteHTMLDocument(htmlText);
+          entry.metaInfo = parseMetaInfo(htmlDocument);
+        }
+      }),
   );
 
   return result;
