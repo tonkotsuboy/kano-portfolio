@@ -54,6 +54,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "media.licdn.com",
       },
+      {
+        protocol: "https",
+        hostname: "techfeed.io",
+      },
+      {
+        protocol: "https",
+        hostname: "findy-code-images.s3.ap-northeast-1.amazonaws.com",
+      },
     ],
   },
 };
