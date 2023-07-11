@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import Head from "next/head";
 import {
   basicDescription,
   ogImageUrl,
@@ -50,10 +49,9 @@ const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
 
   return (
     <html lang="ja">
-      <Head>
-        <meta charSet="utf-8" />
+      <head>
         <link rel="apple-touch-icon" href="/apple-icon.png" />
-      </Head>
+      </head>
       <body>
         <div className={root}>
           <div className={wrapper}>
