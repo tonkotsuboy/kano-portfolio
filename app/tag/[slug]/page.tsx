@@ -54,7 +54,7 @@ export const generateMetadata = async ({
 const Page: NextPage<Params> = async ({ params }) => {
   const { entryDataList } = await getEntryData(params.slug);
 
-  await getMetaDataForEntryDataList(entryDataList);
+  await getMetaDataForEntryDataList(entryDataList, 12);
 
   return (
     <div className={container}>
