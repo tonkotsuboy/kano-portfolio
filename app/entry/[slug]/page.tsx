@@ -10,9 +10,7 @@ import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
 import { LinkCard } from "../../components/common/LinkCard";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
-import { fetchHTMLText } from "../../logics/scraping/fetchHTMLText";
-import { creteHTMLDocument } from "../../logics/scraping/creteHTMLDocument";
-import { parseMetaInfo } from "../../logics/scraping/parseMetaInfo";
+import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const portfolioData = await fetchAllEntryData();
@@ -26,11 +24,7 @@ const getEntryData = async (slug: string) => {
     throw new Error("entryData is null");
   }
 
-  if (entryData.url) {
-    const htmlText = await fetchHTMLText(entryData.url);
-    const htmlDocument = creteHTMLDocument(htmlText);
-    entryData.metaInfo = parseMetaInfo(htmlDocument);
-  }
+  await getMetaDataForEntryDataList([entryData]);
 
   return {
     entryData,

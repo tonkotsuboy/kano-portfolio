@@ -4,25 +4,13 @@ import { EntryList } from "./components/concerns/EntryList";
 import { fetchAllEntryData } from "./logics/api/fetchAllEntryData";
 import { Copyright } from "./components/concerns/Copyright";
 import { container } from "./page.css";
-import { fetchHTMLText } from "./logics/scraping/fetchHTMLText";
-import { creteHTMLDocument } from "./logics/scraping/creteHTMLDocument";
-import { parseMetaInfo } from "./logics/scraping/parseMetaInfo";
+import { getMetaDataForEntryDataList } from "./logics/scraping/getMetaDataForEntryDataList";
 
 const getEntryData = async (): Promise<{
   entryDataList: EntryType[];
 }> => {
   const entryDataList = await fetchAllEntryData();
-
-  await Promise.allSettled(
-    entryDataList.map(async (entry) => {
-      if (entry.url) {
-        const htmlText = await fetchHTMLText(entry.url);
-        const htmlDocument = creteHTMLDocument(htmlText);
-        entry.metaInfo = parseMetaInfo(htmlDocument);
-      }
-    }),
-  );
-
+  await getMetaDataForEntryDataList(entryDataList);
   return {
     entryDataList,
   };
