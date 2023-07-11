@@ -24,8 +24,6 @@ const getEntryData = async (slug: string) => {
     throw new Error("entryData is null");
   }
 
-  await getMetaDataForEntryDataList([entryData]);
-
   return {
     entryData,
   };
@@ -56,6 +54,8 @@ export const generateMetadata = async ({
 
 const Page: NextPage<Params> = async ({ params }) => {
   const { entryData } = await getEntryData(params.slug);
+
+  await getMetaDataForEntryDataList([entryData]);
 
   return (
     <div className={container}>
