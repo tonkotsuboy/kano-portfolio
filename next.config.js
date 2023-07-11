@@ -1,8 +1,12 @@
 const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
+const withPWA = require("next-pwa")({
+  dest: "public",
+});
 const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   swcMinify: true,
   images: {
     remotePatterns: [
@@ -66,4 +70,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withVanillaExtract(nextConfig);
+module.exports = withPWA(withVanillaExtract(nextConfig));
