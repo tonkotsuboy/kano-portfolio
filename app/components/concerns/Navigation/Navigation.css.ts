@@ -9,11 +9,19 @@ export const container = style({
   boxShadow: "2px 0 4px rgba(48,55,120,.05)",
   zIndex: 1,
   placeContent: "center stretch",
-  position: "relative",
+  position: "sticky",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "80px",
   gridTemplateColumns: `1fr auto 1fr`,
+  backgroundColor: "#fff",
 
   "@container": {
     "(800px < width)": {
+      width: "auto",
+      height: "auto",
+      position: "relative",
       gridTemplate: "none",
       placeContent: "start",
       padding: `${vars.spacing["64px"]} ${vars.spacing["24px"]} ${vars.spacing["24px"]}`,
