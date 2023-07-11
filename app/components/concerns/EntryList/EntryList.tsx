@@ -5,8 +5,8 @@ import type { EntryType } from "../../../types/EntryType";
 import { entryList, listTitle as listTitleStyle } from "./EntryList.css";
 
 type Props = {
-  listTitle?: string;
   entryDataList: EntryType[];
+  listTitle?: string;
 };
 
 export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
