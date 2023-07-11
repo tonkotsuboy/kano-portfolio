@@ -7,6 +7,7 @@ import { Copyright } from "../../components/concerns/Copyright";
 import { fetchMedia } from "../../logics/api/fetchMedia";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
+import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const mediumData = await fetchMedia();
@@ -21,6 +22,8 @@ const getEntryData = async (slug: string) => {
       // paramのmediaが含まれているかどうか？
       entryData.medium?.slug === slug,
   );
+
+  await getMetaDataForEntryDataList(entryDataList);
 
   return {
     entryDataList,

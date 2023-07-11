@@ -7,6 +7,7 @@ import { Copyright } from "../../components/concerns/Copyright";
 import { fetchTagList } from "../../logics/api/fetchTagList";
 import { metadata } from "../../layout";
 import { WithSiteTitle } from "../../constants";
+import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const tagData = await fetchTagList();
@@ -22,6 +23,8 @@ const getEntryData = async (slug: string) => {
     // タグ内に、paramのタグが含まれているかどうか？
     return entryData.tags?.some((tagData) => tagData.slug === slug);
   });
+
+  await getMetaDataForEntryDataList(entryDataList);
 
   return {
     entryDataList,
