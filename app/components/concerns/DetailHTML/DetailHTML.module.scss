@@ -1,4 +1,8 @@
 .detailHTML {
+  * {
+    word-break: break-all;
+  }
+
   p,
   img {
     margin-bottom: 1rem;
