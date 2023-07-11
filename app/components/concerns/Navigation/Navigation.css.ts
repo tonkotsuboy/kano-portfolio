@@ -31,7 +31,8 @@ export const overlayNavigation = style({
 
 export const profile = style({
   display: "flex",
-  alignItems: "center",
+  alignSelf: "center",
+  alignItems: "baseline",
   gap: vars.spacing["8px"],
   "@container": {
     "(800px < width)": {
@@ -57,6 +58,7 @@ export const author = style({
 export const job = style({
   color: vars.color.primary,
   fontSize: vars.font.size.xs,
+
   "@container": {
     "(800px < width)": {
       fontSize: vars.font.size.s,
