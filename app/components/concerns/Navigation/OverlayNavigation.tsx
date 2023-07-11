@@ -33,6 +33,15 @@ const _OverlayNavigation: ForwardRefRenderFunction<HTMLDialogElement, Props> = (
       isClosed={true}
     />
     <div className={category}>
+      <ul className={categoryList}>
+        <li>
+          <Link href="/about" className={slug} onClick={onChangePage}>
+            自己紹介
+          </Link>
+        </li>
+      </ul>
+    </div>
+    <div className={category}>
       <h2 className={categoryHeading}>カテゴリ</h2>
       <ul className={categoryList}>
         <li>
