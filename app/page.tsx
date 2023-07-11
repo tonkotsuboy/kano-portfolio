@@ -10,7 +10,6 @@ const getEntryData = async (): Promise<{
   entryDataList: EntryType[];
 }> => {
   const entryDataList = await fetchAllEntryData();
-  await getMetaDataForEntryDataList(entryDataList);
   return {
     entryDataList,
   };
@@ -18,6 +17,7 @@ const getEntryData = async (): Promise<{
 
 const Page: NextPage = async () => {
   const { entryDataList } = await getEntryData();
+  await getMetaDataForEntryDataList(entryDataList);
 
   return (
     <div className={container}>

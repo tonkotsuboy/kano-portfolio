@@ -23,8 +23,6 @@ const getEntryData = async (slug: string) => {
       entryData.medium?.slug === slug,
   );
 
-  await getMetaDataForEntryDataList(entryDataList);
-
   return {
     entryDataList,
   };
@@ -36,7 +34,6 @@ export const generateMetadata = async ({
   params,
 }: Params): Promise<Metadata> => {
   const { entryDataList } = await getEntryData(params.slug);
-
   const title = `${entryDataList[0]?.medium?.name ?? ""}${WithSiteTitle}`;
 
   return {
@@ -55,6 +52,8 @@ export const generateMetadata = async ({
 
 const Page: NextPage<Params> = async ({ params }) => {
   const { entryDataList } = await getEntryData(params.slug);
+
+  await getMetaDataForEntryDataList(entryDataList, 12);
 
   return (
     <div className={container}>
