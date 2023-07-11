@@ -8,7 +8,7 @@ export const container = style({
   borderRadius: "14px",
   border: "1px solid rgba(48, 55, 120, 0.2)",
   boxShadow: "2px 8px 30px rgba(48, 55, 120, 0.04)",
-  paddingBlock: vars.spacing["40px"],
+  paddingBlock: vars.spacing["64px"],
   selectors: {
     "&[open]": {
       display: "grid",
