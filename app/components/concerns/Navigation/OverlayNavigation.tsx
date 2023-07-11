@@ -15,11 +15,11 @@ import { MenuButton } from "../../common/MenuButton";
 import clsx from "clsx";
 
 type Props = {
-  ref: Ref<HTMLDialogElement>;
   mediumDataList: MediumType[];
-  tagDataList: TagType[];
-  onClickCloseButton: () => void;
   onChangePage: () => void;
+  onClickCloseButton: () => void;
+  ref: Ref<HTMLDialogElement>;
+  tagDataList: TagType[];
 } & Pick<HTMLAttributes<HTMLElement>, "className">;
 
 const _OverlayNavigation: ForwardRefRenderFunction<HTMLDialogElement, Props> = (

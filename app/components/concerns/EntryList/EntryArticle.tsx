@@ -18,9 +18,9 @@ import Image from "next/image";
 import { createHttpsImage } from "../../../utils";
 
 type Props = {
+  children?: ReactNode;
   entryData: EntryType;
   isLinkEntry?: boolean;
-  children?: ReactNode;
 };
 
 /**

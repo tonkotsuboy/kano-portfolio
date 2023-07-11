@@ -4,21 +4,21 @@ import type { TagType } from "./TagType";
 import type { MediumType } from "./MediumType";
 
 export type EntryType = {
-  slug: string;
+  detail?: Document;
   id: string;
-  title?: string;
-  published_date?: string;
-  url?: string;
+  medium: MediumType | undefined;
   metaInfo?:
     | {
-        ogTitle: string | null;
-        ogImage: string | null;
         ogDescription: string | null;
+        ogImage: string | null;
+        ogTitle: string | null;
       }
     | undefined;
-  detail?: Document;
-  tags?: TagType[];
-  medium: MediumType | undefined;
-  videoUrl?: string;
+  published_date?: string;
   slide?: Asset<"WITHOUT_UNRESOLVABLE_LINKS"> | undefined;
+  slug: string;
+  tags?: TagType[];
+  title?: string;
+  url?: string;
+  videoUrl?: string;
 };
