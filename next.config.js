@@ -8,6 +8,11 @@ const withVanillaExtract = createVanillaExtractPlugin();
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
   staticPageGenerationTimeout: 240,
   images: {
     remotePatterns: [
