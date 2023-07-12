@@ -25,6 +25,7 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
               href={entryData.url}
               target="_blank"
               aria-label={entryData.title}
+              prefetch={false}
             >
               <EntryArticle entryData={entryData} isLinkEntry={true} />
             </Link>
