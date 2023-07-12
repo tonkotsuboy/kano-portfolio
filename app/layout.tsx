@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   icons: ["/favicon.ico", "/favicon-16x16.png", "/favicon-32x32.png"],
   manifest: "/manifest.json",
   themeColor: "#3f3f9d",
+  referrer: "no-referrer",
   description: basicDescription,
   metadataBase: new URL("https://kano.codes"),
   twitter: {
