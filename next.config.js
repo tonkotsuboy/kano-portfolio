@@ -4,6 +4,7 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
+  staticPageGenerationTimeout: 240,
   images: {
     remotePatterns: [
       {
