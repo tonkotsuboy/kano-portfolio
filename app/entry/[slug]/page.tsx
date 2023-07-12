@@ -23,7 +23,7 @@ const getEntryData = async (slug: string) => {
   const entryData = await fetchEntryData(slug);
 
   if (entryData == null) {
-    throw new Error("entryData is null");
+    return Promise.reject("entryData is null");
   }
 
   return {
