@@ -14,7 +14,9 @@ import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataFo
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const portfolioData = await fetchAllEntryData();
-  return portfolioData.map((entry) => `/entry/${entry.slug}`);
+  return portfolioData
+    .filter((entry) => entry.medium?.slug !== "writing")
+    .map((entry) => `/entry/${entry.slug}`);
 };
 
 const getEntryData = async (slug: string) => {
