@@ -1,8 +1,6 @@
 const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
 const withPWA = require("next-pwa")({
   dest: "public",
-  register: true,
-  skipWaiting: true,
 });
 const withVanillaExtract = createVanillaExtractPlugin();
 
@@ -10,6 +8,11 @@ const withVanillaExtract = createVanillaExtractPlugin();
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
   staticPageGenerationTimeout: 240,
   images: {
     remotePatterns: [
