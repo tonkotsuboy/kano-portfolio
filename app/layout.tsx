@@ -51,6 +51,7 @@ const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
   return (
     <html lang="ja">
       <head>
+        <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
       <body>
