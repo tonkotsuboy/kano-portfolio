@@ -25,8 +25,7 @@ const AboutPage: NextPage = () => {
       <p>鹿野 壮（かの たけし）といいます。</p>
       <p>
         九州大学芸術工学部音響設計学科を卒業後、Money
-        Forwardでフロントエンドの仕事をしています。とくにTypeScript・JavaScriptが好きで、暇があればコードを書いています。勉強会・技術SNS・ICS
-        MEDIA・Twitterなどで積極的に技術情報を発信中。
+        Forwardでフロントエンドの仕事をしています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
       </p>
       <p>
         CSS Nite 2017〜2019ベストセッション受賞。
@@ -99,20 +98,9 @@ const AboutPage: NextPage = () => {
             TechFeed
           </Link>
         </li>
-      </ul>
-      <h2 className={h2}>作品</h2>
-      <ul>
         <li>
           <Link href="https://codepen.io/tonkotsuboy" target="_blank">
             codepen
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://qiita.com/tonkotsuboy_com/items/cb9e9254a888455b9f8b"
-            target="_blank"
-          >
-            #今日のスダクリエイト
           </Link>
         </li>
       </ul>
@@ -132,8 +120,17 @@ const AboutPage: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h2 className={h2}>寄稿</h2>
+      <h2 className={h2}>インタビュー・寄稿</h2>
       <ul>
+        <li>
+          <Link
+            href="https://findy-code.io/engineer-lab/tonkotsuboy-output"
+            target="_blank"
+          >
+            術発信していますか？アウトプットをするのが嫌だったソフトウェアエンジニアが登壇中毒になるまでの話
+            - Findy Engineer Lab
+          </Link>
+        </li>
         <li>
           <Link
             href="https://ascii.jp/elem/000/001/546/1546451/"
@@ -145,18 +142,24 @@ const AboutPage: NextPage = () => {
       </ul>
       <h2>使用可能なスキル</h2>
       <ul>
-        <li>TypeScript</li>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Next.js</li>
-        <li>Angular</li>
-        <li>NuxtJS</li>
-        <li>Vue.js</li>
         <li>HTML</li>
         <li>CSS</li>
-        <li>git</li>
-        <li>Open API</li>
+        <li>JavaScript（〜ES2023）</li>
+        <li>TypeScript</li>
+        <li>React</li>
+        <li>Next.js</li>
+        <li>Recoil</li>
+        <li>Redux</li>
+        <li>Storybook</li>
+        <li>msw</li>
+        <li>NuxtJS</li>
+        <li>Vue.js</li>
+        <li>Angular</li>
+        <li>Sass</li>
+        <li>vanilla-extract CSS</li>
+        <li>CSS Modules</li>
         <li>ActionScript 3.0</li>
+        <li>git</li>
         <li>その他フロントエンド技術全般</li>
       </ul>
     </div>
