@@ -4,6 +4,11 @@ const withVanillaExtract = createVanillaExtractPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
   staticPageGenerationTimeout: 240,
   images: {
     remotePatterns: [
