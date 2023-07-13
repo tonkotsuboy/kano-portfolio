@@ -26,13 +26,6 @@ dd {
   margin: 0;
 }
 
-body {
-  min-height: 100vh;
-  color: #30345f;
-  line-height: 1.5;
-  text-rendering: optimizespeed;
-}
-
 ul,
 ol {
   list-style: none;
@@ -56,10 +49,6 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-img:not([alt]) {
-  filter: blur(10px);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -10,6 +10,7 @@ globalStyle("body", {
     "Hiragino Sans", Meiryo, sans-serif`,
   textRendering: "optimizeSpeed",
   lineHeight: "1.8",
+  minHeight: "100dvh",
   color: vars.color.text,
 });
 
