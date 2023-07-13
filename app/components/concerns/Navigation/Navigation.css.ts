@@ -29,6 +29,17 @@ export const container = style({
   },
 });
 
+export const navInner = style({
+  display: "contents",
+  "@container": {
+    "(800px < width)": {
+      display: "block",
+      position: "sticky",
+      top: 0,
+    },
+  },
+});
+
 export const overlayNavigation = style({
   "@container": {
     "(800px < width)": {

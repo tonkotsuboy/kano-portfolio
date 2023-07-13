@@ -5,6 +5,7 @@ import {
   author,
   container,
   job,
+  navInner,
   overlayNavigation,
   profile,
   sideNavigation,
@@ -24,22 +25,24 @@ type Props = {
 export const Navigation: FC<Props> = ({ mediumDataList, tagDataList }) => {
   return (
     <nav className={container}>
-      <OverLayMenu
-        mediumDataList={mediumDataList}
-        tagDataList={tagDataList}
-        className={overlayNavigation}
-      />
-      <div className={profile}>
-        <Link href="/" className={author}>
-          Takeshi Kano
-        </Link>
-        <p className={job}>Frontend Developer</p>
+      <div className={navInner}>
+        <OverLayMenu
+          mediumDataList={mediumDataList}
+          tagDataList={tagDataList}
+          className={overlayNavigation}
+        />
+        <div className={profile}>
+          <Link href="/" className={author}>
+            Takeshi Kano
+          </Link>
+          <p className={job}>Frontend Developer</p>
+        </div>
+        <SideNavigation
+          className={sideNavigation}
+          mediumDataList={mediumDataList}
+          tagDataList={tagDataList}
+        />
       </div>
-      <SideNavigation
-        className={sideNavigation}
-        mediumDataList={mediumDataList}
-        tagDataList={tagDataList}
-      />
     </nav>
   );
 };
