@@ -56,6 +56,11 @@ export const tagList = style({
 export const tag = style({
   fontSize: vars.font.size.xs,
   color: vars.color.secondary,
+  selectors: {
+    [`${linkEntry}:hover &`]: {
+      color: vars.color.primary,
+    },
+  },
 });
 
 export const title = style({
@@ -64,6 +69,11 @@ export const title = style({
   fontWeight: "bold",
   lineHeight: "150%",
   color: vars.color.text,
+  selectors: {
+    [`${linkEntry}:hover &`]: {
+      color: vars.color.primary,
+    },
+  },
 });
 
 export const link = style({
@@ -76,4 +86,9 @@ export const publishedDate = style({
   display: "block",
   fontSize: vars.font.size.xs,
   color: vars.color.text,
+  selectors: {
+    [`${linkEntry}:hover &`]: {
+      color: vars.color.primary,
+    },
+  },
 });

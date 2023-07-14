@@ -32,7 +32,7 @@ export const EntryArticle: FC<Props> = ({
   isLinkEntry = false,
 }) => {
   return (
-    <article className={clsx(entry, isLinkEntry ? linkEntry : null)}>
+    <div className={clsx(entry, isLinkEntry && linkEntry)}>
       {isLinkEntry && metaInfo?.ogImage && (
         <Image
           className={keyvisualStyle}
@@ -63,6 +63,6 @@ export const EntryArticle: FC<Props> = ({
         )}
         {children}
       </div>
-    </article>
+    </div>
   );
 };
