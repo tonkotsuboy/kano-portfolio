@@ -1,8 +1,22 @@
 import type { FC } from "react";
 import Link from "next/link";
-import { EntryArticle } from "./EntryArticle";
 import type { EntryType } from "../../../types/EntryType";
-import { entryList, listTitle as listTitleStyle } from "./EntryList.css";
+import {
+  entryList,
+  header,
+  info,
+  keyvisual as keyvisualStyle,
+  link,
+  listTitle as listTitleStyle,
+  medium as mediumStyle,
+  publishedDate,
+  tag as tagStyle,
+  tagList,
+  title as titleStyle,
+} from "./EntryList.css";
+import Image from "next/image";
+import { createHttpsImage } from "../../../utils";
+import { parseDate } from "../../../logics/date/parseDate";
 
 type Props = {
   entryDataList: EntryType[];
@@ -14,30 +28,55 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
     <div className={entryList}>
       {listTitle && <h1 className={listTitleStyle}>{listTitle}</h1>}
       {entryDataList.map((entryData) => {
-        if (entryData.medium?.slug === "writing") {
-          if (entryData.url == null) {
-            throw new Error(`url is null ${entryData.id}`);
-          }
+        const isWriting = entryData.medium?.slug === "writing";
 
-          return (
-            <Link
-              key={entryData.id}
-              href={entryData.url}
-              target="_blank"
-              aria-label={entryData.title}
-            >
-              <EntryArticle entryData={entryData} isLinkEntry={true} />
-            </Link>
-          );
+        const href = isWriting ? entryData.url : `/entry/${entryData.slug}`;
+
+        if (href == null) {
+          throw new Error(`href is null.  entry id is ${entryData.id}`);
         }
+
+        const target = isWriting ? "_blank" : undefined;
+
+        const { metaInfo, medium, tags, title, published_date } = entryData;
 
         return (
           <Link
             key={entryData.id}
             href={`/entry/${entryData.slug}`}
             aria-label={entryData.title}
+            target={target}
+            className={link}
           >
-            <EntryArticle entryData={entryData} isLinkEntry={true} />
+            {metaInfo?.ogImage && (
+              <Image
+                className={keyvisualStyle}
+                src={createHttpsImage(metaInfo.ogImage)}
+                alt={metaInfo.ogTitle ?? ""}
+                width={960}
+                height={540}
+              />
+            )}
+            <div className={info}>
+              <header className={header}>
+                <p className={mediumStyle}>{medium?.name}</p>
+                <ul className={tagList}>
+                  {tags
+                    ?.sort((a, b) => a.order - b.order)
+                    .map(({ slug, name }) => (
+                      <li key={slug} className={tagStyle}>
+                        #{name}
+                      </li>
+                    ))}
+                </ul>
+              </header>
+              <h2 className={titleStyle}>{title}</h2>
+              {published_date && (
+                <time dateTime={published_date} className={publishedDate}>
+                  発表日：{parseDate(published_date)}
+                </time>
+              )}
+            </div>
           </Link>
         );
       })}
