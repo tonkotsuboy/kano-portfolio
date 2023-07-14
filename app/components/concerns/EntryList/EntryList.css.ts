@@ -58,9 +58,18 @@ export const tagList = style({
   marginLeft: "12px",
 });
 
+const hoverTextStyle = {
+  [`${link}:hover &`]: {
+    color: vars.color.primary,
+  },
+};
+
 export const tag = style({
   fontSize: vars.font.size.xs,
   color: vars.color.secondary,
+  selectors: {
+    ...hoverTextStyle,
+  },
 });
 
 export const title = style({
@@ -69,10 +78,16 @@ export const title = style({
   fontWeight: "bold",
   lineHeight: "150%",
   color: vars.color.text,
+  selectors: {
+    ...hoverTextStyle,
+  },
 });
 
 export const publishedDate = style({
   display: "block",
   fontSize: vars.font.size.xs,
   color: vars.color.text,
+  selectors: {
+    ...hoverTextStyle,
+  },
 });
