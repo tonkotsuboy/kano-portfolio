@@ -20,13 +20,13 @@ import { parseDate } from "../../../logics/date/parseDate";
 
 type Props = {
   entryDataList: EntryType[];
-  listTitle?: string;
+  listTitle: string;
 };
 
 export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
   return (
     <div className={entryList}>
-      {listTitle && <h1 className={listTitleStyle}>{listTitle}</h1>}
+      <h1 className={listTitleStyle}>{listTitle}</h1>
       {entryDataList.map((entryData) => {
         const isWriting = entryData.medium?.slug === "writing";
 
