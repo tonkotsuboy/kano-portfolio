@@ -54,11 +54,13 @@ export const generateMetadata = async ({
 const Page: NextPage<Params> = async ({ params }) => {
   const { entryDataList } = await getEntryData(params.slug);
 
+  const tagTitle = entryDataList[0]?.tags?.[0]?.name ?? "";
+
   await getMetaDataForEntryDataList(entryDataList, 12);
 
   return (
     <div className={container}>
-      <EntryList entryDataList={entryDataList} />
+      <EntryList listTitle={tagTitle} entryDataList={entryDataList} />
       <Copyright />
     </div>
   );

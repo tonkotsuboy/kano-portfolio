@@ -3,14 +3,24 @@ import {
   fetchAllEntryData,
   fetchEntryData,
 } from "../../logics/api/fetchAllEntryData";
-import { container, video } from "./page.css";
+import {
+  article,
+  container,
+  header,
+  medium as mediumStyle,
+  publishedDate,
+  tag as tagStyle,
+  tagList,
+  title as titleStyle,
+  video,
+} from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
-import { EntryArticle } from "../../components/concerns/EntryList";
 import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
 import { LinkCard } from "../../components/common/LinkCard";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
 import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
+import { parseDate } from "../../logics/date/parseDate";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const portfolioData = await fetchAllEntryData();
@@ -61,7 +71,26 @@ const Page: NextPage<Params> = async ({ params }) => {
 
   return (
     <div className={container}>
-      <EntryArticle entryData={entryData}>
+      <article className={article}>
+        <header className={header}>
+          <p className={mediumStyle}>{entryData.medium?.name}</p>
+          <ul className={tagList}>
+            {entryData.tags
+              ?.sort((a, b) => a.order - b.order)
+              .map(({ slug, name }) => (
+                <li key={slug} className={tagStyle}>
+                  #{name}
+                </li>
+              ))}
+          </ul>
+        </header>
+        <h2 className={titleStyle}>{entryData.title}</h2>
+        {entryData.published_date && (
+          <time dateTime={entryData.published_date} className={publishedDate}>
+            発表日：{parseDate(entryData.published_date)}
+          </time>
+        )}
+
         {/* ビデオ */}
         {entryData.videoUrl && (
           <iframe
@@ -84,7 +113,7 @@ const Page: NextPage<Params> = async ({ params }) => {
         {entryData.url && (
           <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
         )}
-      </EntryArticle>
+      </article>
 
       <Copyright />
     </div>

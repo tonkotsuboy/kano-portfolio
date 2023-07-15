@@ -21,7 +21,7 @@ const Page: NextPage = async () => {
 
   return (
     <div className={container}>
-      <EntryList entryDataList={entryDataList} />
+      <EntryList listTitle="すべての実績" entryDataList={entryDataList} />
       <Copyright />
     </div>
   );
