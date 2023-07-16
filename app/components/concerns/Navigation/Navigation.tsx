@@ -1,10 +1,12 @@
-import type { FC } from "react";
+import Link from "next/link";
+
+import * as styles from "./Navigation.css";
+import { OverLayMenu } from "./OverLayMenu";
+import { SideNavigation } from "./SideNavigation";
+
 import type { MediumType } from "../../../types/MediumType";
 import type { TagType } from "../../../types/TagType";
-import * as styles from "./Navigation.css";
-import Link from "next/link";
-import { SideNavigation } from "./SideNavigation";
-import { OverLayMenu } from "./OverLayMenu";
+import type { FC } from "react";
 
 type Props = {
   mediumDataList: MediumType[];

@@ -1,21 +1,24 @@
-import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
+
+import { GoogleAnalytics } from "./components/common/GoogleAnalytics";
+import { Navigation } from "./components/concerns/Navigation";
 import {
   basicDescription,
   ogImageUrl,
   SiteTitle,
   TwitterId,
 } from "./constants";
-import { Navigation } from "./components/concerns/Navigation";
-import type { MediumType } from "./types/MediumType";
-import type { TagType } from "./types/TagType";
+import * as styles from "./layout.css";
 import { fetchMedia } from "./logics/api/fetchMedia";
 import { fetchTagList } from "./logics/api/fetchTagList";
+
+import type { MediumType } from "./types/MediumType";
+import type { TagType } from "./types/TagType";
 import type { Metadata, NextPage } from "next";
-import * as styles from "./layout.css";
+import type { ReactNode } from "react";
+
 import "./styles/reset.css";
 import "./styles/base.css";
-import { GoogleAnalytics } from "./components/common/GoogleAnalytics";
-import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: SiteTitle,

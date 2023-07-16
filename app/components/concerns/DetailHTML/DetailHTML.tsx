@@ -1,14 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call, react/jsx-no-target-blank, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/restrict-template-expressions,@typescript-eslint/no-explicit-any */
-import type { Document } from "@contentful/rich-text-types";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
-import type { FC } from "react";
-import type { Options } from "@contentful/rich-text-react-renderer";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import styles from "./DetailHTML.module.scss";
-import Link from "next/link";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+
 import { createHttpsImage } from "../../../utils";
+
+import styles from "./DetailHTML.module.scss";
+
+import type { Options } from "@contentful/rich-text-react-renderer";
+import type { Document } from "@contentful/rich-text-types";
+import type { FC } from "react";
 
 const renderOptions: Options = {
   renderNode: {

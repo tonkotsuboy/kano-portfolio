@@ -1,13 +1,15 @@
-import type { Metadata, NextPage } from "next";
 
-import { EntryList } from "../../components/concerns/EntryList";
-import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
-import * as styles from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
-import { fetchTagList } from "../../logics/api/fetchTagList";
-import { metadata } from "../../layout";
+import { EntryList } from "../../components/concerns/EntryList";
 import { WithSiteTitle } from "../../constants";
+import { metadata } from "../../layout";
+import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
+import { fetchTagList } from "../../logics/api/fetchTagList";
 import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
+
+import * as styles from "./page.css";
+
+import type { Metadata, NextPage } from "next";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const tagData = await fetchTagList();

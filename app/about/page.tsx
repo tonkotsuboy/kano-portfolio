@@ -1,8 +1,12 @@
-import type { Metadata, NextPage } from "next";
-import Link from "next/link";
 import Image from "next/image";
-import * as styles from "./page.css";
+import Link from "next/link";
+
 import { WithSiteTitle } from "../constants";
+
+import * as styles from "./page.css";
+
+
+import type { Metadata, NextPage } from "next";
 
 export const metadata: Metadata = {
   title: `自己紹介${WithSiteTitle}`,

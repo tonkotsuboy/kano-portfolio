@@ -1,13 +1,15 @@
-import type { NextPage, Metadata } from "next";
 
-import { EntryList } from "../../components/concerns/EntryList";
-import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
-import * as styles from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
-import { fetchMedia } from "../../logics/api/fetchMedia";
+import { EntryList } from "../../components/concerns/EntryList";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
+import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
+import { fetchMedia } from "../../logics/api/fetchMedia";
 import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
+
+import * as styles from "./page.css";
+
+import type { Metadata, NextPage } from "next";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const mediumData = await fetchMedia();
