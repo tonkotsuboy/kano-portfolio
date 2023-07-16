@@ -316,9 +316,9 @@
     "react/jsx-tag-spacing": [
       "error",
       {
-        "closingSlash": "never", // <div/ >みたいなspaceをerrorにする。
-        "beforeSelfClosing": "always", // <div />の/前にspaceを入れる。
-        "afterOpening": "never" // < div/>みたいなspaceをerrorにする。
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never"
       }
     ],
     "react/jsx-wrap-multilines": [
