@@ -84,9 +84,9 @@ export const title = style({
 });
 
 export const publishedDate = style({
+  display: "block",
   fontSize: vars.font.size.xs,
   color: vars.color.text,
-  marginTop: "0",
   selectors: {
     ...hoverTextStyle,
   },

@@ -66,6 +66,7 @@ export const link = style({
 });
 
 export const publishedDate = style({
+  display: "block",
   fontSize: vars.font.size.xs,
   color: vars.color.text,
 });
