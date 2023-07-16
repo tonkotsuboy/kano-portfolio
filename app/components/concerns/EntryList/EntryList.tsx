@@ -43,7 +43,7 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
         return (
           <Link
             key={entryData.id}
-            href={`/entry/${entryData.slug}`}
+            href={href}
             aria-label={entryData.title}
             target={target}
             className={link}
