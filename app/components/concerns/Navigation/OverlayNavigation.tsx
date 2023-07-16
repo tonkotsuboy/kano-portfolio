@@ -6,13 +6,9 @@ import { MenuButton } from "../../common/MenuButton";
 
 import * as styles from "./OverlayNavigation.css";
 
-
-
 import type { MediumType } from "../../../types/MediumType";
 import type { TagType } from "../../../types/TagType";
 import type { ForwardRefRenderFunction, HTMLAttributes, Ref } from "react";
-
-
 
 type Props = {
   mediumDataList: MediumType[];

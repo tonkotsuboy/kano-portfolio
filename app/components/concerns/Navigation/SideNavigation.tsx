@@ -4,13 +4,9 @@ import Link from "next/link";
 import * as navigationStyles from "./Navigation.css";
 import * as styles from "./SideNavigation.css";
 
-
-
-
 import type { MediumType } from "../../../types/MediumType";
 import type { TagType } from "../../../types/TagType";
 import type { FC, HTMLAttributes } from "react";
-
 
 type Props = {
   mediumDataList: MediumType[];

@@ -1,4 +1,3 @@
-
 import { Copyright } from "../../components/concerns/Copyright";
 import { EntryList } from "../../components/concerns/EntryList";
 import { WithSiteTitle } from "../../constants";

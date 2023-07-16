@@ -96,7 +96,7 @@ const Page: NextPage<Params> = async ({ params }) => {
             title={entryData.title}
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
+            allowFullScreen={true}
           />
         )}
         {/* 記事詳細HTML */}

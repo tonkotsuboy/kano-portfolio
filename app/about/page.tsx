@@ -5,7 +5,6 @@ import { WithSiteTitle } from "../constants";
 
 import * as styles from "./page.css";
 
-
 import type { Metadata, NextPage } from "next";
 
 export const metadata: Metadata = {
