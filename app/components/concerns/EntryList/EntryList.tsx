@@ -72,9 +72,12 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
               </header>
               <h2 className={titleStyle}>{title}</h2>
               {published_date && (
-                <time dateTime={published_date} className={publishedDate}>
-                  発表日：{parseDate(published_date)}
-                </time>
+                <p className={publishedDate}>
+                  発表日
+                  <time dateTime={published_date}>
+                    {parseDate(published_date)}
+                  </time>
+                </p>
               )}
             </div>
           </Link>
