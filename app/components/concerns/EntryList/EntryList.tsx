@@ -5,7 +5,7 @@ import {
   entryList,
   header,
   info,
-  keyvisual as keyvisualStyle,
+  keyvisual,
   link,
   listTitle as listTitleStyle,
   medium as mediumStyle,
@@ -50,7 +50,7 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
           >
             {metaInfo?.ogImage && (
               <Image
-                className={keyvisualStyle}
+                className={keyvisual}
                 src={createHttpsImage(metaInfo.ogImage)}
                 alt={metaInfo.ogTitle ?? ""}
                 width={960}
