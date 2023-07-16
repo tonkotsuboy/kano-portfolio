@@ -7,7 +7,7 @@ export const getMetaDataForEntryDataList = async (
   entryDataList: EntryType[],
   limit?: number,
 ): Promise<void> => {
-  const limitCount = limit != null ? limit : Math.min(entryDataList.length, 50);
+  const limitCount = limit ?? Math.min(entryDataList.length, 50);
   for (let i = 0; i < limitCount; i++) {
     const entry = entryDataList[i];
     if (entry?.url != null) {
