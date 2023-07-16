@@ -1,7 +1,7 @@
-import type { Asset } from "contentful";
-import type { Document } from "@contentful/rich-text-types";
-import type { TagType } from "./TagType";
 import type { MediumType } from "./MediumType";
+import type { TagType } from "./TagType";
+import type { Document } from "@contentful/rich-text-types";
+import type { Asset } from "contentful";
 
 export type EntryType = {
   detail?: Document;

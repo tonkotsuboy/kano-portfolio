@@ -1,16 +1,18 @@
-import type { Metadata, NextPage } from "next";
+import { LinkCard } from "../../components/common/LinkCard";
+import { Copyright } from "../../components/concerns/Copyright";
+import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
+import { WithSiteTitle } from "../../constants";
+import { metadata } from "../../layout";
 import {
   fetchAllEntryData,
   fetchEntryData,
 } from "../../logics/api/fetchAllEntryData";
-import * as styles from "./page.css";
-import { Copyright } from "../../components/concerns/Copyright";
-import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
-import { LinkCard } from "../../components/common/LinkCard";
-import { WithSiteTitle } from "../../constants";
-import { metadata } from "../../layout";
-import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
 import { parseDate } from "../../logics/date/parseDate";
+import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
+
+import * as styles from "./page.css";
+
+import type { Metadata, NextPage } from "next";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const portfolioData = await fetchAllEntryData();

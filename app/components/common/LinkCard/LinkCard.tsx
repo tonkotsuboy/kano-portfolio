@@ -1,8 +1,10 @@
-import type { FC } from "react";
-import type { EntryType } from "../../../types/EntryType";
 import Image from "next/image";
-import * as styles from "./LinkCard.css";
 import Link from "next/link";
+
+import * as styles from "./LinkCard.css";
+
+import type { EntryType } from "../../../types/EntryType";
+import type { FC } from "react";
 
 type Props = {
   linkUrl: string;

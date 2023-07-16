@@ -1,7 +1,8 @@
-import type { EntryType } from "../../types/EntryType";
-import { fetchHTMLText } from "./fetchHTMLText";
 import { creteHTMLDocument } from "./creteHTMLDocument";
+import { fetchHTMLText } from "./fetchHTMLText";
 import { parseMetaInfo } from "./parseMetaInfo";
+
+import type { EntryType } from "../../types/EntryType";
 
 export const getMetaDataForEntryDataList = async (
   entryDataList: EntryType[],

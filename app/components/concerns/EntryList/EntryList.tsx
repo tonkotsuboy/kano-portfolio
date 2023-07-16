@@ -1,10 +1,13 @@
-import type { FC } from "react";
-import Link from "next/link";
-import type { EntryType } from "../../../types/EntryType";
-import * as styles from "./EntryList.css";
 import Image from "next/image";
-import { createHttpsImage } from "../../../utils";
+import Link from "next/link";
+
 import { parseDate } from "../../../logics/date/parseDate";
+import { createHttpsImage } from "../../../utils";
+
+import * as styles from "./EntryList.css";
+
+import type { EntryType } from "../../../types/EntryType";
+import type { FC } from "react";
 
 type Props = {
   entryDataList: EntryType[];

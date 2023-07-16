@@ -1,6 +1,7 @@
+import * as styles from "./Copyright.css";
+
 import type { FC } from "react";
 
-import * as styles from "./Copyright.css";
 
 /**
  * コピーライト
