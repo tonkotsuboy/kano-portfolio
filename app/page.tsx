@@ -3,7 +3,7 @@ import type { EntryType } from "./types/EntryType";
 import { EntryList } from "./components/concerns/EntryList";
 import { fetchAllEntryData } from "./logics/api/fetchAllEntryData";
 import { Copyright } from "./components/concerns/Copyright";
-import { container } from "./page.css";
+import * as styles from "./page.css";
 import { getMetaDataForEntryDataList } from "./logics/scraping/getMetaDataForEntryDataList";
 
 const getEntryData = async (): Promise<{
@@ -20,7 +20,7 @@ const Page: NextPage = async () => {
   await getMetaDataForEntryDataList(entryDataList);
 
   return (
-    <div className={container}>
+    <div className={styles.container}>
       <EntryList listTitle="すべての実績" entryDataList={entryDataList} />
       <Copyright />
     </div>

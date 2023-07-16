@@ -2,7 +2,7 @@ import type { Metadata, NextPage } from "next";
 
 import { EntryList } from "../../components/concerns/EntryList";
 import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
-import { container } from "./page.css";
+import * as styles from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
 import { fetchTagList } from "../../logics/api/fetchTagList";
 import { metadata } from "../../layout";
@@ -59,7 +59,7 @@ const Page: NextPage<Params> = async ({ params }) => {
   await getMetaDataForEntryDataList(entryDataList, 12);
 
   return (
-    <div className={container}>
+    <div className={styles.container}>
       <EntryList listTitle={tagTitle} entryDataList={entryDataList} />
       <Copyright />
     </div>

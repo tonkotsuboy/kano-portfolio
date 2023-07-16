@@ -1,7 +1,7 @@
 import type { Metadata, NextPage } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { container, list, mainVisual, h1, h2 } from "./page.css";
+import * as styles from "./page.css";
 import { WithSiteTitle } from "../constants";
 
 export const metadata: Metadata = {
@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 
 const AboutPage: NextPage = () => {
   return (
-    <div className={container}>
-      <h1 className={h1}>自己紹介</h1>
+    <div className={styles.container}>
+      <h1 className={styles.h1}>自己紹介</h1>
       <Image
-        className={mainVisual}
+        className={styles.mainVisual}
         src="/ogimage.png"
         width="1200"
         height="630"
@@ -36,8 +36,8 @@ const AboutPage: NextPage = () => {
           TechFeed Pro公認エキスパート
         </Link>
       </p>
-      <h2 className={h2}>書籍</h2>
-      <ul className={list}>
+      <h2 className={styles.h2}>書籍</h2>
+      <ul className={styles.list}>
         <li>
           <Link
             href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/"
@@ -68,7 +68,7 @@ const AboutPage: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h2 className={h2}>技術発信</h2>
+      <h2 className={styles.h2}>技術発信</h2>
       <ul>
         <li>
           <Link href="https://twitter.com/tonkotsuboy_com" target="_blank">
@@ -104,7 +104,7 @@ const AboutPage: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h2 className={h2}>講師</h2>
+      <h2 className={styles.h2}>講師</h2>
       <ul>
         <li>
           <Link
@@ -120,7 +120,7 @@ const AboutPage: NextPage = () => {
           </Link>
         </li>
       </ul>
-      <h2 className={h2}>インタビュー・寄稿</h2>
+      <h2 className={styles.h2}>インタビュー・寄稿</h2>
       <ul>
         <li>
           <Link

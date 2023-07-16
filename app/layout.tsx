@@ -11,7 +11,7 @@ import type { TagType } from "./types/TagType";
 import { fetchMedia } from "./logics/api/fetchMedia";
 import { fetchTagList } from "./logics/api/fetchTagList";
 import type { Metadata, NextPage } from "next";
-import { main, root, wrapper } from "./layout.css";
+import * as styles from "./layout.css";
 import "./styles/reset.css";
 import "./styles/base.css";
 import { GoogleAnalytics } from "./components/common/GoogleAnalytics";
@@ -55,13 +55,13 @@ const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
         <link rel="apple-touch-icon" href="/apple-icon.png" />
       </head>
       <body>
-        <div className={root}>
-          <div className={wrapper}>
+        <div className={styles.root}>
+          <div className={styles.wrapper}>
             <Navigation
               mediumDataList={mediumDataList}
               tagDataList={tagDataList}
             />
-            <main className={main}>{children}</main>
+            <main className={styles.main}>{children}</main>
           </div>
         </div>
         <GoogleAnalytics />

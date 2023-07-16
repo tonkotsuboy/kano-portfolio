@@ -1,15 +1,11 @@
 import type { FC, HTMLAttributes } from "react";
-import {
-  category,
-  categoryHeading,
-  categoryList,
-  container,
-} from "./SideNavigation.css";
+
+import * as styles from "./SideNavigation.css";
+import * as navigationStyles from "./Navigation.css";
 
 import Link from "next/link";
 import type { MediumType } from "../../../types/MediumType";
 import type { TagType } from "../../../types/TagType";
-import { slug } from "./Navigation.css";
 import clsx from "clsx";
 
 type Props = {
@@ -23,39 +19,42 @@ export const SideNavigation: FC<Props> = ({
   className,
 }) => {
   return (
-    <div className={clsx(container, className)}>
-      <div className={category}>
-        <ul className={categoryList}>
+    <div className={clsx(styles.container, className)}>
+      <div className={styles.category}>
+        <ul className={styles.categoryList}>
           <li>
-            <Link href="/about" className={slug}>
+            <Link href="/about" className={navigationStyles.slug}>
               自己紹介
             </Link>
           </li>
         </ul>
       </div>
-      <div className={category}>
-        <h2 className={categoryHeading}>カテゴリ</h2>
-        <ul className={categoryList}>
+      <div className={styles.category}>
+        <h2 className={styles.categoryHeading}>カテゴリ</h2>
+        <ul className={styles.categoryList}>
           <li>
-            <Link href="/" className={slug}>
+            <Link href="/" className={navigationStyles.slug}>
               すべての実績
             </Link>
           </li>
           {mediumDataList.map(({ name, slug: slugData }) => (
             <li key={slugData}>
-              <Link href={`/medium/${slugData}`} className={slug}>
+              <Link
+                href={`/medium/${slugData}`}
+                className={navigationStyles.slug}
+              >
                 {name}
               </Link>
             </li>
           ))}
         </ul>
       </div>
-      <div className={category}>
-        <h2 className={categoryHeading}>タグ</h2>
-        <ul className={categoryList}>
+      <div className={styles.category}>
+        <h2 className={styles.categoryHeading}>タグ</h2>
+        <ul className={styles.categoryList}>
           {tagDataList.map(({ name, slug: slugData }) => (
             <li key={slugData}>
-              <Link href={`/tag/${slugData}`} className={slug}>
+              <Link href={`/tag/${slugData}`} className={navigationStyles.slug}>
                 #{name}
               </Link>
             </li>

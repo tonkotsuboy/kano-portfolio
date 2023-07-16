@@ -1,19 +1,7 @@
 import type { FC } from "react";
 import Link from "next/link";
 import type { EntryType } from "../../../types/EntryType";
-import {
-  entryList,
-  header,
-  info,
-  keyvisual,
-  link,
-  listTitle as listTitleStyle,
-  medium as mediumStyle,
-  publishedDate,
-  tag as tagStyle,
-  tagList,
-  title as titleStyle,
-} from "./EntryList.css";
+import * as styles from "./EntryList.css";
 import Image from "next/image";
 import { createHttpsImage } from "../../../utils";
 import { parseDate } from "../../../logics/date/parseDate";
@@ -25,8 +13,8 @@ type Props = {
 
 export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
   return (
-    <div className={entryList}>
-      <h1 className={listTitleStyle}>{listTitle}</h1>
+    <div className={styles.entryList}>
+      <h1 className={styles.listTitle}>{listTitle}</h1>
       {entryDataList.map((entryData) => {
         const isWriting = entryData.medium?.slug === "writing";
 
@@ -46,33 +34,33 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
             href={href}
             aria-label={entryData.title}
             target={target}
-            className={link}
+            className={styles.link}
           >
             {metaInfo?.ogImage && (
               <Image
-                className={keyvisual}
+                className={styles.keyvisual}
                 src={createHttpsImage(metaInfo.ogImage)}
                 alt={metaInfo.ogTitle ?? ""}
                 width={960}
                 height={540}
               />
             )}
-            <div className={info}>
-              <header className={header}>
-                <p className={mediumStyle}>{medium?.name}</p>
-                <ul className={tagList}>
+            <div className={styles.info}>
+              <header className={styles.header}>
+                <p className={styles.medium}>{medium?.name}</p>
+                <ul className={styles.tagList}>
                   {tags
                     ?.sort((a, b) => a.order - b.order)
                     .map(({ slug, name }) => (
-                      <li key={slug} className={tagStyle}>
+                      <li key={slug} className={styles.tag}>
                         #{name}
                       </li>
                     ))}
                 </ul>
               </header>
-              <h2 className={titleStyle}>{title}</h2>
+              <h2 className={styles.title}>{title}</h2>
               {published_date && (
-                <p className={publishedDate}>
+                <p className={styles.publishedDate}>
                   発表日
                   <time dateTime={published_date}>
                     {parseDate(published_date)}
