@@ -57,10 +57,7 @@ const Page: NextPage<Params> = async ({ params }) => {
 
   return (
     <div className={container}>
-      <EntryList
-        listTitle={entryDataList[0]?.medium?.name ?? ""}
-        entryDataList={entryDataList}
-      />
+      <EntryList entryDataList={entryDataList} />
       <Copyright />
     </div>
   );
