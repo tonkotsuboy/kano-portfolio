@@ -1,13 +1,6 @@
 import type { ForwardRefRenderFunction, HTMLAttributes, Ref } from "react";
 import { forwardRef } from "react";
-import {
-  category,
-  categoryHeading,
-  categoryList,
-  slug,
-  container,
-  menuButton,
-} from "./OverlayNavigation.css";
+import * as styles from "./OverlayNavigation.css";
 import Link from "next/link";
 import type { MediumType } from "../../../types/MediumType";
 import type { TagType } from "../../../types/TagType";
@@ -26,26 +19,26 @@ const _OverlayNavigation: ForwardRefRenderFunction<HTMLDialogElement, Props> = (
   { mediumDataList, tagDataList, onClickCloseButton, className, onChangePage },
   ref,
 ) => (
-  <dialog ref={ref} className={clsx(container, className)}>
+  <dialog ref={ref} className={clsx(styles.container, className)}>
     <MenuButton
-      className={menuButton}
+      className={styles.menuButton}
       onClick={onClickCloseButton}
       isClosed={true}
     />
-    <div className={category}>
-      <ul className={categoryList}>
+    <div className={styles.category}>
+      <ul className={styles.categoryList}>
         <li>
-          <Link href="/about" className={slug} onClick={onChangePage}>
+          <Link href="/about" className={styles.slug} onClick={onChangePage}>
             自己紹介
           </Link>
         </li>
       </ul>
     </div>
-    <div className={category}>
-      <h2 className={categoryHeading}>カテゴリ</h2>
-      <ul className={categoryList}>
+    <div className={styles.category}>
+      <h2 className={styles.categoryHeading}>カテゴリ</h2>
+      <ul className={styles.categoryList}>
         <li>
-          <Link href="/" className={slug} onClick={onChangePage}>
+          <Link href="/" className={styles.slug} onClick={onChangePage}>
             すべての実績
           </Link>
         </li>
@@ -53,7 +46,7 @@ const _OverlayNavigation: ForwardRefRenderFunction<HTMLDialogElement, Props> = (
           <li key={slugData}>
             <Link
               href={`/medium/${slugData}`}
-              className={slug}
+              className={styles.slug}
               onClick={onChangePage}
             >
               {name}
@@ -62,14 +55,14 @@ const _OverlayNavigation: ForwardRefRenderFunction<HTMLDialogElement, Props> = (
         ))}
       </ul>
     </div>
-    <div className={category}>
-      <h2 className={categoryHeading}>タグ</h2>
-      <ul className={categoryList}>
+    <div className={styles.category}>
+      <h2 className={styles.categoryHeading}>タグ</h2>
+      <ul className={styles.categoryList}>
         {tagDataList.map(({ name, slug: slugData }) => (
           <li key={slugData}>
             <Link
               href={`/tag/${slugData}`}
-              className={slug}
+              className={styles.slug}
               onClick={onChangePage}
             >
               #{name}

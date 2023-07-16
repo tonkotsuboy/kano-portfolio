@@ -2,7 +2,7 @@ import type { NextPage, Metadata } from "next";
 
 import { EntryList } from "../../components/concerns/EntryList";
 import { fetchAllEntryData } from "../../logics/api/fetchAllEntryData";
-import { container } from "./page.css";
+import * as styles from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
 import { fetchMedia } from "../../logics/api/fetchMedia";
 import { WithSiteTitle } from "../../constants";
@@ -56,7 +56,7 @@ const Page: NextPage<Params> = async ({ params }) => {
   await getMetaDataForEntryDataList(entryDataList, 12);
 
   return (
-    <div className={container}>
+    <div className={styles.container}>
       <EntryList
         listTitle={entryDataList[0]?.medium?.name ?? ""}
         entryDataList={entryDataList}

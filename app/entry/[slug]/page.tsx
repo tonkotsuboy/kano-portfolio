@@ -3,17 +3,7 @@ import {
   fetchAllEntryData,
   fetchEntryData,
 } from "../../logics/api/fetchAllEntryData";
-import {
-  article,
-  container,
-  header,
-  medium as mediumStyle,
-  publishedDate,
-  tag as tagStyle,
-  tagList,
-  title as titleStyle,
-  video,
-} from "./page.css";
+import * as styles from "./page.css";
 import { Copyright } from "../../components/concerns/Copyright";
 import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
 import { LinkCard } from "../../components/common/LinkCard";
@@ -70,23 +60,23 @@ const Page: NextPage<Params> = async ({ params }) => {
   await getMetaDataForEntryDataList([entryData]);
 
   return (
-    <div className={container}>
-      <article className={article}>
-        <header className={header}>
-          <p className={mediumStyle}>{entryData.medium?.name}</p>
-          <ul className={tagList}>
+    <div className={styles.container}>
+      <article className={styles.article}>
+        <header className={styles.header}>
+          <p className={styles.medium}>{entryData.medium?.name}</p>
+          <ul className={styles.tagList}>
             {entryData.tags
               ?.sort((a, b) => a.order - b.order)
               .map(({ slug, name }) => (
-                <li key={slug} className={tagStyle}>
+                <li key={slug} className={styles.tag}>
                   #{name}
                 </li>
               ))}
           </ul>
         </header>
-        <h2 className={titleStyle}>{entryData.title}</h2>
+        <h2 className={styles.title}>{entryData.title}</h2>
         {entryData.published_date && (
-          <p className={publishedDate}>
+          <p className={styles.publishedDate}>
             発表日
             <time dateTime={entryData.published_date}>
               {parseDate(entryData.published_date)}
@@ -97,7 +87,7 @@ const Page: NextPage<Params> = async ({ params }) => {
         {/* ビデオ */}
         {entryData.videoUrl && (
           <iframe
-            className={video}
+            className={styles.video}
             width="560"
             height="315"
             src={entryData.videoUrl}

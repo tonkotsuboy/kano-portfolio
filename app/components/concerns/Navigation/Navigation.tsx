@@ -1,15 +1,7 @@
 import type { FC } from "react";
 import type { MediumType } from "../../../types/MediumType";
 import type { TagType } from "../../../types/TagType";
-import {
-  author,
-  container,
-  job,
-  navInner,
-  overlayNavigation,
-  profile,
-  sideNavigation,
-} from "./Navigation.css";
+import * as styles from "./Navigation.css";
 import Link from "next/link";
 import { SideNavigation } from "./SideNavigation";
 import { OverLayMenu } from "./OverLayMenu";
@@ -24,21 +16,21 @@ type Props = {
  */
 export const Navigation: FC<Props> = ({ mediumDataList, tagDataList }) => {
   return (
-    <nav className={container}>
-      <div className={navInner}>
+    <nav className={styles.container}>
+      <div className={styles.navInner}>
         <OverLayMenu
           mediumDataList={mediumDataList}
           tagDataList={tagDataList}
-          className={overlayNavigation}
+          className={styles.overlayNavigation}
         />
-        <div className={profile}>
-          <Link href="/" className={author}>
+        <div className={styles.profile}>
+          <Link href="/" className={styles.author}>
             Takeshi Kano
           </Link>
-          <p className={job}>Frontend Developer</p>
+          <p className={styles.job}>Frontend Developer</p>
         </div>
         <SideNavigation
-          className={sideNavigation}
+          className={styles.sideNavigation}
           mediumDataList={mediumDataList}
           tagDataList={tagDataList}
         />

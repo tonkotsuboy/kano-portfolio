@@ -1,15 +1,6 @@
 import type { FC, HTMLAttributes } from "react";
 import clsx from "clsx";
-import {
-  border,
-  border1,
-  border1Closed,
-  border2,
-  border2Closed,
-  border3,
-  border3Closed,
-  menuButton,
-} from "./MenuButton.css";
+import * as styles from "./MenuButton.css";
 
 type Props = {
   /** ボタンが閉じられている見た目にするかどうか？ 閉じられている場合はバツ印になる */
@@ -23,11 +14,29 @@ type Props = {
 export const MenuButton: FC<Props> = ({ className, isClosed, onClick }) => (
   <button
     type="button"
-    className={clsx(className, menuButton)}
+    className={clsx(className, styles.menuButton)}
     onClick={onClick}
   >
-    <span className={clsx(border, border1, isClosed && border1Closed)} />
-    <span className={clsx(border, border2, isClosed && border2Closed)} />
-    <span className={clsx(border, border3, isClosed && border3Closed)} />
+    <span
+      className={clsx(
+        styles.border,
+        styles.border1,
+        isClosed && styles.border1Closed,
+      )}
+    />
+    <span
+      className={clsx(
+        styles.border,
+        styles.border2,
+        isClosed && styles.border2Closed,
+      )}
+    />
+    <span
+      className={clsx(
+        styles.border,
+        styles.border3,
+        isClosed && styles.border3Closed,
+      )}
+    />
   </button>
 );
