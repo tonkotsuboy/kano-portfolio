@@ -94,6 +94,7 @@
         "@typescript-eslint/prefer-string-starts-ends-with": "error",
         "@typescript-eslint/prefer-ts-expect-error": "error",
         "@typescript-eslint/require-await": "off",
+        "@typescript-eslint/strict-boolean-expressions": "error",
         "react/jsx-curly-brace-presence": "error"
       }
     },
