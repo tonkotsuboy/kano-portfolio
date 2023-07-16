@@ -1,7 +1,10 @@
-import type { EntryType } from "../../types/EntryType";
-import { client } from "./contentfulClient";
-import type { TypePortfolioSkeleton } from "../../@types/generated/contentful";
 import dayjs from "dayjs";
+
+import { client } from "./contentfulClient";
+
+import type { TypePortfolioSkeleton } from "../../@types/generated/contentful";
+import type { EntryType } from "../../types/EntryType";
+
 
 /**
  * 記事データをすべて取得します

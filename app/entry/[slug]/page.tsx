@@ -1,16 +1,18 @@
-import type { Metadata, NextPage } from "next";
+import { LinkCard } from "../../components/common/LinkCard";
+import { Copyright } from "../../components/concerns/Copyright";
+import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
+import { WithSiteTitle } from "../../constants";
+import { metadata } from "../../layout";
 import {
   fetchAllEntryData,
   fetchEntryData,
 } from "../../logics/api/fetchAllEntryData";
-import * as styles from "./page.css";
-import { Copyright } from "../../components/concerns/Copyright";
-import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
-import { LinkCard } from "../../components/common/LinkCard";
-import { WithSiteTitle } from "../../constants";
-import { metadata } from "../../layout";
-import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
 import { parseDate } from "../../logics/date/parseDate";
+import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
+
+import * as styles from "./page.css";
+
+import type { Metadata, NextPage } from "next";
 
 export const generateStaticParams = async (): Promise<string[]> => {
   const portfolioData = await fetchAllEntryData();
@@ -75,7 +77,7 @@ const Page: NextPage<Params> = async ({ params }) => {
           </ul>
         </header>
         <h2 className={styles.title}>{entryData.title}</h2>
-        {entryData.published_date && (
+        {entryData.published_date != null && (
           <p className={styles.publishedDate}>
             発表日
             <time dateTime={entryData.published_date}>
@@ -85,7 +87,7 @@ const Page: NextPage<Params> = async ({ params }) => {
         )}
 
         {/* ビデオ */}
-        {entryData.videoUrl && (
+        {entryData.videoUrl != null && (
           <iframe
             className={styles.video}
             width="560"
@@ -103,7 +105,7 @@ const Page: NextPage<Params> = async ({ params }) => {
         )}
 
         {/* リンクカード */}
-        {entryData.url && (
+        {entryData.url != null && (
           <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
         )}
       </article>

@@ -1,10 +1,11 @@
-import type { NextPage } from "next";
-import type { EntryType } from "./types/EntryType";
+import { Copyright } from "./components/concerns/Copyright";
 import { EntryList } from "./components/concerns/EntryList";
 import { fetchAllEntryData } from "./logics/api/fetchAllEntryData";
-import { Copyright } from "./components/concerns/Copyright";
-import * as styles from "./page.css";
 import { getMetaDataForEntryDataList } from "./logics/scraping/getMetaDataForEntryDataList";
+import * as styles from "./page.css";
+
+import type { EntryType } from "./types/EntryType";
+import type { NextPage } from "next";
 
 const getEntryData = async (): Promise<{
   entryDataList: EntryType[];

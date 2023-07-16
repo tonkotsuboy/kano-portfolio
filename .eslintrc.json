@@ -13,6 +13,7 @@
         "plugin:@typescript-eslint/strict",
         "plugin:import/recommended",
         "plugin:import/typescript",
+        "plugin:react/recommended",
         "plugin:typescript-sort-keys/recommended"
       ],
       "parserOptions": {
@@ -20,9 +21,10 @@
         "project": "./tsconfig.json"
       },
       "rules": {
-        "array-callback-return": "error",
-        "no-param-reassign": "error",
-        "lines-between-class-members": ["error", "always"],
+        "@typescript-eslint/array-type": "error",
+        "@typescript-eslint/consistent-type-exports": "error",
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+        "@typescript-eslint/consistent-type-imports": "error",
         "@typescript-eslint/naming-convention": [
           "error",
           {
@@ -63,15 +65,24 @@
             "trailingUnderscore": "forbid"
           }
         ],
-        "@typescript-eslint/array-type": "error",
-        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+        "@typescript-eslint/explicit-module-boundary-types": "error",
         "@typescript-eslint/no-base-to-string": "error",
         "@typescript-eslint/no-confusing-non-null-assertion": "error",
         "@typescript-eslint/no-dynamic-delete": "error",
         "@typescript-eslint/no-invalid-void-type": "error",
         "@typescript-eslint/no-meaningless-void-operator": "error",
         "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
+        "@typescript-eslint/no-non-null-assertion": "error",
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          { "checksVoidReturn": false }
+        ],
         "@typescript-eslint/no-unnecessary-condition": "error",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          { "ignoreRestSiblings": true }
+        ],
+        "@typescript-eslint/no-use-before-define": "error",
         "@typescript-eslint/prefer-for-of": "error",
         "@typescript-eslint/prefer-includes": "error",
         "@typescript-eslint/prefer-literal-enum-member": "error",
@@ -80,21 +91,36 @@
         "@typescript-eslint/prefer-reduce-type-parameter": "error",
         "@typescript-eslint/prefer-string-starts-ends-with": "error",
         "@typescript-eslint/prefer-ts-expect-error": "error",
-        "@typescript-eslint/no-use-before-define": "error",
-        "@typescript-eslint/no-non-null-assertion": "error",
-        "@typescript-eslint/explicit-module-boundary-types": "error",
         "@typescript-eslint/require-await": "off",
-        "@typescript-eslint/no-unused-vars": [
+        "@typescript-eslint/strict-boolean-expressions": "error",
+        "react/jsx-curly-brace-presence": "error",
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/self-closing-comp": ["error", {
+          "component": true,
+          "html": true
+        }],
+        "array-callback-return": "error",
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-useless-path-segments": "error",
+        "import/order": [
           "error",
-          { "ignoreRestSiblings": true }
+          {
+            "alphabetize": {"order": "asc", "caseInsensitive": true},
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+            "newlines-between": "always"
+          }
         ],
-        "@typescript-eslint/no-misused-promises": [
+        "lines-between-class-members": ["error", "always"],
+        "no-param-reassign": "error",
+        "sort-imports": [
           "error",
-          { "checksVoidReturn": false }
-        ],
-        "@typescript-eslint/consistent-type-exports": "error",
-        "@typescript-eslint/consistent-type-imports": "error",
-        "react/jsx-curly-brace-presence": "error"
+          {
+            "ignoreCase": true,
+            "ignoreDeclarationSort": true
+          }
+        ]
       }
     },
     {
@@ -109,11 +135,11 @@
         "@typescript-eslint/no-unsafe-argument": "warn",
         "jest/consistent-test-it": ["error", { "fn": "test" }],
         "jest/no-alias-methods": "off",
-        "jest/prefer-called-with": "error",
         "jest/no-duplicate-hooks": "error",
+        "jest/prefer-called-with": "error",
         "jest/prefer-expect-resolves": "error",
-        "jest/prefer-spy-on": "error",
         "jest/prefer-hooks-in-order": "error",
+        "jest/prefer-spy-on": "error",
         "jest/prefer-strict-equal": "error",
         "jest/prefer-todo": "error",
         "jest/valid-title": "error",

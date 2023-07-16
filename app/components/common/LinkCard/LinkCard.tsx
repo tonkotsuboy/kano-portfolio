@@ -1,8 +1,10 @@
-import type { FC } from "react";
-import type { EntryType } from "../../../types/EntryType";
 import Image from "next/image";
-import * as styles from "./LinkCard.css";
 import Link from "next/link";
+
+import * as styles from "./LinkCard.css";
+
+import type { EntryType } from "../../../types/EntryType";
+import type { FC } from "react";
 
 type Props = {
   linkUrl: string;
@@ -22,7 +24,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
       target="_blank"
     >
       <span className={styles.linkInner}>
-        {metaInfo?.ogImage && (
+        {metaInfo?.ogImage != null && (
           <Image
             className={styles.ogImage}
             src={metaInfo.ogImage}
@@ -31,7 +33,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
             alt="entryData.ogInfo.title"
           />
         )}
-        {metaInfo?.ogTitle && (
+        {metaInfo?.ogTitle != null && (
           <h4 className={styles.ogTitle}>{metaInfo.ogTitle}</h4>
         )}
         <p className={styles.linkUrl}>

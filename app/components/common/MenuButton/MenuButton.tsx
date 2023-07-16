@@ -1,6 +1,8 @@
-import type { FC, HTMLAttributes } from "react";
 import clsx from "clsx";
+
 import * as styles from "./MenuButton.css";
+
+import type { FC, HTMLAttributes } from "react";
 
 type Props = {
   /** ボタンが閉じられている見た目にするかどうか？ 閉じられている場合はバツ印になる */

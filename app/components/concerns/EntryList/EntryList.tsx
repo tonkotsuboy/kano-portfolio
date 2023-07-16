@@ -1,10 +1,13 @@
-import type { FC } from "react";
-import Link from "next/link";
-import type { EntryType } from "../../../types/EntryType";
-import * as styles from "./EntryList.css";
 import Image from "next/image";
-import { createHttpsImage } from "../../../utils";
+import Link from "next/link";
+
 import { parseDate } from "../../../logics/date/parseDate";
+import { createHttpsImage } from "../../../utils";
+
+import * as styles from "./EntryList.css";
+
+import type { EntryType } from "../../../types/EntryType";
+import type { FC } from "react";
 
 type Props = {
   entryDataList: EntryType[];
@@ -36,7 +39,7 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
             target={target}
             className={styles.link}
           >
-            {metaInfo?.ogImage && (
+            {metaInfo?.ogImage != null && (
               <Image
                 className={styles.keyvisual}
                 src={createHttpsImage(metaInfo.ogImage)}
@@ -59,7 +62,7 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
                 </ul>
               </header>
               <h2 className={styles.title}>{title}</h2>
-              {published_date && (
+              {published_date != null && (
                 <p className={styles.publishedDate}>
                   発表日
                   <time dateTime={published_date}>

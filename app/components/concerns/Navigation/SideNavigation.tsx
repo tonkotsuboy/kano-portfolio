@@ -1,12 +1,16 @@
-import type { FC, HTMLAttributes } from "react";
-
-import * as styles from "./SideNavigation.css";
-import * as navigationStyles from "./Navigation.css";
-
+import clsx from "clsx";
 import Link from "next/link";
+
+import * as navigationStyles from "./Navigation.css";
+import * as styles from "./SideNavigation.css";
+
+
+
+
 import type { MediumType } from "../../../types/MediumType";
 import type { TagType } from "../../../types/TagType";
-import clsx from "clsx";
+import type { FC, HTMLAttributes } from "react";
+
 
 type Props = {
   mediumDataList: MediumType[];
