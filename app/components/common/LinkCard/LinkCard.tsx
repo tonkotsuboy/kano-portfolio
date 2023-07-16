@@ -22,7 +22,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
       target="_blank"
     >
       <span className={styles.linkInner}>
-        {metaInfo?.ogImage && (
+        {metaInfo?.ogImage != null && (
           <Image
             className={styles.ogImage}
             src={metaInfo.ogImage}
@@ -31,7 +31,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
             alt="entryData.ogInfo.title"
           />
         )}
-        {metaInfo?.ogTitle && (
+        {metaInfo?.ogTitle != null && (
           <h4 className={styles.ogTitle}>{metaInfo.ogTitle}</h4>
         )}
         <p className={styles.linkUrl}>

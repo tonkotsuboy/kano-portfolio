@@ -36,7 +36,7 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
             target={target}
             className={styles.link}
           >
-            {metaInfo?.ogImage && (
+            {metaInfo?.ogImage != null && (
               <Image
                 className={styles.keyvisual}
                 src={createHttpsImage(metaInfo.ogImage)}
@@ -59,7 +59,7 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
                 </ul>
               </header>
               <h2 className={styles.title}>{title}</h2>
-              {published_date && (
+              {published_date != null && (
                 <p className={styles.publishedDate}>
                   発表日
                   <time dateTime={published_date}>

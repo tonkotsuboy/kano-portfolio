@@ -10,7 +10,7 @@ export const getMetaDataForEntryDataList = async (
   const limitCount = limit != null ? limit : Math.min(entryDataList.length, 50);
   for (let i = 0; i < limitCount; i++) {
     const entry = entryDataList[i];
-    if (entry?.url) {
+    if (entry?.url != null) {
       const htmlText = await fetchHTMLText(entry.url);
       const htmlDocument = creteHTMLDocument(htmlText);
       entry.metaInfo = parseMetaInfo(htmlDocument);

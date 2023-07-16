@@ -75,7 +75,7 @@ const Page: NextPage<Params> = async ({ params }) => {
           </ul>
         </header>
         <h2 className={styles.title}>{entryData.title}</h2>
-        {entryData.published_date && (
+        {entryData.published_date != null && (
           <p className={styles.publishedDate}>
             発表日
             <time dateTime={entryData.published_date}>
@@ -85,7 +85,7 @@ const Page: NextPage<Params> = async ({ params }) => {
         )}
 
         {/* ビデオ */}
-        {entryData.videoUrl && (
+        {entryData.videoUrl != null && (
           <iframe
             className={styles.video}
             width="560"
@@ -103,7 +103,7 @@ const Page: NextPage<Params> = async ({ params }) => {
         )}
 
         {/* リンクカード */}
-        {entryData.url && (
+        {entryData.url != null && (
           <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
         )}
       </article>
