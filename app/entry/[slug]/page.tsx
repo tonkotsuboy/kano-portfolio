@@ -86,9 +86,12 @@ const Page: NextPage<Params> = async ({ params }) => {
         </header>
         <h2 className={titleStyle}>{entryData.title}</h2>
         {entryData.published_date && (
-          <time dateTime={entryData.published_date} className={publishedDate}>
-            発表日：{parseDate(entryData.published_date)}
-          </time>
+          <p className={publishedDate}>
+            発表日
+            <time dateTime={entryData.published_date}>
+              {parseDate(entryData.published_date)}
+            </time>
+          </p>
         )}
 
         {/* ビデオ */}

@@ -5,7 +5,7 @@ import {
   entryList,
   header,
   info,
-  keyvisual as keyvisualStyle,
+  keyvisual,
   link,
   listTitle as listTitleStyle,
   medium as mediumStyle,
@@ -43,14 +43,14 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
         return (
           <Link
             key={entryData.id}
-            href={`/entry/${entryData.slug}`}
+            href={href}
             aria-label={entryData.title}
             target={target}
             className={link}
           >
             {metaInfo?.ogImage && (
               <Image
-                className={keyvisualStyle}
+                className={keyvisual}
                 src={createHttpsImage(metaInfo.ogImage)}
                 alt={metaInfo.ogTitle ?? ""}
                 width={960}
@@ -72,9 +72,12 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
               </header>
               <h2 className={titleStyle}>{title}</h2>
               {published_date && (
-                <time dateTime={published_date} className={publishedDate}>
-                  発表日：{parseDate(published_date)}
-                </time>
+                <p className={publishedDate}>
+                  発表日
+                  <time dateTime={published_date}>
+                    {parseDate(published_date)}
+                  </time>
+                </p>
               )}
             </div>
           </Link>
