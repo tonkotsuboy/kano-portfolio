@@ -8,7 +8,8 @@ export const container = style({
   padding: vars.spacing["16px"],
   boxShadow: "2px 0 4px rgba(48,55,120,.05)",
   zIndex: 1,
-  placeContent: "center stretch",
+  justifyContent: "space-between",
+  alignItems: "center",
   position: "sticky",
   top: 0,
   left: 0,
@@ -50,7 +51,6 @@ export const overlayNavigation = style({
 
 export const profile = style({
   display: "flex",
-  alignSelf: "center",
   alignItems: "baseline",
   gap: vars.spacing["8px"],
   "@container": {
