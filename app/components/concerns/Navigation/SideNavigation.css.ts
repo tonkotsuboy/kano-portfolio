@@ -5,6 +5,7 @@ import { vars } from "../../../styles/vars.css";
 export const container = style({
   display: "grid",
   gap: vars.spacing["32px"],
+  paddingTop: vars.spacing["32px"],
 });
 
 export const category = style({
