@@ -2,6 +2,7 @@ import type { StorybookConfig } from "@storybook/nextjs";
 import { VanillaExtractPlugin } from "@vanilla-extract/webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 const config: StorybookConfig = {
+  staticDirs: ["../public"],
   stories: ["../app/**/*.stories.@(ts|tsx)"],
   addons: [
     "@storybook/addon-links",
