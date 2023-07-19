@@ -1,5 +1,5 @@
+import { Copyright } from "../../components/common/Copyright";
 import { LinkCard } from "../../components/common/LinkCard";
-import { Copyright } from "../../components/concerns/Copyright";
 import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
