@@ -11,7 +11,12 @@ URL：https://kano.codes/
 
 - Next.js
 - TypeScript
-- Contentful
-- Vercel
 - vanilla-extract
+- Storybook
+- Vercel
+- Contentful
+- @typescript-eslint
+- markuplint
+- 他 https://github.com/tonkotsuboy/kano-portfolio/blob/main/package.json
+ 
 
