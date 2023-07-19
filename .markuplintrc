@@ -8,6 +8,7 @@
   "specs": {
     ".[jt]sx?$": "@markuplint/react-spec"
   },
+  "excludeFiles": "node_modules"
   "nodeRules": [
     {
       "selector": "img",
