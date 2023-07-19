@@ -4,6 +4,7 @@ import { vars } from "../../../styles/vars.css";
 
 export const linkCard = style({
   containerType: "inline-size",
+  display: "block",
   ":hover": {
     color: vars.color.primary,
   },
@@ -40,10 +41,17 @@ export const linkInner = style({
 export const ogImage = style({
   gridArea: "thumbs",
   width: "100%",
-  height: "100%",
+  height: "auto",
+  aspectRatio: "16/9",
   objectPosition: "top center",
   alignSelf: "stretch",
 });
+
+const hoverTextStyle = {
+  [`${linkCard}:hover &`]: {
+    color: vars.color.primary,
+  },
+};
 
 export const ogTitle = style({
   gridArea: "title",
@@ -63,6 +71,9 @@ export const ogTitle = style({
       paddingInline: 0,
     },
   },
+  selectors: {
+    ...hoverTextStyle,
+  },
 });
 
 export const linkUrl = style({
@@ -81,6 +92,7 @@ export const linkUrl = style({
     },
   },
   selectors: {
+    ...hoverTextStyle,
     "&::before": {
       display: "block",
       width: "16px",
@@ -98,4 +110,7 @@ export const linkText = style({
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",
+  selectors: {
+    ...hoverTextStyle,
+  },
 });

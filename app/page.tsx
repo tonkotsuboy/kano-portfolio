@@ -1,4 +1,4 @@
-import { Copyright } from "./components/concerns/Copyright";
+import { Copyright } from "./components/common/Copyright";
 import { EntryList } from "./components/concerns/EntryList";
 import { fetchAllEntryData } from "./logics/api/fetchAllEntryData";
 import { getMetaDataForEntryDataList } from "./logics/scraping/getMetaDataForEntryDataList";
