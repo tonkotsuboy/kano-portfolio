@@ -48,29 +48,27 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
                 height={540}
               />
             )}
-            <div className={styles.info}>
-              <header className={styles.header}>
-                <p className={styles.medium}>{medium?.name}</p>
-                <ul className={styles.tagList}>
-                  {tags
-                    ?.sort((a, b) => a.order - b.order)
-                    .map(({ slug, name }) => (
-                      <li key={slug} className={styles.tag}>
-                        #{name}
-                      </li>
-                    ))}
-                </ul>
-              </header>
-              <h2 className={styles.title}>{title}</h2>
-              {published_date != null && (
-                <p className={styles.publishedDate}>
-                  発表日
-                  <time dateTime={published_date}>
-                    {parseDate(published_date)}
-                  </time>
-                </p>
-              )}
-            </div>
+            <header className={styles.header}>
+              <p className={styles.medium}>{medium?.name}</p>
+              <ul className={styles.tagList}>
+                {tags
+                  ?.sort((a, b) => a.order - b.order)
+                  .map(({ slug, name }) => (
+                    <li key={slug} className={styles.tag}>
+                      #{name}
+                    </li>
+                  ))}
+              </ul>
+            </header>
+            <h2 className={styles.title}>{title}</h2>
+            {published_date != null && (
+              <p className={styles.publishedDate}>
+                発表日
+                <time dateTime={published_date}>
+                  {parseDate(published_date)}
+                </time>
+              </p>
+            )}
           </Link>
         );
       })}

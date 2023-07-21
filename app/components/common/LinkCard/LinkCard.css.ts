@@ -14,10 +14,11 @@ export const linkInner = style({
   display: "grid",
   overflow: "hidden",
   gridTemplate: `
-      "thumbs" auto
-      "title"  auto
-      "url"  auto / 
-      1fr`,
+      "thumbs thumbs thumbs" auto
+      ". . . "  0
+      ". title ."  auto
+      ". url ."  auto / 
+      ${vars.spacing["16px"]} 1fr ${vars.spacing["16px"]}`,
   background: "#ffffff",
   border: "1px solid rgba(48, 55, 120, 0.2)",
   borderRadius: "14px",
@@ -64,7 +65,6 @@ export const ogTitle = style({
   // @ts-expect-error
   webkitBoxOrient: "vertical",
   webkitLineClamp: "2",
-  paddingInline: vars.spacing["16px"],
   lineHeight: "1.4",
   "@container": {
     "(500px < width)": {
@@ -85,7 +85,6 @@ export const linkUrl = style({
   alignItems: "center",
   fontSize: vars.font.size.s,
   alignSelf: "start",
-  paddingInline: vars.spacing["16px"],
   "@container": {
     "(500px < width)": {
       paddingInline: 0,
