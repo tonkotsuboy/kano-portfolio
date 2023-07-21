@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 import { vars } from "../../../styles/vars.css";
 
@@ -14,18 +14,20 @@ export const listTitle = style({
 });
 
 export const link = style({
-  display: "block",
+  display: "grid",
   overflow: "hidden",
   background: "#ffffff",
   border: "1px solid #f1f3fa",
+  gap: vars.spacing["8px"],
   borderRadius: "14px",
   boxShadow: "2px 8px 30px rgba(48, 55, 120, 0.04)",
+  gridTemplateColumns: `[main-start] ${vars.spacing["8px"]} [content-start] 1fr [content-end] ${vars.spacing["8px"]} [main-end]`,
+  justifyContent: "center",
+  paddingBottom: vars.spacing["16px"],
 });
 
-export const info = style({
-  display: "grid",
-  gap: vars.spacing["8px"],
-  padding: vars.spacing["16px"],
+globalStyle(`${link} *`, {
+  gridColumn: "content",
 });
 
 export const keyvisual = style({
@@ -33,11 +35,13 @@ export const keyvisual = style({
   width: "100%",
   height: "auto",
   aspectRatio: "16/7",
+  gridColumn: "main",
 });
 
 export const header = style({
   display: "flex",
   alignItems: "center",
+  marginTop: vars.spacing["8px"],
 });
 
 export const medium = style({
