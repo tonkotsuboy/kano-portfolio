@@ -45,6 +45,15 @@ const config: StorybookConfig = {
             url: false,
           },
         },
+        // add autoprefixer for vanilla-extract
+        {
+          loader: require.resolve("postcss-loader"),
+          options: {
+            postcssOptions: {
+              plugins: [require("autoprefixer")()],
+            },
+          },
+        },
       ],
     });
 
