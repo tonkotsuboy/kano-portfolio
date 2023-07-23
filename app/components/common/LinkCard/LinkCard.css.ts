@@ -61,6 +61,7 @@ export const ogTitle = style({
   alignSelf: "end",
   overflow: "hidden",
   display: "-webkit-box",
+  marginTop: vars.spacing["8px"],
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   webkitBoxOrient: "vertical",

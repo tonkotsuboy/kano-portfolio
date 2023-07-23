@@ -15,7 +15,7 @@ const meta = {
           name: "Medium名",
         },
         metaInfo: {
-          ogImage: "https://picsum.photos/id/13/200/300",
+          ogImage: "/sample-image.jpg",
           ogTitle: "リンクタイトル",
           ogDescription: "説明",
         },

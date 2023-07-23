@@ -2,7 +2,7 @@ import type { StorybookConfig } from "@storybook/nextjs";
 import { VanillaExtractPlugin } from "@vanilla-extract/webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 const config: StorybookConfig = {
-  staticDirs: ["../public"],
+  staticDirs: ["../public", "./test-assets"],
   stories: ["../app/**/*.stories.@(ts|tsx)"],
   addons: [
     "@storybook/addon-links",
@@ -43,6 +43,15 @@ const config: StorybookConfig = {
           options: {
             // Required as image imports should be handled via JS/TS import statements
             url: false,
+          },
+        },
+        // add autoprefixer for vanilla-extract
+        {
+          loader: require.resolve("postcss-loader"),
+          options: {
+            postcssOptions: {
+              plugins: [require("autoprefixer")()],
+            },
           },
         },
       ],
