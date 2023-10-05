@@ -3,7 +3,7 @@
 
 ![](public/ogimage.png)
 
-ポートフォリオのソースコードです。
+ポートフォリオのソースコードです
 
 URL：https://kano.codes/
 
