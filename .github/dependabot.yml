@@ -7,8 +7,6 @@ version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
-    schedule:
-      interval: "weekly"
    # Check the npm registry for updates every day (weekdays)
     schedule:
       interval: "daily"
