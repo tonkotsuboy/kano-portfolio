@@ -40,11 +40,9 @@ export const medium = style({
 });
 
 export const tagList = style({
-  display: "grid",
-  gridAutoFlow: "column",
+  display: "flex",
   gap: "6px",
   height: "100%",
-  marginLeft: "12px",
 });
 
 export const tag = style({
