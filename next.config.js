@@ -69,6 +69,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "findy-code-images.s3.ap-northeast-1.amazonaws.com",
       },
+      {
+        protocol: "https",
+        hostname: "levtech.jp",
+      },
+      {
+        protocol: "https",
+        hostname: "media.connpass.com",
+      }
     ],
   },
 };
