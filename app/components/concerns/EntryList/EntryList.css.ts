@@ -57,9 +57,8 @@ export const medium = style({
 });
 
 export const tagList = style({
-  display: "grid",
-  gridAutoFlow: "column",
-  gap: "6px",
+  display: "flex",
+  gap: vars.spacing["8px"],
   height: "100%",
 });
 
