@@ -26,6 +26,7 @@ export const article = style({
 export const header = style({
   display: "flex",
   alignItems: "center",
+  gap: vars.spacing["8px"],
 });
 
 export const medium = style({
