@@ -27,8 +27,7 @@ const AboutPage: NextPage = () => {
       />
       <p>鹿野 壮（かの たけし）といいます。</p>
       <p>
-        九州大学芸術工学部音響設計学科を卒業後、Money
-        Forwardでフロントエンドの仕事をしています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
+        九州大学芸術工学部音響設計学科を卒業後、<a href="https://ubie.life/">Ubie株式会社</a>でフロントエンドの仕事をしています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
       </p>
       <p>
         CSS Nite 2017〜2019ベストセッション受賞。
@@ -161,6 +160,7 @@ const AboutPage: NextPage = () => {
         <li>TypeScript</li>
         <li>React</li>
         <li>Next.js</li>
+        <li>GraphQL</li>
         <li>Recoil</li>
         <li>Redux</li>
         <li>Storybook</li>
