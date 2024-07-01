@@ -42,6 +42,7 @@ export const header = style({
   display: "flex",
   alignItems: "center",
   marginTop: vars.spacing["8px"],
+  gap: vars.spacing["8px"],
 });
 
 export const medium = style({
@@ -56,11 +57,9 @@ export const medium = style({
 });
 
 export const tagList = style({
-  display: "grid",
-  gridAutoFlow: "column",
-  gap: "6px",
+  display: "flex",
+  gap: vars.spacing["8px"],
   height: "100%",
-  marginLeft: "12px",
 });
 
 const hoverTextStyle = {
