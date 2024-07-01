@@ -27,8 +27,7 @@ const AboutPage: NextPage = () => {
       />
       <p>鹿野 壮（かの たけし）といいます。</p>
       <p>
-        九州大学芸術工学部音響設計学科を卒業後、Money
-        Forwardでフロントエンドの仕事をしています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
+        九州大学芸術工学部音響設計学科を卒業後、<a href="https://ubie.life/">Ubie株式会社</a>でフロントエンドの仕事をしています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
       </p>
       <p>
         CSS Nite 2017〜2019ベストセッション受賞。
@@ -41,6 +40,11 @@ const AboutPage: NextPage = () => {
       </p>
       <h2 className={styles.h2}>書籍</h2>
       <ul className={styles.list}>
+        <li>
+          <Link href="https://gihyo.jp/book/2019/978-4-297-10368-2" target="_blank">
+            JavaScriptコードレシピ集
+          </Link>
+        </li>
         <li>
           <Link
             href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/"
@@ -65,11 +69,7 @@ const AboutPage: NextPage = () => {
             日経ソフトウェア2020年9月号「JavaScript最新仕様 -ECMAScript2020-」
           </Link>
         </li>
-        <li>
-          <Link href="https://ics.media/entry/19765/" target="_blank">
-            JavaScriptコードレシピ集
-          </Link>
-        </li>
+
       </ul>
       <h2 className={styles.h2}>技術発信</h2>
       <ul>
@@ -127,10 +127,19 @@ const AboutPage: NextPage = () => {
       <ul>
         <li>
           <Link
+            href="https://levtech.jp/media/article/column/detail_329/"
+            target="_blank"
+          >
+            アウトプットこそ最高のインプット。鹿野壮が語る「自分が一番トクする」アウトプットの力
+            - レバテックラボ
+          </Link>
+        </li>
+        <li>
+          <Link
             href="https://findy-code.io/engineer-lab/tonkotsuboy-output"
             target="_blank"
           >
-            術発信していますか？アウトプットをするのが嫌だったソフトウェアエンジニアが登壇中毒になるまでの話
+            技術発信していますか？アウトプットをするのが嫌だったソフトウェアエンジニアが登壇中毒になるまでの話
             - Findy Engineer Lab
           </Link>
         </li>
@@ -151,6 +160,7 @@ const AboutPage: NextPage = () => {
         <li>TypeScript</li>
         <li>React</li>
         <li>Next.js</li>
+        <li>GraphQL</li>
         <li>Recoil</li>
         <li>Redux</li>
         <li>Storybook</li>

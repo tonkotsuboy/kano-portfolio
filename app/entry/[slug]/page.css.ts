@@ -26,6 +26,7 @@ export const article = style({
 export const header = style({
   display: "flex",
   alignItems: "center",
+  gap: vars.spacing["8px"],
 });
 
 export const medium = style({
@@ -40,11 +41,9 @@ export const medium = style({
 });
 
 export const tagList = style({
-  display: "grid",
-  gridAutoFlow: "column",
+  display: "flex",
   gap: "6px",
   height: "100%",
-  marginLeft: "12px",
 });
 
 export const tag = style({
