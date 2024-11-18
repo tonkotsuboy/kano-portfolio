@@ -24,7 +24,7 @@
     "@contentful/rich-text-react-renderer": "^15.4.0",
     "@contentful/rich-text-types": "^16.2.1",
     "@vanilla-extract/css": "^1.12.0",
-    "clsx": "^1.2.1",
+    "clsx": "^2.0.0",
     "contentful": "^10.3.4",
     "dayjs": "^1.11.9",
     "eslint-config-next": "^13.4.10",
