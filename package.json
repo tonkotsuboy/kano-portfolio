@@ -81,7 +81,7 @@
     "markuplint": "^3.12.0",
     "mini-css-extract-plugin": "^2.7.6",
     "npm-check": "^6.0.1",
-    "postcss": "^8.4.27",
+    "postcss": "^8.5.1",
     "postcss-loader": "^7.3.3",
     "prettier": "^3.0.0",
     "storybook": "^7.1.0",
