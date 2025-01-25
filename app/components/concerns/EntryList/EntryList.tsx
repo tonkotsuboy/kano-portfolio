@@ -30,7 +30,7 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
 
         const target = isExternalLink ? "_blank" : undefined;
 
-        const { metaInfo, medium, tags, title, published_date } = entryData;
+        const { metaInfo, medium, tags, title, keyvisual, published_date } = entryData;
 
         return (
           <Link
@@ -40,7 +40,15 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
             target={target}
             className={styles.link}
           >
-            {metaInfo?.ogImage != null && (
+            {keyvisual != null ? (
+              <Image
+                className={styles.keyvisual}
+                src={createHttpsImage(keyvisual)}
+                alt={title ?? ""}
+                width={960}
+                height={540}
+              />
+            ) : metaInfo?.ogImage != null && (
               <Image
                 className={styles.keyvisual}
                 src={createHttpsImage(metaInfo.ogImage)}
