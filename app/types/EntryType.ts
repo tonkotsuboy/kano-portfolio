@@ -6,6 +6,7 @@ import type { Asset } from "contentful";
 export type EntryType = {
   detail?: Document;
   id: string;
+  keyvisual?: string | undefined;
   medium: MediumType | undefined;
   metaInfo?:
     | {

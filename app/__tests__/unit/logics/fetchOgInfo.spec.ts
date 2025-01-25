@@ -1,4 +1,4 @@
-import { creteHTMLDocument } from "../../../logics/scraping/creteHTMLDocument";
+import { createHTMLDocument } from "../../../logics/scraping/createHTMLDocument";
 import { parseMetaInfo } from "../../../logics/scraping/parseMetaInfo";
 
 const sampleHTML = `
@@ -26,7 +26,7 @@ const sampleHTML = `
 
 describe("parseMetaInfo", () => {
   test("meta情報回りの正常取得", async () => {
-    const htmlDocument = creteHTMLDocument(sampleHTML);
+    const htmlDocument = createHTMLDocument(sampleHTML);
     const { ogImage, ogTitle, ogDescription } =
       parseMetaInfo(htmlDocument) ?? {};
     expect(ogTitle?.includes("とんこつ大学")).toBe(true);
