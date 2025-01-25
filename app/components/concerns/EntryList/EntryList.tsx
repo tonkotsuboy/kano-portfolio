@@ -19,17 +19,18 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
     <div className={styles.entryList}>
       <h1 className={styles.listTitle}>{listTitle}</h1>
       {entryDataList.map((entryData) => {
-        const isWriting = entryData.medium?.slug === "writing";
+        // 外部リンクとして扱うかどうか？
+        const isExternalLink = entryData.medium?.slug === "writing" || entryData.medium?.slug === "interview";
 
-        const href = isWriting ? entryData.url : `/entry/${entryData.slug}`;
+        const href = isExternalLink ? entryData.url : `/entry/${entryData.slug}`;
 
         if (href == null) {
           throw new Error(`href is null.  entry id is ${entryData.id}`);
         }
 
-        const target = isWriting ? "_blank" : undefined;
+        const target = isExternalLink ? "_blank" : undefined;
 
-        const { metaInfo, medium, tags, title, published_date } = entryData;
+        const { metaInfo, medium, tags, title, keyvisual, published_date } = entryData;
 
         return (
           <Link
@@ -39,7 +40,15 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
             target={target}
             className={styles.link}
           >
-            {metaInfo?.ogImage != null && (
+            {keyvisual != null ? (
+              <Image
+                className={styles.keyvisual}
+                src={createHttpsImage(keyvisual)}
+                alt={title ?? ""}
+                width={960}
+                height={540}
+              />
+            ) : metaInfo?.ogImage != null && (
               <Image
                 className={styles.keyvisual}
                 src={createHttpsImage(metaInfo.ogImage)}

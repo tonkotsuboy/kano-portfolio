@@ -19,7 +19,27 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "i.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "image.gihyo.co.jp",
+      },
+      {
+        protocol: "https",
         hostname: "doorkeeper.jp",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.st-note.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.image.st-hatena.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.salesforce.com",
       },
       {
         protocol: "http",
