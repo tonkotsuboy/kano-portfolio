@@ -27,11 +27,10 @@
     "clsx": "^2.0.0",
     "contentful": "^10.3.4",
     "dayjs": "^1.11.9",
-    "eslint-config-next": "^13.4.10",
-    "next": "^13.4.8",
+    "next": "^14.2.23",
     "next-pwa": "^5.6.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sass": "^1.42.1"
   },
   "devDependencies": {
@@ -64,6 +63,7 @@
     "contentful-cli": "^3.0.6",
     "dotenv": "^16.3.1",
     "eslint": "^8.44.0",
+    "eslint-config-next": "^14.2.23",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-es": "4.1.0",
     "eslint-plugin-import": "2.27.5",
