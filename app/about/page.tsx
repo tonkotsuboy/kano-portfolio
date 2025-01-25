@@ -27,7 +27,7 @@ const AboutPage: NextPage = () => {
       />
       <p>鹿野 壮（かの たけし）といいます。</p>
       <p>
-        九州大学芸術工学部音響設計学科を卒業後、<a href="https://ubie.life/">Ubie株式会社</a>でフロントエンドの仕事をしています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
+        九州大学芸術工学部音響設計学科を卒業後、<a href="https://ubie.life/">Ubie株式会社</a>でプロダクトエンジニアとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
       </p>
       <p>
         CSS Nite 2017〜2019ベストセッション受賞。
@@ -35,7 +35,7 @@ const AboutPage: NextPage = () => {
           href="https://techfeed.io/people/@tonkotsuboy_com"
           target="_blank"
         >
-          TechFeed Pro公認エキスパート
+          TechFeed Proプロダクトアドバイザー・公認エキスパート
         </Link>
       </p>
       <h2 className={styles.h2}>書籍</h2>
@@ -43,6 +43,14 @@ const AboutPage: NextPage = () => {
         <li>
           <Link href="https://gihyo.jp/book/2019/978-4-297-10368-2" target="_blank">
             JavaScriptコードレシピ集
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="https://gihyo.jp/magazine/SD/archive/2024/202405"
+            target="_blank"
+          >
+            Software Design 2024年5月号「もっとTypeScriptの力を引き出そう」
           </Link>
         </li>
         <li>
@@ -155,9 +163,10 @@ const AboutPage: NextPage = () => {
       <ul>
         <li>HTML</li>
         <li>CSS</li>
-        <li>JavaScript（〜ES2023）</li>
+        <li>JavaScript（〜ES2025）</li>
         <li>TypeScript</li>
         <li>React</li>
+        <li>React Native</li>
         <li>Next.js</li>
         <li>GraphQL</li>
         <li>Recoil</li>
@@ -170,7 +179,9 @@ const AboutPage: NextPage = () => {
         <li>Sass</li>
         <li>vanilla-extract CSS</li>
         <li>CSS Modules</li>
-        <li>ActionScript 3.0</li>
+        <li>GraphQL</li>
+        <li>NestJS</li>
+        <li>Prisma</li>
         <li>git</li>
         <li>その他フロントエンド技術全般</li>
       </ul>

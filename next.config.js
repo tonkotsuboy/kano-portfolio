@@ -31,7 +31,15 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "assets.st-note.com",
+      },
+      {
+        protocol: "https",
         hostname: "cdn.image.st-hatena.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.salesforce.com",
       },
       {
         protocol: "http",
