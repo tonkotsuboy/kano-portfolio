@@ -1,4 +1,4 @@
-import { creteHTMLDocument } from "./creteHTMLDocument";
+import { createHTMLDocument } from "./createHTMLDocument";
 import { fetchHTMLText } from "./fetchHTMLText";
 import { parseMetaInfo } from "./parseMetaInfo";
 
@@ -13,7 +13,7 @@ export const getMetaDataForEntryDataList = async (
     const entry = entryDataList[i];
     if (entry?.url != null) {
       const htmlText = await fetchHTMLText(entry.url);
-      const htmlDocument = creteHTMLDocument(htmlText);
+      const htmlDocument = createHTMLDocument(htmlText);
       entry.metaInfo = parseMetaInfo(htmlDocument);
     }
   }
