@@ -10,13 +10,13 @@ import type { EntryType } from "../../types/EntryType";
  */
 export const fetchAllEntryData = async (): Promise<EntryType[]> => {
   const allPortfolioData =
-    await client.withoutUnresolvableLinks.getEntries<TypePortfolioSkeleton>({
-      content_type: "portfolio",
-      // 発表日の新しい順にソートする
-      // order: "-fields.update_at",
-      // 最大取得件数を200に
-      limit: 200,
-    });
+  await client.withoutUnresolvableLinks.getEntries<TypePortfolioSkeleton>({
+    content_type: "portfolio",
+    // 発表日の新しい順にソートする
+    // order: "-fields.update_at",
+    // 最大取得件数を200に
+    limit: 200,
+  });
 
   return allPortfolioData.items
     .map((entry) => {
@@ -24,6 +24,7 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
         id: entry.sys.id,
         ...entry.fields,
         medium: entry.fields.medium?.fields ?? undefined,
+        keyvisual: entry.fields.keyvisual?.fields.file?.url ?? undefined,
         tags: entry.fields.tags.map((tag) => {
           if (tag == null) {
             throw new Error("tag is null");
