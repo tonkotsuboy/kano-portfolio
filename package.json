@@ -4,7 +4,7 @@
   "private": true,
   "license": "UNLICENSED",
   "engines": {
-    "node": "22.13.11"
+    "node": "22.13.1"
   },
   "scripts": {
     "dev": "next dev",
