@@ -69,7 +69,6 @@ const AboutPage: NextPage = () => {
             日経ソフトウェア2020年9月号「JavaScript最新仕様 -ECMAScript2020-」
           </Link>
         </li>
-
       </ul>
       <h2 className={styles.h2}>技術発信</h2>
       <ul>
