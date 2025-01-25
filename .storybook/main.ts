@@ -4,16 +4,20 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 const config: StorybookConfig = {
   staticDirs: ["../public", "./test-assets"],
   stories: ["../app/**/*.stories.@(ts|tsx)"],
+
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@chromatic-com/storybook"
   ],
+
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
+
   // 👇 Add this for Vanilla Extract
   webpackFinal(config, options) {
     // Add Vanilla-Extract and MiniCssExtract Plugins
@@ -59,8 +63,11 @@ const config: StorybookConfig = {
 
     return config;
   },
-  docs: {
-    autodocs: "tag",
-  },
+
+  docs: {},
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript"
+  }
 };
 export default config;
