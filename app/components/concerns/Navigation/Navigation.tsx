@@ -29,7 +29,7 @@ export const Navigation: FC<Props> = ({ mediumDataList, tagDataList }) => {
           <Link href="/" className={styles.author}>
             Takeshi Kano
           </Link>
-          <p className={styles.job}>Frontend Developer</p>
+          <p className={styles.job}>Product Engineer</p>
         </div>
         <SideNavigation
           className={styles.sideNavigation}

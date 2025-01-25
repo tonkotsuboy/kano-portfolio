@@ -24,6 +24,7 @@ export const fetchAllEntryData = async (): Promise<EntryType[]> => {
         id: entry.sys.id,
         ...entry.fields,
         medium: entry.fields.medium?.fields ?? undefined,
+        keyvisual: entry.fields.keyvisual?.fields.file?.url ?? undefined,
         tags: entry.fields.tags.map((tag) => {
           if (tag == null) {
             throw new Error("tag is null");
