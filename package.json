@@ -81,7 +81,6 @@
     "jsdom": "^26.0.0",
     "markuplint": "^4.11.4",
     "mini-css-extract-plugin": "^2.9.2",
-    "npm-check": "^6.0.1",
     "postcss": "^8.5.1",
     "postcss-loader": "^8.1.1",
     "prettier": "^3.4.2",
