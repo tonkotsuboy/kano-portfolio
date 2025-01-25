@@ -19,15 +19,16 @@ export const EntryList: FC<Props> = ({ listTitle, entryDataList }) => {
     <div className={styles.entryList}>
       <h1 className={styles.listTitle}>{listTitle}</h1>
       {entryDataList.map((entryData) => {
-        const isWriting = entryData.medium?.slug === "writing";
+        // 外部リンクとして扱うかどうか？
+        const isExternalLink = entryData.medium?.slug === "writing" || entryData.medium?.slug === "interview";
 
-        const href = isWriting ? entryData.url : `/entry/${entryData.slug}`;
+        const href = isExternalLink ? entryData.url : `/entry/${entryData.slug}`;
 
         if (href == null) {
           throw new Error(`href is null.  entry id is ${entryData.id}`);
         }
 
-        const target = isWriting ? "_blank" : undefined;
+        const target = isExternalLink ? "_blank" : undefined;
 
         const { metaInfo, medium, tags, title, published_date } = entryData;
 
