@@ -21,8 +21,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^15.4.0",
-    "@contentful/rich-text-types": "^16.2.1",
+    "@contentful/rich-text-react-renderer": "^16.0.1",
+    "@contentful/rich-text-types": "^17.0.0",
     "@vanilla-extract/css": "^1.12.0",
     "clsx": "^2.0.0",
     "contentful": "^10.3.4",
