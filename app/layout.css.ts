@@ -1,3 +1,5 @@
+"use client";
+
 import { style } from "@vanilla-extract/css";
 
 import { vars } from "./styles/vars.css";
@@ -12,7 +14,7 @@ export const wrapper = style({
   display: "grid",
   gridTemplate: `
       "navigation" 80px
-      "main" auto / 
+      "main" auto /
       1fr`,
   minHeight: "100dvh",
   "@container": {
