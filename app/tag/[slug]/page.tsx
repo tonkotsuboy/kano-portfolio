@@ -17,7 +17,7 @@ export const generateStaticParams = async (): Promise<string[]> => {
   });
 };
 
-type Params = { params: { slug: string } };
+type Params = { params: Promise<{ slug: string }> };
 
 const getEntryData = async (slug: string) => {
   const entryDataList = (await fetchAllEntryData()).filter((entryData) => {
@@ -30,9 +30,8 @@ const getEntryData = async (slug: string) => {
   };
 };
 
-export const generateMetadata = async ({
-  params,
-}: Params): Promise<Metadata> => {
+export const generateMetadata = async (props: Params): Promise<Metadata> => {
+  const params = await props.params;
   const tagData = await fetchTagList();
 
   const tagTitle = tagData.find((tag) => tag.slug === params.slug)?.name ?? "";
@@ -52,7 +51,8 @@ export const generateMetadata = async ({
     },
   };
 };
-const Page: NextPage<Params> = async ({ params }) => {
+const Page: NextPage<Params> = async props => {
+  const params = await props.params;
   const { entryDataList } = await getEntryData(params.slug);
 
   const tagTitle = entryDataList[0]?.tags?.[0]?.name ?? "";

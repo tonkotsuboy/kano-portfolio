@@ -33,11 +33,10 @@ const getEntryData = async (slug: string) => {
   };
 };
 
-type Params = { params: { slug: string } };
+type Params = { params: Promise<{ slug: string }> };
 
-export const generateMetadata = async ({
-  params,
-}: Params): Promise<Metadata> => {
+export const generateMetadata = async (props: Params): Promise<Metadata> => {
+  const params = await props.params;
   const { entryData } = await getEntryData(params.slug);
 
   const title = `${entryData.title ?? ""}${WithSiteTitle}`;
@@ -56,7 +55,8 @@ export const generateMetadata = async ({
   };
 };
 
-const Page: NextPage<Params> = async ({ params }) => {
+const Page: NextPage<Params> = async props => {
+  const params = await props.params;
   const { entryData } = await getEntryData(params.slug);
 
   await getMetaDataForEntryDataList([entryData]);

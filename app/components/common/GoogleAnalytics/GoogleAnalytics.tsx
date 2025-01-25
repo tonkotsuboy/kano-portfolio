@@ -1,6 +1,7 @@
-"use client";
-
+"use client";;
 import Script from "next/script";
+
+import type { JSX } from "react";
 
 const GA_TRACKING_ID = process.env["NEXT_PUBLIC_GA_TRACKING_ID"] ?? "";
 
