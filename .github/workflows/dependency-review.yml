@@ -12,7 +12,17 @@ permissions:
 
 jobs:
   dependency-review:
-    runs-on: ubuntu-latest
+        # Operating System
+    strategy:
+      matrix:
+        include:
+          - key: linux-amd64
+            os: ubuntu-latest
+            platform: linux/amd64
+          - key: linux-arm64
+            os: ubuntu-24.04-arm
+            platform: linux/arm64
+    runs-on: ${{ matrix.os }}
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3

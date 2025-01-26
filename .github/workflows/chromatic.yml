@@ -8,7 +8,16 @@ on: push
 jobs:
   chromatic-deployment:
     # Operating System
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - key: linux-amd64
+            os: ubuntu-latest
+            platform: linux/amd64
+          - key: linux-arm64
+            os: ubuntu-24.04-arm
+            platform: linux/arm64
+    runs-on: ${{ matrix.os }}
     # Job steps
     steps:
       - uses: actions/checkout@v1
