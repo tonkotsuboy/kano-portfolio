@@ -52,7 +52,7 @@
     "@types/node": "^22.10.10",
     "@types/react": "^18.2.14",
     "@types/react-gtm-module": "^2.0.4",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
     "@typescript-eslint/parser": "^5.61.0",
     "@vanilla-extract/next-plugin": "^2.4.8",
     "@vanilla-extract/webpack-plugin": "^2.3.16",
