@@ -1,4 +1,5 @@
 import { Copyright } from "./components/common/Copyright";
+import { TimeDisplay } from "./components/common/TimeDisplay/TimeDisplay";
 import { EntryList } from "./components/concerns/EntryList";
 import { fetchAllEntryData } from "./logics/api/fetchAllEntryData";
 import { getMetaDataForEntryDataList } from "./logics/scraping/getMetaDataForEntryDataList";
@@ -22,6 +23,7 @@ const Page: NextPage = async () => {
 
   return (
     <div className={styles.container}>
+      <TimeDisplay />
       <EntryList listTitle="すべての実績" entryDataList={entryDataList} />
       <Copyright />
     </div>
