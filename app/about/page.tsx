@@ -158,6 +158,14 @@ const AboutPage: NextPage = () => {
             鹿野壮のWebデザイナーのためのiOSアプリ開発入門 - WPJ
           </Link>
         </li>
+        <li>
+          <Link
+            href="https://life.job-draft.jp/2025/04/30/801/"
+            target="_blank"
+          >
+            エンジニア鹿野壮の「趣味のようだった仕事」が破壊され、再生してゆく物語 | LIFE DRAFT
+          </Link>
+        </li>
       </ul>
       <h2>使用可能なスキル</h2>
       <ul>
