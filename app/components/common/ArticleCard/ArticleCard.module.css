@@ -65,8 +65,8 @@
   padding: var(--space-1) var(--space-3);
   font-size: var(--font-size-xs);
   font-weight: 500;
-  background: rgba(253, 216, 53, 0.9);
-  color: var(--color-primary-foreground);
+  background: var(--color-tag);
+  color: var(--color-tag-foreground);
   border-radius: var(--radius-full);
 }
 

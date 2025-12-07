@@ -14,6 +14,8 @@
   --color-border: #d7dce8;
   --color-input: #d7dce8;
   --color-ring: #9ca3af;
+  --color-tag: #fdd835;
+  --color-tag-foreground: #0b0b0b;
   --color-text: #1f2937;
   --shadow-soft: 0 15px 35px -20px rgba(15, 23, 42, 0.25);
   --shadow-strong: 0 30px 60px -25px rgba(79, 70, 229, 0.35);
@@ -83,6 +85,8 @@
   --color-border: #1f2a44;
   --color-input: #1f2a44;
   --color-ring: #7c3aed;
+  --color-tag: #fdd835;
+  --color-tag-foreground: #0b0b0b;
   --color-text: #dbeafe;
   --shadow-soft: 0 18px 30px -18px rgba(0, 0, 0, 0.55);
   --shadow-strong: 0 26px 50px -26px rgba(0, 0, 0, 0.65);
