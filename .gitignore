@@ -44,4 +44,4 @@ build-storybook.log*
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
 
-./contentful
+contentful/
