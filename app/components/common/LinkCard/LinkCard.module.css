@@ -37,6 +37,12 @@
   object-fit: cover;
 }
 
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .ogTitle {
   font-size: var(--font-size-base);
   font-weight: normal;

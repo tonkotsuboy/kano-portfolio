@@ -23,8 +23,9 @@ type Props = {
  * og:image, og:titleが表示され、URLへのリンクを備えます
  */
 export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, title, thumbnail }) => {
-  const displayTitle = title ?? metaInfo?.ogTitle ?? linkUrl;
-  const displayThumb = thumbnail ?? metaInfo?.ogImage ?? null;
+  const displayTitle: string = title ?? metaInfo?.ogTitle ?? linkUrl;
+  const displayThumb: string | undefined = thumbnail ?? metaInfo?.ogImage ?? undefined;
+  const isThumbAvailable = typeof displayThumb === "string" && displayThumb.length > 0;
 
   return (
     <Link
@@ -34,17 +35,22 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, title, thumbnail }) => 
       target="_blank"
     >
       <span className={styles.linkInner}>
-        {displayThumb && (
+        {isThumbAvailable && displayThumb ? (
           <span className={styles.thumbWrap}>
-            <Image
-              className={styles.ogImage}
-              src={displayThumb}
-              width={120}
-              height={120}
-              alt={displayTitle}
-            />
+            {(() => {
+              const thumbSrc: string = displayThumb;
+              return (
+                <Image
+                  className={styles.ogImage}
+                  src={thumbSrc}
+                  width={120}
+                  height={120}
+                  alt={displayTitle}
+                />
+              );
+            })()}
           </span>
-        )}
+        ) : null}
         <span className={styles.meta}>
           <h4 className={styles.ogTitle}>{displayTitle}</h4>
           <p className={styles.linkUrl}>
