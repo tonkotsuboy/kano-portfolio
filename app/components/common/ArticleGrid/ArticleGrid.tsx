@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { LayoutGrid, List, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { LayoutGrid, List, Search } from "lucide-react";
-import { ArticleCard } from "../ArticleCard";
-import styles from "./ArticleGrid.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
-import type { FC } from "react";
+import { ArticleCard } from "../ArticleCard";
+
+import styles from "./ArticleGrid.module.css";
+
 import type { Post } from "@/.velite";
+import type { FC } from "react";
 
 type Props = {
   posts: Post[];
@@ -56,7 +58,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     const tagSet = new Set<string>();
     posts.forEach((post) => {
       post.tags.forEach((tag) => tagSet.add(tag));
-      if (post.medium) tagSet.add(post.medium);
+      if (post.medium) {tagSet.add(post.medium);}
     });
     return Array.from(tagSet).sort();
   }, [posts]);
@@ -69,11 +71,11 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
       selectedTag === "all"
         ? posts
         : posts.filter(
-            (post) =>
-              post.tags.includes(selectedTag) || post.medium === selectedTag
-          );
+          (post) =>
+            post.tags.includes(selectedTag) || post.medium === selectedTag,
+        );
 
-    if (!q) return narrowed;
+    if (!q) {return narrowed;}
 
     return narrowed.filter((post) => {
       const haystack = [post.title, post.medium, post.tags.join(" ")]
@@ -95,18 +97,18 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
   const currentPage = Math.min(page, totalPages);
   const paginatedPosts = filteredPosts.slice(
     (currentPage - 1) * pageSize,
-    currentPage * pageSize
+    currentPage * pageSize,
   );
   const pages = useMemo(
     () => Array.from({ length: totalPages }, (_, i) => i + 1),
-    [totalPages]
+    [totalPages],
   );
 
   const goPage = (next: number) => {
     const clamped = Math.min(Math.max(1, next), totalPages);
     setPage(clamped);
     updatePageInUrl(clamped);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
   };
 
   return (
@@ -115,7 +117,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
         <div className={styles.header}>
           <div className={styles.controls}>
             <div className={styles.searchBox}>
-              <Search size={16} aria-hidden />
+              <Search size={16} aria-hidden={true} />
               <input
                 value={keyword}
                 onChange={(event) => setKeyword(event.target.value)}
@@ -267,7 +269,7 @@ const ArticleListRow: FC<ArticleListRowProps> = ({ post, resolveLink }) => {
         <Image
           src={thumbnailUrl}
           alt={post.title}
-          fill
+          fill={true}
           className={isLogoLike ? styles.thumbnailContain : undefined}
           sizes="96px"
         />

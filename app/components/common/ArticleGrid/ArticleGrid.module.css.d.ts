@@ -18,6 +18,9 @@ declare const styles: {
   readonly "listThumb": string;
   readonly "listTitle": string;
   readonly "pageButton": string;
+  readonly "pageNumber": string;
+  readonly "pageNumberActive": string;
+  readonly "pageNumbers": string;
   readonly "pageStatus": string;
   readonly "pagination": string;
   readonly "searchBox": string;
@@ -30,4 +33,3 @@ declare const styles: {
   readonly "viewToggle": string;
 };
 export = styles;
-

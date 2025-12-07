@@ -7,8 +7,8 @@ import type { PropsWithChildren } from "react";
 type Theme = "light" | "dark";
 
 type ThemeContextValue = {
-  theme: Theme;
   setTheme: (theme: Theme) => void;
+  theme: Theme;
 };
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
@@ -22,10 +22,10 @@ const applyTheme = (nextTheme: Theme) => {
 };
 
 const detectInitialTheme = (): Theme => {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") {return "light";}
 
   const saved = window.localStorage.getItem(storageKey);
-  if (saved === "light" || saved === "dark") return saved;
+  if (saved === "light" || saved === "dark") {return saved;}
 
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   return prefersDark ? "dark" : "light";
@@ -42,7 +42,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     const listener = (event: MediaQueryListEvent) => {
       const next = event.matches ? "dark" : "light";
       setThemeState((current) => {
-        if (window.localStorage.getItem(storageKey)) return current;
+        if (window.localStorage.getItem(storageKey)) {return current;}
         applyTheme(next);
         return next;
       });
@@ -61,7 +61,7 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
 
   const value = useMemo(
     () => ({ theme, setTheme: handleSetTheme }),
-    [theme]
+    [theme],
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

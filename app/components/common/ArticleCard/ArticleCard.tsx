@@ -1,10 +1,12 @@
-import Link from "next/link";
 import Image from "next/image";
-import styles from "./ArticleCard.module.css";
+import Link from "next/link";
+
 import { SiteUrl } from "../../../constants";
 
-import type { FC } from "react";
+import styles from "./ArticleCard.module.css";
+
 import type { Post } from "@/.velite";
+import type { FC } from "react";
 
 type Props = {
   post: Post;
@@ -47,7 +49,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
         <Image
           src={thumbnailUrl}
           alt={post.title}
-          fill
+          fill={true}
           className={`${styles.thumbnail} ${isLogoLike ? styles.thumbnailContain : ""}`}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

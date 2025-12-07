@@ -9,4 +9,3 @@ declare const styles: {
   readonly "menuButton": string;
 };
 export = styles;
-

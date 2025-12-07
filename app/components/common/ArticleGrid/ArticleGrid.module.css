@@ -219,6 +219,7 @@
 .thumbnailContain {
   object-fit: contain;
   background: color-mix(in srgb, var(--color-surface) 70%, #fff0);
+  padding: 12%;
 }
 
 .listBody {
