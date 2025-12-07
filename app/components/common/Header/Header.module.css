@@ -16,6 +16,7 @@
 
 .headerContainer {
   max-width: 1280px;
+  padding-top: var(--space-4);
   padding-right: var(--padding-md);
   padding-left: var(--padding-md);
   margin-right: auto;
