@@ -6,11 +6,11 @@ published: true
 tags: []
 categories: []
 medium: "インタビュー"
-thumbnail: ""
+thumbnail: "/images/og/techfeed_interview.jpg"
 slides: ""
-linkUrl: "https://techfeed.io/entries/63c520d69e6c354ffccc8e98"
-targetUrl: "https://techfeed.io/entries/63c520d69e6c354ffccc8e98"
-hasDetail: true
+linkUrl: "https://www.youtube.com/watch?v=tigookU0CoI"
+targetUrl: "https://www.youtube.com/watch?v=tigookU0CoI"
+hasDetail: false
 ---
 
 「TechFeed Advance」（ [https://techfeed.io/advance](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqa29ZbFNvTVowbTk5Z3hCZTBWcGlVT2xsUzlXd3xBQ3Jtc0tueUsyUERwUUZYSG1TM24tWnJlR2VaY2ZoWUM4bFY5WnBHQXpWT29PZFUxVDE4emxCMW5lNEtMUUxKSjBNLXE2NzdXYmJNZ1dUUVhaVmN6OGpVOEwyem5mQmlqOFpMS09jaElBTFZFYmtkemgxUlo3bw&q=https%3A%2F%2Ftechfeed.io%2Fadvance&v=tigookU0CoI) ）にて、インタビューを受けました。
