@@ -8,8 +8,8 @@ categories: []
 medium: "執筆記事"
 thumbnail: ""
 slides: ""
-linkUrl: "https://zenn.dev/moneyforward/articles/typescript-as-const-satisfies"
-targetUrl: "https://zenn.dev/moneyforward/articles/typescript-as-const-satisfies"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/634b0921b6170cf56813"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/634b0921b6170cf56813"
 hasDetail: false
 ---
 

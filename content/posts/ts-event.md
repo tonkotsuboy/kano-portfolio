@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/ts-event.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/ts-event"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/b32801246ec14f444514"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/b32801246ec14f444514"
 hasDetail: false
 ---
 

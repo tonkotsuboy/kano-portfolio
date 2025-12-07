@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/autoprefixer.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/autoprefixer"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/377913c51b1ac00deffe"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/377913c51b1ac00deffe"
 hasDetail: false
 ---
 

@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/multi-cursor.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/multi-cursor"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/b974286806ca670a4653"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/b974286806ca670a4653"
 hasDetail: false
 ---
 

@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/suda-create.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/suda-create"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/cb9e9254a888455b9f8b"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/cb9e9254a888455b9f8b"
 hasDetail: false
 ---
 

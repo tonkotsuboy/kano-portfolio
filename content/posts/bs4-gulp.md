@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/bs4-gulp.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/bs4-gulp"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/564f9bb78d177483f83e"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/564f9bb78d177483f83e"
 hasDetail: false
 ---
 

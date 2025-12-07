@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/terminal-shorten.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/terminal-shorten"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/b752a86cee7eaedf28da"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/b752a86cee7eaedf28da"
 hasDetail: false
 ---
 

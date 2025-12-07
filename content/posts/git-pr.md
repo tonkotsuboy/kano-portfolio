@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/git-pr.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/git-pr"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/cb64223737aff286111a"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/cb64223737aff286111a"
 hasDetail: false
 ---
 

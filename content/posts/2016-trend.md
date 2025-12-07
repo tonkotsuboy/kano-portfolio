@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/2016-trend.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/2016-trend"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/26ad863bddf98ff01af5"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/26ad863bddf98ff01af5"
 hasDetail: false
 ---
 

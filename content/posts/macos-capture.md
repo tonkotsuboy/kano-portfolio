@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/macos-capture.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/macos-capture"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/f8e98697456a1d2a7ebe"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/f8e98697456a1d2a7ebe"
 hasDetail: false
 ---
 

@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/bs4-tab.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/bs4-tab"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/15a914f073c8f9bb1344"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/15a914f073c8f9bb1344"
 hasDetail: false
 ---
 

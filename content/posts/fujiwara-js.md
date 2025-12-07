@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/fujiwara-js.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/fujiwara-js"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/f5aecb241b66bb9705e7"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/f5aecb241b66bb9705e7"
 hasDetail: false
 ---
 

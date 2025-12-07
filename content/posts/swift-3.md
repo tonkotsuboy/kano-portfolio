@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/swift-3.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/swift-3"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/0adc5dac54e690fcf706"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/0adc5dac54e690fcf706"
 hasDetail: false
 ---
 

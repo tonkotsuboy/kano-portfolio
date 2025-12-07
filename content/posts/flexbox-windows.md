@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/flexbox-windows.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/flexbox-windows"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/a90f321c397d24b14287"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/a90f321c397d24b14287"
 hasDetail: false
 ---
 

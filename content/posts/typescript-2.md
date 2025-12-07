@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/typescript-2.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/typescript-2"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/225d08e915a57777c9dc"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/225d08e915a57777c9dc"
 hasDetail: false
 ---
 

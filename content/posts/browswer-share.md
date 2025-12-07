@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/browswer-share.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/browswer-share"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/89f27cfa878bde482cb8"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/89f27cfa878bde482cb8"
 hasDetail: false
 ---
 

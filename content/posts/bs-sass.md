@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/bs-sass.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/bs-sass"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/1855734522bfe7ef7dad"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/1855734522bfe7ef7dad"
 hasDetail: false
 ---
 

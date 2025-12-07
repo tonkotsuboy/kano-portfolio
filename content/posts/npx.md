@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/npx.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/npx"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/8227f5993769c3df533d"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/8227f5993769c3df533d"
 hasDetail: false
 ---
 

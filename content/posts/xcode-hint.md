@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/xcode-hint.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/xcode-hint"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/ced37115aa9b83f36511"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/ced37115aa9b83f36511"
 hasDetail: false
 ---
 

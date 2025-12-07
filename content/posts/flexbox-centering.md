@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/flexbox-centering.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/flexbox-centering"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/a5aaa4a69fecfaf546a3"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/a5aaa4a69fecfaf546a3"
 hasDetail: false
 ---
 

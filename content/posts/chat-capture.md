@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/chat-capture.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/chat-capture"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/4d562430edee3109495f"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/4d562430edee3109495f"
 hasDetail: false
 ---
 

@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/ios-safari.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/ios-safari"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/d32ec6e7a1f6f592d415"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/d32ec6e7a1f6f592d415"
 hasDetail: false
 ---
 

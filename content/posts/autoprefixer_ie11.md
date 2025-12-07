@@ -6,9 +6,9 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/autoprefixer_ie11.png"
+thumbnail: ""
 slides: ""
-linkUrl: "https://kano.codes/entry/autoprefixer_ie11"
-targetUrl: "/entry/autoprefixer_ie11"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/bce73685cd6b1ea511dc"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/bce73685cd6b1ea511dc"
 hasDetail: false
 ---

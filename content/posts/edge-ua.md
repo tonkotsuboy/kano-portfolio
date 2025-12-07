@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/edge-ua.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/edge-ua"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/7b36bdfc3a9a0970d23b"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/7b36bdfc3a9a0970d23b"
 hasDetail: false
 ---
 

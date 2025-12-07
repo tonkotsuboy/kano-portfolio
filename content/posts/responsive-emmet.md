@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/responsive-emmet.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/responsive-emmet"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/f6f47637134443dcd1df"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/f6f47637134443dcd1df"
 hasDetail: false
 ---
 

@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/android4-flexbox.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/android4-flexbox"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/6d69a1be939fc1c24ea4"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/6d69a1be939fc1c24ea4"
 hasDetail: false
 ---
 

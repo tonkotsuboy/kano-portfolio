@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/three-android.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/three-android"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/cdffcdd7bdccac371292"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/cdffcdd7bdccac371292"
 hasDetail: false
 ---
 

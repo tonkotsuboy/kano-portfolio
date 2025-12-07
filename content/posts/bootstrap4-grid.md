@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/bootstrap4-grid.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/bootstrap4-grid"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/a23ef99041880a698e9f"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/a23ef99041880a698e9f"
 hasDetail: false
 ---
 

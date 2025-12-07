@@ -6,10 +6,10 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: "/images/og/exponentiation-operator.png"
+thumbnail: ""
 slides: ""
-linkUrl: ""
-targetUrl: "/entry/exponentiation-operator"
+linkUrl: "https://qiita.com/tonkotsuboy_com/items/12436de8c6f3a289d3af"
+targetUrl: "https://qiita.com/tonkotsuboy_com/items/12436de8c6f3a289d3af"
 hasDetail: false
 ---
 
