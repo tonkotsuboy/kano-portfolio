@@ -1,0 +1,112 @@
+.card {
+  background: color-mix(in srgb, var(--color-card) 90%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-slow);
+
+  &:hover {
+    box-shadow: var(--shadow-strong);
+    transform: translateY(-4px);
+
+    .thumbnail {
+      transform: scale(1.05);
+    }
+
+    .title {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.thumbnailContainer {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow) ease-out;
+}
+
+.thumbnailContain {
+  object-fit: contain;
+  background: color-mix(in srgb, var(--color-surface) 70%, #fff0);
+}
+
+.thumbnailOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.1) 0%,
+    transparent 100%
+  );
+}
+
+.content {
+  padding: var(--space-6);
+}
+
+.tagsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, max-content));
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.tag {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  background: rgba(253, 216, 53, 0.9);
+  color: var(--color-primary-foreground);
+  border-radius: var(--radius-full);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-card-foreground);
+  margin-bottom: var(--space-3);
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+  transition: color var(--transition-normal);
+}
+
+.excerpt {
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-4);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, max-content));
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--font-size-xs);
+  color: var(--color-muted-foreground);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.metaIcon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
