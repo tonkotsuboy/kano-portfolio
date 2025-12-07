@@ -1,4 +1,5 @@
 ---
+
 title: "現場で働くコーダーのためのCSS Grid + モダンコーディング"
 slug: "cssnite-osaka-52"
 date: "2019-09-07T00:00+09:00"
@@ -17,8 +18,8 @@ hasDetail: true
 
 動画は次のURLから視聴できます。
 
-- 
-- 
+- [前半](https://vimeo.com/358739431/2eb386ae72)
+- [後半](https://vimeo.com/358749820/b184cd3ddb)
 
 今後主流になるであろうCSS Gridを解説しつつ、Chromium版Edgeをはじめとした全モダンブラウザーで使えるCSSの新機能を、制作現場の開発者目線で紹介。
 
@@ -26,9 +27,17 @@ CSSの新しい機能を取り入れて便利に開発を進めたい人や、�
 
 登壇内容はつぎのとおり。
 
+1. CSS Grid 1. 従来のボックスレイアウト手法
+2. CSS Gridの基本
+3. CSS Gridの便利な機能
+4. CSS GridのIE11対応方法
+2. 抑えておきたいCSSの新機能 1. 最近のモダンブラウザーで使えるCSSの機能
+2. 近い将来使えるようになるCSSの機能
+3. 情報のキャッチアップ方法
+
 2019年のCSS Niteにて、ベストセッションを受賞しました。
 
-- 
+- [CSS Niteベスト・セッション2019](http://cssnite.jp/archives/best-session2019.html#best10)
 
 参加者・登壇時間は次のとおりです。
 

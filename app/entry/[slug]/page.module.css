@@ -176,6 +176,58 @@
   color: var(--color-foreground);
 }
 
+.rawLink {
+  color: var(--color-primary);
+  word-break: break-all;
+}
+
+.linkCardStandalone,
+.linkCardInline {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--color-card) 94%, transparent);
+}
+
+.linkThumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-muted) 80%, transparent);
+  display: grid;
+  place-items: center;
+  color: var(--color-muted-foreground);
+  font-weight: 700;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.linkMeta {
+  display: grid;
+  gap: 6px;
+}
+
+.linkTitle {
+  font-weight: 700;
+  color: var(--color-foreground);
+  line-height: 1.4;
+}
+
+.linkUrl {
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
+  word-break: break-all;
+}
+
 .footerWrap {
   max-width: 960px;
   margin: 32px auto 0;

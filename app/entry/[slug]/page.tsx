@@ -1,25 +1,24 @@
+import fs from "node:fs";
+import path from "node:path";
+
+import { marked } from "marked";
 import { notFound } from "next/navigation";
+
 import { posts } from "@/.velite";
+
 import { Copyright } from "../../components/common/Copyright";
-import { Header } from "../../components/common/Header";
 import { Footer } from "../../components/common/Footer";
-import { LinkCard } from "../../components/common/LinkCard";
+import { Header } from "../../components/common/Header";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
 import { parseDate } from "../../logics/date/parseDate";
 
 import styles from "./page.module.css";
 
-import type { Metadata, NextPage } from "next";
+import type { Metadata } from "next";
 
-export const generateStaticParams = async () => {
-  // hasDetail: true のページのみ生成
-  return posts
-    .filter((post) => post.hasDetail)
-    .map((post) => ({
-      slug: post.slug,
-    }));
-};
+export const dynamic = "force-static";
+export const revalidate = 3600;
 
 const getPost = (slug: string) => {
   const post = posts.find((p) => p.slug === slug);
@@ -31,11 +30,26 @@ const getPost = (slug: string) => {
   return post;
 };
 
+const loadBodyHtml = (slug: string) => {
+  const file = path.join(process.cwd(), "content/posts", `${slug}.md`);
+  if (!fs.existsSync(file)) {return "";}
+  const raw = fs.readFileSync(file, "utf8");
+  const parts = raw.split(/^---\s*$/m);
+  if (parts.length < 3) {return "";}
+  const body = parts.slice(2).join("---\n");
+  let html = marked.parse(body);
+  // 段落単位のリンクをカード風に置き換え
+  html = html.replace(
+    /<p><a href="([^"]+)"[^>]*>(.*?)<\/a><\/p>/g,
+    (_m, href, text) =>
+      `<a class="linkCardStandalone linkCardInline" href="${href}" target="_blank" rel="noreferrer"><div class="linkThumb"><span>Link</span></div><div class="linkMeta"><div class="linkTitle">${text}</div><div class="linkUrl">${href}</div></div></a>`,
+  );
+  return html;
+};
+
 type Params = { params: { slug: string } };
 
-export const generateMetadata = async ({
-  params,
-}: Params): Promise<Metadata> => {
+export const generateMetadata = ({ params }: Params): Metadata => {
   const post = getPost(params.slug);
   const title = `${post.title}${WithSiteTitle}`;
 
@@ -53,8 +67,10 @@ export const generateMetadata = async ({
   };
 };
 
-const Page: NextPage<Params> = async ({ params }) => {
-  const post = getPost(params.slug);
+const Page = ({ params }: Params) => {
+  const { slug } = params;
+  const post = getPost(slug);
+  const bodyHtml = loadBodyHtml(slug);
 
   return (
     <>
@@ -85,32 +101,36 @@ const Page: NextPage<Params> = async ({ params }) => {
             </div>
           )}
 
-          {post.body && (
+          {bodyHtml && (
             <div
               className={styles.body}
-              dangerouslySetInnerHTML={{ __html: post.body }}
+              dangerouslySetInnerHTML={{ __html: bodyHtml }}
             />
           )}
 
           {post.slides && post.slides !== "" && (
             <div className={styles.sectionCard}>
               <div className={styles.sectionTitle}>スライド</div>
-              <LinkCard linkUrl={post.slides} />
+              <a className={styles.rawLink} href={post.slides} target="_blank" rel="noreferrer">
+                {post.slides}
+              </a>
             </div>
           )}
 
           {post.linkUrl && post.linkUrl !== "" && (
-            <div className={styles.sectionCard}>
-              <div className={styles.sectionTitle}>関連リンク</div>
-              <LinkCard linkUrl={post.linkUrl} />
-            </div>
+            <a className={styles.linkCardStandalone} href={post.linkUrl} target="_blank" rel="noreferrer">
+              <div className={styles.linkThumb}>
+                {post.thumbnail ? <img src={post.thumbnail} alt={post.title} /> : <span>{post.medium || "Link"}</span>}
+              </div>
+              <div className={styles.linkMeta}>
+                <div className={styles.linkTitle}>{post.title}</div>
+                <div className={styles.linkUrl}>{post.linkUrl}</div>
+              </div>
+            </a>
           )}
         </article>
       </main>
-      <div className={styles.footerWrap}>
-        <Copyright />
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };

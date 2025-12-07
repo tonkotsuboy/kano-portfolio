@@ -14,13 +14,18 @@ type MetaInfo = {
 type Props = {
   linkUrl: string;
   metaInfo?: MetaInfo;
+  thumbnail?: string;
+  title?: string;
 };
 
 /**
  * リンクカード。
  * og:image, og:titleが表示され、URLへのリンクを備えます
  */
-export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
+export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, title, thumbnail }) => {
+  const displayTitle = title ?? metaInfo?.ogTitle ?? linkUrl;
+  const displayThumb = thumbnail ?? metaInfo?.ogImage ?? null;
+
   return (
     <Link
       className={styles.linkCard}
@@ -29,21 +34,23 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo }) => {
       target="_blank"
     >
       <span className={styles.linkInner}>
-        {metaInfo?.ogImage != null && (
-          <Image
-            className={styles.ogImage}
-            src={metaInfo.ogImage}
-            width="628"
-            height="257"
-            alt="entryData.ogInfo.title"
-          />
+        {displayThumb && (
+          <span className={styles.thumbWrap}>
+            <Image
+              className={styles.ogImage}
+              src={displayThumb}
+              width={120}
+              height={120}
+              alt={displayTitle}
+            />
+          </span>
         )}
-        {metaInfo?.ogTitle != null && (
-          <h4 className={styles.ogTitle}>{metaInfo.ogTitle}</h4>
-        )}
-        <p className={styles.linkUrl}>
-          <span className={styles.linkText}>{linkUrl}</span>
-        </p>
+        <span className={styles.meta}>
+          <h4 className={styles.ogTitle}>{displayTitle}</h4>
+          <p className={styles.linkUrl}>
+            <span className={styles.linkText}>{linkUrl}</span>
+          </p>
+        </span>
       </span>
     </Link>
   );

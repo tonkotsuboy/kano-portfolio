@@ -1,4 +1,5 @@
 ---
+
 title: "Frontend Conference Fukuoka 2018「2019年までに見直しておきたい CSS・JavaScriptの手法」"
 slug: "fc-fukuoka-2019"
 date: "2018-12-08T00:00+09:00"
@@ -17,6 +18,18 @@ FECF運営委員会様より声をかけていただき、2018年12月8日に「
 
 「2019年までに見直しておきたいCSS・JavaScriptの手法」と題し、次の内容を発表しました。
 
-- CSSの見直し
-- JavaScriptの見直し
-- ツールの見直し
+- CSSの見直し - Flexbox
+- CSS Grid
+- モダンブラウザーで使えるようになった機能
+- CSS新機能のキャッチアップ
+- JavaScriptの見直し - ES2016～ES2018の新機能 - 配列内の要素の存在チェック
+- ゼロパディング
+- Promiseの取り扱い
+- オブジェクトの複製
+- 2019年以降に追加される機能 - nullの可能性がある値へのアクセス
+- 関数の合成
+- モジュールの動的import
+- ツールの見直し - Autoprefixerの進化
+- コードフォーマットはPrettierで
+- パッケージマネージャー
+- Yarnビルド環境の変化

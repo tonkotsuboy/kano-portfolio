@@ -1,16 +1,24 @@
 declare const styles: {
   readonly "article": string;
   readonly "body": string;
-  readonly "container": string;
-  readonly "header": string;
-  readonly "link": string;
+  readonly "breadcrumb": string;
+  readonly "cover": string;
+  readonly "footerWrap": string;
+  readonly "hero": string;
+  readonly "linkCardInline": string;
+  readonly "linkCardStandalone": string;
+  readonly "linkMeta": string;
+  readonly "linkThumb": string;
+  readonly "linkTitle": string;
+  readonly "linkUrl": string;
   readonly "medium": string;
   readonly "publishedDate": string;
-  readonly "slides": string;
-  readonly "tag": string;
-  readonly "tagList": string;
+  readonly "rawLink": string;
+  readonly "sectionCard": string;
+  readonly "sectionTitle": string;
+  readonly "surface": string;
+  readonly "tagChip": string;
+  readonly "tags": string;
   readonly "title": string;
-  readonly "video": string;
 };
 export = styles;
-

@@ -38,7 +38,7 @@ export default defineConfig({
         })),
     },
   },
-  mdx: {
+  markdown: {
     rehypePlugins: [
       rehypeSlug,
       [

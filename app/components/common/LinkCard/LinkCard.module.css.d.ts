@@ -5,6 +5,6 @@ declare const styles: {
   readonly "linkUrl": string;
   readonly "ogImage": string;
   readonly "ogTitle": string;
+  readonly "thumbWrap": string;
 };
 export = styles;
-
