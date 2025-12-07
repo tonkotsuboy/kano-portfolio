@@ -1,7 +1,7 @@
 @layer base {
   :root {
   /* カラー */
-  --color-primary: #f6b800;
+  --color-primary: #f5b400;
   --color-primary-dark: #c98a00;
   --color-primary-foreground: #0b0b0b;
     --color-background: #f6f7fb;
@@ -92,8 +92,8 @@
   }
 
 [data-theme="dark"] {
-  --color-primary: #ffc83a;
-  --color-primary-dark: #d69d00;
+  --color-primary: #f5b400;
+  --color-primary-dark: #c98a00;
   --color-primary-foreground: #0b0b0b;
     --color-background: #0b0f1c;
     --color-foreground: #e5e7eb;

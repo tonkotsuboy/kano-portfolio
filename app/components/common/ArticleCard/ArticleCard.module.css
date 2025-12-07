@@ -66,8 +66,8 @@
 .tag {
   padding: var(--padding-xs) var(--padding-md);
   border-radius: var(--radius-full);
-  background: var(--color-tag);
-  color: var(--color-tag-foreground);
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
   font-size: var(--font-size-xs);
   font-weight: 500;
 }

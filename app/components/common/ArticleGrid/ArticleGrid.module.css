@@ -94,7 +94,7 @@
   padding: var(--padding-xs) var(--padding-md);
   border: 1px solid color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
   border-radius: var(--radius-full);
-  background: var(--color-card);
+  background: color-mix(in srgb, var(--color-primary) 12%, var(--color-card));
   color: var(--color-foreground);
   cursor: pointer;
   font-size: var(--font-size-sm);
