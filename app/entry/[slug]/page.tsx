@@ -82,7 +82,6 @@ const Page = async ({ params }: Params): Promise<JSX.Element> => {
       <Header />
       <main className={styles.surface}>
         <div className={styles.hero}>
-          <div className={styles.breadcrumb}>Entry</div>
           <p className={styles.medium}>{post.medium}</p>
           <h1 className={styles.title}>{post.title}</h1>
           {post.date && (
