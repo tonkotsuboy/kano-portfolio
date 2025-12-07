@@ -1,0 +1,106 @@
+.linkCard {
+  container-type: inline-size;
+  display: block;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.linkInner {
+  display: grid;
+  overflow: hidden;
+  grid-template:
+    "thumbs thumbs thumbs" auto
+    ". . ." 0
+    ". title ." auto
+    ". url ." auto /
+    var(--space-4) 1fr var(--space-4);
+  background: #ffffff;
+  border: 1px solid rgba(48, 55, 120, 0.2);
+  border-radius: var(--radius-xl);
+  padding-bottom: var(--space-4);
+  row-gap: var(--space-2);
+  color: var(--color-secondary-foreground);
+
+  @container (min-width: 500px) {
+    column-gap: var(--space-6);
+    padding-right: var(--space-4);
+    padding-bottom: 0;
+    height: 120px;
+    grid-template:
+      "thumbs title" auto
+      "thumbs url" auto /
+      140px 1fr;
+  }
+}
+
+.ogImage {
+  grid-area: thumbs;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-position: top center;
+  align-self: stretch;
+}
+
+.ogTitle {
+  grid-area: title;
+  font-size: var(--font-size-base);
+  font-weight: normal;
+  align-self: end;
+  overflow: hidden;
+  display: -webkit-box;
+  margin-top: var(--space-2);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.4;
+
+  @container (min-width: 500px) {
+    padding-inline: 0;
+  }
+
+  .linkCard:hover & {
+    color: var(--color-primary);
+  }
+}
+
+.linkUrl {
+  grid-area: url;
+  display: grid;
+  justify-content: start;
+  gap: 4px;
+  grid-auto-flow: column;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  align-self: start;
+
+  @container (min-width: 500px) {
+    padding-inline: 0;
+  }
+
+  .linkCard:hover & {
+    color: var(--color-primary);
+  }
+
+  &::before {
+    display: block;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background-color: currentColor;
+    mask-repeat: no-repeat;
+    mask-image: url("/icon-link.svg");
+    mask-size: cover;
+  }
+}
+
+.linkText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .linkCard:hover & {
+    color: var(--color-primary);
+  }
+}

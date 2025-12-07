@@ -1,14 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import * as styles from "./LinkCard.css";
+import styles from "./LinkCard.module.css";
 
-import type { EntryType } from "../../../types/EntryType";
 import type { FC } from "react";
+
+type MetaInfo = {
+  ogDescription: string | null;
+  ogImage: string | null;
+  ogTitle: string | null;
+};
 
 type Props = {
   linkUrl: string;
-  metaInfo: EntryType["metaInfo"];
+  metaInfo?: MetaInfo;
 };
 
 /**

@@ -1,0 +1,6 @@
+.copyright {
+  font-size: var(--font-size-sm);
+  font-style: normal;
+  color: var(--color-muted-foreground);
+  text-align: center;
+}

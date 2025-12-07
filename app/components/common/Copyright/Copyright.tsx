@@ -1,4 +1,4 @@
-import * as styles from "./Copyright.css";
+import styles from "./Copyright.module.css";
 
 import type { FC } from "react";
 

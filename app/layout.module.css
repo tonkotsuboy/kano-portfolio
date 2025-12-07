@@ -1,0 +1,31 @@
+.root {
+  container-type: inline-size;
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+.wrapper {
+  display: grid;
+  grid-template:
+    "navigation" 80px
+    "main" auto /
+    1fr;
+  min-height: 100dvh;
+
+  @container (800px < width) {
+    grid-template: "navigation main" 1fr/240px 1fr;
+  }
+}
+
+.main {
+  background: #f8f9fc;
+  padding: var(--space-16px);
+
+  @container (400px < width <= 900px) {
+    padding: var(--space-32px);
+  }
+
+  @container (900px < width) {
+    padding: var(--space-64px) var(--space-80px) var(--space-40px);
+  }
+}
