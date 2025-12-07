@@ -1,9 +1,9 @@
 @layer base {
   :root {
-    /* カラー */
-    --color-primary: #f6c445;
-    --color-primary-dark: #d49a00;
-    --color-primary-foreground: #0b0b0b;
+  /* カラー */
+  --color-primary: #f6b800;
+  --color-primary-dark: #c98a00;
+  --color-primary-foreground: #0b0b0b;
     --color-background: #f6f7fb;
     --color-foreground: #0e172a;
     --color-card: #ffffff;
@@ -91,10 +91,10 @@
     --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  [data-theme="dark"] {
-    --color-primary: #ffd257;
-    --color-primary-dark: #e3ad00;
-    --color-primary-foreground: #0b0b0b;
+[data-theme="dark"] {
+  --color-primary: #ffc83a;
+  --color-primary-dark: #d69d00;
+  --color-primary-foreground: #0b0b0b;
     --color-background: #0b0f1c;
     --color-foreground: #e5e7eb;
     --color-card: #0f172a;

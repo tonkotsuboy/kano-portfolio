@@ -92,10 +92,10 @@
 
 .tagButton {
   padding: var(--padding-xs) var(--padding-md);
-  border: 1px solid color-mix(in srgb, var(--color-tag) 50%, var(--color-border));
+  border: 1px solid color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
   border-radius: var(--radius-full);
   background: var(--color-card);
-  color: var(--color-tag-foreground);
+  color: var(--color-foreground);
   cursor: pointer;
   font-size: var(--font-size-sm);
   font-weight: 600;
@@ -103,15 +103,15 @@
 }
 
 .tagButton.active {
-  border-color: color-mix(in srgb, var(--color-tag) 70%, var(--color-border));
-  background: var(--color-tag);
+  border-color: color-mix(in srgb, var(--color-primary) 70%, var(--color-border));
+  background: var(--color-primary);
   box-shadow: var(--shadow-soft);
-  color: var(--color-tag-foreground);
+  color: var(--color-primary-foreground);
 }
 
 .tagButton.inactive:hover {
-  border-color: color-mix(in srgb, var(--color-tag) 60%, var(--color-border));
-  color: var(--color-tag-foreground);
+  border-color: color-mix(in srgb, var(--color-primary) 60%, var(--color-border));
+  color: var(--color-foreground);
 }
 
 .pagination {
@@ -125,9 +125,9 @@
 
 .pageButton {
   padding: var(--padding-xs) var(--padding-md);
-  border: 1px solid var(--color-border);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-card) 92%, transparent);
+  background: color-mix(in srgb, var(--color-card) 96%, transparent);
   cursor: pointer;
   transition: all var(--transition-normal);
 
@@ -151,9 +151,9 @@
 .pageNumber {
   min-width: 36px;
   padding: 8px 12px;
-  border: 1px solid var(--color-border);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-card) 90%, transparent);
+  background: color-mix(in srgb, var(--color-card) 94%, transparent);
   color: var(--color-foreground);
   cursor: pointer;
   font-weight: 600;
@@ -170,8 +170,9 @@
 }
 
 .pageNumberActive {
-  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
-  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
+  background: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  color: var(--color-primary-foreground);
 }
 
 .pageStatus {
