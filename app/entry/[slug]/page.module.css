@@ -2,30 +2,30 @@
   min-height: 100vh;
   padding: clamp(24px, 4vw, 48px);
   background:
-    radial-gradient(circle at 20% 20%, rgba(77, 96, 255, 0.08), transparent 30%),
-    radial-gradient(circle at 80% 10%, rgba(255, 179, 71, 0.08), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgb(77 96 255 / 8%), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgb(255 179 71 / 8%), transparent 30%),
     color-mix(in srgb, var(--color-background) 92%, transparent);
 }
 
 .hero {
+  display: grid;
   max-width: 960px;
   margin: 0 auto clamp(24px, 3vw, 32px);
-  display: grid;
   gap: 12px;
 }
 
 .breadcrumb {
   display: inline-flex;
+  width: fit-content;
   align-items: center;
-  gap: 8px;
   padding: 6px 12px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--color-muted) 60%, transparent);
   color: var(--color-muted-foreground);
-  font-weight: 600;
   font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
   letter-spacing: 0.04em;
-  width: fit-content;
 }
 
 .medium {
@@ -34,14 +34,14 @@
   border-radius: 999px;
   background: color-mix(in srgb, var(--color-primary) 14%, transparent);
   color: var(--color-primary);
-  font-weight: 700;
   font-size: 12px;
+  font-weight: 700;
 }
 
 .title {
+  color: var(--color-foreground);
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   font-weight: 800;
-  color: var(--color-foreground);
   line-height: 1.3;
 }
 
@@ -52,37 +52,37 @@
 
 .tags {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .tagChip {
   padding: 6px 10px;
+  border: 1px solid var(--color-border);
   border-radius: 999px;
   background: color-mix(in srgb, var(--color-card) 90%, transparent);
-  border: 1px solid var(--color-border);
-  font-size: 12px;
   color: var(--color-foreground);
+  font-size: 12px;
 }
 
 .article {
-  max-width: 960px;
-  margin: 0 auto;
   display: grid;
-  gap: 20px;
+  max-width: 960px;
   padding: clamp(20px, 3vw, 32px);
-  background: color-mix(in srgb, var(--color-card) 95%, transparent);
   border: 1px solid var(--color-border);
   border-radius: 24px;
+  margin: 0 auto;
+  background: color-mix(in srgb, var(--color-card) 95%, transparent);
   box-shadow: var(--shadow-soft);
+  gap: 20px;
 }
 
 .cover {
-  width: 100%;
   position: relative;
+  overflow: hidden;
+  width: 100%;
   height: clamp(240px, 40vw, 420px);
   border-radius: 18px;
-  overflow: hidden;
   background: var(--color-muted);
 }
 
@@ -93,9 +93,9 @@
 }
 
 .body {
+  color: var(--color-foreground);
   font-size: 1rem;
   line-height: 1.85;
-  color: var(--color-foreground);
 
   p {
     margin-bottom: 1rem;
@@ -106,8 +106,8 @@
   h4 {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    font-weight: 800;
     color: var(--color-foreground);
+    font-weight: 800;
     letter-spacing: -0.01em;
   }
 
@@ -138,23 +138,23 @@
   img {
     max-width: 100%;
     height: auto;
-    margin: 1rem 0;
     border-radius: 12px;
+    margin: 1rem 0;
   }
 
   code {
     padding: 0.2em 0.4em;
-    font-family: "SFMono-Regular", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    background-color: color-mix(in srgb, var(--color-muted) 70%, transparent);
     border-radius: 6px;
+    background-color: color-mix(in srgb, var(--color-muted) 70%, transparent);
+    font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
   pre {
     padding: 1rem;
-    overflow-x: auto;
-    background-color: color-mix(in srgb, var(--color-muted) 80%, transparent);
     border-radius: 12px;
     margin-bottom: 1rem;
+    background-color: color-mix(in srgb, var(--color-muted) 80%, transparent);
+    overflow-x: auto;
 
     code {
       padding: 0;
@@ -164,18 +164,18 @@
 }
 
 .sectionCard {
+  display: grid;
   padding: 16px;
-  border-radius: 14px;
   border: 1px solid var(--color-border);
+  border-radius: 14px;
   background: color-mix(in srgb, var(--color-card) 92%, transparent);
   box-shadow: var(--shadow-soft);
-  display: grid;
   gap: 8px;
 }
 
 .sectionTitle {
-  font-weight: 700;
   color: var(--color-foreground);
+  font-weight: 700;
 }
 
 .rawLink {
@@ -186,25 +186,25 @@
 .linkCardStandalone,
 .linkCardInline {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: var(--space-4);
   align-items: center;
   padding: var(--space-4);
   border: 1px solid var(--color-border);
   border-radius: 16px;
   background: color-mix(in srgb, var(--color-card) 94%, transparent);
+  gap: var(--space-4);
+  grid-template-columns: 120px 1fr;
 }
 
 .linkThumb {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 14px;
-  overflow: hidden;
-  background: color-mix(in srgb, var(--color-muted) 80%, transparent);
   display: grid;
-  place-items: center;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 14px;
+  aspect-ratio: 1 / 1;
+  background: color-mix(in srgb, var(--color-muted) 80%, transparent);
   color: var(--color-muted-foreground);
   font-weight: 700;
+  place-items: center;
 
   img {
     width: 100%;
@@ -223,8 +223,8 @@
 }
 
 .linkTitle {
-  font-weight: 700;
   color: var(--color-foreground);
+  font-weight: 700;
   line-height: 1.4;
 }
 
@@ -235,9 +235,9 @@
 }
 
 .footerWrap {
-  max-width: 960px;
-  margin: 32px auto 0;
-  padding: 0 clamp(20px, 4vw, 32px) 48px;
   display: grid;
+  max-width: 960px;
+  padding: 0 clamp(20px, 4vw, 32px) 48px;
+  margin: 32px auto 0;
   gap: 12px;
 }

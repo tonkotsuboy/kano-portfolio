@@ -2,157 +2,167 @@
   padding-top: var(--space-16);
   padding-bottom: var(--space-24);
 
-  @media (min-width: 768px) {
-    padding-top: var(--space-24);
-  }
+@media (width >= 768px) {
+  padding-top: var(--space-24);
+}
 }
 
 .container {
   max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--padding-md);
   padding-right: var(--padding-md);
+  padding-left: var(--padding-md);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .header {
   display: grid;
-  gap: var(--gap-lg);
   margin-bottom: var(--space-8);
+  gap: var(--gap-lg);
 }
 
 .controls {
   display: grid;
   gap: var(--gap-md);
 
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr auto;
+  @media (width >= 768px) {
     align-items: center;
+    grid-template-columns: 1fr auto;
   }
 }
 
 .searchBox {
   display: grid;
-  grid-template-columns: auto 1fr;
   align-items: center;
-  gap: var(--gap-sm);
   padding: var(--padding-sm) var(--padding-md);
-  background: var(--glass-surface);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-3xl);
-  box-shadow: var(--glass-highlight);
   backdrop-filter: var(--glass-blur);
+  background: var(--glass-surface);
+  box-shadow: var(--glass-highlight);
+  gap: var(--gap-sm);
+  grid-template-columns: auto 1fr;
 }
 
 .searchBox input {
   border: none;
   background: transparent;
-  font-size: var(--font-size-base);
   color: var(--color-foreground);
+  font-size: var(--font-size-base);
   outline: none;
 }
 
 .viewToggle {
   display: grid;
-  grid-auto-flow: column;
-  gap: var(--gap-sm);
   justify-content: flex-start;
+  gap: var(--gap-sm);
+  grid-auto-flow: column;
 }
 
 .viewButton {
   display: inline-grid;
-  grid-auto-flow: column;
   align-items: center;
-  gap: var(--gap-xs);
   padding: var(--padding-xs) var(--padding-sm);
-  border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
   background: transparent;
   color: var(--color-muted-foreground);
   cursor: pointer;
+  gap: var(--gap-xs);
+  grid-auto-flow: column;
   transition: all var(--transition-normal);
 }
 
 .viewButton:hover {
-  color: var(--color-foreground);
   border-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
+  color: var(--color-foreground);
 }
 
 .viewButton[data-state="on"] {
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
   background: var(--glass-strong);
   color: var(--color-foreground);
-  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
 }
 
 .tagsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
   gap: var(--gap-sm);
+  grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
 }
 
 .tagButton {
   padding: var(--padding-xs) var(--padding-md);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  border-radius: var(--radius-full);
-  transition: all var(--transition-normal);
   border: 1px solid color-mix(in srgb, var(--color-tag) 50%, var(--color-border));
+  border-radius: var(--radius-full);
   background: var(--color-card);
   color: var(--color-tag-foreground);
   cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all var(--transition-normal);
 }
 
 .tagButton.active {
-  background: var(--color-tag);
-  color: var(--color-tag-foreground);
   border-color: color-mix(in srgb, var(--color-tag) 70%, var(--color-border));
+  background: var(--color-tag);
   box-shadow: var(--shadow-soft);
+  color: var(--color-tag-foreground);
 }
 
 .tagButton.inactive:hover {
-  color: var(--color-tag-foreground);
   border-color: color-mix(in srgb, var(--color-tag) 60%, var(--color-border));
+  color: var(--color-tag-foreground);
 }
 
 .pagination {
-  margin-top: var(--space-8);
   display: grid;
-  grid-auto-flow: column;
   align-items: center;
-  gap: var(--gap-sm);
   justify-content: center;
+  margin-top: var(--space-8);
+  gap: var(--gap-sm);
+  grid-auto-flow: column;
 }
 
 .pageButton {
   padding: var(--padding-xs) var(--padding-md);
-  border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
   background: color-mix(in srgb, var(--color-card) 92%, transparent);
   cursor: pointer;
   transition: all var(--transition-normal);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-dark);
+    outline-offset: 3px;
+  }
 }
 
 .pageButton:disabled {
-  opacity: 0.4;
   cursor: not-allowed;
+  opacity: 0.4;
 }
 
 .pageNumbers {
   display: grid;
-  grid-auto-flow: column;
   gap: var(--gap-xs);
+  grid-auto-flow: column;
 }
 
 .pageNumber {
   min-width: 36px;
   padding: 8px 12px;
-  border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
   background: color-mix(in srgb, var(--color-card) 90%, transparent);
   color: var(--color-foreground);
   cursor: pointer;
-  transition: all var(--transition-normal);
   font-weight: 600;
+  transition: all var(--transition-normal);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-dark);
+    outline-offset: 3px;
+  }
 }
 
 .pageNumber:hover {
@@ -160,8 +170,8 @@
 }
 
 .pageNumberActive {
-  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
   border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
 .pageStatus {
@@ -171,18 +181,18 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  grid-auto-rows: 1fr;
-  gap: var(--gap-lg);
-  list-style: none;
   padding: 0;
+  gap: var(--gap-lg);
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  list-style: none;
 }
 
 .gridItem {
   display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 1;
   grid-column: span 1;
+  grid-row: span 1;
+  grid-template-rows: subgrid;
 }
 
 .gridItem > a {
@@ -192,9 +202,14 @@
 
 .list {
   display: grid;
+  padding: 0;
   gap: var(--gap-md);
   list-style: none;
-  padding: 0;
+
+  &:has(li:focus-visible) {
+    outline: 1px solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+    outline-offset: 4px;
+  }
 }
 
 .list li > a {
@@ -208,20 +223,20 @@
 
 .listItem {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: var(--gap-md);
+  min-height: 120px;
   padding: var(--padding-sm);
-  border-radius: var(--radius-3xl);
   border: 1px solid var(--glass-border);
+  border-radius: var(--radius-3xl);
   background: var(--glass-surface);
   box-shadow: var(--glass-highlight), var(--shadow-soft);
+  gap: var(--gap-md);
+  grid-template-columns: 120px 1fr;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-  min-height: 120px;
 }
 
 .listItem:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-strong);
+  transform: translateY(-2px);
 }
 
 .listThumb {
@@ -232,24 +247,24 @@
 }
 
 .thumbnailContain {
-  object-fit: contain;
-  background: color-mix(in srgb, var(--color-surface) 70%, #fff0);
   padding: 12%;
+  background: color-mix(in srgb, var(--color-surface) 70%, #fff0);
+  object-fit: contain;
 }
 
 .listBody {
   display: grid;
-  gap: var(--gap-sm);
   align-content: center;
+  gap: var(--gap-sm);
 }
 
 .listMeta {
   display: grid;
-  grid-auto-flow: column;
   align-items: center;
-  gap: var(--gap-xs);
   color: var(--color-muted-foreground);
   font-size: var(--font-size-sm);
+  gap: var(--gap-xs);
+  grid-auto-flow: column;
 }
 
 .listMedium {
@@ -265,35 +280,35 @@
 }
 
 .listTitle {
-  font-size: var(--font-size-lg);
   color: var(--color-foreground);
+  font-size: var(--font-size-lg);
   font-weight: 700;
   line-height: 1.4;
 }
 
 .listTags {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
   gap: var(--gap-xs);
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
 }
 
 .listTag {
-  font-size: var(--font-size-xs);
-  color: var(--color-muted-foreground);
-  background: color-mix(in srgb, var(--color-muted) 80%, transparent);
   padding: 4px 8px;
   border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-muted) 80%, transparent);
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-xs);
 }
 
 .emptyState {
-  text-align: center;
   padding-top: var(--space-16);
   padding-bottom: var(--space-16);
   color: var(--color-muted-foreground);
+  text-align: center;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .header {
     padding: var(--space-4);
   }

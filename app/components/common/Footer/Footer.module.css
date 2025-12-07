@@ -4,22 +4,18 @@
 
 .container {
   max-width: 1280px;
-  margin-left: auto;
+  padding: var(--space-12) var(--padding-md) var(--space-12) var(--padding-md);
   margin-right: auto;
-  padding-left: var(--padding-md);
-  padding-right: var(--padding-md);
-  padding-top: var(--space-12);
-  padding-bottom: var(--space-12);
+  margin-left: auto;
 }
 
 .content {
   display: grid;
-  grid-template-columns: 1fr;
   gap: var(--gap-lg);
-  align-items: center;
-  justify-items: center;
+  grid-template-columns: 1fr;
+  place-items: center center;
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     grid-template-columns: 1fr auto 1fr;
     justify-items: start;
 
@@ -35,59 +31,58 @@
 
 .logoSection {
   display: grid;
-  grid-auto-rows: max-content;
-  align-items: center;
-  justify-items: center;
   gap: var(--gap-sm);
+  grid-auto-rows: max-content;
+  place-items: center center;
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     justify-items: start;
   }
 }
 
 .logo {
   display: grid;
-  grid-auto-flow: column;
   align-items: center;
   gap: var(--gap-sm);
+  grid-auto-flow: column;
 }
 
 .logoIcon {
+  display: grid;
   width: 2rem;
   height: 2rem;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   border-radius: var(--radius-xl);
-  display: grid;
-  place-items: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   box-shadow: var(--shadow-soft);
-  font-weight: 700;
-  font-size: 0.875rem;
   color: var(--color-primary-foreground);
+  font-size: 0.875rem;
+  font-weight: 700;
+  place-items: center;
 }
 
 .logoText {
-  font-weight: 700;
-  font-size: var(--font-size-lg);
   color: var(--color-foreground);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
 }
 
 .copyright {
-  font-size: var(--font-size-sm);
   color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
 }
 
 .nav {
   display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: var(--gap-md);
+  grid-auto-columns: max-content;
+  grid-auto-flow: column;
 }
 
 .navLink {
-  font-size: var(--font-size-sm);
   color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
   transition: color var(--transition-normal);
 
   &:hover {
@@ -97,9 +92,9 @@
 
 .socialLinks {
   display: grid;
-  grid-auto-flow: column;
-  gap: var(--gap-md);
   align-items: center;
+  gap: var(--gap-md);
+  grid-auto-flow: column;
 }
 
 .socialLink {

@@ -1,8 +1,8 @@
 .linkCard {
-  container-type: inline-size;
   display: block;
+  container-type: inline-size;
 
-  &:hover {
+  &:is(:hover, :focus-visible) {
     color: var(--color-primary);
   }
 }
@@ -10,25 +10,30 @@
 .linkInner {
   display: grid;
   overflow: hidden;
-  grid-template-columns: auto 1fr;
-  gap: var(--gap-md);
   align-items: center;
-  background: var(--glass-surface);
+  padding: var(--padding-md);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-3xl);
-  padding: var(--padding-md);
+  background: var(--glass-surface);
   box-shadow: var(--glass-highlight), var(--shadow-soft);
   color: var(--color-secondary-foreground);
+  gap: var(--gap-md);
+  grid-template-columns: auto 1fr;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-dark);
+    outline-offset: 3px;
+  }
 }
 
 .thumbWrap {
+  display: grid;
+  overflow: hidden;
   width: 96px;
   height: 96px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--color-muted);
   flex-shrink: 0;
-  display: grid;
+  border-radius: var(--radius-lg);
+  background: var(--color-muted);
   place-items: center;
 }
 
@@ -44,11 +49,11 @@
 }
 
 .ogTitle {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
   font-size: var(--font-size-base);
   font-weight: normal;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-height: 1.4;
 
@@ -59,12 +64,12 @@
 
 .linkUrl {
   display: grid;
+  align-items: center;
   justify-content: start;
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
   gap: var(--space-1);
   grid-auto-flow: column;
-  align-items: center;
-  font-size: var(--font-size-sm);
-  margin-top: var(--space-2);
 
   .linkCard:hover & {
     color: var(--color-primary);
@@ -74,10 +79,10 @@
     display: block;
     width: 16px;
     height: 16px;
+    background-color: currentcolor;
     content: "";
-    background-color: currentColor;
-    mask-repeat: no-repeat;
     mask-image: url("/icon-link.svg");
+    mask-repeat: no-repeat;
     mask-size: cover;
   }
 }

@@ -1,14 +1,18 @@
 .card {
   display: grid;
-  grid-template-rows: auto 1fr;
-  background: var(--glass-surface);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  overflow: hidden;
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-3xl);
-  overflow: hidden;
+  backdrop-filter: var(--glass-blur);
+  background: var(--glass-surface);
   box-shadow: var(--glass-highlight), var(--shadow-soft);
+  grid-template-rows: auto 1fr;
   transition: all var(--transition-slow);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-dark);
+    outline-offset: 3px;
+  }
 
   &:hover {
     box-shadow: var(--glass-highlight), var(--shadow-soft);
@@ -18,9 +22,9 @@
 
 .thumbnailContainer {
   position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
   display: grid;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
 }
 
 .thumbnail {
@@ -31,78 +35,78 @@
 }
 
 .thumbnailContain {
-  object-fit: contain;
-  background: color-mix(in srgb, var(--color-surface) 70%, #fff0);
   padding: 12%;
+  background: color-mix(in srgb, var(--color-surface) 70%, #fff0);
+  object-fit: contain;
 }
 
 .thumbnailOverlay {
   position: absolute;
-  inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.1) 0%,
+    rgb(0 0 0 / 10%) 0%,
     transparent 100%
   );
+  inset: 0;
 }
 
 .content {
   display: grid;
-  gap: var(--gap-md);
   padding: var(--padding-lg);
+  gap: var(--gap-md);
 }
 
 .tagsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, max-content));
-  gap: var(--gap-sm);
   margin-bottom: 0;
+  gap: var(--gap-sm);
+  grid-template-columns: repeat(auto-fit, minmax(60px, max-content));
 }
 
 .tag {
   padding: var(--padding-xs) var(--padding-md);
-  font-size: var(--font-size-xs);
-  font-weight: 500;
+  border-radius: var(--radius-full);
   background: var(--color-tag);
   color: var(--color-tag-foreground);
-  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
 }
 
 .title {
+  margin-bottom: var(--padding-sm);
+  color: var(--color-card-foreground);
   font-size: var(--font-size-lg);
   font-weight: 600;
-  color: var(--color-card-foreground);
-  margin-bottom: var(--padding-sm);
-  line-height: 1.4;
   letter-spacing: -0.025em;
+  line-height: 1.4;
   transition: color var(--transition-normal);
 }
 
 .excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  -webkit-box-orient: vertical;
   color: var(--color-muted-foreground);
   font-size: var(--font-size-sm);
-  margin-bottom: var(--space-4);
-  line-height: 1.6;
-  display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.6;
 }
 
 .meta {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, max-content));
   align-items: center;
-  gap: var(--gap-md);
-  font-size: var(--font-size-xs);
   color: var(--color-muted-foreground);
+  font-size: var(--font-size-xs);
+  gap: var(--gap-md);
+  grid-template-columns: repeat(auto-fit, minmax(80px, max-content));
 }
 
 .metaItem {
   display: grid;
-  grid-auto-flow: column;
   align-items: center;
   gap: var(--gap-xs);
+  grid-auto-flow: column;
 }
 
 .metaIcon {
