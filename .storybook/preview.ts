@@ -1,11 +1,10 @@
 import type { Preview } from "@storybook/nextjs-vite";
 
 import "../app/styles/reset.css";
-import "../app/styles/base.css";
+import "../app/styles/globals.css";
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
         color: /(background|color)$/i,
