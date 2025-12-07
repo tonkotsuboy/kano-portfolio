@@ -1,0 +1,148 @@
+.container {
+  display: grid;
+  gap: var(--space-40px);
+}
+
+.video {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.article {
+  display: grid;
+  gap: var(--space-8px);
+  padding: var(--space-16px);
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #f1f3fa;
+  border-radius: 14px;
+  box-shadow: 2px 8px 30px rgba(48, 55, 120, 0.04);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8px);
+}
+
+.medium {
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--color-primary);
+  background: #edeef8;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+}
+
+.tagList {
+  display: flex;
+  gap: 6px;
+  height: 100%;
+}
+
+.tag {
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary);
+}
+
+.title {
+  font-size: var(--font-size-l);
+  font-style: normal;
+  font-weight: bold;
+  line-height: 150%;
+  color: var(--color-text);
+}
+
+.link {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(-primaryColor);
+}
+
+.publishedDate {
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+}
+
+.body {
+  margin-top: var(--space-16px);
+  margin-bottom: var(--space-16px);
+  font-size: var(--font-size-m);
+  line-height: 1.8;
+  color: var(--color-text);
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  h2,
+  h3,
+  h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  h3 {
+    font-size: var(--font-size-l);
+  }
+
+  h4 {
+    font-size: var(--font-size-m);
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+
+  code {
+    padding: 0.2em 0.4em;
+    font-family: monospace;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+  }
+
+  pre {
+    padding: 1rem;
+    overflow-x: auto;
+    background-color: #f6f8fa;
+    border-radius: var(--radius-8px);
+    margin-bottom: 1rem;
+
+    code {
+      padding: 0;
+      background-color: transparent;
+    }
+  }
+}
+
+.slides,
+.link {
+  margin-top: var(--space-24px);
+
+  h3 {
+    margin-bottom: var(--space-8px);
+    font-size: var(--font-size-m);
+    font-weight: bold;
+    color: var(--color-text);
+  }
+}

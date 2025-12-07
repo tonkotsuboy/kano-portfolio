@@ -1,36 +1,32 @@
+import { notFound } from "next/navigation";
+import { posts } from "@/.velite";
 import { Copyright } from "../../components/common/Copyright";
 import { LinkCard } from "../../components/common/LinkCard";
-import { DetailHTML } from "../../components/concerns/DetailHTML/DetailHTML";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
-import {
-  fetchAllEntryData,
-  fetchEntryData,
-} from "../../logics/api/fetchAllEntryData";
 import { parseDate } from "../../logics/date/parseDate";
-import { getMetaDataForEntryDataList } from "../../logics/scraping/getMetaDataForEntryDataList";
 
-import * as styles from "./page.css";
+import styles from "./page.module.css";
 
 import type { Metadata, NextPage } from "next";
 
-export const generateStaticParams = async (): Promise<string[]> => {
-  const portfolioData = await fetchAllEntryData();
-  return portfolioData
-    .filter((entry) => entry.medium?.slug !== "writing")
-    .map((entry) => `/entry/${entry.slug}`);
+export const generateStaticParams = async () => {
+  // hasDetail: true のページのみ生成
+  return posts
+    .filter((post) => post.hasDetail)
+    .map((post) => ({
+      slug: post.slug,
+    }));
 };
 
-const getEntryData = async (slug: string) => {
-  const entryData = await fetchEntryData(slug);
+const getPost = (slug: string) => {
+  const post = posts.find((p) => p.slug === slug);
 
-  if (entryData == null) {
-    return Promise.reject("entryData is null");
+  if (!post || !post.hasDetail) {
+    notFound();
   }
 
-  return {
-    entryData,
-  };
+  return post;
 };
 
 type Params = { params: { slug: string } };
@@ -38,9 +34,8 @@ type Params = { params: { slug: string } };
 export const generateMetadata = async ({
   params,
 }: Params): Promise<Metadata> => {
-  const { entryData } = await getEntryData(params.slug);
-
-  const title = `${entryData.title ?? ""}${WithSiteTitle}`;
+  const post = getPost(params.slug);
+  const title = `${post.title}${WithSiteTitle}`;
 
   return {
     ...metadata,
@@ -57,56 +52,53 @@ export const generateMetadata = async ({
 };
 
 const Page: NextPage<Params> = async ({ params }) => {
-  const { entryData } = await getEntryData(params.slug);
-
-  await getMetaDataForEntryDataList([entryData]);
+  const post = getPost(params.slug);
 
   return (
     <div className={styles.container}>
       <article className={styles.article}>
         <header className={styles.header}>
-          <p className={styles.medium}>{entryData.medium?.name}</p>
+          <p className={styles.medium}>{post.medium}</p>
           <ul className={styles.tagList}>
-            {entryData.tags
-              ?.sort((a, b) => a.order - b.order)
-              .map(({ slug, name }) => (
-                <li key={slug} className={styles.tag}>
-                  #{name}
-                </li>
-              ))}
+            {post.tags.map((tag) => (
+              <li key={tag} className={styles.tag}>
+                #{tag}
+              </li>
+            ))}
           </ul>
         </header>
-        <h2 className={styles.title}>{entryData.title}</h2>
-        {entryData.published_date != null && (
+        <h2 className={styles.title}>{post.title}</h2>
+        {post.date && (
           <p className={styles.publishedDate}>
             発表日
-            <time dateTime={entryData.published_date}>
-              {parseDate(entryData.published_date)}
+            <time dateTime={post.date}>
+              {parseDate(post.date)}
             </time>
           </p>
         )}
 
-        {/* ビデオ */}
-        {entryData.videoUrl != null && (
-          <iframe
-            className={styles.video}
-            width="560"
-            height="315"
-            src={entryData.videoUrl}
-            title={entryData.title}
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen={true}
+        {/* 記事本文 (Markdown) */}
+        {post.body && (
+          <div
+            className={styles.body}
+            dangerouslySetInnerHTML={{ __html: post.body }}
           />
         )}
-        {/* 記事詳細HTML */}
-        {entryData.detail != null && (
-          <DetailHTML detailDocument={entryData.detail} />
+
+        {/* スライドリンク */}
+        {post.slides && post.slides !== "" && (
+          <div className={styles.slides}>
+            <h3>スライド</h3>
+            <LinkCard linkUrl={post.slides} />
+          </div>
         )}
 
-        {/* リンクカード */}
-        {entryData.url != null && (
-          <LinkCard linkUrl={entryData.url} metaInfo={entryData.metaInfo} />
+        {/* リンクカード (外部リンク) */}
+        {post.linkUrl && post.linkUrl !== "" && (
+          <div className={styles.link}>
+            <h3>リンク</h3>
+            <LinkCard linkUrl={post.linkUrl} />
+          </div>
         )}
       </article>
 
