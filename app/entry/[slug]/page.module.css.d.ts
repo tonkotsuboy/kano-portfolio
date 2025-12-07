@@ -3,12 +3,14 @@ declare const styles: {
   readonly "body": string;
   readonly "breadcrumb": string;
   readonly "cover": string;
+  readonly "coverImage": string;
   readonly "footerWrap": string;
   readonly "hero": string;
   readonly "linkCardInline": string;
   readonly "linkCardStandalone": string;
   readonly "linkMeta": string;
   readonly "linkThumb": string;
+  readonly "linkThumbImage": string;
   readonly "linkTitle": string;
   readonly "linkUrl": string;
   readonly "medium": string;

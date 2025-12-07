@@ -3,6 +3,7 @@ declare const styles: {
   readonly "linkInner": string;
   readonly "linkText": string;
   readonly "linkUrl": string;
+  readonly "meta": string;
   readonly "ogImage": string;
   readonly "ogTitle": string;
   readonly "thumbWrap": string;

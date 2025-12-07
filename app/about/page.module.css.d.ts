@@ -22,4 +22,3 @@ declare const styles: {
   readonly "visual": string;
 };
 export = styles;
-
