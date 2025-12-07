@@ -95,8 +95,8 @@
   font-weight: 600;
   border-radius: var(--radius-full);
   transition: all var(--transition-normal);
-  border: 1px solid color-mix(in srgb, var(--color-tag) 40%, var(--color-border));
-  background: color-mix(in srgb, var(--color-tag) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-tag) 50%, var(--color-border));
+  background: var(--color-card);
   color: var(--color-tag-foreground);
   cursor: pointer;
 }
@@ -238,9 +238,9 @@
 .listMedium {
   padding: 2px 8px;
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-primary) 18%, transparent);
-  color: var(--color-foreground);
-  font-weight: 600;
+  background: var(--color-tag);
+  color: var(--color-tag-foreground);
+  font-weight: 700;
 }
 
 .listDate {
