@@ -97,6 +97,10 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
+  const pages = useMemo(
+    () => Array.from({ length: totalPages }, (_, i) => i + 1),
+    [totalPages]
+  );
 
   const goPage = (next: number) => {
     const clamped = Math.min(Math.max(1, next), totalPages);
@@ -205,9 +209,19 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
             >
               前へ
             </button>
-            <span className={styles.pageStatus}>
-              {currentPage} / {totalPages}
-            </span>
+            <div className={styles.pageNumbers}>
+              {pages.map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  className={`${styles.pageNumber} ${p === currentPage ? styles.pageNumberActive : ""}`}
+                  onClick={() => goPage(p)}
+                  aria-current={p === currentPage ? "page" : undefined}
+                >
+                  {p}
+                </button>
+              ))}
+            </div>
             <button
               type="button"
               className={styles.pageButton}

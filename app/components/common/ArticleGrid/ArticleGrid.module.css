@@ -115,9 +115,10 @@
 
 .pagination {
   margin-top: var(--space-8);
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   justify-content: center;
 }
 
@@ -133,6 +134,32 @@
 .pageButton:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.pageNumbers {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.pageNumber {
+  min-width: 36px;
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-card) 90%, transparent);
+  color: var(--color-foreground);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-weight: 600;
+}
+
+.pageNumber:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 30%, var(--color-border));
+}
+
+.pageNumberActive {
+  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
 }
 
 .pageStatus {
