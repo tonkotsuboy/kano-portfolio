@@ -7,18 +7,20 @@
 }
 
 .headerScrolled {
-  background: color-mix(in srgb, var(--color-card) 80%, transparent);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background: var(--glass-surface);
+  backdrop-filter: saturate(180%) var(--glass-blur);
+  -webkit-backdrop-filter: saturate(180%) var(--glass-blur);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), var(--shadow-soft);
 }
 
 .headerContainer {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
+  padding-left: var(--padding-md);
+  padding-right: var(--padding-md);
 }
 
 .headerContent {
@@ -30,8 +32,10 @@
 }
 
 .logo {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   align-items: center;
+  gap: var(--gap-sm);
 }
 
 .avatar {
@@ -53,23 +57,25 @@
   align-items: center;
 
   @media (min-width: 768px) {
-    display: flex;
+    display: grid;
   }
 }
 
 .navInner {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   align-items: center;
-  gap: var(--space-1);
-  background: color-mix(in srgb, var(--color-muted) 80%, transparent);
-  backdrop-filter: blur(8px);
+  gap: var(--gap-xs);
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur);
   border-radius: var(--radius-full);
-  padding: var(--space-1) var(--space-2);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  padding: var(--padding-xs) var(--padding-sm);
+  box-shadow: var(--glass-highlight);
+  border: 1px solid var(--glass-border);
 }
 
 .navLink {
-  padding: var(--space-1) var(--space-4);
+  padding: var(--padding-xs) var(--padding-lg);
   font-size: var(--font-size-sm);
   color: var(--color-muted-foreground);
   font-weight: 500;
@@ -78,7 +84,7 @@
 
   &:hover {
     color: var(--color-foreground);
-    background: color-mix(in srgb, var(--color-card) 80%, transparent);
+    background: var(--glass-strong);
   }
 }
 
@@ -86,15 +92,14 @@
   display: grid;
   grid-auto-flow: column;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--gap-sm);
 }
 
 .iconButton {
   width: 2.5rem;
   height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   border-radius: var(--radius-full);
   border: none;
   background: transparent;
@@ -103,13 +108,13 @@
   color: var(--color-foreground);
 
   &:hover {
-    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    background: var(--glass-strong);
     color: var(--color-primary);
   }
 }
 
 .mobileMenuButton {
-  display: flex;
+  display: grid;
 
   @media (min-width: 768px) {
     display: none;
@@ -117,8 +122,12 @@
 }
 
 .mobileNav {
-  padding-top: var(--space-4);
-  padding-bottom: var(--space-4);
+  padding-top: var(--padding-md);
+  padding-bottom: var(--padding-md);
+
+  &[data-state="closed"] {
+    display: none;
+  }
 
   @media (min-width: 768px) {
     display: none;
@@ -126,18 +135,19 @@
 }
 
 .mobileNavInner {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  background: color-mix(in srgb, var(--color-card) 85%, transparent);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  display: grid;
+  gap: var(--gap-xs);
+  background: var(--glass-surface);
+  backdrop-filter: saturate(180%) var(--glass-blur);
+  -webkit-backdrop-filter: saturate(180%) var(--glass-blur);
   border-radius: var(--radius-2xl);
-  padding: var(--space-2);
+  padding: var(--padding-sm);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight);
 }
 
 .mobileNavLink {
-  padding: var(--space-3) var(--space-4);
+  padding: var(--padding-md) var(--padding-lg);
   color: var(--color-muted-foreground);
   font-weight: 500;
   border-radius: var(--radius-xl);
@@ -145,6 +155,6 @@
 
   &:hover {
     color: var(--color-foreground);
-    background: color-mix(in srgb, var(--color-card) 70%, transparent);
+    background: var(--glass-strong);
   }
 }

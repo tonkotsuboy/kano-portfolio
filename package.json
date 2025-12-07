@@ -23,6 +23,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-toggle-group": "^1.1.11",
     "clsx": "^2.1.1",
     "contentful-management": "^11.63.1",
     "dayjs": "^1.11.13",

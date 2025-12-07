@@ -1,5 +1,8 @@
 "use client";
 
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { LayoutGrid, List, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,6 +31,7 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
     month: "short",
     day: "numeric",
   });
+  const dateTimeAttr = new Date(post.date).toISOString();
 
   const { href, isExternal } = resolveLink(post);
   const isQiita = href.includes("qiita.com");
@@ -55,7 +59,9 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
       <div className={styles.listBody}>
         <div className={styles.listMeta}>
           <span className={styles.listMedium}>{post.medium}</span>
-          <span className={styles.listDate}>{formattedDate}</span>
+          <time className={styles.listDate} dateTime={dateTimeAttr}>
+            {formattedDate}
+          </time>
         </div>
         <h3 className={styles.listTitle}>{post.title}</h3>
         <div className={styles.listTags}>
@@ -131,7 +137,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
   }, [posts]);
 
   // タグとキーワードでフィルタリング
-  const filteredPosts = useMemo(() => {
+  const filteredPosts: Post[] = useMemo(() => {
     const q = keyword.trim().toLowerCase();
 
     const narrowed =
@@ -155,7 +161,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
 
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / pageSize));
   const currentPage = Math.min(page, totalPages);
-  const paginatedPosts = filteredPosts.slice(
+  const paginatedPosts: Post[] = filteredPosts.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize,
   );
@@ -186,26 +192,22 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               />
             </div>
 
-            <div className={styles.viewToggle} role="group" aria-label="表示切替">
-              <button
-                type="button"
-                onClick={() => setViewMode("grid")}
-                className={`${styles.viewButton} ${viewMode === "grid" ? styles.viewActive : ""}`}
-                aria-pressed={viewMode === "grid"}
-              >
+            <ToggleGroup.Root
+              type="single"
+              value={viewMode}
+              onValueChange={(value) => value && setViewMode(value as "grid" | "list")}
+              className={styles.viewToggle}
+              aria-label="表示切替"
+            >
+              <ToggleGroup.Item value="grid" className={styles.viewButton} aria-label="カード表示">
                 <LayoutGrid size={16} />
                 <span>カード</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setViewMode("list")}
-                className={`${styles.viewButton} ${viewMode === "list" ? styles.viewActive : ""}`}
-                aria-pressed={viewMode === "list"}
-              >
+              </ToggleGroup.Item>
+              <ToggleGroup.Item value="list" className={styles.viewButton} aria-label="リスト表示">
                 <List size={16} />
                 <span>リスト</span>
-              </button>
-            </div>
+              </ToggleGroup.Item>
+            </ToggleGroup.Root>
           </div>
 
           {allTags.length > 0 && (
@@ -239,21 +241,30 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
 
         {filteredPosts.length > 0 ? (
           viewMode === "grid" ? (
-            <div className={styles.grid}>
-              {paginatedPosts.map((post) => (
-                <ArticleCard key={post.slug} post={post} />
-              ))}
-            </div>
+            <>
+              {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+              <ul className={styles.grid} role="list">
+                {paginatedPosts.map((post: Post) => (
+                  <li key={post.slug} className={styles.gridItem}>
+                    <ArticleCard post={post} />
+                  </li>
+                ))}
+              </ul>
+            </>
           ) : (
-            <div className={styles.list}>
-              {paginatedPosts.map((post) => (
-                <ArticleListRow
-                  key={post.slug}
-                  post={post}
-                  resolveLink={resolveLink}
-                />
-              ))}
-            </div>
+            <>
+              {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+              <ul className={styles.list} role="list">
+                {paginatedPosts.map((post: Post) => (
+                  <li key={post.slug}>
+                    <ArticleListRow
+                      post={post}
+                      resolveLink={resolveLink}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </>
           )
         ) : (
           <div className={styles.emptyState}>

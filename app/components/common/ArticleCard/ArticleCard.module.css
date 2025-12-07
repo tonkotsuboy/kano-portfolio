@@ -1,24 +1,18 @@
 .card {
-  background: color-mix(in srgb, var(--color-card) 90%, transparent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: var(--glass-surface);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-3xl);
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--glass-highlight), var(--shadow-soft);
   transition: all var(--transition-slow);
 
   &:hover {
-    box-shadow: var(--shadow-strong);
-    transform: translateY(-4px);
-
-    .thumbnail {
-      transform: scale(1.05);
-    }
-
-    .title {
-      color: var(--color-primary);
-    }
+    box-shadow: var(--glass-highlight), var(--shadow-soft);
+    .title { color: var(--color-primary); }
   }
 }
 
@@ -26,13 +20,14 @@
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  display: grid;
 }
 
 .thumbnail {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow) ease-out;
+  transition: none;
 }
 
 .thumbnailContain {
@@ -52,18 +47,20 @@
 }
 
 .content {
-  padding: var(--space-6);
+  display: grid;
+  gap: var(--gap-md);
+  padding: var(--padding-lg);
 }
 
 .tagsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(60px, max-content));
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
+  gap: var(--gap-sm);
+  margin-bottom: 0;
 }
 
 .tag {
-  padding: var(--space-1) var(--space-3);
+  padding: var(--padding-xs) var(--padding-md);
   font-size: var(--font-size-xs);
   font-weight: 500;
   background: var(--color-tag);
@@ -75,7 +72,7 @@
   font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--color-card-foreground);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--padding-sm);
   line-height: 1.4;
   letter-spacing: -0.025em;
   transition: color var(--transition-normal);
@@ -96,15 +93,16 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(80px, max-content));
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--gap-md);
   font-size: var(--font-size-xs);
   color: var(--color-muted-foreground);
 }
 
 .metaItem {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--gap-xs);
 }
 
 .metaIcon {

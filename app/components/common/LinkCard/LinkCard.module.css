@@ -11,12 +11,13 @@
   display: grid;
   overflow: hidden;
   grid-template-columns: auto 1fr;
-  gap: var(--space-4);
+  gap: var(--gap-md);
   align-items: center;
-  background: #ffffff;
-  border: 1px solid rgba(48, 55, 120, 0.16);
-  border-radius: var(--radius-2xl);
-  padding: var(--space-4);
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-3xl);
+  padding: var(--padding-md);
+  box-shadow: var(--glass-highlight), var(--shadow-soft);
   color: var(--color-secondary-foreground);
 }
 
@@ -38,9 +39,8 @@
 }
 
 .meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  gap: var(--gap-xs);
 }
 
 .ogTitle {
@@ -60,11 +60,11 @@
 .linkUrl {
   display: grid;
   justify-content: start;
-  gap: 4px;
+  gap: var(--space-1);
   grid-auto-flow: column;
   align-items: center;
   font-size: var(--font-size-sm);
-  margin-top: 6px;
+  margin-top: var(--space-2);
 
   .linkCard:hover & {
     color: var(--color-primary);

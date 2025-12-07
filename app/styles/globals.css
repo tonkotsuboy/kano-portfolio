@@ -1,8 +1,8 @@
 :root {
   /* カラー */
-  --color-primary: #4d60ff;
-  --color-primary-dark: #ffb347;
-  --color-primary-foreground: #0b0c10;
+  --color-primary: #f6c445;
+  --color-primary-dark: #d49a00;
+  --color-primary-foreground: #0b0b0b;
   --color-background: #f6f7fb;
   --color-foreground: #0e172a;
   --color-card: #ffffff;
@@ -14,6 +14,7 @@
   --color-border: #d7dce8;
   --color-input: #d7dce8;
   --color-ring: #9ca3af;
+  --color-link-hover: var(--color-primary-dark);
   --color-tag: #fdd835;
   --color-tag-foreground: #0b0b0b;
   --color-text: #1f2937;
@@ -43,6 +44,18 @@
   --space-64px: 64px;
   --space-80px: 80px;
 
+  /* セマンティックな余白スケール */
+  --padding-xs: var(--space-2);
+  --padding-sm: var(--space-3);
+  --padding-md: var(--space-4);
+  --padding-lg: var(--space-6);
+  --padding-xl: var(--space-8);
+  --gap-xs: var(--space-2);
+  --gap-sm: var(--space-3);
+  --gap-md: var(--space-4);
+  --gap-lg: var(--space-6);
+  --gap-xl: var(--space-8);
+
   /* フォントサイズ */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -64,6 +77,13 @@
   --radius-3xl: 1.5rem;
   --radius-full: 9999px;
 
+  /* ガラス用トークン */
+  --glass-surface: color-mix(in srgb, var(--color-card) 65%, transparent);
+  --glass-strong: color-mix(in srgb, var(--color-card) 55%, transparent);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --glass-blur: blur(18px);
+
   /* トランジション */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -71,9 +91,9 @@
 }
 
 [data-theme="dark"] {
-  --color-primary: #9fd4ff;
-  --color-primary-dark: #ffb347;
-  --color-primary-foreground: #030712;
+  --color-primary: #ffd257;
+  --color-primary-dark: #e3ad00;
+  --color-primary-foreground: #0b0b0b;
   --color-background: #0b0f1c;
   --color-foreground: #e5e7eb;
   --color-card: #0f172a;
@@ -115,8 +135,9 @@ body {
   line-height: 1.8;
   min-height: 100dvh;
   color: var(--color-text);
-  background: radial-gradient(circle at 20% 20%, rgba(77, 96, 255, 0.08), transparent 35%),
-    radial-gradient(circle at 80% 0%, rgba(255, 179, 71, 0.08), transparent 30%),
+  background:
+    radial-gradient(circle at 20% 20%, rgba(77, 96, 255, 0.05), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(255, 179, 71, 0.05), transparent 40%),
     var(--color-background);
   transition: background-color var(--transition-slow), color var(--transition-slow);
 }
@@ -133,6 +154,10 @@ h6 {
 a {
   text-decoration: none;
   color: var(--color-primary);
+}
+
+a:hover {
+  color: var(--color-link-hover);
 }
 
 img {

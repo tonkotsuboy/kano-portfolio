@@ -1,17 +1,13 @@
 .footer {
-  background: radial-gradient(circle at 20% 20%, rgba(77, 96, 255, 0.12), transparent 40%),
-    radial-gradient(circle at 80% 10%, rgba(255, 179, 71, 0.16), transparent 35%),
-    linear-gradient(120deg, color-mix(in srgb, var(--color-muted) 70%, transparent),
-      color-mix(in srgb, var(--color-card) 90%, transparent));
-  border-top: 1px solid var(--color-border);
+  background: transparent;
 }
 
 .container {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
+  padding-left: var(--padding-md);
+  padding-right: var(--padding-md);
   padding-top: var(--space-12);
   padding-bottom: var(--space-12);
 }
@@ -19,7 +15,7 @@
 .content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  gap: var(--gap-lg);
   align-items: center;
   justify-items: center;
 
@@ -38,20 +34,22 @@
 }
 
 .logoSection {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-auto-rows: max-content;
   align-items: center;
-  gap: var(--space-2);
+  justify-items: center;
+  gap: var(--gap-sm);
 
   @media (min-width: 768px) {
-    align-items: flex-start;
+    justify-items: start;
   }
 }
 
 .logo {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--gap-sm);
 }
 
 .logoIcon {
@@ -59,9 +57,8 @@
   height: 2rem;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   border-radius: var(--radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   box-shadow: var(--shadow-soft);
   font-weight: 700;
   font-size: 0.875rem;
@@ -80,11 +77,12 @@
 }
 
 .nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
   justify-content: center;
-  gap: var(--space-6);
+  align-items: center;
+  gap: var(--gap-md);
 }
 
 .navLink {
@@ -98,9 +96,10 @@
 }
 
 .socialLinks {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  gap: var(--gap-md);
   align-items: center;
-  gap: var(--space-4);
 }
 
 .socialLink {

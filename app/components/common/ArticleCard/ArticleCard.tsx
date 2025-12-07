@@ -14,11 +14,13 @@ type Props = {
 
 export const ArticleCard: FC<Props> = ({ post }) => {
   // 日付をフォーマット
-  const formattedDate = new Date(post.date).toLocaleDateString("ja-JP", {
+  const dateObj = new Date(post.date);
+  const formattedDate = dateObj.toLocaleDateString("ja-JP", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
+  const dateTimeAttr = dateObj.toISOString();
 
   // リンク先（外部リンクの場合は直接遷移、詳細ページがある場合はエントリーページ）
   const targetUrl = post.targetUrl ?? "";
@@ -89,7 +91,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
               <line x1="8" x2="8" y1="2" y2="6" />
               <line x1="3" x2="21" y1="10" y2="10" />
             </svg>
-            <span>{formattedDate}</span>
+            <time dateTime={dateTimeAttr}>{formattedDate}</time>
           </div>
         </div>
       </div>
