@@ -1,22 +1,23 @@
+import { Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-import { Github, Twitter, Linkedin } from "lucide-react";
+
 import styles from "./Footer.module.css";
 
 const socialLinks = [
   {
     href: "https://x.com/tonkotsuboy_com",
     label: "X",
-    icon: <Twitter className={styles.socialIcon} aria-hidden />,
+    icon: <Twitter className={styles.socialIcon} aria-hidden={true} />,
   },
   {
     href: "https://github.com/tonkotsuboy",
     label: "GitHub",
-    icon: <Github className={styles.socialIcon} aria-hidden />,
+    icon: <Github className={styles.socialIcon} aria-hidden={true} />,
   },
   {
     href: "https://www.linkedin.com/in/tonkotsuboy/",
     label: "LinkedIn",
-    icon: <Linkedin className={styles.socialIcon} aria-hidden />,
+    icon: <Linkedin className={styles.socialIcon} aria-hidden={true} />,
   },
 ];
 
@@ -31,16 +32,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.logoSection}>
-            <Link href="/" className={styles.logo}>
-              <div className={styles.logoIcon}>T</div>
-              <span className={styles.logoText}>Tech Blog</span>
-            </Link>
-            <p className={styles.copyright}>
-              © 2025 Tech Blog. All rights reserved.
-            </p>
-          </div>
-
+          <p className={styles.copyright}>© 2025 Takeshi Kano. All rights reserved.</p>
           <nav className={styles.nav}>
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className={styles.navLink}>
