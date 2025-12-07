@@ -1,9 +1,11 @@
 .header {
-  position: sticky;
+  position: fixed;
   z-index: 50;
   top: 0;
+  left: 0;
   width: 100%;
   transition: all var(--transition-slow);
+  pointer-events: none;
 }
 
 .headerScrolled {
@@ -21,6 +23,7 @@
   padding-left: var(--padding-md);
   margin-right: auto;
   margin-left: auto;
+  pointer-events: auto;
 }
 
 .headerContent {
@@ -64,12 +67,15 @@
 .navInner {
   display: grid;
   align-items: center;
-  padding: var(--padding-xs) var(--padding-sm);
-  border: 1px solid var(--glass-border);
+  padding: var(--padding-xs) calc(var(--padding-sm) * 1.25);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: var(--radius-full);
-  backdrop-filter: var(--glass-blur);
-  background: var(--glass-surface);
-  box-shadow: var(--glass-highlight);
+  backdrop-filter: saturate(180%) blur(22px);
+  background: color-mix(in srgb, var(--color-card) 55%, transparent);
+  box-shadow:
+    0 14px 35px -18px rgba(15, 23, 42, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.35);
   gap: var(--gap-xs);
   grid-auto-flow: column;
 }

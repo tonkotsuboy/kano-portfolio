@@ -129,14 +129,15 @@
       sans-serif;
   }
 
-  body {
-    font-family: "SF Pro Display", "Helvetica Neue", Arial,
-      "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    text-rendering: optimizeSpeed;
-    line-height: 1.8;
-    min-height: 100dvh;
-    color: var(--color-text);
-    background:
+body {
+  font-family: "SF Pro Display", "Helvetica Neue", Arial,
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  text-rendering: optimizeSpeed;
+  line-height: 1.8;
+  min-height: 100dvh;
+  padding-top: calc(4rem + var(--space-4));
+  color: var(--color-text);
+  background:
       radial-gradient(circle at 20% 20%, rgba(77, 96, 255, 0.05), transparent 45%),
       radial-gradient(circle at 80% 0%, rgba(255, 179, 71, 0.05), transparent 40%),
       var(--color-background);
