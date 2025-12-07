@@ -1,10 +1,10 @@
+import { ArrowUpRight, BookOpen, Mic2, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, BookOpen, Mic2, Sparkles } from "lucide-react";
 
 import { Footer } from "../components/common/Footer";
 import { Header } from "../components/common/Header";
-import { WithSiteTitle, basicDescription, ogImageUrl } from "../constants";
+import { basicDescription, ogImageUrl, WithSiteTitle } from "../constants";
 
 import styles from "./page.module.css";
 
@@ -80,105 +80,105 @@ const AboutPage: NextPage = () => {
     <div className={styles.shell}>
       <Header />
       <main className={styles.main}>
-    <div className={styles.page}>
-      <section className={styles.hero}>
-        <div className={styles.glow} />
-        <div className={styles.profileCard}>
-          <div className={styles.visual}>
-            <Image src="/ogimage.png" fill alt="鹿野 壮" sizes="320px" priority />
-          </div>
-          <div className={styles.profileContent}>
-            <p className={styles.badge}>Product Engineer @ Ubie</p>
-            <h1 className={styles.title}>鹿野 壮（たけし）</h1>
-            <p className={styles.summary}>
-              九州大学芸術工学部音響設計学科卒。TypeScript・CSSを軸に、プロダクト開発と執筆・講師・登壇でアウトプットを続けています。Appleのリキッドデザインに着想を得て、情報をやわらかく届けるUIづくりを探求中。
-            </p>
-            <div className={styles.socialRow}>
-              {socialLinks.map((social) => (
-                <Link key={social.href} href={social.href} target="_blank" className={styles.socialLink}>
-                  {social.label}
-                  <ArrowUpRight size={14} aria-hidden />
-                </Link>
+        <div className={styles.page}>
+          <section className={styles.hero}>
+            <div className={styles.glow} />
+            <div className={styles.profileCard}>
+              <div className={styles.visual}>
+                <Image src="/ogimage.png" fill={true} alt="鹿野 壮" sizes="320px" priority={true} />
+              </div>
+              <div className={styles.profileContent}>
+                <p className={styles.badge}>Product Engineer @ Ubie</p>
+                <h1 className={styles.title}>鹿野 壮（たけし）</h1>
+                <p className={styles.summary}>
+                  九州大学芸術工学部音響設計学科卒。TypeScript・CSSを軸に、プロダクト開発と執筆・講師・登壇でアウトプットを続けています。Appleのリキッドデザインに着想を得て、情報をやわらかく届けるUIづくりを探求中。
+                </p>
+                <div className={styles.socialRow}>
+                  {socialLinks.map((social) => (
+                    <Link key={social.href} href={social.href} target="_blank" className={styles.socialLink}>
+                      {social.label}
+                      <ArrowUpRight size={14} aria-hidden={true} />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className={styles.grid}>
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <Sparkles size={18} />
+                <h2>近況</h2>
+              </div>
+              <p className={styles.cardBody}>
+                CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
+              </p>
+            </article>
+
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <BookOpen size={18} />
+                <h2>書籍・寄稿</h2>
+              </div>
+              <ul className={styles.linkList}>
+                {writings.map((book) => (
+                  <li key={book.title}>
+                    <Link href={book.href} target="_blank">
+                      {book.title}
+                      <ArrowUpRight size={14} aria-hidden={true} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <Mic2 size={18} />
+                <h2>講師・登壇</h2>
+              </div>
+              <ul className={styles.linkList}>
+                {talks.map((talk) => (
+                  <li key={talk.title}>
+                    <Link href={talk.href} target="_blank">
+                      {talk.title}
+                      <ArrowUpRight size={14} aria-hidden={true} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <Sparkles size={18} />
+                <h2>インタビュー・掲載</h2>
+              </div>
+              <ul className={styles.linkList}>
+                {interviews.map((interview) => (
+                  <li key={interview.title}>
+                    <Link href={interview.href} target="_blank">
+                      {interview.title}
+                      <ArrowUpRight size={14} aria-hidden={true} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </section>
+
+          <section className={styles.skills}>
+            <h2>Skills</h2>
+            <div className={styles.skillPills}>
+              {skills.map((skill) => (
+                <span key={skill} className={styles.skillPill}>
+                  {skill}
+                </span>
               ))}
             </div>
-          </div>
+          </section>
         </div>
-      </section>
-
-      <section className={styles.grid}>
-        <article className={styles.card}>
-          <div className={styles.cardHeader}>
-            <Sparkles size={18} />
-            <h2>近況</h2>
-          </div>
-          <p className={styles.cardBody}>
-            CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
-          </p>
-        </article>
-
-        <article className={styles.card}>
-          <div className={styles.cardHeader}>
-            <BookOpen size={18} />
-            <h2>書籍・寄稿</h2>
-          </div>
-          <ul className={styles.linkList}>
-            {writings.map((book) => (
-              <li key={book.title}>
-                <Link href={book.href} target="_blank">
-                  {book.title}
-                  <ArrowUpRight size={14} aria-hidden />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </article>
-
-        <article className={styles.card}>
-          <div className={styles.cardHeader}>
-            <Mic2 size={18} />
-            <h2>講師・登壇</h2>
-          </div>
-          <ul className={styles.linkList}>
-            {talks.map((talk) => (
-              <li key={talk.title}>
-                <Link href={talk.href} target="_blank">
-                  {talk.title}
-                  <ArrowUpRight size={14} aria-hidden />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </article>
-
-        <article className={styles.card}>
-          <div className={styles.cardHeader}>
-            <Sparkles size={18} />
-            <h2>インタビュー・掲載</h2>
-          </div>
-          <ul className={styles.linkList}>
-            {interviews.map((interview) => (
-              <li key={interview.title}>
-                <Link href={interview.href} target="_blank">
-                  {interview.title}
-                  <ArrowUpRight size={14} aria-hidden />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </article>
-      </section>
-
-      <section className={styles.skills}>
-        <h2>Skills</h2>
-        <div className={styles.skillPills}>
-          {skills.map((skill) => (
-            <span key={skill} className={styles.skillPill}>
-              {skill}
-            </span>
-          ))}
-        </div>
-      </section>
-    </div>
       </main>
       <Footer />
     </div>

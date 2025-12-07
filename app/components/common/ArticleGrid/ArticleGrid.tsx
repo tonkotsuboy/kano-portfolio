@@ -17,6 +17,73 @@ type Props = {
   posts: Post[];
 };
 
+type ArticleListRowProps = {
+  post: Post;
+  resolveLink: (post: Post) => { href: string; isExternal: boolean };
+};
+
+function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
+  const formattedDate = new Date(post.date).toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+  const { href, isExternal } = resolveLink(post);
+  const isQiita = href.includes("qiita.com");
+  const isZenn = href.includes("zenn.dev");
+  const isLogoLike = isQiita || isZenn;
+  const thumbnailUrl =
+    post.thumbnail ||
+    (isQiita
+      ? "/images/og/qiita-default.svg"
+      : isZenn
+        ? "/images/og/zenn-default.svg"
+        : "/ogimage.png");
+
+  const content = (
+    <article className={styles.listItem}>
+      <div className={styles.listThumb}>
+        <Image
+          src={thumbnailUrl}
+          alt={post.title}
+          fill={true}
+          className={isLogoLike ? styles.thumbnailContain : undefined}
+          sizes="96px"
+        />
+      </div>
+      <div className={styles.listBody}>
+        <div className={styles.listMeta}>
+          <span className={styles.listMedium}>{post.medium}</span>
+          <span className={styles.listDate}>{formattedDate}</span>
+        </div>
+        <h3 className={styles.listTitle}>{post.title}</h3>
+        <div className={styles.listTags}>
+          {post.tags.slice(0, 3).map((tag) => (
+            <span key={tag} className={styles.listTag}>
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noreferrer" className={styles.listLink}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={styles.listLink}>
+      {content}
+    </Link>
+  );
+}
+
 export const ArticleGrid: FC<Props> = ({ posts }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -46,10 +113,10 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
   };
 
   const resolveLink = useCallback((post: Post) => {
-    const href = post.hasDetail
-      ? `/entry/${post.slug}`
-      : post.linkUrl || post.targetUrl || "#";
-    const isExternal = !post.hasDetail && !!(post.linkUrl || post.targetUrl);
+    const linkUrl = post.linkUrl ?? "";
+    const targetUrl = post.targetUrl ?? "";
+    const href = post.hasDetail ? `/entry/${post.slug}` : linkUrl || targetUrl || "#";
+    const isExternal = !post.hasDetail && Boolean(linkUrl || targetUrl);
     return { href, isExternal } as const;
   }, []);
 
@@ -86,13 +153,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     });
   }, [keyword, posts, selectedTag]);
 
-  const handleReset = () => {
-    setKeyword("");
-    setSelectedTag("all");
-    setPage(1);
-    updatePageInUrl(1);
-  };
-
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / pageSize));
   const currentPage = Math.min(page, totalPages);
   const paginatedPosts = filteredPosts.slice(
@@ -100,7 +160,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     currentPage * pageSize,
   );
   const pages = useMemo(
-    () => Array.from({ length: totalPages }, (_, i) => i + 1),
+    () => Array.from({ length: totalPages }, (_value, index) => index + 1),
     [totalPages],
   );
 
@@ -236,72 +296,5 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
         )}
       </div>
     </section>
-  );
-};
-
-type ArticleListRowProps = {
-  post: Post;
-  resolveLink: (post: Post) => { href: string; isExternal: boolean };
-};
-
-const ArticleListRow: FC<ArticleListRowProps> = ({ post, resolveLink }) => {
-  const formattedDate = new Date(post.date).toLocaleDateString("ja-JP", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-
-  const { href, isExternal } = resolveLink(post);
-  const isQiita = href.includes("qiita.com");
-  const isZenn = href.includes("zenn.dev");
-  const isLogoLike = isQiita || isZenn;
-  const thumbnailUrl =
-    post.thumbnail ||
-    (isQiita
-      ? "/images/og/qiita-default.svg"
-      : isZenn
-        ? "/images/og/zenn-default.svg"
-        : "/ogimage.png");
-
-  const content = (
-    <article className={styles.listItem}>
-      <div className={styles.listThumb}>
-        <Image
-          src={thumbnailUrl}
-          alt={post.title}
-          fill={true}
-          className={isLogoLike ? styles.thumbnailContain : undefined}
-          sizes="96px"
-        />
-      </div>
-      <div className={styles.listBody}>
-        <div className={styles.listMeta}>
-          <span className={styles.listMedium}>{post.medium}</span>
-          <span className={styles.listDate}>{formattedDate}</span>
-        </div>
-        <h3 className={styles.listTitle}>{post.title}</h3>
-        <div className={styles.listTags}>
-          {post.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className={styles.listTag}>
-              #{tag}
-            </span>
-          ))}
-        </div>
-      </div>
-    </article>
-  );
-
-  if (isExternal) {
-    return (
-      <a href={href} target="_blank" rel="noreferrer" className={styles.listLink}>
-        {content}
-      </a>
-    );
-  }
-
-  return (
-    <Link href={href} className={styles.listLink}>
-      {content}
-    </Link>
   );
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -7,13 +8,15 @@ import { ThemeToggle } from "../ThemeToggle";
 
 import styles from "./Header.module.css";
 
+import type { FC } from "react";
+
 const navLinks = [
   { href: "/", label: "Posts" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
-export const Header = () => {
+export const Header: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -33,7 +36,7 @@ export const Header = () => {
         <div className={styles.headerContent}>
           <Link href="/" className={styles.logo}>
             <div className={styles.avatar}>
-              <img src="/avatar.png" alt="Takeshi Kano" />
+              <Image src="/avatar.png" alt="Takeshi Kano" width={40} height={40} />
             </div>
           </Link>
 

@@ -6,7 +6,9 @@ import { useTheme } from "../ThemeProvider";
 
 import styles from "./ThemeToggle.module.css";
 
-export const ThemeToggle = () => {
+import type { FC } from "react";
+
+export const ThemeToggle: FC = () => {
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
 

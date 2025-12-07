@@ -1,9 +1,9 @@
-import { Mail, MessageCircle, Twitter, Linkedin } from "lucide-react";
+import { Linkedin, Mail, MessageCircle, Twitter } from "lucide-react";
 import Link from "next/link";
 
 import { Footer } from "../components/common/Footer";
 import { Header } from "../components/common/Header";
-import { WithSiteTitle, basicDescription, ogImageUrl } from "../constants";
+import { basicDescription, ogImageUrl, WithSiteTitle } from "../constants";
 
 import styles from "./page.module.css";
 
@@ -25,25 +25,25 @@ const contacts = [
   {
     label: "X (Twitter)",
     href: "https://x.com/tonkotsuboy_com",
-    icon: <Twitter aria-hidden />,
+    icon: <Twitter aria-hidden={true} />,
     description: "最新の登壇・記事情報はこちらで流しています。DMも解放しています。",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/tonkotsuboy/",
-    icon: <Linkedin aria-hidden />,
+    icon: <Linkedin aria-hidden={true} />,
     description: "お仕事のご相談・コラボレーションはLinkedInでもどうぞ。",
   },
   {
     label: "Messenger",
     href: "https://m.me/tonkotsuboy",
-    icon: <MessageCircle aria-hidden />,
+    icon: <MessageCircle aria-hidden={true} />,
     description: "カジュアルなやりとりやイベント連絡に。",
   },
   {
     label: "Mail",
     href: "mailto:hello@kano.codes",
-    icon: <Mail aria-hidden />,
+    icon: <Mail aria-hidden={true} />,
     description: "長めのご相談・原稿依頼などはこちらへ。",
   },
 ];

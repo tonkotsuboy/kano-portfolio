@@ -21,27 +21,30 @@ export const ArticleCard: FC<Props> = ({ post }) => {
   });
 
   // リンク先（外部リンクの場合は直接遷移、詳細ページがある場合はエントリーページ）
+  const targetUrl = post.targetUrl ?? "";
+  const linkUrl = post.linkUrl ?? "";
   const externalTarget =
-    !post.hasDetail && post.targetUrl?.startsWith("/")
-      ? `${SiteUrl}${post.targetUrl}`
-      : post.targetUrl;
+    !post.hasDetail && targetUrl
+      ? targetUrl.startsWith("/") ? `${SiteUrl}${targetUrl}` : targetUrl
+      : "";
 
   const href = post.hasDetail
     ? `/entry/${post.slug}`
-    : post.linkUrl || externalTarget || "#";
-  const isExternal = !post.hasDetail && !!(post.linkUrl || externalTarget);
+    : linkUrl || externalTarget || "#";
+  const isExternal = !post.hasDetail && Boolean(linkUrl || externalTarget);
 
   // サムネイル画像
   const isQiita = href.includes("qiita.com");
   const isZenn = href.includes("zenn.dev");
   const isLogoLike = isQiita || isZenn;
-  const thumbnailUrl =
-    post.thumbnail ||
-    (isQiita
+  const isThumbnailAvailable = typeof post.thumbnail === "string" && post.thumbnail.length > 0;
+  const thumbnailUrl = isThumbnailAvailable
+    ? post.thumbnail
+    : isQiita
       ? "/images/og/qiita-default.svg"
       : isZenn
         ? "/images/og/zenn-default.svg"
-        : "/ogimage.png");
+        : "/ogimage.png";
 
   const CardContent = () => (
     <article className={styles.card}>

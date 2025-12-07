@@ -1,13 +1,14 @@
-import { Header } from "./components/common/Header";
+import { posts } from "@/.velite";
+
 import { ArticleGrid } from "./components/common/ArticleGrid";
 import { Footer } from "./components/common/Footer";
-import { SiteTitle, basicDescription } from "./constants";
+import { Header } from "./components/common/Header";
 import styles from "./page.module.css";
 
-import { posts } from "@/.velite";
 import type { Post } from "@/.velite";
+import type { FC } from "react";
 
-export default function HomePage() {
+const HomePage: FC = () => {
   // 公開済みの投稿のみをフィルタリングして日付順にソート
   const publishedPosts: Post[] = posts
     .filter((post) => post.published)
@@ -25,4 +26,6 @@ export default function HomePage() {
       <Footer />
     </div>
   );
-}
+};
+
+export default HomePage;

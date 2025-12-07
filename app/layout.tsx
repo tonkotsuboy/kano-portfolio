@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import "./styles/globals.css";
 
 import { ThemeProvider } from "./components/common/ThemeProvider";
@@ -10,6 +9,8 @@ import {
   TwitterId,
   WithSiteTitle,
 } from "./constants";
+
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SiteUrl),
@@ -53,7 +54,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>): JSX.Element {
   return (
     <html lang="ja" suppressHydrationWarning={true}>
       <body>

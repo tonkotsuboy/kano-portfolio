@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import styles from "./Footer.module.css";
 
+import type { FC } from "react";
+
 const socialLinks = [
   {
     href: "https://x.com/tonkotsuboy_com",
@@ -27,7 +29,7 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-export const Footer = () => {
+export const Footer: FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
