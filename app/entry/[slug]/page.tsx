@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { posts } from "@/.velite";
 import { Copyright } from "../../components/common/Copyright";
+import { Header } from "../../components/common/Header";
+import { Footer } from "../../components/common/Footer";
 import { LinkCard } from "../../components/common/LinkCard";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
@@ -55,55 +57,61 @@ const Page: NextPage<Params> = async ({ params }) => {
   const post = getPost(params.slug);
 
   return (
-    <div className={styles.container}>
-      <article className={styles.article}>
-        <header className={styles.header}>
+    <>
+      <Header />
+      <main className={styles.surface}>
+        <div className={styles.hero}>
+          <div className={styles.breadcrumb}>Entry</div>
           <p className={styles.medium}>{post.medium}</p>
-          <ul className={styles.tagList}>
+          <h1 className={styles.title}>{post.title}</h1>
+          {post.date && (
+            <p className={styles.publishedDate}>
+              <time dateTime={post.date}>{parseDate(post.date)}</time>
+            </p>
+          )}
+          <div className={styles.tags}>
             {post.tags.map((tag) => (
-              <li key={tag} className={styles.tag}>
+              <span key={tag} className={styles.tagChip}>
                 #{tag}
-              </li>
+              </span>
             ))}
-          </ul>
-        </header>
-        <h2 className={styles.title}>{post.title}</h2>
-        {post.date && (
-          <p className={styles.publishedDate}>
-            発表日
-            <time dateTime={post.date}>
-              {parseDate(post.date)}
-            </time>
-          </p>
-        )}
-
-        {/* 記事本文 (Markdown) */}
-        {post.body && (
-          <div
-            className={styles.body}
-            dangerouslySetInnerHTML={{ __html: post.body }}
-          />
-        )}
-
-        {/* スライドリンク */}
-        {post.slides && post.slides !== "" && (
-          <div className={styles.slides}>
-            <h3>スライド</h3>
-            <LinkCard linkUrl={post.slides} />
           </div>
-        )}
+        </div>
 
-        {/* リンクカード (外部リンク) */}
-        {post.linkUrl && post.linkUrl !== "" && (
-          <div className={styles.link}>
-            <h3>リンク</h3>
-            <LinkCard linkUrl={post.linkUrl} />
-          </div>
-        )}
-      </article>
+        <article className={styles.article}>
+          {post.thumbnail && (
+            <div className={styles.cover}>
+              <img src={post.thumbnail} alt={post.title} />
+            </div>
+          )}
 
-      <Copyright />
-    </div>
+          {post.body && (
+            <div
+              className={styles.body}
+              dangerouslySetInnerHTML={{ __html: post.body }}
+            />
+          )}
+
+          {post.slides && post.slides !== "" && (
+            <div className={styles.sectionCard}>
+              <div className={styles.sectionTitle}>スライド</div>
+              <LinkCard linkUrl={post.slides} />
+            </div>
+          )}
+
+          {post.linkUrl && post.linkUrl !== "" && (
+            <div className={styles.sectionCard}>
+              <div className={styles.sectionTitle}>関連リンク</div>
+              <LinkCard linkUrl={post.linkUrl} />
+            </div>
+          )}
+        </article>
+      </main>
+      <div className={styles.footerWrap}>
+        <Copyright />
+        <Footer />
+      </div>
+    </>
   );
 };
 
