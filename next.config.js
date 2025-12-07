@@ -1,16 +1,17 @@
-const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
-const withPWA = require("next-pwa")({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-});
-const withVanillaExtract = createVanillaExtractPlugin();
+const { build } = require("velite");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   staticPageGenerationTimeout: 240,
+  webpack: (config, { dev }) => {
+    if (dev) {
+      build({ watch: true });
+    } else {
+      build();
+    }
+    return config;
+  },
   images: {
     remotePatterns: [
       {
@@ -96,9 +97,9 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "media.connpass.com",
-      }
+      },
     ],
   },
 };
 
-module.exports = withPWA(withVanillaExtract(nextConfig));
+module.exports = nextConfig;
