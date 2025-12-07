@@ -3,12 +3,12 @@ import "./styles/globals.css";
 
 import { ThemeProvider } from "./components/common/ThemeProvider";
 import {
-  SiteTitle,
-  SiteUrl,
-  WithSiteTitle,
   basicDescription,
   ogImageUrl,
+  SiteTitle,
+  SiteUrl,
   TwitterId,
+  WithSiteTitle,
 } from "./constants";
 
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang="ja" suppressHydrationWarning={true}>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>

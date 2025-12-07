@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
 import { ThemeToggle } from "../ThemeToggle";
+
 import styles from "./Header.module.css";
 
 const navLinks = [
@@ -30,11 +32,9 @@ export const Header = () => {
       <div className={styles.headerContainer}>
         <div className={styles.headerContent}>
           <Link href="/" className={styles.logo}>
-            <div className={styles.logoIcon}>
-              <div className={styles.logoIconBg} />
-              <div className={styles.logoIconInner}>T</div>
+            <div className={styles.avatar}>
+              <img src="/avatar.png" alt="Takeshi Kano" />
             </div>
-            <span className={styles.logoText}>Tech Blog</span>
           </Link>
 
           <nav className={styles.nav}>

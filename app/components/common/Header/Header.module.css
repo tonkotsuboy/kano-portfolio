@@ -32,50 +32,20 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+}
 
-  &:hover .logoIconBg {
-    transform: rotate(6deg);
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--color-border);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-}
-
-.logoIcon {
-  position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.logoIconBg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-dark) 50%,
-    var(--color-primary) 100%
-  );
-  border-radius: var(--radius-2xl);
-  transform: rotate(3deg);
-  transition: transform var(--transition-normal);
-}
-
-.logoIconInner {
-  position: absolute;
-  inset: 2px;
-  background: var(--color-background);
-  border-radius: var(--radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.125rem;
-}
-
-.logoText {
-  font-weight: 600;
-  font-size: var(--font-size-xl);
-  color: var(--color-foreground);
-  letter-spacing: -0.025em;
 }
 
 .nav {
