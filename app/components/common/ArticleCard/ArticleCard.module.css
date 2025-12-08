@@ -5,7 +5,7 @@
   border-radius: var(--radius-3xl);
   backdrop-filter: var(--glass-blur);
   background: var(--glass-surface);
-  box-shadow: var(--glass-highlight), var(--shadow-soft);
+  box-shadow: var(--glass-highlight), var(--shadow-card);
   grid-template-rows: auto 1fr;
   transition: all var(--transition-slow);
 

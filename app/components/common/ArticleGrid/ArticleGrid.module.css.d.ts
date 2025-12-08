@@ -4,6 +4,7 @@ declare const styles: {
   readonly "controls": string;
   readonly "emptyState": string;
   readonly "grid": string;
+  readonly "gridItem": string;
   readonly "header": string;
   readonly "inactive": string;
   readonly "list": string;
@@ -28,7 +29,6 @@ declare const styles: {
   readonly "tagButton": string;
   readonly "tagsContainer": string;
   readonly "thumbnailContain": string;
-  readonly "viewActive": string;
   readonly "viewButton": string;
   readonly "viewToggle": string;
 };
