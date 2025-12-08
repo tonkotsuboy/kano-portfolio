@@ -36,7 +36,7 @@ export const Header: FC = () => {
     <header
       className={`${styles.header} ${isScrolled ? styles.headerScrolled : ""}`}
     >
-      <LiquidGlassBox className={styles.headerContainer}>
+      <div className={styles.headerContainer}>
         <Collapsible.Root open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
           <div className={styles.headerContent}>
             <Link href="/" className={styles.logo}>
@@ -122,7 +122,7 @@ export const Header: FC = () => {
             </nav>
           </Collapsible.Content>
         </Collapsible.Root>
-      </LiquidGlassBox>
+      </div>
     </header>
   );
 };
