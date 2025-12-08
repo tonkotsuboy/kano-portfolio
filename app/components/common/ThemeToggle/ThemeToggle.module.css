@@ -1,3 +1,7 @@
+.glass {
+  padding: var(--padding-sm);
+}
+
 .toggle {
   position: relative;
   display: inline-grid;

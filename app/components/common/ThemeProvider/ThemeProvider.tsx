@@ -17,7 +17,7 @@ const storageKey = "kano-theme" as const;
 
 const applyTheme = (nextTheme: Theme) => {
   const root = document.documentElement;
-  root.dataset.theme = nextTheme;
+  root.dataset["theme"] = nextTheme;
   root.style.colorScheme = nextTheme;
 };
 
