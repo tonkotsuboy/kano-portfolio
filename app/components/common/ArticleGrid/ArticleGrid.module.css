@@ -95,27 +95,28 @@
 
 .tagButton {
   padding: var(--padding-xs) var(--padding-md);
-  border: 1px solid var(--pill-border);
+  border: none;
   border-radius: var(--radius-full);
-  background: var(--pill-bg);
+  background: color-mix(in srgb, var(--color-primary) 88%, #fff 12%);
   box-shadow: var(--pill-shadow);
-  color: var(--color-foreground);
+  color: var(--color-primary-foreground);
   cursor: pointer;
   font-size: var(--font-size-sm);
-  font-weight: 600;
+  font-weight: 700;
   transition: all var(--transition-normal);
 }
 
 .tagButton.active {
   border-color: transparent;
-  background: #ffd700;
+  background: var(--color-primary);
   box-shadow: var(--shadow-card);
-  color: #222;
+  color: var(--color-primary-foreground);
 }
 
 .tagButton.inactive:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 50%, var(--pill-border));
-  color: var(--color-foreground);
+  border-color: transparent;
+  background: color-mix(in srgb, var(--color-primary) 94%, #fff 6%);
+  color: var(--color-primary-foreground);
 }
 
 .pagination {

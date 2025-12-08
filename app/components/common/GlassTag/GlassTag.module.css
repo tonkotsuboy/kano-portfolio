@@ -1,11 +1,12 @@
 .tag {
   display: inline-block;
   padding: 4px 12px;
-  border: 1px solid rgb(245 230 100 / 20%);
-  border-radius: 50px;
-  backdrop-filter: blur(4px);
-  background-color: rgb(245 230 100 / 15%);
-  color: #a89200;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+  color: var(--color-primary-foreground);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
