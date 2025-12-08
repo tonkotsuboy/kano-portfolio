@@ -1,57 +1,56 @@
 .wrapper {
   position: relative;
-  display: inline-flex;
-  align-items: center;
+  display: inline-grid;
   overflow: hidden;
+  align-items: center;
   border-radius: var(--radius-full);
-  padding: var(--padding-xs) calc(var(--padding-sm) * 1.2);
+  box-shadow: var(--shadow-glass-soft);
+  color: var(--color-foreground);
   isolation: isolate;
-  box-shadow:
-    0 12px 28px -18px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(0, 0, 0, 0.12);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-  backdrop-filter: saturate(190%) blur(10px);
-}
-
-.wrapper:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    0 16px 32px -20px rgba(0, 0, 0, 0.35),
-    0 0 28px rgba(0, 0, 0, 0.14);
+  transition: opacity var(--transition-normal);
 }
 
 .effect {
   position: absolute;
-  inset: 0;
   z-index: 0;
+  backdrop-filter: blur(3px);
   filter: url("#glass-distortion");
-  backdrop-filter: blur(8px);
+  inset: 0;
+  isolation: isolate;
+  pointer-events: none;
 }
+
 
 .tint {
   position: absolute;
-  inset: 0;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+  background: rgb(255 255 255 / 25%);
+  inset: 0;
+  pointer-events: none;
 }
+
 
 .shine {
   position: absolute;
-  inset: 0;
   z-index: 2;
-  box-shadow:
-    inset 2px 2px 1px rgba(255, 255, 255, 0.48),
-    inset -1px -1px 1px rgba(255, 255, 255, 0.32);
   overflow: hidden;
+  box-shadow: inset 2px 2px 1px 0 rgb(255 255 255 / 50%), inset -1px -1px 1px 1px rgb(255 255 255 / 50%);
+  inset: 0;
+  pointer-events: none;
 }
+
 
 .content {
   position: relative;
   z-index: 3;
-  display: inline-flex;
+  display: inline-grid;
   align-items: center;
+  padding: var(--padding-xs) calc(var(--padding-sm) * 1.2);
+  color: inherit;
   gap: var(--gap-xs);
+  grid-auto-flow: column;
 }
+
 
 .filter {
   position: absolute;

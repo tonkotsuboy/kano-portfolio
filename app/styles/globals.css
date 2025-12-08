@@ -19,8 +19,15 @@
     --color-tag: #fdd835;
     --color-tag-foreground: #0b0b0b;
     --color-text: #1f2937;
-    --shadow-soft: 0 15px 35px -20px rgba(15, 23, 42, 0.25);
-    --shadow-strong: 0 30px 60px -25px rgba(79, 70, 229, 0.35);
+  --shadow-soft: 0 15px 35px -20px rgba(15, 23, 42, 0.25);
+  --shadow-strong: 0 30px 60px -25px rgba(79, 70, 229, 0.35);
+  --shadow-glass: 0 10px 24px -18px rgba(15, 23, 42, 0.22);
+  --shadow-glass-hover: 0 12px 30px -20px rgba(15, 23, 42, 0.26);
+  --shadow-glass-soft: 0 8px 20px -18px rgba(15, 23, 42, 0.18);
+  --shadow-card: 0 12px 28px -18px rgba(15, 23, 42, 0.28);
+  --pill-bg: color-mix(in srgb, var(--color-card) 98%, transparent);
+  --pill-border: color-mix(in srgb, var(--color-border) 90%, transparent);
+  --pill-shadow: 0 6px 14px -10px rgba(15, 23, 42, 0.2);
 
     /* スペーシング */
     --space-1: 0.25rem;

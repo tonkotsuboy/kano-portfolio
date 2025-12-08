@@ -14,5 +14,6 @@ declare const styles: {
   readonly "nav": string;
   readonly "navInner": string;
   readonly "navLink": string;
+  readonly "navList": string;
 };
 export = styles;

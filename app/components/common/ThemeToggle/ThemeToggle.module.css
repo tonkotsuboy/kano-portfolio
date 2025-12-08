@@ -1,21 +1,18 @@
 .toggle {
   position: relative;
   display: inline-grid;
+  width: 100%;
   align-items: center;
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--color-border);
+  padding: var(--padding-sm) var(--padding-md);
+  border: none;
   border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-card) 92%, transparent);
+  background: transparent;
+  box-shadow: none;
   color: var(--color-foreground);
   cursor: pointer;
-  gap: var(--space-2);
+  gap: var(--gap-sm);
   grid-auto-flow: column;
-  transition: all var(--transition-normal);
-}
-
-.toggle:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
-  box-shadow: var(--shadow-soft);
+  transition: color var(--transition-normal);
 }
 
 .icon {
@@ -32,14 +29,14 @@
   position: absolute;
   width: 32px;
   border-radius: var(--radius-full);
-  background: linear-gradient(120deg, var(--color-primary), #fdd835);
-  inset: 4px auto 4px 4px;
-  opacity: 0.08;
+  background: linear-gradient(120deg, var(--color-primary), var(--color-primary-dark));
+  inset: 6px auto 6px 6px;
+  opacity: 0.1;
   transform: translateX(0);
   transition: all var(--transition-normal);
 }
 
 .thumb[data-active="true"] {
-  opacity: 0.15;
-  transform: translateX(16px);
+  opacity: 0.2;
+  transform: translateX(18px);
 }

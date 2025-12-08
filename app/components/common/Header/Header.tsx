@@ -5,13 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { LiquidGlassBox } from "../LiquidGlassBox";
 import { ThemeToggle } from "../ThemeToggle";
 
 import styles from "./Header.module.css";
 
 import type { FC } from "react";
 
-const navLinks = [
+type NavLink = { href: string; label: string };
+
+const navLinks: NavLink[] = [
   { href: "/", label: "Posts" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -43,17 +46,19 @@ export const Header: FC = () => {
             </Link>
 
             <nav className={styles.nav}>
-              <div className={styles.navInner}>
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={styles.navLink}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+              <LiquidGlassBox className={styles.navInner}>
+                <div className={styles.navList}>
+                  {navLinks.map((link: NavLink) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={styles.navLink}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </LiquidGlassBox>
             </nav>
 
             <div className={styles.actions}>
