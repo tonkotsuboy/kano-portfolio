@@ -1,5 +1,4 @@
 import { Github, Linkedin, Twitter } from "lucide-react";
-import Link from "next/link";
 
 import styles from "./Footer.module.css";
 
@@ -23,25 +22,12 @@ const socialLinks = [
   },
 ];
 
-const navLinks = [
-  { href: "/", label: "Posts" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
-
 export const Footer: FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.content}>
           <p className={styles.copyright}>© 2025 Takeshi Kano. All rights reserved.</p>
-          <nav className={styles.nav}>
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={styles.navLink}>
-                {link.label}
-              </Link>
-            ))}
-          </nav>
 
           <div className={styles.socialLinks}>
             {socialLinks.map((social) => (
