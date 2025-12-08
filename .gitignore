@@ -45,3 +45,6 @@ build-storybook.log*
 **/public/worker-*.js.map
 
 contentful/
+
+# local scripts (not for VCS)
+/scripts

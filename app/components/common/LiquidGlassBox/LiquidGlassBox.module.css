@@ -1,0 +1,61 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  padding: var(--padding-xs) calc(var(--padding-sm) * 1.2);
+  isolation: isolate;
+  box-shadow:
+    0 12px 28px -18px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(0, 0, 0, 0.12);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  backdrop-filter: saturate(190%) blur(10px);
+}
+
+.wrapper:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 16px 32px -20px rgba(0, 0, 0, 0.35),
+    0 0 28px rgba(0, 0, 0, 0.14);
+}
+
+.effect {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  filter: url("#glass-distortion");
+  backdrop-filter: blur(8px);
+}
+
+.tint {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  box-shadow:
+    inset 2px 2px 1px rgba(255, 255, 255, 0.48),
+    inset -1px -1px 1px rgba(255, 255, 255, 0.32);
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-xs);
+}
+
+.filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
