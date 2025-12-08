@@ -1,4 +1,3 @@
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import type { StorybookConfig } from "@storybook/nextjs-vite";
 
 const config: StorybookConfig = {
@@ -15,12 +14,6 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/nextjs-vite",
     options: {},
-  },
-
-  async viteFinal(config) {
-    config.plugins = config.plugins ?? [];
-    config.plugins.push(vanillaExtractPlugin());
-    return config;
   },
 
   docs: {},
