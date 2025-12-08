@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import { SiteUrl } from "../../../constants";
 import { ArticleCard } from "../ArticleCard";
 import { GlassSurface } from "../GlassSurface";
 import { GlassTag } from "../GlassTag";
@@ -36,8 +37,16 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
   const dateTimeAttr = new Date(post.date).toISOString();
 
   const { href, isExternal } = resolveLink(post);
-  const isQiita = href.includes("qiita.com");
-  const isZenn = href.includes("zenn.dev");
+  const getHostname = (url: string): string => {
+    try {
+      return new URL(String(url), SiteUrl).hostname;
+    } catch {
+      return "";
+    }
+  };
+  const host = getHostname(href);
+  const isQiita = host === "qiita.com" || host === "www.qiita.com";
+  const isZenn = host === "zenn.dev" || host === "www.zenn.dev";
   const isLogoLike = isQiita || isZenn;
   const thumbnailUrl =
     post.thumbnail ||

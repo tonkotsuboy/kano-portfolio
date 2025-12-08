@@ -37,9 +37,18 @@ export const ArticleCard: FC<Props> = ({ post }) => {
     : linkUrl || externalTarget || "#";
   const isExternal = !post.hasDetail && Boolean(linkUrl || externalTarget);
 
+  const getHostname = (url: string): string => {
+    try {
+      return new URL(url, SiteUrl).hostname;
+    } catch {
+      return "";
+    }
+  };
+
   // サムネイル画像
-  const isQiita = href.includes("qiita.com");
-  const isZenn = href.includes("zenn.dev");
+  const host = getHostname(href);
+  const isQiita = host === "qiita.com" || host === "www.qiita.com";
+  const isZenn = host === "zenn.dev" || host === "www.zenn.dev";
   const isLogoLike = isQiita || isZenn;
   const isThumbnailAvailable = typeof post.thumbnail === "string" && post.thumbnail.length > 0;
   const thumbnailUrl = isThumbnailAvailable
