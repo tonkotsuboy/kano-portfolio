@@ -3,15 +3,15 @@ import { LinkCard } from "./LinkCard";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
-  component: LinkCard,
   args: {
     linkUrl: "https://example.com",
     metaInfo: {
+      ogDescription: "説明",
       ogImage: "/sample-image.jpg",
       ogTitle: `CSS Nyait in Los Angeles vol.12 Mofumofu Coding 2024 〜 箱からはみ出している猫たちに贈るスペシャルごはん7選`,
-      ogDescription: "説明",
     },
   },
+  component: LinkCard,
 } satisfies Meta<typeof LinkCard>;
 
 export default meta;

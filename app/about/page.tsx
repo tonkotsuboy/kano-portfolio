@@ -11,56 +11,56 @@ import styles from "./page.module.css";
 import type { Metadata, NextPage } from "next";
 
 export const metadata: Metadata = {
-  title: `自己紹介${WithSiteTitle}`,
   description: basicDescription,
   openGraph: {
-    images: [{ url: ogImageUrl, width: 1200, height: 630, alt: WithSiteTitle }],
+    images: [{ alt: WithSiteTitle, height: 630, url: ogImageUrl, width: 1200 }],
   },
+  title: `自己紹介${WithSiteTitle}`,
   twitter: {
-    title: `自己紹介${WithSiteTitle}`,
     images: [ogImageUrl],
+    title: `自己紹介${WithSiteTitle}`,
   },
 };
 
 const writings = [
-  { title: "JavaScriptコードレシピ集", href: "https://gihyo.jp/book/2019/978-4-297-10368-2" },
-  { title: "Software Design 2024年5月号『もっとTypeScriptの力を引き出そう』", href: "https://gihyo.jp/magazine/SD/archive/2024/202405" },
-  { title: "日経ソフトウェア 2022年7月号『表現力をアップするWebコーディング術』", href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/" },
-  { title: "日経ソフトウェア2021年9月号『最新CSS』", href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/" },
-  { title: "日経ソフトウェア2020年9月号『JavaScript最新仕様 -ECMAScript2020-』", href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/" },
+  { href: "https://gihyo.jp/book/2019/978-4-297-10368-2", title: "JavaScriptコードレシピ集" },
+  { href: "https://gihyo.jp/magazine/SD/archive/2024/202405", title: "Software Design 2024年5月号『もっとTypeScriptの力を引き出そう』" },
+  { href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/", title: "日経ソフトウェア 2022年7月号『表現力をアップするWebコーディング術』" },
+  { href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/", title: "日経ソフトウェア2021年9月号『最新CSS』" },
+  { href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/", title: "日経ソフトウェア2020年9月号『JavaScript最新仕様 -ECMAScript2020-』" },
 ];
 
 const socialLinks = [
-  { label: "X", href: "https://x.com/tonkotsuboy_com" },
-  { label: "GitHub", href: "https://github.com/tonkotsuboy" },
-  { label: "Zenn", href: "https://zenn.dev/tonkotsuboy_com" },
-  { label: "Qiita", href: "https://qiita.com/tonkotsuboy_com" },
-  { label: "TechFeed", href: "https://techfeed.io/people/@tonkotsuboy_com" },
-  { label: "CodePen", href: "https://codepen.io/tonkotsuboy" },
+  { href: "https://x.com/tonkotsuboy_com", label: "X" },
+  { href: "https://github.com/tonkotsuboy", label: "GitHub" },
+  { href: "https://zenn.dev/tonkotsuboy_com", label: "Zenn" },
+  { href: "https://qiita.com/tonkotsuboy_com", label: "Qiita" },
+  { href: "https://techfeed.io/people/@tonkotsuboy_com", label: "TechFeed" },
+  { href: "https://codepen.io/tonkotsuboy", label: "CodePen" },
 ];
 
 const talks = [
-  { title: "LinkedIn Learning", href: "https://jp.linkedin.com/learning/learning-flexbox/646317" },
-  { title: "Schoo", href: "https://schoo.jp/class/3570" },
-  { title: "CSS Nite 2017〜2019 ベストセッション受賞", href: "https://cssnite.jp/" },
+  { href: "https://jp.linkedin.com/learning/learning-flexbox/646317", title: "LinkedIn Learning" },
+  { href: "https://schoo.jp/class/3570", title: "Schoo" },
+  { href: "https://cssnite.jp/", title: "CSS Nite 2017〜2019 ベストセッション受賞" },
 ];
 
 const interviews = [
   {
-    title: "アウトプットこそ最高のインプット - レバテックラボ",
     href: "https://levtech.jp/media/article/column/detail_329/",
+    title: "アウトプットこそ最高のインプット - レバテックラボ",
   },
   {
-    title: "アウトプットをするのが嫌だったエンジニアが登壇中毒になるまで - Findy Engineer Lab",
     href: "https://findy-code.io/engineer-lab/tonkotsuboy-output",
+    title: "アウトプットをするのが嫌だったエンジニアが登壇中毒になるまで - Findy Engineer Lab",
   },
   {
-    title: "鹿野壮のWebデザイナーのためのiOSアプリ開発入門 - WPJ",
     href: "https://ascii.jp/elem/000/001/546/1546451/",
+    title: "鹿野壮のWebデザイナーのためのiOSアプリ開発入門 - WPJ",
   },
   {
-    title: "エンジニア鹿野壮の物語 | LIFE DRAFT",
     href: "https://life.job-draft.jp/2025/04/30/801/",
+    title: "エンジニア鹿野壮の物語 | LIFE DRAFT",
   },
 ];
 

@@ -10,17 +10,17 @@ import styles from "./ArticleCard.module.css";
 import type { Post } from "@/.velite";
 import type { FC } from "react";
 
-type Props = {
+interface Props {
   post: Post;
-};
+}
 
 export const ArticleCard: FC<Props> = ({ post }) => {
   // 日付をフォーマット
   const dateObj = new Date(post.date);
   const formattedDate = dateObj.toLocaleDateString("ja-JP", {
-    year: "numeric",
-    month: "long",
     day: "numeric",
+    month: "long",
+    year: "numeric",
   });
   const dateTimeAttr = dateObj.toISOString();
 

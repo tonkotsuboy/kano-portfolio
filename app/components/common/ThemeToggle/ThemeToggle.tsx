@@ -10,7 +10,7 @@ import styles from "./ThemeToggle.module.css";
 import type { FC } from "react";
 
 export const ThemeToggle: FC = () => {
-  const { theme, setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
   const isDark = theme === "dark";
 
   const handleToggle = () => setTheme(isDark ? "light" : "dark");

@@ -4,12 +4,12 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import type { FC, PropsWithChildren } from "react";
 
-type Theme = "light" | "dark";
+type Theme = "dark" | "light";
 
-type ThemeContextValue = {
-  setTheme: (theme: Theme) => void;
+interface ThemeContextValue {
+  setTheme: (_theme: Theme) => void;
   theme: Theme;
-};
+}
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
@@ -61,7 +61,7 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   };
 
   const value = useMemo(
-    () => ({ theme, setTheme: handleSetTheme }),
+    () => ({ setTheme: handleSetTheme, theme }),
     [theme],
   );
 

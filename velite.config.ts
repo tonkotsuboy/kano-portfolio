@@ -1,40 +1,32 @@
-import { defineConfig, s } from "velite";
-import rehypePrettyCode from "rehype-pretty-code";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import { defineConfig, s } from "velite";
 
 export default defineConfig({
-  root: "content",
-  output: {
-    data: ".velite",
-    assets: "public/static",
-    base: "/static/",
-    name: "[name]-[hash:6].[ext]",
-    clean: false, // Avoid rmdir conflicts during Next dev (watcher keeps the dir in use)
-  },
   collections: {
     posts: {
       name: "Post",
       pattern: "posts/**/*.md",
       schema: s
         .object({
-          slug: s.string(),
-          title: s.string().max(200),
-          date: s.isodate(),
-          published: s.boolean().default(true),
-          tags: s.array(s.string()).default([]),
-          categories: s.array(s.string()).default([]),
-          medium: s.string().default(""),
-          thumbnail: s.string().default(""),
-          slides: s.string().optional(),
-          linkUrl: s.string().optional(),
-          targetUrl: s.string().optional(),
-          hasDetail: s.boolean().default(false),
           body: s.markdown().optional(),
+          categories: s.array(s.string()).default([]),
+          date: s.isodate(),
+          hasDetail: s.boolean().default(false),
+          linkUrl: s.string().optional(),
+          medium: s.string().default(""),
+          published: s.boolean().default(true),
+          slides: s.string().optional(),
+          slug: s.string(),
+          tags: s.array(s.string()).default([]),
+          targetUrl: s.string().optional(),
+          thumbnail: s.string().default(""),
+          title: s.string().max(200),
         })
         .transform((data) => ({
           ...data,
-          permalink: data.targetUrl || `/entry/${data.slug}`,
+          permalink: data.targetUrl ?? `/entry/${data.slug}`,
         })),
     },
   },
@@ -44,8 +36,8 @@ export default defineConfig({
       [
         rehypePrettyCode,
         {
-          theme: "github-dark",
           keepBackground: false,
+          theme: "github-dark",
         },
       ],
       [
@@ -56,4 +48,12 @@ export default defineConfig({
       ],
     ],
   },
+  output: {
+    assets: "public/static",
+    base: "/static/",
+    clean: false, // Avoid rmdir conflicts during Next dev (watcher keeps the dir in use)
+    data: ".velite",
+    name: "[name]-[hash:6].[ext]",
+  },
+  root: "content",
 });

@@ -5,8 +5,6 @@ import { marked } from "marked";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { posts } from "@/.velite";
-
 import { Footer } from "../../components/common/Footer";
 import { Header } from "../../components/common/Header";
 import { WithSiteTitle } from "../../constants";
@@ -16,7 +14,8 @@ import { parseDate } from "../../logics/date/parseDate";
 import styles from "./page.module.css";
 
 import type { Metadata } from "next";
-import { FC } from "react";
+
+import { posts } from "@/.velite";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -48,7 +47,7 @@ const loadBodyHtml = (slug: string): string => {
   return replaced;
 };
 
-type Params = { params: Promise<{ slug: string }> };
+interface Params { params: Promise<{ slug: string }> }
 
 export const generateMetadata = async ({ params }: Params): Promise<Metadata> => {
   const { slug } = await params;
@@ -57,19 +56,19 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
 
   return {
     ...metadata,
+    openGraph: {
+      ...metadata.openGraph,
+      title,
+    },
     title: title,
     twitter: {
       ...metadata.twitter,
       title,
     },
-    openGraph: {
-      ...metadata.openGraph,
-      title,
-    },
   };
 };
 
-const Page: FC = async ({ params }: Params) => {
+const Page = async ({ params }: Params) => {
   const { slug } = await params;
   const post = getPost(slug);
   const bodyHtml = loadBodyHtml(slug);
@@ -141,7 +140,7 @@ const Page: FC = async ({ params }: Params) => {
                     height={120}
                     sizes="120px"
                     className={styles.linkThumbImage}
-                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                    style={{ height: "100%", objectFit: "contain", width: "100%" }}
                     unoptimized={true}
                   />
                 ) : (

@@ -1,20 +1,19 @@
-// eslint-disable-next-line import/no-named-as-default
 import clsx from "clsx";
 
 import styles from "./LiquidGlassBox.module.css";
 
 import type { FC, ReactNode } from "react";
 
-type Props = {
+interface Props {
   children: ReactNode;
   className?: string;
-};
+}
 
 /**
  * Apple風リキッドグラスの汎用ラッパー。
  * reference: https://codepen.io/lucasromerodb/pen/vEOWpYM
  */
-export const LiquidGlassBox: FC<Props> = ({ className, children }) => {
+export const LiquidGlassBox: FC<Props> = ({ children, className }) => {
   return (
     <div className={clsx(styles.wrapper, className)}>
       <svg className={styles.filter} aria-hidden="true" focusable="false">

@@ -7,24 +7,24 @@ import styles from "./LinkCard.module.css";
 
 import type { FC } from "react";
 
-type MetaInfo = {
-  ogDescription: string | null;
-  ogImage: string | null;
-  ogTitle: string | null;
-};
+interface MetaInfo {
+  ogDescription: null | string;
+  ogImage: null | string;
+  ogTitle: null | string;
+}
 
-type Props = {
+interface Props {
   linkUrl: string;
   metaInfo?: MetaInfo;
   thumbnail?: string;
   title?: string;
-};
+}
 
 /**
  * リンクカード。
  * og:image, og:titleが表示され、URLへのリンクを備えます
  */
-export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, title, thumbnail }) => {
+export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, thumbnail, title }) => {
   const displayTitle: string = title ?? metaInfo?.ogTitle ?? linkUrl;
   const displayThumb: string | undefined = thumbnail ?? metaInfo?.ogImage ?? undefined;
   const isThumbAvailable = typeof displayThumb === "string" && displayThumb.length > 0;

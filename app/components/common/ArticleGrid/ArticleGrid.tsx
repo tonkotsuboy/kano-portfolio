@@ -1,7 +1,5 @@
 "use client";
 
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { LayoutGrid, List, Search } from "lucide-react";
 import Image from "next/image";
@@ -19,20 +17,20 @@ import styles from "./ArticleGrid.module.css";
 import type { Post } from "@/.velite";
 import type { FC } from "react";
 
-type Props = {
+interface Props {
   posts: Post[];
-};
+}
 
-type ArticleListRowProps = {
+interface ArticleListRowProps {
   post: Post;
-  resolveLink: (post: Post) => { href: string; isExternal: boolean };
-};
+  resolveLink: (_post: Post) => { href: string; isExternal: boolean };
+}
 
 function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
   const formattedDate = new Date(post.date).toLocaleDateString("ja-JP", {
-    year: "numeric",
-    month: "short",
     day: "numeric",
+    month: "short",
+    year: "numeric",
   });
   const dateTimeAttr = new Date(post.date).toISOString();
 
@@ -253,7 +251,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
         {filteredPosts.length > 0 ? (
           viewMode === "grid" ? (
             <>
-              {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+              { }
               <ul className={styles.grid} role="list">
                 {paginatedPosts.map((post: Post) => (
                   <li key={post.slug} className={styles.gridItem}>
@@ -264,7 +262,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
             </>
           ) : (
             <>
-              {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
+              { }
               <ul className={styles.list} role="list">
                 {paginatedPosts.map((post: Post) => (
                   <li key={post.slug}>

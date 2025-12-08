@@ -11,51 +11,52 @@ import {
 } from "./constants";
 
 import type { Metadata } from "next";
-import { JSX } from "react";
+import type { JSX } from "react";
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: SiteUrl,
+  },
+  description: basicDescription,
   metadataBase: new URL(SiteUrl),
+  openGraph: {
+    description: basicDescription,
+    images: [
+      {
+        alt: SiteTitle,
+        height: 630,
+        url: ogImageUrl,
+        width: 1200,
+      },
+    ],
+    siteName: SiteTitle,
+    title: SiteTitle,
+    url: SiteUrl,
+  },
+  themeColor: [
+    { color: "#f6f7fb", media: "(prefers-color-scheme: light)" },
+    { color: "#0b1021", media: "(prefers-color-scheme: dark)" },
+  ],
   title: {
     default: SiteTitle,
     template: `%s${WithSiteTitle}`,
   },
-  description: basicDescription,
-  openGraph: {
-    title: SiteTitle,
-    description: basicDescription,
-    url: SiteUrl,
-    siteName: SiteTitle,
-    images: [
-      {
-        url: ogImageUrl,
-        width: 1200,
-        height: 630,
-        alt: SiteTitle,
-      },
-    ],
-  },
   twitter: {
     card: "summary_large_image",
-    site: `@${TwitterId}`,
     creator: `@${TwitterId}`,
-    title: SiteTitle,
     description: basicDescription,
     images: [ogImageUrl],
+    site: `@${TwitterId}`,
+    title: SiteTitle,
   },
-  alternates: {
-    canonical: SiteUrl,
-  },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f6f7fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b1021" },
-  ],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>): JSX.Element {
+  params: Promise<Record<string, never>>;
+}): JSX.Element {
   return (
     <html lang="ja" suppressHydrationWarning={true}>
       <body>

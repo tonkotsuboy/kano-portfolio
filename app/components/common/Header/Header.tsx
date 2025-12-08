@@ -11,7 +11,7 @@ import styles from "./Header.module.css";
 
 import type { FC } from "react";
 
-type NavLink = { href: string; label: string };
+interface NavLink { href: string; label: string }
 
 const navLinks: NavLink[] = [
   { href: "/", label: "Posts" },

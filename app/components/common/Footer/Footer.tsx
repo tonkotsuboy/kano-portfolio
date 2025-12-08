@@ -7,18 +7,18 @@ import type { FC } from "react";
 const socialLinks = [
   {
     href: "https://x.com/tonkotsuboy_com",
-    label: "X",
     icon: <Twitter className={styles.socialIcon} aria-hidden={true} />,
+    label: "X",
   },
   {
     href: "https://github.com/tonkotsuboy",
-    label: "GitHub",
     icon: <Github className={styles.socialIcon} aria-hidden={true} />,
+    label: "GitHub",
   },
   {
     href: "https://www.linkedin.com/in/tonkotsuboy/",
-    label: "LinkedIn",
     icon: <Linkedin className={styles.socialIcon} aria-hidden={true} />,
+    label: "LinkedIn",
   },
 ];
 

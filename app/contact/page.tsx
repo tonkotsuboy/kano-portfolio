@@ -10,41 +10,41 @@ import styles from "./page.module.css";
 import type { Metadata, NextPage } from "next";
 
 export const metadata: Metadata = {
-  title: `Contact${WithSiteTitle}`,
   description: basicDescription,
   openGraph: {
-    images: [{ url: ogImageUrl, width: 1200, height: 630, alt: WithSiteTitle }],
+    images: [{ alt: WithSiteTitle, height: 630, url: ogImageUrl, width: 1200 }],
   },
+  title: `Contact${WithSiteTitle}`,
   twitter: {
-    title: `Contact${WithSiteTitle}`,
     images: [ogImageUrl],
+    title: `Contact${WithSiteTitle}`,
   },
 };
 
 const contacts = [
   {
-    label: "X (Twitter)",
+    description: "最新の登壇・記事情報はこちらで流しています。DMも解放しています。",
     href: "https://x.com/tonkotsuboy_com",
     icon: <Twitter aria-hidden={true} />,
-    description: "最新の登壇・記事情報はこちらで流しています。DMも解放しています。",
+    label: "X (Twitter)",
   },
   {
-    label: "LinkedIn",
+    description: "お仕事のご相談・コラボレーションはLinkedInでもどうぞ。",
     href: "https://www.linkedin.com/in/tonkotsuboy/",
     icon: <Linkedin aria-hidden={true} />,
-    description: "お仕事のご相談・コラボレーションはLinkedInでもどうぞ。",
+    label: "LinkedIn",
   },
   {
-    label: "Messenger",
+    description: "カジュアルなやりとりやイベント連絡に。",
     href: "https://m.me/tonkotsuboy",
     icon: <MessageCircle aria-hidden={true} />,
-    description: "カジュアルなやりとりやイベント連絡に。",
+    label: "Messenger",
   },
   {
-    label: "Mail",
+    description: "長めのご相談・原稿依頼などはこちらへ。",
     href: "mailto:hello@kano.codes",
     icon: <Mail aria-hidden={true} />,
-    description: "長めのご相談・原稿依頼などはこちらへ。",
+    label: "Mail",
   },
 ];
 
