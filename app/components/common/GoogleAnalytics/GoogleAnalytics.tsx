@@ -2,6 +2,8 @@
 
 import Script from "next/script";
 
+import type { FC } from "react";
+
 const GA_TRACKING_ID = process.env["NEXT_PUBLIC_GA_TRACKING_ID"] ?? "";
 
 export const pageView = (path: string): void => {
@@ -10,7 +12,7 @@ export const pageView = (path: string): void => {
   });
 };
 
-export const GoogleAnalytics = (): JSX.Element => {
+export const GoogleAnalytics: FC = () => {
   return (
     <>
       <Script
