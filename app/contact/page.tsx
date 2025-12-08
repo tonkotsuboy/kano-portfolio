@@ -1,8 +1,10 @@
-import { Linkedin, Mail, MessageCircle, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import Link from "next/link";
+import { siGmail, siMessenger, siX } from "simple-icons";
 
 import { Footer } from "../components/common/Footer";
 import { Header } from "../components/common/Header";
+import { SimpleIcon } from "../components/icons/SimpleIcon";
 import { basicDescription, ogImageUrl, WithSiteTitle } from "../constants";
 
 import styles from "./page.module.css";
@@ -25,7 +27,7 @@ const contacts = [
   {
     description: "最新の登壇・記事情報はこちらで流しています。DMも解放しています。",
     href: "https://x.com/tonkotsuboy_com",
-    icon: <Twitter aria-hidden={true} />,
+    icon: <SimpleIcon path={siX.path} aria-hidden={true} title="X" />,
     label: "X (Twitter)",
   },
   {
@@ -37,13 +39,13 @@ const contacts = [
   {
     description: "カジュアルなやりとりやイベント連絡に。",
     href: "https://m.me/tonkotsuboy",
-    icon: <MessageCircle aria-hidden={true} />,
+    icon: <SimpleIcon path={siMessenger.path} aria-hidden={true} title="Messenger" />,
     label: "Messenger",
   },
   {
     description: "長めのご相談・原稿依頼などはこちらへ。",
     href: "mailto:hello@kano.codes",
-    icon: <Mail aria-hidden={true} />,
+    icon: <SimpleIcon path={siGmail.path} aria-hidden={true} title="Mail" />,
     label: "Mail",
   },
 ];

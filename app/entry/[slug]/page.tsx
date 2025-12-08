@@ -9,8 +9,10 @@ import { Footer } from "../../components/common/Footer";
 import { Header } from "../../components/common/Header";
 import { WithSiteTitle } from "../../constants";
 import { metadata } from "../../layout";
-import { parseDate } from "../../logics/date/parseDate";
 
+import { EntryCover } from "./components/EntryCover";
+import { EntryMeta } from "./components/EntryMeta";
+import { parseDate } from "./lib/parseDate";
 import styles from "./page.module.css";
 
 import type { Metadata } from "next";
@@ -81,37 +83,16 @@ const Page = async ({ params }: Params) => {
     <>
       <Header />
       <main className={styles.surface}>
-        <div className={styles.hero}>
-          <p className={styles.medium}>{post.medium}</p>
-          <h1 className={styles.title}>{post.title}</h1>
-          {post.date && (
-            <p className={styles.publishedDate}>
-              <time dateTime={post.date}>{parseDate(post.date)}</time>
-            </p>
-          )}
-          <div className={styles.tags}>
-            {post.tags.map((tag) => (
-              <span key={tag} className={styles.tagChip}>
-                #{tag}
-              </span>
-            ))}
-          </div>
-        </div>
+        <EntryMeta
+          date={post.date}
+          formatDate={parseDate}
+          medium={post.medium}
+          tags={post.tags}
+          title={post.title}
+        />
 
         <article className={styles.article}>
-          {isCoverAvailable ? (
-            <div className={styles.cover}>
-              <Image
-                src={coverSrc}
-                alt={post.title}
-                width={1200}
-                height={630}
-                sizes="(max-width: 768px) 100vw, 960px"
-                className={styles.coverImage}
-                unoptimized={true}
-              />
-            </div>
-          ) : null}
+          <EntryCover alt={post.title} coverSrc={coverSrc} />
 
           {bodyHtml ? (
             <div

@@ -1,25 +1,9 @@
-.card {
-  display: grid;
-  overflow: hidden;
-  border-radius: var(--radius-3xl);
-  grid-template-rows: auto 1fr;
-  transition: all var(--transition-slow);
-
-  &:focus-visible {
-    outline: 2px solid var(--color-primary-dark);
-    outline-offset: 3px;
-  }
-
-  &:hover {
-    .title { color: var(--color-primary); }
-  }
-}
-
 .thumbnailContainer {
   position: relative;
   display: grid;
   overflow: hidden;
   aspect-ratio: 16 / 9;
+  grid-row: span 1;
 }
 
 .thumbnail {
@@ -45,15 +29,9 @@
   inset: 0;
 }
 
-.content {
-  display: grid;
-  padding: var(--padding-lg);
-  gap: var(--gap-md);
-}
-
 .tagsContainer {
   display: grid;
-  margin-bottom: 0;
+  padding: 0 var(--padding-lg);
   gap: var(--gap-sm);
   grid-template-columns: repeat(auto-fit, minmax(60px, max-content));
 }
@@ -68,7 +46,7 @@
 }
 
 .title {
-  margin-bottom: var(--padding-sm);
+  padding: 0 var(--padding-lg);
   color: var(--color-card-foreground);
   font-size: var(--font-size-lg);
   font-weight: 600;
@@ -91,6 +69,7 @@
 .meta {
   display: grid;
   align-items: center;
+  padding: 0 var(--padding-lg) var(--padding-lg);
   color: var(--color-muted-foreground);
   font-size: var(--font-size-xs);
   gap: var(--gap-md);
@@ -107,4 +86,8 @@
 .metaIcon {
   width: 0.875rem;
   height: 0.875rem;
+}
+
+.cardLink {
+  display: contents;
 }

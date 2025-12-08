@@ -95,18 +95,28 @@
 .socialLink {
   display: inline-flex;
   align-items: center;
-  padding: 10px 14px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-card) 90%, transparent);
+  padding: 8px 0;
+  border: none;
+  border-radius: 0;
+  background: none;
   color: var(--color-foreground);
   gap: 8px;
-  transition: all var(--transition-normal);
+  transition: color var(--transition-normal);
+}
+
+.socialIcon {
+  height: 16px;
+  width: 16px;
+}
+
+.socialLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .socialLink:hover {
-  box-shadow: var(--shadow-soft);
-  transform: translateY(-2px);
+  color: var(--color-primary);
 }
 
 .grid {

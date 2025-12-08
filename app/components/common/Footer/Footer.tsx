@@ -1,4 +1,7 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
+import { siGithub, siX } from "simple-icons";
+
+import { SimpleIcon } from "../../icons/SimpleIcon";
 
 import styles from "./Footer.module.css";
 
@@ -7,12 +10,26 @@ import type { FC } from "react";
 const socialLinks = [
   {
     href: "https://x.com/tonkotsuboy_com",
-    icon: <Twitter className={styles.socialIcon} aria-hidden={true} />,
+    icon: (
+      <SimpleIcon
+        path={siX.path}
+        className={styles.socialIcon}
+        aria-hidden={true}
+        title="X"
+      />
+    ),
     label: "X",
   },
   {
     href: "https://github.com/tonkotsuboy",
-    icon: <Github className={styles.socialIcon} aria-hidden={true} />,
+    icon: (
+      <SimpleIcon
+        path={siGithub.path}
+        className={styles.socialIcon}
+        aria-hidden={true}
+        title="GitHub"
+      />
+    ),
     label: "GitHub",
   },
   {
@@ -37,7 +54,6 @@ export const Footer: FC = () => {
                 className={styles.socialLink}
                 aria-label={social.label}
                 target="_blank"
-                rel="noopener noreferrer"
               >
                 {social.icon}
               </a>

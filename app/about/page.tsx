@@ -1,9 +1,11 @@
-import { ArrowUpRight, BookOpen, Mic2, Sparkles } from "lucide-react";
+import { ArrowUpRight, BookOpen, Linkedin, Mic2, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { siGithub, siQiita, siX, siZenn } from "simple-icons";
 
 import { Footer } from "../components/common/Footer";
 import { Header } from "../components/common/Header";
+import { SimpleIcon } from "../components/icons/SimpleIcon";
 import { basicDescription, ogImageUrl, WithSiteTitle } from "../constants";
 
 import styles from "./page.module.css";
@@ -23,26 +25,57 @@ export const metadata: Metadata = {
 };
 
 const writings = [
-  { href: "https://gihyo.jp/book/2019/978-4-297-10368-2", title: "JavaScriptコードレシピ集" },
-  { href: "https://gihyo.jp/magazine/SD/archive/2024/202405", title: "Software Design 2024年5月号『もっとTypeScriptの力を引き出そう』" },
-  { href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/", title: "日経ソフトウェア 2022年7月号『表現力をアップするWebコーディング術』" },
-  { href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/", title: "日経ソフトウェア2021年9月号『最新CSS』" },
-  { href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/", title: "日経ソフトウェア2020年9月号『JavaScript最新仕様 -ECMAScript2020-』" },
+  {
+    href: "https://gihyo.jp/book/2019/978-4-297-10368-2",
+    title: "JavaScriptコードレシピ集",
+  },
+  {
+    href: "https://gihyo.jp/magazine/SD/archive/2024/202405",
+    title: "Software Design 2024年5月号『もっとTypeScriptの力を引き出そう』",
+  },
+  {
+    href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/",
+    title:
+      "日経ソフトウェア 2022年7月号『表現力をアップするWebコーディング術』",
+  },
+  {
+    href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/",
+    title: "日経ソフトウェア2021年9月号『最新CSS』",
+  },
+  {
+    href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/",
+    title: "日経ソフトウェア2020年9月号『JavaScript最新仕様 -ECMAScript2020-』",
+  },
 ];
 
 const socialLinks = [
-  { href: "https://x.com/tonkotsuboy_com", label: "X" },
-  { href: "https://github.com/tonkotsuboy", label: "GitHub" },
-  { href: "https://zenn.dev/tonkotsuboy_com", label: "Zenn" },
-  { href: "https://qiita.com/tonkotsuboy_com", label: "Qiita" },
-  { href: "https://techfeed.io/people/@tonkotsuboy_com", label: "TechFeed" },
-  { href: "https://codepen.io/tonkotsuboy", label: "CodePen" },
+  { href: "https://x.com/tonkotsuboy_com", iconPath: siX.path, label: "X" },
+  { href: "https://github.com/tonkotsuboy", iconPath: siGithub.path, label: "GitHub" },
+  { href: "https://zenn.dev/tonkotsuboy_com", iconPath: siZenn.path, label: "Zenn" },
+  { href: "https://qiita.com/tonkotsuboy_com", iconPath: siQiita.path, label: "Qiita" },
+  { href: "https://www.linkedin.com/in/tonkotsuboy/", iconType: "lucide-linkedin", label: "LinkedIn" },
+  {
+    href: "https://techfeed.io/people/@tonkotsuboy_com",
+    iconPath: undefined,
+    label: "TechFeed",
+  },
+  {
+    href: "https://codepen.io/tonkotsuboy",
+    iconPath: "local-codepen",
+    label: "CodePen",
+  },
 ];
 
 const talks = [
-  { href: "https://jp.linkedin.com/learning/learning-flexbox/646317", title: "LinkedIn Learning" },
+  {
+    href: "https://jp.linkedin.com/learning/learning-flexbox/646317",
+    title: "LinkedIn Learning",
+  },
   { href: "https://schoo.jp/class/3570", title: "Schoo" },
-  { href: "https://cssnite.jp/", title: "CSS Nite 2017〜2019 ベストセッション受賞" },
+  {
+    href: "https://cssnite.jp/",
+    title: "CSS Nite 2017〜2019 ベストセッション受賞",
+  },
 ];
 
 const interviews = [
@@ -52,7 +85,8 @@ const interviews = [
   },
   {
     href: "https://findy-code.io/engineer-lab/tonkotsuboy-output",
-    title: "アウトプットをするのが嫌だったエンジニアが登壇中毒になるまで - Findy Engineer Lab",
+    title:
+      "アウトプットをするのが嫌だったエンジニアが登壇中毒になるまで - Findy Engineer Lab",
   },
   {
     href: "https://ascii.jp/elem/000/001/546/1546451/",
@@ -85,7 +119,13 @@ const AboutPage: NextPage = () => {
             <div className={styles.glow} />
             <div className={styles.profileCard}>
               <div className={styles.visual}>
-                <Image src="/ogimage.png" fill={true} alt="鹿野 壮" sizes="320px" priority={true} />
+                <Image
+                  src="/ogimage.png"
+                  fill={true}
+                  alt="鹿野 壮"
+                  sizes="320px"
+                  priority={true}
+                />
               </div>
               <div className={styles.profileContent}>
                 <p className={styles.badge}>Product Engineer @ Ubie</p>
@@ -95,8 +135,32 @@ const AboutPage: NextPage = () => {
                 </p>
                 <div className={styles.socialRow}>
                   {socialLinks.map((social) => (
-                    <Link key={social.href} href={social.href} target="_blank" className={styles.socialLink}>
-                      {social.label}
+                    <Link
+                      key={social.href}
+                      href={social.href}
+                      target="_blank"
+                      className={styles.socialLink}
+                    >
+                      {social.iconPath === "local-codepen" ? (
+                        <Image
+                          src="/images/icons/codepen.svg"
+                          alt="CodePen"
+                          className={styles.socialIcon}
+                          width={16}
+                          height={16}
+                          aria-hidden={true}
+                        />
+                      ) : social.iconType === "lucide-linkedin" ? (
+                        <Linkedin className={styles.socialIcon} aria-hidden={true} />
+                      ) : social.iconPath ? (
+                        <SimpleIcon
+                          path={social.iconPath}
+                          title={social.label}
+                          className={styles.socialIcon}
+                          aria-hidden={true}
+                        />
+                      ) : null}
+                      <span className={styles.socialLabel}>{social.label}</span>
                       <ArrowUpRight size={14} aria-hidden={true} />
                     </Link>
                   ))}
@@ -112,7 +176,8 @@ const AboutPage: NextPage = () => {
                 <h2>近況</h2>
               </div>
               <p className={styles.cardBody}>
-                CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
+                CSS Nite 2017〜2019ベストセッション受賞。TechFeed
+                Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
               </p>
             </article>
 

@@ -2,9 +2,9 @@
   padding-top: var(--space-16);
   padding-bottom: var(--space-12);
 
-@media (width >= 768px) {
-  padding-top: var(--space-24);
-}
+  @media (width >= 768px) {
+    padding-top: var(--space-24);
+  }
 }
 
 .container {
@@ -75,13 +75,21 @@
 }
 
 .viewButton:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--pill-border));
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 40%,
+    var(--pill-border)
+  );
   box-shadow: var(--shadow-soft);
   color: var(--color-foreground);
 }
 
 .viewButton[data-state="on"] {
-  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--pill-border));
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 55%,
+    var(--pill-border)
+  );
   background: var(--color-primary);
   box-shadow: var(--shadow-card);
   color: var(--color-primary-foreground);
@@ -174,7 +182,11 @@
 }
 
 .pageNumber:hover {
-  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--pill-border));
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 40%,
+    var(--pill-border)
+  );
 }
 
 .pageNumberActive {
@@ -192,25 +204,38 @@
   display: grid;
   padding: 0;
   gap: var(--gap-lg);
-  grid-auto-rows: 1fr;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: max-content;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   list-style: none;
 
   @media (width >= 1024px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 }
 
 .gridItem {
-  display: grid;
-  grid-column: span 1;
-  grid-row: span 1;
-  grid-template-rows: subgrid;
-}
+  display: contents;
 
-.gridItem > a {
-  display: grid;
-  height: 100%;
+  a {
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    position: relative;
+    border: 1px solid color-mix(in srgb, var(--glass-border) 80%, transparent);
+    border-radius: var(--radius-3xl);
+    background: color-mix(
+      in srgb,
+      var(--glass-surface, rgba(255, 255, 255, 0.78)) 92%,
+      transparent
+    );
+    box-shadow:
+      var(--glass-highlight),
+      0 14px 40px rgba(0, 0, 0, 0.08);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(18px) saturate(120%);
+    overflow: hidden;
+    gap: var(--gap-md);
+    cursor: pointer;
+  }
 }
 
 .list {
