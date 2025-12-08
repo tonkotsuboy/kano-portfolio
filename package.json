@@ -58,7 +58,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "autoprefixer": "^10.4.22",
-    "chromatic": "^11.25.1",
+    "chromatic": "^13.3.4",
     "dotenv": "^16.6.1",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.5.7",
