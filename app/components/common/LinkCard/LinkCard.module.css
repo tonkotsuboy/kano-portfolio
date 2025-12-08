@@ -12,10 +12,7 @@
   overflow: hidden;
   align-items: center;
   padding: var(--padding-md);
-  border: 1px solid var(--glass-border);
   border-radius: var(--radius-3xl);
-  background: var(--glass-surface);
-  box-shadow: var(--glass-highlight), var(--shadow-soft);
   color: var(--color-secondary-foreground);
   gap: var(--gap-md);
   grid-template-columns: auto 1fr;

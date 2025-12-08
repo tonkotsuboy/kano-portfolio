@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { GlassSurface } from "../GlassSurface";
+
 import styles from "./LinkCard.module.css";
 
 import type { FC } from "react";
@@ -34,7 +36,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, title, thumbnail }) => 
       rel="noreferrer"
       target="_blank"
     >
-      <span className={styles.linkInner}>
+      <GlassSurface className={styles.linkInner}>
         {isThumbAvailable && displayThumb ? (
           <span className={styles.thumbWrap}>
             {(() => {
@@ -57,7 +59,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, title, thumbnail }) => 
             <span className={styles.linkText}>{linkUrl}</span>
           </p>
         </span>
-      </span>
+      </GlassSurface>
     </Link>
   );
 };

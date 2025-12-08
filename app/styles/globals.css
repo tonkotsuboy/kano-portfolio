@@ -21,9 +21,9 @@
     --color-text: #1f2937;
   --shadow-soft: 0 15px 35px -20px rgba(15, 23, 42, 0.25);
   --shadow-strong: 0 30px 60px -25px rgba(79, 70, 229, 0.35);
-  --shadow-glass: 0 10px 24px -18px rgba(15, 23, 42, 0.22);
-  --shadow-glass-hover: 0 12px 30px -20px rgba(15, 23, 42, 0.26);
-  --shadow-glass-soft: 0 8px 20px -18px rgba(15, 23, 42, 0.18);
+  --shadow-glass: 0 4px 24px -4px rgba(220, 215, 200, 0.15);
+  --shadow-glass-hover: 0 8px 28px -10px rgba(220, 215, 200, 0.2);
+  --shadow-glass-soft: 0 6px 22px -10px rgba(220, 215, 200, 0.16);
   --shadow-card: 0 12px 28px -18px rgba(15, 23, 42, 0.28);
   --pill-bg: color-mix(in srgb, var(--color-card) 98%, transparent);
   --pill-border: color-mix(in srgb, var(--color-border) 90%, transparent);
@@ -86,11 +86,11 @@
     --radius-full: 9999px;
 
     /* ガラス用トークン */
-    --glass-surface: color-mix(in srgb, var(--color-card) 65%, transparent);
-    --glass-strong: color-mix(in srgb, var(--color-card) 55%, transparent);
-    --glass-border: rgba(255, 255, 255, 0.35);
-    --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    --glass-blur: blur(18px);
+  --glass-surface: color-mix(in srgb, var(--color-card) 65%, transparent);
+  --glass-strong: color-mix(in srgb, var(--color-card) 55%, transparent);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --glass-blur: blur(18px);
 
     /* トランジション */
     --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -141,14 +141,16 @@ body {
     "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   text-rendering: optimizeSpeed;
   line-height: 1.8;
-  min-height: 100dvh;
+  min-height: 100vh;
   padding-top: calc(4rem + var(--space-4));
   color: var(--color-text);
-  background:
-      radial-gradient(circle at 20% 20%, rgba(77, 96, 255, 0.05), transparent 45%),
-      radial-gradient(circle at 80% 0%, rgba(255, 179, 71, 0.05), transparent 40%),
-      var(--color-background);
-    transition: background-color var(--transition-slow), color var(--transition-slow);
+  background-color: #fdfdfd;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 250, 220, 0.4) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(255, 248, 230, 0.3) 0%, transparent 60%);
+  background-attachment: fixed;
+  background-size: cover;
+  transition: background-color var(--transition-slow), color var(--transition-slow);
   }
 
   h1,
@@ -197,6 +199,7 @@ body {
     outline: 2px solid var(--color-primary-dark);
     outline-offset: 3px;
   }
+
 }
 
 img {

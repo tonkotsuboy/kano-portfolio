@@ -10,6 +10,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { ArticleCard } from "../ArticleCard";
+import { GlassSurface } from "../GlassSurface";
+import { GlassTag } from "../GlassTag";
 
 import styles from "./ArticleGrid.module.css";
 
@@ -46,7 +48,7 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
         : "/ogimage.png");
 
   const content = (
-    <article className={styles.listItem}>
+    <GlassSurface className={styles.listItem}>
       <div className={styles.listThumb}>
         <Image
           src={thumbnailUrl}
@@ -58,7 +60,7 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
       </div>
       <div className={styles.listBody}>
         <div className={styles.listMeta}>
-          <span className={styles.listMedium}>{post.medium}</span>
+          <GlassTag className={styles.listMedium}>{post.medium}</GlassTag>
           <time className={styles.listDate} dateTime={dateTimeAttr}>
             {formattedDate}
           </time>
@@ -72,7 +74,7 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
           ))}
         </div>
       </div>
-    </article>
+    </GlassSurface>
   );
 
   if (isExternal) {
@@ -213,7 +215,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
           {allTags.length > 0 && (
             <div className={styles.tagsContainer}>
               <button
-                className={`${styles.tagButton} ${selectedTag === "all" ? styles.active : styles.inactive}`}
+                className={`${styles.tagButton} ${selectedTag === "all" ? `${styles.active} filter-button-active` : styles.inactive}`}
                 onClick={() => {
                   setSelectedTag("all");
                   setPage(1);
@@ -225,7 +227,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               {allTags.map((tag) => (
                 <button
                   key={tag}
-                  className={`${styles.tagButton} ${selectedTag === tag ? styles.active : styles.inactive}`}
+                  className={`${styles.tagButton} ${selectedTag === tag ? `${styles.active} filter-button-active` : styles.inactive}`}
                   onClick={() => {
                     setSelectedTag(tag);
                     setPage(1);

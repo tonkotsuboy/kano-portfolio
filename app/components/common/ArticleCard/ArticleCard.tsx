@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SiteUrl } from "../../../constants";
+import { GlassSurface } from "../GlassSurface";
+import { GlassTag } from "../GlassTag";
 
 import styles from "./ArticleCard.module.css";
 
@@ -49,7 +51,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
         : "/ogimage.png";
 
   const CardContent = () => (
-    <article className={styles.card}>
+    <GlassSurface className={styles.card}>
       <div className={styles.thumbnailContainer}>
         <Image
           src={thumbnailUrl}
@@ -64,12 +66,12 @@ export const ArticleCard: FC<Props> = ({ post }) => {
       <div className={styles.content}>
         <div className={styles.tagsContainer}>
           {post.medium && (
-            <span className={styles.tag}>{post.medium}</span>
+            <GlassTag className={styles.tag}>{post.medium}</GlassTag>
           )}
           {post.tags.slice(0, 2).map((tag) => (
-            <span key={tag} className={styles.tag}>
+            <GlassTag key={tag} className={styles.tag}>
               {tag}
-            </span>
+            </GlassTag>
           ))}
         </div>
 
@@ -95,7 +97,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
           </div>
         </div>
       </div>
-    </article>
+    </GlassSurface>
   );
 
   if (isExternal) {

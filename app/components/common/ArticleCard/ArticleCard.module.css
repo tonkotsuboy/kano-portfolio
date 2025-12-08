@@ -1,11 +1,7 @@
 .card {
   display: grid;
   overflow: hidden;
-  border: 1px solid var(--glass-border);
   border-radius: var(--radius-3xl);
-  backdrop-filter: var(--glass-blur);
-  background: var(--glass-surface);
-  box-shadow: var(--glass-highlight), var(--shadow-card);
   grid-template-rows: auto 1fr;
   transition: all var(--transition-slow);
 
@@ -15,7 +11,6 @@
   }
 
   &:hover {
-    box-shadow: var(--glass-highlight), var(--shadow-soft);
     .title { color: var(--color-primary); }
   }
 }
@@ -64,10 +59,10 @@
 }
 
 .tag {
-  padding: var(--padding-xs) var(--padding-md);
-  border-radius: var(--radius-full);
-  background: var(--color-primary);
-  color: var(--color-primary-foreground);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
   font-size: var(--font-size-xs);
   font-weight: 500;
 }

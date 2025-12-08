@@ -107,10 +107,10 @@
 }
 
 .tagButton.active {
-  border-color: color-mix(in srgb, var(--color-primary) 60%, var(--pill-border));
-  background: var(--color-primary);
+  border-color: transparent;
+  background: #ffd700;
   box-shadow: var(--shadow-card);
-  color: var(--color-primary-foreground);
+  color: #222;
 }
 
 .tagButton.inactive:hover {
@@ -176,9 +176,9 @@
 }
 
 .pageNumberActive {
-  border-color: color-mix(in srgb, var(--color-primary) 60%, var(--pill-border));
-  background: var(--color-primary);
-  color: var(--color-primary-foreground);
+  border-color: transparent;
+  background: #ffd700;
+  color: #222;
 }
 
 .pageStatus {
@@ -236,17 +236,13 @@
   display: grid;
   min-height: 120px;
   padding: var(--padding-sm);
-  border: 1px solid var(--glass-border);
   border-radius: var(--radius-3xl);
-  background: var(--glass-surface);
-  box-shadow: var(--glass-highlight), var(--shadow-card);
   gap: var(--gap-md);
   grid-template-columns: 120px 1fr;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transition: transform var(--transition-normal);
 }
 
 .listItem:hover {
-  box-shadow: var(--glass-highlight), var(--shadow-strong);
   transform: translateY(-2px);
 }
 
@@ -279,10 +275,11 @@
 }
 
 .listMedium {
-  padding: 2px 8px;
+  padding: 0;
+  border: none;
   border-radius: var(--radius-full);
-  background: var(--color-tag);
-  color: var(--color-tag-foreground);
+  background: transparent;
+  color: inherit;
   font-weight: 700;
 }
 
