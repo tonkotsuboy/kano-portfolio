@@ -1,6 +1,6 @@
 .section {
   padding-top: var(--space-16);
-  padding-bottom: var(--space-24);
+  padding-bottom: var(--space-12);
 
 @media (width >= 768px) {
   padding-top: var(--space-24);
@@ -123,7 +123,8 @@
   display: grid;
   align-items: center;
   justify-content: center;
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-8);
   gap: var(--gap-sm);
   grid-auto-flow: column;
 }
