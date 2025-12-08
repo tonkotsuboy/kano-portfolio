@@ -11,6 +11,7 @@ import {
 } from "./constants";
 
 import type { Metadata } from "next";
+import { JSX } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SiteUrl),

@@ -16,6 +16,7 @@ import { parseDate } from "../../logics/date/parseDate";
 import styles from "./page.module.css";
 
 import type { Metadata } from "next";
+import { FC } from "react";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -68,7 +69,7 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
   };
 };
 
-const Page = async ({ params }: Params): Promise<JSX.Element> => {
+const Page: FC = async ({ params }: Params) => {
   const { slug } = await params;
   const post = getPost(slug);
   const bodyHtml = loadBodyHtml(slug);
