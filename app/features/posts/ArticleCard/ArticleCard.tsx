@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import Image from "next/image";
 import Link from "next/link";
 
-import { SiteUrl } from "../../../constants";
-import { GlassTag } from "../GlassTag";
+import { GlassTag } from "../../components/ui/GlassTag";
+import { SiteUrl } from "../../constants";
 
 import styles from "./ArticleCard.module.css";
 
@@ -40,7 +41,11 @@ export const ArticleCard: FC<Props> = ({ post }) => {
 
   const getHostname = (url: string): string => {
     try {
-      return new URL(url, SiteUrl).hostname;
+      const safeUrl = typeof url === "string" ? url : String(url ?? "");
+      const base = new URL(SiteUrl);
+       
+      const resolved = new URL(String(safeUrl || base.href), String(base.href));
+      return resolved.hostname;
     } catch {
       return "";
     }

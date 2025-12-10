@@ -1,6 +1,5 @@
 import "./styles/globals.css";
 
-import { ThemeProvider } from "./components/common/ThemeProvider";
 import {
   basicDescription,
   ogImageUrl,
@@ -9,6 +8,7 @@ import {
   TwitterId,
   WithSiteTitle,
 } from "./constants";
+import { ThemeProvider } from "./features/theme/ThemeProvider";
 
 import type { Metadata } from "next";
 import type { JSX } from "react";

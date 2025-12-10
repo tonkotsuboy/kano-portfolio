@@ -1,8 +1,8 @@
 import { type FC, Suspense } from "react";
 
-import { ArticleGrid } from "./components/common/ArticleGrid";
-import { Footer } from "./components/common/Footer";
-import { Header } from "./components/common/Header";
+import { Footer } from "./features/layout/Footer";
+import { Header } from "./features/layout/Header";
+import { ArticleGrid } from "./features/posts/ArticleGrid";
 import styles from "./page.module.css";
 
 import type { Post } from "@/.velite";

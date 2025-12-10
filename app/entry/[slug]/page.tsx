@@ -5,9 +5,9 @@ import { marked } from "marked";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { Footer } from "../../components/common/Footer";
-import { Header } from "../../components/common/Header";
 import { WithSiteTitle } from "../../constants";
+import { Footer } from "../../features/layout/Footer";
+import { Header } from "../../features/layout/Header";
 import { metadata } from "../../layout";
 
 import { EntryCover } from "./components/EntryCover";

@@ -1,7 +1,7 @@
 import { Linkedin } from "lucide-react";
 import { siGithub, siX } from "simple-icons";
 
-import { SimpleIcon } from "../../icons/SimpleIcon";
+import { SimpleIcon } from "../../components/ui/icons/SimpleIcon";
 
 import styles from "./Footer.module.css";
 

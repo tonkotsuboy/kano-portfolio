@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { LiquidGlassBox } from "../LiquidGlassBox";
-import { ThemeToggle } from "../ThemeToggle";
+import { LiquidGlassBox } from "../../components/ui/LiquidGlassBox";
+import { ThemeToggle } from "../theme/ThemeToggle";
 
 import styles from "./Header.module.css";
 

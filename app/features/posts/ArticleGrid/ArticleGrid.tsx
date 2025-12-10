@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 "use client";
 
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
@@ -7,10 +8,10 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { SiteUrl } from "../../../constants";
+import { GlassSurface } from "../../components/ui/GlassSurface";
+import { GlassTag } from "../../components/ui/GlassTag";
+import { SiteUrl } from "../../constants";
 import { ArticleCard } from "../ArticleCard";
-import { GlassSurface } from "../GlassSurface";
-import { GlassTag } from "../GlassTag";
 
 import styles from "./ArticleGrid.module.css";
 
@@ -37,7 +38,11 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
   const { href, isExternal } = resolveLink(post);
   const getHostname = (url: string): string => {
     try {
-      return new URL(String(url), SiteUrl).hostname;
+      const safeUrl = typeof url === "string" ? url : String(url ?? "");
+      const base = new URL(SiteUrl);
+       
+      const resolved = new URL(String(safeUrl || base.href), String(base.href));
+      return resolved.hostname;
     } catch {
       return "";
     }

@@ -2,10 +2,10 @@ import { Linkedin } from "lucide-react";
 import Link from "next/link";
 import { siGmail, siMessenger, siX } from "simple-icons";
 
-import { Footer } from "../components/common/Footer";
-import { Header } from "../components/common/Header";
-import { SimpleIcon } from "../components/icons/SimpleIcon";
+import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
 import { basicDescription, ogImageUrl, WithSiteTitle } from "../constants";
+import { Footer } from "../features/layout/Footer";
+import { Header } from "../features/layout/Header";
 
 import styles from "./page.module.css";
 
