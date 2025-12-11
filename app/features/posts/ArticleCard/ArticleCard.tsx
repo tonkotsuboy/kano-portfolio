@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import Image from "next/image";
 import Link from "next/link";
 
-import { GlassTag } from "../../components/ui/GlassTag";
-import { SiteUrl } from "../../constants";
+import { GlassTag } from "../../../components/ui/GlassTag";
+import { SiteUrl } from "../../../constants";
 
 import styles from "./ArticleCard.module.css";
 

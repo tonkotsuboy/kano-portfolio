@@ -2,7 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 
-import { LiquidGlassBox } from "../LiquidGlassBox";
+import { LiquidGlassBox } from "../../../components/ui/LiquidGlassBox";
 import { useTheme } from "../ThemeProvider";
 
 import styles from "./ThemeToggle.module.css";
