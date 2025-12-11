@@ -11,7 +11,7 @@ import {
 import { ServiceWorkerRegister } from "./features/pwa/ServiceWorkerRegister";
 import { ThemeProvider } from "./features/theme/ThemeProvider";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { JSX } from "react";
 
 export const metadata: Metadata = {
@@ -35,10 +35,6 @@ export const metadata: Metadata = {
     title: SiteTitle,
     url: SiteUrl,
   },
-  themeColor: [
-    { color: "#f6f7fb", media: "(prefers-color-scheme: light)" },
-    { color: "#0b1021", media: "(prefers-color-scheme: dark)" },
-  ],
   title: {
     default: SiteTitle,
     template: `%s${WithSiteTitle}`,
@@ -51,6 +47,13 @@ export const metadata: Metadata = {
     site: `@${TwitterId}`,
     title: SiteTitle,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { color: "#f6f7fb", media: "(prefers-color-scheme: light)" },
+    { color: "#0b1021", media: "(prefers-color-scheme: dark)" },
+  ],
 };
 
 export default function RootLayout({
