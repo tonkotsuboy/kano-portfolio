@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 "use client";
 
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
@@ -8,9 +7,9 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { GlassSurface } from "../../components/ui/GlassSurface";
-import { GlassTag } from "../../components/ui/GlassTag";
-import { SiteUrl } from "../../constants";
+import { GlassSurface } from "../../../components/ui/GlassSurface";
+import { GlassTag } from "../../../components/ui/GlassTag";
+import { SiteUrl } from "../../../constants";
 import { ArticleCard } from "../ArticleCard";
 
 import styles from "./ArticleGrid.module.css";
@@ -107,7 +106,7 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
 export const ArticleGrid: FC<Props> = ({ posts }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const pageFromUrl = Number(searchParams.get("page") ?? "1");
+  const pageFromUrl = Number(searchParams?.get("page") ?? "1");
 
   const [selectedTag, setSelectedTag] = useState<string>("all");
   const [keyword, setKeyword] = useState<string>("");
@@ -123,7 +122,9 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
   }, [pageFromUrl]);
 
   const updatePageInUrl = (nextPage: number) => {
-    const params = new URLSearchParams(Array.from(searchParams.entries()));
+    const params = searchParams
+      ? new URLSearchParams(Array.from(searchParams.entries()))
+      : new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
     if (nextPage <= 1) {
       params.delete("page");
     } else {
