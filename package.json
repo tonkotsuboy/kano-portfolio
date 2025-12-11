@@ -87,7 +87,8 @@
     "stylelint-order": "^7.0.0",
     "ts-jest": "^29.4.6",
     "typed-css-modules": "^0.9.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.15"
   },
   "volta": {
     "node": "24.11.1"
