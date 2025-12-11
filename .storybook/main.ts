@@ -18,9 +18,12 @@ const config: StorybookConfig = {
         ? config.resolve.alias
         : {};
 
+    const veliteMock = path.resolve(__dirname, "./mocks/velite.ts");
     config.resolve.alias = {
       ...(Array.isArray(config.resolve.alias) ? {} : aliases),
-      "@/.velite": path.resolve(__dirname, "./mocks/velite.ts"),
+      "@/.velite": veliteMock,
+      ".velite": veliteMock,
+      "../.velite": veliteMock,
       "next/navigation": path.resolve(__dirname, "./mocks/nextNavigation.ts"),
     };
     return config;
