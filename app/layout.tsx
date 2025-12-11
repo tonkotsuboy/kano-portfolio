@@ -8,6 +8,7 @@ import {
   TwitterId,
   WithSiteTitle,
 } from "./constants";
+import { ServiceWorkerRegister } from "./features/pwa/ServiceWorkerRegister";
 import { ThemeProvider } from "./features/theme/ThemeProvider";
 
 import type { Metadata } from "next";
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     canonical: SiteUrl,
   },
   description: basicDescription,
+  manifest: "/manifest.webmanifest",
   metadataBase: new URL(SiteUrl),
   openGraph: {
     description: basicDescription,
@@ -61,6 +63,7 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning={true}>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

@@ -3,24 +3,21 @@
   "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",
-  "engines": {
-    "node": "24.11.1"
-  },
   "scripts": {
-    "dev": "npm run tcm && next dev",
     "build": "npm run tcm && next build",
-    "start": "next start",
-    "export": "npm run build && next export",
-    "tcm": "tcm app",
-    "tcm:watch": "tcm app --watch",
-    "lint:next:fix": "eslint --fix .",
-    "lint:css:fix": "stylelint \"**/*.module.css\" --fix",
-    "markuplint": "markuplint -p './**/*.tsx'",
-    "test": "jest --no-cache",
+    "build-storybook": "storybook build",
     "cf-export": "node ./node-scripts/cfExport.mjs",
     "cf-generate-types": "cf-content-types-generator contentful/export.json --out app/@types/generated/contentful --v10",
+    "dev": "npm run tcm && next dev",
+    "export": "npm run build && next export",
+    "lint:css:fix": "stylelint \"**/*.module.css\" --fix",
+    "lint:next:fix": "eslint --fix .",
+    "markuplint": "markuplint -p './**/*.tsx'",
+    "start": "next start",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "tcm": "tcm app",
+    "tcm:watch": "tcm app --watch",
+    "test": "jest --no-cache"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.12",
@@ -31,7 +28,6 @@
     "lucide-react": "^0.556.0",
     "marked": "^12.0.2",
     "next": "^15.5.7",
-    "next-pwa": "^5.6.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "rehype-autolink-headings": "^7.1.0",
@@ -89,6 +85,9 @@
     "typed-css-modules": "^0.9.1",
     "typescript": "^5.9.3",
     "vitest": "^4.0.15"
+  },
+  "engines": {
+    "node": "24.11.1"
   },
   "volta": {
     "node": "24.11.1"

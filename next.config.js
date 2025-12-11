@@ -4,6 +4,19 @@ const { build } = require("velite");
 const nextConfig = {
   reactStrictMode: true,
   staticPageGenerationTimeout: 240,
+  async headers() {
+    return [
+      {
+        source: "/sw.js",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+        ],
+      },
+    ];
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       build({ watch: true });
