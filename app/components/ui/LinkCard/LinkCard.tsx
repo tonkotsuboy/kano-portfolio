@@ -39,18 +39,13 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, thumbnail, title }) => 
       <GlassSurface className={styles.linkInner}>
         {isThumbAvailable && displayThumb ? (
           <span className={styles.thumbWrap}>
-            {(() => {
-              const thumbSrc: string = displayThumb;
-              return (
-                <Image
-                  className={styles.ogImage}
-                  src={thumbSrc}
-                  width={120}
-                  height={120}
-                  alt={displayTitle}
-                />
-              );
-            })()}
+            <Image
+              className={styles.ogImage}
+              src={displayThumb}
+              width={120}
+              height={120}
+              alt={displayTitle}
+            />
           </span>
         ) : null}
         <span className={styles.meta}>
