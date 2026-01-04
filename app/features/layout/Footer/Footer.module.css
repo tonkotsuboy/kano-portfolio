@@ -1,0 +1,81 @@
+.footer {
+  background: transparent;
+}
+
+.container {
+  max-width: 1280px;
+  padding: var(--space-12) var(--padding-md) var(--space-12) var(--padding-md);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.content {
+  display: grid;
+  gap: var(--gap-lg);
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.logoSection {
+  display: grid;
+  gap: var(--gap-sm);
+  grid-auto-rows: max-content;
+  place-items: center center;
+
+  @media (width >= 768px) {
+    justify-items: start;
+  }
+}
+
+.logo {
+  display: grid;
+  align-items: center;
+  gap: var(--gap-sm);
+  grid-auto-flow: column;
+}
+
+.logoIcon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: var(--shadow-soft);
+  color: var(--color-primary-foreground);
+  font-size: 0.875rem;
+  font-weight: 700;
+  place-items: center;
+}
+
+.logoText {
+  color: var(--color-foreground);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.copyright {
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+.socialLinks {
+  display: grid;
+  align-items: center;
+  gap: var(--gap-md);
+  grid-auto-flow: column;
+}
+
+.socialLink {
+  color: var(--color-muted-foreground);
+  transition: color var(--transition-normal);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.socialIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
