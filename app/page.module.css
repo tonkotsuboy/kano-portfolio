@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  overflow: hidden;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-12) var(--space-4) var(--space-16);
+}
