@@ -1,77 +1,73 @@
-import { Analytics } from "@vercel/analytics/react";
+import "./styles/globals.css";
 
-import { GoogleAnalytics } from "./components/common/GoogleAnalytics";
-import { Navigation } from "./components/concerns/Navigation";
 import {
   basicDescription,
   ogImageUrl,
   SiteTitle,
+  SiteUrl,
   TwitterId,
+  WithSiteTitle,
 } from "./constants";
-import * as styles from "./layout.css";
-import { fetchMedia } from "./logics/api/fetchMedia";
-import { fetchTagList } from "./logics/api/fetchTagList";
+import { ServiceWorkerRegister } from "./features/pwa/ServiceWorkerRegister";
+import { ThemeProvider } from "./features/theme/ThemeProvider";
 
-import type { MediumType } from "./types/MediumType";
-import type { TagType } from "./types/TagType";
-import type { Metadata, NextPage } from "next";
-import type { ReactNode } from "react";
-
-import "./styles/reset.css";
-import "./styles/base.css";
+import type { Metadata, Viewport } from "next";
+import type { JSX } from "react";
 
 export const metadata: Metadata = {
-  title: SiteTitle,
-  viewport: "width=device-width,initial-scale=1",
-  icons: ["/favicon.ico", "/favicon-16x16.png", "/favicon-32x32.png"],
-  manifest: "/manifest.json",
-  themeColor: "#3f3f9d",
-  referrer: "no-referrer",
+  alternates: {
+    canonical: SiteUrl,
+  },
   description: basicDescription,
-  metadataBase: new URL("https://kano.codes"),
-  twitter: {
+  manifest: "/manifest.webmanifest",
+  metadataBase: new URL(SiteUrl),
+  openGraph: {
+    description: basicDescription,
+    images: [
+      {
+        alt: SiteTitle,
+        height: 630,
+        url: ogImageUrl,
+        width: 1200,
+      },
+    ],
+    siteName: SiteTitle,
     title: SiteTitle,
+    url: SiteUrl,
+  },
+  title: {
+    default: SiteTitle,
+    template: `%s${WithSiteTitle}`,
+  },
+  twitter: {
     card: "summary_large_image",
+    creator: `@${TwitterId}`,
+    description: basicDescription,
     images: [ogImageUrl],
     site: `@${TwitterId}`,
-  },
-  openGraph: {
     title: SiteTitle,
-    images: [ogImageUrl],
-    description: basicDescription,
   },
 };
 
-const getEntryData = async (): Promise<
-  [mediumDataList: MediumType[], tagDataList: TagType[]]
-> => {
-  return await Promise.all([fetchMedia(), fetchTagList()]);
+export const viewport: Viewport = {
+  themeColor: [
+    { color: "#f6f7fb", media: "(prefers-color-scheme: light)" },
+    { color: "#0b1021", media: "(prefers-color-scheme: dark)" },
+  ],
 };
 
-const RootLayout: NextPage<{ children: ReactNode }> = async ({ children }) => {
-  const [mediumDataList, tagDataList] = await getEntryData();
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+  params: Promise<Record<string, never>>;
+}): JSX.Element {
   return (
-    <html lang="ja">
-      <head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
-      </head>
+    <html lang="ja" suppressHydrationWarning={true}>
       <body>
-        <div className={styles.root}>
-          <div className={styles.wrapper}>
-            <Navigation
-              mediumDataList={mediumDataList}
-              tagDataList={tagDataList}
-            />
-            <main className={styles.main}>{children}</main>
-          </div>
-        </div>
-        <GoogleAnalytics />
-        <Analytics />
+        <ThemeProvider>{children}</ThemeProvider>
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
