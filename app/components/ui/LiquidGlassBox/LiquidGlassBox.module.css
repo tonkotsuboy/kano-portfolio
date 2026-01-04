@@ -1,0 +1,60 @@
+.wrapper {
+  position: relative;
+  display: inline-grid;
+  overflow: hidden;
+  align-items: center;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-glass-soft);
+  color: var(--color-foreground);
+  isolation: isolate;
+  transition: opacity var(--transition-normal);
+}
+
+.effect {
+  position: absolute;
+  z-index: 0;
+  backdrop-filter: blur(3px);
+  filter: url("#glass-distortion");
+  inset: 0;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+
+.tint {
+  position: absolute;
+  z-index: 1;
+  background: rgb(255 255 255 / 25%);
+  inset: 0;
+  pointer-events: none;
+}
+
+
+.shine {
+  position: absolute;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 1px 0 rgb(255 255 255 / 50%), inset -1px -1px 1px 1px rgb(255 255 255 / 50%);
+  inset: 0;
+  pointer-events: none;
+}
+
+
+.content {
+  position: relative;
+  z-index: 3;
+  display: inline-grid;
+  align-items: center;
+  padding: var(--padding-xs) calc(var(--padding-sm) * 1.2);
+  color: inherit;
+  gap: var(--gap-xs);
+  grid-auto-flow: column;
+}
+
+
+.filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
