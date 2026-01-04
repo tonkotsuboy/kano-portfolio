@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import * as styles from "./MenuButton.css";
+import styles from "./MenuButton.module.css";
 
 import type { FC, HTMLAttributes } from "react";
 
