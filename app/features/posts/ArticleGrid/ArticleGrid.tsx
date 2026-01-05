@@ -90,7 +90,7 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
 
   if (isExternal) {
     return (
-      <a href={href} target="_blank" rel="noreferrer" className={styles.listLink}>
+      <a href={href} target="_blank" className={styles.listLink}>
         {content}
       </a>
     );

@@ -191,8 +191,8 @@
 
 .pageNumberActive {
   border-color: transparent;
-  background: #ffd700;
-  color: #222;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
 }
 
 .pageStatus {
