@@ -28,6 +28,8 @@
   --pill-bg: color-mix(in srgb, var(--color-card) 98%, transparent);
   --pill-border: color-mix(in srgb, var(--color-border) 90%, transparent);
   --pill-shadow: 0 6px 14px -10px rgba(15, 23, 42, 0.2);
+  --bg-gradient-primary: rgba(255, 250, 220, 0.4);
+  --bg-gradient-secondary: rgba(255, 248, 230, 0.3);
 
     /* スペーシング */
     --space-1: 0.25rem;
@@ -39,18 +41,10 @@
     --space-8: 2rem;
     --space-10: 2.5rem;
     --space-12: 3rem;
+    --space-14: 3.5rem;
     --space-16: 4rem;
     --space-20: 5rem;
     --space-24: 6rem;
-    --space-8px: 8px;
-    --space-16px: 16px;
-    --space-24px: 24px;
-    --space-32px: 32px;
-    --space-40px: 40px;
-    --space-48px: 48px;
-    --space-56px: 56px;
-    --space-64px: 64px;
-    --space-80px: 80px;
 
     /* セマンティックな余白スケール */
     --padding-xs: var(--space-2);
@@ -67,10 +61,8 @@
     /* フォントサイズ */
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
-    --font-size-s: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
-    --font-size-l: 1.125rem;
     --font-size-xl: 1.25rem;
     --font-size-2xl: 1.5rem;
     --font-size-3xl: 1.875rem;
@@ -118,6 +110,13 @@
     --color-text: #dbeafe;
     --shadow-soft: 0 18px 30px -18px rgba(0, 0, 0, 0.55);
     --shadow-strong: 0 26px 50px -26px rgba(0, 0, 0, 0.65);
+  --shadow-glass: 0 4px 24px -4px rgba(0, 0, 0, 0.3);
+  --shadow-glass-hover: 0 8px 28px -10px rgba(0, 0, 0, 0.4);
+  --shadow-glass-soft: 0 6px 22px -10px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 12px 28px -18px rgba(0, 0, 0, 0.5);
+  --pill-shadow: 0 6px 14px -10px rgba(0, 0, 0, 0.4);
+  --bg-gradient-primary: rgba(30, 58, 138, 0.15);
+  --bg-gradient-secondary: rgba(67, 56, 202, 0.1);
   }
 
   /* グローバルリセット */
@@ -144,10 +143,10 @@ body {
   min-height: 100vh;
   padding-top: calc(4rem + var(--space-4));
   color: var(--color-text);
-  background-color: #fdfdfd;
+  background-color: var(--color-background);
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(255, 250, 220, 0.4) 0%, transparent 60%),
-    radial-gradient(circle at 80% 80%, rgba(255, 248, 230, 0.3) 0%, transparent 60%);
+    radial-gradient(circle at 20% 20%, var(--bg-gradient-primary) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, var(--bg-gradient-secondary) 0%, transparent 60%);
   background-attachment: fixed;
   background-size: cover;
   transition: background-color var(--transition-slow), color var(--transition-slow);
@@ -200,26 +199,4 @@ body {
     outline-offset: 3px;
   }
 
-}
-
-img {
-  object-fit: cover;
-}
-
-/* カスタムスクロールバー */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-muted);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-muted-foreground);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-foreground);
 }
