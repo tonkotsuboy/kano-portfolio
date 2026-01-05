@@ -80,8 +80,8 @@
     --radius-full: 9999px;
 
     /* ガラス用トークン */
-  --glass-surface: color-mix(in srgb, var(--color-card) 65%, transparent);
-  --glass-strong: color-mix(in srgb, var(--color-card) 55%, transparent);
+  --glass-surface: color-mix(in srgb, var(--color-card) 55%, transparent);
+  --glass-strong: color-mix(in srgb, var(--color-card) 65%, transparent);
   --glass-border: rgba(255, 255, 255, 0.35);
   --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   --glass-blur: blur(18px);
