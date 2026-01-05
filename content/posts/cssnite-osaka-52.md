@@ -1,5 +1,4 @@
 ---
-
 title: "現場で働くコーダーのためのCSS Grid + モダンコーディング"
 slug: "cssnite-osaka-52"
 date: "2019-09-07T00:00+09:00"

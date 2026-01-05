@@ -1,5 +1,4 @@
 ---
-
 title: "WPJ「鹿野壮のWebデザイナーのためのiOSアプリ開発入門」"
 slug: "wpj-swift"
 date: "2017-09-11T00:00+09:00"

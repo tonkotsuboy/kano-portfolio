@@ -20,7 +20,7 @@ hasDetail: true
 
 今回のTechFeed Experts Nightは「JavaScript/TypeScript最前線」がテーマです。
 
- JavaScript/TypeScripのエキスパートたちが、トレンド情報からマニアックな技術情報を8分間のセッションに凝縮！
+ JavaScript/TypeScriptのエキスパートたちが、トレンド情報からマニアックな技術情報を8分間のセッションに凝縮！
 それらをネタに、エキスパートたちが語り合うアフタートークもあります！
 
 エキスパートも、エキスパートを目指す方々も、楽しめること必至の90分！
