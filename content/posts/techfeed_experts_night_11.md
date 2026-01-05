@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: "https://images.ctfassets.net/z2i4e5quuqk1/53EJNXUXmqzM5wFCHhvqxM/88ecf0de182ad8888eff9eda82df1fdb/CSSNiteShift14-logo_pc.png"
+thumbnail: "/ogimage.png"
 slides: ""
 linkUrl: "https://kano.codes/entry/techfeed_experts_night_11"
 targetUrl: "/entry/techfeed_experts_night_11"
