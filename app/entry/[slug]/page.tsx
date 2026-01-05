@@ -22,6 +22,14 @@ import { posts } from "@/.velite";
 export const dynamic = "force-static";
 export const revalidate = 3600;
 
+export function generateStaticParams() {
+  return posts
+    .filter((post) => post.hasDetail === true)
+    .map((post) => ({
+      slug: post.slug,
+    }));
+}
+
 const getPost = (slug: string) => {
   const post = posts.find((p) => p.slug === slug);
 

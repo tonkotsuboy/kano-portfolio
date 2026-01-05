@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
 import styles from "../page.module.css";
 
 import type { FC } from "react";
 
 interface Props {
-   
   date?: string;
   formatDate: (date: string) => string;
   medium?: string;
