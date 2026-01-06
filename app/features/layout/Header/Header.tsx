@@ -4,14 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { LiquidGlassBox } from "../../../components/ui/LiquidGlassBox";
 import { ThemeToggle } from "../../theme/ThemeToggle";
 
 import styles from "./Header.module.css";
 
 import type { FC } from "react";
 
-interface NavLink { href: string; label: string }
+interface NavLink {
+  href: string;
+  label: string;
+}
 
 const navLinks: NavLink[] = [
   { href: "/", label: "Posts" },
@@ -36,14 +38,20 @@ export const Header: FC = () => {
     >
       <div className={styles.headerContainer}>
         <div className={styles.headerContent}>
-          <Link href="/" className={styles.logo}>
+          <Link href="/" className={styles.logo} aria-label="ホームに戻る">
             <div className={styles.avatar}>
-              <Image src="/avatar.png" alt="Takeshi Kano" width={40} height={40} />
+              <Image
+                src="/avatar.png"
+                alt="Takeshi Kano"
+                width={44}
+                height={44}
+                priority
+              />
             </div>
           </Link>
 
-          <nav className={styles.nav}>
-            <LiquidGlassBox className={styles.navInner}>
+          <nav className={styles.nav} aria-label="メインナビゲーション">
+            <div className={styles.navInner}>
               <div className={styles.navList}>
                 {navLinks.map((link: NavLink) => (
                   <Link
@@ -55,7 +63,7 @@ export const Header: FC = () => {
                   </Link>
                 ))}
               </div>
-            </LiquidGlassBox>
+            </div>
           </nav>
 
           <div className={styles.actions}>
