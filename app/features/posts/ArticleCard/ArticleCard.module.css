@@ -7,7 +7,6 @@
   padding: 0;
   background: var(--glass-bg-light);
   backdrop-filter: var(--blur-medium);
-  -webkit-backdrop-filter: var(--blur-medium);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   overflow: hidden;

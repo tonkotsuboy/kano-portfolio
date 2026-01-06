@@ -9,7 +9,6 @@
   padding: 0;
   background: var(--glass-bg-medium);
   backdrop-filter: var(--blur-light);
-  -webkit-backdrop-filter: var(--blur-light);
   border: 1px solid var(--glass-border);
   border-radius: 50%;
   color: var(--text-primary);
