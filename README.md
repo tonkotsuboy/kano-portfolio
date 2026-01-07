@@ -1,4 +1,3 @@
-
 # 鹿野ポートフォリオ
 
 ![](public/ogimage.png)
@@ -14,15 +13,14 @@ URL：https://kano.codes/
 
 ## 使用技術
 
-- Next.js - Reactベースのフレームワーク
-- TypeScript - 型安全な開発環境
-- vanilla-extract - TypeScript ファーストな CSS ソリューション
-- Storybook - UIコンポーネントの開発・テスト環境
-- Vercel - ホスティングプラットフォーム
-- Contentful - ヘッドレスCMS
-- @typescript-eslint - TypeScript向けのLinter
-- markuplint - マークアップの品質管理ツール
-- 他 https://github.com/tonkotsuboy/kano-portfolio/blob/main/package.json
+- **Next.js 15** - App Router を使用した React フレームワーク
+- **React 19** - 最新版
+- **TypeScript 5** - 厳格な型チェック設定
+- **CSS Modules** - スコープ付きスタイル（typed-css-modules で型生成）
+- **Velite** - Markdown ベースのコンテンツ管理
+- **Storybook** - UI コンポーネントの開発・テスト環境
+- **Vercel** - ホスティングプラットフォーム
+- **ESLint / Stylelint / markuplint** - コード品質管理
 
 ## 開発環境のセットアップ
 
@@ -40,4 +38,15 @@ npm install
 3. 開発サーバーの起動
 ```bash
 npm run dev
+```
+
+## 開発コマンド
+
+```bash
+npm run dev          # 開発サーバー起動
+npm run build        # 本番ビルド
+npm run storybook    # Storybook 起動
+npm run test         # テスト実行
+npm run lint:next:fix  # ESLint 修正
+npm run lint:css:fix   # Stylelint 修正
 ```

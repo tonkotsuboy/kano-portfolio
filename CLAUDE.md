@@ -59,45 +59,5 @@ app/
 
 content/posts/         # Markdown記事（Veliteで処理）
 .velite/               # Veliteビルド成果物（型定義含む）
+.claude/rules/         # ファイルタイプ別のコーディング規約
 ```
-
-## コンテンツ管理 (Velite)
-
-記事は `content/posts/` に Markdown で配置。Velite がフロントマターをバリデーションし、型定義を自動生成する。
-
-```markdown
----
-title: "記事タイトル"
-date: 2025-12-05
-published: true
-tags: ["Next.js", "TypeScript"]
-slug: "article-slug"
----
-```
-
-## コーディング規約
-
-### TypeScript/React
-- `any` 型は使用禁止、適切な型定義を行う
-- Server Components と Client Components を適切に使い分け
-- useEffect の依存配列は正確に指定
-- 不要な再レンダリング防止（React.memo、useMemo、useCallback）
-
-### CSS Modules
-- クラス名は camelCase
-- グローバル変数は CSS カスタムプロパティで管理（`globals.css` の `@layer base`）
-- Stylelint の idiomatic-order に従ってプロパティを並べる
-
-### インポート順序
-ESLint の import/order に従い、グループ間に空行を入れてアルファベット順にソート：
-1. builtin → external → internal → parent → sibling → index → object → type
-
-### オブジェクト/インターフェース
-perfectionist プラグインにより、キーはアルファベット順にソート
-
-## デザインシステム
-
-Liquid Glass デザインを採用。CSS変数は `globals.css` に定義：
-- プライマリカラー: `--liquid-primary` (#f5b400)
-- Glass Material: `--glass-bg-*`, `--glass-border`, `--glass-shadow-*`
-- ダークモード対応: `[data-theme="dark"]` セレクタで切り替え
