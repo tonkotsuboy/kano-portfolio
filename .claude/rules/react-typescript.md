@@ -2,7 +2,6 @@
 paths:
   - "**/*.tsx"
   - "**/*.ts"
-  - "app/**/*"
 ---
 
 # React/TypeScriptコーディング規約
