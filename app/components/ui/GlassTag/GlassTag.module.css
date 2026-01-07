@@ -1,0 +1,12 @@
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+  color: var(--color-primary-foreground);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}

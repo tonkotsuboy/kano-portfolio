@@ -1,0 +1,93 @@
+/* Liquid Glass Theme Toggle */
+.toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: var(--glass-bg-medium);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.4s var(--ease-liquid);
+  overflow: hidden;
+}
+
+/* Specular Highlight */
+.toggle::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-liquid);
+  pointer-events: none;
+}
+
+/* Hover State */
+.toggle:hover {
+  background: var(--glass-bg-strong);
+  border-color: var(--liquid-primary);
+  color: var(--liquid-primary-vibrant);
+  transform: scale(1.1) rotate(180deg);
+  box-shadow:
+    0 6px 20px var(--glass-shadow-medium),
+    0 0 0 4px rgba(0, 122, 255, 0.1),
+    inset 0 1px 0 var(--highlight-top);
+}
+
+.toggle:hover::before {
+  opacity: 1;
+}
+
+/* Active/Press State */
+.toggle:active {
+  transform: scale(1.05) rotate(180deg);
+  transition-duration: 0.1s;
+}
+
+/* Icon Container */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.4s var(--ease-liquid);
+}
+
+/* Icon Rotation on Theme Change */
+.toggle[data-theme="dark"] .icon {
+  transform: rotate(180deg);
+}
+
+/* Focus State */
+.toggle:focus-visible {
+  outline: 2px solid var(--liquid-primary);
+  outline-offset: 4px;
+}
+
+/* Dark Mode Adjustments */
+[data-theme="dark"] .toggle {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .toggle:hover {
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.5),
+    0 0 0 4px rgba(10, 132, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}

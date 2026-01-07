@@ -1,0 +1,95 @@
+.linkCard {
+  display: block;
+  container-type: inline-size;
+
+  &:is(:hover, :focus-visible) {
+    color: var(--color-primary);
+  }
+}
+
+.linkInner {
+  display: grid;
+  overflow: hidden;
+  align-items: center;
+  padding: var(--padding-md);
+  border-radius: var(--radius-3xl);
+  color: var(--color-secondary-foreground);
+  gap: var(--gap-md);
+  grid-template-columns: auto 1fr;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-dark);
+    outline-offset: 3px;
+  }
+}
+
+.thumbWrap {
+  display: grid;
+  overflow: hidden;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: var(--color-muted);
+  place-items: center;
+}
+
+.ogImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meta {
+  display: grid;
+  gap: var(--gap-xs);
+}
+
+.ogTitle {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  font-size: var(--font-size-base);
+  font-weight: normal;
+  -webkit-line-clamp: 2;
+  line-height: 1.4;
+
+  .linkCard:hover & {
+    color: var(--color-primary);
+  }
+}
+
+.linkUrl {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  gap: var(--space-1);
+  grid-auto-flow: column;
+
+  .linkCard:hover & {
+    color: var(--color-primary);
+  }
+
+  &::before {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: currentcolor;
+    content: "";
+    mask-image: url("/icon-link.svg");
+    mask-repeat: no-repeat;
+    mask-size: cover;
+  }
+}
+
+.linkText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .linkCard:hover & {
+    color: var(--color-primary);
+  }
+}
