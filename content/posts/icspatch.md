@@ -1,5 +1,4 @@
 ---
-
 title: "のぞき見企画！ICS×Goodpatch Anywhere合同勉強会「古きを捨て新しきを得るためのCSS」"
 slug: "icspatch"
 date: "2020-05-18T00:00+09:00"

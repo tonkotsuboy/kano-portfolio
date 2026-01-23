@@ -1,5 +1,4 @@
 ---
-
 title: "CSS Nite in Osaka, vol.59に登壇しました"
 slug: "cssnite_osaka"
 date: "2023-06-10T00:00+09:00"

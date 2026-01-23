@@ -1,5 +1,4 @@
 ---
-
 title: "CSS Nite LP58「もう一歩踏み込んで現場で使うCSS Grid」"
 slug: "cssnite-lp58"
 date: "2018-09-29T00:00+09:00"

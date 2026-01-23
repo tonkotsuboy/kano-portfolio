@@ -13,7 +13,7 @@ export const useRouter = () => {
   const ctx = React.useContext(AppRouterContext);
 
   const navigate = (url: string, method: "push" | "replace") => {
-    if (typeof window === "undefined") {return;}
+    if (typeof window === "undefined") { return; }
     if (ctx?.navigate) {
       ctx.navigate(url);
       return;
@@ -33,7 +33,7 @@ export const useRouter = () => {
 };
 
 export const usePathname = () => {
-  if (typeof window === "undefined") {return "/";}
+  if (typeof window === "undefined") { return "/"; }
   return window.location.pathname;
 };
 

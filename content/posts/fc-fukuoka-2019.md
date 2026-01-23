@@ -1,5 +1,4 @@
 ---
-
 title: "Frontend Conference Fukuoka 2018「2019年までに見直しておきたい CSS・JavaScriptの手法」"
 slug: "fc-fukuoka-2019"
 date: "2018-12-08T00:00+09:00"

@@ -60,7 +60,6 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-  params: Promise<Record<string, never>>;
 }): JSX.Element {
   return (
     <html lang="ja" suppressHydrationWarning={true}>

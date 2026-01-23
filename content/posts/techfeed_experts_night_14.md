@@ -14,8 +14,7 @@ hasDetail: true
 ---
 
 イベントページ
-[https://techfeed.io/events/techfeed-experts-night-14
-](https://techfeed.io/events/techfeed-experts-night-14)
+[https://techfeed.io/events/techfeed-experts-night-14](https://techfeed.io/events/techfeed-experts-night-14)
 
 イベント概要文より
 

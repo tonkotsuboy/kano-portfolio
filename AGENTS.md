@@ -27,7 +27,7 @@
 - 重要なロジック（フィルタ、ページング、テーマ切替）はユニットテストを推奨。スナップショットより振る舞いテストを優先。
 
 ## コミット / PR ガイド
-- 粒度は小さく、和文サマリで「何を」「なぜ」を明記（例: `feat: タグ絞り込みにmediumを含める`）。不要生成物（`.velite/`, `content/`, `contentful/`, `MIGRATION_PROGRESS.md` 等）はコミットしない。
+- 粒度は小さく、和文サマリで「何を」「なぜ」を明記（例: `feat: タグ絞り込みにmediumを含める`）。自動生成物（`.velite/`, `contentful/`, `MIGRATION_PROGRESS.md` 等）はコミットしない。`content/posts/` のMarkdownファイルは管理対象。
 - PR には概要・変更点・確認方法（`npm run dev` 等）・スクリーンショット/動画（UI 変更時）を添付。関連 Issue があればリンク。
 
 ## セキュリティ・設定メモ
