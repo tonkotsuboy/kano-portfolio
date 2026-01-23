@@ -1,0 +1,52 @@
+.menuButton {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: #f3f6fb;
+  }
+
+  &:focus {
+    background-color: #f3f6fb;
+  }
+}
+
+.border {
+  position: absolute;
+  left: calc(50% - 10px);
+  width: 20px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: var(--color-primary);
+  transition: 200ms all ease;
+}
+
+.border1 {
+  top: calc(50% - 5px);
+}
+
+.border2 {
+  top: calc(50%);
+}
+
+.border3 {
+  top: calc(50% + 5px);
+}
+
+.border1Closed {
+  transform: translate(0, 5px) rotate(45deg);
+}
+
+.border2Closed {
+  opacity: 0;
+}
+
+.border3Closed {
+  transform: translate(0, -5px) rotate(-45deg);
+}

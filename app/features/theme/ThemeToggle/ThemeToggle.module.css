@@ -1,0 +1,46 @@
+.glass {
+  padding: var(--padding-sm);
+}
+
+.toggle {
+  position: relative;
+  display: inline-grid;
+  width: 100%;
+  align-items: center;
+  padding: var(--padding-sm) var(--padding-md);
+  border: none;
+  border-radius: var(--radius-full);
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-foreground);
+  cursor: pointer;
+  gap: var(--gap-sm);
+  grid-auto-flow: column;
+  transition: color var(--transition-normal);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.thumb {
+  position: absolute;
+  width: 32px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(120deg, var(--color-primary), var(--color-primary-dark));
+  inset: 6px auto 6px 6px;
+  opacity: 0.1;
+  transform: translateX(0);
+  transition: all var(--transition-normal);
+}
+
+.thumb[data-active="true"] {
+  opacity: 0.2;
+  transform: translateX(18px);
+}
