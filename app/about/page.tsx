@@ -1,198 +1,251 @@
+import { ArrowUpRight, BookOpen, Linkedin, Mic2, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { siGithub, siQiita, siX, siZenn } from "simple-icons";
 
-import { WithSiteTitle } from "../constants";
+import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
+import { basicDescription, ogImageUrl, WithSiteTitle } from "../constants";
+import { Footer } from "../features/layout/Footer";
+import { Header } from "../features/layout/Header";
 
-import * as styles from "./page.css";
+import styles from "./page.module.css";
 
 import type { Metadata, NextPage } from "next";
 
 export const metadata: Metadata = {
+  description: basicDescription,
+  openGraph: {
+    images: [{ alt: WithSiteTitle, height: 630, url: ogImageUrl, width: 1200 }],
+  },
   title: `自己紹介${WithSiteTitle}`,
   twitter: {
+    images: [ogImageUrl],
     title: `自己紹介${WithSiteTitle}`,
   },
 };
 
+const writings = [
+  {
+    href: "https://gihyo.jp/book/2019/978-4-297-10368-2",
+    title: "JavaScriptコードレシピ集",
+  },
+  {
+    href: "https://gihyo.jp/magazine/SD/archive/2024/202405",
+    title: "Software Design 2024年5月号『もっとTypeScriptの力を引き出そう』",
+  },
+  {
+    href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/",
+    title:
+      "日経ソフトウェア 2022年7月号『表現力をアップするWebコーディング術』",
+  },
+  {
+    href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/",
+    title: "日経ソフトウェア2021年9月号『最新CSS』",
+  },
+  {
+    href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/",
+    title: "日経ソフトウェア2020年9月号『JavaScript最新仕様 -ECMAScript2020-』",
+  },
+];
+
+const socialLinks = [
+  { href: "https://x.com/tonkotsuboy_com", iconPath: siX.path, label: "X" },
+  { href: "https://github.com/tonkotsuboy", iconPath: siGithub.path, label: "GitHub" },
+  { href: "https://zenn.dev/tonkotsuboy_com", iconPath: siZenn.path, label: "Zenn" },
+  { href: "https://qiita.com/tonkotsuboy_com", iconPath: siQiita.path, label: "Qiita" },
+  { href: "https://www.linkedin.com/in/tonkotsuboy/", iconType: "lucide-linkedin", label: "LinkedIn" },
+  {
+    href: "https://techfeed.io/people/@tonkotsuboy_com",
+    iconPath: undefined,
+    label: "TechFeed",
+  },
+  {
+    href: "https://codepen.io/tonkotsuboy",
+    iconPath: "local-codepen",
+    label: "CodePen",
+  },
+];
+
+const talks = [
+  {
+    href: "https://jp.linkedin.com/learning/learning-flexbox/646317",
+    title: "LinkedIn Learning",
+  },
+  { href: "https://schoo.jp/class/3570", title: "Schoo" },
+  {
+    href: "https://cssnite.jp/",
+    title: "CSS Nite 2017〜2019 ベストセッション受賞",
+  },
+];
+
+const interviews = [
+  {
+    href: "https://levtech.jp/media/article/column/detail_329/",
+    title: "アウトプットこそ最高のインプット - レバテックラボ",
+  },
+  {
+    href: "https://findy-code.io/engineer-lab/tonkotsuboy-output",
+    title:
+      "アウトプットをするのが嫌だったエンジニアが登壇中毒になるまで - Findy Engineer Lab",
+  },
+  {
+    href: "https://ascii.jp/elem/000/001/546/1546451/",
+    title: "鹿野壮のWebデザイナーのためのiOSアプリ開発入門 - WPJ",
+  },
+  {
+    href: "https://life.job-draft.jp/2025/04/30/801/",
+    title: "エンジニア鹿野壮の物語 | LIFE DRAFT",
+  },
+];
+
+const skills = [
+  "TypeScript",
+  "React / Next.js",
+  "CSS / CSS Modules",
+  "Design Systems",
+  "GraphQL",
+  "Node.js",
+  "Storybook",
+  "Testing (Jest / msw)",
+];
+
 const AboutPage: NextPage = () => {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.h1}>自己紹介</h1>
-      <Image
-        className={styles.mainVisual}
-        src="/ogimage.png"
-        width="1200"
-        height="630"
-        alt="鹿野 壮"
-      />
-      <p>鹿野 壮（かの たけし）といいます。</p>
-      <p>
-        九州大学芸術工学部音響設計学科を卒業後、<a href="https://ubie.life/">Ubie株式会社</a>でプロダクトエンジニアとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
-      </p>
-      <p>
-        CSS Nite 2017〜2019ベストセッション受賞。
-        <Link
-          href="https://techfeed.io/people/@tonkotsuboy_com"
-          target="_blank"
-        >
-          TechFeed Proプロダクトアドバイザー・公認エキスパート
-        </Link>
-      </p>
-      <h2 className={styles.h2}>書籍</h2>
-      <ul className={styles.list}>
-        <li>
-          <Link href="https://gihyo.jp/book/2019/978-4-297-10368-2" target="_blank">
-            JavaScriptコードレシピ集
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://gihyo.jp/magazine/SD/archive/2024/202405"
-            target="_blank"
-          >
-            Software Design 2024年5月号「もっとTypeScriptの力を引き出そう」
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/"
-            target="_blank"
-          >
-            日経ソフトウエア 2022年7月号「表現力をアップするWebコーディング術」
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/"
-            target="_blank"
-          >
-            日経ソフトウェア2021年9月号「最新CSS」
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/"
-            target="_blank"
-          >
-            日経ソフトウェア2020年9月号「JavaScript最新仕様 -ECMAScript2020-」
-          </Link>
-        </li>
-      </ul>
-      <h2 className={styles.h2}>技術発信</h2>
-      <ul>
-        <li>
-          <Link href="https://twitter.com/tonkotsuboy_com" target="_blank">
-            Twitter
-          </Link>
-        </li>
-        <li>
-          <Link href="https://github.com/tonkotsuboy" target="_blank">
-            GitHub
-          </Link>
-        </li>
-        <li>
-          <Link href="https://zenn.dev/tonkotsuboy_com" target="_blank">
-            Zenn
-          </Link>
-        </li>
-        <li>
-          <Link href="https://qiita.com/tonkotsuboy_com" target="_blank">
-            Qiita（21,374Contributionsで全体約40位）
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://techfeed.io/people/@tonkotsuboy_com"
-            target="_blank"
-          >
-            TechFeed
-          </Link>
-        </li>
-        <li>
-          <Link href="https://codepen.io/tonkotsuboy" target="_blank">
-            codepen
-          </Link>
-        </li>
-      </ul>
-      <h2 className={styles.h2}>講師</h2>
-      <ul>
-        <li>
-          <Link
-            href="https://jp.linkedin.com/learning/learning-flexbox/646317"
-            target="_blank"
-          >
-            LinkedIn Learning
-          </Link>
-        </li>
-        <li>
-          <Link href="https://schoo.jp/class/3570" target="_blank">
-            Schoo
-          </Link>
-        </li>
-      </ul>
-      <h2 className={styles.h2}>インタビュー・寄稿</h2>
-      <ul>
-        <li>
-          <Link
-            href="https://levtech.jp/media/article/column/detail_329/"
-            target="_blank"
-          >
-            アウトプットこそ最高のインプット。鹿野壮が語る「自分が一番トクする」アウトプットの力
-            - レバテックラボ
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://findy-code.io/engineer-lab/tonkotsuboy-output"
-            target="_blank"
-          >
-            技術発信していますか？アウトプットをするのが嫌だったソフトウェアエンジニアが登壇中毒になるまでの話
-            - Findy Engineer Lab
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://ascii.jp/elem/000/001/546/1546451/"
-            target="_blank"
-          >
-            鹿野壮のWebデザイナーのためのiOSアプリ開発入門 - WPJ
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="https://life.job-draft.jp/2025/04/30/801/"
-            target="_blank"
-          >
-            エンジニア鹿野壮の「趣味のようだった仕事」が破壊され、再生してゆく物語 | LIFE DRAFT
-          </Link>
-        </li>
-      </ul>
-      <h2>使用可能なスキル</h2>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript（〜ES2025）</li>
-        <li>TypeScript</li>
-        <li>React</li>
-        <li>React Native</li>
-        <li>Next.js</li>
-        <li>GraphQL</li>
-        <li>Recoil</li>
-        <li>Redux</li>
-        <li>Storybook</li>
-        <li>msw</li>
-        <li>NuxtJS</li>
-        <li>Vue.js</li>
-        <li>Angular</li>
-        <li>Sass</li>
-        <li>vanilla-extract CSS</li>
-        <li>CSS Modules</li>
-        <li>GraphQL</li>
-        <li>NestJS</li>
-        <li>Prisma</li>
-        <li>git</li>
-        <li>その他フロントエンド技術全般</li>
-      </ul>
+    <div className={styles.shell}>
+      <Header />
+      <main className={styles.main}>
+        <div className={styles.page}>
+          <section className={styles.hero}>
+            <div className={styles.glow} />
+            <div className={styles.profileCard}>
+              <div className={styles.visual}>
+                <Image
+                  src="/ogimage.png"
+                  fill={true}
+                  alt="鹿野 壮"
+                  sizes="320px"
+                  priority={true}
+                />
+              </div>
+              <div className={styles.profileContent}>
+                <p className={styles.badge}>Product Engineer @ Ubie</p>
+                <h1 className={styles.title}>鹿野 壮（たけし）</h1>
+                <p className={styles.summary}>
+                  九州大学芸術工学部音響設計学科卒。TypeScript・CSSを軸に、プロダクト開発と執筆・講師・登壇でアウトプットを続けています。Appleのリキッドデザインに着想を得て、情報をやわらかく届けるUIづくりを探求中。
+                </p>
+                <div className={styles.socialRow}>
+                  {socialLinks.map((social) => (
+                    <Link
+                      key={social.href}
+                      href={social.href}
+                      target="_blank"
+                      className={styles.socialLink}
+                    >
+                      {social.iconPath === "local-codepen" ? (
+                        <Image
+                          src="/images/icons/codepen.svg"
+                          alt="CodePen"
+                          className={styles.socialIcon}
+                          width={16}
+                          height={16}
+                          aria-hidden={true}
+                        />
+                      ) : social.iconType === "lucide-linkedin" ? (
+                        <Linkedin className={styles.socialIcon} aria-hidden={true} />
+                      ) : social.iconPath ? (
+                        <SimpleIcon
+                          path={social.iconPath}
+                          title={social.label}
+                          className={styles.socialIcon}
+                          aria-hidden={true}
+                        />
+                      ) : null}
+                      <span className={styles.socialLabel}>{social.label}</span>
+                      <ArrowUpRight size={14} aria-hidden={true} />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className={styles.grid}>
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <Sparkles size={18} />
+                <h2>近況</h2>
+              </div>
+              <p className={styles.cardBody}>
+                CSS Nite 2017〜2019ベストセッション受賞。TechFeed
+                Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
+              </p>
+            </article>
+
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <BookOpen size={18} />
+                <h2>書籍・寄稿</h2>
+              </div>
+              <ul className={styles.linkList}>
+                {writings.map((book) => (
+                  <li key={book.title}>
+                    <Link href={book.href} target="_blank">
+                      {book.title}
+                      <ArrowUpRight size={14} aria-hidden={true} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <Mic2 size={18} />
+                <h2>講師・登壇</h2>
+              </div>
+              <ul className={styles.linkList}>
+                {talks.map((talk) => (
+                  <li key={talk.title}>
+                    <Link href={talk.href} target="_blank">
+                      {talk.title}
+                      <ArrowUpRight size={14} aria-hidden={true} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className={styles.card}>
+              <div className={styles.cardHeader}>
+                <Sparkles size={18} />
+                <h2>インタビュー・掲載</h2>
+              </div>
+              <ul className={styles.linkList}>
+                {interviews.map((interview) => (
+                  <li key={interview.title}>
+                    <Link href={interview.href} target="_blank">
+                      {interview.title}
+                      <ArrowUpRight size={14} aria-hidden={true} />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </section>
+
+          <section className={styles.skills}>
+            <h2>Skills</h2>
+            <div className={styles.skillPills}>
+              {skills.map((skill) => (
+                <span key={skill} className={styles.skillPill}>
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };

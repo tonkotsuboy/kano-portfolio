@@ -1,0 +1,200 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+.page {
+  display: grid;
+  max-width: 1200px;
+  padding: var(--space-12) var(--space-4) var(--space-20);
+  margin: 0 auto;
+  gap: var(--space-16);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  background: radial-gradient(circle at 20% 30%, rgb(77 96 255 / 24%), transparent 38%),
+    radial-gradient(circle at 80% 10%, rgb(255 179 71 / 18%), transparent 32%);
+  filter: blur(12px);
+  inset: 0;
+}
+
+.profileCard {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  padding: var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-3xl);
+  background: color-mix(in srgb, var(--color-card) 94%, transparent);
+  box-shadow: var(--shadow-strong);
+  gap: var(--space-8);
+  grid-template-columns: 1fr;
+
+  @media (width >= 768px) {
+    align-items: center;
+    grid-template-columns: 300px 1fr;
+  }
+}
+
+.visual {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 28px;
+  aspect-ratio: 1;
+  background: linear-gradient(160deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: var(--shadow-soft);
+}
+
+.profileContent {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.badge {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-primary) 14%, transparent);
+  color: var(--color-foreground);
+  font-weight: 700;
+  gap: var(--space-2);
+  letter-spacing: 0.02em;
+}
+
+.title {
+  color: var(--color-foreground);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 800;
+}
+
+.summary {
+  color: var(--color-muted-foreground);
+  line-height: 1.8;
+}
+
+.socialRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: var(--color-foreground);
+  gap: 8px;
+  transition: color var(--transition-normal);
+}
+
+.socialIcon {
+  height: 16px;
+  width: 16px;
+}
+
+.socialLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.socialLink:hover {
+  color: var(--color-primary);
+}
+
+.grid {
+  display: grid;
+  padding: 0 var(--space-1);
+  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  display: grid;
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  background: color-mix(in srgb, var(--color-card) 92%, transparent);
+  box-shadow: var(--shadow-soft);
+  gap: var(--space-4);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  color: var(--color-muted-foreground);
+  font-size: var(--font-size-sm);
+  gap: var(--space-3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  color: var(--color-foreground);
+  line-height: 1.7;
+}
+
+.linkList {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.linkList a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-foreground);
+  font-weight: 600;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.linkList a:hover {
+  color: var(--color-primary);
+}
+
+.skills {
+  display: grid;
+  padding: 0 var(--space-1);
+  gap: var(--space-4);
+}
+
+.skills h2 {
+  color: var(--color-foreground);
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+}
+
+.skillPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.skillPill {
+  padding: 10px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 25%, var(--color-border));
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-foreground);
+  font-weight: 700;
+}
