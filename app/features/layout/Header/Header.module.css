@@ -1,126 +1,226 @@
+/* Liquid Glass Header */
 .header {
   position: fixed;
-  z-index: 50;
   top: 0;
   left: 0;
-  width: 100%;
-  border-radius: 0;
-  pointer-events: none;
-  transition: all var(--transition-slow);
-}
-
-.headerScrolled {
-  border: none;
-  background: transparent;
-  box-shadow: none;
+  right: 0;
+  z-index: 100;
+  padding: var(--space-md) 0;
+  transition: all 0.3s var(--ease-liquid);
 }
 
 .headerContainer {
-  max-width: 1280px;
-  padding: var(--space-4) var(--padding-md);
-  margin-right: auto;
-  margin-left: auto;
-  pointer-events: auto;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
 }
 
 .headerContent {
-  display: grid;
-  height: 4rem;
+  display: flex;
   align-items: center;
-  gap: var(--space-4);
-  grid-template-columns: 1fr auto auto;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--blur-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  box-shadow:
+    0 8px 32px var(--glass-shadow-light),
+    inset 0 1px 0 var(--highlight-top);
+  transition: all 0.4s var(--ease-liquid);
 }
 
+.headerScrolled .headerContent {
+  background: var(--glass-bg-strong);
+  box-shadow:
+    0 12px 48px var(--glass-shadow-medium),
+    inset 0 1px 0 var(--highlight-top);
+}
+
+/* Logo */
 .logo {
-  display: grid;
+  display: flex;
   align-items: center;
-  gap: var(--gap-sm);
-  grid-auto-flow: column;
+  gap: var(--space-sm);
+  text-decoration: none;
+  transition: transform 0.3s var(--ease-liquid);
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .avatar {
-  overflow: hidden;
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--color-border);
+  position: relative;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  overflow: hidden;
+  border: 2px solid var(--glass-border);
+  box-shadow: 0 4px 12px var(--glass-shadow-light);
+  transition: all 0.3s var(--ease-liquid);
 }
 
+.logo:hover .avatar {
+  border-color: var(--liquid-primary);
+  box-shadow:
+    0 6px 16px var(--glass-shadow-medium),
+    0 0 0 4px rgba(0, 122, 255, 0.1);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Navigation */
 .nav {
-  display: grid;
-  align-items: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .navInner {
-  display: inline-grid;
+  display: inline-flex;
   align-items: center;
-  gap: var(--gap-xs);
-  grid-auto-flow: column;
+  gap: var(--space-xs);
+  padding: var(--space-xs);
+  background: var(--glass-bg-medium);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .navList {
-  display: grid;
+  display: flex;
   align-items: center;
-  gap: var(--gap-xs);
-  grid-auto-flow: column;
+  gap: var(--space-xs);
 }
 
 .navLink {
-  padding: var(--padding-xs) var(--padding-lg);
+  position: relative;
+  padding: var(--space-xs) var(--space-md);
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
   border-radius: var(--radius-full);
-  color: var(--color-muted-foreground);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  transition: all var(--transition-normal);
-
-  &:hover {
-    background: var(--glass-strong);
-    color: var(--color-foreground);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-primary-dark);
-    outline-offset: 3px;
-  }
+  transition: all 0.3s var(--ease-liquid);
+  overflow: hidden;
 }
 
+/* Liquid Glass Hover Effect for Nav Links */
+.navLink::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--glass-bg-strong);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s var(--ease-liquid);
+  z-index: -1;
+}
+
+.navLink:hover {
+  color: var(--liquid-primary-vibrant);
+  transform: translateY(-1px);
+}
+
+.navLink:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Actions */
 .actions {
-  display: grid;
+  display: flex;
   align-items: center;
-  gap: var(--gap-sm);
-  grid-auto-flow: column;
+  gap: var(--space-sm);
 }
 
+/* Icon Button Base (for ThemeToggle) */
 .iconButton {
-  display: grid;
-  width: 2.5rem;
-  height: 2.5rem;
-  border: none;
-  border-radius: var(--radius-full);
-  background: transparent;
-  color: var(--color-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: var(--glass-bg-medium);
+  backdrop-filter: var(--blur-light);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--text-primary);
   cursor: pointer;
-  place-items: center;
-  transition: all var(--transition-normal);
+  transition: all 0.3s var(--ease-liquid);
+}
 
-  &:hover {
-    background: var(--glass-strong);
-    color: var(--color-primary);
+.iconButton:hover {
+  background: var(--glass-bg-strong);
+  border-color: var(--liquid-primary);
+  color: var(--liquid-primary-vibrant);
+  transform: scale(1.1) rotate(15deg);
+  box-shadow:
+    0 4px 12px var(--glass-shadow-light),
+    0 0 0 4px rgba(0, 122, 255, 0.1);
+}
+
+.iconButton:active {
+  transform: scale(1.05) rotate(15deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-sm) 0;
   }
 
-  &:focus-visible {
-    outline: 2px solid var(--color-primary-dark);
-    outline-offset: 3px;
+  .headerContainer {
+    padding: 0 var(--space-md);
+  }
+
+  .headerContent {
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .logo {
+    flex: 1;
   }
 }
 
-.mobileMenuButton { display: none; }
-.mobileNav { display: none; }
-.mobileNavInner { display: none; }
-.mobileNavLink { display: none; }
+/* Dark Mode Adjustments */
+[data-theme="dark"] .headerContent {
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .headerScrolled .headerContent {
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Page Load Animation */
+@keyframes headerSlideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  animation: headerSlideDown 0.6s var(--ease-liquid) backwards;
+}

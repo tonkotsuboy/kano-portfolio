@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { GlassTag } from "../../../components/ui/GlassTag";
 import { SiteUrl } from "../../../constants";
 
 import styles from "./ArticleCard.module.css";
@@ -42,7 +41,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
     try {
       const safeUrl = typeof url === "string" ? url : String(url ?? "");
       const base = new URL(SiteUrl);
-       
+
       const resolved = new URL(String(safeUrl || base.href), String(base.href));
       return resolved.hostname;
     } catch {
@@ -66,7 +65,8 @@ export const ArticleCard: FC<Props> = ({ post }) => {
         : "/ogimage.png";
 
   const content = (
-    <>
+    <article className={styles.card}>
+      {/* Thumbnail */}
       <div className={styles.thumbnailContainer}>
         <Image
           src={thumbnailUrl}
@@ -78,19 +78,24 @@ export const ArticleCard: FC<Props> = ({ post }) => {
         <div className={styles.thumbnailOverlay} />
       </div>
 
-      <div className={styles.tagsContainer}>
-        {post.medium && (
-          <GlassTag className={styles.tag}>{post.medium}</GlassTag>
-        )}
-        {post.tags.slice(0, 2).map((tag) => (
-          <GlassTag key={tag} className={styles.tag}>
-            {tag}
-          </GlassTag>
-        ))}
-      </div>
+      {/* Tags */}
+      {(post.medium || post.tags.length > 0) && (
+        <div className={styles.tagsContainer}>
+          {post.medium && (
+            <span className={styles.tag}>{post.medium}</span>
+          )}
+          {post.tags.slice(0, 2).map((tag) => (
+            <span key={tag} className={styles.tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
 
+      {/* Title */}
       <h3 className={styles.title}>{post.title}</h3>
 
+      {/* Meta Information */}
       <div className={styles.meta}>
         <div className={styles.metaItem}>
           <svg
@@ -101,6 +106,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            aria-hidden="true"
           >
             <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
             <line x1="16" x2="16" y1="2" y2="6" />
@@ -110,16 +116,30 @@ export const ArticleCard: FC<Props> = ({ post }) => {
           <time dateTime={dateTimeAttr}>{formattedDate}</time>
         </div>
       </div>
-    </>
+    </article>
   );
 
   if (isExternal) {
     return (
-      <a href={href} target="_blank">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.cardLink}
+        aria-label={`${post.title}を開く（新しいタブ）`}
+      >
         {content}
       </a>
     );
   }
 
-  return <Link href={href}>{content}</Link>;
+  return (
+    <Link
+      href={href}
+      className={styles.cardLink}
+      aria-label={`${post.title}を読む`}
+    >
+      {content}
+    </Link>
+  );
 };
