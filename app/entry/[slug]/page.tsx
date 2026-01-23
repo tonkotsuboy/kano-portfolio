@@ -22,6 +22,14 @@ import { posts } from "@/.velite";
 export const dynamic = "force-static";
 export const revalidate = 3600;
 
+export function generateStaticParams() {
+  return posts
+    .filter((post) => post.hasDetail === true)
+    .map((post) => ({
+      slug: post.slug,
+    }));
+}
+
 const getPost = (slug: string) => {
   const post = posts.find((p) => p.slug === slug);
 
@@ -30,6 +38,15 @@ const getPost = (slug: string) => {
   }
 
   return post;
+};
+
+const escapeHtml = (str: string): string => {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 };
 
 const loadBodyHtml = (slug: string): string => {
@@ -43,8 +60,11 @@ const loadBodyHtml = (slug: string): string => {
   // 段落単位のリンクをカード風に置き換え
   const replaced = htmlString.replace(
     /<p><a href="([^"]+)"[^>]*>(.*?)<\/a><\/p>/g,
-    (_m, href: string, text: string) =>
-      `<a class="linkCardStandalone linkCardInline" href="${href}" target="_blank" rel="noreferrer"><div class="linkThumb"><span>Link</span></div><div class="linkMeta"><div class="linkTitle">${text}</div><div class="linkUrl">${href}</div></div></a>`,
+    (_m, href: string, text: string) => {
+      const escapedHref = escapeHtml(href);
+      const escapedText = escapeHtml(text);
+      return `<a class="linkCardStandalone linkCardInline" href="${escapedHref}" target="_blank" rel="noreferrer"><div class="linkThumb"><span>Link</span></div><div class="linkMeta"><div class="linkTitle">${escapedText}</div><div class="linkUrl">${escapedHref}</div></div></a>`;
+    },
   );
   return replaced;
 };

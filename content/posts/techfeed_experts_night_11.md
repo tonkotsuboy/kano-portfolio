@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: "https://images.ctfassets.net/z2i4e5quuqk1/53EJNXUXmqzM5wFCHhvqxM/88ecf0de182ad8888eff9eda82df1fdb/CSSNiteShift14-logo_pc.png"
+thumbnail: "/ogimage.png"
 slides: ""
 linkUrl: "https://kano.codes/entry/techfeed_experts_night_11"
 targetUrl: "/entry/techfeed_experts_night_11"
@@ -20,7 +20,7 @@ hasDetail: true
 
 今回のTechFeed Experts Nightは「JavaScript/TypeScript最前線」がテーマです。
 
- JavaScript/TypeScripのエキスパートたちが、トレンド情報からマニアックな技術情報を8分間のセッションに凝縮！
+ JavaScript/TypeScriptのエキスパートたちが、トレンド情報からマニアックな技術情報を8分間のセッションに凝縮！
 それらをネタに、エキスパートたちが語り合うアフタートークもあります！
 
 エキスパートも、エキスパートを目指す方々も、楽しめること必至の90分！

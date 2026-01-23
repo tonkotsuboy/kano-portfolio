@@ -1,4 +1,4 @@
-type Post = {
+export type Post = {
   body: string;
   categories: string[];
   date: string;

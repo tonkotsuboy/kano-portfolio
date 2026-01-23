@@ -15,9 +15,6 @@ const HomePage: FC = () => {
     .filter((post) => post.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const tagCount = new Set<string>();
-  publishedPosts.forEach((post) => post.tags.forEach((tag) => tagCount.add(tag)));
-
   return (
     <div className={styles.root}>
       <Header />

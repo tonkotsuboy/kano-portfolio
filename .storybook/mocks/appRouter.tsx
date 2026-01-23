@@ -5,7 +5,7 @@ const AppRouterContext = React.createContext<{ navigate: (_href: string) => void
 
 export const AppRouterProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navigate = (href: string) => {
-    if (typeof window === "undefined") {return;}
+    if (typeof window === "undefined") { return; }
     window.history.pushState(null, "", href);
   };
 
