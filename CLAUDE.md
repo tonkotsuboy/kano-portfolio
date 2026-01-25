@@ -2,62 +2,60 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-**重要: 必ず日本語で回答してください。**
+## Commit Rules
 
-## コミットルール
+- Create commits in small, granular units
+- Write commit titles in clear, descriptive English
 
-- コミットは細かい粒度の単位に分割して作成
-- コミットタイトルはわかりやすい日本語で記述
-
-## 開発コマンド
+## Development Commands
 
 ```bash
-# 開発サーバー起動（CSS型定義を自動生成後に起動）
+# Start development server (generates CSS type definitions first)
 npm run dev
 
-# ビルド
+# Build
 npm run build
 
-# Storybook起動
+# Start Storybook
 npm run storybook
 
-# テスト実行
+# Run tests
 npm run test
 
-# Lint修正
+# Lint fixes
 npm run lint:next:fix    # ESLint
 npm run lint:css:fix     # Stylelint
 
-# CSS Modules 型定義生成
-npm run tcm              # 一回だけ
-npm run tcm:watch        # ウォッチモード
+# CSS Modules type definition generation
+npm run tcm              # Run once
+npm run tcm:watch        # Watch mode
 ```
 
-## 技術スタック
+## Tech Stack
 
 - **Next.js 15** - App Router
 - **React 19**
-- **TypeScript 5** - 厳格な型チェック（strict + exactOptionalPropertyTypes + noUncheckedIndexedAccess）
-- **CSS Modules** - スコープ付きスタイル、typed-css-modules で型生成
-- **Velite** - Markdown ベースのコンテンツ管理
-- **Storybook** - コンポーネント開発環境
+- **TypeScript 5** - Strict type checking (strict + exactOptionalPropertyTypes + noUncheckedIndexedAccess)
+- **CSS Modules** - Scoped styles, type generation with typed-css-modules
+- **Velite** - Markdown-based content management
+- **Storybook** - Component development environment
 
-## プロジェクト構造
+## Project Structure
 
 ```
 app/
-├── components/ui/     # 汎用UIコンポーネント（GlassSurface, LiquidGlassBox等）
-├── features/          # 機能別モジュール
+├── components/ui/     # Reusable UI components (GlassSurface, LiquidGlassBox, etc.)
+├── features/          # Feature-based modules
 │   ├── layout/        # Header, Footer
 │   ├── posts/         # ArticleCard, ArticleGrid
 │   ├── theme/         # ThemeProvider, ThemeToggle
 │   ├── analytics/     # GoogleAnalytics
 │   └── pwa/           # ServiceWorkerRegister
-├── styles/globals.css # CSS変数定義（Liquid Glassデザインシステム）
-├── entry/[slug]/      # 記事詳細ページ
-└── constants/         # サイト設定定数
+├── styles/globals.css # CSS variable definitions (Liquid Glass design system)
+├── entry/[slug]/      # Article detail pages
+└── constants/         # Site configuration constants
 
-content/posts/         # Markdown記事（Veliteで処理）
-.velite/               # Veliteビルド成果物（型定義含む）
-.claude/rules/         # ファイルタイプ別のコーディング規約
+content/posts/         # Markdown articles (processed by Velite)
+.velite/               # Velite build artifacts (including type definitions)
+.claude/rules/         # File-type specific coding conventions
 ```
