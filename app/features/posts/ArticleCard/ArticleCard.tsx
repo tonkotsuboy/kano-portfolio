@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { LiquidGlassBox } from "../../../components/ui/LiquidGlassBox";
 import { SiteUrl } from "../../../constants";
 
 import styles from "./ArticleCard.module.css";
@@ -65,7 +66,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
         : "/ogimage.png";
 
   const content = (
-    <article className={styles.card}>
+    <LiquidGlassBox as="article" className={styles.card}>
       {/* Thumbnail */}
       <div className={styles.thumbnailContainer}>
         <Image
@@ -116,7 +117,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
           <time dateTime={dateTimeAttr}>{formattedDate}</time>
         </div>
       </div>
-    </article>
+    </LiquidGlassBox>
   );
 
   if (isExternal) {

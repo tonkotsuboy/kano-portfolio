@@ -1,13 +1,10 @@
 /* Liquid Glass Article Card */
 .card {
   position: relative;
-  display: grid;
+  display: grid !important;
   grid-template-rows: auto 1fr auto;
   gap: var(--space-md);
   padding: 0;
-  background: var(--glass-bg-light);
-  backdrop-filter: var(--blur-medium);
-  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all 0.4s var(--ease-liquid);
@@ -67,13 +64,6 @@
 /* Hover State - Liquid Glass Effect */
 .card:hover {
   transform: translateY(-8px) scale(1.02);
-  background: var(--glass-bg-strong);
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow:
-    0 20px 60px var(--glass-shadow-medium),
-    0 8px 16px var(--glass-shadow-light),
-    inset 0 1px 0 var(--highlight-top),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .card:hover::before {
@@ -161,8 +151,7 @@
 
 .tag {
   padding: var(--space-xs) var(--space-sm);
-  background: var(--glass-bg-medium);
-  backdrop-filter: var(--blur-light);
+  background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--radius-full);
   color: var(--text-secondary);
@@ -174,7 +163,7 @@
 }
 
 .card:hover .tag {
-  background: var(--glass-bg-strong);
+  background: rgba(255, 255, 255, 0.5);
   border-color: rgba(255, 255, 255, 0.5);
   color: var(--text-primary);
   transform: translateY(-2px);
@@ -281,19 +270,7 @@
   }
 }
 
-/* Dark Mode Specific Adjustments */
-[data-theme="dark"] .card {
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .card:hover {
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.6),
-    0 8px 16px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
+/* Dark Mode Specific Adjustments - Handled by LiquidGlassBox */
 
 [data-theme="dark"] .thumbnailOverlay {
   background: linear-gradient(
