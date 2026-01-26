@@ -8,7 +8,7 @@
 }
 
 .linkInner {
-  display: grid;
+  display: grid !important;
   overflow: hidden;
   align-items: center;
   padding: var(--padding-md);

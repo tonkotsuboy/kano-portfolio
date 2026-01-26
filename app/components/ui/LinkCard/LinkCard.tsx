@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { GlassSurface } from "../GlassSurface";
+import { LiquidGlassBox } from "../LiquidGlassBox";
 
 import styles from "./LinkCard.module.css";
 
@@ -36,7 +36,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, thumbnail, title }) => 
       rel="noreferrer"
       target="_blank"
     >
-      <GlassSurface className={styles.linkInner}>
+      <LiquidGlassBox className={styles.linkInner}>
         {isThumbAvailable && displayThumb ? (
           <span className={styles.thumbWrap}>
             <Image
@@ -54,7 +54,7 @@ export const LinkCard: FC<Props> = ({ linkUrl, metaInfo, thumbnail, title }) => 
             <span className={styles.linkText}>{linkUrl}</span>
           </p>
         </span>
-      </GlassSurface>
+      </LiquidGlassBox>
     </Link>
   );
 };
