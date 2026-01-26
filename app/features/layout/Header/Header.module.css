@@ -174,11 +174,22 @@
   }
 
   .nav {
-    display: none;
+    order: 3;
+    width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .navInner {
+    width: 100%;
+    justify-content: space-around;
   }
 
   .logo {
-    flex: 1;
+    flex: 0 0 auto;
+  }
+
+  .actions {
+    flex: 0 0 auto;
   }
 }
 
