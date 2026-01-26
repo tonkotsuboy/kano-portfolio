@@ -68,14 +68,36 @@ type Story = StoryObj<typeof LiquidGlassBox>;
 
 export const Default: Story = {
   args: {
-    children: "Liquid Glass",
+    children: (
+      <div
+        style={{
+          color: "black",
+          cursor: "pointer",
+          fontSize: "2rem",
+          fontWeight: "600",
+          padding: "1rem 2rem",
+        }}
+      >
+        Liquid Glass
+      </div>
+    ),
   },
 };
 
 export const Menu: Story = {
   args: {
     children: (
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+      <div
+        style={{
+          color: "black",
+          cursor: "pointer",
+          display: "flex",
+          flexDirection: "column",
+          fontWeight: "600",
+          gap: "0.5rem",
+          padding: "1rem 1.5rem",
+        }}
+      >
         <div>New file</div>
         <div>Open file</div>
         <div>Settings</div>
@@ -88,7 +110,17 @@ export const Menu: Story = {
 export const Button: Story = {
   args: {
     children: (
-      <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>Click Me</div>
+      <div
+        style={{
+          color: "black",
+          cursor: "pointer",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          padding: "1rem 2rem",
+        }}
+      >
+        Click Me
+      </div>
     ),
   },
 };
@@ -99,9 +131,12 @@ export const WithCustomContent: Story = {
       <div
         style={{
           alignItems: "center",
+          color: "black",
+          cursor: "pointer",
           display: "flex",
           flexDirection: "column",
           fontSize: "2rem",
+          fontWeight: "600",
           gap: "1.5rem",
           padding: "3rem 4rem",
         }}
@@ -144,7 +179,15 @@ export const WithCustomContent: Story = {
 export const WithZoomAnimation: Story = {
   args: {
     children: (
-      <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+      <div
+        style={{
+          color: "black",
+          cursor: "pointer",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          padding: "1rem 2rem",
+        }}
+      >
         Zoom Animation
       </div>
     ),
@@ -186,7 +229,17 @@ export const WithZoomAnimation: Story = {
 export const WithSlowPan: Story = {
   args: {
     children: (
-      <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>Slow Pan</div>
+      <div
+        style={{
+          color: "black",
+          cursor: "pointer",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          padding: "1rem 2rem",
+        }}
+      >
+        Slow Pan
+      </div>
     ),
   },
   decorators: [
