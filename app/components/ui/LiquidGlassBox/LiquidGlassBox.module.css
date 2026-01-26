@@ -16,6 +16,7 @@
   isolation: isolate;
   overflow: hidden;
   border-radius: inherit;
+  pointer-events: none;
 }
 
 .tint {
@@ -24,6 +25,7 @@
   background: rgb(255 255 255 / 25%);
   inset: 0;
   border-radius: inherit;
+  pointer-events: none;
 }
 
 .shine {
@@ -33,6 +35,7 @@
   box-shadow: inset 2px 2px 1px 0 rgb(255 255 255 / 50%), inset -1px -1px 1px 1px rgb(255 255 255 / 50%);
   inset: 0;
   border-radius: inherit;
+  pointer-events: none;
 }
 
 .content {
