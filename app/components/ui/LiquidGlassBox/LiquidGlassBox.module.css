@@ -1,13 +1,14 @@
+/* LIQUID GLASS STYLES from CodePen */
+
 .wrapper {
   position: relative;
-  display: inline-grid;
+  display: flex;
   overflow: hidden;
-  align-items: center;
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-glass-soft);
-  color: var(--color-foreground);
-  isolation: isolate;
-  transition: opacity var(--transition-normal);
+  box-shadow: 0 6px 6px rgb(0 0 0 / 20%), 0 0 20px rgb(0 0 0 / 10%);
+  font-weight: 600;
+  color: black;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
 }
 
 .effect {
@@ -17,18 +18,15 @@
   filter: url("#glass-distortion");
   inset: 0;
   isolation: isolate;
-  pointer-events: none;
+  overflow: hidden;
 }
-
 
 .tint {
   position: absolute;
   z-index: 1;
   background: rgb(255 255 255 / 25%);
   inset: 0;
-  pointer-events: none;
 }
-
 
 .shine {
   position: absolute;
@@ -36,21 +34,14 @@
   overflow: hidden;
   box-shadow: inset 2px 2px 1px 0 rgb(255 255 255 / 50%), inset -1px -1px 1px 1px rgb(255 255 255 / 50%);
   inset: 0;
-  pointer-events: none;
 }
-
 
 .content {
   position: relative;
   z-index: 3;
-  display: inline-grid;
-  align-items: center;
-  padding: var(--padding-xs) calc(var(--padding-sm) * 1.2);
-  color: inherit;
-  gap: var(--gap-xs);
-  grid-auto-flow: column;
+  color: black;
+  font-size: 2rem;
 }
-
 
 .filter {
   position: absolute;
