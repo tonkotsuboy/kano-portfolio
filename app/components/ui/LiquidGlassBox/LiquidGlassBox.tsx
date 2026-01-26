@@ -1,10 +1,17 @@
 import clsx from "clsx";
+import { useId } from "react";
 
 import styles from "./LiquidGlassBox.module.css";
 
-import type { FC, ReactNode } from "react";
+import type {
+  ComponentPropsWithoutRef,
+  ElementType,
+  FC,
+  ReactNode,
+} from "react";
 
-interface Props {
+interface Props<T extends ElementType = "div"> {
+  as?: T;
   children: ReactNode;
   className?: string;
 }
@@ -14,13 +21,21 @@ interface Props {
  * SVGフィルターで本物のガラスのような歪み・反射効果を実現
  * reference: https://codepen.io/lucasromerodb/pen/vEOWpYM
  */
-export const LiquidGlassBox: FC<Props> = ({ children, className }) => {
+export const LiquidGlassBox = <T extends ElementType = "div">({
+  as,
+  children,
+  className,
+  ...props
+}: Props<T> & Omit<ComponentPropsWithoutRef<T>, keyof Props<T>>) => {
+  const Component = as ?? "div";
+  const filterId = useId();
+  const filterIdSafe = `glass-distortion-${filterId.replace(/:/g, "-")}`;
   return (
-    <div className={clsx(styles.wrapper, className)}>
+    <Component className={clsx(styles.wrapper, className)} {...props}>
       <svg className={styles.filter} aria-hidden="true" focusable="false">
         <defs>
           <filter
-            id="glass-distortion"
+            id={filterIdSafe}
             x="0%"
             y="0%"
             width="100%"
@@ -74,10 +89,14 @@ export const LiquidGlassBox: FC<Props> = ({ children, className }) => {
           </filter>
         </defs>
       </svg>
-      <div className={styles.effect} aria-hidden={true} />
+      <div
+        className={styles.effect}
+        aria-hidden={true}
+        style={{ filter: `url(#${filterIdSafe})` }}
+      />
       <div className={styles.tint} aria-hidden={true} />
       <div className={styles.shine} aria-hidden={true} />
       <div className={styles.content}>{children}</div>
-    </div>
+    </Component>
   );
 };
