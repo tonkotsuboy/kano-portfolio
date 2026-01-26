@@ -1,15 +1,13 @@
 /* Liquid Glass Theme Toggle */
 .toggle {
   position: relative;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
   padding: 0;
-  background: var(--glass-bg-medium);
-  backdrop-filter: var(--blur-light);
-  border: 1px solid var(--glass-border);
+  border: none;
   border-radius: 50%;
   color: var(--text-primary);
   cursor: pointer;
@@ -37,14 +35,8 @@
 
 /* Hover State */
 .toggle:hover {
-  background: var(--glass-bg-strong);
-  border-color: var(--liquid-primary);
   color: var(--liquid-primary-vibrant);
   transform: scale(1.1) rotate(180deg);
-  box-shadow:
-    0 6px 20px var(--glass-shadow-medium),
-    0 0 0 4px rgba(0, 122, 255, 0.1),
-    inset 0 1px 0 var(--highlight-top);
 }
 
 .toggle:hover::before {
@@ -59,6 +51,8 @@
 
 /* Icon Container */
 .icon {
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,16 +72,4 @@
   outline-offset: 4px;
 }
 
-/* Dark Mode Adjustments */
-[data-theme="dark"] .toggle {
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .toggle:hover {
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.5),
-    0 0 0 4px rgba(10, 132, 255, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
+/* Dark Mode Adjustments - Handled by LiquidGlassBox */
