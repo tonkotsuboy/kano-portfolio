@@ -194,19 +194,3 @@
 }
 
 /* Dark Mode Adjustments - Handled by LiquidGlassBox */
-
-/* Page Load Animation */
-@keyframes headerSlideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.header {
-  animation: headerSlideDown 0.6s var(--ease-liquid) backwards;
-}
