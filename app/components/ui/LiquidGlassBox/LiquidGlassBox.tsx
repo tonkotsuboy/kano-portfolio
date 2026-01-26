@@ -1,14 +1,8 @@
 import clsx from "clsx";
-import { useId } from "react";
 
 import styles from "./LiquidGlassBox.module.css";
 
-import type {
-  ComponentPropsWithoutRef,
-  ElementType,
-  FC,
-  ReactNode,
-} from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 interface Props<T extends ElementType = "div"> {
   as?: T;
@@ -28,14 +22,12 @@ export const LiquidGlassBox = <T extends ElementType = "div">({
   ...props
 }: Props<T> & Omit<ComponentPropsWithoutRef<T>, keyof Props<T>>) => {
   const Component = as ?? "div";
-  const filterId = useId();
-  const filterIdSafe = `glass-distortion-${filterId.replace(/:/g, "-")}`;
   return (
     <Component className={clsx(styles.wrapper, className)} {...props}>
       <svg className={styles.filter} aria-hidden="true" focusable="false">
         <defs>
           <filter
-            id={filterIdSafe}
+            id="glass-distortion"
             x="0%"
             y="0%"
             width="100%"
@@ -89,11 +81,7 @@ export const LiquidGlassBox = <T extends ElementType = "div">({
           </filter>
         </defs>
       </svg>
-      <div
-        className={styles.effect}
-        aria-hidden={true}
-        style={{ filter: `url(#${filterIdSafe})` }}
-      />
+      <div className={styles.effect} aria-hidden={true} />
       <div className={styles.tint} aria-hidden={true} />
       <div className={styles.shine} aria-hidden={true} />
       <div className={styles.content}>{children}</div>

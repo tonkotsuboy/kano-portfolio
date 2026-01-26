@@ -12,6 +12,7 @@
   position: absolute;
   z-index: 0;
   backdrop-filter: blur(3px);
+  filter: url("#glass-distortion");
   inset: 0;
   isolation: isolate;
   overflow: hidden;
