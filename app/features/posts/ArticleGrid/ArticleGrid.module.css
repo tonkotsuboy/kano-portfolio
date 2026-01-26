@@ -172,26 +172,18 @@
 }
 
 .listItem {
-  display: grid;
+  display: grid !important;
   grid-template-columns: 120px 1fr;
   gap: var(--space-md);
   padding: var(--space-md);
   min-height: 120px;
-  background: var(--glass-bg-light);
-  backdrop-filter: var(--blur-medium);
-  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   transition: all 0.3s var(--ease-liquid);
   cursor: pointer;
 }
 
 .listItem:hover {
-  background: var(--glass-bg-strong);
-  border-color: var(--liquid-primary);
   transform: translateY(-2px);
-  box-shadow:
-    0 8px 24px var(--glass-shadow-medium),
-    inset 0 1px 0 var(--highlight-top);
 }
 
 .listThumb {
