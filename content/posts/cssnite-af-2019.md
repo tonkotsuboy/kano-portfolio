@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/cssnite-af-2019.png"
 slides: ""
 linkUrl: "https://cssnite.doorkeeper.jp/events/85103"
 targetUrl: "/entry/cssnite-af-2019"

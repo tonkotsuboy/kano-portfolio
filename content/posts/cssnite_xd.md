@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/cssnite_xd.png"
 slides: ""
 linkUrl: "https://cssnite.doorkeeper.jp/events/133255"
 targetUrl: "/entry/cssnite_xd"

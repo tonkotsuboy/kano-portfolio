@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/cssnite_moderncss_2023-07-28.png"
 slides: ""
 linkUrl: "https://cssnite.doorkeeper.jp/events/158687"
 targetUrl: "/entry/cssnite_moderncss_2023-07-28"

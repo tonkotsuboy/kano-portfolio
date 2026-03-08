@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/dist32.png"
 slides: ""
 linkUrl: "https://dist.connpass.com/event/181737/"
 targetUrl: "/entry/dist32"

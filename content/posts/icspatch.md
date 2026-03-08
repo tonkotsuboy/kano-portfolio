@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/icspatch.png"
 slides: ""
 linkUrl: "https://goodpatch.connpass.com/event/173722/"
 targetUrl: "/entry/icspatch"

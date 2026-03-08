@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/cordershigh_2022.png"
 slides: ""
 linkUrl: "https://cssnite.doorkeeper.jp/events/141697"
 targetUrl: "/entry/cordershigh_2022"

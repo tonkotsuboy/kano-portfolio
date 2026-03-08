@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/handson_cssgrid.png"
 slides: ""
 linkUrl: "https://cssnite.doorkeeper.jp/events/115588"
 targetUrl: "/entry/handson_cssgrid"

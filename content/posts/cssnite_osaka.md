@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/cssnite_osaka.png"
 slides: ""
 linkUrl: "https://cssniteosaka.doorkeeper.jp/events/157336"
 targetUrl: "/entry/cssnite_osaka"
