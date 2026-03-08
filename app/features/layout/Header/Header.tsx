@@ -38,7 +38,7 @@ export const Header: FC = () => {
               priority
             />
           </div>
-          <span className={styles.logoText}>Kano&apos;s Log</span>
+          <span className={styles.logoText}>鹿野 壮</span>
         </Link>
 
         {/* Nav */}
