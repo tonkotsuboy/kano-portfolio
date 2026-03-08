@@ -46,7 +46,7 @@ export const Footer: FC = () => {
         <div className={styles.content}>
           <p className={styles.copyright}>© 2025 Takeshi Kano. All rights reserved.</p>
 
-          <div className={styles.socialLinks}>
+          <nav className={styles.socialLinks} aria-label="ソーシャルリンク">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
@@ -54,11 +54,12 @@ export const Footer: FC = () => {
                 className={styles.socialLink}
                 aria-label={social.label}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {social.icon}
               </a>
             ))}
-          </div>
+          </nav>
         </div>
       </div>
     </footer>

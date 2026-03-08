@@ -18,7 +18,8 @@ const HomePage: FC = () => {
   return (
     <div className={styles.root}>
       <Header />
-      <main className={styles.main}>
+      <main id="main-content" className={styles.main}>
+        <h1 className={styles.visuallyHidden}>鹿野壮のポートフォリオ - 記事一覧</h1>
         <Suspense fallback={null}>
           <ArticleGrid posts={publishedPosts} />
         </Suspense>

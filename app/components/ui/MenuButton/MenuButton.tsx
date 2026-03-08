@@ -18,6 +18,7 @@ export const MenuButton: FC<Props> = ({ className, isClosed, onClick }) => (
     type="button"
     className={clsx(className, styles.menuButton)}
     onClick={onClick}
+    aria-label={isClosed ? "メニューを閉じる" : "メニューを開く"}
   >
     <span
       className={clsx(

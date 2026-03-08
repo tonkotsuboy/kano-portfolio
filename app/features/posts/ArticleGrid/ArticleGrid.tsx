@@ -112,7 +112,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     const clamped = Math.min(Math.max(1, next), totalPages);
     setPage(clamped);
     updatePageInUrl(clamped);
-    window.scrollTo({ behavior: "smooth", top: 0 });
+    window.scrollTo(0, 0);
   };
 
   const getHostname = (url: string): string => {
@@ -127,17 +127,19 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
   };
 
   const getThumbnailUrl = (post: Post, href: string): string => {
-    if (post.thumbnail) return post.thumbnail;
+    if (post.thumbnail) { return post.thumbnail; }
     const host = getHostname(href);
-    if (host === "qiita.com" || host === "www.qiita.com")
+    if (host === "qiita.com" || host === "www.qiita.com") {
       return "/images/og/qiita-default.svg";
-    if (host === "zenn.dev" || host === "www.zenn.dev")
+    }
+    if (host === "zenn.dev" || host === "www.zenn.dev") {
       return "/images/og/zenn-default.svg";
+    }
     return "/ogimage.png";
   };
 
   const isLogoLikeThumbnail = (post: Post, href: string): boolean => {
-    if (post.thumbnail) return false;
+    if (post.thumbnail) { return false; }
     const host = getHostname(href);
     return host === "qiita.com" || host === "www.qiita.com" ||
       host === "zenn.dev" || host === "www.zenn.dev";
@@ -246,6 +248,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
+                      aria-hidden="true"
                       strokeWidth={2}
                       stroke="currentColor"
                       width={20}
@@ -293,6 +296,18 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
         ) : (
           <div className={styles.emptyState}>
             <p>記事が見つかりませんでした。</p>
+            <button
+              type="button"
+              className={styles.clearButton}
+              onClick={() => {
+                setKeyword("");
+                setSelectedTag("all");
+                setPage(1);
+                updatePageInUrl(1);
+              }}
+            >
+              検索をクリア
+            </button>
           </div>
         )}
 

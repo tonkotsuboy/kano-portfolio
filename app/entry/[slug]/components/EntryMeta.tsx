@@ -4,7 +4,7 @@ import type { FC } from "react";
 
 interface Props {
   date?: string;
-  formatDate: (date: string) => string;
+  formatDate: (_date: string) => string;
   medium?: string;
   tags: string[];
   title: string;
