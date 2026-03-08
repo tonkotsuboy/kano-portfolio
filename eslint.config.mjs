@@ -6,7 +6,7 @@ import tseslint from "typescript-eslint";
 import importPlugin from "eslint-plugin-import";
 import perfectionist from "eslint-plugin-perfectionist";
 import testingLibrary from "eslint-plugin-testing-library";
-import jest from "eslint-plugin-jest";
+import vitest from "@vitest/eslint-plugin";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import nextPlugin from "@next/eslint-plugin-next";
@@ -35,19 +35,17 @@ export default defineConfig([
         ".velite/**/*",
         "**/*.d.ts",
         ".storybook/**/*",
+        "storybook-static/**/*",
         "public/**/*",
         "node-scripts/**/*",
         "next.config.js",
-        "jest.config.js",
-        "jest-setup.js",
         "eslint.config.mjs",
     ] },
     js.configs.recommended,
     ...tseslint.configs.recommendedTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
     testingLibrary.configs["flat/react"],
-    jest.configs["flat/recommended"],
-    jest.configs["flat/style"],
+    vitest.configs.recommended,
     nextCoreWebVitals,
     {
         languageOptions: {

@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { LiquidGlassBox } from "../../../components/ui/LiquidGlassBox";
-import { SiteUrl } from "../../../constants";
 
 import styles from "./ArticleCard.module.css";
+import { getHostname, resolveArticleLink } from "./lib/resolveArticleLink";
 
 import type { Post } from "@/.velite";
 import type { FC } from "react";
@@ -24,31 +24,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
   const dateTimeAttr = dateObj.toISOString();
 
   // リンク先（外部リンクの場合は直接遷移、詳細ページがある場合はエントリーページ）
-  const targetUrl = typeof post.targetUrl === "string" ? post.targetUrl : "";
-  const linkUrl = typeof post.linkUrl === "string" ? post.linkUrl : "";
-  const externalTarget =
-    !post.hasDetail && targetUrl
-      ? targetUrl.startsWith("/")
-        ? `${SiteUrl}${targetUrl}`
-        : targetUrl
-      : "";
-
-  const href = post.hasDetail
-    ? `/entry/${post.slug}`
-    : linkUrl || externalTarget || "#";
-  const isExternal = !post.hasDetail && Boolean(linkUrl || externalTarget);
-
-  const getHostname = (url: string): string => {
-    try {
-      const safeUrl = typeof url === "string" ? url : String(url ?? "");
-      const base = new URL(SiteUrl);
-
-      const resolved = new URL(String(safeUrl || base.href), String(base.href));
-      return resolved.hostname;
-    } catch {
-      return "";
-    }
-  };
+  const { href, isExternal } = resolveArticleLink(post);
 
   // サムネイル画像
   const host = getHostname(href);

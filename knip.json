@@ -16,5 +16,4 @@
     "app/**/*.tsx",
     "scripts/**/*.{js,mjs,ts}"
   ],
-  "config": []
 }
