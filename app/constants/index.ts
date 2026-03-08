@@ -1,4 +1,4 @@
-export const SiteTitle = "鹿野ポートフォリオ";
+export const SiteTitle = "鹿野壮ポートフォリオ（tonkotsuboy_com）";
 
 export const WithSiteTitle = ` - ${SiteTitle}`;
 

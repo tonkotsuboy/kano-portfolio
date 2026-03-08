@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 
 import { SiteUrl } from "../../../constants";
+import hoverStyles from "../../../styles/card-hover.module.css";
 
 import styles from "./ArticleGrid.module.css";
 
@@ -204,7 +206,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               const category = post.medium || (post.tags[0] ?? "");
 
               const cardContent = (
-                <article className={styles.card}>
+                <article className={clsx(styles.card, hoverStyles.card)}>
                   {/* Date Column */}
                   <div className={styles.dateColumn}>
                     <span className={styles.dateDay}>{day}</span>
@@ -230,7 +232,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                       )}
                       <span className={styles.dateMobile}>{full}</span>
                     </div>
-                    <h3 className={styles.cardTitle}>{post.title}</h3>
+                    <h3 className={clsx(styles.cardTitle, hoverStyles.title)}>{post.title}</h3>
                     {post.tags.length > 0 && (
                       <div className={styles.cardTags}>
                         {post.tags.slice(0, 3).map((tag) => (
@@ -243,7 +245,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                   </div>
 
                   {/* Arrow */}
-                  <div className={styles.arrow}>
+                  <div className={clsx(styles.arrow, hoverStyles.arrow)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

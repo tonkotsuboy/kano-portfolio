@@ -12,7 +12,7 @@ import type { FC } from "react";
 const options = [
   { icon: Sun, label: "ライトテーマ", value: "light" },
   { icon: Moon, label: "ダークテーマ", value: "dark" },
-  { icon: Monitor, label: "システムテーマ", value: "system" },
+  { icon: Monitor, label: "システム", value: "system" },
 ] as const;
 
 export const ThemeToggle: FC = () => {

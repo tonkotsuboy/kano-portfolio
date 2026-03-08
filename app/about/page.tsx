@@ -1,4 +1,5 @@
-import { ArrowUpRight, Codepen, Linkedin, Rss, Zap } from "lucide-react";
+import clsx from "clsx";
+import { ChevronRight, Codepen, Linkedin, Rss, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { siGithub, siQiita, siX, siZenn } from "simple-icons";
@@ -7,6 +8,7 @@ import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
 import { ogImageUrl, WithSiteTitle } from "../constants";
 import { Footer } from "../features/layout/Footer";
 import { Header } from "../features/layout/Header";
+import hoverStyles from "../styles/card-hover.module.css";
 
 import styles from "./page.module.css";
 
@@ -182,7 +184,7 @@ const AboutPage: NextPage = () => {
                   key={item.href}
                   href={item.href}
                   target="_blank"
-                  className={styles.bookCard}
+                  className={clsx(styles.bookCard, hoverStyles.card)}
                 >
                   <div className={styles.bookCover}>
                     <Image
@@ -194,8 +196,11 @@ const AboutPage: NextPage = () => {
                     />
                   </div>
                   <div className={styles.bookInfo}>
-                    <h3 className={styles.bookTitle}>{item.title}</h3>
+                    <h3 className={clsx(styles.bookTitle, hoverStyles.title)}>{item.title}</h3>
                     <p className={styles.bookPublisher}>{item.publisher}</p>
+                  </div>
+                  <div className={hoverStyles.arrow}>
+                    <ChevronRight size={20} aria-hidden={true} />
                   </div>
                 </Link>
               ))}
@@ -208,9 +213,11 @@ const AboutPage: NextPage = () => {
             <ul className={styles.timelineList}>
               {interviews.map((item) => (
                 <li key={item.title}>
-                  <Link href={item.href} target="_blank" className={styles.timelineItem}>
-                    <span className={styles.timelineTitle}>{item.title}</span>
-                    <ArrowUpRight size={14} className={styles.timelineArrow} aria-hidden={true} />
+                  <Link href={item.href} target="_blank" className={clsx(styles.timelineItem, hoverStyles.card)}>
+                    <span className={clsx(styles.timelineTitle, hoverStyles.title)}>{item.title}</span>
+                    <div className={clsx(styles.timelineArrow, hoverStyles.arrow)}>
+                      <ChevronRight size={20} aria-hidden={true} />
+                    </div>
                   </Link>
                 </li>
               ))}

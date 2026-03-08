@@ -1,0 +1,43 @@
+/* Shared card hover interaction */
+
+.card {
+  transition:
+    border-color 0.2s var(--ease-liquid),
+    background 0.2s var(--ease-liquid),
+    box-shadow 0.2s var(--ease-liquid);
+}
+
+.card:hover {
+  border-color: var(--glass-card-hover-border);
+  background: var(--glass-card-hover-bg);
+  box-shadow: 0 10px 30px -5px rgb(0 0 0 / 5%);
+}
+
+.title {
+  transition: color 0.2s var(--ease-liquid);
+}
+
+.card:hover .title {
+  color: var(--liquid-primary);
+}
+
+/* Circle arrow button */
+.arrow {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--glass-bg-medium);
+  color: var(--text-tertiary);
+  transition:
+    background 0.2s var(--ease-liquid),
+    color 0.2s var(--ease-liquid);
+}
+
+.card:hover .arrow {
+  background: var(--liquid-primary);
+  color: var(--text-inverse);
+}

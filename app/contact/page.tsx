@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ChevronRight, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { siX } from "simple-icons";
@@ -6,6 +7,7 @@ import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
 import { ogImageUrl, WithSiteTitle } from "../constants";
 import { Footer } from "../features/layout/Footer";
 import { Header } from "../features/layout/Header";
+import hoverStyles from "../styles/card-hover.module.css";
 
 import styles from "./page.module.css";
 
@@ -74,17 +76,19 @@ const ContactPage: NextPage = () => {
               <Link
                 key={contact.href}
                 href={contact.href}
-                className={styles.card}
+                className={clsx(styles.card, hoverStyles.card)}
                 target="_blank"
               >
-                <div className={`${styles.icon} ${styles[contact.iconStyle]}`}>
+                <div className={clsx(styles.icon, styles[contact.iconStyle])}>
                   {contact.icon}
                 </div>
                 <div className={styles.cardBody}>
                   <p className={styles.label}>{contact.label}</p>
-                  <p className={styles.cardDescription}>{contact.description}</p>
+                  <p className={clsx(styles.cardDescription, hoverStyles.title)}>{contact.description}</p>
                 </div>
-                <ChevronRight size={16} className={styles.arrow} aria-hidden={true} />
+                <div className={hoverStyles.arrow}>
+                  <ChevronRight size={20} aria-hidden={true} />
+                </div>
               </Link>
             ))}
           </div>
