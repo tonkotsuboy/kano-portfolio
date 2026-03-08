@@ -56,7 +56,7 @@
     "tags": [],
     "targetUrl": "https://note.com/tonkotsuboy_com/n/n5cdede06bc0d",
     "thumbnail": "/images/og/2024-all.jpg",
-    "title": "2024年のまとめ記事を書きました",
+    "title": "鹿野壮の2024年アウトプットまとめ。転職・出産で完全に変わった人生",
     "permalink": "https://note.com/tonkotsuboy_com/n/n5cdede06bc0d"
   },
   {
@@ -73,6 +73,21 @@
     "thumbnail": "",
     "title": "非同期通信（Ajax）をするときはタイムアウト処理を必ず入れてほしい（切実）",
     "permalink": "https://qiita.com/tonkotsuboy_com/items/d1b3cf45ae5135441f9b"
+  },
+  {
+    "categories": [],
+    "date": "2026-01-15T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://zenn.dev/ubie_dev/articles/anchor-positioning-popover",
+    "medium": "執筆記事",
+    "published": true,
+    "slides": "",
+    "slug": "anchor-positioning-popover",
+    "tags": [],
+    "targetUrl": "https://zenn.dev/ubie_dev/articles/anchor-positioning-popover",
+    "thumbnail": "",
+    "title": "Anchor Positioningが全対応。HTML・CSSだけのポップオーバーが完全体に",
+    "permalink": "https://zenn.dev/ubie_dev/articles/anchor-positioning-popover"
   },
   {
     "categories": [],
@@ -238,6 +253,21 @@
     "thumbnail": "",
     "title": "チャットツールやSNSで一瞬で画面キャプチャーを送る方法",
     "permalink": "https://qiita.com/tonkotsuboy_com/items/4d562430edee3109495f"
+  },
+  {
+    "categories": [],
+    "date": "2026-02-24T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://zenn.dev/ubie_dev/articles/claude-code-remote-control-intro",
+    "medium": "執筆記事",
+    "published": true,
+    "slides": "",
+    "slug": "claude-code-remote-control-intro",
+    "tags": [],
+    "targetUrl": "https://zenn.dev/ubie_dev/articles/claude-code-remote-control-intro",
+    "thumbnail": "",
+    "title": "Claude Code Remote Controlが登場。ソファでも移動中でも、ローカルセッションをスマホから動かす",
+    "permalink": "https://zenn.dev/ubie_dev/articles/claude-code-remote-control-intro"
   },
   {
     "categories": [],
@@ -511,6 +541,36 @@
   },
   {
     "categories": [],
+    "date": "2025-01-30T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://cssnite.doorkeeper.jp/events/179874",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "cssnite_asamade2_2025",
+    "tags": [],
+    "targetUrl": "https://cssnite.doorkeeper.jp/events/179874",
+    "thumbnail": "",
+    "title": "CSSNite「朝までマークアップ2（CSS編）」に登壇",
+    "permalink": "https://cssnite.doorkeeper.jp/events/179874"
+  },
+  {
+    "categories": [],
+    "date": "2025-10-02T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://cssnite.doorkeeper.jp/events/188175",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "cssnite_asamade3_js_2025",
+    "tags": [],
+    "targetUrl": "https://cssnite.doorkeeper.jp/events/188175",
+    "thumbnail": "",
+    "title": "CSSNite「朝までマークアップ3（JS編）」に登壇",
+    "permalink": "https://cssnite.doorkeeper.jp/events/188175"
+  },
+  {
+    "categories": [],
     "date": "2023-07-27T15:00:00.000Z",
     "hasDetail": true,
     "linkUrl": "https://cssnite.doorkeeper.jp/events/158687",
@@ -581,8 +641,23 @@
     "tags": [],
     "targetUrl": "https://zenn.dev/ubie_dev/articles/devin-for-test",
     "thumbnail": "",
-    "title": "Devin AIの記事を書きました",
+    "title": "Devin AIにテストを丸ごと書かせてCIがパスするまで作業してもらう方法",
     "permalink": "https://zenn.dev/ubie_dev/articles/devin-for-test"
+  },
+  {
+    "categories": [],
+    "date": "2025-03-25T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://aid.connpass.com/event/347052/",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "devin_meetup_japan_2025",
+    "tags": [],
+    "targetUrl": "https://aid.connpass.com/event/347052/",
+    "thumbnail": "",
+    "title": "AI駆動開発勉強会 臨時回【Devin Meetup Japan #1】に登壇",
+    "permalink": "https://aid.connpass.com/event/347052/"
   },
   {
     "categories": [],
@@ -643,6 +718,21 @@
     "thumbnail": "",
     "title": "「DIST.38 「CSSな夜」」に登壇しました",
     "permalink": "/entry/dist38"
+  },
+  {
+    "categories": [],
+    "date": "2025-05-13T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://dist.connpass.com/event/350859/",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "dist49_ai_2025",
+    "tags": [],
+    "targetUrl": "https://dist.connpass.com/event/350859/",
+    "thumbnail": "",
+    "title": "DIST.49「Web制作の現場のためのAI活用術」に登壇",
+    "permalink": "https://dist.connpass.com/event/350859/"
   },
   {
     "categories": [],
@@ -781,6 +871,51 @@
   },
   {
     "categories": [],
+    "date": "2025-07-16T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://findy.connpass.com/event/359987/",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "findy_claude_code_meetup_2025",
+    "tags": [],
+    "targetUrl": "https://findy.connpass.com/event/359987/",
+    "thumbnail": "",
+    "title": "Findy「Claude Code Meetup」に登壇",
+    "permalink": "https://findy.connpass.com/event/359987/"
+  },
+  {
+    "categories": [],
+    "date": "2025-06-09T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://findy.connpass.com/event/354917/",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "findy_css_2025",
+    "tags": [],
+    "targetUrl": "https://findy.connpass.com/event/354917/",
+    "thumbnail": "",
+    "title": "Findy「鹿野さんに聞く！CSSの最新トレンド Ver.2025」に登壇",
+    "permalink": "https://findy.connpass.com/event/354917/"
+  },
+  {
+    "categories": [],
+    "date": "2025-02-16T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://findy.connpass.com/event/344270/",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "findy_devin_2025",
+    "tags": [],
+    "targetUrl": "https://findy.connpass.com/event/344270/",
+    "thumbnail": "",
+    "title": "Findy「Devin使ってみてどうだった？」に登壇",
+    "permalink": "https://findy.connpass.com/event/344270/"
+  },
+  {
+    "categories": [],
     "date": "2023-02-06T15:00:00.000Z",
     "hasDetail": true,
     "linkUrl": "https://findy-code.io/engineer-lab/tonkotsuboy-output",
@@ -838,6 +973,21 @@
     "thumbnail": "",
     "title": "ロゴを作って学ぼうCSS3 Flexbox入門",
     "permalink": "https://qiita.com/tonkotsuboy_com/items/a90f321c397d24b14287"
+  },
+  {
+    "categories": [],
+    "date": "2025-07-30T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://forkwell.connpass.com/event/361574/",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "forkwell_claude_code_2025",
+    "tags": [],
+    "targetUrl": "https://forkwell.connpass.com/event/361574/",
+    "thumbnail": "",
+    "title": "Forkwell「Claude Codeに全部賭けるために入門する勉強会」に登壇",
+    "permalink": "https://forkwell.connpass.com/event/361574/"
   },
   {
     "categories": [],
@@ -1036,6 +1186,36 @@
   },
   {
     "categories": [],
+    "date": "2025-08-31T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://gihyo.jp/book/2025/978-4-297-15194-2",
+    "medium": "執筆記事",
+    "published": true,
+    "slides": "",
+    "slug": "js-ts-jitsuryoku-2025",
+    "tags": [],
+    "targetUrl": "https://gihyo.jp/book/2025/978-4-297-15194-2",
+    "thumbnail": "",
+    "title": "技術評論社『JavaScript/TypeScript実力強化書』が発売",
+    "permalink": "https://gihyo.jp/book/2025/978-4-297-15194-2"
+  },
+  {
+    "categories": [],
+    "date": "2025-07-15T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://zenn.dev/ubie_dev/articles/kiro-claude-code",
+    "medium": "執筆記事",
+    "published": true,
+    "slides": "",
+    "slug": "kiro-claude-code",
+    "tags": [],
+    "targetUrl": "https://zenn.dev/ubie_dev/articles/kiro-claude-code",
+    "thumbnail": "",
+    "title": "KiroとClaude Codeの組み合わせで開発の質と速度を両取りできた",
+    "permalink": "https://zenn.dev/ubie_dev/articles/kiro-claude-code"
+  },
+  {
+    "categories": [],
     "date": "2023-12-05T15:00:00.000Z",
     "hasDetail": false,
     "linkUrl": "https://levtech.jp/media/article/column/detail_347/",
@@ -1078,6 +1258,21 @@
     "thumbnail": "/images/og/levetech-column-4.jpg",
     "title": "視聴体験を追求せよ。技術記事や登壇の資料づくりとトークの技術",
     "permalink": "https://levtech.jp/media/article/column/detail_391/"
+  },
+  {
+    "categories": [],
+    "date": "2025-04-29T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://life.job-draft.jp/2025/04/30/801/",
+    "medium": "インタビュー",
+    "published": true,
+    "slides": "",
+    "slug": "life_draft_2025",
+    "tags": [],
+    "targetUrl": "https://life.job-draft.jp/2025/04/30/801/",
+    "thumbnail": "",
+    "title": "エンジニア鹿野壮の「趣味のようだった仕事」が破壊され、再生してゆく物語",
+    "permalink": "https://life.job-draft.jp/2025/04/30/801/"
   },
   {
     "categories": [],
@@ -1168,6 +1363,36 @@
     "thumbnail": "",
     "title": "WebStormのマルチカーソル機能が便利すぎて鼻から牛乳が出る",
     "permalink": "https://qiita.com/tonkotsuboy_com/items/b974286806ca670a4653"
+  },
+  {
+    "categories": [],
+    "date": "2025-01-31T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://newspicks.com/news/11224974/",
+    "medium": "インタビュー",
+    "published": true,
+    "slides": "",
+    "slug": "newspicks_ai_2025",
+    "tags": [],
+    "targetUrl": "https://newspicks.com/news/11224974/",
+    "thumbnail": "",
+    "title": "NewsPicks「AI時代に勝ち残る「コア人材」の新条件」にDevin活用事例が掲載",
+    "permalink": "https://newspicks.com/news/11224974/"
+  },
+  {
+    "categories": [],
+    "date": "2025-04-24T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://nijibox.connpass.com/event/349220/",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "nijibox_ai_frontend_2025",
+    "tags": [],
+    "targetUrl": "https://nijibox.connpass.com/event/349220/",
+    "thumbnail": "",
+    "title": "ニジボックス主催「AI x Frontend 最前線」に登壇",
+    "permalink": "https://nijibox.connpass.com/event/349220/"
   },
   {
     "categories": [],
@@ -1276,6 +1501,21 @@
   },
   {
     "categories": [],
+    "date": "2025-09-28T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://lp.nijibox.jp/cp/postdev/",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "postdev_2025",
+    "tags": [],
+    "targetUrl": "https://lp.nijibox.jp/cp/postdev/",
+    "thumbnail": "",
+    "title": "POST DEV 2025「Claude Codeが刷新した開発現場と、人間に残された仕事」に登壇",
+    "permalink": "https://lp.nijibox.jp/cp/postdev/"
+  },
+  {
+    "categories": [],
     "date": "2017-03-28T15:00:00.000Z",
     "hasDetail": false,
     "linkUrl": "https://qiita.com/tonkotsuboy_com/items/99b665cecf16f5ac037d",
@@ -1288,6 +1528,36 @@
     "thumbnail": "",
     "title": "webのプロジェクトフォルダ直下のファイルの意味をまとめてみた",
     "permalink": "https://qiita.com/tonkotsuboy_com/items/99b665cecf16f5ac037d"
+  },
+  {
+    "categories": [],
+    "date": "2025-04-22T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://qiita.com/official-campaigns/conference/2025",
+    "medium": "登壇",
+    "published": true,
+    "slides": "",
+    "slug": "qiita_conference_2025",
+    "tags": [],
+    "targetUrl": "https://qiita.com/official-campaigns/conference/2025",
+    "thumbnail": "",
+    "title": "Qiita Conference 2025「アウトプットは最強の自己投資」に登壇",
+    "permalink": "https://qiita.com/official-campaigns/conference/2025"
+  },
+  {
+    "categories": [],
+    "date": "2025-01-13T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://corp.qiita.com/releases/2025/01/podcast-kano/",
+    "medium": "インタビュー",
+    "published": true,
+    "slides": "",
+    "slug": "qiita_fm_2025",
+    "tags": [],
+    "targetUrl": "https://corp.qiita.com/releases/2025/01/podcast-kano/",
+    "thumbnail": "",
+    "title": "Qiita FM出演 - キャリア・好きな技術・アウトプットについて語る",
+    "permalink": "https://corp.qiita.com/releases/2025/01/podcast-kano/"
   },
   {
     "categories": [],
@@ -1318,6 +1588,21 @@
     "thumbnail": "",
     "title": "EmmetでHTML 5.1のレスポンシブイメージを効率よく記述しよう",
     "permalink": "https://qiita.com/tonkotsuboy_com/items/f6f47637134443dcd1df"
+  },
+  {
+    "categories": [],
+    "date": "2025-11-30T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://www.salesforce.com/jp/blog/jp-the-power-of-teams-with-slack/",
+    "medium": "執筆記事",
+    "published": true,
+    "slides": "",
+    "slug": "salesforce-slack-2025",
+    "tags": [],
+    "targetUrl": "https://www.salesforce.com/jp/blog/jp-the-power-of-teams-with-slack/",
+    "thumbnail": "",
+    "title": "Salesforce「Slackで育てるチーム力！人気インフルエンサーのユニークチャンネルを大公開」に寄稿",
+    "permalink": "https://www.salesforce.com/jp/blog/jp-the-power-of-teams-with-slack/"
   },
   {
     "categories": [],
@@ -1423,6 +1708,21 @@
     "thumbnail": "",
     "title": "web制作者にもわかる、Swift 3が++と--を削除した理由",
     "permalink": "https://qiita.com/tonkotsuboy_com/items/0adc5dac54e690fcf706"
+  },
+  {
+    "categories": [],
+    "date": "2025-07-19T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://techfeed.io/entries/6879eaf840e993088811f277",
+    "medium": "インタビュー",
+    "published": true,
+    "slides": "",
+    "slug": "techfeed_css_expert_2025",
+    "tags": [],
+    "targetUrl": "https://techfeed.io/entries/6879eaf840e993088811f277",
+    "thumbnail": "",
+    "title": "TechFeed「CSSエキスパートへの道しるべ」インタビュー",
+    "permalink": "https://techfeed.io/entries/6879eaf840e993088811f277"
   },
   {
     "categories": [],
@@ -1601,7 +1901,7 @@
     "tags": [],
     "targetUrl": "https://zenn.dev/ubie_dev/articles/ts-58-erasable-syntax-only",
     "thumbnail": "",
-    "title": "TypeScript 5.8の記事を書きました",
+    "title": "TypeScript 5.8のerasableSyntaxOnlyフラグ。enumやnamespaceが消える日が来た",
     "permalink": "https://zenn.dev/ubie_dev/articles/ts-58-erasable-syntax-only"
   },
   {
@@ -1648,6 +1948,36 @@
     "thumbnail": "",
     "title": "TypeScript 4.9のas const satisfiesが便利。型チェックとwidening防止を同時に行う",
     "permalink": "https://zenn.dev/moneyforward/articles/typescript-as-const-satisfies"
+  },
+  {
+    "categories": [],
+    "date": "2025-12-03T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://zenn.dev/ubie_dev/articles/typescript7-goodbye-legacy",
+    "medium": "執筆記事",
+    "published": true,
+    "slides": "",
+    "slug": "typescript7-goodbye-legacy",
+    "tags": [],
+    "targetUrl": "https://zenn.dev/ubie_dev/articles/typescript7-goodbye-legacy",
+    "thumbnail": "",
+    "title": "TypeScript 7で消えるtsconfigのレガシー設定。target: es5やbaseUrlにサヨウナラ",
+    "permalink": "https://zenn.dev/ubie_dev/articles/typescript7-goodbye-legacy"
+  },
+  {
+    "categories": [],
+    "date": "2025-05-22T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew",
+    "medium": "執筆記事",
+    "published": true,
+    "slides": "",
+    "slug": "typescript7-tsgo-whatsnew",
+    "tags": [],
+    "targetUrl": "https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew",
+    "thumbnail": "",
+    "title": "tsgoが公開。TypeScript 7向け新コンパイラのインストール手順と10倍高速化検証",
+    "permalink": "https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew"
   },
   {
     "categories": [],

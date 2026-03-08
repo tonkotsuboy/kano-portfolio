@@ -1,4 +1,4 @@
-import { ArrowUpRight, BookOpen, Linkedin, Zap } from "lucide-react";
+import { ArrowUpRight, Codepen, Linkedin, Rss, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { siGithub, siQiita, siX, siZenn } from "simple-icons";
@@ -41,60 +41,52 @@ const socialLinks = [
   { href: "https://www.linkedin.com/in/tonkotsuboy/", iconType: "lucide-linkedin", label: "LinkedIn" },
   {
     href: "https://techfeed.io/people/@tonkotsuboy_com",
-    iconPath: undefined,
+    iconType: "lucide-rss",
     label: "TechFeed",
   },
   {
     href: "https://codepen.io/tonkotsuboy",
-    iconPath: "local-codepen",
+    iconType: "lucide-codepen",
     label: "CodePen",
   },
 ];
 
-const books = [
+const publications = [
   {
-    description: "関数・非同期処理・型システム完全攻略。Software Design別冊。",
+    cover: "/images/books/js-ts-jitsuryoku.png",
     href: "https://www.amazon.co.jp/dp/B0FQ13X48L",
+    publisher: "技術評論社",
     title: "JavaScript & TypeScript実力強化書",
-    year: "2025年",
   },
   {
-    description: "「よくある処理」の定番テクニック集。スニペットから実務パターンまで網羅。",
+    cover: "/images/books/js-code-recipe.jpg",
     href: "https://gihyo.jp/book/2019/978-4-297-10368-2",
-    title: "JavaScript コードレシピ集",
-    year: "2019年",
+    publisher: "技術評論社",
+    title: "JavaScriptコードレシピ集",
   },
-];
-
-const writings = [
   {
+    cover: "/images/books/sd-202405.jpg",
     href: "https://gihyo.jp/magazine/SD/archive/2024/202405",
-    title: "Software Design 2024年5月号『もっとTypeScriptの力を引き出そう』",
+    publisher: "技術評論社",
+    title: "Software Design 2024年5月号「もっとTypeScriptの力を引き出そう」",
   },
   {
+    cover: "/images/books/nikkei-202207.png",
     href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/051600042/",
-    title:
-      "日経ソフトウェア 2022年7月号『表現力をアップするWebコーディング術』",
+    publisher: "日経BP",
+    title: "日経ソフトウエア 2022年7月号「表現力をアップするWebコーディング術」",
   },
   {
+    cover: "/images/books/nikkei-202109.png",
     href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/",
-    title: "日経ソフトウェア2021年9月号『最新CSS』",
+    publisher: "日経BP",
+    title: "日経ソフトウェア2021年9月号「最新CSS」",
   },
   {
+    cover: "/images/books/nikkei-202009.png",
     href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/",
-    title: "日経ソフトウェア2020年9月号『JavaScript最新仕様 -ECMAScript2020-』",
-  },
-];
-
-const talks = [
-  {
-    href: "https://jp.linkedin.com/learning/learning-flexbox/646317",
-    title: "LinkedIn Learning",
-  },
-  { href: "https://schoo.jp/class/3570", title: "Schoo" },
-  {
-    href: "https://cssnite.jp/",
-    title: "CSS Nite 2017〜2019 ベストセッション受賞",
+    publisher: "日経BP",
+    title: "日経ソフトウェア2020年9月号「JavaScript最新仕様 -ECMAScript2020-」",
   },
 ];
 
@@ -107,10 +99,6 @@ const interviews = [
     href: "https://findy-code.io/engineer-lab/tonkotsuboy-output",
     title:
       "アウトプットをするのが嫌だったエンジニアが登壇中毒になるまで - Findy Engineer Lab",
-  },
-  {
-    href: "https://ascii.jp/elem/000/001/546/1546451/",
-    title: "鹿野壮のWebデザイナーのためのiOSアプリ開発入門 - WPJ",
   },
   {
     href: "https://life.job-draft.jp/2025/04/30/801/",
@@ -151,17 +139,12 @@ const AboutPage: NextPage = () => {
                   target="_blank"
                   className={styles.socialPill}
                 >
-                  {social.iconPath === "local-codepen" ? (
-                    <Image
-                      src="/images/icons/codepen.svg"
-                      alt="CodePen"
-                      className={styles.socialPillIcon}
-                      width={16}
-                      height={16}
-                      aria-hidden={true}
-                    />
-                  ) : social.iconType === "lucide-linkedin" ? (
+                  {social.iconType === "lucide-linkedin" ? (
                     <Linkedin className={styles.socialPillIcon} aria-hidden={true} />
+                  ) : social.iconType === "lucide-rss" ? (
+                    <Rss className={styles.socialPillIcon} aria-hidden={true} />
+                  ) : social.iconType === "lucide-codepen" ? (
+                    <Codepen className={styles.socialPillIcon} aria-hidden={true} />
                   ) : social.iconPath ? (
                     <SimpleIcon
                       path={social.iconPath}
@@ -180,66 +163,43 @@ const AboutPage: NextPage = () => {
           <section className={styles.bioCard}>
             <h2 className={styles.sectionLabel}>Bio</h2>
             <p className={styles.bioText}>
-              九州大学芸術工学部音響設計学科卒。TypeScript・CSSを軸に、プロダクト開発と執筆・講師・登壇でアウトプットを続けています。Appleのリキッドデザインに着想を得て、情報をやわらかく届けるUIづくりを探求中。
+              鹿野 壮（かの たけし）といいます。
             </p>
             <p className={styles.bioText}>
-              CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
+              九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でプロダクトエンジニアとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
             </p>
-
-          </section>
-
-          {/* Books */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionLabel}>Books</h2>
-            <div className={styles.booksList}>
-              {books.map((book) => (
-                <Link
-                  key={book.href}
-                  href={book.href}
-                  target="_blank"
-                  className={styles.bookCard}
-                >
-                  <div className={styles.bookCover}>
-                    <BookOpen size={32} className={styles.bookCoverIcon} aria-hidden={true} />
-                  </div>
-                  <div className={styles.bookInfo}>
-                    <span className={styles.bookYear}>{book.year}</span>
-                    <h3 className={styles.bookTitle}>{book.title}</h3>
-                    <p className={styles.bookDesc}>{book.description}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <p className={styles.bioText}>
+              CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパート。
+            </p>
           </section>
 
           {/* Publications */}
           <section className={styles.section}>
             <h2 className={styles.sectionLabel}>Publications</h2>
-            <ul className={styles.timelineList}>
-              {writings.map((item) => (
-                <li key={item.title}>
-                  <Link href={item.href} target="_blank" className={styles.timelineItem}>
-                    <span className={styles.timelineTitle}>{item.title}</span>
-                    <ArrowUpRight size={14} className={styles.timelineArrow} aria-hidden={true} />
-                  </Link>
-                </li>
+            <div className={styles.publicationsList}>
+              {publications.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  className={styles.bookCard}
+                >
+                  <div className={styles.bookCover}>
+                    <Image
+                      src={item.cover}
+                      alt={item.title}
+                      width={120}
+                      height={170}
+                      className={styles.bookCoverImage}
+                    />
+                  </div>
+                  <div className={styles.bookInfo}>
+                    <h3 className={styles.bookTitle}>{item.title}</h3>
+                    <p className={styles.bookPublisher}>{item.publisher}</p>
+                  </div>
+                </Link>
               ))}
-            </ul>
-          </section>
-
-          {/* Speaking */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionLabel}>Speaking</h2>
-            <ul className={styles.timelineList}>
-              {talks.map((item) => (
-                <li key={item.title}>
-                  <Link href={item.href} target="_blank" className={styles.timelineItem}>
-                    <span className={styles.timelineTitle}>{item.title}</span>
-                    <ArrowUpRight size={14} className={styles.timelineArrow} aria-hidden={true} />
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            </div>
           </section>
 
           {/* Interviews */}

@@ -1,6 +1,6 @@
 import { ChevronRight, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import { siMessenger, siX } from "simple-icons";
+import { siX } from "simple-icons";
 
 import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
 import { ogImageUrl, WithSiteTitle } from "../constants";
@@ -11,7 +11,7 @@ import styles from "./page.module.css";
 
 import type { Metadata, NextPage } from "next";
 
-const contactDescription = "鹿野壮へのお問い合わせ。お仕事のご依頼・取材・コラボレーションなど、メール・X・Messenger・LinkedInからお気軽にご連絡ください。";
+const contactDescription = "鹿野壮へのお問い合わせ。登壇・執筆・企業研修・アドバイザーなど、メール・X・LinkedInからお気軽にご連絡ください。";
 
 export const metadata: Metadata = {
   alternates: {
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
 
 const contacts = [
   {
-    description: "hello@kano.codes",
-    href: "mailto:hello@kano.codes",
+    description: "t.kano.624@gmail.com",
+    href: "mailto:t.kano.624@gmail.com",
     icon: <Mail size={20} aria-hidden={true} />,
     iconStyle: "email" as const,
     label: "Email",
@@ -46,13 +46,6 @@ const contacts = [
     icon: <SimpleIcon path={siX.path} aria-hidden={true} title="X" />,
     iconStyle: "x" as const,
     label: "X (Twitter)",
-  },
-  {
-    description: "m.me/tonkotsuboy",
-    href: "https://m.me/tonkotsuboy",
-    icon: <SimpleIcon path={siMessenger.path} aria-hidden={true} title="Messenger" />,
-    iconStyle: "messenger" as const,
-    label: "Messenger",
   },
   {
     description: "linkedin.com/in/tonkotsuboy",
@@ -72,7 +65,7 @@ const ContactPage: NextPage = () => {
           <div className={styles.hero}>
             <h1 className={styles.title}>Contact</h1>
             <p className={styles.description}>
-              お仕事のご依頼・取材・コラボレーションなど、以下のいずれかの方法からお気軽にご連絡ください。
+              登壇・執筆・企業研修・アドバイザーなど、お気軽にお問い合わせください。
             </p>
           </div>
 

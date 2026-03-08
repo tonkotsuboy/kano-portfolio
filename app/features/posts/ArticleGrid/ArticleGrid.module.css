@@ -6,14 +6,14 @@
 
 .container {
   max-width: 900px;
-  margin: 0 auto;
   padding: 0 var(--space-lg);
+  margin: 0 auto;
 }
 
 /* Search & Filter */
 .filterArea {
-  margin-bottom: var(--space-lg);
   display: grid;
+  margin-bottom: var(--space-lg);
   gap: var(--space-sm);
 }
 
@@ -35,10 +35,9 @@
   padding: 12px 16px 12px 40px;
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-full);
-  background: var(--glass-card-bg);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: var(--glass-card-bg);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
   color: var(--text-primary);
   font-size: 0.875rem;
   outline: none;
@@ -51,7 +50,7 @@
 
 .searchBox input:focus {
   border-color: var(--liquid-primary);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
 }
 
 /* Tags */
@@ -67,9 +66,9 @@
   border-radius: var(--radius-full);
   background: var(--glass-card-bg);
   color: var(--text-secondary);
+  cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
-  cursor: pointer;
   transition: background 0.2s var(--ease-liquid), border-color 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
 }
 
@@ -78,8 +77,8 @@
 }
 
 .tagActive {
-  background: var(--liquid-primary);
   border-color: var(--liquid-primary);
+  background: var(--liquid-primary);
   color: var(--text-inverse);
 }
 
@@ -90,88 +89,67 @@
 /* Article List */
 .list {
   display: grid;
-  gap: var(--space-sm);
   padding: 0;
-  list-style: none;
   margin: 0;
+  gap: var(--space-sm);
+  list-style: none;
 }
 
 .cardLink {
   display: block;
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 /* Article Card - Horizontal Layout */
 .card {
   display: flex;
   align-items: center;
-  gap: 20px;
   padding: 20px;
-  background: var(--glass-card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
   cursor: pointer;
+  gap: 20px;
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .card:hover {
-  background: var(--glass-card-hover-bg);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
   border-color: var(--glass-card-hover-border);
+  background: var(--glass-card-hover-bg);
+  box-shadow: 0 10px 30px -5px rgb(0 0 0 / 5%);
+  transform: translateY(-2px);
 }
 
-/* Date Column */
+/* Date Column - hidden, date shown inline via dateMobile */
 .dateColumn {
   display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 80px;
-  padding-right: 24px;
-  border-right: 1px solid rgba(128, 128, 128, 0.15);
 }
 
 .dateDay {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  transition: color 0.3s var(--ease-liquid);
-}
-
-.card:hover .dateDay {
-  color: var(--liquid-primary);
+  display: none;
 }
 
 .dateMonth {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-tertiary);
-  margin-top: 4px;
+  display: none;
 }
 
 /* Thumbnail */
 .thumbnail {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-sm);
   overflow: hidden;
+  width: clamp(100px, 25%, 192px);
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  aspect-ratio: 16 / 9;
   background: linear-gradient(
     135deg,
     var(--bg-gradient-1) 0%,
     var(--bg-gradient-2) 100%
   );
-  flex-shrink: 0;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
 }
 
 .thumbnail img {
@@ -185,19 +163,19 @@
 }
 
 .thumbnailContain {
-  object-fit: contain !important;
   padding: 10%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgb(255 255 255 / 50%);
+  object-fit: contain !important;
 }
 
 /* Content */
 .cardContent {
-  flex: 1;
   display: flex;
+  min-width: 0;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  min-width: 0;
 }
 
 .cardMeta {
@@ -208,29 +186,29 @@
 
 .category {
   padding: 2px 8px;
+  border: 1px solid var(--glass-card-border);
   border-radius: 6px;
   background: var(--glass-bg-medium);
-  border: 1px solid var(--glass-card-border);
+  color: var(--liquid-primary);
   font-size: 0.625rem;
   font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--liquid-primary);
+  text-transform: uppercase;
 }
 
 .dateMobile {
-  font-size: 0.75rem;
   color: var(--text-tertiary);
+  font-size: 0.75rem;
 }
 
 .cardTitle {
+  color: var(--text-primary);
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.4;
-  transition: color 0.3s var(--ease-liquid);
   letter-spacing: -0.01em;
+  line-height: 1.4;
   text-wrap: balance;
+  transition: color 0.3s var(--ease-liquid);
 }
 
 .card:hover .cardTitle {
@@ -244,22 +222,22 @@
 }
 
 .cardTag {
-  font-size: 0.75rem;
   color: var(--text-tertiary);
+  font-size: 0.75rem;
   font-weight: 500;
 }
 
 /* Arrow */
 .arrow {
   display: none;
-  align-items: center;
-  justify-content: center;
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background: var(--glass-bg-medium);
   color: var(--text-tertiary);
-  flex-shrink: 0;
   transition: background 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
 }
 
@@ -271,16 +249,16 @@
 /* Pagination */
 .pagination {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: var(--space-xs);
+  justify-content: center;
   margin-top: var(--space-lg);
+  gap: var(--space-xs);
 }
 
 .pageArrow {
+  display: flex;
   width: 36px;
   height: 36px;
-  display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--glass-card-border);
@@ -296,8 +274,8 @@
 }
 
 .pageArrow:disabled {
-  opacity: 0.3;
   cursor: not-allowed;
+  opacity: 0.3;
 }
 
 .pageNumbers {
@@ -306,19 +284,19 @@
 }
 
 .pageNumber {
+  display: flex;
   width: 36px;
   height: 36px;
-  display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--glass-card-border);
   border-radius: 50%;
   background: var(--glass-card-bg);
   color: var(--text-secondary);
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
   cursor: pointer;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
   transition: background 0.2s var(--ease-liquid), border-color 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
 }
 
@@ -327,37 +305,37 @@
 }
 
 .pageNumberActive {
-  background: var(--liquid-primary);
   border-color: var(--liquid-primary);
+  background: var(--liquid-primary);
   color: var(--text-inverse);
 }
 
 /* Result Count */
 .resultCount {
   margin-top: var(--space-sm);
-  text-align: center;
-  font-size: 0.75rem;
   color: var(--text-tertiary);
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 /* Empty State */
 .emptyState {
   padding: var(--space-3xl) var(--space-lg);
-  text-align: center;
   color: var(--text-secondary);
   font-size: 1rem;
+  text-align: center;
 }
 
 .clearButton {
-  margin-top: var(--space-sm);
   padding: 10px 24px;
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-full);
+  margin-top: var(--space-sm);
   background: var(--glass-card-bg);
   color: var(--text-primary);
+  cursor: pointer;
   font-size: 0.875rem;
   font-weight: 500;
-  cursor: pointer;
   transition: background 0.2s var(--ease-liquid);
 }
 
@@ -366,23 +344,9 @@
 }
 
 /* Responsive - Desktop */
-@media (min-width: 769px) {
-  .dateColumn {
-    display: flex;
-  }
-
-  .thumbnail {
-    width: 192px;
-    aspect-ratio: auto;
-    height: 112px;
-  }
-
+@media (width >= 769px) {
   .arrow {
     display: flex;
-  }
-
-  .dateMobile {
-    display: none;
   }
 
   .cardTitle {
@@ -391,27 +355,30 @@
 }
 
 /* Responsive - Mobile */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .container {
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-sm);
   }
 
   .card {
-    flex-direction: column;
-    padding: 16px;
+    padding: 12px;
     gap: 12px;
   }
 
+  .thumbnail {
+    width: 100px;
+  }
+
   .cardTitle {
-    font-size: 1rem;
+    font-size: 0.9375rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .tagsContainer {
-    overflow-x: auto;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
     scrollbar-width: none;
   }
 

@@ -52,9 +52,8 @@
   padding: 20px 24px;
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
-  background: var(--glass-card-bg);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
   box-shadow: 0 2px 8px var(--glass-shadow-light);
   color: inherit;
   gap: 20px;
@@ -74,9 +73,9 @@
   display: flex;
   width: 44px;
   height: 44px;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   border-radius: var(--radius-sm);
   color: white;
 }
@@ -88,7 +87,7 @@
 
 .email {
   background: var(--liquid-primary);
-  box-shadow: 0 2px 8px rgba(245, 180, 0, 0.3);
+  box-shadow: 0 2px 8px rgb(245 180 0 / 30%);
 }
 
 .x {
@@ -100,18 +99,14 @@
   color: #0b1021;
 }
 
-.messenger {
-  background: linear-gradient(135deg, #0084ff, #a833ff);
-}
-
 .linkedin {
   background: #0a66c2;
 }
 
 /* Card Body */
 .cardBody {
-  flex: 1;
   min-width: 0;
+  flex: 1;
 }
 
 .label {
@@ -149,7 +144,7 @@
   color: var(--liquid-primary);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .page {
     padding: var(--space-2xl) var(--space-md);
   }
