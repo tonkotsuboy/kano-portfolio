@@ -2,22 +2,22 @@
 .card {
   position: relative;
   display: grid !important;
-  grid-template-rows: auto 1fr auto;
-  gap: var(--space-md);
+  overflow: hidden;
   padding: 0;
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: transform 0.2s var(--ease-liquid);
+  animation: cardEntrance 0.6s cubic-bezier(0, 0, 0.2, 1) backwards;
   cursor: pointer;
+  gap: var(--space-md);
+  grid-template-rows: auto 1fr auto;
 }
 
 /* Specular Highlight - Top Edge */
 .card::before {
-  content: '';
   position: absolute;
+  z-index: 10;
   top: 0;
-  left: 0;
   right: 0;
+  left: 0;
   height: 2px;
   background: linear-gradient(
     90deg,
@@ -27,16 +27,16 @@
     var(--highlight-edge) 70%,
     transparent 100%
   );
+  content: '';
   opacity: 0;
   transform: translateY(-2px);
   transition: opacity 0.2s var(--ease-liquid), transform 0.2s var(--ease-liquid);
-  z-index: 10;
 }
 
 /* Ripple Effect on Hover */
 .card::after {
-  content: '';
   position: absolute;
+  z-index: 1;
   top: 50%;
   left: 50%;
   width: 400%;
@@ -44,21 +44,18 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.2) 30%,
+    rgb(255 255 255 / 40%) 0%,
+    rgb(255 255 255 / 20%) 30%,
     transparent 70%
   );
+  content: '';
+  opacity: 0;
+  pointer-events: none;
   transform: translate(-50%, -50%) scale(0);
   transition: transform 0.6s var(--ease-liquid), opacity 0.6s var(--ease-liquid);
-  pointer-events: none;
-  opacity: 0;
-  z-index: 1;
 }
 
 /* Hover State - Liquid Glass Effect */
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-}
 
 .card:hover::before {
   opacity: 1;
@@ -66,27 +63,20 @@
 }
 
 .card:hover::after {
-  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
-.card:hover .thumbnail {
-  transform: scale(1.05);
-}
 
 /* Active/Press State */
-.card:active {
-  transform: translateY(-4px) scale(1.01);
-  transition-duration: 0.1s;
-}
 
 /* Thumbnail Container */
 .thumbnailContainer {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
+  width: 100%;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
+  aspect-ratio: 16 / 9;
   background: linear-gradient(
     135deg,
     var(--bg-gradient-1) 0%,
@@ -98,25 +88,24 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.2s var(--ease-liquid);
 }
 
 .thumbnailContain {
-  object-fit: contain;
   padding: 10%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgb(255 255 255 / 50%);
+  object-fit: contain;
 }
 
 /* Glass Overlay on Thumbnail */
 .thumbnailOverlay {
   position: absolute;
-  inset: 0;
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(0, 0, 0, 0.05) 50%,
-    rgba(0, 0, 0, 0.15) 100%
+    rgb(0 0 0 / 5%) 50%,
+    rgb(0 0 0 / 15%) 100%
   );
+  inset: 0;
   pointer-events: none;
   transition: opacity 0.4s var(--ease-liquid);
 }
@@ -128,25 +117,25 @@
 /* Content Section */
 .content {
   display: grid;
-  gap: var(--space-sm);
   padding: 0 var(--space-lg);
+  gap: var(--space-sm);
 }
 
 /* Tags Container */
 .tagsContainer {
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs);
   padding: var(--space-md) var(--space-lg) 0;
-  z-index: 2;
+  gap: var(--space-xs);
 }
 
 .tag {
   padding: var(--space-xs) var(--space-sm);
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgb(255 255 255 / 30%);
   border-radius: var(--radius-full);
-  color: var(--text-secondary);
+  background: rgb(255 255 255 / 30%);
+  color: var(--text-primary);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -155,23 +144,23 @@
 }
 
 .card:hover .tag {
-  background: rgba(255, 255, 255, 0.5);
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: rgb(255 255 255 / 50%);
+  background: rgb(255 255 255 / 50%);
   color: var(--text-primary);
   transform: translateY(-2px);
 }
 
 /* Title */
 .title {
+  z-index: 2;
   padding: 0 var(--space-lg);
   color: var(--text-primary);
   font-size: clamp(1.125rem, 2vw, 1.375rem);
   font-weight: 700;
-  line-height: 1.3;
   letter-spacing: -0.02em;
+  line-height: 1.3;
   text-wrap: balance;
   transition: color 0.3s var(--ease-liquid);
-  z-index: 2;
 }
 
 .card:hover .title {
@@ -181,12 +170,12 @@
 /* Excerpt */
 .excerpt {
   display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
   overflow: hidden;
   padding: 0 var(--space-lg);
+  -webkit-box-orient: vertical;
   color: var(--text-secondary);
   font-size: 0.9375rem;
+  -webkit-line-clamp: 2;
   line-height: 1.6;
   opacity: 0.9;
   transition: opacity 0.3s var(--ease-liquid);
@@ -198,14 +187,14 @@
 
 /* Meta Information */
 .meta {
+  z-index: 2;
   display: flex;
   align-items: center;
-  gap: var(--space-md);
   padding: 0 var(--space-lg) var(--space-lg);
   color: var(--text-tertiary);
   font-size: 0.8125rem;
   font-weight: 500;
-  z-index: 2;
+  gap: var(--space-md);
 }
 
 .metaItem {
@@ -238,14 +227,11 @@
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .card {
     border-radius: var(--radius-md);
   }
 
-  .card:hover {
-    transform: translateY(-4px) scale(1.01);
-  }
 
   .title {
     font-size: 1.125rem;
@@ -258,19 +244,23 @@
   .title,
   .excerpt,
   .meta {
-    padding-left: var(--space-md);
     padding-right: var(--space-md);
+    padding-left: var(--space-md);
   }
 }
 
 /* Dark Mode Specific Adjustments - Handled by LiquidGlassBox */
 
+[data-theme="dark"] .thumbnailContain {
+  background: rgb(30 30 35 / 50%);
+}
+
 [data-theme="dark"] .thumbnailOverlay {
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.5) 100%
+    rgb(0 0 0 / 30%) 50%,
+    rgb(0 0 0 / 50%) 100%
   );
 }
 
@@ -280,14 +270,11 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.card {
-  animation: cardEntrance 0.6s cubic-bezier(0, 0, 0.2, 1) backwards;
 }
 
 /* Stagger Animation Delays (applied via inline styles or grid) */
