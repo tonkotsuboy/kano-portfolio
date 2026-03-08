@@ -1,69 +1,36 @@
-/* Liquid Glass Theme Toggle */
+/* Theme Toggle - matches nav pill style */
 .toggle {
-  position: relative;
-  display: flex !important;
+  display: flex;
+  width: 40px;
+  height: 40px;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
   padding: 0;
-  border: none;
-  border-radius: 50%;
-  color: var(--text-primary);
+  border: 1px solid var(--nav-pill-border);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(16px) saturate(200%);
+  background: var(--nav-pill-bg);
+  box-shadow:
+    0 1px 0 var(--nav-pill-highlight) inset,
+    0 2px 8px rgb(0 0 0 / 6%),
+    0 1px 2px rgb(0 0 0 / 4%);
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: transform 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
-  overflow: hidden;
+  transition: color 0.2s var(--ease-liquid), background 0.2s var(--ease-liquid);
 }
 
-/* Specular Highlight */
-.toggle::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.3) 0%,
-    transparent 50%
-  );
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-liquid);
-  pointer-events: none;
-}
-
-/* Hover State */
 .toggle:hover {
-  color: var(--liquid-primary-vibrant);
-  transform: scale(1.1) rotate(180deg);
-}
-
-.toggle:hover::before {
-  opacity: 1;
-}
-
-/* Active/Press State */
-.toggle:active {
-  transform: scale(1.05) rotate(180deg);
-  transition-duration: 0.1s;
+  background: var(--active-pill-bg);
+  color: var(--text-primary);
 }
 
 /* Icon Container */
 .icon {
-  position: relative;
-  z-index: 10;
   display: flex;
+  width: 18px;
+  height: 18px;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  transition: transform 0.2s var(--ease-liquid);
-}
-
-/* Icon Rotation on Theme Change */
-.toggle[data-theme="dark"] .icon {
-  transform: rotate(180deg);
 }
 
 /* Focus State */
@@ -71,5 +38,3 @@
   outline: 2px solid var(--liquid-primary);
   outline-offset: 4px;
 }
-
-/* Dark Mode Adjustments - Handled by LiquidGlassBox */

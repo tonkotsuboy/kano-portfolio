@@ -2,7 +2,6 @@
 
 import { Moon, Sun } from "lucide-react";
 
-import { LiquidGlassBox } from "../../../components/ui/LiquidGlassBox";
 import { useTheme } from "../ThemeProvider";
 
 import styles from "./ThemeToggle.module.css";
@@ -16,8 +15,7 @@ export const ThemeToggle: FC = () => {
   const handleToggle = () => setTheme(isDark ? "light" : "dark");
 
   return (
-    <LiquidGlassBox
-      as="button"
+    <button
       type="button"
       className={styles.toggle}
       data-theme={theme}
@@ -25,8 +23,8 @@ export const ThemeToggle: FC = () => {
       onClick={handleToggle}
     >
       <span className={styles.icon}>
-        {isDark ? <Sun size={20} /> : <Moon size={20} />}
+        {isDark ? <Sun size={18} /> : <Moon size={18} />}
       </span>
-    </LiquidGlassBox>
+    </button>
   );
 };
