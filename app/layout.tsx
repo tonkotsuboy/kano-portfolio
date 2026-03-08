@@ -33,6 +33,7 @@ export const metadata: Metadata = {
     ],
     siteName: SiteTitle,
     title: SiteTitle,
+    type: "website",
     url: SiteUrl,
   },
   title: {
@@ -64,6 +65,9 @@ export default function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning={true}>
       <body>
+        <a href="#main-content" className="skip-nav">
+          メインコンテンツへスキップ
+        </a>
         <ThemeProvider>{children}</ThemeProvider>
         <ServiceWorkerRegister />
       </body>

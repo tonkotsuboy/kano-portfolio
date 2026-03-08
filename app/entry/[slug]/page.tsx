@@ -75,16 +75,23 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
   const { slug } = await params;
   const post = getPost(slug);
   const title = `${post.title}${WithSiteTitle}`;
+  const description = `${post.title} - 鹿野壮のポートフォリオ`;
 
   return {
-    ...metadata,
+    alternates: {
+      canonical: `/entry/${slug}`,
+    },
+    description,
     openGraph: {
       ...metadata.openGraph,
+      description,
       title,
+      type: "article",
     },
-    title: title,
+    title,
     twitter: {
       ...metadata.twitter,
+      description,
       title,
     },
   };

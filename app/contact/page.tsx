@@ -3,7 +3,7 @@ import Link from "next/link";
 import { siMessenger, siX } from "simple-icons";
 
 import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
-import { basicDescription, ogImageUrl, WithSiteTitle } from "../constants";
+import { ogImageUrl, WithSiteTitle } from "../constants";
 import { Footer } from "../features/layout/Footer";
 import { Header } from "../features/layout/Header";
 
@@ -11,13 +11,22 @@ import styles from "./page.module.css";
 
 import type { Metadata, NextPage } from "next";
 
+const contactDescription = "鹿野壮へのお問い合わせ。お仕事のご依頼・取材・コラボレーションなど、メール・X・Messenger・LinkedInからお気軽にご連絡ください。";
+
 export const metadata: Metadata = {
-  description: basicDescription,
+  alternates: {
+    canonical: "/contact",
+  },
+  description: contactDescription,
   openGraph: {
+    description: contactDescription,
     images: [{ alt: WithSiteTitle, height: 630, url: ogImageUrl, width: 1200 }],
+    title: `Contact${WithSiteTitle}`,
+    type: "website",
   },
   title: `Contact${WithSiteTitle}`,
   twitter: {
+    description: contactDescription,
     images: [ogImageUrl],
     title: `Contact${WithSiteTitle}`,
   },
@@ -27,7 +36,7 @@ const contacts = [
   {
     description: "hello@kano.codes",
     href: "mailto:hello@kano.codes",
-    icon: <Mail size={20} />,
+    icon: <Mail size={20} aria-hidden={true} />,
     iconStyle: "email" as const,
     label: "Email",
   },
@@ -48,7 +57,7 @@ const contacts = [
   {
     description: "linkedin.com/in/tonkotsuboy",
     href: "https://www.linkedin.com/in/tonkotsuboy/",
-    icon: <Linkedin size={20} />,
+    icon: <Linkedin size={20} aria-hidden={true} />,
     iconStyle: "linkedin" as const,
     label: "LinkedIn",
   },
@@ -58,7 +67,7 @@ const ContactPage: NextPage = () => {
   return (
     <div className={styles.shell}>
       <Header />
-      <main className={styles.main}>
+      <main id="main-content" className={styles.main}>
         <div className={styles.page}>
           <div className={styles.hero}>
             <h1 className={styles.title}>Contact</h1>

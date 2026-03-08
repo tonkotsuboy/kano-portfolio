@@ -4,7 +4,7 @@ import Link from "next/link";
 import { siGithub, siQiita, siX, siZenn } from "simple-icons";
 
 import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
-import { basicDescription, ogImageUrl, WithSiteTitle } from "../constants";
+import { ogImageUrl, WithSiteTitle } from "../constants";
 import { Footer } from "../features/layout/Footer";
 import { Header } from "../features/layout/Header";
 
@@ -12,13 +12,22 @@ import styles from "./page.module.css";
 
 import type { Metadata, NextPage } from "next";
 
+const aboutDescription = "鹿野壮（Takeshi Kano）のプロフィール。TypeScript・CSSを軸にプロダクト開発と執筆・登壇を行うフロントエンドエンジニア。著書・登壇・インタビュー情報を掲載。";
+
 export const metadata: Metadata = {
-  description: basicDescription,
+  alternates: {
+    canonical: "/about",
+  },
+  description: aboutDescription,
   openGraph: {
+    description: aboutDescription,
     images: [{ alt: WithSiteTitle, height: 630, url: ogImageUrl, width: 1200 }],
+    title: `自己紹介${WithSiteTitle}`,
+    type: "website",
   },
   title: `自己紹介${WithSiteTitle}`,
   twitter: {
+    description: aboutDescription,
     images: [ogImageUrl],
     title: `自己紹介${WithSiteTitle}`,
   },
@@ -113,7 +122,7 @@ const AboutPage: NextPage = () => {
   return (
     <div className={styles.shell}>
       <Header />
-      <main className={styles.main}>
+      <main id="main-content" className={styles.main}>
         <div className={styles.page}>
           {/* Profile Hero */}
           <div className={styles.profileHero}>
@@ -191,7 +200,7 @@ const AboutPage: NextPage = () => {
                   className={styles.bookCard}
                 >
                   <div className={styles.bookCover}>
-                    <BookOpen size={32} className={styles.bookCoverIcon} />
+                    <BookOpen size={32} className={styles.bookCoverIcon} aria-hidden={true} />
                   </div>
                   <div className={styles.bookInfo}>
                     <span className={styles.bookYear}>{book.year}</span>
