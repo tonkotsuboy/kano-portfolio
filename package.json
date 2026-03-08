@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",
+  "packageManager": "pnpm@10.31.0",
   "scripts": {
     "build": "npm run tcm && next build",
     "build-storybook": "storybook build",
