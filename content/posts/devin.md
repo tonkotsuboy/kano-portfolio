@@ -1,5 +1,5 @@
 ---
-title: "Devin AIの記事を書きました"
+title: "Devin AIにテストを丸ごと書かせてCIがパスするまで作業してもらう方法"
 slug: "devin"
 date: "2024-12-25T00:00+09:00"
 published: true
