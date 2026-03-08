@@ -59,3 +59,16 @@ tsconfig.tsbuildinfo
 
 # local scripts (not for VCS)
 /scripts
+
+# playwright MCP logs/screenshots
+/.playwright-mcp
+
+# next-agents-md
+.next-docs/
+
+# local screenshot artifacts
+*.png
+!public/**/*.png
+
+# claude skills caches
+__pycache__/
