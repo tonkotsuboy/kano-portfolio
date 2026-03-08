@@ -19,6 +19,9 @@ export const Default: Story = {
 };
 
 export const Multiple: Story = {
+  args: {
+    children: "Next.js",
+  },
   render: () => (
     <div style={{ display: "flex", gap: "0.5rem" }}>
       <GlassTag>Next.js</GlassTag>
