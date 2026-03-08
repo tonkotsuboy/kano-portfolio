@@ -2,9 +2,9 @@ import { SiteUrl } from "../../../../constants";
 
 interface Post {
   hasDetail: boolean;
-  linkUrl?: string;
+  linkUrl?: string | undefined;
   slug: string;
-  targetUrl?: string;
+  targetUrl?: string | undefined;
 }
 
 interface ArticleLink {
