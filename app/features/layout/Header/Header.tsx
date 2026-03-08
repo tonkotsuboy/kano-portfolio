@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ThemeToggle } from "../../theme/ThemeToggle";
 
@@ -24,34 +23,6 @@ const navLinks: NavLink[] = [
 
 export const Header: FC = () => {
   const pathname = usePathname();
-  const navRef = useRef<HTMLElement>(null);
-  const [pillStyle, setPillStyle] = useState<{ left: string; width: string }>({
-    left: "0px",
-    width: "0px",
-  });
-
-  const updatePillPosition = useCallback(() => {
-    if (!navRef.current) return;
-    const activeIndex = navLinks.findIndex((link) => link.href === pathname);
-    if (activeIndex === -1) return;
-
-    const buttons = navRef.current.querySelectorAll<HTMLAnchorElement>(
-      `.${styles.navLink}`,
-    );
-    const activeButton = buttons[activeIndex];
-    if (!activeButton) return;
-
-    setPillStyle({
-      left: `${activeButton.offsetLeft}px`,
-      width: `${activeButton.offsetWidth}px`,
-    });
-  }, [pathname]);
-
-  useEffect(() => {
-    updatePillPosition();
-    window.addEventListener("resize", updatePillPosition);
-    return () => window.removeEventListener("resize", updatePillPosition);
-  }, [updatePillPosition]);
 
   return (
     <header className={styles.header}>
@@ -70,16 +41,8 @@ export const Header: FC = () => {
           <span className={styles.logoText}>Kano&apos;s Log</span>
         </Link>
 
-        {/* Nav Pill */}
-        <nav
-          ref={navRef}
-          className={styles.nav}
-          aria-label="メインナビゲーション"
-        >
-          <div
-            className={styles.activePill}
-            style={pillStyle}
-          />
+        {/* Nav */}
+        <nav className={styles.nav} aria-label="メインナビゲーション">
           {navLinks.map((link: NavLink) => (
             <Link
               key={link.href}
