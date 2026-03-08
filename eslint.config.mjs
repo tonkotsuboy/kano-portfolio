@@ -35,6 +35,7 @@ export default defineConfig([
         ".velite/**/*",
         "**/*.d.ts",
         ".storybook/**/*",
+        "storybook-static/**/*",
         "public/**/*",
         "node-scripts/**/*",
         "next.config.js",
