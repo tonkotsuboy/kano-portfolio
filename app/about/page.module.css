@@ -167,8 +167,8 @@
   overflow: hidden;
   width: clamp(80px, 20%, 120px);
   flex-shrink: 0;
-  aspect-ratio: 3 / 4;
   border-radius: var(--radius-sm);
+  aspect-ratio: 3 / 4;
   background: var(--bg-primary);
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
 }
