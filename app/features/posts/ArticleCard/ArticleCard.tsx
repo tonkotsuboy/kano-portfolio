@@ -3,9 +3,8 @@ import Link from "next/link";
 
 import { LiquidGlassBox } from "../../../components/ui/LiquidGlassBox";
 
-import { getHostname, resolveArticleLink } from "./lib/resolveArticleLink";
-
 import styles from "./ArticleCard.module.css";
+import { getHostname, resolveArticleLink } from "./lib/resolveArticleLink";
 
 import type { Post } from "@/.velite";
 import type { FC } from "react";
