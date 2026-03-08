@@ -32,7 +32,7 @@
 
 .searchBox input {
   width: 100%;
-  padding: 12px 16px 12px 40px;
+  padding: var(--space-xs) var(--space-sm) var(--space-xs) 40px;
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-full);
   backdrop-filter: blur(10px);
@@ -61,7 +61,7 @@
 }
 
 .tagButton {
-  padding: 6px 16px;
+  padding: var(--space-xs) var(--space-sm);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-full);
   background: var(--glass-card-bg);
@@ -91,7 +91,7 @@
   display: grid;
   padding: 0;
   margin: 0;
-  gap: 0.5rem;
+  gap: var(--space-sm);
   list-style: none;
 }
 
@@ -105,22 +105,14 @@
 .card {
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: var(--space-sm);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
   box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
   cursor: pointer;
-  gap: 16px;
-  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.card:hover {
-  border-color: var(--glass-card-hover-border);
-  background: var(--glass-card-hover-bg);
-  box-shadow: 0 10px 30px -5px rgb(0 0 0 / 5%);
-  transform: translateY(-2px);
+  gap: var(--space-sm);
 }
 
 /* Date Column - hidden, date shown inline via dateMobile */
@@ -175,13 +167,13 @@
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  gap: 8px;
+  gap: var(--space-xs);
 }
 
 .cardMeta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-xs);
 }
 
 .category {
@@ -208,17 +200,12 @@
   letter-spacing: -0.01em;
   line-height: 1.4;
   text-wrap: pretty;
-  transition: color 0.3s var(--ease-liquid);
-}
-
-.card:hover .cardTitle {
-  color: var(--liquid-primary);
 }
 
 .cardTags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: var(--space-xs);
 }
 
 .cardTag {
@@ -230,20 +217,6 @@
 /* Arrow */
 .arrow {
   display: none;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--glass-bg-medium);
-  color: var(--text-tertiary);
-  transition: background 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
-}
-
-.card:hover .arrow {
-  background: var(--liquid-primary);
-  color: var(--text-inverse);
 }
 
 /* Pagination */
@@ -327,7 +300,7 @@
 }
 
 .clearButton {
-  padding: 10px 24px;
+  padding: var(--space-xs) var(--space-md);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-full);
   margin-top: var(--space-sm);
@@ -361,8 +334,8 @@
   }
 
   .card {
-    padding: 12px;
-    gap: 12px;
+    padding: var(--space-xs);
+    gap: var(--space-xs);
   }
 
   .thumbnail {

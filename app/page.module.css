@@ -10,14 +10,14 @@
   width: 100%;
   max-width: 1600px;
   flex: 1;
-  padding: 80px 0 var(--space-xl);
+  padding: calc(64px + var(--space-lg)) 0 var(--space-xl);
   margin: 0 auto;
 }
 
 /* Responsive */
 @media (width <= 768px) {
   .main {
-    padding: 72px 0 var(--space-lg);
+    padding: calc(56px + var(--space-lg)) 0 var(--space-lg);
   }
 }
 

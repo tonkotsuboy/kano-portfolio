@@ -6,7 +6,7 @@
 
 .main {
   flex: 1;
-  padding-top: 80px;
+  padding-top: calc(64px + var(--space-lg));
 }
 
 .page {
@@ -43,29 +43,21 @@
 .links {
   display: grid;
   width: 100%;
-  gap: 12px;
+  gap: var(--space-xs);
 }
 
 .card {
   display: flex;
   align-items: center;
-  padding: 20px 24px;
+  padding: var(--space-md) var(--space-lg);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
   box-shadow: 0 2px 8px var(--glass-shadow-light);
   color: inherit;
-  gap: 20px;
+  gap: var(--space-md);
   text-decoration: none;
-  transition: border-color 0.2s var(--ease-liquid), background 0.2s var(--ease-liquid), box-shadow 0.2s var(--ease-liquid), transform 0.2s var(--ease-liquid);
-}
-
-.card:hover {
-  border-color: var(--glass-card-hover-border);
-  background: var(--glass-card-hover-bg);
-  box-shadow: 0 10px 30px -5px var(--glass-shadow-medium);
-  transform: translateY(-2px);
 }
 
 /* Icon Boxes */
@@ -110,7 +102,7 @@
 }
 
 .label {
-  margin-bottom: 2px;
+  margin-bottom: 0.125rem;
   color: var(--text-tertiary);
   font-size: 0.6875rem;
   font-weight: 700;
@@ -122,26 +114,6 @@
   color: var(--text-primary);
   font-size: 0.875rem;
   font-weight: 600;
-  transition: color 0.2s var(--ease-liquid);
-}
-
-.card:hover .cardDescription {
-  color: var(--liquid-primary-dark);
-}
-
-[data-theme="dark"] .card:hover .cardDescription {
-  color: var(--liquid-primary-vibrant);
-}
-
-/* Arrow */
-.arrow {
-  flex-shrink: 0;
-  color: var(--text-tertiary);
-  transition: color 0.2s var(--ease-liquid);
-}
-
-.card:hover .arrow {
-  color: var(--liquid-primary);
 }
 
 @media (width <= 768px) {

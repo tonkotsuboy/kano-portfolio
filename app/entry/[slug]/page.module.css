@@ -1,6 +1,6 @@
 .surface {
   min-height: 100vh;
-  padding: clamp(24px, 4vw, 48px);
+  padding: clamp(var(--space-md), 4vw, var(--space-2xl));
   background:
     radial-gradient(circle at 20% 20%, rgb(77 96 255 / 8%), transparent 30%),
     radial-gradient(circle at 80% 10%, rgb(255 179 71 / 8%), transparent 30%),
@@ -10,31 +10,31 @@
 .hero {
   display: grid;
   max-width: 960px;
-  margin: 0 auto clamp(24px, 3vw, 32px);
-  gap: 12px;
+  margin: 0 auto clamp(var(--space-md), 3vw, var(--space-lg));
+  gap: var(--space-xs);
 }
 
 .breadcrumb {
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  padding: 6px 12px;
+  padding: var(--space-xs) var(--space-xs);
   border-radius: 999px;
   background: color-mix(in srgb, var(--color-muted) 60%, transparent);
   color: var(--color-muted-foreground);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
-  gap: 8px;
+  gap: var(--space-xs);
   letter-spacing: 0.04em;
 }
 
 .medium {
   width: fit-content;
-  padding: 6px 12px;
+  padding: var(--space-xs) var(--space-xs);
   border-radius: 999px;
   background: color-mix(in srgb, var(--color-primary) 14%, transparent);
   color: var(--color-primary);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
@@ -47,34 +47,34 @@
 
 .publishedDate {
   color: var(--color-muted-foreground);
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--space-xs);
 }
 
 .tagChip {
-  padding: 6px 10px;
+  padding: var(--space-xs) var(--space-xs);
   border: 1px solid var(--color-border);
   border-radius: 999px;
   background: color-mix(in srgb, var(--color-card) 90%, transparent);
   color: var(--color-foreground);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .article {
   display: grid;
   max-width: 960px;
-  padding: clamp(20px, 3vw, 32px);
+  padding: clamp(var(--space-sm), 3vw, var(--space-lg));
   border: 1px solid var(--color-border);
   border-radius: 24px;
   margin: 0 auto;
   background: color-mix(in srgb, var(--color-card) 95%, transparent);
   box-shadow: var(--shadow-soft);
-  gap: 20px;
+  gap: var(--space-md);
 }
 
 .cover {
@@ -165,12 +165,12 @@
 
 .sectionCard {
   display: grid;
-  padding: 16px;
+  padding: var(--space-sm);
   border: 1px solid var(--color-border);
-  border-radius: 14px;
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--color-card) 92%, transparent);
   box-shadow: var(--shadow-soft);
-  gap: 8px;
+  gap: var(--space-xs);
 }
 
 .sectionTitle {
@@ -187,11 +187,11 @@
 .linkCardInline {
   display: grid;
   align-items: center;
-  padding: var(--space-4);
+  padding: var(--space-sm);
   border: 1px solid var(--color-border);
-  border-radius: 16px;
+  border-radius: var(--radius-sm);
   background: color-mix(in srgb, var(--color-card) 94%, transparent);
-  gap: var(--space-4);
+  gap: var(--space-sm);
   grid-template-columns: 120px 1fr;
 }
 
@@ -199,7 +199,7 @@
   display: grid;
   overflow: hidden;
   width: 100%;
-  border-radius: 14px;
+  border-radius: var(--radius-sm);
   aspect-ratio: 1 / 1;
   background: color-mix(in srgb, var(--color-muted) 80%, transparent);
   color: var(--color-muted-foreground);
@@ -219,7 +219,7 @@
 
 .linkMeta {
   display: grid;
-  gap: 6px;
+  gap: var(--space-xs);
 }
 
 .linkTitle {
@@ -237,7 +237,7 @@
 .footerWrap {
   display: grid;
   max-width: 960px;
-  padding: 0 clamp(20px, 4vw, 32px) 48px;
-  margin: 32px auto 0;
-  gap: 12px;
+  padding: 0 clamp(var(--space-sm), 4vw, var(--space-lg)) var(--space-2xl);
+  margin: var(--space-lg) auto 0;
+  gap: var(--space-xs);
 }
