@@ -1,6 +1,6 @@
 import ContactPage from "./page";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 const meta = {
   component: ContactPage,
