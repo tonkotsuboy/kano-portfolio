@@ -1,6 +1,6 @@
 .shell {
   display: flex;
-  min-height: 100vh;
+  min-height: 100dvh;
   flex-direction: column;
 }
 
@@ -36,6 +36,7 @@
   color: var(--text-secondary);
   font-size: 0.875rem;
   line-height: 2;
+  text-wrap: pretty;
 }
 
 /* Contact Cards */
@@ -58,7 +59,7 @@
   color: inherit;
   gap: 20px;
   text-decoration: none;
-  transition: border-color 0.3s var(--ease-liquid), background 0.3s var(--ease-liquid), box-shadow 0.3s var(--ease-liquid), transform 0.3s var(--ease-liquid);
+  transition: border-color 0.2s var(--ease-liquid), background 0.2s var(--ease-liquid), box-shadow 0.2s var(--ease-liquid), transform 0.2s var(--ease-liquid);
 }
 
 .card:hover {

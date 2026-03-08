@@ -31,7 +31,7 @@
     /* Text Colors */
     --text-primary: #1f2937;
     --text-secondary: #6b7280;
-    --text-tertiary: #9ca3af;
+    --text-tertiary: #6b7280;
     --text-inverse: #ffffff;
 
     /* Specular Highlights */
@@ -117,7 +117,7 @@
     /* Text Colors */
     --text-primary: #f5f5f7;
     --text-secondary: #a1a1a6;
-    --text-tertiary: #6b7280;
+    --text-tertiary: #9ca3af;
     --text-inverse: #000000;
 
     /* Specular Highlights */
@@ -162,6 +162,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -169,7 +170,7 @@
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    min-height: 100vh;
+    min-height: 100dvh;
     overflow-x: hidden;
     position: relative;
   }
@@ -191,7 +192,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     z-index: -1;
     background:
       radial-gradient(ellipse at 20% 20%, var(--bg-gradient-1) 0px, transparent 50%),
@@ -207,6 +208,7 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
+    text-wrap: balance;
   }
 
   h1 {
@@ -280,22 +282,21 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 0;
-    height: 0;
+    width: 300%;
+    height: 300%;
     border-radius: 50%;
     background: radial-gradient(
       circle,
       rgba(255, 255, 255, 0.3) 0%,
       transparent 70%
     );
-    transform: translate(-50%, -50%);
-    transition: width 0.6s var(--ease-liquid), height 0.6s var(--ease-liquid);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s var(--ease-liquid);
     pointer-events: none;
   }
 
   .liquid-glass:hover::after {
-    width: 300%;
-    height: 300%;
+    transform: translate(-50%, -50%) scale(1);
   }
 
   /* Focus States */
@@ -320,5 +321,35 @@
   ::selection {
     background: var(--liquid-primary);
     color: var(--text-inverse);
+  }
+
+  /* Skip Navigation */
+  .skip-nav {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    z-index: 1000;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    background: var(--liquid-primary);
+    color: var(--text-inverse);
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateX(-50%);
+  }
+
+  .skip-nav:focus {
+    top: var(--space-xs);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

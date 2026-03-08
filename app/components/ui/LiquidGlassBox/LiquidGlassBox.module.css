@@ -5,7 +5,7 @@
   display: flex;
   overflow: hidden;
   box-shadow: 0 6px 6px rgb(0 0 0 / 20%), 0 0 20px rgb(0 0 0 / 10%);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 2.2), box-shadow 0.2s cubic-bezier(0.175, 0.885, 0.32, 2.2);
 }
 
 .effect {

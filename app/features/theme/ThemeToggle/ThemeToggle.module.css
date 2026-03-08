@@ -11,7 +11,7 @@
   border-radius: 50%;
   color: var(--text-primary);
   cursor: pointer;
-  transition: all 0.4s var(--ease-liquid);
+  transition: transform 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
   overflow: hidden;
 }
 
@@ -58,7 +58,7 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  transition: transform 0.4s var(--ease-liquid);
+  transition: transform 0.2s var(--ease-liquid);
 }
 
 /* Icon Rotation on Theme Change */

@@ -42,7 +42,7 @@
   color: var(--text-primary);
   font-size: 0.875rem;
   outline: none;
-  transition: all 0.3s var(--ease-liquid);
+  transition: border-color 0.2s var(--ease-liquid), box-shadow 0.2s var(--ease-liquid);
 }
 
 .searchBox input::placeholder {
@@ -70,7 +70,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s var(--ease-liquid);
+  transition: background 0.2s var(--ease-liquid), border-color 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
 }
 
 .tagButton:hover {
@@ -114,7 +114,7 @@
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
 }
 
@@ -141,6 +141,7 @@
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1;
+  font-variant-numeric: tabular-nums;
   transition: color 0.3s var(--ease-liquid);
 }
 
@@ -229,6 +230,7 @@
   line-height: 1.4;
   transition: color 0.3s var(--ease-liquid);
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .card:hover .cardTitle {
@@ -258,7 +260,7 @@
   background: var(--glass-bg-medium);
   color: var(--text-tertiary);
   flex-shrink: 0;
-  transition: all 0.3s var(--ease-liquid);
+  transition: background 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
 }
 
 .card:hover .arrow {
@@ -286,7 +288,7 @@
   background: var(--glass-card-bg);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.2s var(--ease-liquid);
+  transition: background 0.2s var(--ease-liquid);
 }
 
 .pageArrow:hover:not(:disabled) {
@@ -315,8 +317,9 @@
   color: var(--text-secondary);
   font-size: 0.875rem;
   font-weight: 500;
+  font-variant-numeric: tabular-nums;
   cursor: pointer;
-  transition: all 0.2s var(--ease-liquid);
+  transition: background 0.2s var(--ease-liquid), border-color 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
 }
 
 .pageNumber:hover {
@@ -343,6 +346,23 @@
   text-align: center;
   color: var(--text-secondary);
   font-size: 1rem;
+}
+
+.clearButton {
+  margin-top: var(--space-sm);
+  padding: 10px 24px;
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-full);
+  background: var(--glass-card-bg);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s var(--ease-liquid);
+}
+
+.clearButton:hover {
+  background: var(--glass-card-hover-bg);
 }
 
 /* Responsive - Desktop */

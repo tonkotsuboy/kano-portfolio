@@ -6,7 +6,6 @@
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
-  outline: none;
 
   &:hover {
     background-color: #f3f6fb;
@@ -14,6 +13,11 @@
 
   &:focus {
     background-color: #f3f6fb;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--liquid-primary);
+    outline-offset: 4px;
   }
 }
 
@@ -24,7 +28,7 @@
   height: 2px;
   border-radius: 1px;
   background-color: var(--color-primary);
-  transition: 200ms all ease;
+  transition: transform 200ms ease, opacity 200ms ease;
 }
 
 .border1 {
