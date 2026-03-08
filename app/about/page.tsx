@@ -173,9 +173,9 @@ const AboutPage: NextPage = () => {
             </p>
           </section>
 
-          {/* Publications */}
+          {/* 著書 */}
           <section className={styles.section}>
-            <h2 className={styles.sectionLabel}>Publications</h2>
+            <h2 className={styles.sectionLabel}>著書</h2>
             <div className={styles.publicationsList}>
               {publications.map((item) => (
                 <Link
@@ -202,9 +202,9 @@ const AboutPage: NextPage = () => {
             </div>
           </section>
 
-          {/* Interviews */}
+          {/* インタビュー */}
           <section className={styles.section}>
-            <h2 className={styles.sectionLabel}>Interviews</h2>
+            <h2 className={styles.sectionLabel}>インタビュー</h2>
             <ul className={styles.timelineList}>
               {interviews.map((item) => (
                 <li key={item.title}>
