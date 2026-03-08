@@ -12,6 +12,7 @@ import { metadata } from "../../layout";
 
 import { EntryCover } from "./components/EntryCover";
 import { EntryMeta } from "./components/EntryMeta";
+import { escapeHtml } from "./lib/escapeHtml";
 import { parseDate } from "./lib/parseDate";
 import styles from "./page.module.css";
 
@@ -38,15 +39,6 @@ const getPost = (slug: string) => {
   }
 
   return post;
-};
-
-const escapeHtml = (str: string): string => {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
 };
 
 const loadBodyHtml = (slug: string): string => {
