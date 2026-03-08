@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "インタビュー"
-thumbnail: ""
+thumbnail: "/images/og/qiita_fm_2025.png"
 slides: ""
 linkUrl: "https://corp.qiita.com/releases/2025/01/podcast-kano/"
 targetUrl: "https://corp.qiita.com/releases/2025/01/podcast-kano/"

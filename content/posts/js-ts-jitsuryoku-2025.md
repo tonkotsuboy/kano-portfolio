@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: ""
+thumbnail: "/images/og/js-ts-jitsuryoku-2025.jpg"
 slides: ""
 linkUrl: "https://gihyo.jp/book/2025/978-4-297-15194-2"
 targetUrl: "https://gihyo.jp/book/2025/978-4-297-15194-2"

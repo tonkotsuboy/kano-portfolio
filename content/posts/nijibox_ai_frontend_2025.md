@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/nijibox_ai_frontend_2025.png"
 slides: ""
 linkUrl: "https://nijibox.connpass.com/event/349220/"
 targetUrl: "https://nijibox.connpass.com/event/349220/"

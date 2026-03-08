@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/findy_devin_2025.png"
 slides: ""
 linkUrl: "https://findy.connpass.com/event/344270/"
 targetUrl: "https://findy.connpass.com/event/344270/"

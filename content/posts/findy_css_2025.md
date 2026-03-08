@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/findy_css_2025.png"
 slides: ""
 linkUrl: "https://findy.connpass.com/event/354917/"
 targetUrl: "https://findy.connpass.com/event/354917/"

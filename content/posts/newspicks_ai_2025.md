@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "インタビュー"
-thumbnail: ""
+thumbnail: "/images/og/newspicks_ai_2025.jpg"
 slides: ""
 linkUrl: "https://newspicks.com/news/11224974/"
 targetUrl: "https://newspicks.com/news/11224974/"

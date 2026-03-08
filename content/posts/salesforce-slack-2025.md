@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "執筆記事"
-thumbnail: ""
+thumbnail: "/images/og/salesforce-slack-2025.jpg"
 slides: ""
 linkUrl: "https://www.salesforce.com/jp/blog/jp-the-power-of-teams-with-slack/"
 targetUrl: "https://www.salesforce.com/jp/blog/jp-the-power-of-teams-with-slack/"

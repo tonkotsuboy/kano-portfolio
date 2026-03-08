@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/devin_meetup_japan_2025.png"
 slides: ""
 linkUrl: "https://aid.connpass.com/event/347052/"
 targetUrl: "https://aid.connpass.com/event/347052/"
