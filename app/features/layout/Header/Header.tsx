@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { LiquidGlassBox } from "../../../components/ui/LiquidGlassBox";
 import { ThemeToggle } from "../../theme/ThemeToggle";
 
 import styles from "./Header.module.css";
@@ -37,7 +38,7 @@ export const Header: FC = () => {
       className={`${styles.header} ${isScrolled ? styles.headerScrolled : ""}`}
     >
       <div className={styles.headerContainer}>
-        <div className={styles.headerContent}>
+        <LiquidGlassBox className={styles.headerContent}>
           <Link href="/" className={styles.logo} aria-label="ホームに戻る">
             <div className={styles.avatar}>
               <Image
@@ -51,7 +52,7 @@ export const Header: FC = () => {
           </Link>
 
           <nav className={styles.nav} aria-label="メインナビゲーション">
-            <div className={styles.navInner}>
+            <LiquidGlassBox className={styles.navInner}>
               <div className={styles.navList}>
                 {navLinks.map((link: NavLink) => (
                   <Link
@@ -63,13 +64,13 @@ export const Header: FC = () => {
                   </Link>
                 ))}
               </div>
-            </div>
+            </LiquidGlassBox>
           </nav>
 
           <div className={styles.actions}>
             <ThemeToggle />
           </div>
-        </div>
+        </LiquidGlassBox>
       </div>
     </header>
   );

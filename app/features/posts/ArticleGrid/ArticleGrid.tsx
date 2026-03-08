@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { GlassSurface } from "../../../components/ui/GlassSurface";
 import { GlassTag } from "../../../components/ui/GlassTag";
+import { LiquidGlassBox } from "../../../components/ui/LiquidGlassBox";
 import { SiteUrl } from "../../../constants";
 import { ArticleCard } from "../ArticleCard";
 
@@ -59,7 +59,7 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
         : "/ogimage.png");
 
   const content = (
-    <GlassSurface className={styles.listItem}>
+    <LiquidGlassBox className={styles.listItem}>
       <div className={styles.listThumb}>
         <Image
           src={thumbnailUrl}
@@ -85,7 +85,7 @@ function ArticleListRow({ post, resolveLink }: ArticleListRowProps) {
           ))}
         </div>
       </div>
-    </GlassSurface>
+    </LiquidGlassBox>
   );
 
   if (isExternal) {

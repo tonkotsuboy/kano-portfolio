@@ -2,9 +2,10 @@ import clsx from "clsx";
 
 import styles from "./LiquidGlassBox.module.css";
 
-import type { FC, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
-interface Props {
+interface Props<T extends ElementType = "div"> {
+  as?: T;
   children: ReactNode;
   className?: string;
 }
@@ -14,9 +15,15 @@ interface Props {
  * SVGフィルターで本物のガラスのような歪み・反射効果を実現
  * reference: https://codepen.io/lucasromerodb/pen/vEOWpYM
  */
-export const LiquidGlassBox: FC<Props> = ({ children, className }) => {
+export const LiquidGlassBox = <T extends ElementType = "div">({
+  as,
+  children,
+  className,
+  ...props
+}: Props<T> & Omit<ComponentPropsWithoutRef<T>, keyof Props<T>>) => {
+  const Component = as ?? "div";
   return (
-    <div className={clsx(styles.wrapper, className)}>
+    <Component className={clsx(styles.wrapper, className)} {...props}>
       <svg className={styles.filter} aria-hidden="true" focusable="false">
         <defs>
           <filter
@@ -78,6 +85,6 @@ export const LiquidGlassBox: FC<Props> = ({ children, className }) => {
       <div className={styles.tint} aria-hidden={true} />
       <div className={styles.shine} aria-hidden={true} />
       <div className={styles.content}>{children}</div>
-    </div>
+    </Component>
   );
 };
