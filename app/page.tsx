@@ -1,31 +1,32 @@
-import { Copyright } from "./components/common/Copyright";
-import { EntryList } from "./components/concerns/EntryList";
-import { fetchAllEntryData } from "./logics/api/fetchAllEntryData";
-import { getMetaDataForEntryDataList } from "./logics/scraping/getMetaDataForEntryDataList";
-import * as styles from "./page.css";
+import { type FC, Suspense } from "react";
 
-import type { EntryType } from "./types/EntryType";
-import type { NextPage } from "next";
+import { Footer } from "./features/layout/Footer";
+import { Header } from "./features/layout/Header";
+import { ArticleGrid } from "./features/posts/ArticleGrid";
+import styles from "./page.module.css";
 
-const getEntryData = async (): Promise<{
-  entryDataList: EntryType[];
-}> => {
-  const entryDataList = await fetchAllEntryData();
-  return {
-    entryDataList,
-  };
-};
+import type { Post } from "@/.velite";
 
-const Page: NextPage = async () => {
-  const { entryDataList } = await getEntryData();
-  await getMetaDataForEntryDataList(entryDataList);
+import { posts } from "@/.velite";
+
+const HomePage: FC = () => {
+  // 公開済みの投稿のみをフィルタリングして日付順にソート
+  const publishedPosts: Post[] = posts
+    .filter((post) => post.published)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className={styles.container}>
-      <EntryList listTitle="すべての実績" entryDataList={entryDataList} />
-      <Copyright />
+    <div className={styles.root}>
+      <Header />
+      <main id="main-content" className={styles.main}>
+        <h1 className={styles.visuallyHidden}>鹿野壮のポートフォリオ - 記事一覧</h1>
+        <Suspense fallback={null}>
+          <ArticleGrid posts={publishedPosts} />
+        </Suspense>
+      </main>
+      <Footer />
     </div>
   );
 };
 
-export default Page;
+export default HomePage;

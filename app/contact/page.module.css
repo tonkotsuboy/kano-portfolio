@@ -1,0 +1,123 @@
+.shell {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-top: calc(64px + var(--space-lg));
+}
+
+.page {
+  display: flex;
+  max-width: 560px;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-3xl) var(--space-lg);
+  margin: 0 auto;
+  gap: var(--space-2xl);
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+  font-size: clamp(1.75rem, 4vw, 2rem);
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 2;
+  text-wrap: pretty;
+}
+
+/* Contact Cards */
+.links {
+  display: grid;
+  width: 100%;
+  gap: var(--space-xs);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  box-shadow: 0 2px 8px var(--glass-shadow-light);
+  color: inherit;
+  gap: var(--space-md);
+  text-decoration: none;
+}
+
+/* Icon Boxes */
+.icon {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: white;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.email {
+  background: var(--liquid-primary);
+  box-shadow: 0 2px 8px rgb(245 180 0 / 30%);
+}
+
+.x {
+  background: #1f2937;
+}
+
+[data-theme="dark"] .x {
+  background: #f5f5f7;
+  color: #0b1021;
+}
+
+.linkedin {
+  background: #0a66c2;
+}
+
+/* Card Body */
+.cardBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.label {
+  margin-bottom: 0.125rem;
+  color: var(--text-tertiary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cardDescription {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@media (width <= 768px) {
+  .page {
+    padding: var(--space-2xl) var(--space-md);
+  }
+}

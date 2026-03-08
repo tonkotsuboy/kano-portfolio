@@ -1,0 +1,34 @@
+/* Liquid Glass Main Page Layout */
+.root {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.main {
+  width: 100%;
+  max-width: 1600px;
+  flex: 1;
+  padding: calc(64px + var(--space-lg)) 0 var(--space-xl);
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (width <= 768px) {
+  .main {
+    padding: calc(56px + var(--space-lg)) 0 var(--space-lg);
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}

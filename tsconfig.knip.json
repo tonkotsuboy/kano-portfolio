@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    ".next",
+    ".storybook",
+    "contentful",
+    "public",
+    "content",
+    "node-scripts"
+  ]
+}

@@ -1,0 +1,244 @@
+.shell {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding-top: calc(64px + var(--space-lg));
+}
+
+.page {
+  max-width: 640px;
+  padding: var(--space-xl) var(--space-lg) var(--space-3xl);
+  margin: 0 auto;
+}
+
+/* Profile Hero */
+.profileHero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  margin-bottom: var(--space-sm);
+  box-shadow: 0 8px 32px var(--glass-shadow-strong);
+}
+
+.avatar {
+  border: 4px solid rgb(255 255 255 / 70%);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+[data-theme="dark"] .avatar {
+  border-color: rgb(255 255 255 / 20%);
+}
+
+.avatarBadge {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  display: flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: var(--liquid-primary);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  color: white;
+}
+
+.name {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.role {
+  margin-bottom: var(--space-md);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Social Pills */
+.socialPills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.socialPill {
+  display: flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(10px);
+  background: var(--glass-card-bg);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  gap: var(--space-xs);
+  text-decoration: none;
+  transition: background 0.2s var(--ease-liquid);
+}
+
+.socialPill:hover {
+  background: var(--glass-card-hover-bg);
+  color: var(--text-primary);
+}
+
+
+.socialPillIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Bio Card */
+.bioCard {
+  padding: var(--space-md);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-xl);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+}
+
+.sectionLabel {
+  margin-bottom: var(--space-sm);
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.bioText {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 2;
+  text-wrap: pretty;
+}
+
+.bioText + .bioText {
+  margin-top: var(--space-xs);
+}
+
+/* Section */
+.section {
+  margin-bottom: var(--space-xl);
+}
+
+/* Publications */
+.publicationsList {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.bookCard {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  padding: var(--space-sm);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  color: inherit;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+
+.bookCover {
+  position: relative;
+  overflow: hidden;
+  width: clamp(80px, 20%, 120px);
+  flex-shrink: 0;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
+}
+
+.bookCoverImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bookInfo {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bookTitle {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+.bookPublisher {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+}
+
+/* Timeline */
+.timelineList {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  gap: var(--space-xs);
+  list-style: none;
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-sm);
+  background: var(--glass-card-bg);
+  color: inherit;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+
+.timelineTitle {
+  min-width: 0;
+  flex: 1;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.timelineArrow {
+  flex-shrink: 0;
+}
+
+@media (width <= 768px) {
+  .page {
+    padding: var(--space-lg) var(--space-md) var(--space-2xl);
+  }
+
+  .bookCover {
+    width: 80px;
+  }
+}

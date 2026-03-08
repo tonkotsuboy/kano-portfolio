@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "entry": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "scripts/**/*.{js,mjs,ts}",
+    "velite.config.ts"
+  ],
+  "ignore": [
+    ".storybook/**",
+    "node-scripts/**",
+    "contentful/**"
+  ],
+  "project": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "scripts/**/*.{js,mjs,ts}"
+  ],
+  "config": []
+}
