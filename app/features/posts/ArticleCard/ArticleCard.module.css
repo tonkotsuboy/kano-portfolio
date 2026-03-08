@@ -7,8 +7,8 @@
   border-radius: var(--radius-lg);
   animation: cardEntrance 0.6s cubic-bezier(0, 0, 0.2, 1) backwards;
   cursor: pointer;
-  gap: var(--space-md);
-  grid-template-rows: auto 1fr auto;
+  grid-template:
+    "thumb tags" auto "thumb title" 1fr "thumb meta" auto / clamp(120px, 30%, 200px) 1fr;
 }
 
 /* Specular Highlight - Top Edge */
@@ -67,21 +67,16 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-
-/* Active/Press State */
-
 /* Thumbnail Container */
 .thumbnailContainer {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-  aspect-ratio: 16 / 9;
   background: linear-gradient(
     135deg,
     var(--bg-gradient-1) 0%,
     var(--bg-gradient-2) 100%
   );
+  grid-area: thumb;
 }
 
 .thumbnail {
@@ -114,51 +109,47 @@
   opacity: 0.7;
 }
 
-/* Content Section */
-.content {
-  display: grid;
-  padding: 0 var(--space-lg);
-  gap: var(--space-sm);
-}
-
 /* Tags Container */
 .tagsContainer {
   z-index: 2;
   display: flex;
   flex-wrap: wrap;
-  padding: var(--space-md) var(--space-lg) 0;
+  align-self: end;
+  padding: var(--space-sm) var(--space-md) 0;
   gap: var(--space-xs);
+  grid-area: tags;
 }
 
 .tag {
-  padding: var(--space-xs) var(--space-sm);
+  padding: 4px var(--space-xs);
   border: 1px solid rgb(255 255 255 / 30%);
   border-radius: var(--radius-full);
   background: rgb(255 255 255 / 30%);
   color: var(--text-primary);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  transition: background 0.2s var(--ease-liquid), border-color 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid), transform 0.2s var(--ease-liquid);
+  transition: background 0.2s var(--ease-liquid), border-color 0.2s var(--ease-liquid), color 0.2s var(--ease-liquid);
 }
 
 .card:hover .tag {
   border-color: rgb(255 255 255 / 50%);
   background: rgb(255 255 255 / 50%);
   color: var(--text-primary);
-  transform: translateY(-2px);
 }
 
 /* Title */
 .title {
   z-index: 2;
-  padding: 0 var(--space-lg);
+  align-self: start;
+  padding: var(--space-xs) var(--space-md) 0;
   color: var(--text-primary);
-  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-size: clamp(0.9375rem, 2vw, 1.25rem);
   font-weight: 700;
+  grid-area: title;
   letter-spacing: -0.02em;
-  line-height: 1.3;
+  line-height: 1.4;
   text-wrap: balance;
   transition: color 0.3s var(--ease-liquid);
 }
@@ -167,45 +158,29 @@
   color: var(--liquid-primary-vibrant);
 }
 
-/* Excerpt */
-.excerpt {
-  display: -webkit-box;
-  overflow: hidden;
-  padding: 0 var(--space-lg);
-  -webkit-box-orient: vertical;
-  color: var(--text-secondary);
-  font-size: 0.9375rem;
-  -webkit-line-clamp: 2;
-  line-height: 1.6;
-  opacity: 0.9;
-  transition: opacity 0.3s var(--ease-liquid);
-}
-
-.card:hover .excerpt {
-  opacity: 1;
-}
-
 /* Meta Information */
 .meta {
   z-index: 2;
   display: flex;
   align-items: center;
-  padding: 0 var(--space-lg) var(--space-lg);
+  align-self: end;
+  padding: 0 var(--space-md) var(--space-sm);
   color: var(--text-tertiary);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 500;
   gap: var(--space-md);
+  grid-area: meta;
 }
 
 .metaItem {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 4px;
 }
 
 .metaIcon {
-  width: 1rem;
-  height: 1rem;
+  width: 0.875rem;
+  height: 0.875rem;
   opacity: 0.7;
   transition: opacity 0.3s var(--ease-liquid);
 }
@@ -230,37 +205,22 @@
 @media (width <= 768px) {
   .card {
     border-radius: var(--radius-md);
-  }
-
-
-  .title {
-    font-size: 1.125rem;
-  }
-
-  .tagsContainer {
-    padding: var(--space-sm) var(--space-md) 0;
-  }
-
-  .title,
-  .excerpt,
-  .meta {
-    padding-right: var(--space-md);
-    padding-left: var(--space-md);
+    grid-template-columns: 100px 1fr;
   }
 }
 
 /* Dark Mode Specific Adjustments - Handled by LiquidGlassBox */
 
 [data-theme="dark"] .thumbnailContain {
-  background: rgb(30 30 35 / 50%);
+  background: rgb(240 240 245 / 80%);
 }
 
 [data-theme="dark"] .thumbnailOverlay {
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgb(0 0 0 / 30%) 50%,
-    rgb(0 0 0 / 50%) 100%
+    rgb(0 0 0 / 5%) 50%,
+    rgb(0 0 0 / 10%) 100%
   );
 }
 
@@ -277,7 +237,7 @@
   }
 }
 
-/* Stagger Animation Delays (applied via inline styles or grid) */
+/* Stagger Animation Delays */
 .card:nth-child(1) { animation-delay: 0.05s; }
 .card:nth-child(2) { animation-delay: 0.1s; }
 .card:nth-child(3) { animation-delay: 0.15s; }
