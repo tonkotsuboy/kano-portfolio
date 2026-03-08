@@ -61,6 +61,21 @@
   },
   {
     "categories": [],
+    "date": "2025-12-25T15:00:00.000Z",
+    "hasDetail": false,
+    "linkUrl": "https://note.com/tonkotsuboy_com/n/na52329bf2748",
+    "medium": "執筆記事",
+    "published": true,
+    "slides": "",
+    "slug": "2025-all",
+    "tags": [],
+    "targetUrl": "https://note.com/tonkotsuboy_com/n/na52329bf2748",
+    "thumbnail": "/images/og/2025-all.jpg",
+    "title": "Ubie鹿野の2025年アウトプット・資料まとめ - CSS・JS・AI・赤裸々キャリア",
+    "permalink": "https://note.com/tonkotsuboy_com/n/na52329bf2748"
+  },
+  {
+    "categories": [],
     "date": "2015-07-03T15:00:00.000Z",
     "hasDetail": false,
     "linkUrl": "https://qiita.com/tonkotsuboy_com/items/d1b3cf45ae5135441f9b",
@@ -280,7 +295,7 @@
     "slug": "cordershigh_2022",
     "tags": [],
     "targetUrl": "/entry/cordershigh_2022",
-    "thumbnail": "",
+    "thumbnail": "/images/og/cordershigh_2022.png",
     "title": "「Coder's High 2022」に登壇しました",
     "permalink": "/entry/cordershigh_2022"
   },
@@ -400,7 +415,7 @@
     "slug": "css_findy",
     "tags": [],
     "targetUrl": "/entry/css_findy",
-    "thumbnail": "",
+    "thumbnail": "/images/og/css_findy.png",
     "title": "鹿野さんに聞く！2023年モダンCSSの最新トレンド に登壇しました",
     "permalink": "/entry/css_findy"
   },
@@ -430,7 +445,7 @@
     "slug": "cssnite-af-2019",
     "tags": [],
     "targetUrl": "/entry/cssnite-af-2019",
-    "thumbnail": "",
+    "thumbnail": "/images/og/cssnite-af-2019.png",
     "title": "CSS Nite After Dark 2019 「ハンズオンで学ぶCSS Grid」",
     "permalink": "/entry/cssnite-af-2019"
   },
@@ -550,7 +565,7 @@
     "slug": "cssnite_asamade2_2025",
     "tags": [],
     "targetUrl": "https://cssnite.doorkeeper.jp/events/179874",
-    "thumbnail": "",
+    "thumbnail": "/images/og/cssnite_asamade2_2025.png",
     "title": "CSSNite「朝までマークアップ2（CSS編）」に登壇",
     "permalink": "https://cssnite.doorkeeper.jp/events/179874"
   },
@@ -565,7 +580,7 @@
     "slug": "cssnite_asamade3_js_2025",
     "tags": [],
     "targetUrl": "https://cssnite.doorkeeper.jp/events/188175",
-    "thumbnail": "",
+    "thumbnail": "/images/og/cssnite_asamade3_js_2025.png",
     "title": "CSSNite「朝までマークアップ3（JS編）」に登壇",
     "permalink": "https://cssnite.doorkeeper.jp/events/188175"
   },
@@ -580,7 +595,7 @@
     "slug": "cssnite_moderncss_2023-07-28",
     "tags": [],
     "targetUrl": "/entry/cssnite_moderncss_2023-07-28",
-    "thumbnail": "",
+    "thumbnail": "/images/og/cssnite_moderncss_2023-07-28.png",
     "title": "「脱IE時代のイマドキCSS 2023」に登壇しました ",
     "permalink": "/entry/cssnite_moderncss_2023-07-28"
   },
@@ -595,7 +610,7 @@
     "slug": "cssnite_osaka",
     "tags": [],
     "targetUrl": "/entry/cssnite_osaka",
-    "thumbnail": "",
+    "thumbnail": "/images/og/cssnite_osaka.png",
     "title": "CSS Nite in Osaka, vol.59に登壇しました",
     "permalink": "/entry/cssnite_osaka"
   },
@@ -625,7 +640,7 @@
     "slug": "cssnite_xd",
     "tags": [],
     "targetUrl": "/entry/cssnite_xd",
-    "thumbnail": "",
+    "thumbnail": "/images/og/cssnite_xd.png",
     "title": "「動きのあるウェブページを作ろう！Adobe XDからのイマドキコーディング」に登壇しました ",
     "permalink": "/entry/cssnite_xd"
   },
@@ -655,7 +670,7 @@
     "slug": "devin_meetup_japan_2025",
     "tags": [],
     "targetUrl": "https://aid.connpass.com/event/347052/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/devin_meetup_japan_2025.png",
     "title": "AI駆動開発勉強会 臨時回【Devin Meetup Japan #1】に登壇",
     "permalink": "https://aid.connpass.com/event/347052/"
   },
@@ -670,7 +685,7 @@
     "slug": "dist10",
     "tags": [],
     "targetUrl": "/entry/dist10",
-    "thumbnail": "",
+    "thumbnail": "/images/og/dist10.png",
     "title": "DIST.10「HTML5 Canvasコンテンツの高解像度対応はどこまで行うべきか」",
     "permalink": "/entry/dist10"
   },
@@ -685,7 +700,7 @@
     "slug": "dist13",
     "tags": [],
     "targetUrl": "/entry/dist13",
-    "thumbnail": "",
+    "thumbnail": "/images/og/dist13.png",
     "title": "DIST.13 「横並びだけじゃない！ 知って得するFlexboxの便利機能」",
     "permalink": "/entry/dist13"
   },
@@ -700,7 +715,7 @@
     "slug": "dist32",
     "tags": [],
     "targetUrl": "/entry/dist32",
-    "thumbnail": "",
+    "thumbnail": "/images/og/dist32.png",
     "title": "DIST.32 「まだそれ手動でやってるの？　WebStormでJavaScriptとTypeScriptの作業をサボり尽くすテクニック集」",
     "permalink": "/entry/dist32"
   },
@@ -715,7 +730,7 @@
     "slug": "dist38",
     "tags": [],
     "targetUrl": "/entry/dist38",
-    "thumbnail": "",
+    "thumbnail": "/images/og/dist38.png",
     "title": "「DIST.38 「CSSな夜」」に登壇しました",
     "permalink": "/entry/dist38"
   },
@@ -730,7 +745,7 @@
     "slug": "dist49_ai_2025",
     "tags": [],
     "targetUrl": "https://dist.connpass.com/event/350859/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/dist49_ai_2025.png",
     "title": "DIST.49「Web制作の現場のためのAI活用術」に登壇",
     "permalink": "https://dist.connpass.com/event/350859/"
   },
@@ -880,7 +895,7 @@
     "slug": "findy_claude_code_meetup_2025",
     "tags": [],
     "targetUrl": "https://findy.connpass.com/event/359987/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/findy_claude_code_meetup_2025.png",
     "title": "Findy「Claude Code Meetup」に登壇",
     "permalink": "https://findy.connpass.com/event/359987/"
   },
@@ -895,7 +910,7 @@
     "slug": "findy_css_2025",
     "tags": [],
     "targetUrl": "https://findy.connpass.com/event/354917/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/findy_css_2025.png",
     "title": "Findy「鹿野さんに聞く！CSSの最新トレンド Ver.2025」に登壇",
     "permalink": "https://findy.connpass.com/event/354917/"
   },
@@ -910,7 +925,7 @@
     "slug": "findy_devin_2025",
     "tags": [],
     "targetUrl": "https://findy.connpass.com/event/344270/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/findy_devin_2025.png",
     "title": "Findy「Devin使ってみてどうだった？」に登壇",
     "permalink": "https://findy.connpass.com/event/344270/"
   },
@@ -925,7 +940,7 @@
     "slug": "findy_interview",
     "tags": [],
     "targetUrl": "https://findy-code.io/engineer-lab/tonkotsuboy-output",
-    "thumbnail": "",
+    "thumbnail": "/images/og/findy_interview.png",
     "title": "Findyさんから、登壇中毒についてのインタビューを受けました",
     "permalink": "https://findy-code.io/engineer-lab/tonkotsuboy-output"
   },
@@ -955,7 +970,7 @@
     "slug": "flexbox-handson",
     "tags": [],
     "targetUrl": "/entry/flexbox-handson",
-    "thumbnail": "",
+    "thumbnail": "/images/og/flexbox-handson.png",
     "title": "CSS3の新レイアウトFlexboxハンズオン",
     "permalink": "/entry/flexbox-handson"
   },
@@ -985,7 +1000,7 @@
     "slug": "forkwell_claude_code_2025",
     "tags": [],
     "targetUrl": "https://forkwell.connpass.com/event/361574/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/forkwell_claude_code_2025.png",
     "title": "Forkwell「Claude Codeに全部賭けるために入門する勉強会」に登壇",
     "permalink": "https://forkwell.connpass.com/event/361574/"
   },
@@ -1000,7 +1015,7 @@
     "slug": "frokan",
     "tags": [],
     "targetUrl": "/entry/frokan",
-    "thumbnail": "",
+    "thumbnail": "/images/og/frokan.png",
     "title": "Frontend de KANPAI! #02「JavaScriptのプログラミング速度を爆速化するWebStormの勧め」",
     "permalink": "/entry/frokan"
   },
@@ -1120,7 +1135,7 @@
     "slug": "handson_cssgrid",
     "tags": [],
     "targetUrl": "/entry/handson_cssgrid",
-    "thumbnail": "",
+    "thumbnail": "/images/og/handson_cssgrid.png",
     "title": "「セミハンズオンで学ぶモダンCSS」  を開催しました",
     "permalink": "/entry/handson_cssgrid"
   },
@@ -1135,7 +1150,7 @@
     "slug": "html5js-25th",
     "tags": [],
     "targetUrl": "/entry/html5js-25th",
-    "thumbnail": "",
+    "thumbnail": "/images/og/html5js-25th.png",
     "title": "第25回HTML5+JS勉強会「2016年の常識はこれだ！  HTML5・CSS3の イマドキコーディング技術」",
     "permalink": "/entry/html5js-25th"
   },
@@ -1150,7 +1165,7 @@
     "slug": "icspatch",
     "tags": [],
     "targetUrl": "/entry/icspatch",
-    "thumbnail": "",
+    "thumbnail": "/images/og/icspatch.png",
     "title": "のぞき見企画！ICS×Goodpatch Anywhere合同勉強会「古きを捨て新しきを得るためのCSS」",
     "permalink": "/entry/icspatch"
   },
@@ -1195,7 +1210,7 @@
     "slug": "js-ts-jitsuryoku-2025",
     "tags": [],
     "targetUrl": "https://gihyo.jp/book/2025/978-4-297-15194-2",
-    "thumbnail": "",
+    "thumbnail": "/images/og/js-ts-jitsuryoku-2025.jpg",
     "title": "技術評論社『JavaScript/TypeScript実力強化書』が発売",
     "permalink": "https://gihyo.jp/book/2025/978-4-297-15194-2"
   },
@@ -1270,7 +1285,7 @@
     "slug": "life_draft_2025",
     "tags": [],
     "targetUrl": "https://life.job-draft.jp/2025/04/30/801/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/life_draft_2025.jpg",
     "title": "エンジニア鹿野壮の「趣味のようだった仕事」が破壊され、再生してゆく物語",
     "permalink": "https://life.job-draft.jp/2025/04/30/801/"
   },
@@ -1375,7 +1390,7 @@
     "slug": "newspicks_ai_2025",
     "tags": [],
     "targetUrl": "https://newspicks.com/news/11224974/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/newspicks_ai_2025.jpg",
     "title": "NewsPicks「AI時代に勝ち残る「コア人材」の新条件」にDevin活用事例が掲載",
     "permalink": "https://newspicks.com/news/11224974/"
   },
@@ -1390,7 +1405,7 @@
     "slug": "nijibox_ai_frontend_2025",
     "tags": [],
     "targetUrl": "https://nijibox.connpass.com/event/349220/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/nijibox_ai_frontend_2025.png",
     "title": "ニジボックス主催「AI x Frontend 最前線」に登壇",
     "permalink": "https://nijibox.connpass.com/event/349220/"
   },
@@ -1510,7 +1525,7 @@
     "slug": "postdev_2025",
     "tags": [],
     "targetUrl": "https://lp.nijibox.jp/cp/postdev/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/postdev_2025.png",
     "title": "POST DEV 2025「Claude Codeが刷新した開発現場と、人間に残された仕事」に登壇",
     "permalink": "https://lp.nijibox.jp/cp/postdev/"
   },
@@ -1540,7 +1555,7 @@
     "slug": "qiita_conference_2025",
     "tags": [],
     "targetUrl": "https://qiita.com/official-campaigns/conference/2025",
-    "thumbnail": "",
+    "thumbnail": "/images/og/qiita_conference_2025.png",
     "title": "Qiita Conference 2025「アウトプットは最強の自己投資」に登壇",
     "permalink": "https://qiita.com/official-campaigns/conference/2025"
   },
@@ -1555,7 +1570,7 @@
     "slug": "qiita_fm_2025",
     "tags": [],
     "targetUrl": "https://corp.qiita.com/releases/2025/01/podcast-kano/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/qiita_fm_2025.png",
     "title": "Qiita FM出演 - キャリア・好きな技術・アウトプットについて語る",
     "permalink": "https://corp.qiita.com/releases/2025/01/podcast-kano/"
   },
@@ -1570,7 +1585,7 @@
     "slug": "qiita_night",
     "tags": [],
     "targetUrl": "/entry/qiita_night",
-    "thumbnail": "",
+    "thumbnail": "/images/og/qiita_night.png",
     "title": "「Qiita Night～フロントエンド～」に登壇しました",
     "permalink": "/entry/qiita_night"
   },
@@ -1600,7 +1615,7 @@
     "slug": "salesforce-slack-2025",
     "tags": [],
     "targetUrl": "https://www.salesforce.com/jp/blog/jp-the-power-of-teams-with-slack/",
-    "thumbnail": "",
+    "thumbnail": "/images/og/salesforce-slack-2025.jpg",
     "title": "Salesforce「Slackで育てるチーム力！人気インフルエンサーのユニークチャンネルを大公開」に寄稿",
     "permalink": "https://www.salesforce.com/jp/blog/jp-the-power-of-teams-with-slack/"
   },
@@ -1720,7 +1735,7 @@
     "slug": "techfeed_css_expert_2025",
     "tags": [],
     "targetUrl": "https://techfeed.io/entries/6879eaf840e993088811f277",
-    "thumbnail": "",
+    "thumbnail": "/images/og/techfeed_css_expert_2025.png",
     "title": "TechFeed「CSSエキスパートへの道しるべ」インタビュー",
     "permalink": "https://techfeed.io/entries/6879eaf840e993088811f277"
   },
