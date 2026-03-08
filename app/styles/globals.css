@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 @layer base, components, utilities;
 
@@ -20,21 +20,47 @@
     --glass-shadow-medium: rgba(0, 0, 0, 0.08);
     --glass-shadow-strong: rgba(0, 0, 0, 0.12);
 
-    /* Background Gradients */
-    --bg-primary: #f0f4ff;
-    --bg-gradient-1: #e0f0ff;
-    --bg-gradient-2: #fff0f5;
-    --bg-gradient-3: #f5f0ff;
+    /* Background */
+    --bg-primary: #eef2f7;
+    --bg-gradient-1: rgba(219, 234, 254, 0.6);
+    --bg-gradient-2: rgba(209, 250, 229, 0.3);
+    --bg-gradient-3: rgba(237, 233, 254, 0.3);
+    --bg-orb-1: rgba(234, 179, 8, 0.1);
+    --bg-orb-2: rgba(99, 102, 241, 0.05);
 
     /* Text Colors */
-    --text-primary: #1d1d1f;
-    --text-secondary: #6e6e73;
-    --text-tertiary: #86868b;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-tertiary: #9ca3af;
     --text-inverse: #ffffff;
 
     /* Specular Highlights */
     --highlight-top: rgba(255, 255, 255, 0.9);
     --highlight-edge: rgba(255, 255, 255, 0.6);
+
+    /* Header */
+    --header-bg: rgba(238, 242, 247, 0.55);
+    --header-border: rgba(255, 255, 255, 0.75);
+    --header-highlight-inset: rgba(255, 255, 255, 0.9);
+    --header-shadow-inset: rgba(255, 255, 255, 0.2);
+    --header-reflection-top: rgba(255, 255, 255, 0.55);
+    --header-reflection-mid: rgba(255, 255, 255, 0.12);
+    --header-specular: rgba(255, 255, 255, 0.9);
+    --header-specular-peak: rgba(255, 255, 255, 1);
+
+    /* Nav Pill */
+    --nav-pill-bg: rgba(255, 255, 255, 0.22);
+    --nav-pill-border: rgba(255, 255, 255, 0.65);
+    --nav-pill-highlight: rgba(255, 255, 255, 0.9);
+    --nav-pill-reflection: rgba(255, 255, 255, 0.5);
+    --active-pill-bg: rgba(255, 255, 255, 0.92);
+    --active-pill-highlight: rgba(255, 255, 255, 1);
+
+    /* Glass Card */
+    --glass-card-bg: rgba(255, 255, 255, 0.5);
+    --glass-card-border: rgba(255, 255, 255, 0.7);
+    --glass-card-hover-bg: rgba(255, 255, 255, 0.7);
+    --glass-card-hover-border: rgba(234, 179, 8, 0.3);
 
     /* Backdrop Blur */
     --blur-light: blur(20px);
@@ -80,21 +106,47 @@
     --glass-shadow-medium: rgba(0, 0, 0, 0.4);
     --glass-shadow-strong: rgba(0, 0, 0, 0.5);
 
-    /* Background Gradients */
-    --bg-primary: #000000;
-    --bg-gradient-1: #0a1628;
-    --bg-gradient-2: #1a0a14;
-    --bg-gradient-3: #0f0a1a;
+    /* Background */
+    --bg-primary: #0b1021;
+    --bg-gradient-1: rgba(30, 58, 138, 0.3);
+    --bg-gradient-2: rgba(88, 28, 135, 0.15);
+    --bg-gradient-3: rgba(30, 64, 100, 0.2);
+    --bg-orb-1: rgba(234, 179, 8, 0.06);
+    --bg-orb-2: rgba(99, 102, 241, 0.04);
 
     /* Text Colors */
     --text-primary: #f5f5f7;
     --text-secondary: #a1a1a6;
-    --text-tertiary: #86868b;
+    --text-tertiary: #6b7280;
     --text-inverse: #000000;
 
     /* Specular Highlights */
     --highlight-top: rgba(255, 255, 255, 0.2);
     --highlight-edge: rgba(255, 255, 255, 0.1);
+
+    /* Header */
+    --header-bg: rgba(11, 16, 33, 0.65);
+    --header-border: rgba(255, 255, 255, 0.1);
+    --header-highlight-inset: rgba(255, 255, 255, 0.08);
+    --header-shadow-inset: rgba(255, 255, 255, 0.02);
+    --header-reflection-top: rgba(255, 255, 255, 0.08);
+    --header-reflection-mid: rgba(255, 255, 255, 0.02);
+    --header-specular: rgba(255, 255, 255, 0.15);
+    --header-specular-peak: rgba(255, 255, 255, 0.2);
+
+    /* Nav Pill */
+    --nav-pill-bg: rgba(255, 255, 255, 0.08);
+    --nav-pill-border: rgba(255, 255, 255, 0.12);
+    --nav-pill-highlight: rgba(255, 255, 255, 0.1);
+    --nav-pill-reflection: rgba(255, 255, 255, 0.06);
+    --active-pill-bg: rgba(255, 255, 255, 0.15);
+    --active-pill-highlight: rgba(255, 255, 255, 0.2);
+
+    /* Glass Card */
+    --glass-card-bg: rgba(30, 30, 35, 0.5);
+    --glass-card-border: rgba(255, 255, 255, 0.1);
+    --glass-card-hover-bg: rgba(30, 30, 35, 0.7);
+    --glass-card-hover-border: rgba(234, 179, 8, 0.3);
   }
 
   /* Reset */
@@ -113,7 +165,7 @@
   }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
@@ -132,44 +184,22 @@
     z-index: -9999;
   }
 
-  /* Dynamic Animated Background */
+  /* Ambient Mesh Background */
   body::before {
     content: '';
     position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
     background:
-      radial-gradient(
-        ellipse at 20% 30%,
-        var(--bg-gradient-1) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        ellipse at 80% 70%,
-        var(--bg-gradient-2) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        ellipse at 50% 50%,
-        var(--bg-gradient-3) 0%,
-        transparent 50%
-      );
-    animation: liquidFlow 20s ease-in-out infinite;
-  }
-
-  @keyframes liquidFlow {
-    0%, 100% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    33% {
-      transform: translate(-5%, 5%) rotate(5deg);
-    }
-    66% {
-      transform: translate(5%, -5%) rotate(-5deg);
-    }
+      radial-gradient(ellipse at 20% 20%, var(--bg-gradient-1) 0px, transparent 50%),
+      radial-gradient(ellipse at 80% 10%, var(--bg-orb-1) 0px, transparent 45%),
+      radial-gradient(ellipse at 90% 80%, var(--bg-gradient-2) 0px, transparent 50%),
+      radial-gradient(ellipse at 10% 90%, var(--bg-gradient-3) 0px, transparent 50%),
+      var(--bg-primary);
+    background-size: cover;
   }
 
   /* Typography */
@@ -185,13 +215,12 @@
   }
 
   h2 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
   }
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -199,16 +228,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--glass-bg-medium);
-    backdrop-filter: var(--blur-light);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: var(--radius-full);
-    border: 2px solid transparent;
-    background-clip: padding-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--glass-bg-strong);
-    background-clip: padding-box;
+    background: rgba(234, 179, 8, 0.5);
   }
 }
 
