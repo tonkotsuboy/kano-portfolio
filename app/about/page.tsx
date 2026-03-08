@@ -1,4 +1,4 @@
-import { ArrowUpRight, BookOpen, Linkedin, Mic2, Sparkles } from "lucide-react";
+import { ArrowUpRight, BookOpen, Linkedin, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { siGithub, siQiita, siX, siZenn } from "simple-icons";
@@ -24,11 +24,40 @@ export const metadata: Metadata = {
   },
 };
 
-const writings = [
+const socialLinks = [
+  { href: "https://x.com/tonkotsuboy_com", iconPath: siX.path, label: "X" },
+  { href: "https://github.com/tonkotsuboy", iconPath: siGithub.path, label: "GitHub" },
+  { href: "https://zenn.dev/tonkotsuboy_com", iconPath: siZenn.path, label: "Zenn" },
+  { href: "https://qiita.com/tonkotsuboy_com", iconPath: siQiita.path, label: "Qiita" },
+  { href: "https://www.linkedin.com/in/tonkotsuboy/", iconType: "lucide-linkedin", label: "LinkedIn" },
   {
-    href: "https://gihyo.jp/book/2019/978-4-297-10368-2",
-    title: "JavaScriptコードレシピ集",
+    href: "https://techfeed.io/people/@tonkotsuboy_com",
+    iconPath: undefined,
+    label: "TechFeed",
   },
+  {
+    href: "https://codepen.io/tonkotsuboy",
+    iconPath: "local-codepen",
+    label: "CodePen",
+  },
+];
+
+const books = [
+  {
+    description: "関数・非同期処理・型システム完全攻略。Software Design別冊。",
+    href: "https://www.amazon.co.jp/dp/B0FQ13X48L",
+    title: "JavaScript & TypeScript実力強化書",
+    year: "2025年",
+  },
+  {
+    description: "「よくある処理」の定番テクニック集。スニペットから実務パターンまで網羅。",
+    href: "https://gihyo.jp/book/2019/978-4-297-10368-2",
+    title: "JavaScript コードレシピ集",
+    year: "2019年",
+  },
+];
+
+const writings = [
   {
     href: "https://gihyo.jp/magazine/SD/archive/2024/202405",
     title: "Software Design 2024年5月号『もっとTypeScriptの力を引き出そう』",
@@ -45,24 +74,6 @@ const writings = [
   {
     href: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071700031/",
     title: "日経ソフトウェア2020年9月号『JavaScript最新仕様 -ECMAScript2020-』",
-  },
-];
-
-const socialLinks = [
-  { href: "https://x.com/tonkotsuboy_com", iconPath: siX.path, label: "X" },
-  { href: "https://github.com/tonkotsuboy", iconPath: siGithub.path, label: "GitHub" },
-  { href: "https://zenn.dev/tonkotsuboy_com", iconPath: siZenn.path, label: "Zenn" },
-  { href: "https://qiita.com/tonkotsuboy_com", iconPath: siQiita.path, label: "Qiita" },
-  { href: "https://www.linkedin.com/in/tonkotsuboy/", iconType: "lucide-linkedin", label: "LinkedIn" },
-  {
-    href: "https://techfeed.io/people/@tonkotsuboy_com",
-    iconPath: undefined,
-    label: "TechFeed",
-  },
-  {
-    href: "https://codepen.io/tonkotsuboy",
-    iconPath: "local-codepen",
-    label: "CodePen",
   },
 ];
 
@@ -98,150 +109,141 @@ const interviews = [
   },
 ];
 
-const skills = [
-  "TypeScript",
-  "React / Next.js",
-  "CSS / CSS Modules",
-  "Design Systems",
-  "GraphQL",
-  "Node.js",
-  "Storybook",
-  "Testing (Jest / msw)",
-];
-
 const AboutPage: NextPage = () => {
   return (
     <div className={styles.shell}>
       <Header />
       <main className={styles.main}>
         <div className={styles.page}>
-          <section className={styles.hero}>
-            <div className={styles.glow} />
-            <div className={styles.profileCard}>
-              <div className={styles.visual}>
-                <Image
-                  src="/ogimage.png"
-                  fill={true}
-                  alt="鹿野 壮"
-                  sizes="320px"
-                  priority={true}
-                />
-              </div>
-              <div className={styles.profileContent}>
-                <p className={styles.badge}>Product Engineer @ Ubie</p>
-                <h1 className={styles.title}>鹿野 壮（たけし）</h1>
-                <p className={styles.summary}>
-                  九州大学芸術工学部音響設計学科卒。TypeScript・CSSを軸に、プロダクト開発と執筆・講師・登壇でアウトプットを続けています。Appleのリキッドデザインに着想を得て、情報をやわらかく届けるUIづくりを探求中。
-                </p>
-                <div className={styles.socialRow}>
-                  {socialLinks.map((social) => (
-                    <Link
-                      key={social.href}
-                      href={social.href}
-                      target="_blank"
-                      className={styles.socialLink}
-                    >
-                      {social.iconPath === "local-codepen" ? (
-                        <Image
-                          src="/images/icons/codepen.svg"
-                          alt="CodePen"
-                          className={styles.socialIcon}
-                          width={16}
-                          height={16}
-                          aria-hidden={true}
-                        />
-                      ) : social.iconType === "lucide-linkedin" ? (
-                        <Linkedin className={styles.socialIcon} aria-hidden={true} />
-                      ) : social.iconPath ? (
-                        <SimpleIcon
-                          path={social.iconPath}
-                          title={social.label}
-                          className={styles.socialIcon}
-                          aria-hidden={true}
-                        />
-                      ) : null}
-                      <span className={styles.socialLabel}>{social.label}</span>
-                      <ArrowUpRight size={14} aria-hidden={true} />
-                    </Link>
-                  ))}
-                </div>
+          {/* Profile Hero */}
+          <div className={styles.profileHero}>
+            <div className={styles.avatarWrapper}>
+              <Image
+                src="/ogimage.png"
+                fill={true}
+                alt="鹿野 壮"
+                sizes="128px"
+                className={styles.avatar}
+                priority={true}
+              />
+              <div className={styles.avatarBadge}>
+                <Zap size={14} />
               </div>
             </div>
-          </section>
+            <h1 className={styles.name}>鹿野 壮（たけし）</h1>
+            <p className={styles.role}>Product Engineer @ Ubie</p>
 
-          <section className={styles.grid}>
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <Sparkles size={18} />
-                <h2>近況</h2>
-              </div>
-              <p className={styles.cardBody}>
-                CSS Nite 2017〜2019ベストセッション受賞。TechFeed
-                Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
-              </p>
-            </article>
-
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <BookOpen size={18} />
-                <h2>書籍・寄稿</h2>
-              </div>
-              <ul className={styles.linkList}>
-                {writings.map((book) => (
-                  <li key={book.title}>
-                    <Link href={book.href} target="_blank">
-                      {book.title}
-                      <ArrowUpRight size={14} aria-hidden={true} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <Mic2 size={18} />
-                <h2>講師・登壇</h2>
-              </div>
-              <ul className={styles.linkList}>
-                {talks.map((talk) => (
-                  <li key={talk.title}>
-                    <Link href={talk.href} target="_blank">
-                      {talk.title}
-                      <ArrowUpRight size={14} aria-hidden={true} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <Sparkles size={18} />
-                <h2>インタビュー・掲載</h2>
-              </div>
-              <ul className={styles.linkList}>
-                {interviews.map((interview) => (
-                  <li key={interview.title}>
-                    <Link href={interview.href} target="_blank">
-                      {interview.title}
-                      <ArrowUpRight size={14} aria-hidden={true} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </section>
-
-          <section className={styles.skills}>
-            <h2>Skills</h2>
-            <div className={styles.skillPills}>
-              {skills.map((skill) => (
-                <span key={skill} className={styles.skillPill}>
-                  {skill}
-                </span>
+            {/* Social Pills */}
+            <div className={styles.socialPills}>
+              {socialLinks.map((social) => (
+                <Link
+                  key={social.href}
+                  href={social.href}
+                  target="_blank"
+                  className={styles.socialPill}
+                >
+                  {social.iconPath === "local-codepen" ? (
+                    <Image
+                      src="/images/icons/codepen.svg"
+                      alt="CodePen"
+                      className={styles.socialPillIcon}
+                      width={16}
+                      height={16}
+                      aria-hidden={true}
+                    />
+                  ) : social.iconType === "lucide-linkedin" ? (
+                    <Linkedin className={styles.socialPillIcon} aria-hidden={true} />
+                  ) : social.iconPath ? (
+                    <SimpleIcon
+                      path={social.iconPath}
+                      title={social.label}
+                      className={styles.socialPillIcon}
+                      aria-hidden={true}
+                    />
+                  ) : null}
+                  {social.label}
+                </Link>
               ))}
             </div>
+          </div>
+
+          {/* Bio */}
+          <section className={styles.bioCard}>
+            <h2 className={styles.sectionLabel}>Bio</h2>
+            <p className={styles.bioText}>
+              九州大学芸術工学部音響設計学科卒。TypeScript・CSSを軸に、プロダクト開発と執筆・講師・登壇でアウトプットを続けています。Appleのリキッドデザインに着想を得て、情報をやわらかく届けるUIづくりを探求中。
+              <br />
+              CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
+            </p>
+          </section>
+
+          {/* Books */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionLabel}>Books</h2>
+            <div className={styles.booksList}>
+              {books.map((book) => (
+                <Link
+                  key={book.href}
+                  href={book.href}
+                  target="_blank"
+                  className={styles.bookCard}
+                >
+                  <div className={styles.bookCover}>
+                    <BookOpen size={32} className={styles.bookCoverIcon} />
+                  </div>
+                  <div className={styles.bookInfo}>
+                    <span className={styles.bookYear}>{book.year}</span>
+                    <h3 className={styles.bookTitle}>{book.title}</h3>
+                    <p className={styles.bookDesc}>{book.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* Publications */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionLabel}>Publications</h2>
+            <ul className={styles.timelineList}>
+              {writings.map((item) => (
+                <li key={item.title}>
+                  <Link href={item.href} target="_blank" className={styles.timelineItem}>
+                    <span className={styles.timelineTitle}>{item.title}</span>
+                    <ArrowUpRight size={14} className={styles.timelineArrow} aria-hidden={true} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Speaking */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionLabel}>Speaking</h2>
+            <ul className={styles.timelineList}>
+              {talks.map((item) => (
+                <li key={item.title}>
+                  <Link href={item.href} target="_blank" className={styles.timelineItem}>
+                    <span className={styles.timelineTitle}>{item.title}</span>
+                    <ArrowUpRight size={14} className={styles.timelineArrow} aria-hidden={true} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Interviews */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionLabel}>Interviews</h2>
+            <ul className={styles.timelineList}>
+              {interviews.map((item) => (
+                <li key={item.title}>
+                  <Link href={item.href} target="_blank" className={styles.timelineItem}>
+                    <span className={styles.timelineTitle}>{item.title}</span>
+                    <ArrowUpRight size={14} className={styles.timelineArrow} aria-hidden={true} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </section>
         </div>
       </main>
