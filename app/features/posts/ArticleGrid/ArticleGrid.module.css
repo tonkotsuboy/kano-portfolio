@@ -91,7 +91,7 @@
   display: grid;
   padding: 0;
   margin: 0;
-  gap: var(--space-sm);
+  gap: 0.5rem;
   list-style: none;
 }
 
@@ -105,14 +105,14 @@
 .card {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 16px;
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
   box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
   cursor: pointer;
-  gap: 20px;
+  gap: 16px;
   transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), background 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -207,7 +207,7 @@
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.4;
-  text-wrap: balance;
+  text-wrap: pretty;
   transition: color 0.3s var(--ease-liquid);
 }
 
