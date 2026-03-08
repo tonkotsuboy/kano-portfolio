@@ -1,4 +1,9 @@
-/* Theme Toggle - matches nav pill style */
+/* Theme Toggle Container */
+.container {
+  position: relative;
+}
+
+/* Theme Toggle Button - matches nav pill style */
 .toggle {
   display: flex;
   width: 40px;
@@ -37,4 +42,74 @@
 .toggle:focus-visible {
   outline: 2px solid var(--liquid-primary);
   outline-offset: 4px;
+}
+
+/* Dropdown Menu */
+.menu {
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 180px;
+  padding: 4px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  animation: menuFadeIn 0.15s ease-out;
+  backdrop-filter: blur(20px) saturate(200%);
+  background: var(--glass-bg-strong);
+  box-shadow: var(--glass-shadow-medium);
+  list-style: none;
+}
+
+/* Menu Item */
+.menuItem {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  gap: 10px;
+  transition: background 0.15s var(--ease-liquid), color 0.15s var(--ease-liquid);
+}
+
+.menuItem:hover {
+  background: var(--active-pill-bg);
+  color: var(--text-primary);
+}
+
+.menuItem[data-active] {
+  color: var(--text-primary);
+}
+
+.menuIcon {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.menuLabel {
+  flex: 1;
+  text-align: left;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  color: var(--liquid-primary);
+}
+
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
