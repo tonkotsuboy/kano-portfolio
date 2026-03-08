@@ -29,6 +29,7 @@
   color: var(--text-primary);
   font-size: clamp(1.75rem, 4vw, 2rem);
   font-weight: 800;
+  text-wrap: balance;
 }
 
 .description {
@@ -53,17 +54,17 @@
   background: var(--glass-card-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px var(--glass-shadow-light);
   color: inherit;
   gap: 20px;
   text-decoration: none;
-  transition: all 0.3s var(--ease-liquid);
+  transition: border-color 0.3s var(--ease-liquid), background 0.3s var(--ease-liquid), box-shadow 0.3s var(--ease-liquid), transform 0.3s var(--ease-liquid);
 }
 
 .card:hover {
   border-color: var(--glass-card-hover-border);
   background: var(--glass-card-hover-bg);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px -5px var(--glass-shadow-medium);
   transform: translateY(-2px);
 }
 

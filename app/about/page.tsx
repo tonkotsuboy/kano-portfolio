@@ -127,7 +127,7 @@ const AboutPage: NextPage = () => {
                 priority={true}
               />
               <div className={styles.avatarBadge}>
-                <Zap size={14} />
+                <Zap size={14} aria-hidden={true} />
               </div>
             </div>
             <h1 className={styles.name}>鹿野 壮（たけし）</h1>
@@ -172,9 +172,11 @@ const AboutPage: NextPage = () => {
             <h2 className={styles.sectionLabel}>Bio</h2>
             <p className={styles.bioText}>
               九州大学芸術工学部音響設計学科卒。TypeScript・CSSを軸に、プロダクト開発と執筆・講師・登壇でアウトプットを続けています。Appleのリキッドデザインに着想を得て、情報をやわらかく届けるUIづくりを探求中。
-              <br />
+            </p>
+            <p className={styles.bioText}>
               CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパートとして最新フロントエンド知見を発信しています。
             </p>
+
           </section>
 
           {/* Books */}

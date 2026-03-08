@@ -63,9 +63,7 @@ const ContactPage: NextPage = () => {
           <div className={styles.hero}>
             <h1 className={styles.title}>Contact</h1>
             <p className={styles.description}>
-              お仕事のご依頼・取材・コラボレーションなど、
-              <br />
-              以下のいずれかの方法からお気軽にご連絡ください。
+              お仕事のご依頼・取材・コラボレーションなど、以下のいずれかの方法からお気軽にご連絡ください。
             </p>
           </div>
 
