@@ -31,7 +31,7 @@ export const Header: FC = () => {
               alt="Takeshi Kano"
               width={36}
               height={36}
-              priority={true}
+              priority
             />
           </div>
           <span className={styles.logoText}>鹿野 壮</span>

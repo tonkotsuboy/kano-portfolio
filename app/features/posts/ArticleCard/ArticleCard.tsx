@@ -49,7 +49,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
         <Image
           src={thumbnailUrl}
           alt={post.title}
-          fill={true}
+          fill
           className={clsx(styles.thumbnail, isLogoLike && styles.thumbnailContain)}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

@@ -141,7 +141,7 @@ const Page = async ({ params }: Params) => {
                     sizes="120px"
                     className={styles.linkThumbImage}
                     style={{ height: "100%", objectFit: "contain", width: "100%" }}
-                    unoptimized={true}
+                    unoptimized
                   />
                 ) : (
                   <span>{post.medium || "Link"}</span>
