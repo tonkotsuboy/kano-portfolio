@@ -1,9 +1,9 @@
 import type { FC, SVGProps } from "react";
 
-interface Props extends SVGProps<SVGSVGElement> {
+type Props = {
   path: string;
   title?: string;
-}
+} & SVGProps<SVGSVGElement>
 
 export const SimpleIcon: FC<Props> = ({ path, title, ...props }) => (
   <svg

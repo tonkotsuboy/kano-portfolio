@@ -4,7 +4,7 @@ import styles from "./GlassTag.module.css";
 
 import type { FC, ReactNode } from "react";
 
-interface Props {
+type Props = {
   children: ReactNode;
   className?: string;
 }

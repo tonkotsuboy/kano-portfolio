@@ -7,7 +7,7 @@ import styles from "./Header.module.css";
 
 import type { FC } from "react";
 
-interface NavLinkProps {
+type NavLinkProps = {
   href: string;
   label: string;
 }

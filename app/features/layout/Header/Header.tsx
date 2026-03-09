@@ -8,7 +8,7 @@ import { NavLink } from "./NavLink";
 
 import type { FC } from "react";
 
-interface NavLinkItem {
+type NavLinkItem = {
   href: string;
   label: string;
 }

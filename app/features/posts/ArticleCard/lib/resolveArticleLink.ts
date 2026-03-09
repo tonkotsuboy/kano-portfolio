@@ -1,13 +1,13 @@
 import { SiteUrl } from "../../../../constants";
 
-interface Post {
+type Post = {
   hasDetail: boolean;
   linkUrl?: string | undefined;
   slug: string;
   targetUrl?: string | undefined;
 }
 
-interface ArticleLink {
+type ArticleLink = {
   href: string;
   isExternal: boolean;
 }

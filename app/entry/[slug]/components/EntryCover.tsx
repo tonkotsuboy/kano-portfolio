@@ -4,7 +4,7 @@ import styles from "../page.module.css";
 
 import type { FC } from "react";
 
-interface Props {
+type Props = {
   alt: string;
   coverSrc: string;
 }
@@ -21,7 +21,7 @@ export const EntryCover: FC<Props> = ({ alt, coverSrc }) => {
         height={630}
         sizes="(max-width: 768px) 100vw, 960px"
         className={styles.coverImage}
-        unoptimized={true}
+        unoptimized
       />
     </div>
   );

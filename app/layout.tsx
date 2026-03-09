@@ -79,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`} suppressHydrationWarning={true}>
+    <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`} suppressHydrationWarning>
       <body>
         <a href="#main-content" className="skip-nav">
           メインコンテンツへスキップ

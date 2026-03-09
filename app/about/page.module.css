@@ -36,15 +36,15 @@
 .photoGridTop {
   display: grid;
   height: 200px;
-  grid-template-columns: 3fr 2fr;
   gap: var(--space-xs);
+  grid-template-columns: 3fr 2fr;
 }
 
 .photoGridBottom {
   display: grid;
   height: 150px;
-  grid-template-columns: 1fr 1fr 1fr;
   gap: var(--space-xs);
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .photoCell {
