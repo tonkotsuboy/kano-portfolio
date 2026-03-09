@@ -227,7 +227,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                       )}
                       <span className={styles.dateMobile}>{full}</span>
                     </div>
-                    <h3 className={clsx(styles.cardTitle, hoverStyles.title)}>{post.title}</h3>
+                    <h2 className={clsx(styles.cardTitle, hoverStyles.title)}>{post.title}</h2>
                     {post.tags.length > 0 && (
                       <div className={styles.cardTags}>
                         {post.tags.slice(0, 3).map((tag) => (
@@ -269,7 +269,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.cardLink}
-                      aria-label={`${post.title}を開く（新しいタブ）`}
                     >
                       {cardContent}
                     </a>
@@ -282,7 +281,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                   <Link
                     href={href}
                     className={styles.cardLink}
-                    aria-label={`${post.title}を読む`}
                   >
                     {cardContent}
                   </Link>
