@@ -28,7 +28,7 @@ export const Header: FC = () => {
     <header className={styles.header}>
       <div className={styles.headerInner}>
         {/* Logo */}
-        <Link href="/" className={styles.logo} aria-label="ホームに戻る">
+        <Link href="/" className={styles.logo}>
           <div className={styles.avatar}>
             <Image
               src="/avatar.png"
