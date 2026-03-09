@@ -256,6 +256,17 @@
   gap: var(--space-xs);
 }
 
+.pageEllipsis {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  user-select: none;
+}
+
 .pageNumber {
   display: flex;
   width: 36px;
