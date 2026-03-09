@@ -1,6 +1,6 @@
 import { type FC, Suspense } from "react";
 
-import { basicDescription, SiteTitle, SiteUrl } from "./constants";
+import { basicDescription, SiteUrl } from "./constants";
 import { Footer } from "./features/layout/Footer";
 import { Header } from "./features/layout/Header";
 import { ArticleGrid } from "./features/posts/ArticleGrid";
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: SiteUrl,
   },
   description: basicDescription,
-  title: SiteTitle,
+  title: "鹿野壮 - CSS・TypeScript・Claude Codeが得意なエンジニア",
 };
 
 const HomePage: FC = () => {
