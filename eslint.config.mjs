@@ -129,6 +129,10 @@ export default defineConfig([
             "no-console": ["error", { allow: ["error"] }],
             eqeqeq: ["error", "always", { null: "ignore" }],
             "object-shorthand": "error",
+            "no-restricted-syntax": ["error", {
+                selector: "JSXAttribute[name.name='className'] TemplateLiteral",
+                message: "Use clsx() instead of template literals for className",
+            }],
         },
     },
 ]);
