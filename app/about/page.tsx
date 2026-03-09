@@ -116,15 +116,58 @@ const AboutPage: NextPage = () => {
         <div className={styles.page}>
           {/* Profile Hero */}
           <div className={styles.profileHero}>
-            <div className={styles.avatarWrapper}>
-              <Image
-                src="/ogimage.png"
-                fill={true}
-                alt="鹿野 壮"
-                sizes="128px"
-                className={styles.avatar}
-                priority={true}
-              />
+            <div className={styles.photoGrid}>
+              <div className={styles.photoGridTop}>
+                <div className={styles.photoCell}>
+                  <Image
+                    src="/images/about/speaking.jpg"
+                    alt="登壇中の鹿野 壮"
+                    fill={true}
+                    sizes="(max-width: 768px) 60vw, 384px"
+                    className={styles.photo}
+                    priority={true}
+                  />
+                </div>
+                <div className={styles.photoCell}>
+                  <Image
+                    src="/images/about/streaming.jpg"
+                    alt="朝までマークアップに出演中の鹿野 壮"
+                    fill={true}
+                    sizes="(max-width: 768px) 40vw, 256px"
+                    className={styles.photo}
+                    priority={true}
+                  />
+                </div>
+              </div>
+              <div className={styles.photoGridBottom}>
+                <div className={styles.photoCell}>
+                  <Image
+                    src="/images/about/lecture-hall.jpg"
+                    alt="大規模勉強会で登壇中の様子"
+                    fill={true}
+                    sizes="(max-width: 768px) 33vw, 213px"
+                    className={styles.photo}
+                  />
+                </div>
+                <div className={styles.photoCell}>
+                  <Image
+                    src="/images/about/cssnite-osaka.jpg"
+                    alt="CSS Nite in Osaka vol.59 集合写真"
+                    fill={true}
+                    sizes="(max-width: 768px) 33vw, 213px"
+                    className={styles.photo}
+                  />
+                </div>
+                <div className={styles.photoCell}>
+                  <Image
+                    src="/images/about/full-throttle.jpg"
+                    alt="Full Throttle but Safe イベントでの鹿野 壮"
+                    fill={true}
+                    sizes="(max-width: 768px) 33vw, 213px"
+                    className={styles.photo}
+                  />
+                </div>
+              </div>
             </div>
             <h1 className={styles.name}>鹿野 壮（たけし）</h1>
             <p className={styles.role}>Product Engineer @ Ubie</p>
@@ -159,17 +202,19 @@ const AboutPage: NextPage = () => {
           </div>
 
           {/* Bio */}
-          <section className={styles.bioCard}>
+          <section className={styles.section}>
             <h2 className={styles.sectionLabel}>Bio</h2>
-            <p className={styles.bioText}>
-              鹿野 壮（かの たけし）といいます。
-            </p>
-            <p className={styles.bioText}>
-              九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でプロダクトエンジニアとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
-            </p>
-            <p className={styles.bioText}>
-              CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパート。
-            </p>
+            <div className={styles.bioCard}>
+              <p className={styles.bioText}>
+                鹿野 壮（かの たけし）といいます。
+              </p>
+              <p className={styles.bioText}>
+                九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でプロダクトエンジニアとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
+              </p>
+              <p className={styles.bioText}>
+                CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパート。
+              </p>
+            </div>
           </section>
 
           {/* 著書 */}

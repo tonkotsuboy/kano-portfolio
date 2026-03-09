@@ -24,25 +24,44 @@
   text-align: center;
 }
 
-.avatarWrapper {
+/* Photo Grid */
+.photoGrid {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: var(--space-md);
+  gap: var(--space-xs);
+}
+
+.photoGridTop {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-xs);
+}
+
+.photoGridBottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-xs);
+}
+
+.photoCell {
   position: relative;
-  width: 128px;
-  height: 128px;
-  border-radius: 50%;
-  margin-bottom: var(--space-sm);
-  box-shadow: 0 8px 32px var(--glass-shadow-strong);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  aspect-ratio: 16 / 10;
+  box-shadow: 0 2px 8px var(--glass-shadow-light);
 }
 
-.avatar {
-  border: 4px solid rgb(255 255 255 / 70%);
-  border-radius: 50%;
+.photo {
   object-fit: cover;
+  transition: transform 0.4s var(--ease-liquid);
 }
 
-[data-theme="dark"] .avatar {
-  border-color: rgb(255 255 255 / 20%);
+.photoCell:hover .photo {
+  transform: scale(1.03);
 }
-
 
 
 .name {
@@ -98,7 +117,6 @@
   padding: var(--space-md);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-xl);
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
 }
