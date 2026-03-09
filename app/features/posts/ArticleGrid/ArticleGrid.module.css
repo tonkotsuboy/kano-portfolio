@@ -144,13 +144,45 @@
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
 }
 
-.thumbnail img {
-  object-fit: cover;
-  opacity: 0.9;
-  transition: opacity 0.3s var(--ease-liquid);
+.thumbnail::before {
+  position: absolute;
+  inset: 0;
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 255 255 / 30%) 50%,
+    transparent 100%
+  );
+  content: "";
+  z-index: 1;
 }
 
-.card:hover .thumbnail img {
+.thumbnail:has(img[data-loaded="true"])::before {
+  display: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.thumbnail img {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-liquid);
+}
+
+.thumbnail img[data-loaded="true"] {
+  opacity: 0.9;
+}
+
+.card:hover .thumbnail img[data-loaded="true"] {
   opacity: 1;
 }
 
