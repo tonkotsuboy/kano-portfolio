@@ -38,21 +38,21 @@ const contacts = [
   {
     description: "t.kano.624@gmail.com",
     href: "mailto:t.kano.624@gmail.com",
-    icon: <Mail size={20} aria-hidden />,
+    icon: <Mail size={20} aria-hidden={true} />,
     iconStyle: "email" as const,
     label: "Email",
   },
   {
     description: "@tonkotsuboy_com",
     href: "https://x.com/tonkotsuboy_com",
-    icon: <SimpleIcon path={siX.path} aria-hidden title="X" />,
+    icon: <SimpleIcon path={siX.path} aria-hidden={true} title="X" />,
     iconStyle: "x" as const,
     label: "X (Twitter)",
   },
   {
     description: "linkedin.com/in/tonkotsuboy",
     href: "https://www.linkedin.com/in/tonkotsuboy/",
-    icon: <Linkedin size={20} aria-hidden />,
+    icon: <Linkedin size={20} aria-hidden={true} />,
     iconStyle: "linkedin" as const,
     label: "LinkedIn",
   },
@@ -87,7 +87,7 @@ const ContactPage: NextPage = () => {
                   <p className={clsx(styles.cardDescription, hoverStyles.title)}>{contact.description}</p>
                 </div>
                 <div className={hoverStyles.arrow}>
-                  <ChevronRight size={20} aria-hidden />
+                  <ChevronRight size={20} aria-hidden={true} />
                 </div>
               </Link>
             ))}

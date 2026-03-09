@@ -119,7 +119,7 @@ export default defineConfig([
             "perfectionist/sort-enums": ["error", { order: "asc", type: "natural", ignoreCase: true }],
             // React best practices
             "react/self-closing-comp": "error",
-            "react/jsx-boolean-value": "error",
+            "react/jsx-boolean-value": ["error", "always"],
             "react/jsx-no-useless-fragment": ["error", { allowExpressions: true }],
             "react-hooks/exhaustive-deps": "error",
             // TypeScript strict rules

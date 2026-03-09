@@ -129,20 +129,20 @@ const AboutPage: NextPage = () => {
                   <Image
                     src="/images/about/speaking.jpg"
                     alt="登壇中の鹿野 壮"
-                    fill
+                    fill={true}
                     sizes="(max-width: 768px) 60vw, 384px"
                     className={styles.photo}
-                    priority
+                    priority={true}
                   />
                 </div>
                 <div className={styles.photoCell}>
                   <Image
                     src="/images/about/streaming.jpg"
                     alt="朝までマークアップに出演中の鹿野 壮"
-                    fill
+                    fill={true}
                     sizes="(max-width: 768px) 40vw, 256px"
                     className={styles.photo}
-                    priority
+                    priority={true}
                   />
                 </div>
               </div>
@@ -151,7 +151,7 @@ const AboutPage: NextPage = () => {
                   <Image
                     src="/images/about/lecture-hall.jpg"
                     alt="大規模勉強会で登壇中の様子"
-                    fill
+                    fill={true}
                     sizes="(max-width: 768px) 33vw, 213px"
                     className={styles.photo}
                   />
@@ -160,7 +160,7 @@ const AboutPage: NextPage = () => {
                   <Image
                     src="/images/about/cssnite-osaka.jpg"
                     alt="CSS Nite in Osaka vol.59 集合写真"
-                    fill
+                    fill={true}
                     sizes="(max-width: 768px) 33vw, 213px"
                     className={styles.photo}
                   />
@@ -169,7 +169,7 @@ const AboutPage: NextPage = () => {
                   <Image
                     src="/images/about/full-throttle.jpg"
                     alt="Full Throttle but Safe イベントでの鹿野 壮"
-                    fill
+                    fill={true}
                     sizes="(max-width: 768px) 33vw, 213px"
                     className={styles.photo}
                   />
@@ -187,19 +187,19 @@ const AboutPage: NextPage = () => {
                   className={styles.socialPill}
                 >
                   {social.iconType === "lucide-linkedin" ? (
-                    <Linkedin className={styles.socialPillIcon} aria-hidden />
+                    <Linkedin className={styles.socialPillIcon} aria-hidden={true} />
                   ) : social.iconType === "lucide-rss" ? (
-                    <Rss className={styles.socialPillIcon} aria-hidden />
+                    <Rss className={styles.socialPillIcon} aria-hidden={true} />
                   ) : social.iconType === "lucide-codepen" ? (
-                    <Codepen className={styles.socialPillIcon} aria-hidden />
+                    <Codepen className={styles.socialPillIcon} aria-hidden={true} />
                   ) : social.iconType === "lucide-presentation" ? (
-                    <Presentation className={styles.socialPillIcon} aria-hidden />
+                    <Presentation className={styles.socialPillIcon} aria-hidden={true} />
                   ) : social.iconPath ? (
                     <SimpleIcon
                       path={social.iconPath}
                       title={social.label}
                       className={styles.socialPillIcon}
-                      aria-hidden
+                      aria-hidden={true}
                     />
                   ) : null}
                   {social.label}
@@ -249,7 +249,7 @@ const AboutPage: NextPage = () => {
                     <p className={styles.bookPublisher}>{item.publisher}</p>
                   </div>
                   <div className={hoverStyles.arrow}>
-                    <ChevronRight size={20} aria-hidden />
+                    <ChevronRight size={20} aria-hidden={true} />
                   </div>
                 </Link>
               ))}
@@ -265,7 +265,7 @@ const AboutPage: NextPage = () => {
                   <Link href={item.href} target="_blank" className={clsx(styles.timelineItem, hoverStyles.card)}>
                     <span className={clsx(styles.timelineTitle, hoverStyles.title)}>{item.title}</span>
                     <div className={clsx(styles.timelineArrow, hoverStyles.arrow)}>
-                      <ChevronRight size={20} aria-hidden />
+                      <ChevronRight size={20} aria-hidden={true} />
                     </div>
                   </Link>
                 </li>

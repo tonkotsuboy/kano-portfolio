@@ -81,9 +81,9 @@ export const LiquidGlassBox = <T extends ElementType = "div">({
           </filter>
         </defs>
       </svg>
-      <div className={styles.effect} aria-hidden />
-      <div className={styles.tint} aria-hidden />
-      <div className={styles.shine} aria-hidden />
+      <div className={styles.effect} aria-hidden={true} />
+      <div className={styles.tint} aria-hidden={true} />
+      <div className={styles.shine} aria-hidden={true} />
       <div className={styles.content}>{children}</div>
     </Component>
   );

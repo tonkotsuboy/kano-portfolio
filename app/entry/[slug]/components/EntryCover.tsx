@@ -21,7 +21,7 @@ export const EntryCover: FC<Props> = ({ alt, coverSrc }) => {
         height={630}
         sizes="(max-width: 768px) 100vw, 960px"
         className={styles.coverImage}
-        unoptimized
+        unoptimized={true}
       />
     </div>
   );

@@ -14,7 +14,7 @@ const socialLinks = [
       <SimpleIcon
         path={siX.path}
         className={styles.socialIcon}
-        aria-hidden
+        aria-hidden={true}
         title="X"
       />
     ),
@@ -26,7 +26,7 @@ const socialLinks = [
       <SimpleIcon
         path={siGithub.path}
         className={styles.socialIcon}
-        aria-hidden
+        aria-hidden={true}
         title="GitHub"
       />
     ),
@@ -34,7 +34,7 @@ const socialLinks = [
   },
   {
     href: "https://www.linkedin.com/in/tonkotsuboy/",
-    icon: <Linkedin className={styles.socialIcon} aria-hidden />,
+    icon: <Linkedin className={styles.socialIcon} aria-hidden={true} />,
     label: "LinkedIn",
   },
 ];
