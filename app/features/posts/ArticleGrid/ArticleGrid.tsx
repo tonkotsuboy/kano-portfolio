@@ -214,7 +214,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                       className={isLogoLike ? styles.thumbnailContain : undefined}
                       sizes="(max-width: 768px) 100vw, 192px"
                       onLoad={(e) => {
-                        e.currentTarget.dataset.loaded = "true";
+                        e.currentTarget.dataset["loaded"] = "true";
                       }}
                     />
                   </div>
