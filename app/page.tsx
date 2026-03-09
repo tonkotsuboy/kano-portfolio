@@ -1,13 +1,23 @@
 import { type FC, Suspense } from "react";
 
+import { basicDescription, SiteTitle, SiteUrl } from "./constants";
 import { Footer } from "./features/layout/Footer";
 import { Header } from "./features/layout/Header";
 import { ArticleGrid } from "./features/posts/ArticleGrid";
 import styles from "./page.module.css";
 
 import type { Post } from "@/.velite";
+import type { Metadata } from "next";
 
 import { posts } from "@/.velite";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: SiteUrl,
+  },
+  description: basicDescription,
+  title: SiteTitle,
+};
 
 const HomePage: FC = () => {
   // 公開済みの投稿のみをフィルタリングして日付順にソート
