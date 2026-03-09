@@ -23,6 +23,8 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Build Velite content
+        run: pnpm velite build
       - name: Run ESLint
         run: pnpm lint:next:fix
       - name: Run Stylelint
