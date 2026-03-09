@@ -35,12 +35,14 @@
 
 .photoGridTop {
   display: grid;
+  height: 200px;
   grid-template-columns: 3fr 2fr;
   gap: var(--space-xs);
 }
 
 .photoGridBottom {
   display: grid;
+  height: 150px;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--space-xs);
 }
@@ -50,7 +52,6 @@
   overflow: hidden;
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  aspect-ratio: 16 / 10;
   box-shadow: 0 2px 8px var(--glass-shadow-light);
 }
 
@@ -240,6 +241,14 @@
 @media (width <= 768px) {
   .page {
     padding: var(--space-lg) var(--space-md) var(--space-2xl);
+  }
+
+  .photoGridTop {
+    height: 140px;
+  }
+
+  .photoGridBottom {
+    height: 100px;
   }
 
   .bookCover {

@@ -116,6 +116,8 @@ const AboutPage: NextPage = () => {
         <div className={styles.page}>
           {/* Profile Hero */}
           <div className={styles.profileHero}>
+            <h1 className={styles.name}>鹿野 壮（たけし）</h1>
+            <p className={styles.role}>Product Engineer @ Ubie</p>
             <div className={styles.photoGrid}>
               <div className={styles.photoGridTop}>
                 <div className={styles.photoCell}>
@@ -169,8 +171,6 @@ const AboutPage: NextPage = () => {
                 </div>
               </div>
             </div>
-            <h1 className={styles.name}>鹿野 壮（たけし）</h1>
-            <p className={styles.role}>Product Engineer @ Ubie</p>
 
             {/* Social Pills */}
             <div className={styles.socialPills}>
@@ -203,7 +203,7 @@ const AboutPage: NextPage = () => {
 
           {/* Bio */}
           <section className={styles.section}>
-            <h2 className={styles.sectionLabel}>Bio</h2>
+            <h2 className={styles.sectionLabel}>自己紹介</h2>
             <div className={styles.bioCard}>
               <p className={styles.bioText}>
                 鹿野 壮（かの たけし）といいます。
