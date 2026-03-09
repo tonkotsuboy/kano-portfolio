@@ -105,10 +105,28 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     (currentPage - 1) * pageSize,
     currentPage * pageSize,
   );
-  const pages = useMemo(
-    () => Array.from({ length: totalPages }, (_value, index) => index + 1),
-    [totalPages],
-  );
+  const pages = useMemo(() => {
+    const sibling = 1;
+    const items: ("ellipsis-end" | "ellipsis-start" | number)[] = [];
+    const left = Math.max(2, currentPage - sibling);
+    const right = Math.min(totalPages - 1, currentPage + sibling);
+
+    items.push(1);
+    if (left > 2) {
+      items.push("ellipsis-start");
+    }
+    for (let i = left; i <= right; i++) {
+      items.push(i);
+    }
+    if (right < totalPages - 1) {
+      items.push("ellipsis-end");
+    }
+    if (totalPages > 1) {
+      items.push(totalPages);
+    }
+
+    return items;
+  }, [currentPage, totalPages]);
 
   const goPage = (next: number) => {
     const clamped = Math.min(Math.max(1, next), totalPages);
@@ -326,17 +344,23 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               <ChevronLeft size={16} />
             </button>
             <div className={styles.pageNumbers}>
-              {pages.map((p) => (
-                <button
-                  key={p}
-                  type="button"
-                  className={`${styles.pageNumber} ${p === currentPage ? styles.pageNumberActive : ""}`}
-                  onClick={() => goPage(p)}
-                  aria-current={p === currentPage ? "page" : undefined}
-                >
-                  {p}
-                </button>
-              ))}
+              {pages.map((p) =>
+                typeof p === "string" ? (
+                  <span key={p} className={styles.pageEllipsis}>
+                    ...
+                  </span>
+                ) : (
+                  <button
+                    key={p}
+                    type="button"
+                    className={`${styles.pageNumber} ${p === currentPage ? styles.pageNumberActive : ""}`}
+                    onClick={() => goPage(p)}
+                    aria-current={p === currentPage ? "page" : undefined}
+                  >
+                    {p}
+                  </button>
+                ),
+              )}
             </div>
             <button
               type="button"
