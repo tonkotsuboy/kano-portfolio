@@ -45,7 +45,7 @@
     "@types/node": "^22.19.1",
     "@types/react": "^19.2.7",
     "@vitest/eslint-plugin": "^1.1.44",
-    "dotenv": "^16.6.1",
+    "dotenv": "^17.3.1",
     "eslint": "^9.39.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-perfectionist": "^4.15.1",
