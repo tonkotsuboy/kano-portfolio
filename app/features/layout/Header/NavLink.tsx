@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -18,7 +19,7 @@ export const NavLink: FC<NavLinkProps> = ({ href, label }) => {
   return (
     <Link
       href={href}
-      className={`${styles.navLink} ${pathname === href ? styles.navLinkActive : ""}`}
+      className={clsx(styles.navLink, pathname === href && styles.navLinkActive)}
     >
       {label}
     </Link>

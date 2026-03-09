@@ -1,5 +1,6 @@
 import "./styles/globals.css";
 
+import clsx from "clsx";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 
 import {
@@ -79,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <html lang="ja" className={`${inter.variable} ${notoSansJP.variable}`} suppressHydrationWarning>
+    <html lang="ja" className={clsx(inter.variable, notoSansJP.variable)} suppressHydrationWarning>
       <body>
         <a href="#main-content" className="skip-nav">
           メインコンテンツへスキップ

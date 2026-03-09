@@ -165,7 +165,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
           {allTags.length > 0 && (
             <div className={styles.tagsContainer}>
               <button
-                className={`${styles.tagButton} ${selectedTag === "all" ? styles.tagActive : ""}`}
+                className={clsx(styles.tagButton, selectedTag === "all" && styles.tagActive)}
                 onClick={() => {
                   setSelectedTag("all");
                 }}
@@ -175,7 +175,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               {allTags.map((tag) => (
                 <button
                   key={tag}
-                  className={`${styles.tagButton} ${selectedTag === tag ? styles.tagActive : ""}`}
+                  className={clsx(styles.tagButton, selectedTag === tag && styles.tagActive)}
                   onClick={() => {
                     setSelectedTag(tag);
                   }}

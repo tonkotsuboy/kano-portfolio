@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -49,7 +50,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
           src={thumbnailUrl}
           alt={post.title}
           fill
-          className={`${styles.thumbnail} ${isLogoLike ? styles.thumbnailContain : ""}`}
+          className={clsx(styles.thumbnail, isLogoLike && styles.thumbnailContain)}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className={styles.thumbnailOverlay} />
