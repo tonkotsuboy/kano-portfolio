@@ -44,7 +44,7 @@ export const Footer: FC = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <p className={styles.copyright}>© 2025 Takeshi Kano. All rights reserved.</p>
+          <p className={styles.copyright}>© 2026 Takeshi Kano. All rights reserved.</p>
 
           <nav className={styles.socialLinks} aria-label="ソーシャルリンク">
             {socialLinks.map((social) => (

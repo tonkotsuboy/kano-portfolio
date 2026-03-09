@@ -3,17 +3,13 @@
   "entry": [
     "app/**/*.ts",
     "app/**/*.tsx",
-    "scripts/**/*.{js,mjs,ts}",
     "velite.config.ts"
   ],
   "ignore": [
-    ".storybook/**",
-    "node-scripts/**",
-    "contentful/**"
+    ".storybook/**"
   ],
   "project": [
     "app/**/*.ts",
-    "app/**/*.tsx",
-    "scripts/**/*.{js,mjs,ts}"
-  ],
+    "app/**/*.tsx"
+  ]
 }

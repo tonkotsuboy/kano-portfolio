@@ -24,40 +24,46 @@
   text-align: center;
 }
 
-.avatarWrapper {
-  position: relative;
-  width: 128px;
-  height: 128px;
-  border-radius: 50%;
-  margin-bottom: var(--space-sm);
-  box-shadow: 0 8px 32px var(--glass-shadow-strong);
-}
-
-.avatar {
-  border: 4px solid rgb(255 255 255 / 70%);
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-[data-theme="dark"] .avatar {
-  border-color: rgb(255 255 255 / 20%);
-}
-
-.avatarBadge {
-  position: absolute;
-  right: 4px;
-  bottom: 4px;
+/* Photo Grid */
+.photoGrid {
   display: flex;
-  width: 28px;
-  height: 28px;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: var(--liquid-primary);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
-  color: white;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: var(--space-md);
+  gap: var(--space-xs);
 }
+
+.photoGridTop {
+  display: grid;
+  height: 200px;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-xs);
+}
+
+.photoGridBottom {
+  display: grid;
+  height: 150px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-xs);
+}
+
+.photoCell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px var(--glass-shadow-light);
+}
+
+.photo {
+  object-fit: cover;
+  transition: transform 0.4s var(--ease-liquid);
+}
+
+.photoCell:hover .photo {
+  transform: scale(1.03);
+}
+
 
 .name {
   color: var(--text-primary);
@@ -112,7 +118,6 @@
   padding: var(--space-md);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-xl);
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
 }
@@ -236,6 +241,14 @@
 @media (width <= 768px) {
   .page {
     padding: var(--space-lg) var(--space-md) var(--space-2xl);
+  }
+
+  .photoGridTop {
+    height: 140px;
+  }
+
+  .photoGridBottom {
+    height: 100px;
   }
 
   .bookCover {
