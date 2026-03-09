@@ -1,11 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { SiteUrl } from "../../../constants";
 import hoverStyles from "../../../styles/card-hover.module.css";
@@ -19,7 +18,10 @@ interface Props {
   posts: Post[];
 }
 
-function formatArticleDate(dateStr: string): { day: string; month: string; full: string } {
+const INITIAL_COUNT = 20;
+const LOAD_MORE_COUNT = 20;
+
+function formatArticleDate(dateStr: string): { day: string; full: string; month: string } {
   const d = new Date(dateStr);
   const day = String(d.getDate()).padStart(2, "0");
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
@@ -33,28 +35,10 @@ function formatArticleDate(dateStr: string): { day: string; month: string; full:
 }
 
 export const ArticleGrid: FC<Props> = ({ posts }) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pageFromUrl = Number(searchParams?.get("page") ?? "1");
-
   const [selectedTag, setSelectedTag] = useState<string>("all");
   const [keyword, setKeyword] = useState<string>("");
-  const [page, setPage] = useState<number>(
-    Number.isFinite(pageFromUrl) && pageFromUrl > 0 ? pageFromUrl : 1,
-  );
-  const pageSize = 10;
-
-  const updatePageInUrl = (nextPage: number) => {
-    const params = searchParams
-      ? new URLSearchParams(Array.from(searchParams.entries()))
-      : new URLSearchParams(typeof window !== "undefined" ? window.location.search : "");
-    if (nextPage <= 1) {
-      params.delete("page");
-    } else {
-      params.set("page", String(nextPage));
-    }
-    router.replace(`/?${params.toString()}`);
-  };
+  const [visibleCount, setVisibleCount] = useState<number>(INITIAL_COUNT);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   const resolveLink = useCallback((post: Post) => {
     const linkUrl = post.linkUrl ?? "";
@@ -104,40 +88,32 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     });
   }, [keyword, posts, selectedTag]);
 
-  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / pageSize));
-  const currentPage = Math.min(page, totalPages);
-  const paginatedPosts: Post[] = filteredPosts.slice(
-    (currentPage - 1) * pageSize,
-    currentPage * pageSize,
-  );
-  const pages = useMemo(() => {
-    const sibling = 1;
-    const items: ("ellipsis-end" | "ellipsis-start" | number)[] = [];
-    const left = Math.max(2, currentPage - sibling);
-    const right = Math.min(totalPages - 1, currentPage + sibling);
+  const visiblePosts: Post[] = filteredPosts.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredPosts.length;
 
-    items.push(1);
-    if (left > 2) {
-      items.push("ellipsis-start");
-    }
-    for (let i = left; i <= right; i++) {
-      items.push(i);
-    }
-    if (right < totalPages - 1) {
-      items.push("ellipsis-end");
-    }
-    if (totalPages > 1) {
-      items.push(totalPages);
-    }
+  useEffect(() => {
+    setVisibleCount(INITIAL_COUNT);
+  }, [selectedTag, keyword]);
 
-    return items;
-  }, [currentPage, totalPages]);
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) { return; }
 
-  const goPage = (next: number) => {
-    const clamped = Math.min(Math.max(1, next), totalPages);
-    setPage(clamped);
-    updatePageInUrl(clamped);
-  };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleCount((prev) => prev + LOAD_MORE_COUNT);
+        }
+      },
+      { rootMargin: "200px" },
+    );
+
+    observer.observe(sentinel);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [filteredPosts.length]);
 
   const getHostname = (url: string): string => {
     try {
@@ -180,8 +156,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               value={keyword}
               onChange={(event) => {
                 setKeyword(event.target.value);
-                setPage(1);
-                updatePageInUrl(1);
               }}
               placeholder="記事タイトル・タグで検索"
               aria-label="記事を検索"
@@ -194,8 +168,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                 className={`${styles.tagButton} ${selectedTag === "all" ? styles.tagActive : ""}`}
                 onClick={() => {
                   setSelectedTag("all");
-                  setPage(1);
-                  updatePageInUrl(1);
                 }}
               >
                 すべて
@@ -206,8 +178,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                   className={`${styles.tagButton} ${selectedTag === tag ? styles.tagActive : ""}`}
                   onClick={() => {
                     setSelectedTag(tag);
-                    setPage(1);
-                    updatePageInUrl(1);
                   }}
                 >
                   {tag}
@@ -220,7 +190,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
         {/* Article List */}
         {filteredPosts.length > 0 ? (
           <ul className={styles.list} role="list">
-            {paginatedPosts.map((post: Post) => {
+            {visiblePosts.map((post: Post) => {
               const { href, isExternal } = resolveLink(post);
               const { day, full, month } = formatArticleDate(post.date);
               const thumbnailUrl = getThumbnailUrl(post, href);
@@ -326,8 +296,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               onClick={() => {
                 setKeyword("");
                 setSelectedTag("all");
-                setPage(1);
-                updatePageInUrl(1);
               }}
             >
               検索をクリア
@@ -335,53 +303,13 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
           </div>
         )}
 
-        {/* Pagination */}
-        {filteredPosts.length > pageSize && (
-          <div className={styles.pagination} role="navigation" aria-label="ページネーション">
-            <button
-              type="button"
-              className={styles.pageArrow}
-              onClick={() => goPage(currentPage - 1)}
-              disabled={currentPage === 1}
-              aria-label="前のページ"
-            >
-              <ChevronLeft size={16} />
-            </button>
-            <div className={styles.pageNumbers}>
-              {pages.map((p) =>
-                typeof p === "string" ? (
-                  <span key={p} className={styles.pageEllipsis}>
-                    ...
-                  </span>
-                ) : (
-                  <button
-                    key={p}
-                    type="button"
-                    className={`${styles.pageNumber} ${p === currentPage ? styles.pageNumberActive : ""}`}
-                    onClick={() => goPage(p)}
-                    aria-current={p === currentPage ? "page" : undefined}
-                  >
-                    {p}
-                  </button>
-                ),
-              )}
-            </div>
-            <button
-              type="button"
-              className={styles.pageArrow}
-              onClick={() => goPage(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              aria-label="次のページ"
-            >
-              <ChevronRight size={16} />
-            </button>
-          </div>
+        {/* Infinite Scroll Sentinel */}
+        {hasMore && (
+          <div ref={sentinelRef} className={styles.sentinel} aria-hidden={true} />
         )}
 
         <div className={styles.resultCount}>
-          {filteredPosts.length} 件中{" "}
-          {Math.min((currentPage - 1) * pageSize + 1, filteredPosts.length)}〜
-          {Math.min(currentPage * pageSize, filteredPosts.length)} 件を表示
+          {filteredPosts.length} 件中 {visiblePosts.length} 件を表示
         </div>
       </div>
     </section>
