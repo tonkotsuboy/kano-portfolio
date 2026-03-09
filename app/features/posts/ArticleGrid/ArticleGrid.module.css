@@ -28,6 +28,7 @@
   left: 16px;
   color: var(--text-tertiary);
   pointer-events: none;
+  z-index: 1;
 }
 
 .searchBox input {
@@ -322,17 +323,6 @@
 
 @media (width <= 480px) {
   .tagsContainer {
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .tagsContainer::-webkit-scrollbar {
-    display: none;
-  }
-
-  .tagButton {
-    flex-shrink: 0;
+    flex-wrap: wrap;
   }
 }
