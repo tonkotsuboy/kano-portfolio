@@ -43,21 +43,7 @@
   border-color: rgb(255 255 255 / 20%);
 }
 
-.avatarBadge {
-  position: absolute;
-  right: 4px;
-  bottom: 4px;
-  display: flex;
-  width: 28px;
-  height: 28px;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: var(--liquid-primary);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
-  color: white;
-}
+
 
 .name {
   color: var(--text-primary);

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ChevronRight, Codepen, Linkedin, Rss, Zap } from "lucide-react";
+import { ChevronRight, Codepen, Linkedin, Rss } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { siGithub, siQiita, siX, siZenn } from "simple-icons";
@@ -125,9 +125,6 @@ const AboutPage: NextPage = () => {
                 className={styles.avatar}
                 priority={true}
               />
-              <div className={styles.avatarBadge}>
-                <Zap size={14} aria-hidden={true} />
-              </div>
             </div>
             <h1 className={styles.name}>鹿野 壮（たけし）</h1>
             <p className={styles.role}>Product Engineer @ Ubie</p>
