@@ -312,7 +312,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
         )}
 
         <div className={styles.resultCount}>
-          {filteredPosts.length} 件中 {visiblePosts.length} 件を表示
+          {filteredPosts.length} 件
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ChevronRight, Codepen, Linkedin, Rss } from "lucide-react";
+import { ChevronRight, Codepen, Linkedin, Presentation, Rss } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { siGithub, siQiita, siX, siZenn } from "simple-icons";
@@ -50,6 +50,11 @@ const socialLinks = [
     href: "https://codepen.io/tonkotsuboy",
     iconType: "lucide-codepen",
     label: "CodePen",
+  },
+  {
+    href: "https://speakerdeck.com/tonkotsuboy_com",
+    iconType: "lucide-presentation",
+    label: "Speaker Deck",
   },
 ];
 
@@ -187,6 +192,8 @@ const AboutPage: NextPage = () => {
                     <Rss className={styles.socialPillIcon} aria-hidden={true} />
                   ) : social.iconType === "lucide-codepen" ? (
                     <Codepen className={styles.socialPillIcon} aria-hidden={true} />
+                  ) : social.iconType === "lucide-presentation" ? (
+                    <Presentation className={styles.socialPillIcon} aria-hidden={true} />
                   ) : social.iconPath ? (
                     <SimpleIcon
                       path={social.iconPath}
