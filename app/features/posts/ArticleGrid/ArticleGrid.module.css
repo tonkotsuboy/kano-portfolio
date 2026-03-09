@@ -294,6 +294,26 @@
   color: var(--text-inverse);
 }
 
+.pageNumberActive:hover {
+  background: var(--liquid-primary);
+}
+
+.pageNumber:focus-visible {
+  outline: 2px solid var(--liquid-primary);
+  outline-offset: 2px;
+}
+
+.pageNumberActive:focus-visible {
+  background: var(--liquid-primary);
+  outline: 2px solid var(--liquid-primary);
+  outline-offset: 2px;
+}
+
+.pageArrow:focus-visible {
+  outline: 2px solid var(--liquid-primary);
+  outline-offset: 2px;
+}
+
 /* Result Count */
 .resultCount {
   margin-top: var(--space-sm);
