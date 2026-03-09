@@ -72,7 +72,12 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
         tagSet.add(post.medium);
       }
     });
-    return Array.from(tagSet).sort();
+    const preferredOrder = ["執筆記事", "書籍", "インタビュー"];
+    const ordered = preferredOrder.filter((tag) => tagSet.has(tag));
+    const rest = Array.from(tagSet)
+      .filter((tag) => !preferredOrder.includes(tag))
+      .sort();
+    return [...ordered, ...rest];
   }, [posts]);
 
   const filteredPosts: Post[] = useMemo(() => {
