@@ -132,7 +132,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     const clamped = Math.min(Math.max(1, next), totalPages);
     setPage(clamped);
     updatePageInUrl(clamped);
-    window.scrollTo(0, 0);
   };
 
   const getHostname = (url: string): string => {
