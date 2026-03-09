@@ -4,7 +4,7 @@ import styles from "./LiquidGlassBox.module.css";
 
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
-interface Props<T extends ElementType = "div"> {
+type Props<T extends ElementType = "div"> = {
   as?: T;
   children: ReactNode;
   className?: string;
@@ -81,9 +81,9 @@ export const LiquidGlassBox = <T extends ElementType = "div">({
           </filter>
         </defs>
       </svg>
-      <div className={styles.effect} aria-hidden={true} />
-      <div className={styles.tint} aria-hidden={true} />
-      <div className={styles.shine} aria-hidden={true} />
+      <div className={styles.effect} aria-hidden />
+      <div className={styles.tint} aria-hidden />
+      <div className={styles.shine} aria-hidden />
       <div className={styles.content}>{children}</div>
     </Component>
   );

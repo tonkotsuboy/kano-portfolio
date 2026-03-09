@@ -7,7 +7,7 @@ import type { FC, PropsWithChildren } from "react";
 type ResolvedTheme = "dark" | "light";
 type ThemeMode = "dark" | "light" | "system";
 
-interface ThemeContextValue {
+type ThemeContextValue = {
   mode: ThemeMode;
   setMode: (_mode: ThemeMode) => void;
   theme: ResolvedTheme;

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +10,7 @@ import { getHostname, resolveArticleLink } from "./lib/resolveArticleLink";
 import type { Post } from "@/.velite";
 import type { FC } from "react";
 
-interface Props {
+type Props = {
   post: Post;
 }
 
@@ -48,8 +49,8 @@ export const ArticleCard: FC<Props> = ({ post }) => {
         <Image
           src={thumbnailUrl}
           alt={post.title}
-          fill={true}
-          className={`${styles.thumbnail} ${isLogoLike ? styles.thumbnailContain : ""}`}
+          fill
+          className={clsx(styles.thumbnail, isLogoLike && styles.thumbnailContain)}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className={styles.thumbnailOverlay} />

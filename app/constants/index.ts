@@ -1,4 +1,4 @@
-export const SiteTitle = "鹿野壮ポートフォリオ（tonkotsuboy_com）";
+export const SiteTitle = "鹿野壮";
 
 export const WithSiteTitle = ` - ${SiteTitle}`;
 
@@ -11,4 +11,4 @@ export const ogImageUrl = `${SiteUrl}/ogimage.png`;
 export const TwitterId = "tonkotsuboy_com";
 
 export const basicDescription =
-  "フロントエンドエンジニア鹿野壮のポートフォリオです。TypeScript・JavaScript・CSSが得意です。";
+  "フロントエンドエンジニア鹿野壮のポートフォリオ。CSS・TypeScript・Claude Codeを活用したプロダクト開発、執筆、登壇情報を掲載。";

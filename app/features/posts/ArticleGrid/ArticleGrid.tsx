@@ -14,7 +14,7 @@ import styles from "./ArticleGrid.module.css";
 import type { Post } from "@/.velite";
 import type { FC } from "react";
 
-interface Props {
+type Props = {
   posts: Post[];
 }
 
@@ -151,7 +151,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
         {/* Search & Filter */}
         <div className={styles.filterArea}>
           <div className={styles.searchBox}>
-            <Search size={16} aria-hidden={true} className={styles.searchIcon} />
+            <Search size={16} aria-hidden className={styles.searchIcon} />
             <input
               value={keyword}
               onChange={(event) => {
@@ -165,7 +165,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
           {allTags.length > 0 && (
             <div className={styles.tagsContainer}>
               <button
-                className={`${styles.tagButton} ${selectedTag === "all" ? styles.tagActive : ""}`}
+                className={clsx(styles.tagButton, selectedTag === "all" && styles.tagActive)}
                 onClick={() => {
                   setSelectedTag("all");
                 }}
@@ -175,7 +175,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               {allTags.map((tag) => (
                 <button
                   key={tag}
-                  className={`${styles.tagButton} ${selectedTag === tag ? styles.tagActive : ""}`}
+                  className={clsx(styles.tagButton, selectedTag === tag && styles.tagActive)}
                   onClick={() => {
                     setSelectedTag(tag);
                   }}
@@ -210,7 +210,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                     <Image
                       src={thumbnailUrl}
                       alt={post.title}
-                      fill={true}
+                      fill
                       className={isLogoLike ? styles.thumbnailContain : undefined}
                       sizes="(max-width: 768px) 100vw, 192px"
                       onLoad={(e) => {
@@ -308,7 +308,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
 
         {/* Infinite Scroll Sentinel */}
         {hasMore && (
-          <div ref={sentinelRef} className={styles.sentinel} aria-hidden={true} />
+          <div ref={sentinelRef} className={styles.sentinel} aria-hidden />
         )}
 
         <div className={styles.resultCount}>

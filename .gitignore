@@ -47,6 +47,7 @@ build-storybook.log*
 
 # claude
 .claude/ralph-loop.local.md
+.claude/settings.local.json
 
 contentful/
 

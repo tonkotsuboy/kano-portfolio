@@ -117,7 +117,22 @@ export default defineConfig([
             "perfectionist/sort-interfaces": ["error", { order: "asc", type: "natural", ignoreCase: true }],
             "perfectionist/sort-union-types": ["error", { order: "asc", type: "natural", ignoreCase: true }],
             "perfectionist/sort-enums": ["error", { order: "asc", type: "natural", ignoreCase: true }],
+            // React best practices
+            "react/self-closing-comp": "error",
+            "react/jsx-boolean-value": "error",
+            "react/jsx-no-useless-fragment": ["error", { allowExpressions: true }],
             "react-hooks/exhaustive-deps": "error",
+            // TypeScript strict rules
+            "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+            "@typescript-eslint/no-non-null-assertion": "error",
+            // Code quality
+            "no-console": ["error", { allow: ["error"] }],
+            eqeqeq: ["error", "always", { null: "ignore" }],
+            "object-shorthand": "error",
+            "no-restricted-syntax": ["error", {
+                selector: "JSXAttribute[name.name='className'] TemplateLiteral",
+                message: "Use clsx() instead of template literals for className",
+            }],
         },
     },
 ]);

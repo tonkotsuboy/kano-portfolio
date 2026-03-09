@@ -1,29 +1,25 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 import { ThemeToggle } from "../../theme/ThemeToggle";
 
 import styles from "./Header.module.css";
+import { NavLink } from "./NavLink";
 
 import type { FC } from "react";
 
-interface NavLink {
+type NavLinkItem = {
   href: string;
   label: string;
 }
 
-const navLinks: NavLink[] = [
+const navLinks: NavLinkItem[] = [
   { href: "/", label: "WORKS" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },
 ];
 
 export const Header: FC = () => {
-  const pathname = usePathname();
-
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
@@ -43,14 +39,8 @@ export const Header: FC = () => {
 
         {/* Nav */}
         <nav className={styles.nav} aria-label="メインナビゲーション">
-          {navLinks.map((link: NavLink) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`${styles.navLink} ${pathname === link.href ? styles.navLinkActive : ""}`}
-            >
-              {link.label}
-            </Link>
+          {navLinks.map((link: NavLinkItem) => (
+            <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
         </nav>
 

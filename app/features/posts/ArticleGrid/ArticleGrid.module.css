@@ -25,10 +25,10 @@
 
 .searchIcon {
   position: absolute;
+  z-index: 1;
   left: 16px;
   color: var(--text-tertiary);
   pointer-events: none;
-  z-index: 1;
 }
 
 .searchBox input {
@@ -147,7 +147,7 @@
 
 .thumbnail::before {
   position: absolute;
-  inset: 0;
+  z-index: 1;
   animation: shimmer 1.5s infinite;
   background: linear-gradient(
     90deg,
@@ -156,7 +156,7 @@
     transparent 100%
   );
   content: "";
-  z-index: 1;
+  inset: 0;
 }
 
 .thumbnail:has(img[data-loaded="true"])::before {

@@ -2,7 +2,7 @@ import styles from "../page.module.css";
 
 import type { FC } from "react";
 
-interface Props {
+type Props = {
   date?: string;
   formatDate: (_date: string) => string;
   medium?: string;

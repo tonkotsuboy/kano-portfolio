@@ -61,7 +61,7 @@ const loadBodyHtml = (slug: string): string => {
   return replaced;
 };
 
-interface Params { params: Promise<{ slug: string }> }
+type Params = { params: Promise<{ slug: string }> }
 
 export const generateMetadata = async ({ params }: Params): Promise<Metadata> => {
   const { slug } = await params;
@@ -141,7 +141,7 @@ const Page = async ({ params }: Params) => {
                     sizes="120px"
                     className={styles.linkThumbImage}
                     style={{ height: "100%", objectFit: "contain", width: "100%" }}
-                    unoptimized={true}
+                    unoptimized
                   />
                 ) : (
                   <span>{post.medium || "Link"}</span>

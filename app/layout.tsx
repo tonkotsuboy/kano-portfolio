@@ -1,5 +1,8 @@
 import "./styles/globals.css";
 
+import clsx from "clsx";
+import { Inter, Noto_Sans_JP } from "next/font/google";
+
 import {
   basicDescription,
   ogImageUrl,
@@ -13,6 +16,20 @@ import { ThemeProvider } from "./features/theme/ThemeProvider";
 
 import type { Metadata, Viewport } from "next";
 import type { JSX } from "react";
+
+const inter = Inter({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "900"],
+});
+
+const notoSansJP = Noto_Sans_JP({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-noto-sans-jp",
+  weight: ["300", "400", "500", "700"],
+});
 
 export const metadata: Metadata = {
   alternates: {
@@ -63,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <html lang="ja" suppressHydrationWarning={true}>
+    <html lang="ja" className={clsx(inter.variable, notoSansJP.variable)} suppressHydrationWarning>
       <body>
         <a href="#main-content" className="skip-nav">
           メインコンテンツへスキップ
