@@ -1,6 +1,6 @@
-import { posts } from "@/.velite";
-
 import { basicDescription, SiteTitle, SiteUrl } from "../constants";
+
+import { posts } from "@/.velite";
 
 const feedUrl = `${SiteUrl}/feed.xml`;
 
