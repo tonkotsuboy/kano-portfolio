@@ -132,6 +132,9 @@ export default defineConfig([
             "no-restricted-syntax": ["error", {
                 selector: "JSXAttribute[name.name='className'] TemplateLiteral",
                 message: "Use clsx() instead of template literals for className",
+            }, {
+                selector: "JSXAttribute[name.name='rel'] > Literal[value=/noopener/]",
+                message: "rel='noopener' is set by browsers by default for target='_blank'. Remove it.",
             }],
         },
     },

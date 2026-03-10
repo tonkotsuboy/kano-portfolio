@@ -62,7 +62,7 @@ export const Footer: FC = () => {
                 href={social.href}
                 className={styles.socialLink}
                 aria-label={social.label}
-                {...(social.isExternal && { rel: "noopener noreferrer", target: "_blank" })}
+                {...(social.isExternal && { target: "_blank" })}
               >
                 {social.icon}
               </a>
