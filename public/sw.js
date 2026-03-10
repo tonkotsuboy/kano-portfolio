@@ -21,6 +21,9 @@ const PRECACHE_URLS = [
   "/offline.html",
 ];
 
+// Cache First で扱うHTMLページ（更新頻度が低いページ）
+const CACHE_FIRST_HTML_PATHS = ["/about", "/contact"];
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
@@ -49,25 +52,47 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
 
+  const url = new URL(request.url);
   const isHtmlNavigation =
     request.mode === "navigate" ||
     request.headers.get("accept")?.includes("text/html");
 
   if (isHtmlNavigation) {
-    // HTML: Network First → オフライン時のみキャッシュにフォールバック
-    event.respondWith(
-      fetch(request)
-        .then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const clone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(request, clone);
-            });
-          }
-          return networkResponse;
+    const isCacheFirstPage = CACHE_FIRST_HTML_PATHS.includes(url.pathname);
+
+    if (isCacheFirstPage) {
+      // /about, /contact: Cache First → オフライン時と同様にキャッシュを優先
+      event.respondWith(
+        caches.match(request).then((cachedResponse) => {
+          if (cachedResponse) return cachedResponse;
+
+          return fetch(request).then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              const clone = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(request, clone);
+              });
+            }
+            return networkResponse;
+          }).catch(() => caches.match("/offline.html"));
         })
-        .catch(() => caches.match(request).then((cached) => cached ?? caches.match("/offline.html")))
-    );
+      );
+    } else {
+      // /, /entry/* など: Network First → 常に最新を取得、オフライン時のみキャッシュにフォールバック
+      event.respondWith(
+        fetch(request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              const clone = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(request, clone);
+              });
+            }
+            return networkResponse;
+          })
+          .catch(() => caches.match(request).then((cached) => cached ?? caches.match("/offline.html")))
+      );
+    }
   } else {
     // JS/CSS/画像など: Cache First（ファイル名にハッシュが入るため安全）
     event.respondWith(
