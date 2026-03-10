@@ -1,7 +1,6 @@
 // Simple offline-first service worker generated manually following Next.js PWA guide
-const CACHE_NAME = "kano-portfolio-cache-v2";
+const CACHE_NAME = "kano-portfolio-cache-v3";
 const PRECACHE_URLS = [
-  "/",
   "/manifest.webmanifest",
   "/favicon.ico",
   "/favicon-32x32.png",
@@ -50,13 +49,15 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
 
-  event.respondWith(
-    caches.match(request).then((cachedResponse) => {
-      if (cachedResponse) return cachedResponse;
+  const isHtmlNavigation =
+    request.mode === "navigate" ||
+    request.headers.get("accept")?.includes("text/html");
 
-      return fetch(request)
+  if (isHtmlNavigation) {
+    // HTML: Network First → オフライン時のみキャッシュにフォールバック
+    event.respondWith(
+      fetch(request)
         .then((networkResponse) => {
-          // ネットワークエラーでない場合のみキャッシュに保存
           if (networkResponse && networkResponse.status === 200) {
             const clone = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => {
@@ -65,17 +66,24 @@ self.addEventListener("fetch", (event) => {
           }
           return networkResponse;
         })
-        .catch(() => {
-          // ネットワークエラー時：HTMLナビゲーションの場合はオフラインページを返す
-          if (request.headers.get("accept").includes("text/html")) {
-            return caches.match("/offline.html");
+        .catch(() => caches.match(request).then((cached) => cached ?? caches.match("/offline.html")))
+    );
+  } else {
+    // JS/CSS/画像など: Cache First（ファイル名にハッシュが入るため安全）
+    event.respondWith(
+      caches.match(request).then((cachedResponse) => {
+        if (cachedResponse) return cachedResponse;
+
+        return fetch(request).then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(request, clone);
+            });
           }
-          // その他のリソース（画像、CSSなど）はキャッシュから返せない場合は失敗
-          return new Response("Offline", {
-            status: 503,
-            statusText: "Service Unavailable",
-          });
+          return networkResponse;
         });
-    })
-  );
+      })
+    );
+  }
 });
