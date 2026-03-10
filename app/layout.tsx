@@ -34,6 +34,9 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   alternates: {
     canonical: SiteUrl,
+    types: {
+      "application/rss+xml": `${SiteUrl}/feed.xml`,
+    },
   },
   description: basicDescription,
   manifest: "/manifest.webmanifest",

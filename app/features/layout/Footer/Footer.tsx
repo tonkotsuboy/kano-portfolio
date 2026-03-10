@@ -1,4 +1,4 @@
-import { Linkedin } from "lucide-react";
+import { Linkedin, Rss } from "lucide-react";
 import { siGithub, siX } from "simple-icons";
 
 import { SimpleIcon } from "../../../components/ui/icons/SimpleIcon";
@@ -18,6 +18,7 @@ const socialLinks = [
         title="X"
       />
     ),
+    isExternal: true,
     label: "X",
   },
   {
@@ -30,12 +31,20 @@ const socialLinks = [
         title="GitHub"
       />
     ),
+    isExternal: true,
     label: "GitHub",
   },
   {
     href: "https://www.linkedin.com/in/tonkotsuboy/",
     icon: <Linkedin className={styles.socialIcon} aria-hidden />,
+    isExternal: true,
     label: "LinkedIn",
+  },
+  {
+    href: "/feed.xml",
+    icon: <Rss className={styles.socialIcon} aria-hidden />,
+    isExternal: false,
+    label: "RSS",
   },
 ];
 
@@ -53,8 +62,7 @@ export const Footer: FC = () => {
                 href={social.href}
                 className={styles.socialLink}
                 aria-label={social.label}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(social.isExternal && { target: "_blank" })}
               >
                 {social.icon}
               </a>
