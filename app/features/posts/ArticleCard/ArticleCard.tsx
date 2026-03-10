@@ -102,7 +102,6 @@ export const ArticleCard: FC<Props> = ({ post }) => {
       <a
         href={href}
         target="_blank"
-        rel="noopener noreferrer"
         className={styles.cardLink}
         aria-label={`${post.title}を開く（新しいタブ）`}
       >

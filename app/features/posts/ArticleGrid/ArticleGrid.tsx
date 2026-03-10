@@ -267,7 +267,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                     <a
                       href={href}
                       target="_blank"
-                      rel="noopener noreferrer"
                       className={styles.cardLink}
                     >
                       {cardContent}
