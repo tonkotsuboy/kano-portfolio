@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "packageManager": "pnpm@10.31.0",
   "scripts": {
-    "build": "npm run tcm && next build",
+    "build": "npm run tcm && velite build && next build",
     "build-storybook": "storybook build",
     "dev": "npm run tcm && next dev",
     "lint:css:fix": "stylelint \"**/*.module.css\" --fix",

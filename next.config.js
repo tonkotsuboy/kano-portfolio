@@ -1,4 +1,4 @@
-const { build } = require("velite");
+let veliteDevStarted = false;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -16,14 +16,6 @@ const nextConfig = {
         ],
       },
     ];
-  },
-  webpack: (config, { dev }) => {
-    if (dev) {
-      build({ watch: true });
-    } else {
-      build();
-    }
-    return config;
   },
   images: {
     remotePatterns: [
@@ -112,6 +104,14 @@ const nextConfig = {
         hostname: "media.connpass.com",
       },
     ],
+  },
+  webpack: (config, { dev }) => {
+    if (dev && !veliteDevStarted) {
+      veliteDevStarted = true;
+      const { build } = require("velite");
+      build({ watch: true });
+    }
+    return config;
   },
 };
 
