@@ -42,7 +42,7 @@
     "@storybook/nextjs-vite": "10.2.16",
     "@types/gtag.js": "^0.0.20",
     "@types/jsdom": "^28.0.0",
-    "@types/node": "^22.19.1",
+    "@types/node": "^25.5.0",
     "@types/react": "^19.2.7",
     "@vitest/eslint-plugin": "^1.1.44",
     "dotenv": "^17.3.1",
