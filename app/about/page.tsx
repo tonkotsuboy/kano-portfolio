@@ -61,7 +61,7 @@ const socialLinks = [
 const publications = [
   {
     cover: "/images/books/js-ts-jitsuryoku.png",
-    href: "https://www.amazon.co.jp/dp/B0FQ13X48L",
+    href: "https://gihyo.jp/book/2025/978-4-297-15194-2",
     publisher: "技術評論社",
     title: "JavaScript & TypeScript実力強化書",
   },
