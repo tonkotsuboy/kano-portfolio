@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node $PWD/.claude/hooks/tsc.js"
+            "command": "node $PWD/.claude/hooks/tsc.mjs"
           }
         ]
       }
