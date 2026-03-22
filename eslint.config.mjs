@@ -40,6 +40,7 @@ export default defineConfig([
         "node-scripts/**/*",
         "next.config.js",
         "eslint.config.mjs",
+        ".claude/**/*",
     ] },
     js.configs.recommended,
     ...tseslint.configs.recommendedTypeChecked,
