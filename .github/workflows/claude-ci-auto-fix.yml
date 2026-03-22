@@ -60,6 +60,12 @@ jobs:
           node-version-file: ".node-version"
           cache: "pnpm"
 
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Velite content
+        run: pnpm velite build
+
       - name: Get CI failure details
         id: failure_details
         uses: actions/github-script@v7
@@ -129,7 +135,3 @@ jobs:
             6. 修正内容を git commit する
             7. `git push origin <修正用ブランチ名>` でブランチをプッシュする
             8. `gh pr create --base <元のブランチ名> --head <修正用ブランチ名>` で元のフィーチャーブランチへのfixのPRを作成する（タイトルは英語、本文は日本語）
-            4. ローカルでエラーが解消されているか確認する
-            5. 修正内容を git commit する
-            6. `git push origin <修正用ブランチ名>` でブランチをプッシュする
-            7. `gh pr create --base <元のブランチ名> --head <修正用ブランチ名>` で元のフィーチャーブランチへのfixのPRを作成する（タイトルは英語、本文は日本語）
