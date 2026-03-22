@@ -122,8 +122,13 @@ jobs:
 
             ## 修正手順
             1. エラーログを読んで原因を特定する
-            2. 必要なファイルを修正する（lint エラーなら `pnpm lint:next:fix` や `pnpm lint:css:fix` も活用）
-            3. `pnpm install --frozen-lockfile` でセットアップ後、`pnpm velite build` で型定義を生成する
+            2. `pnpm install --frozen-lockfile` で依存関係をインストールする
+            3. `pnpm velite build` で型定義（`.velite/`）を生成する
+            4. 必要なファイルを修正する（lint エラーなら `pnpm lint:next:fix` や `pnpm lint:css:fix` も活用）
+            5. ローカルでエラーが解消されているか確認する
+            6. 修正内容を git commit する
+            7. `git push origin <修正用ブランチ名>` でブランチをプッシュする
+            8. `gh pr create --base <元のブランチ名> --head <修正用ブランチ名>` で元のフィーチャーブランチへのfixのPRを作成する（タイトルは英語、本文は日本語）
             4. ローカルでエラーが解消されているか確認する
             5. 修正内容を git commit する
             6. `git push origin <修正用ブランチ名>` でブランチをプッシュする
