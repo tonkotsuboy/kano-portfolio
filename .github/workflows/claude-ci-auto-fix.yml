@@ -1,0 +1,137 @@
+name: Claude CI Auto Fix
+
+# Lint または Test が失敗したとき、Claude が自動でfixしてPRを作る
+
+on:
+  workflow_run:
+    workflows: ["Lint", "Test"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  auto-fix:
+    # PR上のCIが失敗した場合のみ実行（mainへのpushは除外）
+    # claude-auto-fix-ci-* ブランチ自体が失敗した場合は無限ループを防ぐためスキップ
+    # Dependabot PR はスキップ
+    # リポジトリオーナー以外のPR（フォークPR等）はスキップ
+    if: |
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.pull_requests[0] &&
+      !startsWith(github.event.workflow_run.head_branch, 'claude-auto-fix-ci-') &&
+      github.event.workflow_run.actor.login != 'dependabot[bot]' &&
+      github.event.workflow_run.actor.login == 'tonkotsuboy'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+
+      - name: Setup git identity
+        run: |
+          git config --global user.email "claude[bot]@users.noreply.github.com"
+          git config --global user.name "claude[bot]"
+
+      - name: Create fix branch
+        id: branch
+        env:
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          SAFE_BRANCH=$(echo "${HEAD_BRANCH}" | tr '/' '-')
+          BRANCH_NAME="claude-auto-fix-ci-${SAFE_BRANCH}-${RUN_ID}"
+          git checkout -b "$BRANCH_NAME"
+          echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Velite content
+        run: pnpm velite build
+
+      - name: Get CI failure details
+        id: failure_details
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const workflowRun = context.payload.workflow_run;
+            const jobs = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: workflowRun.id
+            });
+
+            const failedJobs = jobs.data.jobs.filter(job => job.conclusion === 'failure');
+
+            let errorLogs = [];
+            for (const job of failedJobs) {
+              try {
+                const logs = await github.rest.actions.downloadJobLogsForWorkflowRun({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  job_id: job.id
+                });
+                const logText = logs.data;
+                const truncated = logText.length > 10000
+                  ? logText.slice(0, 3000) + '\n...(省略)...\n' + logText.slice(-7000)
+                  : logText;
+                errorLogs.push({ jobName: job.name, logs: truncated });
+              } catch (e) {
+                errorLogs.push({ jobName: job.name, logs: '(ログ取得失敗)' });
+              }
+            }
+
+            return {
+              runUrl: workflowRun.html_url,
+              workflowName: workflowRun.name,
+              failedJobNames: failedJobs.map(j => j.name).join(', '),
+              headBranch: workflowRun.head_branch,
+              prNumber: workflowRun.pull_requests[0]?.number ?? '',
+              errorLogs
+            };
+
+      - name: Fix CI failures with Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: >-
+            --allowedTools "Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(git:*),Bash(pnpm:*),Bash(npx:*),Bash(gh:*)"
+          prompt: |
+            以下のCIが失敗しています。エラーを解析して修正し、コミット後にPRを作成してください。
+
+            ワークフロー: ${{ fromJSON(steps.failure_details.outputs.result).workflowName }}
+            失敗したジョブ: ${{ fromJSON(steps.failure_details.outputs.result).failedJobNames }}
+            失敗したCIのURL: ${{ fromJSON(steps.failure_details.outputs.result).runUrl }}
+            修正用ブランチ: ${{ steps.branch.outputs.branch_name }}
+            元のブランチ名: ${{ fromJSON(steps.failure_details.outputs.result).headBranch }}
+            元のPR番号: ${{ fromJSON(steps.failure_details.outputs.result).prNumber }}
+
+            エラーログ:
+            ${{ toJSON(fromJSON(steps.failure_details.outputs.result).errorLogs) }}
+
+            ## 修正手順
+            1. エラーログを読んで原因を特定する
+            2. `pnpm install --frozen-lockfile` で依存関係をインストールする
+            3. `pnpm velite build` で型定義（`.velite/`）を生成する
+            4. 必要なファイルを修正する（lint エラーなら `pnpm lint:next:fix` や `pnpm lint:css:fix` も活用）
+            5. ローカルでエラーが解消されているか確認する
+            6. 修正内容を git commit する
+            7. `git push origin <修正用ブランチ名>` でブランチをプッシュする
+            8. `gh pr create --base <元のブランチ名> --head <修正用ブランチ名>` で元のフィーチャーブランチへのfixのPRを作成する（タイトルは英語、本文は日本語）
