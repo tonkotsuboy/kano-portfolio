@@ -12,17 +12,14 @@ on:
 
 jobs:
   claude-review:
-    # Optional: Filter by PR author
-    # if: |
-    #   github.event.pull_request.user.login == 'external-contributor' ||
-    #   github.event.pull_request.user.login == 'new-developer' ||
-    #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
+    # Dependabot など bot による PR はスキップ
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
 
     runs-on: ubuntu-latest
     permissions:
       contents: read
       pull-requests: write
-      issues: read
+      issues: write
       id-token: write
 
     steps:
@@ -36,9 +33,23 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
-          plugins: 'code-review@claude-code-plugins'
-          prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }} Please write all review comments in Japanese.'
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
 
+          # レビュー進捗をPRコメントで追跡表示する
+          track_progress: true
+
+          prompt: |
+            このプルリクエストをコードレビューしてください。
+            すべてのレビューコメントは日本語で記述してください。
+
+            以下の観点でレビューしてください：
+            1. **バグ・ロジックエラー** - 実行時エラーや予期しない動作につながる問題
+            2. **セキュリティ** - XSS、インジェクション、機密情報の露出など
+            3. **パフォーマンス** - 不必要な再レンダリング、重い処理、メモリリークなど
+            4. **型安全性** - TypeScript の型エラーや any の不適切な使用
+            5. **コード品質** - 可読性、保守性、プロジェクトの規約（CLAUDE.md）への準拠
+
+            問題が見つかった場合は該当コード行にインラインコメントを投稿してください。
+            全体的な所感はPRトップレベルのコメントで投稿してください。
+
+          claude_args: >-
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
