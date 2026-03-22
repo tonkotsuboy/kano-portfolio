@@ -12,13 +12,13 @@ permissions:
   contents: write
   pull-requests: write
   actions: read
-  issues: write
 
 jobs:
   auto-fix:
     # PR上のCIが失敗した場合のみ実行（mainへのpushは除外）
     # claude-auto-fix-ci-* ブランチ自体が失敗した場合は無限ループを防ぐためスキップ
     # Dependabot PR はスキップ
+    # リポジトリオーナー以外のPR（フォークPR等）はスキップ
     if: |
       github.event.workflow_run.conclusion == 'failure' &&
       github.event.workflow_run.pull_requests[0] &&
@@ -32,7 +32,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_branch }}
+          ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 0
 
       - name: Setup git identity
@@ -44,12 +44,21 @@ jobs:
         id: branch
         env:
           HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
-          RUN_ID: ${{ github.run_id }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
         run: |
           SAFE_BRANCH=$(echo "${HEAD_BRANCH}" | tr '/' '-')
           BRANCH_NAME="claude-auto-fix-ci-${SAFE_BRANCH}-${RUN_ID}"
           git checkout -b "$BRANCH_NAME"
           echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".node-version"
+          cache: "pnpm"
 
       - name: Get CI failure details
         id: failure_details
@@ -87,6 +96,7 @@ jobs:
               runUrl: workflowRun.html_url,
               workflowName: workflowRun.name,
               failedJobNames: failedJobs.map(j => j.name).join(', '),
+              headBranch: workflowRun.head_branch,
               prNumber: workflowRun.pull_requests[0]?.number ?? '',
               errorLogs
             };
@@ -104,6 +114,7 @@ jobs:
             失敗したジョブ: ${{ fromJSON(steps.failure_details.outputs.result).failedJobNames }}
             失敗したCIのURL: ${{ fromJSON(steps.failure_details.outputs.result).runUrl }}
             修正用ブランチ: ${{ steps.branch.outputs.branch_name }}
+            元のブランチ名: ${{ fromJSON(steps.failure_details.outputs.result).headBranch }}
             元のPR番号: ${{ fromJSON(steps.failure_details.outputs.result).prNumber }}
 
             エラーログ:
@@ -114,4 +125,4 @@ jobs:
             2. 必要なファイルを修正する（lint エラーなら `pnpm lint:next:fix` や `pnpm lint:css:fix` も活用）
             3. `pnpm install --frozen-lockfile` でセットアップ後、ローカルでエラーが解消されているか確認
             4. 修正内容を git commit する
-            5. `gh pr create` で元のPRへのfixのPRを作成する（タイトルは英語、本文は日本語）
+            5. `gh pr create --base <元のブランチ名>` で元のフィーチャーブランチへのfixのPRを作成する（タイトルは英語、本文は日本語）
