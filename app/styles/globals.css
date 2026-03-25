@@ -322,24 +322,6 @@
     color: var(--text-inverse);
   }
 
-  /* Skip Navigation */
-  .skip-nav {
-    position: absolute;
-    top: -100%;
-    left: 50%;
-    z-index: 1000;
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-sm);
-    background: var(--liquid-primary);
-    color: var(--text-inverse);
-    font-weight: 600;
-    text-decoration: none;
-    transform: translateX(-50%);
-  }
-
-  .skip-nav:focus {
-    top: var(--space-xs);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

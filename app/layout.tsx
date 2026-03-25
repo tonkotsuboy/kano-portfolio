@@ -85,9 +85,6 @@ export default function RootLayout({
   return (
     <html lang="ja" className={clsx(inter.variable, notoSansJP.variable)} suppressHydrationWarning>
       <body>
-        <a href="#main-content" className="skip-nav">
-          メインコンテンツへスキップ
-        </a>
         <ThemeProvider>{children}</ThemeProvider>
         <ServiceWorkerRegister />
       </body>

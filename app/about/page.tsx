@@ -117,7 +117,7 @@ const AboutPage: NextPage = () => {
   return (
     <div className={styles.shell}>
       <Header />
-      <main id="main-content" className={styles.main}>
+      <main className={styles.main}>
         <div className={styles.page}>
           {/* Profile Hero */}
           <div className={styles.profileHero}>

@@ -12,7 +12,7 @@ export default function ErrorPage({
   return (
     <div className={styles.shell}>
       <Header />
-      <main id="main-content" className={styles.main}>
+      <main className={styles.main}>
         <div className={styles.page}>
           <p className={styles.code}>Error</p>
           <h1 className={styles.title}>問題が発生しました</h1>
