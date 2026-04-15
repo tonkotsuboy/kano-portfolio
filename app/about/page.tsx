@@ -216,7 +216,7 @@ const AboutPage: NextPage = () => {
                 鹿野 壮（かの たけし）といいます。
               </p>
               <p className={styles.bioText}>
-                九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でStaff Product Engineerとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。2025年5月にClaude Codeにタスク丸投げおじさんとして転生しました。。勉強会・技術SNS・Xなどで積極的に技術情報を発信中。
+                九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でStaff Product Engineerとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。2025年5月にClaude Codeにタスク丸投げおじさんとして転生しました。勉強会・技術SNS・Xなどで積極的に技術情報を発信中。
               </p>
               <p className={styles.bioText}>
                 CSS Niteベストセッション受賞。「JavaScriptコードレシピ集」著者。TechFeed Proプロダクトアドバイザー・公認エキスパート。
