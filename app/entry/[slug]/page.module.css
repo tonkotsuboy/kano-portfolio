@@ -56,7 +56,7 @@
   max-width: 960px;
   padding: clamp(var(--space-sm), 3vw, var(--space-lg));
   border: 1px solid var(--glass-card-border);
-  border-radius: 24px;
+  border-radius: var(--radius-lg);
   margin: 0 auto;
   background: color-mix(in srgb, var(--glass-card-bg) 95%, transparent);
   box-shadow: var(--shadow-rest);

@@ -19,7 +19,7 @@
 | Token | Hex | Role |
 |---|---|---|
 | `--liquid-primary` | `#F5B400` | キーカラー・フォーカスリング・アクティブ状態 |
-| `--liquid-primary-vibrant` | `#FFBE0A` | ボタングラデのハイライト |
+| `--liquid-primary-vibrant` | `#FFBE0A` | リンクホバー・アクセント強調 |
 | `--liquid-primary-dark` | `#C98A00` | カテゴリラベルのテキスト |
 
 ### Neutrals
