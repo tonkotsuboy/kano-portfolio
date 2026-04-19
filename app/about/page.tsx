@@ -122,7 +122,7 @@ const AboutPage: NextPage = () => {
           {/* Profile Hero */}
           <div className={styles.profileHero}>
             <h1 className={styles.name}>鹿野 壮（たけし）</h1>
-            <p className={styles.role}>Product Engineer @ Ubie</p>
+            <p className={styles.role}>Staff Product Engineer @ Ubie</p>
             <div className={styles.photoGrid}>
               <div className={styles.photoGridTop}>
                 <div className={styles.photoCell}>
@@ -216,10 +216,10 @@ const AboutPage: NextPage = () => {
                 鹿野 壮（かの たけし）といいます。
               </p>
               <p className={styles.bioText}>
-                九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でプロダクトエンジニアとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。勉強会・技術SNS・Twitterなどで積極的に技術情報を発信中。
+                九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でStaff Product Engineerとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。2025年5月にClaude Codeにタスク丸投げおじさんとして転生しました。勉強会・技術SNS・Xなどで積極的に技術情報を発信中。
               </p>
               <p className={styles.bioText}>
-                CSS Nite 2017〜2019ベストセッション受賞。TechFeed Proプロダクトアドバイザー・公認エキスパート。
+                CSS Niteベストセッション受賞。「JavaScriptコードレシピ集」著者。TechFeed Proプロダクトアドバイザー・公認エキスパート。
               </p>
             </div>
           </section>
