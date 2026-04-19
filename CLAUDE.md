@@ -1,33 +1,17 @@
-# CLAUDE.md
+鹿野壮（[@tonkotsuboy_com](https://x.com/tonkotsuboy_com)）のポートフォリオサイト。
+全アウトプット、各種連絡先、登壇資料などの情報をまとめている。
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+- 名前: 鹿野壮
+- Xアカウント: tonkotsuboy_com
+- GitHubアカウント: tonkotsuboy
 
-鹿野壮（[@tonkotsuboy_com](https://x.com/tonkotsuboy_com)）のポートフォリオサイト。Next.js 15 App Router / React 19 / TypeScript 5 / CSS Modules で構築。
+## Tech Stack
 
-## Commands
+Next.js 15 (App Router) / React 19 / TypeScript / CSS Modules / Velite / Vitest / pnpm
 
-```bash
-pnpm dev              # 開発サーバー起動（tcm + next dev が自動実行）
-pnpm build            # プロダクションビルド（tcm + velite build + next build）
-pnpm test             # Vitest でテスト実行
-pnpm run tcm          # CSS Modules の .css.d.ts 型定義を生成
-pnpm velite build     # コンテンツをビルド（テスト実行前に必要）
-pnpm lint:next:fix    # ESLint 自動修正
-pnpm lint:css:fix     # Stylelint 自動修正
-pnpm markuplint       # HTML/JSX markup lint
-pnpm storybook        # Storybook 起動
-```
+## Velite
 
-## Key constraints
-
-- CSS Modules を変更したら `pnpm run tcm` で型定義を再生成すること（ビルド型エラーの主原因）
-- 記事データの型は `.velite/` から import（`import type { Post } from "@/.velite"`）
-
-## Branch / Commit
-
-- ブランチ名: `feat/xxx`, `fix/xxx`, `chore/xxx` 等（Conventional 形式）
-- コミットメッセージ: Conventional Commits 形式 + 日本語説明
-  例: `feat: Discord リモートコントロール記事を追加`
+記事データは `content/posts/*.md` → Velite → `.velite/` にビルドされる。型は `.velite/` から import（`import type { Post } from "@/.velite"`）
 
 ## デザインシステム
 
