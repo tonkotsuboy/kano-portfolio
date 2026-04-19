@@ -153,7 +153,7 @@
 ### Quick Color Reference
 ```
 Primary yellow: #F5B400    (key color, focus)
-Vibrant:        #FFBE0A    (button gradient top)
+Vibrant:        #FFBE0A    (link hover, accent emphasis)
 Dark yellow:    #C98A00    (category text)
 Text primary:   #1F2937    (body, headings)
 Text secondary: #6B7280    (meta)
