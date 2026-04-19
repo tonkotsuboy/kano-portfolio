@@ -14,20 +14,6 @@
   gap: var(--space-xs);
 }
 
-.breadcrumb {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  padding: var(--space-xs) var(--space-xs);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--color-muted) 60%, transparent);
-  color: var(--color-muted-foreground);
-  font-size: 0.75rem;
-  font-weight: 600;
-  gap: var(--space-xs);
-  letter-spacing: 0.04em;
-}
-
 .medium {
   width: fit-content;
   padding: var(--space-xs) var(--space-xs);
@@ -234,10 +220,3 @@
   word-break: break-all;
 }
 
-.footerWrap {
-  display: grid;
-  max-width: 960px;
-  padding: 0 clamp(var(--space-sm), 4vw, var(--space-lg)) var(--space-2xl);
-  margin: var(--space-lg) auto 0;
-  gap: var(--space-xs);
-}
