@@ -33,16 +33,18 @@
 
 ### Glass Surface
 
-- Card: `rgba(255, 255, 255, 0.50)` + `blur(20px) saturate(180%)`
+- Card: `rgba(255, 255, 255, 0.50)` + `blur(12px)`（カード・ピル共通の中央値）
 - Border: `rgba(255, 255, 255, 0.70)`
 - Dark card: `rgba(30, 30, 35, 0.50)` + border `rgba(255, 255, 255, 0.10)`
+- `saturate(180%)` はヘッダー / メニュー等のクローム要素専用（カードには使わない）
 
 ### Ambient Background Field
 
 `#EEF2F7` の上に、径方向グラデを重ねた静的メッシュ：
 - Blue orb: `rgba(219, 234, 254, 0.60)` @ 20% 20%
 - Yellow orb: `rgba(245, 180, 0, 0.14)` @ 80% 10%
-- Violet orb: `rgba(237, 233, 254, 0.30)` @ 70% 80%
+- Green orb: `rgba(209, 250, 229, 0.30)` @ 90% 80%
+- Violet orb: `rgba(237, 233, 254, 0.30)` @ 10% 90%
 
 ## 3. Typography Rules
 
@@ -67,9 +69,9 @@
 
 ### Glass Card (`.ds-glass`)
 - bg: `--glass-card-bg` / border: `--glass-card-border` / radius: `28px`
-- `backdrop-filter: blur(20px) saturate(180%)`
+- `backdrop-filter: blur(12px)`（`saturate(180%)` は不要、ヘッダー系専用）
 - shadow (rest): `0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)` + `inset 0 1px 0 rgba(255,255,255,0.9)`
-- **Hover**: border → `rgba(234, 179, 8, 0.30)`, shadow → elevated, title → `--liquid-primary`
+- **Hover**: border → `rgba(245, 180, 0, 0.30)`, shadow → elevated, title → `--liquid-primary`
 
 ### Primary Button (`.ds-btn-primary`)
 - bg: `linear-gradient(180deg, #FFDD66, #F5B400)` / text: `#1a1400`
@@ -136,7 +138,7 @@
 - 派手な色面・原色の大面積使用
 - 手書きイラスト、反復パターン背景
 - 本文以外での下線装飾
-- `FFF1B8` Soft yellow、`FF375F` Accent（現状未使用）を新規に持ち込まない
+- `FFF1B8` Soft yellow を新規に持ち込まない（`FF375F` Accent は `app/error.module.css` で使用中）
 
 ## 8. Responsive Behavior
 
