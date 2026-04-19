@@ -1,7 +1,7 @@
 ---
 title: "gh skillが登場。GitHub公式のスキル管理ツールにnpx skillsから乗り換えた"
 slug: "gh-skill-install-agent-skills"
-date: "2026-04-19T00:00+09:00"
+date: "2026-04-17T00:00+09:00"
 published: true
 tags: []
 categories: []
