@@ -94,6 +94,12 @@
 - bg: `--glass-card-bg`, border: `--glass-card-border`, radius: `9999px`
 - Focus: `border-color: --liquid-primary` + yellow glow
 
+### Reusable React Components
+- `app/components/ui/GlassSurface/` — 汎用ガラスパネル
+- `app/components/ui/LiquidGlassBox/` — カード系レイアウト用のラッパー
+
+新しいガラス面を実装する前にこの 2 つで足りないか先に確認すること。
+
 ## 5. Layout Principles
 
 - Max-width: **900px** (記事一覧) / **640px** (ABOUT) / **560px** (CONTACT) / **1400px** (ヘッダー)
