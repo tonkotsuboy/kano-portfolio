@@ -41,7 +41,7 @@
 
 `#EEF2F7` の上に、径方向グラデを重ねた静的メッシュ：
 - Blue orb: `rgba(219, 234, 254, 0.60)` @ 20% 20%
-- Yellow orb: `rgba(245, 180, 0, 0.14)` @ 85% 15%
+- Yellow orb: `rgba(245, 180, 0, 0.14)` @ 80% 10%
 - Violet orb: `rgba(237, 233, 254, 0.30)` @ 70% 80%
 
 ## 3. Typography Rules
@@ -74,7 +74,7 @@
 ### Primary Button (`.ds-btn-primary`)
 - bg: `linear-gradient(180deg, #FFDD66, #F5B400)` / text: `#1a1400`
 - radius: `9999px`, padding: `10px 20px`, weight: 700
-- shadow: `inset 0 1px 0 rgba(255,255,255,0.6), 0 8px 24px rgba(245,180,0,0.28)` (glow-yellow)
+- shadow: `inset 0 1px 0 rgba(255,255,255,0.6)` + `var(--glow-yellow)`
 - **Hover**: `translateY(-1px)` + glow 強化 / **Active**: `scale(0.98)`
 
 ### Nav (Apple Finder-style)
