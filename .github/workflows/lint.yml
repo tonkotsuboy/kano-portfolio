@@ -29,3 +29,5 @@ jobs:
         run: pnpm lint:next:fix
       - name: Run Stylelint
         run: pnpm lint:css:fix
+      - name: Check unused CSS class selectors
+        run: pnpm check:unused-css
