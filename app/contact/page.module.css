@@ -54,7 +54,7 @@
   border-radius: var(--radius-md);
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
-  box-shadow: 0 2px 8px var(--glass-shadow-light);
+  box-shadow: var(--shadow-rest);
   color: inherit;
   gap: var(--space-md);
   text-decoration: none;

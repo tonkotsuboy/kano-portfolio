@@ -7,6 +7,7 @@
   "scripts": {
     "build": "npm run tcm && velite build && next build",
     "build-storybook": "storybook build",
+    "check:unused-css": "node check-unused-css.mjs",
     "dev": "npm run tcm && next dev",
     "lint:css:fix": "stylelint \"**/*.module.css\" --fix",
     "lint:next:fix": "eslint --fix .",
@@ -56,6 +57,7 @@
     "knip": "^5.88.1",
     "markuplint": "^4.14.1",
     "prettier": "^3.8.3",
+    "purgecss": "^8.0.0",
     "storybook": "10.3.5",
     "stylelint": "^16.26.1",
     "stylelint-config-idiomatic-order": "^10.0.0",

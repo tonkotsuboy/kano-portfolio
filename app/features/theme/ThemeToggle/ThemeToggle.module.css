@@ -57,7 +57,7 @@
   animation: menuFadeIn 0.15s ease-out;
   backdrop-filter: blur(20px) saturate(200%);
   background: var(--glass-bg-strong);
-  box-shadow: var(--glass-shadow-medium);
+  box-shadow: var(--shadow-elevated);
   list-style: none;
 }
 
