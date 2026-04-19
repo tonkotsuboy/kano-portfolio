@@ -52,7 +52,7 @@
   overflow: hidden;
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px var(--glass-shadow-light);
+  box-shadow: var(--shadow-rest);
 }
 
 .photo {

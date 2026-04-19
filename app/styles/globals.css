@@ -13,9 +13,6 @@
     --glass-bg-medium: rgba(255, 255, 255, 0.5);
     --glass-bg-strong: rgba(255, 255, 255, 0.85);
     --glass-border: rgba(255, 255, 255, 0.8);
-    --glass-shadow-light: rgba(0, 0, 0, 0.05);
-    --glass-shadow-medium: rgba(0, 0, 0, 0.08);
-    --glass-shadow-strong: rgba(0, 0, 0, 0.12);
 
     /* Background */
     --bg-primary: #eef2f7;
@@ -109,9 +106,6 @@
     --glass-bg-medium: rgba(30, 30, 35, 0.5);
     --glass-bg-strong: rgba(30, 30, 35, 0.85);
     --glass-border: rgba(255, 255, 255, 0.15);
-    --glass-shadow-light: rgba(0, 0, 0, 0.3);
-    --glass-shadow-medium: rgba(0, 0, 0, 0.4);
-    --glass-shadow-strong: rgba(0, 0, 0, 0.5);
 
     /* Background */
     --bg-primary: #0b1021;
@@ -259,7 +253,7 @@
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
     box-shadow:
-      0 8px 32px var(--glass-shadow-light),
+      var(--shadow-rest),
       inset 0 1px 0 var(--highlight-top),
       inset 0 -1px 0 rgba(0, 0, 0, 0.05);
     position: relative;
