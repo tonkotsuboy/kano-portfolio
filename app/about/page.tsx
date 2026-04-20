@@ -14,7 +14,7 @@ import styles from "./page.module.css";
 
 import type { Metadata, NextPage } from "next";
 
-const aboutDescription = "鹿野壮（Takeshi Kano）のプロフィール。TypeScript・CSSを軸にプロダクト開発と執筆・登壇を行うフロントエンドエンジニア。著書・登壇・インタビュー情報を掲載。";
+const aboutDescription = "鹿野壮（Takeshi Kano）のプロフィール。TypeScript・CSSを軸にプロダクト開発と執筆・登壇を行うStaff Product Engineer。著書・登壇・インタビュー情報を掲載。";
 
 export const metadata: Metadata = {
   alternates: {
@@ -122,7 +122,7 @@ const AboutPage: NextPage = () => {
           {/* Profile Hero */}
           <div className={styles.profileHero}>
             <h1 className={styles.name}>鹿野 壮（たけし）</h1>
-            <p className={styles.role}>Staff Product Engineer @ Ubie</p>
+            <p className={styles.role}>Staff Product Engineer</p>
             <div className={styles.photoGrid}>
               <div className={styles.photoGridTop}>
                 <div className={styles.photoCell}>
