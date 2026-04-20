@@ -36,12 +36,15 @@ function runTypeCheck(configPath) {
   const parsed = ts.parseJsonConfigFileContent(
     configFile.config,
     parseConfigHost,
-    path.dirname(configPath)
+    path.resolve(path.dirname(configPath))
   );
 
-  // Override to ensure no emit
+  // Override to ensure no emit. Strip incremental/tsBuildInfoFile so
+  // createProgram doesn't emit TS5074 (which cascades into false module
+  // resolution errors like `Cannot find module '@/.velite'`).
+  const { incremental: _incremental, tsBuildInfoFile: _tsBuildInfoFile, ...baseOptions } = parsed.options;
   const compilerOptions = {
-    ...parsed.options,
+    ...baseOptions,
     noEmit: true,
   };
 
