@@ -23,7 +23,7 @@
     "dayjs": "^1.11.20",
     "lucide-react": "^0.556.0",
     "marked": "^17.0.6",
-    "next": "^15.5.15",
+    "next": "^16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "rehype-autolink-headings": "^7.1.0",
