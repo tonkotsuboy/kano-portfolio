@@ -19,7 +19,7 @@
   padding: var(--space-xs) var(--space-xs);
   border-radius: 999px;
   background: color-mix(in srgb, var(--liquid-primary) 14%, transparent);
-  color: var(--liquid-primary);
+  color: var(--liquid-primary-accessible);
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -116,7 +116,7 @@
   }
 
   a {
-    color: var(--liquid-primary);
+    color: var(--liquid-primary-accessible);
     font-weight: 600;
     text-decoration: underline;
   }
@@ -165,7 +165,7 @@
 }
 
 .rawLink {
-  color: var(--liquid-primary);
+  color: var(--liquid-primary-accessible);
   word-break: break-all;
 }
 

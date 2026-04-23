@@ -44,11 +44,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #7a5200; /* WCAG AA: 6.06:1 on light bg */
-}
-
-:global([data-theme="dark"]) .eyebrow {
-  color: var(--liquid-primary-dark);
+  color: var(--liquid-primary-accessible);
 }
 
 .sectionTitle {
@@ -132,12 +128,8 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #7a5200; /* WCAG AA: 6.06:1 on light bg */
+  color: var(--liquid-primary-accessible);
   text-transform: uppercase;
-}
-
-:global([data-theme="dark"]) .dateMon {
-  color: var(--liquid-primary-dark);
 }
 
 .dateDay {
@@ -153,10 +145,6 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: #636a76; /* WCAG AA: 5.07:1 on light card bg */
-}
-
-:global([data-theme="dark"]) .dateYear {
   color: var(--text-tertiary);
 }
 

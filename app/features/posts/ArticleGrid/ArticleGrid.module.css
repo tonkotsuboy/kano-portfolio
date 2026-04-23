@@ -30,12 +30,8 @@
 .sectionSub {
   font-size: 0.875rem;
   font-weight: 400;
-  color: #636a76; /* WCAG AA: 4.73:1 on light bg; overridden in dark mode below */
+  color: var(--text-tertiary);
   margin: 0;
-}
-
-:global([data-theme="dark"]) .sectionSub {
-  color: var(--text-secondary);
 }
 
 /* Search & Filter */
@@ -108,11 +104,12 @@
 .tagActive {
   border-color: var(--liquid-primary);
   background: var(--liquid-primary);
-  color: var(--text-inverse);
+  color: var(--text-on-yellow);
 }
 
 .tagActive:hover {
   background: var(--liquid-primary-vibrant);
+  color: var(--text-on-yellow);
 }
 
 /* Article List */
@@ -242,7 +239,7 @@
   border: 1px solid var(--glass-card-border);
   border-radius: 6px;
   background: var(--glass-bg-medium);
-  color: var(--liquid-primary);
+  color: var(--liquid-primary-accessible);
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.06em;

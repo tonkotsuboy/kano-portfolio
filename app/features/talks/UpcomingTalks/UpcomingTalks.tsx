@@ -30,7 +30,6 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
       target="_blank"
       rel="noreferrer"
       className={styles.card}
-      aria-label={`${talk.title}（${talk.eventName}）の申し込みページを開く`}
     >
       {/* Row 1: Thumbnail */}
       <div className={styles.thumb}>

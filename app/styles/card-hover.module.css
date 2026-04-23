@@ -39,5 +39,5 @@
 
 .card:hover .arrow {
   background: var(--liquid-primary);
-  color: var(--text-inverse);
+  color: var(--text-on-yellow);
 }
