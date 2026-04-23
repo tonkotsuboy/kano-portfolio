@@ -45,9 +45,9 @@ describe("filterUpcomingTalks", () => {
 
   test("複数の登壇が混在する場合、条件を満たすものだけ返す", () => {
     const talks = [
-      makeTalk("2026-04-01T10:00:00Z"),  // expired (30+ days ago)
-      makeTalk("2026-05-01T10:00:00Z"),  // today (visible)
-      makeTalk("2026-05-15T10:00:00Z"),  // future (visible)
+      makeTalk("2026-04-01T10:00:00Z"), // expired (30+ days ago)
+      makeTalk("2026-05-01T10:00:00Z"), // today (visible)
+      makeTalk("2026-05-15T10:00:00Z"), // future (visible)
       makeTalk("2026-04-29T10:00:00Z", false), // unpublished
     ];
     const result = filterUpcomingTalks(talks, now);

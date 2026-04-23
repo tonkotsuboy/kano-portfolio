@@ -28,7 +28,7 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
     <a
       href={talk.registerUrl ?? "#"}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noreferrer"
       className={styles.card}
       aria-label={`${talk.title}（${talk.eventName}）の申し込みページを開く`}
     >
