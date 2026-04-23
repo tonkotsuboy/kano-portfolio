@@ -67,7 +67,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: var(--space-md);
-  row-gap: 8px;
+  row-gap: var(--space-xs);
 }
 
 /* Each card is a direct grid child spanning 4 rows via subgrid */
