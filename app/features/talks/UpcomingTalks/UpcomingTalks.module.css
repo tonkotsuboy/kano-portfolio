@@ -14,8 +14,8 @@
 .sectionHead {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   margin-bottom: var(--space-md);
+  gap: 10px;
 }
 
 .eyebrowRow {
@@ -29,9 +29,9 @@
   width: 8px;
   height: 8px;
   border-radius: var(--radius-full);
+  animation: pulse 2.4s var(--ease-liquid) infinite;
   background: var(--liquid-primary);
   box-shadow: 0 0 0 4px rgb(245 180 0 / 18%);
-  animation: pulse 2.4s var(--ease-liquid) infinite;
 }
 
 @keyframes pulse {
@@ -40,23 +40,24 @@
 }
 
 .eyebrow {
+  color: var(--liquid-primary-accessible);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--liquid-primary-accessible);
 }
 
 .sectionTitle {
+  margin: 0;
+  color: var(--text-primary);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.25;
-  margin: 0;
-  color: var(--text-primary);
 }
 
 /* ---- Subgrid card grid ---- */
+
 /*
  * CSS Subgrid technique: parent defines columns, each card spans 4 implicit rows.
  * grid-template-rows: subgrid on the card makes all 4 internal rows align across cards.
@@ -65,36 +66,35 @@
  */
 .grid {
   display: grid;
+  gap: var(--space-md) var(--space-md);
   grid-template-columns: repeat(2, 1fr);
-  column-gap: var(--space-md);
-  row-gap: var(--space-xs);
 }
 
 /* Each card is a direct grid child spanning 4 rows via subgrid */
 .card {
   display: grid;
-  grid-row: span 4;
-  grid-template-rows: subgrid;
-  text-decoration: none;
-  color: inherit;
+  overflow: hidden;
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-lg);
-  background: var(--glass-card-bg);
   backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
   box-shadow:
     inset 0 1px 0 var(--highlight-top),
     inset 0 -1px 0 rgb(0 0 0 / 4%),
     0 4px 24px rgb(0 0 0 / 5%);
-  overflow: hidden;
+  color: inherit;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  text-decoration: none;
 }
 
 /* Row 1: Thumbnail */
 .thumb {
   position: relative;
-  margin: 14px 14px 0;
-  border-radius: 14px;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
+  border-radius: 14px;
+  margin: 14px 14px 0;
+  aspect-ratio: 16 / 9;
   background: var(--bg-gradient-1);
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
 }
@@ -105,36 +105,35 @@
 
 .thumbPlaceholder {
   position: absolute;
-  inset: 0;
   background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+  inset: 0;
 }
 
 /* Row 2: Date */
 .date {
   display: block;
+  align-self: start;
   padding: 0 18px;
   color: var(--liquid-primary-accessible);
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  align-self: start;
 }
 
 /* Row 3: Title */
 .title {
-  padding: 0 18px 0;
-  margin: 0;
-  overflow: hidden;
-  color: var(--text-primary);
   display: -webkit-box;
+  overflow: hidden;
+  padding: 0 18px;
+  margin: 0;
+  -webkit-box-orient: vertical;
+  color: var(--text-primary);
   font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: -0.005em;
+  -webkit-line-clamp: 3;
   line-height: 1.55;
   text-wrap: pretty;
-
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 /* Row 4: Footer */
@@ -146,17 +145,17 @@
 
 .registerBtn {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
-  gap: 5px;
   padding: 7px 14px;
   border-radius: var(--radius-full);
   background: var(--text-primary);
   color: var(--bg-primary);
   font-size: 12px;
   font-weight: 700;
+  gap: 5px;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 /* Responsive */
