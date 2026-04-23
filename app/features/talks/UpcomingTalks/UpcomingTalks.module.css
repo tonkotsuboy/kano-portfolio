@@ -85,6 +85,7 @@
   color: inherit;
   grid-row: span 4;
   grid-template-rows: subgrid;
+  row-gap: var(--space-xs);
   text-decoration: none;
 }
 
