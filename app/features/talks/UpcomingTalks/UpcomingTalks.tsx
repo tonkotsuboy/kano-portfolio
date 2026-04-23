@@ -39,7 +39,7 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
         {hasThumbnail ? (
           <Image
             src={talk.thumbnail}
-            alt={talk.title}
+            alt=""
             fill
             className={styles.thumbImg}
             sizes="(max-width: 768px) 100vw, 50vw"
