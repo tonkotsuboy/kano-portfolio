@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import Image from "next/image";
 
 import styles from "./UpcomingTalks.module.css";
@@ -6,8 +5,19 @@ import styles from "./UpcomingTalks.module.css";
 import type { Talk } from "@/.velite";
 import type { FC } from "react";
 
+const jstFormatter = new Intl.DateTimeFormat("ja-JP", {
+  timeZone: "Asia/Tokyo",
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+});
+
 function formatDate(dateStr: string): string {
-  return dayjs(dateStr).format("YYYY年M月D日");
+  const parts = jstFormatter.formatToParts(new Date(dateStr));
+  const y = parts.find((p) => p.type === "year")?.value ?? "";
+  const m = parts.find((p) => p.type === "month")?.value ?? "";
+  const d = parts.find((p) => p.type === "day")?.value ?? "";
+  return `${y}年${m}月${d}日`;
 }
 
 type CardProps = {
@@ -19,7 +29,7 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
 
   return (
     <a
-      href={talk.registerUrl ?? "#"}
+      href={talk.registerUrl}
       target="_blank"
       rel="noreferrer"
       className={styles.card}

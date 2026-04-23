@@ -58,6 +58,8 @@
 
     /* Animation Timing */
     --ease-liquid: cubic-bezier(0.4, 0.0, 0.2, 1);
+    --dur-fast: 0.15s;
+    --dur-base: 0.2s;
 
     /* Spacing System */
     --space-3xs: 0.25rem;

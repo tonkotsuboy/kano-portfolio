@@ -13,6 +13,8 @@ import type { Metadata } from "next";
 
 import { posts, talks } from "@/.velite";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   alternates: {
     canonical: SiteUrl,

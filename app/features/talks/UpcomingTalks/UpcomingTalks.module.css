@@ -78,7 +78,7 @@
   text-decoration: none;
   color: inherit;
   border: 1px solid var(--glass-card-border);
-  border-radius: 24px;
+  border-radius: var(--radius-lg);
   background: var(--glass-card-bg);
   backdrop-filter: blur(12px);
   box-shadow:
@@ -86,15 +86,6 @@
     inset 0 -1px 0 rgb(0 0 0 / 4%),
     0 4px 24px rgb(0 0 0 / 5%);
   overflow: hidden;
-  transition:
-    background var(--dur-base) var(--ease-liquid),
-    border-color var(--dur-base) var(--ease-liquid),
-    box-shadow var(--dur-base) var(--ease-liquid);
-}
-
-.card:hover {
-  background: var(--glass-card-hover-bg);
-  border-color: var(--glass-card-hover-border);
 }
 
 /* Row 1: Thumbnail */
@@ -133,16 +124,17 @@
 .title {
   padding: 0 18px 0;
   margin: 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  display: -webkit-box;
   font-size: 1.0625rem;
   font-weight: 700;
-  line-height: 1.55;
   letter-spacing: -0.005em;
-  color: var(--text-primary);
+  line-height: 1.55;
   text-wrap: pretty;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
+
   -webkit-box-orient: vertical;
-  overflow: hidden;
+  -webkit-line-clamp: 3;
 }
 
 /* Row 4: Footer */
@@ -165,14 +157,6 @@
   letter-spacing: 0.02em;
   white-space: nowrap;
   flex-shrink: 0;
-  transition:
-    background var(--dur-fast) var(--ease-liquid),
-    transform var(--dur-fast) var(--ease-liquid);
-}
-
-.card:hover .registerBtn {
-  background: var(--liquid-primary-dark);
-  transform: translateY(-1px);
 }
 
 /* Responsive */

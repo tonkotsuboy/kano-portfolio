@@ -36,7 +36,7 @@ export default defineConfig({
         date: s.isodate(),
         eventName: s.string(),
         published: s.boolean().default(true),
-        registerUrl: s.string().optional(),
+        registerUrl: s.string(),
         slug: s.string(),
         thumbnail: s.string().default(""),
         title: s.string(),
