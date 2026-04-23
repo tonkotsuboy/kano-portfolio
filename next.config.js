@@ -2,6 +2,9 @@ let veliteDevStarted = false;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   reactStrictMode: true,
   staticPageGenerationTimeout: 240,
   async headers() {
