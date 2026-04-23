@@ -16,7 +16,8 @@
     "storybook": "storybook dev -p 6006",
     "tcm": "tcm app",
     "tcm:watch": "tcm app --watch",
-    "test": "vitest run"
+    "test": "vitest run",
+    "chromatic": "chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
   },
   "dependencies": {
     "clsx": "^2.1.1",
