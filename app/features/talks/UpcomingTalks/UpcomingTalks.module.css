@@ -60,12 +60,14 @@
 /*
  * CSS Subgrid technique: parent defines columns, each card spans 4 implicit rows.
  * grid-template-rows: subgrid on the card makes all 4 internal rows align across cards.
+ * row-gap applies equally to internal card rows and between-card rows.
  * Reference: https://zenn.dev/tonkotsuboy_com/articles/css-subgrid-all-browsers
  */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
+  column-gap: var(--space-md);
+  row-gap: var(--space-md);
 }
 
 /* Each card is a direct grid child spanning 4 rows via subgrid */
@@ -116,41 +118,25 @@
   background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
 }
 
-/* Date header — prominent date above title */
-.dateHeader {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 16px 18px 0;
-}
-
-.dateMon {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+/* Row 2: Date chip — key-color highlighted badge */
+.date {
+  display: block;
+  width: fit-content;
+  padding: 4px 12px;
+  margin: 0 14px;
+  border: 1px solid rgb(245 180 0 / 22%);
+  border-radius: var(--radius-full);
+  background: rgb(245 180 0 / 12%);
   color: var(--liquid-primary-accessible);
-  text-transform: uppercase;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  align-self: start;
 }
 
-.dateDay {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.dateYear {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--text-tertiary);
-}
-
-/* Row 2: Title */
+/* Row 3: Title */
 .title {
-  padding: 16px 18px 0;
+  padding: 0 18px 0;
   margin: 0;
   font-size: 1.0625rem;
   font-weight: 700;
@@ -168,7 +154,7 @@
 .footRow {
   display: flex;
   align-items: center;
-  padding: 10px 18px 18px;
+  padding: 0 18px 18px;
 }
 
 .registerBtn {

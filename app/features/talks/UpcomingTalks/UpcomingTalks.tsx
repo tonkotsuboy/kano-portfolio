@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import Image from "next/image";
 
 import styles from "./UpcomingTalks.module.css";
@@ -5,15 +6,8 @@ import styles from "./UpcomingTalks.module.css";
 import type { Talk } from "@/.velite";
 import type { FC } from "react";
 
-const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] as const;
-
-function formatDateTile(dateStr: string): { day: string; mon: string; year: number } {
-  const d = new Date(dateStr);
-  return {
-    day: String(d.getDate()).padStart(2, "0"),
-    mon: MONTHS[d.getMonth()] ?? "",
-    year: d.getFullYear(),
-  };
+function formatDate(dateStr: string): string {
+  return dayjs(dateStr).format("YYYY年M月D日");
 }
 
 type CardProps = {
@@ -21,7 +15,6 @@ type CardProps = {
 }
 
 const TalkCard: FC<CardProps> = ({ talk }) => {
-  const tile = formatDateTile(talk.date);
   const hasThumbnail = talk.thumbnail.length > 0;
 
   return (
@@ -46,11 +39,9 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
         )}
       </div>
 
-      {/* Row 2: Date header (prominent, above title) */}
-      <time className={styles.dateHeader} dateTime={talk.date}>
-        <span className={styles.dateMon}>{tile.mon}</span>
-        <span className={styles.dateDay}>{tile.day}</span>
-        <span className={styles.dateYear}>{tile.year}</span>
+      {/* Row 2: Date chip */}
+      <time className={styles.date} dateTime={talk.date}>
+        {formatDate(talk.date)}
       </time>
 
       {/* Row 3: Title */}

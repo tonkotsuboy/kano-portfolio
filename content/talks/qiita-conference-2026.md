@@ -1,5 +1,5 @@
 ---
-title: "Qiita Conference 2026 登壇"
+title: "Qiita Conference 2026「AI時代の私の技術インプットとアウトプット術」"
 slug: "qiita-conference-2026"
 date: "2026-05-27T17:00:00+09:00"
 eventName: "Qiita Conference 2026"
