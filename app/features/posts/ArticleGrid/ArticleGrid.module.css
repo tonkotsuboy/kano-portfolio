@@ -14,24 +14,24 @@
 .sectionHead {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   margin-bottom: var(--space-md);
+  gap: 10px;
 }
 
 .sectionTitle {
+  margin: 0;
+  color: var(--text-primary);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.25;
-  margin: 0;
-  color: var(--text-primary);
 }
 
 .sectionSub {
+  margin: 0;
+  color: var(--text-tertiary);
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--text-tertiary);
-  margin: 0;
 }
 
 /* Search & Filter */
