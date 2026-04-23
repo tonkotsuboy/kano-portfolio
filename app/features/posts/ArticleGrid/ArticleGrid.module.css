@@ -10,6 +10,30 @@
   margin: 0 auto;
 }
 
+/* Section heading */
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: var(--space-md);
+}
+
+.sectionTitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.sectionSub {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
 /* Search & Filter */
 .filterArea {
   display: grid;
@@ -80,11 +104,12 @@
 .tagActive {
   border-color: var(--liquid-primary);
   background: var(--liquid-primary);
-  color: var(--text-inverse);
+  color: var(--text-on-yellow);
 }
 
 .tagActive:hover {
   background: var(--liquid-primary-vibrant);
+  color: var(--text-on-yellow);
 }
 
 /* Article List */
@@ -214,7 +239,7 @@
   border: 1px solid var(--glass-card-border);
   border-radius: 6px;
   background: var(--glass-bg-medium);
-  color: var(--liquid-primary);
+  color: var(--liquid-primary-accessible);
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.06em;

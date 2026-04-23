@@ -29,6 +29,19 @@ export default defineConfig({
           permalink: data.targetUrl ?? `/entry/${data.slug}`,
         })),
     },
+    talks: {
+      name: "Talk",
+      pattern: "talks/**/*.md",
+      schema: s.object({
+        date: s.isodate(),
+        eventName: s.string(),
+        published: s.boolean().default(true),
+        registerUrl: s.string(),
+        slug: s.string(),
+        thumbnail: s.string().default(""),
+        title: s.string(),
+      }),
+    },
   },
   markdown: {
     rehypePlugins: [

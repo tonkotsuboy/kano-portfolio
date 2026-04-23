@@ -22,10 +22,11 @@
 
     /* Text Colors */
     --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --text-tertiary: #9ca3af;
+    --text-secondary: #545b64; /* WCAG AA on light bg: was #6b7280 (4.16:1 ❌) → 5.94:1 ✅ */
+    --text-tertiary: #636a76; /* WCAG AA on light bg: was #9ca3af (2.4:1 ❌) → 4.73:1 ✅ */
     --text-inverse: #ffffff;
     --text-on-yellow: #1a1400;
+    --liquid-primary-accessible: #7a5200; /* WCAG AA for small text on light bg: 6.06:1 ✅ */
 
     /* Specular Highlights */
     --highlight-top: rgba(255, 255, 255, 0.9);
@@ -57,6 +58,8 @@
 
     /* Animation Timing */
     --ease-liquid: cubic-bezier(0.4, 0.0, 0.2, 1);
+    --dur-fast: 0.15s;
+    --dur-base: 0.2s;
 
     /* Spacing System */
     --space-3xs: 0.25rem;
@@ -106,6 +109,7 @@
     --text-secondary: #a1a1a6;
     --text-tertiary: #9ca3af;
     --text-inverse: #000000;
+    --liquid-primary-accessible: #c98a00; /* standard amber - passes on dark bg */
 
     /* Specular Highlights */
     --highlight-top: rgba(255, 255, 255, 0.2);
@@ -153,7 +157,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
     overflow-y: scroll;
   }
 
@@ -283,6 +286,5 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

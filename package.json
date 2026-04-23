@@ -16,7 +16,8 @@
     "storybook": "storybook dev -p 6006",
     "tcm": "tcm app",
     "tcm:watch": "tcm app --watch",
-    "test": "vitest run"
+    "test": "vitest run",
+    "chromatic": "node --env-file=.env.local node_modules/chromatic/dist/bin.cjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -46,6 +47,7 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@vitest/eslint-plugin": "^1.6.16",
+    "chromatic": "^16.5.0",
     "dotenv": "^17.4.2",
     "eslint": "^9.39.4",
     "eslint-plugin-import": "^2.32.0",

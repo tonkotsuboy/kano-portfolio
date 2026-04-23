@@ -18,17 +18,19 @@
 
 | Token | Hex | Role |
 |---|---|---|
-| `--liquid-primary` | `#F5B400` | キーカラー・フォーカスリング・アクティブ状態 |
-| `--liquid-primary-vibrant` | `#FFBE0A` | リンクホバー・アクセント強調 |
-| `--liquid-primary-dark` | `#C98A00` | カテゴリラベルのテキスト |
+| `--liquid-primary` | `#F5B400` | キーカラー・フォーカスリング・アクティブ状態（背景色として使用） |
+| `--liquid-primary-vibrant` | `#FFBE0A` | リンクホバー・アクセント強調（背景色として使用） |
+| `--liquid-primary-dark` | `#C98A00` | 装飾・ボーダー用（前景テキストには使わない） |
+| `--liquid-primary-accessible` | Light: `#7A5200` / Dark: `#C98A00` | **前景テキスト専用**（WCAG AA 準拠: ライト 6.06:1 ✅） |
+| `--text-on-yellow` | `#1A1400` | 黄色背景上のテキスト（ボタン・アクティブタグ等。10.75:1 ✅） |
 
 ### Neutrals
 
 | Token | Light | Dark | Role |
 |---|---|---|---|
 | `--text-primary` | `#1F2937` | `#F5F5F7` | 本文・見出し |
-| `--text-secondary` | `#6B7280` | `#A1A1A6` | メタ情報・ラベル |
-| `--text-tertiary` | `#9CA3AF` | `#9CA3AF` | eyebrow・ヒント |
+| `--text-secondary` | `#545B64` ✅ | `#A1A1A6` | メタ情報・ラベル（Light 5.94:1） |
+| `--text-tertiary` | `#636A76` ✅ | `#9CA3AF` | eyebrow・ヒント（Light 4.73:1） |
 | `--bg-primary` | `#EEF2F7` | `#0B1021` | アンビエント背景ベース |
 
 ### Glass Surface
@@ -86,11 +88,12 @@
 
 ### Filter Tag
 - 通常: `border: 1px solid rgba(0,0,0,0.08)`, bg 透明
-- Active: `bg: #1F2937` (text-primary), 白文字
+- Active: `bg: --liquid-primary` (黄色), `color: --text-on-yellow` (#1A1400)（白文字ではなく濃い茶色 — 黄色背景に白は WCAG 不合格）
 
 ### Category Chip
-- `color: --liquid-primary-dark`, `bg: rgba(245,180,0,0.10)`, `border: rgba(245,180,0,0.22)`
+- `color: --liquid-primary-accessible`, `bg: rgba(245,180,0,0.10)`, `border: rgba(245,180,0,0.22)`
 - `letter-spacing: 0.08em; text-transform: uppercase; font-size: 10px;`
+- **注意**: `--liquid-primary` (#F5B400) を前景テキストに使うと WCAG 不合格。必ず `--liquid-primary-accessible` を使用すること。
 
 ### Input (search)
 - bg: `--glass-card-bg`, border: `--glass-card-border`, radius: `9999px`
@@ -152,12 +155,13 @@
 
 ### Quick Color Reference
 ```
-Primary yellow: #F5B400    (key color, focus)
-Vibrant:        #FFBE0A    (link hover, accent emphasis)
-Dark yellow:    #C98A00    (category text)
-Text primary:   #1F2937    (body, headings)
-Text secondary: #6B7280    (meta)
-Text tertiary:  #9CA3AF    (eyebrow)
+Primary yellow: #F5B400    (key color — backgrounds/borders only, NOT foreground text)
+Vibrant:        #FFBE0A    (link hover, accent — backgrounds only)
+On yellow:      #1A1400    (--text-on-yellow — text on yellow bg, 10.75:1 ✅)
+Accessible amb: #7A5200    (--liquid-primary-accessible light — amber text, 6.06:1 ✅)
+Text primary:   #1F2937    (body, headings — light mode)
+Text secondary: #545B64    (meta — light mode, 5.94:1 ✅)
+Text tertiary:  #636A76    (eyebrow, hint — light mode, 4.73:1 ✅)
 Background:     #EEF2F7    (ambient field base)
 Glass fill:     rgba(255,255,255,0.50)
 Glass border:   rgba(255,255,255,0.70)

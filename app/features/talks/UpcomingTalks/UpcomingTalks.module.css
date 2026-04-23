@@ -1,0 +1,177 @@
+/* Upcoming Talks section */
+
+.section {
+  padding: var(--space-lg) 0 var(--space-xl);
+}
+
+.container {
+  max-width: 900px;
+  padding: 0 var(--space-lg);
+  margin: 0 auto;
+}
+
+/* Section header */
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: var(--space-md);
+}
+
+.eyebrowRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrowDot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--liquid-primary);
+  box-shadow: 0 0 0 4px rgb(245 180 0 / 18%);
+  animation: pulse 2.4s var(--ease-liquid) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgb(245 180 0 / 18%); }
+  50% { box-shadow: 0 0 0 8px rgb(245 180 0 / 5%); }
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--liquid-primary-accessible);
+}
+
+.sectionTitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* ---- Subgrid card grid ---- */
+/*
+ * CSS Subgrid technique: parent defines columns, each card spans 4 implicit rows.
+ * grid-template-rows: subgrid on the card makes all 4 internal rows align across cards.
+ * row-gap applies equally to internal card rows and between-card rows.
+ * Reference: https://zenn.dev/tonkotsuboy_com/articles/css-subgrid-all-browsers
+ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: var(--space-md);
+  row-gap: var(--space-xs);
+}
+
+/* Each card is a direct grid child spanning 4 rows via subgrid */
+.card {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 var(--highlight-top),
+    inset 0 -1px 0 rgb(0 0 0 / 4%),
+    0 4px 24px rgb(0 0 0 / 5%);
+  overflow: hidden;
+}
+
+/* Row 1: Thumbnail */
+.thumb {
+  position: relative;
+  margin: 14px 14px 0;
+  border-radius: 14px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg-gradient-1);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
+}
+
+.thumbImg {
+  object-fit: cover;
+}
+
+.thumbPlaceholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+}
+
+/* Row 2: Date */
+.date {
+  display: block;
+  padding: 0 18px;
+  color: var(--liquid-primary-accessible);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  align-self: start;
+}
+
+/* Row 3: Title */
+.title {
+  padding: 0 18px 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  display: -webkit-box;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.55;
+  text-wrap: pretty;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Row 4: Footer */
+.footRow {
+  display: flex;
+  align-items: center;
+  padding: 0 18px 18px;
+}
+
+.registerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (width <= 768px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyebrowDot {
+    animation: none;
+  }
+}

@@ -31,3 +31,15 @@ const mockPosts: Post[] = [
 ];
 
 export const posts = mockPosts;
+
+export type Talk = {
+  date: string;
+  eventName: string;
+  published: boolean;
+  registerUrl: string;
+  slug: string;
+  thumbnail: string;
+  title: string;
+};
+
+export const talks: Talk[] = [];
