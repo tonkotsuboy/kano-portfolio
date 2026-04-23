@@ -148,6 +148,11 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.sectionTitle}>WORKS</h2>
+          <p className={styles.sectionSub}>記事 · 登壇 · インタビュー</p>
+        </div>
+
         {/* Search & Filter */}
         <div className={styles.filterArea}>
           <div className={styles.searchBox}>
