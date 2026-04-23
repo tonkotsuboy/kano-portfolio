@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: var(--space-md);
-  gap: 10px;
+  gap: var(--space-sm);
 }
 
 .sectionTitle {
