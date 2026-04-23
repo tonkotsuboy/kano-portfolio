@@ -6,10 +6,10 @@ import type { Talk } from "@/.velite";
 import type { FC } from "react";
 
 const jstFormatter = new Intl.DateTimeFormat("ja-JP", {
+  day: "numeric",
+  month: "numeric",
   timeZone: "Asia/Tokyo",
   year: "numeric",
-  month: "numeric",
-  day: "numeric",
 });
 
 function formatDate(dateStr: string): string {
