@@ -1,4 +1,7 @@
+import clsx from "clsx";
 import Image from "next/image";
+
+import hoverStyles from "../../../styles/card-hover.module.css";
 
 import styles from "./UpcomingTalks.module.css";
 
@@ -32,7 +35,7 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
       href={talk.registerUrl}
       target="_blank"
       rel="noreferrer"
-      className={styles.card}
+      className={clsx(styles.card, hoverStyles.card)}
     >
       {/* Row 1: Thumbnail */}
       <div className={styles.thumb}>
@@ -55,7 +58,7 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
       </time>
 
       {/* Row 3: Title */}
-      <h3 className={styles.title}>{talk.title}</h3>
+      <h3 className={clsx(styles.title, hoverStyles.title)}>{talk.title}</h3>
 
       {/* Row 4: Footer */}
       <div className={styles.footRow}>
