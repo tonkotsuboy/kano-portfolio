@@ -138,6 +138,12 @@
   color: var(--text-on-yellow);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .registerBtn {
+    transition: none;
+  }
+}
+
 /* Responsive */
 @media (width <= 768px) {
   .container {

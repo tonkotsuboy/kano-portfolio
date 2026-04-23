@@ -93,10 +93,10 @@ export const UpcomingTalks: FC<Props> = ({ talks }) => {
   }
 
   return (
-    <section className={styles.section} aria-label="だんだん登壇！どんどん登壇！">
+    <section className={styles.section} aria-labelledby="upcoming-talks-heading">
       <div className={styles.container}>
         <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>だんだん登壇！どんどん登壇！</h2>
+          <h2 id="upcoming-talks-heading" className={styles.sectionTitle}>だんだん登壇！どんどん登壇！</h2>
         </div>
 
         <div className={styles.grid}>
