@@ -30,8 +30,12 @@
 .sectionSub {
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--text-secondary);
+  color: #636a76; /* WCAG AA: 4.73:1 on light bg; overridden in dark mode below */
   margin: 0;
+}
+
+:global([data-theme="dark"]) .sectionSub {
+  color: var(--text-secondary);
 }
 
 /* Search & Filter */
