@@ -66,7 +66,7 @@
  */
 .grid {
   display: grid;
-  gap: var(--space-md) var(--space-md);
+  gap: var(--space-md);
   grid-template-columns: repeat(2, 1fr);
 }
 
