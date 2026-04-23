@@ -93,14 +93,10 @@ export const UpcomingTalks: FC<Props> = ({ talks }) => {
   }
 
   return (
-    <section className={styles.section} aria-label="直近の登壇予定">
+    <section className={styles.section} aria-label="だんだん登壇！どんどん登壇！">
       <div className={styles.container}>
         <div className={styles.sectionHead}>
-          <div className={styles.eyebrowRow}>
-            <span className={styles.eyebrowDot} aria-hidden="true" />
-            <span className={styles.eyebrow}>Upcoming</span>
-          </div>
-          <h2 className={styles.sectionTitle}>直近の登壇予定</h2>
+          <h2 className={styles.sectionTitle}>だんだん登壇！どんどん登壇！</h2>
         </div>
 
         <div className={styles.grid}>

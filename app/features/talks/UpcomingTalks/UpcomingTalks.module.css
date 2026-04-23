@@ -18,35 +18,6 @@
   gap: 10px;
 }
 
-.eyebrowRow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.eyebrowDot {
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-full);
-  animation: pulse 2.4s var(--ease-liquid) infinite;
-  background: var(--liquid-primary);
-  box-shadow: 0 0 0 4px rgb(245 180 0 / 18%);
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgb(245 180 0 / 18%); }
-  50% { box-shadow: 0 0 0 8px rgb(245 180 0 / 5%); }
-}
-
-.eyebrow {
-  color: var(--liquid-primary-accessible);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
 .sectionTitle {
   margin: 0;
   color: var(--text-primary);
@@ -156,7 +127,15 @@
   font-weight: 700;
   gap: 5px;
   letter-spacing: 0.02em;
+  transition:
+    background 0.2s var(--ease-liquid),
+    color 0.2s var(--ease-liquid);
   white-space: nowrap;
+}
+
+.card:hover .registerBtn {
+  background: var(--liquid-primary);
+  color: var(--text-on-yellow);
 }
 
 /* Responsive */
@@ -170,8 +149,3 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .eyebrowDot {
-    animation: none;
-  }
-}
