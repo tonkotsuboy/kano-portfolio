@@ -118,15 +118,10 @@
   background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
 }
 
-/* Row 2: Date chip — key-color highlighted badge */
+/* Row 2: Date */
 .date {
   display: block;
-  width: fit-content;
-  padding: 4px 12px;
-  margin: 0 14px;
-  border: 1px solid rgb(245 180 0 / 22%);
-  border-radius: var(--radius-full);
-  background: rgb(245 180 0 / 12%);
+  padding: 0 18px;
   color: var(--liquid-primary-accessible);
   font-size: 0.8125rem;
   font-weight: 700;
