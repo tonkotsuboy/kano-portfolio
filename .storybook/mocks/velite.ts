@@ -36,7 +36,7 @@ export type Talk = {
   date: string;
   eventName: string;
   published: boolean;
-  registerUrl?: string;
+  registerUrl: string;
   slug: string;
   thumbnail: string;
   title: string;
