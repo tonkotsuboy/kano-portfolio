@@ -10,12 +10,8 @@
   margin: 0 auto;
 }
 
-/* Section header */
 .sectionHead {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--space-md);
-  gap: 10px;
+  margin: 0 0 var(--space-lg);
 }
 
 .sectionTitle {
@@ -128,8 +124,8 @@
   gap: 5px;
   letter-spacing: 0.02em;
   transition:
-    background 0.2s var(--ease-liquid),
-    color 0.2s var(--ease-liquid);
+    background var(--dur-base) var(--ease-liquid),
+    color var(--dur-base) var(--ease-liquid);
   white-space: nowrap;
 }
 
