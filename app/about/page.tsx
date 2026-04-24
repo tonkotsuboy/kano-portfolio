@@ -214,7 +214,7 @@ const AboutPage: NextPage = () => {
             <PersonCard
               buttonHref="#bio"
               imageSrc="/images/about/speaking.jpg"
-              imageAlt="ギャグが楽しいエンジニア"
+              imageAlt="登壇中の鹿野 壮"
               tagline="TypeScript・CSS を軸にプロダクト開発と発信を行うエンジニア"
               variant="horizontal"
             />

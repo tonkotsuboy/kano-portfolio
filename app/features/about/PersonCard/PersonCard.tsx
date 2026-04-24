@@ -85,7 +85,7 @@ const Avatar: FC<AvatarProps> = ({ alt, shape, src }) => (
 );
 
 export const PersonCard: FC<Props> = ({
-  buttonHref = "#",
+  buttonHref,
   buttonLabel = "詳しく見る",
   imageAlt = "",
   imageSrc,
@@ -100,7 +100,7 @@ export const PersonCard: FC<Props> = ({
         </div>
         <p className={styles.eyebrow}>PROFILE</p>
         <h3 className={clsx(styles.headline, styles.headlineCenter)}>{tagline}</h3>
-        <CardButton href={buttonHref} label={buttonLabel} />
+        {buttonHref && <CardButton href={buttonHref} label={buttonLabel} />}
       </article>
     );
   }
@@ -114,9 +114,11 @@ export const PersonCard: FC<Props> = ({
         <div className={styles.overlapPanel}>
           <p className={styles.eyebrow}>PROFILE</p>
           <h3 className={styles.headline}>{tagline}</h3>
-          <div className={styles.overlapActions}>
-            <CardButton href={buttonHref} label={buttonLabel} />
-          </div>
+          {buttonHref && (
+            <div className={styles.overlapActions}>
+              <CardButton href={buttonHref} label={buttonLabel} />
+            </div>
+          )}
         </div>
       </article>
     );
@@ -130,9 +132,11 @@ export const PersonCard: FC<Props> = ({
       <div className={styles.horizontalBody}>
         <p className={styles.eyebrow}>PROFILE</p>
         <h3 className={styles.headline}>{tagline}</h3>
-        <div className={styles.actions}>
-          <CardButton href={buttonHref} label={buttonLabel} />
-        </div>
+        {buttonHref && (
+          <div className={styles.actions}>
+            <CardButton href={buttonHref} label={buttonLabel} />
+          </div>
+        )}
       </div>
     </article>
   );

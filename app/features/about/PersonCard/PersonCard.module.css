@@ -112,6 +112,11 @@
   transform: translateY(0) scale(0.98);
 }
 
+.btn:focus-visible {
+  outline: 2px solid var(--liquid-primary);
+  outline-offset: 3px;
+}
+
 /* === Glass Card Base (Variant A + B) === */
 
 .card {
@@ -149,7 +154,6 @@
 
 .horizontalMedia {
   display: flex;
-  width: 160px;
 }
 
 .horizontalBody {
@@ -184,11 +188,15 @@
 /* === Variant C: Overlap === */
 
 .overlapRoot {
+  --overlap-img-size: 170px;
+  --overlap-img-offset: 90px;
+  --overlap-panel-inset: 110px;
+
   position: relative;
   display: flex;
   min-height: 200px;
   align-items: stretch;
-  padding: var(--space-lg) var(--space-lg) var(--space-lg) 90px;
+  padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--overlap-img-offset);
 }
 
 .overlapMedia {
@@ -196,8 +204,8 @@
   z-index: 2;
   top: 50%;
   left: 0;
-  width: 170px;
-  height: 170px;
+  width: var(--overlap-img-size);
+  height: var(--overlap-img-size);
   filter: drop-shadow(0 10px 24px rgb(0 0 0 / 10%));
   transform: translateY(-50%);
   transition: transform var(--dur-base) var(--ease-liquid);
@@ -213,7 +221,7 @@
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  padding: var(--space-md) var(--space-lg) var(--space-md) 110px;
+  padding: var(--space-md) var(--space-lg) var(--space-md) var(--overlap-panel-inset);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(12px);
@@ -253,6 +261,31 @@
   .horizontalBody {
     align-items: center;
     padding: 0;
+    text-align: center;
+  }
+
+  .overlapRoot {
+    --overlap-img-size: 128px;
+
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-lg);
+    gap: var(--space-md);
+  }
+
+  .overlapMedia {
+    position: static;
+    transform: none;
+  }
+
+  .overlapRoot:hover .overlapMedia {
+    transform: none;
+  }
+
+  .overlapPanel {
+    width: 100%;
+    min-height: 0;
+    padding: var(--space-md) var(--space-lg);
     text-align: center;
   }
 }
