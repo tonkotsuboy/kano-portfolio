@@ -6,6 +6,7 @@ import { siGithub, siQiita, siX, siZenn } from "simple-icons";
 
 import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
 import { ogImageUrl, WithSiteTitle } from "../constants";
+import { PersonCard } from "../features/about/PersonCard/PersonCard";
 import { Footer } from "../features/layout/Footer";
 import { Header } from "../features/layout/Header";
 import hoverStyles from "../styles/card-hover.module.css";
@@ -208,8 +209,19 @@ const AboutPage: NextPage = () => {
             </div>
           </div>
 
+          {/* Person Card */}
+          <div className={styles.personCardWrapper}>
+            <PersonCard
+              buttonHref="#bio"
+              imageSrc="/images/about/speaking.jpg"
+              imageAlt="ギャグが楽しいエンジニア"
+              tagline="TypeScript・CSS を軸にプロダクト開発と発信を行うエンジニア"
+              variant="horizontal"
+            />
+          </div>
+
           {/* Bio */}
-          <section className={styles.section}>
+          <section id="bio" className={styles.section}>
             <h2 className={styles.sectionLabel}>自己紹介</h2>
             <div className={styles.bioCard}>
               <p className={styles.bioText}>

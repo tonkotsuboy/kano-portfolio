@@ -113,6 +113,10 @@
   height: 16px;
 }
 
+.personCardWrapper {
+  margin-bottom: var(--space-xl);
+}
+
 /* Bio Card */
 .bioCard {
   padding: var(--space-md);
