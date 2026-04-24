@@ -189,8 +189,12 @@
 
 .overlapRoot {
   --overlap-img-size: 170px;
-  --overlap-img-offset: 90px;
-  --overlap-panel-inset: 110px;
+
+  /* img は左端より内側に 5px ずらして配置: offset = size / 2 + 5px */
+  --overlap-img-offset: calc(var(--overlap-img-size) / 2 + 5px);
+
+  /* panel のテキスト開始位置 = img offset + 内側の余白 20px */
+  --overlap-panel-inset: calc(var(--overlap-img-offset) + 20px);
 
   position: relative;
   display: flex;
