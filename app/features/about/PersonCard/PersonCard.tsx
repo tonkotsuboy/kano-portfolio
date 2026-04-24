@@ -25,12 +25,12 @@ const AvatarPlaceholder: FC = () => (
     viewBox="0 0 100 100"
   >
     <defs>
-      <linearGradient id="pcGrad" x1="0" x2="0" y1="0" y2="1">
+      <linearGradient id="avatarPlaceholderGrad" x1="0" x2="0" y1="0" y2="1">
         <stop offset="0" stopColor="#FFE066" />
         <stop offset="1" stopColor="#F5B400" />
       </linearGradient>
     </defs>
-    <rect fill="url(#pcGrad)" height="100" width="100" />
+    <rect fill="url(#avatarPlaceholderGrad)" height="100" width="100" />
     <circle cx="50" cy="40" fill="rgba(255,255,255,0.55)" r="16" />
     <path d="M18 100 C 22 74, 38 62, 50 62 C 62 62, 78 74, 82 100 Z" fill="rgba(255,255,255,0.55)" />
   </svg>
