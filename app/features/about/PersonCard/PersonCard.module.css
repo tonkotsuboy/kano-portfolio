@@ -1,0 +1,258 @@
+/* === Shared Primitives === */
+
+.eyebrow {
+  margin: 0 0 var(--space-xs);
+  color: var(--text-tertiary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.headline {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+  word-break: keep-all;
+}
+
+.headlineCenter {
+  text-align: center;
+}
+
+/* === Avatar Portrait === */
+
+.portrait {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 70%),
+    inset 0 -1px 0 rgb(0 0 0 / 6%),
+    0 6px 18px rgb(0 0 0 / 6%);
+}
+
+.portraitImg {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.portraitPortrait {
+  border-radius: var(--radius-md);
+  aspect-ratio: 3 / 4;
+}
+
+.portraitCircle {
+  border-radius: var(--radius-full);
+}
+
+.portraitRounded {
+  border: 4px solid rgb(255 255 255 / 85%);
+  border-radius: 24px;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 70%),
+    0 6px 18px rgb(0 0 0 / 8%);
+}
+
+.placeholderSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* === Primary Button === */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid rgb(255 255 255 / 45%);
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, #fd6, #f5b400);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 60%),
+    0 6px 16px rgb(245 180 0 / 30%),
+    0 1px 3px rgb(0 0 0 / 6%);
+  color: var(--text-on-yellow);
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    transform var(--dur-fast) var(--ease-liquid),
+    box-shadow var(--dur-base) var(--ease-liquid);
+  white-space: nowrap;
+}
+
+.btn svg {
+  transition: transform var(--dur-base) var(--ease-liquid);
+}
+
+.btn:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 70%),
+    0 10px 22px rgb(245 180 0 / 42%),
+    0 1px 3px rgb(0 0 0 / 6%);
+  transform: translateY(-1px);
+}
+
+.btn:hover svg {
+  transform: translateX(2px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* === Glass Card Base (Variant A + B) === */
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  box-shadow:
+    0 8px 32px rgb(0 0 0 / 6%),
+    inset 0 1px 0 var(--highlight-top),
+    inset 0 -1px 0 rgb(0 0 0 / 5%);
+  transition:
+    background var(--dur-base) var(--ease-liquid),
+    border-color var(--dur-base) var(--ease-liquid),
+    box-shadow var(--dur-base) var(--ease-liquid);
+}
+
+.card:hover {
+  border-color: var(--glass-card-hover-border);
+  background: var(--glass-card-hover-bg);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* === Variant A: Horizontal === */
+
+.horizontal {
+  display: grid;
+  align-items: stretch;
+  padding: var(--space-md);
+  gap: var(--space-lg);
+  grid-template-columns: 160px 1fr;
+}
+
+.horizontalMedia {
+  display: flex;
+  width: 160px;
+}
+
+.horizontalBody {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-xs) 0;
+}
+
+.actions {
+  margin-top: var(--space-md);
+}
+
+/* === Variant B: Stacked === */
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.stackedMedia {
+  width: 128px;
+  height: 128px;
+  margin-bottom: var(--space-xs);
+}
+
+/* === Variant C: Overlap === */
+
+.overlapRoot {
+  position: relative;
+  display: flex;
+  min-height: 200px;
+  align-items: stretch;
+  padding: var(--space-lg) var(--space-lg) var(--space-lg) 90px;
+}
+
+.overlapMedia {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 0;
+  width: 170px;
+  height: 170px;
+  filter: drop-shadow(0 10px 24px rgb(0 0 0 / 10%));
+  transform: translateY(-50%);
+  transition: transform var(--dur-base) var(--ease-liquid);
+}
+
+.overlapRoot:hover .overlapMedia {
+  transform: translateY(calc(-50% - 2px));
+}
+
+.overlapPanel {
+  display: flex;
+  min-height: 160px;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-md) var(--space-lg) var(--space-md) 110px;
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  box-shadow:
+    0 8px 32px rgb(0 0 0 / 6%),
+    inset 0 1px 0 var(--highlight-top),
+    inset 0 -1px 0 rgb(0 0 0 / 5%);
+  transition:
+    background var(--dur-base) var(--ease-liquid),
+    border-color var(--dur-base) var(--ease-liquid),
+    box-shadow var(--dur-base) var(--ease-liquid);
+}
+
+.overlapRoot:hover .overlapPanel {
+  border-color: var(--glass-card-hover-border);
+  background: var(--glass-card-hover-bg);
+  box-shadow: var(--shadow-elevated);
+}
+
+.overlapActions {
+  margin-top: var(--space-md);
+}
+
+/* === Responsive === */
+
+@media (width <= 600px) {
+  .horizontal {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .horizontalMedia {
+    width: 120px;
+  }
+
+  .horizontalBody {
+    align-items: center;
+    padding: 0;
+    text-align: center;
+  }
+}
