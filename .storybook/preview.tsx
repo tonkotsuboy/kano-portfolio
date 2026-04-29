@@ -1,3 +1,5 @@
+import "temporal-polyfill/global";
+
 import type { Preview } from "@storybook/nextjs-vite";
 
 import "../app/styles/reset.css";
