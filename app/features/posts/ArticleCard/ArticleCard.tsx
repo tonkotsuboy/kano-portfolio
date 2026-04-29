@@ -15,14 +15,13 @@ type Props = {
 }
 
 export const ArticleCard: FC<Props> = ({ post }) => {
-  // 日付をフォーマット
-  const dateObj = new Date(post.date);
-  const formattedDate = dateObj.toLocaleDateString("ja-JP", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-  const dateTimeAttr = dateObj.toISOString();
+  const formattedDate = Temporal.Instant.from(post.date)
+    .toZonedDateTimeISO("Asia/Tokyo")
+    .toLocaleString("ja-JP", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
 
   // リンク先（外部リンクの場合は直接遷移、詳細ページがある場合はエントリーページ）
   const { href, isExternal } = resolveArticleLink(post);
@@ -91,7 +90,7 @@ export const ArticleCard: FC<Props> = ({ post }) => {
             <line x1="8" x2="8" y1="2" y2="6" />
             <line x1="3" x2="21" y1="10" y2="10" />
           </svg>
-          <time dateTime={dateTimeAttr}>{formattedDate}</time>
+          <time dateTime={post.date}>{formattedDate}</time>
         </div>
       </div>
     </LiquidGlassBox>

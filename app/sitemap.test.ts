@@ -4,7 +4,7 @@ vi.mock("@/.velite", () => ({
   posts: [
     {
       categories: [],
-      date: "2024-01-01",
+      date: "2024-01-01T00:00:00.000Z",
       hasDetail: true,
       medium: "",
       permalink: "/entry/published-with-detail",
@@ -16,7 +16,7 @@ vi.mock("@/.velite", () => ({
     },
     {
       categories: [],
-      date: "2024-02-01",
+      date: "2024-02-01T00:00:00.000Z",
       hasDetail: false,
       medium: "",
       permalink: "/entry/published-no-detail",
@@ -28,7 +28,7 @@ vi.mock("@/.velite", () => ({
     },
     {
       categories: [],
-      date: "2024-03-01",
+      date: "2024-03-01T00:00:00.000Z",
       hasDetail: true,
       medium: "",
       permalink: "/entry/unpublished",

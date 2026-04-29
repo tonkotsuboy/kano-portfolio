@@ -8,19 +8,9 @@ import styles from "./UpcomingTalks.module.css";
 import type { Talk } from "@/.velite";
 import type { FC } from "react";
 
-const jstFormatter = new Intl.DateTimeFormat("ja-JP", {
-  day: "numeric",
-  month: "numeric",
-  timeZone: "Asia/Tokyo",
-  year: "numeric",
-});
-
 function formatDate(dateStr: string): string {
-  const parts = jstFormatter.formatToParts(new Date(dateStr));
-  const y = parts.find((p) => p.type === "year")?.value ?? "";
-  const m = parts.find((p) => p.type === "month")?.value ?? "";
-  const d = parts.find((p) => p.type === "day")?.value ?? "";
-  return `${y}年${m}月${d}日`;
+  const zdt = Temporal.Instant.from(dateStr).toZonedDateTimeISO("Asia/Tokyo");
+  return `${zdt.year}年${zdt.month}月${zdt.day}日`;
 }
 
 type CardProps = {

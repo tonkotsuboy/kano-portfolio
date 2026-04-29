@@ -1,3 +1,4 @@
+import "temporal-polyfill/global";
 import "./styles/globals.css";
 
 import clsx from "clsx";

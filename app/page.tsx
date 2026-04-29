@@ -6,6 +6,7 @@ import { Header } from "./features/layout/Header";
 import { ArticleGrid } from "./features/posts/ArticleGrid";
 import { filterUpcomingTalks } from "./features/talks/filterUpcomingTalks";
 import { UpcomingTalks } from "./features/talks/UpcomingTalks";
+import { compareByDateAsc, compareByDateDesc } from "./lib/dateCompare";
 import styles from "./page.module.css";
 
 import type { Post } from "@/.velite";
@@ -24,14 +25,10 @@ export const metadata: Metadata = {
 };
 
 const HomePage: FC = () => {
-  // 公開済みの投稿のみをフィルタリングして日付順にソート
-  const publishedPosts: Post[] = posts
-    .filter((post) => post.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const publishedPosts: Post[] = posts.filter((post) => post.published).sort(compareByDateDesc);
 
-  const now = new Date();
-  const upcomingTalks = filterUpcomingTalks(talks, now)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  const now = Temporal.Now.instant();
+  const upcomingTalks = filterUpcomingTalks(talks, now).sort(compareByDateAsc);
 
   return (
     <div className={styles.root}>

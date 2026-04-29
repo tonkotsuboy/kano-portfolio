@@ -17,7 +17,7 @@ const mockPosts: Post[] = [
   {
     body: "",
     categories: [],
-    date: "2025-01-01",
+    date: "2025-01-01T00:00:00.000Z",
     hasDetail: true,
     medium: "Blog",
     permalink: "/entry/mock-post",
