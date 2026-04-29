@@ -22,12 +22,12 @@ type Props = {
 
 const INITIAL_COUNT = 20;
 const LOAD_MORE_COUNT = 20;
+const MONTH_LABELS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] as const;
 
 function formatArticleDate(dateStr: string): { day: string; full: string; month: string } {
   const zdt = Temporal.Instant.from(dateStr).toZonedDateTimeISO("Asia/Tokyo");
   const day = String(zdt.day).padStart(2, "0");
-  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-  const month = months[zdt.month - 1] ?? "";
+  const month = MONTH_LABELS[zdt.month - 1] ?? "";
   const full = zdt.toLocaleString("ja-JP", {
     day: "numeric",
     month: "short",
