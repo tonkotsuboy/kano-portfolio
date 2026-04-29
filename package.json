@@ -48,7 +48,7 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@vitest/eslint-plugin": "^1.6.16",
-    "chromatic": "^16.6.0",
+    "chromatic": "^16.6.1",
     "dotenv": "^17.4.2",
     "eslint": "^9.39.4",
     "eslint-plugin-import": "^2.32.0",
