@@ -3,18 +3,18 @@ import { ArticleGrid } from "./ArticleGrid";
 import type { Post } from "@/.velite";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
+const BASE_DATE = Temporal.ZonedDateTime.from({
+  day: 28,
+  month: 5,
+  timeZone: "UTC",
+  year: 2025,
+});
+
 const generatePosts = (count: number): Post[] =>
   Array.from({ length: count }, (_, i) => ({
     body: "",
     categories: [],
-    date: Temporal.ZonedDateTime.from({
-      day: 28 - i,
-      month: 5 - Math.floor(i / 3),
-      timeZone: "UTC",
-      year: 2025,
-    })
-      .toInstant()
-      .toString(),
+    date: BASE_DATE.subtract({ days: i }).toInstant().toString(),
     hasDetail: true,
     medium: ["Zenn", "Qiita", ""][i % 3] ?? "",
     permalink: `/entry/post-${String(i + 1)}`,
