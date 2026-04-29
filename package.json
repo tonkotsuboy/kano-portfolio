@@ -32,6 +32,7 @@
     "rehype-slug": "^6.0.0",
     "shiki": "^3.23.0",
     "simple-icons": "^16.18.0",
+    "temporal-polyfill": "^0.3.2",
     "velite": "^0.3.1"
   },
   "devDependencies": {
