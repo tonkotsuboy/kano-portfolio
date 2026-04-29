@@ -13,7 +13,6 @@ import { metadata } from "../../layout";
 import { EntryCover } from "./components/EntryCover";
 import { EntryMeta } from "./components/EntryMeta";
 import { escapeHtml } from "./lib/escapeHtml";
-import { parseDate } from "./lib/parseDate";
 import styles from "./page.module.css";
 
 import type { Metadata } from "next";
@@ -98,13 +97,16 @@ const Page = async ({ params }: Params) => {
   const isSlidesAvailable = typeof post.slides === "string" && post.slides.trim().length > 0;
   const isLinkUrlAvailable = typeof post.linkUrl === "string" && post.linkUrl.trim().length > 0;
 
+  const zdt = Temporal.Instant.from(post.date).toZonedDateTimeISO("Asia/Tokyo");
+  const formattedDate = `${zdt.year}/${String(zdt.month).padStart(2, "0")}/${String(zdt.day).padStart(2, "0")}`;
+
   return (
     <>
       <Header />
       <main className={styles.surface}>
         <EntryMeta
           date={post.date}
-          formatDate={parseDate}
+          formattedDate={formattedDate}
           medium={post.medium}
           tags={post.tags}
           title={post.title}
