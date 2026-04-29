@@ -1,4 +1,5 @@
 import { basicDescription, SiteTitle, SiteUrl } from "../constants";
+import { compareByDateDesc } from "../lib/dateCompare";
 
 import { toRfc2822 } from "./lib/toRfc2822";
 
@@ -36,12 +37,7 @@ function escapeXml(str: string): string {
 }
 
 export function GET(): Response {
-  const publishedPosts = posts
-    .filter((post) => post.published)
-    .sort((a, b) =>
-      Temporal.Instant.compare(Temporal.Instant.from(b.date), Temporal.Instant.from(a.date)),
-    )
-    .slice(0, 50);
+  const publishedPosts = posts.filter((post) => post.published).sort(compareByDateDesc).slice(0, 50);
 
   const items = publishedPosts
     .map((post) => {
