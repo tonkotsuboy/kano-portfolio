@@ -5,7 +5,7 @@ import { filterUpcomingTalks } from "./filterUpcomingTalks";
 const makeTalk = (date: string, published = true) => ({ date, published, slug: date, title: "talk" });
 
 describe("filterUpcomingTalks", () => {
-  const now = new Date("2026-05-01T12:00:00Z");
+  const now = Temporal.Instant.from("2026-05-01T12:00:00Z");
 
   test("未来の登壇は表示される", () => {
     const talks = [makeTalk("2026-05-10T10:00:00Z")];
@@ -18,7 +18,7 @@ describe("filterUpcomingTalks", () => {
   });
 
   test("開催日の翌日（+1日）は表示される", () => {
-    const oneDayAfter = new Date("2026-05-02T12:00:00Z");
+    const oneDayAfter = Temporal.Instant.from("2026-05-02T12:00:00Z");
     const talks = [makeTalk("2026-05-01T10:00:00Z")];
     expect(filterUpcomingTalks(talks, oneDayAfter)).toHaveLength(1);
   });
@@ -26,14 +26,14 @@ describe("filterUpcomingTalks", () => {
   test("開催日の+2日以内（ギリギリ）は表示される", () => {
     // event: May 1 10:00 UTC → deadline: May 3 10:00 UTC
     // now: May 3 09:59 UTC → still within grace period
-    const almostExpired = new Date("2026-05-03T09:59:59Z");
+    const almostExpired = Temporal.Instant.from("2026-05-03T09:59:59Z");
     const talks = [makeTalk("2026-05-01T10:00:00Z")];
     expect(filterUpcomingTalks(talks, almostExpired)).toHaveLength(1);
   });
 
   test("開催日から+2日を超えると非表示になる", () => {
     // event: May 1 10:00 UTC → expired after May 3 10:00 UTC
-    const expired = new Date("2026-05-03T10:00:01Z");
+    const expired = Temporal.Instant.from("2026-05-03T10:00:01Z");
     const talks = [makeTalk("2026-05-01T10:00:00Z")];
     expect(filterUpcomingTalks(talks, expired)).toHaveLength(0);
   });
