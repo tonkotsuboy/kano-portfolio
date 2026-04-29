@@ -27,11 +27,14 @@ const HomePage: FC = () => {
   // 公開済みの投稿のみをフィルタリングして日付順にソート
   const publishedPosts: Post[] = posts
     .filter((post) => post.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .sort((a, b) =>
+      Temporal.Instant.compare(Temporal.Instant.from(b.date), Temporal.Instant.from(a.date)),
+    );
 
-  const now = new Date();
-  const upcomingTalks = filterUpcomingTalks(talks, now)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  const now = Temporal.Now.instant();
+  const upcomingTalks = filterUpcomingTalks(talks, now).sort((a, b) =>
+    Temporal.Instant.compare(Temporal.Instant.from(a.date), Temporal.Instant.from(b.date)),
+  );
 
   return (
     <div className={styles.root}>

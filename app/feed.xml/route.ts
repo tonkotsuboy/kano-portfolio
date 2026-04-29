@@ -1,5 +1,7 @@
 import { basicDescription, SiteTitle, SiteUrl } from "../constants";
 
+import { toRfc2822 } from "./lib/toRfc2822";
+
 import { posts } from "@/.velite";
 
 const feedUrl = `${SiteUrl}/feed.xml`;
@@ -36,13 +38,15 @@ function escapeXml(str: string): string {
 export function GET(): Response {
   const publishedPosts = posts
     .filter((post) => post.published)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) =>
+      Temporal.Instant.compare(Temporal.Instant.from(b.date), Temporal.Instant.from(a.date)),
+    )
     .slice(0, 50);
 
   const items = publishedPosts
     .map((post) => {
       const link = resolveLink(post);
-      const pubDate = new Date(post.date).toUTCString();
+      const pubDate = toRfc2822(Temporal.Instant.from(post.date));
       return `    <item>
       <title>${escapeXml(post.title)}</title>
       <link>${escapeXml(link)}</link>
