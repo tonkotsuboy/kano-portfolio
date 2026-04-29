@@ -1,3 +1,5 @@
+import "temporal-polyfill/global";
+
 import type { MetadataRoute } from "next";
 
 import { posts } from "@/.velite";

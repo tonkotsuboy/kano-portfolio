@@ -1,3 +1,5 @@
+import "temporal-polyfill/global";
+
 import { basicDescription, SiteTitle, SiteUrl } from "../constants";
 import { compareByDateDesc } from "../lib/dateCompare";
 
