@@ -15,14 +15,14 @@ type Props = {
 }
 
 export const ArticleCard: FC<Props> = ({ post }) => {
-  // 日付をフォーマット
-  const dateObj = new Date(post.date);
-  const formattedDate = dateObj.toLocaleDateString("ja-JP", {
+  // 日付をフォーマット（JST固定）
+  const zdt = Temporal.Instant.from(post.date).toZonedDateTimeISO("Asia/Tokyo");
+  const formattedDate = zdt.toLocaleString("ja-JP", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
-  const dateTimeAttr = dateObj.toISOString();
+  const dateTimeAttr = zdt.toInstant().toString();
 
   // リンク先（外部リンクの場合は直接遷移、詳細ページがある場合はエントリーページ）
   const { href, isExternal } = resolveArticleLink(post);

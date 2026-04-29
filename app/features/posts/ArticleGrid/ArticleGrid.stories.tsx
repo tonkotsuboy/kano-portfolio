@@ -7,7 +7,14 @@ const generatePosts = (count: number): Post[] =>
   Array.from({ length: count }, (_, i) => ({
     body: "",
     categories: [],
-    date: new Date(2025, 5 - Math.floor(i / 3), 28 - i).toISOString(),
+    date: Temporal.ZonedDateTime.from({
+      day: 28 - i,
+      month: 5 - Math.floor(i / 3),
+      timeZone: "UTC",
+      year: 2025,
+    })
+      .toInstant()
+      .toString(),
     hasDetail: true,
     medium: ["Zenn", "Qiita", ""][i % 3] ?? "",
     permalink: `/entry/post-${String(i + 1)}`,

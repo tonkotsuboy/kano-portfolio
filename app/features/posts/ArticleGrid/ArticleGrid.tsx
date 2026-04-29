@@ -22,11 +22,11 @@ const INITIAL_COUNT = 20;
 const LOAD_MORE_COUNT = 20;
 
 function formatArticleDate(dateStr: string): { day: string; full: string; month: string } {
-  const d = new Date(dateStr);
-  const day = String(d.getDate()).padStart(2, "0");
+  const zdt = Temporal.Instant.from(dateStr).toZonedDateTimeISO("Asia/Tokyo");
+  const day = String(zdt.day).padStart(2, "0");
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-  const month = months[d.getMonth()] ?? "";
-  const full = d.toLocaleDateString("ja-JP", {
+  const month = months[zdt.month - 1] ?? "";
+  const full = zdt.toLocaleString("ja-JP", {
     day: "numeric",
     month: "short",
     year: "numeric",
