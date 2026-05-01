@@ -10,7 +10,7 @@ thumbnail: "/images/og/findy_interview.png"
 slides: ""
 linkUrl: "https://findy-code.io/engineer-lab/tonkotsuboy-output"
 targetUrl: "https://findy-code.io/engineer-lab/tonkotsuboy-output"
-hasDetail: true
+hasDetail: false
 ---
 
 Findyさんからインタビューを受けました。
