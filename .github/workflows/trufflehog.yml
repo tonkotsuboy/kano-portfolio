@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run TruffleHog (verified only)
-        uses: trufflesecurity/trufflehog@main
+        uses: trufflesecurity/trufflehog@v3.88.27
         with:
           path: ./
           # --only-verified: 実 API で生死確認できたものだけ報告。
