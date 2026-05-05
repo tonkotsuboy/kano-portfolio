@@ -12,7 +12,7 @@
     "lint:css:fix": "stylelint \"**/*.module.css\" --fix",
     "lint:next:fix": "eslint --fix .",
     "markuplint": "markuplint -p './**/*.tsx'",
-    "prepare": "lefthook install",
+    "prepare": "lefthook install || true",
     "start": "next start",
     "storybook": "storybook dev -p 6006",
     "tcm": "tcm app",

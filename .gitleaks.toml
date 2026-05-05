@@ -6,18 +6,33 @@ title = "kano-portfolio gitleaks config"
 [extend]
 useDefault = true
 
-# プロジェクト全体の allowlist。
-# 「シークレットらしき文字列が含まれていてもよい」と確信できる経路だけを限定的に許可する。
-[allowlist]
-description = "kano-portfolio project allowlist"
+# 複数の allowlist を [[allowlists]] (複数形) で並列定義する。
+# gitleaks 8.x では単数形 [allowlist] と複数形 [[allowlists]] の併用は不可なので、
+# 全て複数形に統一する。
+
+# 1) ビルド成果物・バイナリ: シークレット混入経路として現実的でない場所、全ルール対象。
+[[allowlists]]
+description = "Build outputs and binaries"
 paths = [
-  '''pnpm-lock\.yaml$''',
-  '''package-lock\.json$''',
-  '''yarn\.lock$''',
   '''\.velite/''',
   '''\.next/''',
   '''node_modules/''',
   # 画像・フォントなどのバイナリ。base64 風の文字列がノイズになりがち。
   '''public/.*\.(png|jpe?g|gif|svg|webp|avif|ico|woff2?)$''',
   '''.*\.(png|jpe?g|gif|webp|avif|ico|woff2?)$''',
+]
+
+# 2) Lock ファイル: integrity hash (sha512-...) が generic-api-key を誤発火させがち。
+# 丸ごと allowlist にすると私的レジストリ URL への basic 認証
+# (https://user:pass@registry.example.com/...) を見逃すので、
+# 「ノイジーな rule だけ」を lock ファイル上で skip する設計にする。
+[[allowlists]]
+description = "Skip noisy generic rules in lock files (URL credentials still scanned)"
+targetRules = [
+  "generic-api-key",
+]
+paths = [
+  '''pnpm-lock\.yaml$''',
+  '''package-lock\.json$''',
+  '''yarn\.lock$''',
 ]
