@@ -1,0 +1,37 @@
+name: TruffleHog (periodic sweep)
+
+# 「過去に混入したまま今も生きているシークレット」を炙り出す定期スイープ層。
+# verified（実 API でアクティブ確認できたもの）のみを通知し、
+# パターン一致だけのノイズは抑える。
+on:
+  schedule:
+    # 毎週月曜 03:00 JST（= 日曜 18:00 UTC）
+    - cron: "0 18 * * 0"
+  workflow_dispatch:
+
+# 手動実行が短時間に重なった場合、古い実行はキャンセルする。
+# スケジュール実行は通常重複しないが、workflow_dispatch 用の保険。
+concurrency:
+  group: trufflehog
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  trufflehog:
+    name: Verified secret sweep
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # 履歴全体を見るため fetch-depth: 0
+          fetch-depth: 0
+
+      - name: Run TruffleHog (verified only)
+        uses: trufflesecurity/trufflehog@v3.88.27
+        with:
+          path: ./
+          # --only-verified: 実 API で生死確認できたものだけ報告。
+          extra_args: --only-verified

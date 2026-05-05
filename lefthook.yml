@@ -1,0 +1,21 @@
+# lefthook: pre-commit などの Git フックを yaml 1 枚で管理するランナー。
+# https://github.com/evilmartians/lefthook
+#
+# `pnpm install` 時に prepare スクリプトから `lefthook install` が走り、
+# .git/hooks/ にラッパーが配置される。
+
+pre-commit:
+  parallel: true
+  commands:
+    gitleaks:
+      tags: security
+      # ステージ済みの差分のみを高速スキャンする。
+      # gitleaks 本体は別途 `brew install gitleaks` でローカルに入れること。
+      run: |
+        if ! command -v gitleaks >/dev/null 2>&1; then
+          echo "❌ gitleaks コマンドが見つかりません。"
+          echo "   macOS:  brew install gitleaks"
+          echo "   その他: https://github.com/gitleaks/gitleaks#installing"
+          exit 1
+        fi
+        gitleaks git --staged --redact --verbose

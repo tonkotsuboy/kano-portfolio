@@ -1,0 +1,35 @@
+name: Gitleaks
+
+# 「これからの混入」を止める層。
+# PR と main への push のたびに、差分 + 履歴に対して gitleaks をかける。
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+# 同じ ref で複数の Push が走った場合、古い実行はキャンセルする。
+concurrency:
+  group: gitleaks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gitleaks:
+    name: Scan for secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          # gitleaks は履歴も舐めるので shallow clone を避ける。
+          fetch-depth: 0
+
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2.3.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 個人ユーザーリポジトリのため GITLEAKS_LICENSE は不要
+          # （Organization 配下に移す場合は要設定）。
+          GITLEAKS_CONFIG: .gitleaks.toml
