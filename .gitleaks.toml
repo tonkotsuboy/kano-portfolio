@@ -18,8 +18,7 @@ paths = [
   '''\.next/''',
   '''node_modules/''',
   # 画像・フォントなどのバイナリ。base64 風の文字列がノイズになりがち。
-  '''public/.*\.(png|jpe?g|gif|svg|webp|avif|ico|woff2?)$''',
-  '''.*\.(png|jpe?g|gif|webp|avif|ico|woff2?)$''',
+  '''.*\.(png|jpe?g|gif|svg|webp|avif|ico|woff2?)$''',
 ]
 
 # 2) Lock ファイル: integrity hash (sha512-...) が generic-api-key を誤発火させがち。
