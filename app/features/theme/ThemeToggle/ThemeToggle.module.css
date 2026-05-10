@@ -1,8 +1,3 @@
-/* Theme Toggle Container */
-.container {
-  position: relative;
-}
-
 /* Theme Toggle Button - matches nav pill style */
 .toggle {
   display: flex;
@@ -13,6 +8,7 @@
   padding: 0;
   border: 1px solid var(--nav-pill-border);
   border-radius: var(--radius-full);
+  anchor-name: --theme-toggle-anchor;
   backdrop-filter: blur(16px) saturate(200%);
   background: var(--nav-pill-bg);
   box-shadow:
@@ -44,21 +40,40 @@
   outline-offset: 4px;
 }
 
-/* Dropdown Menu */
+/* Default state describes the closed style; transitioning out lands here.
+   `display` and `overlay` are discrete properties — `allow-discrete` keeps
+   the popover in the top-layer until the opacity/transform fade-out finishes. */
 .menu {
-  position: absolute;
-  z-index: 100;
-  top: calc(100% + 8px);
-  right: 0;
+  width: max-content;
   min-width: 180px;
   padding: 4px;
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  animation: menuFadeIn 0.15s ease-out;
+  margin: 8px 0 0;
   backdrop-filter: blur(20px) saturate(200%);
   background: var(--glass-bg-strong);
   box-shadow: var(--shadow-elevated);
+  inset: anchor(bottom) anchor(right) auto auto;
   list-style: none;
+  opacity: 0;
+  position-anchor: --theme-toggle-anchor;
+  position-try-fallbacks: flip-block;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.15s var(--ease-liquid),
+    transform 0.15s var(--ease-liquid),
+    display 0.15s var(--ease-liquid) allow-discrete,
+    overlay 0.15s var(--ease-liquid) allow-discrete;
+}
+
+.menu:popover-open {
+  opacity: 1;
+  transform: translateY(0);
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }
 
 /* Menu Item */
@@ -100,16 +115,4 @@
 .checkIcon {
   flex-shrink: 0;
   color: var(--liquid-primary);
-}
-
-@keyframes menuFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
