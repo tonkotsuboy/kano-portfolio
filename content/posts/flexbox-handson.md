@@ -9,13 +9,6 @@ medium: "登壇"
 thumbnail: "/images/og/flexbox-handson.png"
 slides: ""
 linkUrl: "https://connpass.com/event/40602/"
-targetUrl: "/entry/flexbox-handson"
-hasDetail: true
+targetUrl: "https://connpass.com/event/40602/"
+hasDetail: false
 ---
-
-当時新しい技術だったFlexboxを、ハンズオン形式で解説しました。
-
-- どうやってFlexboxを使うのか？
-- 案件でよく使うあのレイアウトはFlexboxでどうやって実現すればいいのか？
-
-を一緒に勉強しました。
