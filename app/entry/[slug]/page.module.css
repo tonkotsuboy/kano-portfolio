@@ -1,10 +1,17 @@
 .surface {
   min-height: 100vh;
   padding: clamp(var(--space-md), 4vw, var(--space-2xl));
+  padding-top: calc(64px + var(--space-lg));
   background:
     radial-gradient(circle at 20% 20%, rgb(77 96 255 / 8%), transparent 30%),
     radial-gradient(circle at 80% 10%, rgb(255 179 71 / 8%), transparent 30%),
     color-mix(in srgb, var(--bg-primary) 92%, transparent);
+}
+
+@media (width <= 768px) {
+  .surface {
+    padding-top: calc(56px + var(--space-lg));
+  }
 }
 
 .hero {
