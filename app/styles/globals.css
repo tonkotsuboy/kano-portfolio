@@ -2,38 +2,38 @@
 
 @layer base {
   :root {
-    /* Liquid Glass Color System - Light Mode */
-    --liquid-primary: #f5b400;
-    --liquid-primary-vibrant: #ffbe0a;
-    --liquid-primary-dark: #c98a00;
-    --liquid-accent: #ff375f;
+    /* Liquid Glass Color System - Light Mode
+       色相を持つ値は oklch() で記述。L=Lightness 0-1, C=Chroma 0-~0.4, H=Hue 0-360 */
+    --liquid-primary: oklch(0.787 0.158 79);
+    --liquid-primary-vibrant: oklch(0.815 0.173 84);
+    --liquid-primary-dark: oklch(0.645 0.139 71);
+    --liquid-accent: oklch(0.65 0.227 17);
 
-    /* Glass Material Colors */
+    /* Glass Material Colors（白の透過は rgba のまま — ガラス面の素材表現） */
     --glass-bg-medium: rgba(255, 255, 255, 0.5);
     --glass-bg-strong: rgba(255, 255, 255, 0.85);
     --glass-border: rgba(255, 255, 255, 0.8);
 
-    /* Background */
-    --bg-primary: #eef2f7;
-    --bg-gradient-1: rgba(219, 234, 254, 0.6);
-    --bg-gradient-2: rgba(209, 250, 229, 0.3);
-    --bg-gradient-3: rgba(237, 233, 254, 0.3);
-    --bg-orb-1: rgba(245, 180, 0, 0.14);
+    /* Background — 3 オーブ構成（紫を排除して AI mesh テンプレ感を回避） */
+    --bg-primary: oklch(0.954 0.008 240);
+    --bg-gradient-1: oklch(0.93 0.04 240 / 0.6);
+    --bg-gradient-2: oklch(0.95 0.055 160 / 0.3);
+    --bg-orb-1: oklch(0.787 0.158 79 / 0.14);
 
     /* Text Colors */
-    --text-primary: #1f2937;
-    --text-secondary: #545b64; /* WCAG AA on light bg: was #6b7280 (4.16:1 ❌) → 5.94:1 ✅ */
-    --text-tertiary: #636a76; /* WCAG AA on light bg: was #9ca3af (2.4:1 ❌) → 4.73:1 ✅ */
-    --text-inverse: #ffffff;
-    --text-on-yellow: #1a1400;
-    --liquid-primary-accessible: #7a5200; /* WCAG AA for small text on light bg: 6.06:1 ✅ */
+    --text-primary: oklch(0.267 0.029 256);
+    --text-secondary: oklch(0.406 0.013 255); /* WCAG AA on light bg: 5.94:1 ✅ */
+    --text-tertiary: oklch(0.461 0.014 254); /* WCAG AA on light bg: 4.73:1 ✅ */
+    --text-inverse: oklch(1 0 0);
+    --text-on-yellow: oklch(0.152 0.018 79);
+    --liquid-primary-accessible: oklch(0.407 0.087 64); /* WCAG AA for small text on light bg: 6.06:1 ✅ */
 
-    /* Specular Highlights */
+    /* Specular Highlights（白の鏡面ハイライトは rgba を維持） */
     --highlight-top: rgba(255, 255, 255, 0.9);
     --highlight-edge: rgba(255, 255, 255, 0.6);
 
     /* Header */
-    --header-bg: rgba(238, 242, 247, 0.55);
+    --header-bg: oklch(0.954 0.008 240 / 0.55);
     --header-border: rgba(255, 255, 255, 0.75);
     --header-highlight-inset: rgba(255, 255, 255, 0.9);
     --header-shadow-inset: rgba(255, 255, 255, 0.2);
@@ -54,7 +54,7 @@
     --glass-card-bg: rgba(255, 255, 255, 0.5);
     --glass-card-border: rgba(255, 255, 255, 0.7);
     --glass-card-hover-bg: rgba(255, 255, 255, 0.7);
-    --glass-card-hover-border: rgba(245, 180, 0, 0.3);
+    --glass-card-hover-border: oklch(0.787 0.158 79 / 0.3);
 
     /* Animation Timing */
     --ease-liquid: cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -79,44 +79,43 @@
     --radius-xl: 36px;
     --radius-full: 9999px;
 
-    /* Elevation — unified 2-tier + CTA glow */
+    /* Elevation — unified 2-tier + CTA glow（黒の影は rgba を維持） */
     --shadow-rest: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
     --shadow-elevated: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
-    --glow-yellow: 0 0 0 1px rgba(245, 180, 0, 0.25), 0 8px 24px rgba(245, 180, 0, 0.28);
+    --glow-yellow: 0 0 0 1px oklch(0.787 0.158 79 / 0.25), 0 8px 24px oklch(0.787 0.158 79 / 0.28);
   }
 
   [data-theme="dark"] {
     /* Liquid Glass Color System - Dark Mode */
-    --liquid-primary: #f5b400;
-    --liquid-primary-vibrant: #ffbe0a;
-    --liquid-primary-dark: #c98a00;
-    --liquid-accent: #ff375f;
+    --liquid-primary: oklch(0.787 0.158 79);
+    --liquid-primary-vibrant: oklch(0.815 0.173 84);
+    --liquid-primary-dark: oklch(0.645 0.139 71);
+    --liquid-accent: oklch(0.65 0.227 17);
 
-    /* Glass Material Colors */
-    --glass-bg-medium: rgba(30, 30, 35, 0.5);
-    --glass-bg-strong: rgba(30, 30, 35, 0.85);
+    /* Glass Material Colors（暗いガラス面は色相付きなので oklch 化） */
+    --glass-bg-medium: oklch(0.249 0.005 286 / 0.5);
+    --glass-bg-strong: oklch(0.249 0.005 286 / 0.85);
     --glass-border: rgba(255, 255, 255, 0.15);
 
-    /* Background */
-    --bg-primary: #0b1021;
-    --bg-gradient-1: rgba(30, 58, 138, 0.3);
-    --bg-gradient-2: rgba(88, 28, 135, 0.15);
-    --bg-gradient-3: rgba(30, 64, 100, 0.2);
-    --bg-orb-1: rgba(245, 180, 0, 0.06);
+    /* Background — 3 オーブ構成（紫 H=305 を青系に置き換え、AI 配色を回避） */
+    --bg-primary: oklch(0.150 0.041 268);
+    --bg-gradient-1: oklch(0.342 0.142 264 / 0.3);
+    --bg-gradient-2: oklch(0.345 0.066 244 / 0.2);
+    --bg-orb-1: oklch(0.787 0.158 79 / 0.06);
 
     /* Text Colors */
-    --text-primary: #f5f5f7;
-    --text-secondary: #a1a1a6;
-    --text-tertiary: #9ca3af;
-    --text-inverse: #000000;
-    --liquid-primary-accessible: #c98a00; /* standard amber - passes on dark bg */
+    --text-primary: oklch(0.964 0.002 247);
+    --text-secondary: oklch(0.704 0.005 286);
+    --text-tertiary: oklch(0.707 0.022 261);
+    --text-inverse: oklch(0 0 0);
+    --liquid-primary-accessible: oklch(0.645 0.139 71); /* standard amber - passes on dark bg */
 
     /* Specular Highlights */
     --highlight-top: rgba(255, 255, 255, 0.2);
     --highlight-edge: rgba(255, 255, 255, 0.1);
 
     /* Header */
-    --header-bg: rgba(11, 16, 33, 0.65);
+    --header-bg: oklch(0.150 0.041 268 / 0.65);
     --header-border: rgba(255, 255, 255, 0.1);
     --header-highlight-inset: rgba(255, 255, 255, 0.08);
     --header-shadow-inset: rgba(255, 255, 255, 0.02);
@@ -134,10 +133,10 @@
     --active-pill-highlight: rgba(255, 255, 255, 0.2);
 
     /* Glass Card */
-    --glass-card-bg: rgba(30, 30, 35, 0.5);
+    --glass-card-bg: oklch(0.249 0.005 286 / 0.5);
     --glass-card-border: rgba(255, 255, 255, 0.1);
-    --glass-card-hover-bg: rgba(30, 30, 35, 0.7);
-    --glass-card-hover-border: rgba(245, 180, 0, 0.3);
+    --glass-card-hover-bg: oklch(0.249 0.005 286 / 0.7);
+    --glass-card-hover-border: oklch(0.787 0.158 79 / 0.3);
 
     /* Elevation — deeper shadows against dark ambient */
     --shadow-rest: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -200,7 +199,6 @@
       radial-gradient(ellipse at 20% 20%, var(--bg-gradient-1) 0px, transparent 50%),
       radial-gradient(ellipse at 80% 10%, var(--bg-orb-1) 0px, transparent 45%),
       radial-gradient(ellipse at 90% 80%, var(--bg-gradient-2) 0px, transparent 50%),
-      radial-gradient(ellipse at 10% 90%, var(--bg-gradient-3) 0px, transparent 50%),
       var(--bg-primary);
     background-size: cover;
   }
@@ -237,7 +235,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(245, 180, 0, 0.5);
+    background: oklch(0.787 0.158 79 / 0.5);
   }
 }
 
