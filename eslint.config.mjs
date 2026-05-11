@@ -41,6 +41,7 @@ export default defineConfig([
         "next.config.js",
         "eslint.config.mjs",
         "check-unused-css.mjs",
+        "postcss.config.mjs",
         ".claude/**/*",
     ] },
     js.configs.recommended,
