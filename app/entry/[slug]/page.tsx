@@ -102,7 +102,7 @@ const Page = async ({ params }: Params) => {
 
   return (
     <>
-      <Header />
+      <Header currentPath="/" />
       <main className={styles.surface}>
         <EntryMeta
           date={post.date}

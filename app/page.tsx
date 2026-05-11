@@ -32,7 +32,7 @@ const HomePage: FC = () => {
 
   return (
     <div className={styles.root}>
-      <Header />
+      <Header currentPath="/" />
       <main id="main-content" className={styles.main}>
         <h1 className={styles.visuallyHidden}>鹿野壮のポートフォリオ - WORKS</h1>
         <UpcomingTalks talks={upcomingTalks} />
