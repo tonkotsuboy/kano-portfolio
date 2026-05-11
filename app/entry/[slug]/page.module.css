@@ -3,8 +3,8 @@
   padding: clamp(var(--space-md), 4vw, var(--space-2xl));
   padding-top: calc(64px + var(--space-lg));
   background:
-    radial-gradient(circle at 20% 20%, rgb(77 96 255 / 8%), transparent 30%),
-    radial-gradient(circle at 80% 10%, rgb(255 179 71 / 8%), transparent 30%),
+    radial-gradient(circle at 20% 20%, oklch(0.55 0.226 268 / 8%), transparent 30%),
+    radial-gradient(circle at 80% 10%, oklch(0.795 0.16 70 / 8%), transparent 30%),
     color-mix(in srgb, var(--bg-primary) 92%, transparent);
 }
 

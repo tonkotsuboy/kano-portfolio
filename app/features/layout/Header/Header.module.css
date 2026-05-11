@@ -80,7 +80,7 @@
   flex-shrink: 0;
   border-radius: 10px;
   background: var(--liquid-primary);
-  box-shadow: 0 4px 12px rgb(245 180 0 / 30%);
+  box-shadow: 0 4px 12px oklch(0.787 0.158 79 / 30%);
 }
 
 .avatar img {

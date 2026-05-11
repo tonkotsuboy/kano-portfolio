@@ -79,20 +79,20 @@
 
 .email {
   background: var(--liquid-primary);
-  box-shadow: 0 2px 8px rgb(245 180 0 / 30%);
+  box-shadow: 0 2px 8px oklch(0.787 0.158 79 / 30%);
 }
 
 .x {
-  background: #1f2937;
+  background: oklch(0.267 0.029 256);
 }
 
 [data-theme="dark"] .x {
-  background: #f5f5f7;
-  color: #0b1021;
+  background: oklch(0.964 0.002 247);
+  color: oklch(0.150 0.041 268);
 }
 
 .linkedin {
-  background: #0a66c2;
+  background: oklch(0.508 0.166 250);
 }
 
 /* Card Body */
