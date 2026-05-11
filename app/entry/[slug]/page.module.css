@@ -3,8 +3,8 @@
   padding: clamp(var(--space-md), 4vw, var(--space-2xl));
   padding-top: calc(64px + var(--space-lg));
   background:
-    radial-gradient(circle at 20% 20%, var(--bg-gradient-1), transparent 30%),
-    radial-gradient(circle at 80% 10%, var(--bg-orb-1), transparent 30%),
+    radial-gradient(in oklch circle at 20% 20%, var(--bg-gradient-1), transparent 30%),
+    radial-gradient(in oklch circle at 80% 10%, var(--bg-orb-1), transparent 30%),
     var(--bg-primary);
 }
 
@@ -25,7 +25,7 @@
   width: fit-content;
   padding: var(--space-xs) var(--space-xs);
   border-radius: 999px;
-  background: var(--bg-orb-1);
+  background: oklch(from var(--liquid-primary) l c h / 10%);
   color: var(--liquid-primary-accessible);
   font-size: 0.75rem;
   font-weight: 700;

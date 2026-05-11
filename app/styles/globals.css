@@ -168,9 +168,9 @@
     height: 100dvh;
     z-index: -1;
     background:
-      radial-gradient(ellipse at 20% 20%, var(--bg-gradient-1) 0px, transparent 50%),
-      radial-gradient(ellipse at 80% 10%, var(--bg-orb-1) 0px, transparent 45%),
-      radial-gradient(ellipse at 90% 80%, var(--bg-gradient-2) 0px, transparent 50%),
+      radial-gradient(in oklch ellipse at 20% 20%, var(--bg-gradient-1) 0px, transparent 50%),
+      radial-gradient(in oklch ellipse at 80% 10%, var(--bg-orb-1) 0px, transparent 45%),
+      radial-gradient(in oklch ellipse at 90% 80%, var(--bg-gradient-2) 0px, transparent 50%),
       var(--bg-primary);
     background-size: cover;
   }
