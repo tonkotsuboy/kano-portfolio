@@ -31,12 +31,12 @@
   border-radius: var(--radius-full);
   animation: pulse 2.4s var(--ease-liquid) infinite;
   background: var(--liquid-primary);
-  box-shadow: 0 0 0 4px oklch(0.787 0.158 79 / 18%);
+  box-shadow: 0 0 0 4px oklch(0.787 0.158 79 / 0.18);
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 4px oklch(0.787 0.158 79 / 18%); }
-  50% { box-shadow: 0 0 0 8px oklch(0.787 0.158 79 / 5%); }
+  0%, 100% { box-shadow: 0 0 0 4px oklch(0.787 0.158 79 / 0.18); }
+  50% { box-shadow: 0 0 0 8px oklch(0.787 0.158 79 / 0.05); }
 }
 
 .eyebrow {

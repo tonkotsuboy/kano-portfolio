@@ -79,7 +79,7 @@
 
 .email {
   background: var(--liquid-primary);
-  box-shadow: 0 2px 8px oklch(0.787 0.158 79 / 30%);
+  box-shadow: 0 2px 8px oklch(0.787 0.158 79 / 0.30);
 }
 
 .x {
