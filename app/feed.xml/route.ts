@@ -7,6 +7,9 @@ import { toRfc2822 } from "./lib/toRfc2822";
 
 import { posts } from "@/.velite";
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 const feedUrl = `${SiteUrl}/feed.xml`;
 
 function resolveLink(post: {
