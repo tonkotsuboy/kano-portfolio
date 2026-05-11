@@ -6,7 +6,6 @@
        色相を持つ値は oklch() で記述。L=Lightness 0-1, C=Chroma 0-~0.4, H=Hue 0-360 */
     --liquid-primary: oklch(0.787 0.158 79);
     --liquid-primary-vibrant: oklch(0.815 0.173 84);
-    --liquid-primary-dark: oklch(0.645 0.139 71);
     --liquid-accent: oklch(0.65 0.227 17);
 
     /* Glass Material Colors（白の透過は rgba のまま — ガラス面の素材表現） */
@@ -24,7 +23,6 @@
     --text-primary: oklch(0.267 0.029 256);
     --text-secondary: oklch(0.406 0.013 255); /* WCAG AA on light bg: 5.94:1 ✅ */
     --text-tertiary: oklch(0.461 0.014 254); /* WCAG AA on light bg: 4.73:1 ✅ */
-    --text-inverse: oklch(1 0 0);
     --text-on-yellow: oklch(0.152 0.018 79);
     --liquid-primary-accessible: oklch(0.407 0.087 64); /* WCAG AA for small text on light bg: 6.06:1 ✅ */
 
@@ -32,23 +30,16 @@
     --highlight-top: rgba(255, 255, 255, 0.9);
     --highlight-edge: rgba(255, 255, 255, 0.6);
 
-    /* Header */
-    --header-bg: oklch(0.954 0.008 240 / 0.55);
-    --header-border: rgba(255, 255, 255, 0.75);
-    --header-highlight-inset: rgba(255, 255, 255, 0.9);
-    --header-shadow-inset: rgba(255, 255, 255, 0.2);
-    --header-reflection-top: rgba(255, 255, 255, 0.55);
-    --header-reflection-mid: rgba(255, 255, 255, 0.12);
-    --header-specular: rgba(255, 255, 255, 0.9);
-    --header-specular-peak: rgba(255, 255, 255, 1);
+    /* Header — Apple Liquid Glass (chrome layer)
+       透過した板 + 強い blur + hairline border の 3 要素のみ。
+       reflection overlay や specular line は撤去（HIG: use materials sparingly） */
+    --header-bg: oklch(0.97 0.004 240 / 0.62);
+    --header-hairline: rgba(0, 0, 0, 0.08);
 
-    /* Nav Pill */
-    --nav-pill-bg: rgba(255, 255, 255, 0.22);
-    --nav-pill-border: rgba(255, 255, 255, 0.65);
-    --nav-pill-highlight: rgba(255, 255, 255, 0.9);
-    --nav-pill-reflection: rgba(255, 255, 255, 0.5);
-    --active-pill-bg: rgba(255, 255, 255, 0.92);
-    --active-pill-highlight: rgba(255, 255, 255, 1);
+    /* Nav Pill — Safari URL bar 風のシンプルな半透明 pill */
+    --nav-pill-bg: rgba(255, 255, 255, 0.32);
+    --nav-pill-border: rgba(255, 255, 255, 0.5);
+    --active-pill-bg: rgba(255, 255, 255, 0.95);
 
     /* Glass Card */
     --glass-card-bg: rgba(255, 255, 255, 0.5);
@@ -89,7 +80,6 @@
     /* Liquid Glass Color System - Dark Mode */
     --liquid-primary: oklch(0.787 0.158 79);
     --liquid-primary-vibrant: oklch(0.815 0.173 84);
-    --liquid-primary-dark: oklch(0.645 0.139 71);
     --liquid-accent: oklch(0.65 0.227 17);
 
     /* Glass Material Colors（暗いガラス面は色相付きなので oklch 化） */
@@ -107,30 +97,22 @@
     --text-primary: oklch(0.964 0.002 247);
     --text-secondary: oklch(0.704 0.005 286);
     --text-tertiary: oklch(0.707 0.022 261);
-    --text-inverse: oklch(0 0 0);
     --liquid-primary-accessible: oklch(0.645 0.139 71); /* standard amber - passes on dark bg */
 
     /* Specular Highlights */
     --highlight-top: rgba(255, 255, 255, 0.2);
     --highlight-edge: rgba(255, 255, 255, 0.1);
 
-    /* Header */
-    --header-bg: oklch(0.150 0.041 268 / 0.65);
-    --header-border: rgba(255, 255, 255, 0.1);
-    --header-highlight-inset: rgba(255, 255, 255, 0.08);
-    --header-shadow-inset: rgba(255, 255, 255, 0.02);
-    --header-reflection-top: rgba(255, 255, 255, 0.08);
-    --header-reflection-mid: rgba(255, 255, 255, 0.02);
-    --header-specular: rgba(255, 255, 255, 0.15);
-    --header-specular-peak: rgba(255, 255, 255, 0.2);
+    /* Header — Dark Liquid Glass
+       紫みを除いてほぼ純黒寄りに。透過率を下げて不透明寄りに振り、
+       Safari のダークモード URL bar に近づける */
+    --header-bg: oklch(0.18 0.004 270 / 0.72);
+    --header-hairline: rgba(255, 255, 255, 0.08);
 
     /* Nav Pill */
-    --nav-pill-bg: rgba(255, 255, 255, 0.08);
-    --nav-pill-border: rgba(255, 255, 255, 0.12);
-    --nav-pill-highlight: rgba(255, 255, 255, 0.1);
-    --nav-pill-reflection: rgba(255, 255, 255, 0.06);
-    --active-pill-bg: rgba(255, 255, 255, 0.15);
-    --active-pill-highlight: rgba(255, 255, 255, 0.2);
+    --nav-pill-bg: rgba(255, 255, 255, 0.06);
+    --nav-pill-border: rgba(255, 255, 255, 0.1);
+    --active-pill-bg: rgba(255, 255, 255, 0.14);
 
     /* Glass Card */
     --glass-card-bg: oklch(0.249 0.005 286 / 0.5);
@@ -174,16 +156,6 @@
     min-height: 100dvh;
     overflow-x: hidden;
     position: relative;
-  }
-
-  /* SVG Glass Distortion Filter */
-  body::after {
-    content: '';
-    position: fixed;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-    z-index: -9999;
   }
 
   /* Ambient Mesh Background */

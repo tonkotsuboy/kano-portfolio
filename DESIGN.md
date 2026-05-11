@@ -32,7 +32,6 @@
 |---|---|---|
 | `--liquid-primary` | `oklch(0.787 0.158 79)` | キーカラー・フォーカスリング・アクティブ状態（背景色として使用） |
 | `--liquid-primary-vibrant` | `oklch(0.815 0.173 84)` | リンクホバー・アクセント強調（背景色として使用） |
-| `--liquid-primary-dark` | `oklch(0.645 0.139 71)` | 装飾・ボーダー用（前景テキストには使わない） |
 | `--liquid-primary-accessible` | Light: `oklch(0.407 0.087 64)` / Dark: `oklch(0.645 0.139 71)` | **前景テキスト専用**（WCAG AA 準拠: ライト 6.06:1 ✅） |
 | `--text-on-yellow` | `oklch(0.152 0.018 79)` | 黄色背景上のテキスト（ボタン・アクティブタグ等。10.75:1 ✅） |
 | `--liquid-accent` | `oklch(0.65 0.227 17)` | エラー画面等のアクセント赤（`app/error.module.css` で使用中） |
@@ -117,11 +116,13 @@
 - bg: `--glass-card-bg`, border: `--glass-card-border`, radius: `9999px`
 - Focus: `border-color: --liquid-primary` + yellow glow
 
-### Reusable React Components
-- `app/components/ui/GlassSurface/` — 汎用ガラスパネル
-- `app/components/ui/LiquidGlassBox/` — カード系レイアウト用のラッパー
+### Liquid Glass の使用範囲（Apple HIG 準拠）
 
-新しいガラス面を実装する前にこの 2 つで足りないか先に確認すること。
+Apple HIG Materials は **Liquid Glass を content layer に使わない／sparingly に使う** ことを求めている。本サイトもこれに従う:
+
+- **使ってよい**: ヘッダー、ナビ pill、ThemeToggle のような chrome 要素
+- **使わない**: 記事カードや本文ブロックなど content layer の要素 — `var(--glass-card-bg)` + `border` + `var(--shadow-rest)` の最小構成で十分
+- 過去に存在した `GlassSurface` / `LiquidGlassBox` / `GlassTag` は HIG 違反のため削除済み。新しいガラス面が必要になったら、まずは既存の `Header.module.css` / `ArticleGrid.module.css` の Glass Card パターン（`backdrop-filter: blur(12px)` + `var(--glass-card-bg)` + `var(--glass-card-border)`）を直書きで使い、共通化が必要になってから初めて新規コンポーネント化を検討する。
 
 ## 5. Layout Principles
 

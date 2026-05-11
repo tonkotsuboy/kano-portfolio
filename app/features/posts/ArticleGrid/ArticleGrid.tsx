@@ -152,7 +152,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
       <div className={styles.container}>
         <div className={styles.sectionHead}>
           <h2 className={styles.sectionTitle}>WORKS</h2>
-          <p className={styles.sectionSub}>記事 · 登壇 · インタビュー</p>
         </div>
 
         {/* Search & Filter */}
@@ -235,15 +234,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                       <span className={styles.dateMobile}>{full}</span>
                     </div>
                     <h2 className={clsx(styles.cardTitle, hoverStyles.title)}>{post.title}</h2>
-                    {post.tags.length > 0 && (
-                      <div className={styles.cardTags}>
-                        {post.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className={styles.cardTag}>
-                            #{tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
                   </div>
 
                   {/* Arrow */}

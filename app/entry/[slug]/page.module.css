@@ -3,9 +3,9 @@
   padding: clamp(var(--space-md), 4vw, var(--space-2xl));
   padding-top: calc(64px + var(--space-lg));
   background:
-    radial-gradient(circle at 20% 20%, oklch(0.55 0.226 268 / 8%), transparent 30%),
-    radial-gradient(circle at 80% 10%, oklch(0.795 0.16 70 / 8%), transparent 30%),
-    color-mix(in srgb, var(--bg-primary) 92%, transparent);
+    radial-gradient(circle at 20% 20%, var(--bg-gradient-1), transparent 30%),
+    radial-gradient(circle at 80% 10%, var(--bg-orb-1), transparent 30%),
+    var(--bg-primary);
 }
 
 @media (width <= 768px) {
@@ -25,7 +25,7 @@
   width: fit-content;
   padding: var(--space-xs) var(--space-xs);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--liquid-primary) 14%, transparent);
+  background: var(--bg-orb-1);
   color: var(--liquid-primary-accessible);
   font-size: 0.75rem;
   font-weight: 700;
@@ -53,7 +53,7 @@
   padding: var(--space-xs) var(--space-xs);
   border: 1px solid var(--glass-card-border);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--glass-card-bg) 90%, transparent);
+  background: var(--glass-card-bg);
   color: var(--text-primary);
   font-size: 0.75rem;
 }
@@ -65,7 +65,7 @@
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-lg);
   margin: 0 auto;
-  background: color-mix(in srgb, var(--glass-card-bg) 95%, transparent);
+  background: var(--glass-card-bg);
   box-shadow: var(--shadow-rest);
   gap: var(--space-md);
 }
@@ -138,7 +138,7 @@
   code {
     padding: 0.2em 0.4em;
     border-radius: 6px;
-    background-color: color-mix(in srgb, var(--glass-bg-medium) 70%, transparent);
+    background-color: var(--glass-bg-medium);
     font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
 
@@ -146,7 +146,7 @@
     padding: 1rem;
     border-radius: 12px;
     margin-bottom: 1rem;
-    background-color: color-mix(in srgb, var(--glass-bg-medium) 80%, transparent);
+    background-color: var(--glass-bg-medium);
     overflow-x: auto;
 
     code {
@@ -161,7 +161,7 @@
   padding: var(--space-sm);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--glass-card-bg) 92%, transparent);
+  background: var(--glass-card-bg);
   box-shadow: var(--shadow-rest);
   gap: var(--space-xs);
 }
@@ -183,7 +183,7 @@
   padding: var(--space-sm);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--glass-card-bg) 94%, transparent);
+  background: var(--glass-card-bg);
   gap: var(--space-sm);
   grid-template-columns: 120px 1fr;
 }
@@ -194,7 +194,7 @@
   width: 100%;
   border-radius: var(--radius-sm);
   aspect-ratio: 1 / 1;
-  background: color-mix(in srgb, var(--glass-bg-medium) 80%, transparent);
+  background: var(--glass-bg-medium);
   color: var(--text-secondary);
   font-weight: 700;
   place-items: center;
