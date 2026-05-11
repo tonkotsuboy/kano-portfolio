@@ -116,7 +116,7 @@ const interviews = [
 const AboutPage: NextPage = () => {
   return (
     <div className={styles.shell}>
-      <Header />
+      <Header currentPath="/about" />
       <main id="main-content" className={styles.main}>
         <div className={styles.page}>
           {/* Profile Hero */}

@@ -13,13 +13,17 @@ type NavLinkItem = {
   label: string;
 }
 
+type HeaderProps = {
+  currentPath: string;
+}
+
 const navLinks: NavLinkItem[] = [
   { href: "/", label: "WORKS" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },
 ];
 
-export const Header: FC = () => {
+export const Header: FC<HeaderProps> = ({ currentPath }) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
@@ -40,7 +44,12 @@ export const Header: FC = () => {
         {/* Nav */}
         <nav className={styles.nav} aria-label="メインナビゲーション">
           {navLinks.map((link: NavLinkItem) => (
-            <NavLink key={link.href} href={link.href} label={link.label} />
+            <NavLink
+              key={link.href}
+              href={link.href}
+              isActive={currentPath === link.href}
+              label={link.label}
+            />
           ))}
         </nav>
 

@@ -11,7 +11,7 @@ export default function ErrorPage({
 }) {
   return (
     <div className={styles.shell}>
-      <Header />
+      <Header currentPath="" />
       <main id="main-content" className={styles.main}>
         <div className={styles.page}>
           <p className={styles.code}>Error</p>

@@ -61,7 +61,7 @@ const contacts = [
 const ContactPage: NextPage = () => {
   return (
     <div className={styles.shell}>
-      <Header />
+      <Header currentPath="/contact" />
       <main id="main-content" className={styles.main}>
         <div className={styles.page}>
           <div className={styles.hero}>

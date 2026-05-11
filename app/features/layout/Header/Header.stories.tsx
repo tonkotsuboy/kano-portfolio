@@ -6,12 +6,6 @@ const meta = {
   component: Header,
   parameters: {
     layout: "fullscreen",
-    nextjs: {
-      appDirectory: true,
-      navigation: {
-        pathname: "/",
-      },
-    },
   },
   title: "Features/Header",
 } satisfies Meta<typeof Header>;
@@ -20,26 +14,20 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const WorksActive: Story = {
+  args: {
+    currentPath: "/",
+  },
+};
 
 export const AboutActive: Story = {
-  parameters: {
-    nextjs: {
-      appDirectory: true,
-      navigation: {
-        pathname: "/about",
-      },
-    },
+  args: {
+    currentPath: "/about",
   },
 };
 
 export const ContactActive: Story = {
-  parameters: {
-    nextjs: {
-      appDirectory: true,
-      navigation: {
-        pathname: "/contact",
-      },
-    },
+  args: {
+    currentPath: "/contact",
   },
 };

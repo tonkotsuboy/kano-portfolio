@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <div className={styles.shell}>
-      <Header />
+      <Header currentPath="" />
       <main id="main-content" className={styles.main}>
         <div className={styles.page}>
           <p className={styles.code}>404</p>
