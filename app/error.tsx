@@ -1,14 +1,20 @@
 "use client";
 
+import { useEffect } from "react";
+
 import styles from "./error.module.css";
 import { Header } from "./features/layout/Header";
 
-export default function ErrorPage({
-  reset,
-}: {
+type ErrorPageProps = {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
+};
+
+export default function ErrorPage({ error, reset }: ErrorPageProps) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
   return (
     <div className={styles.shell}>
       <Header currentPath="" />
