@@ -9,12 +9,9 @@
   border: 1px solid var(--nav-pill-border);
   border-radius: var(--radius-full);
   anchor-name: --theme-toggle-anchor;
-  backdrop-filter: blur(16px) saturate(200%);
+  backdrop-filter: blur(16px) saturate(180%);
   background: var(--nav-pill-bg);
-  box-shadow:
-    0 1px 0 var(--nav-pill-highlight) inset,
-    0 2px 8px rgb(0 0 0 / 6%),
-    0 1px 2px rgb(0 0 0 / 4%);
+  box-shadow: var(--shadow-rest);
   color: var(--text-secondary);
   cursor: pointer;
   transition: color 0.2s var(--ease-liquid), background 0.2s var(--ease-liquid);
@@ -50,7 +47,7 @@
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   margin: 8px 0 0;
-  backdrop-filter: blur(20px) saturate(200%);
+  backdrop-filter: blur(12px);
   background: var(--glass-bg-strong);
   box-shadow: var(--shadow-elevated);
   inset: anchor(bottom) anchor(right) auto auto;

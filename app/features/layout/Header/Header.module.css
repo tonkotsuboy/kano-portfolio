@@ -1,50 +1,13 @@
-/* Liquid Glass Header */
+/* Liquid Glass Header (chrome layer) */
 .header {
   position: fixed;
   z-index: 100;
   top: 0;
   right: 0;
   left: 0;
-  border-bottom: 1px solid var(--header-border);
-  backdrop-filter: blur(28px) saturate(180%) brightness(1.08);
+  border-bottom: 1px solid var(--header-hairline);
+  backdrop-filter: blur(24px) saturate(180%);
   background: var(--header-bg);
-  box-shadow:
-    0 1px 0 var(--header-highlight-inset) inset,
-    0 -1px 0 var(--header-shadow-inset) inset,
-    0 4px 24px rgb(0 0 0 / 6%),
-    0 1px 3px rgb(0 0 0 / 4%);
-}
-
-/* Reflection overlay */
-.header::before {
-  position: absolute;
-  background: linear-gradient(
-    180deg,
-    var(--header-reflection-top) 0%,
-    var(--header-reflection-mid) 40%,
-    transparent 100%
-  );
-  content: '';
-  inset: 0;
-  pointer-events: none;
-}
-
-/* Specular highlight line */
-.header::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    var(--header-specular) 20%,
-    var(--header-specular-peak) 50%,
-    var(--header-specular) 80%,
-    transparent 100%
-  );
-  content: '';
-  pointer-events: none;
 }
 
 .headerInner {
@@ -96,7 +59,7 @@
   letter-spacing: -0.02em;
 }
 
-/* Nav Pill Container */
+/* Nav Pill Container — Safari URL bar 風のフラットな半透明 pill */
 .nav {
   position: relative;
   display: flex;
@@ -104,25 +67,7 @@
   padding: 4px;
   border: 1px solid var(--nav-pill-border);
   border-radius: var(--radius-full);
-  backdrop-filter: blur(16px) saturate(200%);
   background: var(--nav-pill-bg);
-  box-shadow:
-    0 1px 0 var(--nav-pill-highlight) inset,
-    0 2px 8px rgb(0 0 0 / 6%),
-    0 1px 2px rgb(0 0 0 / 4%);
-}
-
-/* Reflection on nav pill */
-.nav::before {
-  position: absolute;
-  border-radius: var(--radius-full);
-  background: linear-gradient(180deg,
-    var(--nav-pill-reflection) 0%,
-    transparent 60%
-  );
-  content: '';
-  inset: 0;
-  pointer-events: none;
 }
 
 /* Nav Links */
@@ -148,11 +93,7 @@
 
 .navLinkActive {
   background: var(--active-pill-bg);
-  box-shadow:
-    0 1px 0 var(--active-pill-highlight) inset,
-    0 -1px 0 rgb(0 0 0 / 4%) inset,
-    0 2px 8px rgb(0 0 0 / 10%),
-    0 1px 2px rgb(0 0 0 / 6%);
+  box-shadow: var(--shadow-rest);
   color: var(--text-primary);
   font-weight: 700;
 }

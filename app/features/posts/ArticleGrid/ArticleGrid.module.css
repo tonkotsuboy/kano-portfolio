@@ -27,13 +27,6 @@
   line-height: 1.25;
 }
 
-.sectionSub {
-  margin: 0;
-  color: var(--text-tertiary);
-  font-size: 0.875rem;
-  font-weight: 400;
-}
-
 /* Search & Filter */
 .filterArea {
   display: grid;
@@ -163,7 +156,7 @@
   border-radius: var(--radius-sm);
   aspect-ratio: 16 / 9;
   background: linear-gradient(
-    135deg,
+    in oklch 135deg,
     var(--bg-gradient-1) 0%,
     var(--bg-gradient-2) 100%
   );
@@ -260,18 +253,6 @@
   text-wrap: pretty;
 }
 
-.cardTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-}
-
-.cardTag {
-  color: var(--text-tertiary);
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
 /* Arrow */
 .arrow {
   display: none;
@@ -333,12 +314,16 @@
   }
 
   .card {
-    padding: var(--space-xs);
-    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-xs);
+    gap: var(--space-sm);
   }
 
   .thumbnail {
     width: 100px;
+  }
+
+  .cardContent {
+    gap: var(--space-3xs);
   }
 
   .cardTitle {
