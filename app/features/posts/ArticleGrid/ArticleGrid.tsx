@@ -159,6 +159,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
           <div className={styles.searchBox}>
             <Search size={16} aria-hidden className={styles.searchIcon} />
             <input
+              type="search"
               value={keyword}
               onChange={(event) => {
                 setKeyword(event.target.value);
@@ -169,8 +170,10 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
           </div>
 
           {allTags.length > 0 && (
-            <div className={styles.tagsContainer}>
+            <div className={styles.tagsContainer} role="group" aria-label="記事フィルター">
               <button
+                type="button"
+                aria-pressed={selectedTag === "all"}
                 className={clsx(styles.tagButton, selectedTag === "all" && styles.tagActive)}
                 onClick={() => {
                   setSelectedTag("all");
@@ -181,6 +184,8 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               {allTags.map((tag) => (
                 <button
                   key={tag}
+                  type="button"
+                  aria-pressed={selectedTag === tag}
                   className={clsx(styles.tagButton, selectedTag === tag && styles.tagActive)}
                   onClick={() => {
                     setSelectedTag(tag);

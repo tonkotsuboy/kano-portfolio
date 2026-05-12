@@ -24,7 +24,6 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
     <a
       href={talk.registerUrl}
       target="_blank"
-      rel="noreferrer"
       className={clsx(styles.card, hoverStyles.card)}
     >
       {/* Row 1: Thumbnail */}

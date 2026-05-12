@@ -54,7 +54,7 @@ const loadBodyHtml = (slug: string): string => {
     (_m, href: string, text: string) => {
       const escapedHref = escapeHtml(href);
       const escapedText = escapeHtml(text);
-      return `<a class="linkCardStandalone linkCardInline" href="${escapedHref}" target="_blank" rel="noreferrer"><div class="linkThumb"><span>Link</span></div><div class="linkMeta"><div class="linkTitle">${escapedText}</div><div class="linkUrl">${escapedHref}</div></div></a>`;
+      return `<a class="linkCardStandalone linkCardInline" href="${escapedHref}" target="_blank"><div class="linkThumb"><span>Link</span></div><div class="linkMeta"><div class="linkTitle">${escapedText}</div><div class="linkUrl">${escapedHref}</div></div></a>`;
     },
   );
   return replaced;
@@ -125,14 +125,14 @@ const Page = async ({ params }: Params) => {
           {isSlidesAvailable ? (
             <div className={styles.sectionCard}>
               <div className={styles.sectionTitle}>スライド</div>
-              <a className={styles.rawLink} href={post.slides} target="_blank" rel="noreferrer">
+              <a className={styles.rawLink} href={post.slides} target="_blank">
                 {post.slides}
               </a>
             </div>
           ) : null}
 
           {isLinkUrlAvailable ? (
-            <a className={styles.linkCardStandalone} href={post.linkUrl} target="_blank" rel="noreferrer">
+            <a className={styles.linkCardStandalone} href={post.linkUrl} target="_blank">
               <div className={styles.linkThumb}>
                 {isCoverAvailable ? (
                   <Image

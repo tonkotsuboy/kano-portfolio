@@ -18,6 +18,18 @@ const nextConfig = {
           },
         ],
       },
+      {
+        // 現代ブラウザのデフォルトと同じだが、明示することで「rel="noreferrer"
+        // を付けない」という外部リンクポリシー（DESIGN.md §7 /
+        // .claude/rules/react-typescript.md）の前提を可視化する。
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+        ],
+      },
     ];
   },
   images: {
