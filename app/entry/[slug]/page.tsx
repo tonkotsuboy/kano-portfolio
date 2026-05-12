@@ -19,8 +19,8 @@ import type { Metadata } from "next";
 
 import { posts } from "@/.velite";
 
-export const dynamic = "force-static";
 export const revalidate = 3600;
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return posts

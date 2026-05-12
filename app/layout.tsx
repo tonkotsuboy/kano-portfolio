@@ -40,7 +40,6 @@ export const metadata: Metadata = {
     },
   },
   description: basicDescription,
-  manifest: "/manifest.webmanifest",
   metadataBase: new URL(SiteUrl),
   openGraph: {
     description: basicDescription,

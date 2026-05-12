@@ -1,5 +1,3 @@
-import { type FC, Suspense } from "react";
-
 import { basicDescription, SiteUrl } from "./constants";
 import { Footer } from "./features/layout/Footer";
 import { Header } from "./features/layout/Header";
@@ -11,6 +9,7 @@ import styles from "./page.module.css";
 
 import type { Post } from "@/.velite";
 import type { Metadata } from "next";
+import type { FC } from "react";
 
 import { posts, talks } from "@/.velite";
 
@@ -36,9 +35,7 @@ const HomePage: FC = () => {
       <main id="main-content" className={styles.main}>
         <h1 className={styles.visuallyHidden}>鹿野壮のポートフォリオ - WORKS</h1>
         <UpcomingTalks talks={upcomingTalks} />
-        <Suspense fallback={null}>
-          <ArticleGrid posts={publishedPosts} />
-        </Suspense>
+        <ArticleGrid posts={publishedPosts} />
       </main>
       <Footer />
     </div>
