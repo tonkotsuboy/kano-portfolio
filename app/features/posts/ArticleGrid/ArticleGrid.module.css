@@ -66,6 +66,13 @@
   color: var(--text-tertiary);
 }
 
+/* WebKit/Blink が type="search" に追加するネイティブの×ボタンを抑制。
+   検索は onChange でリアルタイム filter するため、独自 UI と被って見える。
+   空一覧時の「検索をクリア」ボタンで同等の操作は提供している。 */
+.searchBox input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
 .searchBox input:focus {
   border-color: var(--liquid-primary);
   box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
