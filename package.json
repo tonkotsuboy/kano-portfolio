@@ -8,7 +8,7 @@
     "build": "npm run tcm && velite build && next build",
     "build-storybook": "storybook build",
     "check:unused-css": "node check-unused-css.mjs",
-    "dev": "npm run tcm && next dev",
+    "dev": "npm run tcm && velite build --watch & next dev",
     "lint:css:fix": "stylelint \"**/*.module.css\" --fix",
     "lint:next:fix": "eslint --fix .",
     "markuplint": "markuplint -p './**/*.tsx'",
@@ -25,9 +25,9 @@
     "dayjs": "^1.11.20",
     "lucide-react": "^0.556.0",
     "marked": "^17.0.6",
-    "next": "^15.5.15",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.14.3",
     "rehype-slug": "^6.0.0",
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^5.1.2",
     "@eslint/js": "^10.0.1",
-    "@next/eslint-plugin-next": "^16.2.4",
+    "@next/eslint-plugin-next": "16.2.6",
     "@storybook/addon-docs": "10.3.5",
     "@storybook/addon-links": "10.3.5",
     "@storybook/addon-onboarding": "10.3.5",
@@ -47,7 +47,7 @@
     "@types/gtag.js": "^0.0.20",
     "@types/jsdom": "^28.0.1",
     "@types/node": "^25.6.0",
-    "@types/react": "^19.2.14",
+    "@types/react": "19.2.14",
     "@vitest/eslint-plugin": "^1.6.16",
     "chromatic": "^16.6.0",
     "dotenv": "^17.4.2",
@@ -77,12 +77,16 @@
     "vite": "^7.3.2",
     "vitest": "^4.1.5"
   },
+  "browserslist": [
+    "baseline widely available"
+  ],
   "engines": {
     "node": ">=24.0.0"
   },
   "pnpm": {
     "overrides": {
-      "minimatch@>=10.0.0 <10.2.0": ">=10.2.0"
+      "minimatch@>=10.0.0 <10.2.0": ">=10.2.0",
+      "@types/react": "19.2.14"
     }
   }
 }
