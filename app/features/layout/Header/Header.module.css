@@ -43,7 +43,7 @@
   flex-shrink: 0;
   border-radius: 10px;
   background: var(--liquid-primary);
-  box-shadow: 0 4px 12px oklch(78.7% 0.158 79deg / 30%);
+  box-shadow: var(--shadow-rest);
 }
 
 .avatar img {
@@ -59,7 +59,8 @@
   letter-spacing: -0.02em;
 }
 
-/* Nav Pill Container — Safari URL bar 風のフラットな半透明 pill */
+/* Nav Pill Container — Safari URL bar 風の半透明 pill。
+   avatar / ThemeToggle と同じ shadow-rest で立体感を揃える。 */
 .nav {
   position: relative;
   display: flex;
@@ -68,6 +69,7 @@
   border: 1px solid var(--nav-pill-border);
   border-radius: var(--radius-full);
   background: var(--nav-pill-bg);
+  box-shadow: var(--shadow-rest);
 }
 
 /* Nav Links */
@@ -131,15 +133,22 @@
   }
 
   .navLink {
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-2xs) var(--space-sm);
     font-size: 0.8125rem;
   }
 }
 
+/* iPhone-class widths: trim chrome height while keeping a comfortable hit area.
+   Apple HIG strict is 44pt; we relax to 36px for a tighter pill (matches Safari's
+   URL bar / Apple.com mobile nav) and stay safely above WCAG 2.5.8 AA (24×24). */
 @media (width <= 480px) {
+  .nav {
+    padding: 3px;
+  }
+
   .navLink {
-    min-height: 44px;
-    padding: var(--space-xs) var(--space-xs);
+    min-height: 36px;
+    padding: var(--space-2xs) var(--space-xs);
     font-size: 0.75rem;
   }
 }
