@@ -2,6 +2,8 @@
 
 > AI コーディングエージェント向けのデザインシステム仕様書。
 > kano.codes（鹿野 壮 / Takeshi Kano）のポートフォリオサイトに合わせた UI を生成する際、本ファイルを読み込んで使用すること。
+>
+> 本書は **"合意した方針" の正準** であり、必ずしも現在の `main` 実装と 1:1 で一致しているとは限らない（doc-first で更新する場合がある）。乖離を見つけたら **doc 側ではなくコード側を合わせる**。
 
 ## 0. Color Notation Policy（最重要）
 
@@ -98,10 +100,15 @@
 
 > **NOTE**: `--glow-yellow` を CTA の rest 状態で常時光らせると AI 系 SaaS LP の典型表現になり、ボタンが "光るオブジェクト" として浮く。あくまで **キーボードフォーカスの可視化** にのみ使う。
 
-### Nav (Apple Finder-style)
-- コンテナ背景は**透明**。アクティブなアイテムだけが白 pill として浮く
-- Active: `background: rgba(255,255,255,0.9)` + shadow-rest
-- Hover: `background: rgba(255,255,255,0.5)`
+### Logo Avatar (chrome)
+- size: `36×36px`（モバイルでも維持）/ radius: `10px` / bg: `var(--liquid-primary)`（黄色）
+- shadow: `var(--shadow-rest)`。chrome の他要素と立体感を揃える。**黄色グロー（`0 4px 12px oklch(0.787 0.158 79 / 0.30)` のような色付き影）は rest で焼かない** — §7 Don't と同じ精神
+
+### Nav (Apple Finder-style, chrome)
+- コンテナは `var(--nav-pill-bg)` + `var(--shadow-rest)`。avatar / ThemeToggle と同じ chrome elevation で揃える
+- Active item: `background: var(--active-pill-bg)` のみで差別化（**深さは足さない**）。chrome 全体の浮きはコンテナ側の `--shadow-rest` が担うので、active pill 自身に追加 shadow は付けない
+- Hover item: `background: var(--glass-card-bg)`、`transition: background 0.2s var(--ease-liquid)`（ThemeToggle と同じ transition パターン）
+- アクティブ判定はサーバー側で確定させる（`<Header currentPath="..." />` 経由）。`usePathname()` を Client Hook で読むと SSG/ISR 時に `null` を返し、hydrate するまで pill が消える
 
 ### Filter Tag
 - 通常: `border: 1px solid rgba(0,0,0,0.08)`, bg 透明
@@ -144,6 +151,8 @@ Apple HIG Materials は **Liquid Glass を content layer に使わない／spari
 
 **内側ハイライト** (ガラスの厚み): `inset 0 1px 0 rgba(255,255,255,0.9)`、底辺に `inset 0 -1px 0 rgba(0,0,0,0.05)`。
 
+**Chrome elevation の統一ルール**: ヘッダー周りの chrome 要素（logo avatar / nav pill / ThemeToggle）は全て `var(--shadow-rest)` に揃える。**active 状態は背景色（`--active-pill-bg` 等）で差別化し、shadow で深さを変えない**。色付き glow を hand-rolled でこれらに焼くと §7 の「光るオブジェクト」アンチパターンに陥る。
+
 ## 7. Do's and Don'ts
 
 ### Do
@@ -152,7 +161,11 @@ Apple HIG Materials は **Liquid Glass を content layer に使わない／spari
 - 背景アンビエントメッシュを必ず敷く
 - カードには **blur + 内側ハイライト** の 2 点セットを守る（`saturate(180%)` はヘッダー系専用）
 - 動きは `cubic-bezier(0.4, 0, 0.2, 1)` (`--ease-liquid`) を基本に
-- `prefers-reduced-motion` で全モーションを無効化
+- chrome 要素（avatar / nav pill / ThemeToggle）は `var(--shadow-rest)` で立体感を統一する
+- `prefers-reduced-motion` で全モーションを無効化（`globals.css` の universal リセットで `*, *::before, *::after` の `animation-duration` / `transition-duration` を 0.01ms に。**個別コンポーネントで重複ガードを書かない**）
+- `:focus-visible` のリングは `globals.css` の universal `outline: 2px solid var(--liquid-primary)` を信頼する（**個別コンポーネントで重複指定しない**。`outline: none` 経由で消した要素だけは差し戻す）
+- toggle 状態を持つ button は `type="button"` + `aria-pressed={isActive}` を必ず付ける（フィルタータグなど）
+- 検索 input は `type="search"`（モバイルキーボードに Search キーが出る、内蔵 clear が使える）
 - 丁寧体（です・ます調）、短く柔らかく
 - 英字ラベルは大文字（`WORKS` / `ABOUT`）
 
@@ -162,6 +175,9 @@ Apple HIG Materials は **Liquid Glass を content layer に使わない／spari
 - **背景メッシュにバイオレット／ピンク／マゼンタ（H=280–340）を入れない**（AI 系 LP のテンプレ配色になる）
 - **背景オーブを 4 球以上重ねない**（多色 mesh は AI スタートアップ LP の量産パターン）
 - **`--glow-yellow` を rest 状態の常時シャドウに使わない**（focus-visible 時のみ点灯）
+- **色のついた glow / ドロップシャドウを chrome 要素に hand-roll しない**（`0 4px 12px oklch(0.787 0.158 79 / 0.30)` のような）。chrome は `var(--shadow-rest)` で揃える。色付き影は "光るオブジェクト" として浮いて AI 系 SaaS LP の量産パターンになる
+- 個別コンポーネントで `:focus-visible` や `@media (prefers-reduced-motion)` を重複指定しない（`globals.css` の universal rule がすでにある）
+- **外部リンクに `rel="noreferrer"` / `rel="noopener"` を付けない**。`target="_blank"` だけで十分。`noopener` は modern browsers が自動付与（ESLint `no-restricted-syntax` で明示も禁止）、`noreferrer` は Referrer-Policy デフォルト `strict-origin-when-cross-origin` で path は元から漏れない（こちらは ESLint 対象外・規約のみ）。origin まで消すと kano.codes 由来のリファラ計測を妨げて先方の Analytics に損。詳細は [`.claude/rules/react-typescript.md`](.claude/rules/react-typescript.md)
 - 絵文字を UI 装飾に散りばめる
 - 3D 風アイコン、多色フラットイラスト
 - 派手な色面・原色の大面積使用
@@ -170,9 +186,11 @@ Apple HIG Materials は **Liquid Glass を content layer に使わない／spari
 
 ## 8. Responsive Behavior
 
-- **Breakpoints**: mobile first、`768px` / `1024px` を目安
-- **Touch targets**: 最小 44×44px
-- **Header**: モバイルでは nav pill を隠し、ハンバーガーに畳む
+- **Breakpoints**: mobile first、`768px` / `1024px` を目安。`480px` 以下で iPhone-class の追加調整（nav pill 圧縮、avatar 維持）
+- **Touch targets** (二段構え):
+  - 主要アクション（CTA / リンクカード / メニュー項目）: **44×44px** (Apple HIG strict / WCAG 2.5.5 AAA)
+  - 高密度な chrome pill / フィルター（ヘッダー nav 内 link / タグフィルター）: **36×36px まで許容**。Safari URL bar や Apple.com モバイル nav と同寸で、WCAG 2.5.8 AA (24×24) を十分上回る
+- **Header**: モバイルでは nav pill を残したまま、avatar の `logoText` だけを隠す。480px 以下では navLink を `padding: var(--space-2xs) var(--space-xs)` + `min-height: 36px` + `font-size: 0.75rem` まで圧縮し、ヘッダー総高さ ~52px を目安にする
 - **Card grid**: mobile 1 列 → tablet 2 列 → desktop は幅固定でセンタリング
 - **Type**: `clamp()` で fluid スケール、モバイルでも display は 2.5rem まで下がる
 
