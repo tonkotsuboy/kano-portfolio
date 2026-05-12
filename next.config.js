@@ -1,11 +1,7 @@
-let veliteDevStarted = false;
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   reactStrictMode: true,
+  turbopack: {},
   staticPageGenerationTimeout: 240,
   async headers() {
     return [
@@ -119,14 +115,6 @@ const nextConfig = {
         hostname: "media.connpass.com",
       },
     ],
-  },
-  webpack: (config, { dev }) => {
-    if (dev && !veliteDevStarted) {
-      veliteDevStarted = true;
-      const { build } = require("velite");
-      build({ watch: true });
-    }
-    return config;
   },
 };
 

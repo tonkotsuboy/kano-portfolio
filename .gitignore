@@ -73,3 +73,6 @@ tsconfig.tsbuildinfo
 
 # claude skills caches
 __pycache__/
+
+# pnpm local store
+.pnpm-store/
