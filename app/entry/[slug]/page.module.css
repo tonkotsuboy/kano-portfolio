@@ -88,10 +88,10 @@
 .body {
   color: var(--text-primary);
   font-size: 1rem;
-  hyphenate-character: "›";
 
-  /* Baseline 2023: 英文混じり段落でハイフネーション。
-     ハイフン文字を `›` にカスタマイズして DESIGN.md のタイポトーンに合わせる。 */
+  /* Baseline 2023: 英文混じり段落で自動ハイフネーション。
+     `hyphenate-character` は付けない — 各 OS のデフォルト記号 (-) が
+     一番読みやすく、独自記号にすると分割位置で違和感が出るため。 */
   hyphens: auto;
   line-height: 1.85;
 
