@@ -26,7 +26,8 @@ export const ThemeToggle: FC = () => {
         type="button"
         className={styles.toggle}
         data-theme={theme}
-        popoverTarget={POPOVER_ID}
+        commandFor={POPOVER_ID}
+        command="toggle-popover"
         aria-haspopup="menu"
         aria-label="テーマを切り替え"
       >
@@ -49,8 +50,8 @@ export const ThemeToggle: FC = () => {
               role="menuitemradio"
               aria-checked={mode === option.value}
               className={styles.menuItem}
-              popoverTarget={POPOVER_ID}
-              popoverTargetAction="hide"
+              commandFor={POPOVER_ID}
+              command="hide-popover"
               onClick={() => setMode(option.value)}
             >
               <option.icon className={styles.menuIcon} size={16} />
