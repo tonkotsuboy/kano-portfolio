@@ -137,8 +137,11 @@
 }
 
 /* Article Card - Horizontal Layout
-   Baseline 2025: `content-visibility: auto` でビューポート外のカードのレイアウト・ペイントをスキップ。
-   `contain-intrinsic-size` で「スキップ時の仮の高さ」を宣言し、スクロールバーが暴れない。 */
+   NOTE: 過去に `content-visibility: auto` + `contain-intrinsic-size` を試したが、
+   モバイル幅で flex の min-content 計算と containment が衝突し、カードが
+   ビューポートからはみ出る現象を確認したため撤去。
+   subgrid 親（UpcomingTalks）でも同種の問題があり、本プロジェクトでは
+   `content-visibility: auto` をカードレベルでは採用しない方針。 */
 .card {
   display: flex;
   align-items: center;
@@ -148,8 +151,6 @@
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
   box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
-  contain-intrinsic-size: auto 112px;
-  content-visibility: auto;
   cursor: pointer;
   gap: var(--space-sm);
 }
