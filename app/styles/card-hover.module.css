@@ -10,7 +10,7 @@
 .card:hover {
   border-color: var(--glass-card-hover-border);
   background: var(--glass-card-hover-bg);
-  box-shadow: 0 10px 30px -5px rgb(0 0 0 / 5%);
+  box-shadow: 0 10px 30px -5px rgb(0 0 0 / 0.05);
 }
 
 .title {
@@ -21,7 +21,10 @@
   color: var(--liquid-primary);
 }
 
-/* Circle arrow button */
+/* Circle arrow button
+   Baseline 2023: `linear()` easing で 1 回の controlled overshoot のみ。
+   Apple HIG「motion should communicate meaning, not decorate」に従い、
+   AI SaaS LP の連続バウンス（2-3 回 overshoot）は避ける。 */
 .arrow {
   display: flex;
   width: 40px;
@@ -34,10 +37,12 @@
   color: var(--text-tertiary);
   transition:
     background 0.2s var(--ease-liquid),
-    color 0.2s var(--ease-liquid);
+    color 0.2s var(--ease-liquid),
+    transform 0.3s linear(0, 1.08 60%, 1);
 }
 
 .card:hover .arrow {
   background: var(--liquid-primary);
   color: var(--text-on-yellow);
+  transform: translateX(2px);
 }

@@ -154,8 +154,11 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
           <h2 className={styles.sectionTitle}>WORKS</h2>
         </div>
 
-        {/* Search & Filter */}
-        <div className={styles.filterArea}>
+        {/* Search & Filter
+            Baseline 2023: <search> 要素で検索領域をセマンティックにマークアップ。
+            role="search" 相当のランドマークを HTML だけで提供する。
+            Active 判定は `aria-pressed` をそのまま CSS セレクタで使い、クラスの二重管理を排除。 */}
+        <search className={styles.filterArea} aria-label="記事の検索とフィルター">
           <div className={styles.searchBox}>
             <Search size={16} aria-hidden className={styles.searchIcon} />
             <input
@@ -174,7 +177,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               <button
                 type="button"
                 aria-pressed={selectedTag === "all"}
-                className={clsx(styles.tagButton, selectedTag === "all" && styles.tagActive)}
+                className={styles.tagButton}
                 onClick={() => {
                   setSelectedTag("all");
                 }}
@@ -186,7 +189,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
                   key={tag}
                   type="button"
                   aria-pressed={selectedTag === tag}
-                  className={clsx(styles.tagButton, selectedTag === tag && styles.tagActive)}
+                  className={styles.tagButton}
                   onClick={() => {
                     setSelectedTag(tag);
                   }}
@@ -196,7 +199,7 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
               ))}
             </div>
           )}
-        </div>
+        </search>
 
         {/* Article List */}
         {filteredPosts.length > 0 ? (

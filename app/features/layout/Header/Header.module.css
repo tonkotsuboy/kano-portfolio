@@ -44,6 +44,11 @@
   border-radius: 10px;
   background: var(--liquid-primary);
   box-shadow: var(--shadow-rest);
+
+  /* Baseline 2025 / 2026: View Transitions の名前付けを先行宣言。
+     クロスドキュメント View Transitions が有効化された時点で、
+     ページ間で avatar が滑らかに引き継がれる準備。 */
+  view-transition-name: header-avatar;
 }
 
 .avatar img {
@@ -72,7 +77,9 @@
   box-shadow: var(--shadow-rest);
 }
 
-/* Nav Links */
+/* Nav Links
+   Active 判定はクラスではなく `aria-current="page"` セレクタで行う。
+   ARIA 属性が source of truth になるので JS 側でクラス付与の二重管理が不要。 */
 .navLink {
   position: relative;
   display: flex;
@@ -97,19 +104,14 @@
   color: var(--text-primary);
 }
 
-.navLink:focus-visible {
-  outline: 2px solid var(--liquid-primary);
-  outline-offset: 2px;
-}
-
-.navLinkActive {
+.navLink[aria-current="page"] {
   background: var(--active-pill-bg);
   box-shadow: var(--shadow-rest);
   color: var(--text-primary);
   font-weight: 700;
 }
 
-.navLinkActive:hover {
+.navLink[aria-current="page"]:hover {
   background: var(--active-pill-bg);
 }
 

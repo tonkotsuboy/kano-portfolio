@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import Link from "next/link";
 
 import styles from "./Header.module.css";
@@ -16,7 +15,7 @@ export const NavLink: FC<NavLinkProps> = ({ href, isActive, label }) => {
     <Link
       href={href}
       aria-current={isActive ? "page" : undefined}
-      className={clsx(styles.navLink, isActive && styles.navLinkActive)}
+      className={styles.navLink}
     >
       {label}
     </Link>
