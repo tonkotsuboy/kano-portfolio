@@ -242,7 +242,7 @@
     color: var(--text-on-yellow);
   }
 
-  /* Baseline 2024: URL の text fragment (`#:~:text=...`) でハイライトされる範囲。
+  /* Baseline 2025: URL の text fragment (`#:~:text=...`) でハイライトされる範囲。
      ブランドカラー（黄色）で目立たせる。検索エンジン経由の遷移で活きる。 */
   ::target-text {
     background: oklch(0.787 0.158 79 / 0.4);

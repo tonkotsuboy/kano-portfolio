@@ -31,12 +31,6 @@
   justify-content: center;
 }
 
-/* Focus State */
-.toggle:focus-visible {
-  outline: 2px solid var(--liquid-primary);
-  outline-offset: 4px;
-}
-
 /* Default state describes the closed style; transitioning out lands here.
    `display` and `overlay` are discrete properties — `allow-discrete` keeps
    the popover in the top-layer until the opacity/transform fade-out finishes. */

@@ -25,7 +25,7 @@
   width: fit-content;
   padding: var(--space-xs) var(--space-xs);
   border-radius: 999px;
-  background: oklch(from var(--liquid-primary) l c h / 10%);
+  background: oklch(from var(--liquid-primary) l c h / 0.1);
   color: var(--liquid-primary-accessible);
   font-size: 0.75rem;
   font-weight: 700;

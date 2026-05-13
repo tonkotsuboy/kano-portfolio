@@ -10,7 +10,7 @@
 .card:hover {
   border-color: var(--glass-card-hover-border);
   background: var(--glass-card-hover-bg);
-  box-shadow: 0 10px 30px -5px rgb(0 0 0 / 5%);
+  box-shadow: 0 10px 30px -5px rgb(0 0 0 / 0.05);
 }
 
 .title {
