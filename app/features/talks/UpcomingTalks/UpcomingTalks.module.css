@@ -140,11 +140,13 @@
   text-wrap: pretty;
 }
 
-/* Row 4: Footer */
+/* Row 4: Footer
+   タイトル末尾の leading とボタン上端の間に視覚的余白を確保するため、
+   row-gap だけに頼らず padding-top で底上げする */
 .footRow {
   display: flex;
   align-items: center;
-  padding: 0 18px 18px;
+  padding: var(--space-xs) 18px 18px;
 }
 
 .registerBtn {
@@ -159,7 +161,15 @@
   font-weight: 700;
   gap: 5px;
   letter-spacing: 0.02em;
+  transition:
+    background 0.2s var(--ease-liquid),
+    color 0.2s var(--ease-liquid);
   white-space: nowrap;
+}
+
+.card:hover .registerBtn {
+  background: var(--liquid-primary);
+  color: var(--text-on-yellow);
 }
 
 /* Responsive */
