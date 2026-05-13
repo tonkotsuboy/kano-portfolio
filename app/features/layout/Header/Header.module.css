@@ -115,15 +115,6 @@
   background: var(--active-pill-bg);
 }
 
-/* Baseline 2025: <ViewTransition name="nav-current-pill"> が付与する
-   view-transition-name の遷移カーブを iOS push 風 ease-out に揃える。
-   `prefers-reduced-motion` 時は globals.css の universal リセットで
-   animation-duration: 0.01ms に潰されるので個別ガードは不要。 */
-::view-transition-group(nav-current-pill) {
-  animation-duration: 0.35s;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 /* Actions */
 .actions {
   display: flex;
