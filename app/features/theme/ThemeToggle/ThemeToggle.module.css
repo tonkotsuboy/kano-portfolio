@@ -95,7 +95,9 @@
   color: var(--text-primary);
 }
 
-.menuItem[data-active] {
+/* Active 判定は menuitemradio の `aria-checked` をそのまま CSS で参照。
+   data-active 属性での二重管理を排除。 */
+.menuItem[aria-checked="true"] {
   color: var(--text-primary);
 }
 

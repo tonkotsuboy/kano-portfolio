@@ -84,6 +84,12 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="ja" className={clsx(inter.variable, notoSansJP.variable)} suppressHydrationWarning>
+      <head>
+        {/* Baseline 2026 視野: Cross-document View Transitions の opt-in。
+            同一サイト内のページ遷移を滑らかに繋ぐ。対応ブラウザ（Chrome 126+, Safari 18.2+）でのみ有効、
+            未対応ブラウザは普通の遷移にフォールバックする。 */}
+        <meta name="view-transition" content="same-origin" />
+      </head>
       <body>
         <a href="#main-content" className="skip-nav">
           メインコンテンツへスキップ

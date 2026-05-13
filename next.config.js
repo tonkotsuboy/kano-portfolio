@@ -3,6 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   turbopack: {},
   staticPageGenerationTimeout: 240,
+  // React 19 canary + View Transitions API（Baseline 2025）統合。
+  // App Router が router.push を `document.startViewTransition()` でラップし、
+  // <ViewTransition name="..."> でラップした要素間でモーフィングが発火する。
+  experimental: {
+    viewTransition: true,
+  },
   async headers() {
     return [
       {

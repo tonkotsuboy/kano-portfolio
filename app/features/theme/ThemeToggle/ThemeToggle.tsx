@@ -49,7 +49,6 @@ export const ThemeToggle: FC = () => {
               role="menuitemradio"
               aria-checked={mode === option.value}
               className={styles.menuItem}
-              data-active={mode === option.value || undefined}
               popoverTarget={POPOVER_ID}
               popoverTargetAction="hide"
               onClick={() => setMode(option.value)}

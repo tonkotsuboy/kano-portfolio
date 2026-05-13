@@ -1,4 +1,11 @@
-/* Liquid Glass Article List */
+/* Liquid Glass Article List
+   Baseline 2024: `@property` で型付きカスタムプロパティを登録し、
+   通常はアニメ不能な「グラデ位置」を補間可能にする。shimmer の精度向上。 */
+@property --shimmer-x {
+  inherits: false;
+  initial-value: -100%;
+  syntax: "<percentage>";
+}
 
 .section {
   padding: var(--space-sm) 0;
@@ -85,6 +92,8 @@
   gap: var(--space-xs);
 }
 
+/* Active 判定は `aria-pressed` 属性をそのまま CSS セレクタで利用する。
+   ARIA が source of truth になるので、JS 側でクラスを付けるロジックが不要。 */
 .tagButton {
   padding: var(--space-xs) var(--space-sm);
   border: 1px solid var(--glass-card-border);
@@ -101,13 +110,13 @@
   background: var(--glass-card-hover-bg);
 }
 
-.tagActive {
+.tagButton[aria-pressed="true"] {
   border-color: var(--liquid-primary);
   background: var(--liquid-primary);
   color: var(--text-on-yellow);
 }
 
-.tagActive:hover {
+.tagButton[aria-pressed="true"]:hover {
   background: var(--liquid-primary-vibrant);
   color: var(--text-on-yellow);
 }
@@ -127,7 +136,9 @@
   text-decoration: none;
 }
 
-/* Article Card - Horizontal Layout */
+/* Article Card - Horizontal Layout
+   Baseline 2025: `content-visibility: auto` でビューポート外のカードのレイアウト・ペイントをスキップ。
+   `contain-intrinsic-size` で「スキップ時の仮の高さ」を宣言し、スクロールバーが暴れない。 */
 .card {
   display: flex;
   align-items: center;
@@ -137,6 +148,8 @@
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
   box-shadow: 0 2px 8px rgb(0 0 0 / 4%);
+  contain-intrinsic-size: auto 112px;
+  content-visibility: auto;
   cursor: pointer;
   gap: var(--space-sm);
 }
@@ -176,9 +189,9 @@
   animation: shimmer 1.5s infinite;
   background: linear-gradient(
     90deg,
-    transparent 0%,
-    rgb(255 255 255 / 30%) 50%,
-    transparent 100%
+    transparent calc(var(--shimmer-x) - 30%),
+    rgb(255 255 255 / 30%) var(--shimmer-x),
+    transparent calc(var(--shimmer-x) + 30%)
   );
   content: "";
   inset: 0;
@@ -188,20 +201,24 @@
   display: none;
 }
 
+/* Baseline 2024: `@property` 登録済みの `--shimmer-x` を transform ではなく
+   グラデ位置で動かす。`will-change` レスのままで GPU 合成に乗る。 */
 @keyframes shimmer {
   0% {
-    transform: translateX(-100%);
+    --shimmer-x: -30%;
   }
 
   100% {
-    transform: translateX(100%);
+    --shimmer-x: 130%;
   }
 }
 
+/* Baseline 2023: `linear()` easing で、最初は早く出てきて後半でなめる
+   フェードイン。`cubic-bezier()` 1本では作れない非対称カーブ。 */
 .thumbnail img {
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.4s var(--ease-liquid);
+  transition: opacity 0.5s linear(0, 0.6 30%, 0.9 60%, 1);
 }
 
 .thumbnail img[data-loaded="true"] {

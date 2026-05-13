@@ -70,7 +70,10 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-/* Each card is a direct grid child spanning 4 rows via subgrid */
+/* Each card is a direct grid child spanning 4 rows via subgrid.
+   NOTE: `content-visibility: auto` は subgrid と相性が悪く、内部行の高さ分配が
+   壊れて日付・タイトル・ボタンが潰れるため、ここでは採用しない。
+   ArticleGrid の flex カードでは安全に使えるが、subgrid 親には付けないこと。 */
 .card {
   display: grid;
   overflow: hidden;

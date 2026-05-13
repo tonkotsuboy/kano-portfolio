@@ -88,10 +88,16 @@
 .body {
   color: var(--text-primary);
   font-size: 1rem;
+  hyphenate-character: "›";
+
+  /* Baseline 2023: 英文混じり段落でハイフネーション。
+     ハイフン文字を `›` にカスタマイズして DESIGN.md のタイポトーンに合わせる。 */
+  hyphens: auto;
   line-height: 1.85;
 
   p {
     margin-bottom: 1rem;
+    text-wrap: pretty;
   }
 
   h2,

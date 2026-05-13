@@ -79,20 +79,19 @@
 
 .email {
   background: var(--liquid-primary);
-  box-shadow: 0 2px 8px oklch(0.787 0.158 79 / 0.30);
+  box-shadow: 0 2px 8px oklch(78.7% 0.158 79deg / 30%);
 }
 
+/* Baseline 2024: ライト時は黒、ダーク時は白の X ロゴ背景を `light-dark()` で 1 関数に集約。
+   `color-scheme: light dark` は ThemeProvider が `root.style.colorScheme` で切り替えるので、
+   ユーザーが明示的にライト／ダークを選んだ場合もそれに追従する。 */
 .x {
-  background: oklch(0.267 0.029 256);
-}
-
-[data-theme="dark"] .x {
-  background: oklch(0.964 0.002 247);
-  color: oklch(0.150 0.041 268);
+  background: light-dark(oklch(26.7% 0.029 256deg), oklch(96.4% 0.002 247deg));
+  color: light-dark(white, oklch(15% 0.041 268deg));
 }
 
 .linkedin {
-  background: oklch(0.508 0.166 250);
+  background: oklch(50.8% 0.166 250deg);
 }
 
 /* Card Body */

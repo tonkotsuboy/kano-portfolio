@@ -140,6 +140,21 @@
     text-rendering: optimizeLegibility;
     overflow-y: scroll;
     scroll-padding-top: calc(64px + var(--space-lg));
+
+    /* Baseline 2024-2025: 標準 API でスクロールバーを統一。
+       `::-webkit-scrollbar-*` のハックを置き換え、Firefox / Safari でも同じ見た目に。
+       `stable` でガター幅を常時確保し、コンテンツ幅のジャンプを防ぐ。 */
+    scrollbar-color: oklch(0.787 0.158 79 / 0.4) transparent;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+
+    /* Baseline 2024: フォームコントロール（checkbox / radio / progress / range）の
+       アクセント色を一行で。 `-webkit-appearance` ハックを排除。 */
+    accent-color: var(--liquid-primary);
+
+    /* Baseline 2025: 印刷時もブランドカラーを保持。
+       `auto` だとブラウザがインク節約で背景色を落とすので、ロゴ・チップが白飛びする。 */
+    print-color-adjust: exact;
   }
 
   @media (width <= 768px) {
@@ -156,6 +171,14 @@
     min-height: 100dvh;
     overflow-x: hidden;
     position: relative;
+
+    /* Baseline 2024: 日本語タイポの行頭・行末で約物（句読点・鉤括弧）をぶら下げる */
+    hanging-punctuation: first allow-end last;
+  }
+
+  /* Baseline 2024: 本文の最終行が孤立しないように調整 */
+  p {
+    text-wrap: pretty;
   }
 
   /* Ambient Mesh Background */
@@ -192,23 +215,6 @@
     font-weight: 800;
   }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: var(--radius-full);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.787 0.158 79 / 0.5);
-  }
 }
 
 @layer components {
@@ -233,6 +239,13 @@
   /* Selection */
   ::selection {
     background: var(--liquid-primary);
+    color: var(--text-on-yellow);
+  }
+
+  /* Baseline 2024: URL の text fragment (`#:~:text=...`) でハイライトされる範囲。
+     ブランドカラー（黄色）で目立たせる。検索エンジン経由の遷移で活きる。 */
+  ::target-text {
+    background: oklch(0.787 0.158 79 / 0.4);
     color: var(--text-on-yellow);
   }
 
