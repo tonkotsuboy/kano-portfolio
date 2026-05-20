@@ -18,7 +18,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
   return (
     <div className={styles.shell}>
       <Header currentPath="" />
-      <main id="main-content" className={styles.main}>
+      <main id="main-content" tabIndex={-1} className={styles.main}>
         <div className={styles.page}>
           <p className={styles.code}>Error</p>
           <h1 className={styles.title}>問題が発生しました</h1>

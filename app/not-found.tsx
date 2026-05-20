@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <div className={styles.shell}>
       <Header currentPath="" />
-      <main id="main-content" className={styles.main}>
+      <main id="main-content" tabIndex={-1} className={styles.main}>
         <div className={styles.page}>
           <p className={styles.code}>404</p>
           <h1 className={styles.title}>ページが見つかりません</h1>

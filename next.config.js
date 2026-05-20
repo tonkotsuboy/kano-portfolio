@@ -24,6 +24,21 @@ const nextConfig = {
             key: "Referrer-Policy",
             value: "strict-origin-when-cross-origin",
           },
+          // MIME スニッフィング抑止。Content-Type を厳密に解釈させる（破壊リスクほぼゼロ）。
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+          // クリックジャッキング防止。kano.codes 自身以外の iframe 埋め込みを禁止。
+          {
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
+          // 不要な強力 API（カメラ・位置情報・マイク）をページ／iframe ともに無効化。
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), geolocation=(), microphone=()",
+          },
         ],
       },
     ];

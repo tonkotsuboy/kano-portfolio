@@ -48,8 +48,12 @@ const loadBodyHtml = (slug: string): string => {
   if (parts.length < 3) {return "";}
   const body = parts.slice(2).join("---\n");
   const htmlString = marked.parse(body) as string;
+  // 横スクロールするコードブロックをキーボードだけで操作できるよう pre をフォーカス可能に（a11y）。
+  // 先読み (?=[\s>]) で「<pre」直後が空白か > のときだけ位置マッチ。属性付き <pre class="..."> にも
+  // 対応しつつ <prefetch> 等の別タグ誤マッチを防ぐ。
+  const withFocusablePre = htmlString.replace(/<pre(?=[\s>])/g, '<pre tabindex="0"');
   // 段落単位のリンクをカード風に置き換え
-  const replaced = htmlString.replace(
+  const replaced = withFocusablePre.replace(
     /<p><a href="([^"]+)"[^>]*>(.*?)<\/a><\/p>/g,
     (_m, href: string, text: string) => {
       const escapedHref = escapeHtml(href);
@@ -103,7 +107,8 @@ const Page = async ({ params }: Params) => {
   return (
     <>
       <Header currentPath="/" />
-      <main className={styles.surface}>
+      <main id="main-content" tabIndex={-1} className={styles.surface}>
+        <div className={styles.progress} aria-hidden="true" />
         <EntryMeta
           date={post.date}
           formattedDate={formattedDate}
