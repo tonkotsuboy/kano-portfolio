@@ -18,7 +18,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
   return (
     <html lang="ja">
       <body>
-        <main id="main-content" role="alert" className={styles.fallback}>
+        <main id="main-content" tabIndex={-1} role="alert" className={styles.fallback}>
           <h1>問題が発生しました</h1>
           <p>ページの読み込み中にエラーが発生しました。もう一度お試しください。</p>
           <button type="button" onClick={reset}>

@@ -1,3 +1,28 @@
+/* 読書進捗バー（装飾・JS ゼロ）。スクロール量に応じて scaleX(0→1)。
+   装飾要素なので JSX 側で aria-hidden を付与。Firefox 等 scroll-driven 未対応では
+   .progress にスタイルが当たらず非表示のまま（graceful degradation）。
+   reduced-motion 時は適用しない（globals の universal リセットで満タン固定化されるのを回避）。 */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    @keyframes growProgress {
+      from {
+        transform: scaleX(0);
+      }
+    }
+
+    .progress {
+      position: fixed;
+      z-index: 200;
+      height: 3px;
+      animation: growProgress auto linear;
+      animation-timeline: scroll();
+      background: linear-gradient(in oklch 90deg, var(--liquid-primary), var(--liquid-primary-vibrant));
+      inset: 0 0 auto;
+      transform-origin: 0 0;
+    }
+  }
+}
+
 .surface {
   min-height: 100vh;
   padding: clamp(var(--space-md), 4vw, var(--space-2xl));

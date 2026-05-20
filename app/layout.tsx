@@ -3,6 +3,7 @@ import "./styles/globals.css";
 
 import clsx from "clsx";
 import { Inter, Noto_Sans_JP } from "next/font/google";
+import Script from "next/script";
 
 import {
   basicDescription,
@@ -12,6 +13,7 @@ import {
   TwitterId,
   WithSiteTitle,
 } from "./constants";
+import { WebVitals } from "./features/analytics/WebVitals";
 import { ServiceWorkerRegister } from "./features/pwa/ServiceWorkerRegister";
 import { ThemeProvider } from "./features/theme/ThemeProvider";
 
@@ -92,11 +94,15 @@ export default function RootLayout({
   return (
     <html lang="ja" className={clsx(inter.variable, notoSansJP.variable)} suppressHydrationWarning>
       <body>
+        {/* 描画前にテーマを確定させ FOUC を防ぐ。beforeInteractive で <head> 内に
+            同期実行される。ThemeProvider（useEffect）より先に data-theme を設定。 */}
+        <Script src="/theme-init.js" strategy="beforeInteractive" />
         <a href="#main-content" className="skip-nav">
           メインコンテンツへスキップ
         </a>
         <ThemeProvider>{children}</ThemeProvider>
         <ServiceWorkerRegister />
+        <WebVitals />
       </body>
     </html>
   );

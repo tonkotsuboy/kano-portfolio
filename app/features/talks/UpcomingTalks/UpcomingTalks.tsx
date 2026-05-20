@@ -14,10 +14,11 @@ function formatDate(dateStr: string): string {
 }
 
 type CardProps = {
+  priority?: boolean;
   talk: Talk;
 }
 
-const TalkCard: FC<CardProps> = ({ talk }) => {
+const TalkCard: FC<CardProps> = ({ priority = false, talk }) => {
   const hasThumbnail = talk.thumbnail.length > 0;
 
   return (
@@ -35,6 +36,7 @@ const TalkCard: FC<CardProps> = ({ talk }) => {
             fill
             className={styles.thumbImg}
             sizes="(max-width: 768px) 100vw, 50vw"
+            priority={priority}
           />
         ) : (
           <div className={styles.thumbPlaceholder} />
@@ -93,8 +95,8 @@ export const UpcomingTalks: FC<Props> = ({ talks }) => {
         </div>
 
         <div className={styles.grid}>
-          {talks.map((talk) => (
-            <TalkCard key={talk.slug} talk={talk} />
+          {talks.map((talk, index) => (
+            <TalkCard key={talk.slug} priority={index === 0} talk={talk} />
           ))}
         </div>
       </div>
