@@ -55,8 +55,6 @@
 
   .wrap { max-width: 900px; margin: 0 auto; }
 
-  a { color: var(--primary-accessible); text-underline-offset: 0.15em; }
-
   header.page { margin-bottom: 2.5rem; }
   .eyebrow { color: var(--primary-accessible); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
   h1 { margin: 0.4rem 0 0.6rem; font-size: clamp(1.8rem, 5vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; text-wrap: balance; }
@@ -72,7 +70,7 @@
 
   .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .chip { display: inline-flex; align-items: center; padding: 0.34rem 0.7rem; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); backdrop-filter: blur(10px); box-shadow: var(--shadow); font-size: 0.78rem; gap: 0.4rem; }
-  .chip::before { content: "✓"; color: var(--ok); font-weight: 800; }
+  .chip::before { content: "✓" / ""; color: var(--ok); font-weight: 800; }
   .chip code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.76rem; }
   .chip span { color: var(--text-3); font-size: 0.7rem; }
 
@@ -123,7 +121,7 @@
     <div class="eyebrow">Modern Web Guidance Audit</div>
     <h1>HTML / CSS / JS モダン機能の採用棚卸し</h1>
     <p class="lead">
-      <a href="https://www.npmjs.com/package/modern-web-guidance" target="_blank"><code>modern-web-guidance</code></a> ガイドと <strong>kano.codes</strong> の現行コードを突き合わせた、フロントエンドのモダン機能 採用状況のスナップショットです。
+      <code>modern-web-guidance</code> ガイドと <strong>kano.codes</strong> の現行コードを突き合わせた、フロントエンドのモダン機能 採用状況のスナップショットです。
       すでに最先端を広く採用済みで、残る上乗せは <strong>追加候補 7 件</strong>（うち a11y の実バグ 1 件）と <strong>見送り 6 件</strong>。
     </p>
     <p class="legend">
@@ -133,6 +131,8 @@
       <span><span class="pill opt">任意</span> 装飾・基盤</span>
     </p>
   </header>
+
+  <main id="main-content" tabindex="-1">
 
   <!-- ============ 採用済み ============ -->
   <h2><span class="badge keep">✓</span>すでに採用している最新機能</h2>
@@ -160,7 +160,7 @@
     <span class="chip"><code>@layer</code> <span>カスケード制御</span></span>
     <span class="chip">Temporal <span>polyfill 先取り</span></span>
     <span class="chip">IntersectionObserver <span>無限スクロール</span></span>
-    <span class="chip">next/font <code>display:swap</code></span>
+    <span class="chip"><code>next/font</code> <code>display:swap</code></span>
   </div>
 
   <!-- ============ 追加する候補 ============ -->
@@ -307,8 +307,10 @@
 
   </div>
 
+  </main>
+
   <footer class="page">
-    生成元: <a href="https://www.npmjs.com/package/modern-web-guidance" target="_blank"><code>modern-web-guidance</code></a> ガイド × kano.codes の実コード照合。
+    生成元: <code>modern-web-guidance</code> ガイド × kano.codes の実コード照合。
     Baseline 日付・対応ブラウザはガイド取得時点の記載に基づく。
   </footer>
 
