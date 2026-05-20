@@ -48,8 +48,10 @@ const loadBodyHtml = (slug: string): string => {
   if (parts.length < 3) {return "";}
   const body = parts.slice(2).join("---\n");
   const htmlString = marked.parse(body) as string;
-  // 横スクロールするコードブロックをキーボードだけで操作できるよう pre をフォーカス可能に（a11y）
-  const withFocusablePre = htmlString.replace(/<pre>/g, '<pre tabindex="0">');
+  // 横スクロールするコードブロックをキーボードだけで操作できるよう pre をフォーカス可能に（a11y）。
+  // 先読み (?=[\s>]) で「<pre」直後が空白か > のときだけ位置マッチ。属性付き <pre class="..."> にも
+  // 対応しつつ <prefetch> 等の別タグ誤マッチを防ぐ。
+  const withFocusablePre = htmlString.replace(/<pre(?=[\s>])/g, '<pre tabindex="0"');
   // 段落単位のリンクをカード風に置き換え
   const replaced = withFocusablePre.replace(
     /<p><a href="([^"]+)"[^>]*>(.*?)<\/a><\/p>/g,

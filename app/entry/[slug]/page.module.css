@@ -11,6 +11,8 @@
     }
 
     .progress {
+      /* z-index はヘッダー（z-index:100）より前面。読書進捗バーはビューポート最上部に
+         見せる必要があり、背面に置くと全幅ヘッダーに隠れて見えなくなるため意図的。 */
       position: fixed;
       z-index: 200;
       height: 3px;

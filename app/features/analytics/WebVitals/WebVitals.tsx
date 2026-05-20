@@ -14,7 +14,10 @@ export const WebVitals: FC = () => {
     }
 
     window.gtag("event", metric.name, {
-      event_category: "Web Vitals",
+      // useReportWebVitals は Core Web Vitals に加えて Next.js 独自メトリクス
+      // （Next.js-hydration 等。metric.label === "custom"）も発火する。
+      // event_category で両者を分けておくと GA4 側でフィルタしやすい。
+      event_category: metric.label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
       event_label: metric.id,
       non_interaction: true,
       // CLS は小数なので 1000 倍して整数化（GA の value は整数前提）。
