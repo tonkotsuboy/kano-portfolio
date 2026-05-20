@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<meta name="robots" content="noindex" />
+<title>モダンWeb機能 採用棚卸し — kano.codes</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --primary: oklch(0.787 0.158 79);
+    --primary-accessible: light-dark(oklch(0.407 0.087 64), oklch(0.645 0.139 71));
+    --bg: light-dark(oklch(0.965 0.006 240), oklch(0.16 0.035 268));
+    --bg-orb-1: oklch(0.93 0.04 240 / 0.5);
+    --bg-orb-2: oklch(0.95 0.055 160 / 0.28);
+    --bg-orb-3: oklch(0.787 0.158 79 / 0.12);
+    --text: light-dark(oklch(0.267 0.029 256), oklch(0.964 0.002 247));
+    --text-2: light-dark(oklch(0.42 0.013 255), oklch(0.74 0.01 286));
+    --text-3: light-dark(oklch(0.5 0.014 254), oklch(0.66 0.02 261));
+    --card: light-dark(rgba(255, 255, 255, 0.55), oklch(0.249 0.005 286 / 0.55));
+    --card-border: light-dark(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1));
+    --hairline: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.1));
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --radius: 20px;
+    --ok: oklch(0.62 0.16 150);
+    --warn: oklch(0.72 0.16 75);
+    --danger: oklch(0.62 0.18 25);
+    --mute: light-dark(oklch(0.6 0.01 260), oklch(0.55 0.01 260));
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    position: relative;
+    min-height: 100dvh;
+    padding: clamp(1.5rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem) 5rem;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+    line-height: 1.7;
+    hanging-punctuation: first allow-end last;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(in oklch ellipse at 18% 18%, var(--bg-orb-1) 0, transparent 50%),
+      radial-gradient(in oklch ellipse at 82% 8%, var(--bg-orb-3) 0, transparent 45%),
+      radial-gradient(in oklch ellipse at 90% 82%, var(--bg-orb-2) 0, transparent 50%);
+  }
+
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  header.page { margin-bottom: 2.5rem; }
+  .eyebrow { color: var(--primary-accessible); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  h1 { margin: 0.4rem 0 0.6rem; font-size: clamp(1.8rem, 5vw, 2.7rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; text-wrap: balance; }
+  .lead { max-width: 62ch; color: var(--text-2); text-wrap: pretty; }
+  .legend { margin-top: 1rem; color: var(--text-3); font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; align-items: center; }
+
+  h2 { display: flex; align-items: center; margin: 2.8rem 0 0.4rem; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.015em; gap: 0.6rem; }
+  h2 .badge { display: inline-grid; width: 1.7rem; height: 1.7rem; border-radius: 50%; font-size: 0.95rem; place-items: center; }
+  .badge.keep { background: oklch(0.62 0.16 150 / 0.18); }
+  .badge.add { background: oklch(0.787 0.158 79 / 0.22); }
+  .badge.skip { background: var(--hairline); }
+  .section-note { margin: 0 0 1.2rem; color: var(--text-3); font-size: 0.88rem; max-width: 62ch; text-wrap: pretty; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip { display: inline-flex; align-items: center; padding: 0.34rem 0.7rem; border: 1px solid var(--card-border); border-radius: 999px; background: var(--card); backdrop-filter: blur(10px); box-shadow: var(--shadow); font-size: 0.78rem; gap: 0.4rem; }
+  .chip::before { content: "✓" / ""; color: var(--ok); font-weight: 800; }
+  .chip code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.76rem; }
+  .chip span { color: var(--text-3); font-size: 0.7rem; }
+
+  .grid { display: grid; gap: 1rem; }
+  .card { position: relative; overflow: hidden; padding: 1.25rem 1.3rem; border: 1px solid var(--card-border); border-radius: var(--radius); backdrop-filter: blur(12px); background: var(--card); box-shadow: var(--shadow); }
+  .card.lead-rail::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; }
+  .card.p-must::before { background: var(--primary); }
+  .card.p-bug::before { background: var(--danger); }
+  .card.p-rec::before { background: oklch(0.7 0.13 200); }
+  .card.p-opt::before { background: var(--mute); }
+
+  .card-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.45rem 0.7rem; margin-bottom: 0.5rem; }
+  .card-head h3 { font-size: 1.06rem; font-weight: 800; letter-spacing: -0.01em; }
+  .card-head code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; color: var(--primary-accessible); }
+
+  .pill { padding: 0.15rem 0.55rem; border-radius: 999px; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .pill.must { background: var(--primary); color: oklch(0.152 0.018 79); }
+  .pill.bug { background: oklch(0.62 0.18 25 / 0.18); color: light-dark(oklch(0.5 0.18 25), oklch(0.78 0.14 25)); }
+  .pill.rec { background: oklch(0.7 0.13 200 / 0.2); color: light-dark(oklch(0.4 0.1 200), oklch(0.78 0.12 200)); }
+  .pill.opt { background: var(--hairline); color: var(--text-2); }
+  .tag { padding: 0.12rem 0.5rem; border: 1px solid var(--card-border); border-radius: 6px; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); }
+
+  .card p { color: var(--text-2); font-size: 0.91rem; text-wrap: pretty; }
+  .card p + p { margin-top: 0.5rem; }
+  .card code.inl { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; background: var(--hairline); padding: 0.05em 0.35em; border-radius: 5px; }
+
+  .kv { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--hairline); font-size: 0.78rem; }
+  .kv div { color: var(--text-3); }
+  .kv b { color: var(--text); font-weight: 600; }
+  .kv code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.74rem; }
+  .baseline { display: inline-flex; align-items: center; gap: 0.3rem; }
+  .dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; }
+  .dot.green { background: var(--ok); }
+  .dot.amber { background: var(--warn); }
+
+  .card.skip .card-head h3 { color: var(--text-2); }
+  .reason { margin-top: 0.6rem; padding: 0.6rem 0.8rem; border-radius: 12px; background: var(--hairline); font-size: 0.84rem; color: var(--text-2); text-wrap: pretty; }
+  .reason b { color: var(--text); }
+
+  footer.page { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--hairline); color: var(--text-3); font-size: 0.78rem; text-wrap: pretty; }
+  footer.page code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page">
+    <div class="eyebrow">Modern Web Guidance Audit</div>
+    <h1>HTML / CSS / JS モダン機能の採用棚卸し</h1>
+    <p class="lead">
+      <a href="https://developer.chrome.com/docs/modern-web-guidance?hl=ja" target="_blank"><code>modern-web-guidance</code></a> ガイドと <strong>kano.codes</strong> の現行コードを突き合わせた、フロントエンドのモダン機能 採用状況のスナップショットです。
+      すでに最先端を広く採用済みで、残る上乗せは <strong>追加候補 7 件</strong>（うち a11y の実バグ 1 件）と <strong>見送り 6 件</strong>。
+    </p>
+    <p class="legend">
+      <span><span class="pill must">必須</span> 効果が確実</span>
+      <span><span class="pill bug">バグ修正</span> 既存の不備</span>
+      <span><span class="pill rec">推奨</span> 堅実・要計測</span>
+      <span><span class="pill opt">任意</span> 装飾・基盤</span>
+    </p>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+
+  <!-- ============ 採用済み ============ -->
+  <h2><span class="badge keep">✓</span>すでに採用している最新機能</h2>
+  <p class="section-note">ガイドが推すパターンの多くは導入済み。括弧内は主な使用箇所です。</p>
+  <div class="chips">
+    <span class="chip"><code>&lt;search&gt;</code> 要素 <span>ArticleGrid</span></span>
+    <span class="chip"><code>aria-pressed</code> を CSS の正に <span>タグフィルタ</span></span>
+    <span class="chip"><code>aria-current</code> を CSS の正に <span>Header nav</span></span>
+    <span class="chip"><code>command</code> + <code>commandFor</code> <span>ThemeToggle</span></span>
+    <span class="chip"><code>popover="auto"</code> <span>ThemeToggle</span></span>
+    <span class="chip"><code>@property</code> <span>shimmer</span></span>
+    <span class="chip"><code>linear()</code> easing <span>サムネ fade-in</span></span>
+    <span class="chip"><code>scrollbar-color</code> / <code>-width</code> / <code>-gutter</code> <span>globals</span></span>
+    <span class="chip"><code>accent-color</code> <span>globals</span></span>
+    <span class="chip"><code>print-color-adjust</code> <span>globals</span></span>
+    <span class="chip"><code>hanging-punctuation</code> <span>本文</span></span>
+    <span class="chip"><code>text-wrap: balance</code> <span>見出し</span></span>
+    <span class="chip"><code>text-wrap: pretty</code> <span>本文</span></span>
+    <span class="chip"><code>::target-text</code> <span>globals</span></span>
+    <span class="chip"><code>oklch()</code> + Relative Color <span>全体</span></span>
+    <span class="chip"><code>:has()</code> <span>サムネ判定</span></span>
+    <span class="chip">CSS Subgrid <span>UpcomingTalks</span></span>
+    <span class="chip"><code>hyphens: auto</code> <span>記事本文</span></span>
+    <span class="chip"><code>aspect-ratio</code> / <code>clamp()</code> / <code>100dvh</code></span>
+    <span class="chip"><code>@layer</code> <span>カスケード制御</span></span>
+    <span class="chip">Temporal <span>polyfill 先取り</span></span>
+    <span class="chip">IntersectionObserver <span>無限スクロール</span></span>
+    <span class="chip"><code>next/font</code> <code>display:swap</code></span>
+  </div>
+
+  <!-- ============ 追加する候補 ============ -->
+  <h2><span class="badge add">+</span>今後 追加したい候補</h2>
+  <p class="section-note">ガイド照合で残った上乗せ。優先度とドメインを併記。</p>
+  <div class="grid">
+
+    <article class="card lead-rail p-must">
+      <div class="card-head">
+        <h3>テーマのちらつき（FOUC）解消</h3>
+        <span class="pill must">必須</span><span class="tag">CSS / JS</span>
+      </div>
+      <p>テーマ適用が <code class="inl">useEffect</code> 内（＝描画後）のため、ダーク利用者はページを開くたび一瞬ライトが見えます（<code class="inl">suppressHydrationWarning</code> がその傍証）。</p>
+      <p>解決策は <code class="inl">&lt;head&gt;</code> に <strong>ブロッキングな inline script</strong> を置き、描画前に <code class="inl">localStorage</code> を読んで <code class="inl">data-theme</code> を確定させること。現行の light/dark/system 3 択は維持できます。</p>
+      <div class="kv">
+        <div><b>Baseline</b> <span class="baseline"><span class="dot green"></span>localStorage / matchMedia は Widely available</span></div>
+        <div><b>対象</b> <code>layout.tsx</code> / <code>ThemeProvider.tsx</code></div>
+        <div><b>根拠</b> <code>dark-mode</code></div>
+      </div>
+    </article>
+
+    <article class="card lead-rail p-bug">
+      <div class="card-head">
+        <h3>skip-link を確実に機能させる</h3>
+        <span class="pill bug">バグ修正</span><span class="tag">HTML / a11y</span>
+      </div>
+      <p>① 記事詳細ページの <code class="inl">&lt;main&gt;</code> に <code class="inl">id="main-content"</code> が無く、<strong>このページだけ skip-link が機能しません</strong>（リンク先が存在しない）。</p>
+      <p>② 全ページの <code class="inl">&lt;main&gt;</code> に <code class="inl">tabindex="-1"</code> が無く、スキップ後にフォーカスが移らない場合があります。a11y ガイドは「スキップ先を focusable にする（<code class="inl">&lt;main id tabindex="-1"&gt;</code>）」を明示。</p>
+      <div class="kv">
+        <div><b>影響</b> キーボード / スクリーンリーダー利用者</div>
+        <div><b>対象</b> 記事詳細ページ ＋ 各 <code>main</code></div>
+        <div><b>根拠</b> <code>accessibility</code></div>
+      </div>
+    </article>
+
+    <article class="card lead-rail p-rec">
+      <div class="card-head">
+        <h3>LCP 画像の優先度指定</h3>
+        <span class="pill rec">推奨</span><span class="tag">Performance</span>
+      </div>
+      <p>記事詳細のカバー画像は <code class="inl">priority</code> 指定なし。記事詳細の LCP はこの画像なので付ける価値あり。トップは直近登壇カードの先頭サムネが候補。</p>
+      <p><strong>どれが実際の LCP かは計測してから</strong>、最大 1〜2 枚に絞るのが鉄則（付けすぎは逆効果）。</p>
+      <div class="kv">
+        <div><b>Baseline</b> <span class="baseline"><span class="dot green"></span>Fetch Priority: Newly available（2024-10）</span></div>
+        <div><b>対象</b> 記事カバー / 登壇カード</div>
+        <div><b>根拠</b> <code>optimize-image-priority</code></div>
+      </div>
+    </article>
+
+    <article class="card lead-rail p-rec">
+      <div class="card-head">
+        <h3>日本語フォントの安定化</h3>
+        <span class="pill rec">推奨</span><span class="tag">CSS</span>
+      </div>
+      <p>Noto Sans JP + Inter 構成。Web フォント読み込み前後でフォールバックの字面が変わり、ずれ・ちらつき（CLS）が出がち。<code class="inl">font-size-adjust: from-font</code> でフォールバックの x-height を主フォントに合わせて軽減できます。</p>
+      <div class="kv">
+        <div><b>Baseline</b> <span class="baseline"><span class="dot green"></span>Newly available（2024-07）/ 全主要対応</span></div>
+        <div><b>対象</b> <code>globals.css</code>（body）</div>
+        <div><b>根拠</b> <code>visually-stable-font-fallbacks</code></div>
+      </div>
+    </article>
+
+    <article class="card lead-rail p-opt">
+      <div class="card-head">
+        <h3>記事コードブロックのキーボード操作</h3>
+        <span class="pill opt">任意</span><span class="tag">HTML / a11y</span>
+      </div>
+      <p>記事本文の <code class="inl">&lt;pre&gt;</code> は横スクロール可（<code class="inl">overflow-x:auto</code>）だが <code class="inl">tabindex="0"</code> が無く、キーボードだけでコードを横スクロールできません。Markdown→HTML 変換の後処理で <code class="inl">&lt;pre tabindex="0"&gt;</code> を付与。</p>
+      <div class="kv">
+        <div><b>影響</b> キーボード利用者（コード閲覧）</div>
+        <div><b>対象</b> 記事詳細ページ</div>
+        <div><b>根拠</b> <code>html</code></div>
+      </div>
+    </article>
+
+    <article class="card lead-rail p-opt">
+      <div class="card-head">
+        <h3>記事詳細にスクロール進捗バー</h3>
+        <span class="pill opt">任意</span><span class="tag">CSS</span>
+      </div>
+      <p>長文記事に読書進捗バーを <strong>JS ゼロ・CSS だけ</strong>で。<code class="inl">animation-timeline: scroll()</code> で <code class="inl">scaleX(0→1)</code>。装飾なので Firefox 未対応でもフォールバック不要（バーが出ないだけ）。装飾要素は <code class="inl">aria-hidden="true"</code> 必須。</p>
+      <div class="kv">
+        <div><b>Baseline</b> <span class="baseline"><span class="dot amber"></span>Scroll-driven anim: Chrome/Edge/Safari 26・FF ✗</span></div>
+        <div><b>対象</b> 記事詳細ページ</div>
+        <div><b>根拠</b> <code>scroll-progress-indicator</code></div>
+      </div>
+    </article>
+
+    <article class="card lead-rail p-opt">
+      <div class="card-head">
+        <h3>INP / LCP の実測基盤</h3>
+        <span class="pill opt">任意</span><span class="tag">JS / 計測</span>
+      </div>
+      <p>上の「LCP 画像」を裏取りするなら、まず計測。<code class="inl">web-vitals</code> の <code class="inl">onINP()</code> / <code class="inl">onLCP()</code> で原因スクリプトや LCP 要素を本番特定し Analytics へビーコン送信。既存の計測と併用可。</p>
+      <div class="kv">
+        <div><b>Baseline</b> <span class="baseline"><span class="dot green"></span>Event Timing: Newly available（2025-12）</span></div>
+        <div><b>対象</b> 計測レイヤー（新規）</div>
+        <div><b>根拠</b> <code>identify-inp-causes</code></div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ============ 見送り ============ -->
+  <h2><span class="badge skip">—</span>今回は 追加しないもの</h2>
+  <p class="section-note">「最新だから」では入れない。実装条件を満たさない／一度試して撤去した／方針に合わないもの。</p>
+  <div class="grid">
+
+    <article class="card skip">
+      <div class="card-head"><h3>avatar の View Transition 引き継ぎ</h3><span class="tag">CSS / JS</span></div>
+      <p>意図は「ページ間で avatar を滑らかに繋ぐ」。だが現状動いていない疑いが濃厚。</p>
+      <div class="reason"><b>理由:</b> ① <code>&lt;meta name="view-transition"&gt;</code> は出荷仕様に無く（正は CSS <code>@view-transition{navigation:auto}</code>）no-op の可能性。② cross-document VT は実ドキュメント遷移時のみ発火 → Next.js の <code>&lt;Link&gt;</code>（same-document）では発火しない。③ same-document VT は React <code>&lt;ViewTransition&gt;</code>（canary）依存。<b>→ no-op な宣言／コメントの整理を推奨。</b></div>
+    </article>
+
+    <article class="card skip">
+      <div class="card-head"><h3>React <code>&lt;ViewTransition&gt;</code>（same-document）</h3><span class="tag">JS</span></div>
+      <p>クライアント遷移にアニメを付ける本命だが安定版に未到来。</p>
+      <div class="reason"><b>理由:</b> 一度導入して <code>revert</code> 済み。React canary 依存を個人サイトの本番に持ち込むのはリスク。<b>stable 化を待つ。</b></div>
+    </article>
+
+    <article class="card skip">
+      <div class="card-head"><h3><code>content-visibility: auto</code></h3><span class="tag">CSS</span></div>
+      <p>オフスクリーン要素の描画を遅延してパフォーマンス改善。</p>
+      <div class="reason"><b>理由:</b> ArticleGrid（flex）と UpcomingTalks（subgrid）の両方で高さ計算が崩れる現象を確認し撤去済み（コード内コメントに明記）。<b>採用しない方針が確定済み。</b></div>
+    </article>
+
+    <article class="card skip">
+      <div class="card-head"><h3><code>scheduler.postTask()</code> / <code>yield()</code></h3><span class="tag">JS</span></div>
+      <p>長いタスクを分割して INP を守る API。</p>
+      <div class="reason"><b>理由:</b> Safari 未対応（要 polyfill）。加えて Client JS が薄く、分割対象の重い処理が無い。<b>恩恵が費用に見合わない。</b></div>
+    </article>
+
+    <article class="card skip">
+      <div class="card-head"><h3>スクロールでヘッダー縮小</h3><span class="tag">CSS</span></div>
+      <p>スクロール量でヘッダーを小さくする演出。</p>
+      <div class="reason"><b>理由:</b> <code>height</code> アニメは合成スレッドに乗らずカクつきやすい（ガイドも警告）。ヘッダーは既にコンパクト（64px）で余地が小さく、「静かで丁寧」な方針にも不一致。</div>
+    </article>
+
+    <article class="card skip">
+      <div class="card-head"><h3>カードのスクロールイン演出</h3><span class="tag">CSS</span></div>
+      <p>カードがビューに入るとフェード／スケールイン（<code>animation-timeline: view()</code>）。</p>
+      <div class="reason"><b>理由:</b> 技術的には可能だが、ミニマル志向に対し装飾過多。View Transitions を revert した精神と同じく見送り。</div>
+    </article>
+
+  </div>
+
+  </main>
+
+  <footer class="page">
+    生成元: <a href="https://github.com/GoogleChrome/modern-web-guidance" target="_blank"><code>modern-web-guidance</code></a>（<a href="https://developer.chrome.com/docs/modern-web-guidance?hl=ja" target="_blank">ドキュメント</a>）× kano.codes の実コード照合。
+    Baseline 日付・対応ブラウザはガイド取得時点の記載に基づく。
+  </footer>
+
+</div>
+</body>
+</html>
