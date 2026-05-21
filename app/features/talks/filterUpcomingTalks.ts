@@ -1,3 +1,5 @@
+import { Temporal } from "temporal-polyfill-lite";
+
 const GRACE_PERIOD = Temporal.Duration.from({ hours: 48 });
 
 type TalkLike = {

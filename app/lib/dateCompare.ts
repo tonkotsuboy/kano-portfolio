@@ -1,3 +1,5 @@
+import { Temporal } from "temporal-polyfill-lite";
+
 type WithDate = { date: string };
 
 // Array.prototype.sort に渡すコンパレータ。引数順を間違えても降順/昇順が

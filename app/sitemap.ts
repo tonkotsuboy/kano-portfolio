@@ -1,4 +1,4 @@
-import "temporal-polyfill/global";
+import { Temporal } from "temporal-polyfill-lite";
 
 import type { MetadataRoute } from "next";
 

@@ -1,3 +1,5 @@
+import type { Temporal } from "temporal-polyfill-lite";
+
 // RSS 2.0 の <pubDate> 仕様で要求される RFC 2822 形式（例: "Fri, 28 Dec 2018 04:28:16 GMT"）に変換する。
 // Temporal には標準のフォーマッタがないため、Intl.DateTimeFormat の en-GB ロケールでパーツを取り出して組み立てる。
 const RFC2822_FORMATTER = new Intl.DateTimeFormat("en-GB", {
