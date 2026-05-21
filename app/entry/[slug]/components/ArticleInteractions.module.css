@@ -1,0 +1,73 @@
+/* 本文のインタラクション層。子要素はそのまま記事のレイアウトに流す（display: contents）。
+   クリックの委譲（コードコピー / 画像拡大）とライトボックスの描画だけを担う。 */
+.interactions {
+  display: contents;
+}
+
+.lightbox {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(var(--space-md), 4vw, var(--space-2xl));
+  animation: lightboxFade var(--dur-base) var(--ease-liquid);
+  backdrop-filter: blur(20px);
+  background: oklch(0.15 0.02 256 / 0.84);
+  inset: 0;
+}
+
+@keyframes lightboxFade {
+  from {
+    opacity: 0;
+  }
+}
+
+.lightboxFigure {
+  overflow: hidden;
+  max-width: 1100px;
+  max-height: 100%;
+  border-radius: var(--radius-lg);
+  margin: 0;
+  animation: lightboxScale var(--dur-base) var(--ease-liquid);
+  box-shadow: var(--shadow-elevated);
+}
+
+@keyframes lightboxScale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.lightboxImage {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.lightboxCaption {
+  padding: var(--space-md);
+  background: var(--glass-bg-strong);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.lightboxClose {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  display: flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(20px);
+  background: rgb(255 255 255 / 0.12);
+  color: rgb(255 255 255);
+  cursor: pointer;
+}

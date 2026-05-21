@@ -1,18 +1,20 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { marked } from "marked";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Temporal } from "temporal-polyfill-lite";
 
-import { WithSiteTitle } from "../../constants";
+import { SiteUrl, WithSiteTitle } from "../../constants";
 import { Footer } from "../../features/layout/Footer";
 import { Header } from "../../features/layout/Header";
 import { metadata } from "../../layout";
 
+import { ArticleInteractions } from "./components/ArticleInteractions";
 import { EntryCover } from "./components/EntryCover";
 import { EntryMeta } from "./components/EntryMeta";
-import { escapeHtml } from "./lib/escapeHtml";
+import { ShareBar } from "./components/ShareBar";
+import { markdownToHtml } from "./lib/markdownToHtml";
 import styles from "./page.module.css";
 
 import type { Metadata } from "next";
@@ -40,28 +42,18 @@ const getPost = (slug: string) => {
   return post;
 };
 
-const loadBodyHtml = (slug: string): string => {
+const loadMarkdownBody = (slug: string): string => {
   const file = path.join(process.cwd(), "content/posts", `${slug}.md`);
-  if (!fs.existsSync(file)) {return "";}
+  if (!fs.existsSync(file)) {
+    return "";
+  }
   const raw = fs.readFileSync(file, "utf8");
   const parts = raw.split(/^---\s*$/m);
-  if (parts.length < 3) {return "";}
-  const body = parts.slice(2).join("---\n");
-  const htmlString = marked.parse(body) as string;
-  // 横スクロールするコードブロックをキーボードだけで操作できるよう pre をフォーカス可能に（a11y）。
-  // 先読み (?=[\s>]) で「<pre」直後が空白か > のときだけ位置マッチ。属性付き <pre class="..."> にも
-  // 対応しつつ <prefetch> 等の別タグ誤マッチを防ぐ。
-  const withFocusablePre = htmlString.replace(/<pre(?=[\s>])/g, '<pre tabindex="0"');
-  // 段落単位のリンクをカード風に置き換え
-  const replaced = withFocusablePre.replace(
-    /<p><a href="([^"]+)"[^>]*>(.*?)<\/a><\/p>/g,
-    (_m, href: string, text: string) => {
-      const escapedHref = escapeHtml(href);
-      const escapedText = escapeHtml(text);
-      return `<a class="linkCardStandalone linkCardInline" href="${escapedHref}" target="_blank"><div class="linkThumb"><span>Link</span></div><div class="linkMeta"><div class="linkTitle">${escapedText}</div><div class="linkUrl">${escapedHref}</div></div></a>`;
-    },
-  );
-  return replaced;
+  if (parts.length < 3) {
+    return "";
+  }
+
+  return parts.slice(2).join("---\n");
 };
 
 type Params = { params: Promise<{ slug: string }> }
@@ -95,71 +87,77 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
 const Page = async ({ params }: Params) => {
   const { slug } = await params;
   const post = getPost(slug);
-  const bodyHtml = loadBodyHtml(slug);
+  const bodyHtml = await markdownToHtml(loadMarkdownBody(slug));
   const coverSrc = typeof post.thumbnail === "string" ? post.thumbnail : "";
   const isCoverAvailable = coverSrc.length > 0;
   const isSlidesAvailable = typeof post.slides === "string" && post.slides.trim().length > 0;
   const isLinkUrlAvailable = typeof post.linkUrl === "string" && post.linkUrl.trim().length > 0;
 
   const zdt = Temporal.Instant.from(post.date).toZonedDateTimeISO("Asia/Tokyo");
-  const formattedDate = `${zdt.year}/${String(zdt.month).padStart(2, "0")}/${String(zdt.day).padStart(2, "0")}`;
+  const formattedDate = `${zdt.year}年${zdt.month}月${zdt.day}日`;
+  const shareUrl = `${SiteUrl}/entry/${slug}`;
 
   return (
     <>
       <Header currentPath="/" />
       <main id="main-content" tabIndex={-1} className={styles.surface}>
         <div className={styles.progress} aria-hidden="true" />
-        <EntryMeta
-          date={post.date}
-          formattedDate={formattedDate}
-          medium={post.medium}
-          tags={post.tags}
-          title={post.title}
-        />
-
         <article className={styles.article}>
-          <EntryCover alt={post.title} coverSrc={coverSrc} />
+          <EntryMeta
+            date={post.date}
+            formattedDate={formattedDate}
+            medium={post.medium}
+            tags={post.tags}
+            title={post.title}
+          />
 
-          {bodyHtml ? (
-            <div
-              className={styles.body}
-              dangerouslySetInnerHTML={{ __html: bodyHtml }}
-            />
-          ) : null}
+          <ArticleInteractions>
+            <EntryCover alt={post.title} coverSrc={coverSrc} />
 
-          {isSlidesAvailable ? (
-            <div className={styles.sectionCard}>
-              <div className={styles.sectionTitle}>スライド</div>
-              <a className={styles.rawLink} href={post.slides} target="_blank">
-                {post.slides}
+            {bodyHtml ? (
+              <div
+                className={styles.body}
+                dangerouslySetInnerHTML={{ __html: bodyHtml }}
+              />
+            ) : null}
+
+            {isSlidesAvailable ? (
+              <div className={styles.sectionCard}>
+                <div className={styles.sectionTitle}>スライド</div>
+                <a className={styles.rawLink} href={post.slides} target="_blank">
+                  {post.slides}
+                </a>
+              </div>
+            ) : null}
+
+            {isLinkUrlAvailable ? (
+              <a className={styles.linkCard} href={post.linkUrl} target="_blank">
+                <div className={styles.linkThumb}>
+                  {isCoverAvailable ? (
+                    <Image
+                      src={coverSrc}
+                      alt={post.title}
+                      width={120}
+                      height={120}
+                      sizes="120px"
+                      className={styles.linkThumbImage}
+                      unoptimized
+                    />
+                  ) : (
+                    <span>{post.medium || "Link"}</span>
+                  )}
+                </div>
+                <div className={styles.linkMeta}>
+                  <div className={styles.linkTitle}>{post.title}</div>
+                  <div className={styles.linkUrl}>{post.linkUrl}</div>
+                </div>
               </a>
-            </div>
-          ) : null}
+            ) : null}
+          </ArticleInteractions>
 
-          {isLinkUrlAvailable ? (
-            <a className={styles.linkCardStandalone} href={post.linkUrl} target="_blank">
-              <div className={styles.linkThumb}>
-                {isCoverAvailable ? (
-                  <Image
-                    src={coverSrc}
-                    alt={post.title}
-                    width={120}
-                    height={120}
-                    sizes="120px"
-                    className={styles.linkThumbImage}
-                    style={{ height: "100%", objectFit: "contain", width: "100%" }}
-                    unoptimized
-                  />
-                ) : (
-                  <span>{post.medium || "Link"}</span>
-                )}
-              </div>
-              <div className={styles.linkMeta}>
-                <div className={styles.linkTitle}>{post.title}</div>
-                <div className={styles.linkUrl}>{post.linkUrl}</div>
-              </div>
-            </a>
-          ) : null}
+          <div className={styles.footerShare}>
+            <ShareBar title={post.title} url={shareUrl} />
+          </div>
         </article>
       </main>
       <Footer />

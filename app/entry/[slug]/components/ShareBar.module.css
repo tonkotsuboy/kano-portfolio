@@ -1,0 +1,40 @@
+/* 記事末尾のシェアバー。chrome 系のガラスピル（DESIGN.md の react-btn 相当）。 */
+.shareBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.shareButton {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  box-shadow: var(--shadow-rest);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--dur-base) var(--ease-liquid),
+    color var(--dur-base) var(--ease-liquid),
+    transform var(--dur-fast) var(--ease-liquid);
+}
+
+.shareButton:hover {
+  background: var(--glass-card-hover-bg);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.shareButton:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
