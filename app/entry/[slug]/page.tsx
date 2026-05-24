@@ -5,7 +5,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Temporal } from "temporal-polyfill-lite";
 
-import { SiteUrl, WithSiteTitle } from "../../constants";
+import { ogImageUrl, SiteUrl, WithSiteTitle } from "../../constants";
 import { Footer } from "../../features/layout/Footer";
 import { Header } from "../../features/layout/Header";
 import { metadata } from "../../layout";
@@ -63,6 +63,8 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
   const post = getPost(slug);
   const title = `${post.title}${WithSiteTitle}`;
   const description = `${post.title} - 鹿野壮のポートフォリオ`;
+  // 記事のサムネ（メインビジュアル）を OG 画像にする。未設定時はサイト既定にフォールバック。
+  const ogImage = typeof post.thumbnail === "string" && post.thumbnail.length > 0 ? post.thumbnail : ogImageUrl;
 
   return {
     alternates: {
@@ -72,6 +74,7 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
     openGraph: {
       ...metadata.openGraph,
       description,
+      images: [{ alt: post.title, height: 630, url: ogImage, width: 1200 }],
       title,
       type: "article",
     },
@@ -79,6 +82,7 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
     twitter: {
       ...metadata.twitter,
       description,
+      images: [ogImage],
       title,
     },
   };

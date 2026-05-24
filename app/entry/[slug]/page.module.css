@@ -91,7 +91,9 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.25;
-  text-wrap: balance;
+
+  /* 和文は text-wrap: balance/pretty・word-break: auto-phrase を使わない（行頭が早すぎる位置で
+     割れて違和感が出るため）。ブラウザ既定の CJK greedy 折り返しに任せる（zenn 本文と同方針）。 */
 }
 
 .tags {
@@ -114,62 +116,17 @@
 }
 
 /* =====================================================================
- * ヒーロー画像（タイトル直下・クリックで拡大）
+ * ヒーロー画像（タイトル直下）
  * ===================================================================== */
 .cover {
   margin: var(--space-md) 0 0;
-}
-
-.coverButton {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-lg);
-  background: transparent;
-  box-shadow: var(--shadow-rest);
-  cursor: zoom-in;
-  transition:
-    box-shadow var(--dur-base) var(--ease-liquid),
-    transform var(--dur-base) var(--ease-liquid);
-}
-
-.coverButton:hover {
-  box-shadow: var(--shadow-elevated);
 }
 
 .coverImage {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.zoomBadge {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  display: flex;
-  width: 32px;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  backdrop-filter: blur(12px);
-  background: var(--glass-bg-strong);
   box-shadow: var(--shadow-rest);
-  color: var(--text-primary);
-  opacity: 0;
-  transform: translateY(4px);
-  transition:
-    opacity var(--dur-base) var(--ease-liquid),
-    transform var(--dur-base) var(--ease-liquid);
-}
-
-.coverButton:hover .zoomBadge {
-  opacity: 1;
-  transform: none;
 }
 
 /* =====================================================================
@@ -180,23 +137,28 @@
   color: var(--text-primary);
   font-size: 1rem;
   line-height: 2;
-  text-wrap: pretty;
 }
 
+/* flow（lobotomized owl）: 隣接要素の「間」にだけ余白を入れる。見出しの前後で量を変え、
+   「見出し前は広く・直後の本文は狭く」して『見出し + 本文』を 1 つの島に見せる（近接）。
+   子のブロックマージンは 0 に揃え、間隔は owl ルール自身（同詳細度・後勝ち）で作る。 */
 .body > * {
-  margin-top: 2em;
+  margin-block: 0;
 }
 
-.body > :first-child {
-  margin-top: 0;
+.body > * + * {
+  margin-block-start: 1.6em;
 }
 
-.body p {
-  margin: 0;
+.body > * + :is(h2, h3) {
+  margin-block-start: 3em;
+}
+
+.body > :is(h2, h3) + * {
+  margin-block-start: 0.5em;
 }
 
 .body h2 {
-  margin-top: 2.6em;
   color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: 800;
@@ -206,7 +168,6 @@
 }
 
 .body h3 {
-  margin-top: 2em;
   color: var(--text-primary);
   font-size: 1.125rem;
   font-weight: 700;
@@ -268,7 +229,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--liquid-primary);
+  background: var(--text-primary);
   content: "";
 }
 
@@ -363,57 +324,19 @@
   border-bottom: 0;
 }
 
-/* 図版（Markdown 画像 → figure。data 属性で注入される） */
+/* 図版（Markdown 画像 → figure。data 属性で注入される）。クリック拡大はしない。
+   block マージンは owl（.body > * + *）に委ね、figure の左右デフォルトマージンだけ打ち消す。 */
 .body [data-figure] {
-  margin: 0;
-}
-
-.body [data-figure] [data-lightbox] {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  width: fit-content;
-  max-width: 100%;
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-lg);
-  background: transparent;
-  box-shadow: var(--shadow-rest);
-  cursor: zoom-in;
-  margin-inline: auto;
-  transition: box-shadow var(--dur-base) var(--ease-liquid);
-}
-
-.body [data-figure] [data-lightbox]:hover {
-  box-shadow: var(--shadow-elevated);
+  margin-inline: 0;
 }
 
 .body [data-figure] img {
   display: block;
+  width: fit-content;
   max-width: 100%;
   height: auto;
-}
-
-.body [data-figure] [data-zoom] {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  display: flex;
-  width: 32px;
-  height: 32px;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  backdrop-filter: blur(12px);
-  background: var(--glass-bg-strong);
   box-shadow: var(--shadow-rest);
-  color: var(--text-primary);
-  opacity: 0;
-  transition: opacity var(--dur-base) var(--ease-liquid);
-}
-
-.body [data-figure] [data-lightbox]:hover [data-zoom] {
-  opacity: 1;
+  margin-inline: auto;
 }
 
 .body [data-figure] figcaption {
@@ -447,6 +370,10 @@
   padding: 3px 8px;
   border-radius: var(--radius-full);
   background: oklch(0.787 0.158 79 / 0.2);
+
+  /* コードブロックは常時ダーク背景（oklch(0.18 …)）のため、前景に --liquid-primary を使う。
+     DESIGN.md の「前景テキストには --liquid-primary-accessible」は明背景向けの規約で、
+     ここではダーク背景に対し十分なコントラストが取れるため意図的に primary を使用している。 */
   color: var(--liquid-primary);
   font-size: 10px;
   font-weight: 700;
@@ -510,23 +437,24 @@
   font-size: 13px;
 }
 
-/* OGP 風リンクカード（段落リンクから注入される） */
+/* OGP 風リンクカード（段落リンクから注入される）。TOP 一覧カード（ArticleGrid .card）と
+   同じ寸法感: 横並び flex + パディング内に 16:9 サムネ + 1.125rem タイトル。 */
 .body [data-linkcard] {
-  display: grid;
+  display: flex;
   overflow: hidden;
+  align-items: center;
+  padding: var(--space-sm);
   border: 1px solid var(--glass-card-border);
   border-radius: var(--radius-md);
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
   box-shadow: var(--shadow-rest);
   color: var(--text-primary);
-  grid-template-columns: 96px 1fr;
+  gap: var(--space-sm);
   text-decoration: none;
   transition:
     background var(--dur-base) var(--ease-liquid),
-    border-color var(--dur-base) var(--ease-liquid),
-    box-shadow var(--dur-base) var(--ease-liquid),
-    transform var(--dur-base) var(--ease-liquid);
+    border-color var(--dur-base) var(--ease-liquid);
 }
 
 .body > [data-linkcard] + [data-linkcard] {
@@ -536,31 +464,51 @@
 .body [data-linkcard]:hover {
   border-color: var(--glass-card-hover-border);
   background: var(--glass-card-hover-bg);
-  box-shadow: var(--shadow-elevated);
-  transform: translateY(-1px);
 }
 
 .body [data-linkcard-thumb] {
   display: flex;
+  overflow: hidden;
+  width: clamp(100px, 25%, 192px);
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+  border-radius: var(--radius-sm);
+  aspect-ratio: 16 / 9;
   background: linear-gradient(in oklch 135deg, var(--liquid-primary), oklch(0.93 0.04 240 / 0.7));
   color: var(--text-on-yellow);
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 900;
 }
 
+/* og:image を取得できたときのサムネ画像（取得不可ならグラデ＋アイコン/頭文字のまま）。 */
+.body [data-linkcard-thumb] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* og:image を取得できないサイト（Amazon 等のボット遮断）向けの Lucide 汎用アイコン。
+   色は持ち込まず currentColor（--text-on-yellow）で塗り、頭文字プレースホルダーと見た目を揃える。 */
+.body [data-linkcard-thumb] svg {
+  width: 48px;
+  height: 48px;
+}
+
 .body [data-linkcard-body] {
-  display: grid;
-  align-content: center;
-  padding: var(--space-sm) var(--space-md);
-  gap: 4px;
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3xs);
 }
 
 .body [data-linkcard-title] {
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 1.125rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   line-height: 1.4;
 }
 
@@ -568,7 +516,7 @@
   display: inline-flex;
   align-items: center;
   color: var(--text-tertiary);
-  font-size: 11px;
+  font-size: 0.75rem;
   gap: 5px;
 }
 
@@ -610,16 +558,12 @@
   text-decoration: none;
   transition:
     background var(--dur-base) var(--ease-liquid),
-    border-color var(--dur-base) var(--ease-liquid),
-    box-shadow var(--dur-base) var(--ease-liquid),
-    transform var(--dur-base) var(--ease-liquid);
+    border-color var(--dur-base) var(--ease-liquid);
 }
 
 .linkCard:hover {
   border-color: var(--glass-card-hover-border);
   background: var(--glass-card-hover-bg);
-  box-shadow: var(--shadow-elevated);
-  transform: translateY(-1px);
 }
 
 .linkThumb {

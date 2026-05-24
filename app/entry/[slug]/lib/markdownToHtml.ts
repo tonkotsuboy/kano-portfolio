@@ -4,7 +4,7 @@
 // rehype-pretty-code と同じエンジン）に格上げする。依存追加はなし。
 // 入力は著者自身の Markdown（ビルド時 SSG）であり信頼できる前提。
 
-import { Marked } from "marked";
+import { Marked, type Tokens } from "marked";
 import { bundledLanguages, codeToHtml } from "shiki";
 
 import { transformLinkCards } from "./linkCard";
@@ -16,9 +16,6 @@ const copyIconSvg =
 
 const checkIconSvg =
   '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
-
-const zoomIconSvg =
-  '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>';
 
 const isBundledLang = (lang: string): boolean =>
   Object.prototype.hasOwnProperty.call(bundledLanguages, lang);
@@ -73,21 +70,19 @@ const highlightCode = (code: string, lang: string): Promise<string> =>
     ],
   });
 
-// 段落だけ、もしくは単独ブロックの画像を figure（拡大ボタン + キャプション）でラップする。
+// 本文画像はすべてヒーロー画像（LCP 候補）より下にあるため遅延読み込みにする。
+// modern-web-guidance（optimize-image-priority）: below-the-fold 画像は loading="lazy" のみで
+// 十分で、fetchpriority は付けない（スクロール到達時に通常優先度で読ませる）。
+const withLazyLoading = (img: string): string =>
+  /\bloading=/.test(img) ? img : img.replace(/<img\b/, '<img loading="lazy" decoding="async"');
+
+// 段落だけ、もしくは単独ブロックの画像を figure でラップする（キャプションは title 属性から）。
 export const wrapStandaloneImages = (html: string): string => {
   const wrap = (img: string): string => {
     const titleMatch = /\btitle="([^"]*)"/.exec(img);
     const caption = titleMatch?.[1] ? `<figcaption>${titleMatch[1]}</figcaption>` : "";
 
-    return (
-      "<figure data-figure>" +
-      '<button type="button" data-lightbox aria-label="画像を拡大">' +
-      img +
-      `<span data-zoom aria-hidden="true">${zoomIconSvg}</span>` +
-      "</button>" +
-      caption +
-      "</figure>"
-    );
+    return "<figure data-figure>" + withLazyLoading(img) + caption + "</figure>";
   };
 
   return html
@@ -95,34 +90,37 @@ export const wrapStandaloneImages = (html: string): string => {
     .replace(/(^|\n)(<img\b[^>]*?>)(?=\n|$)/g, (_match, lead: string, img: string) => `${lead}${wrap(img)}`);
 };
 
+// Marked インスタンスはモジュールスコープで 1 度だけ生成・設定する
+// （SSG ビルドで全記事分呼ばれるため、記事数ぶん new するのを避ける）。
+const marked = new Marked({ async: true, gfm: true });
+marked.use({
+  renderer: {
+    // walkTokens で生成済みの HTML 文字列をそのまま返す（marked のデフォルト整形を回避）。
+    code(token) {
+      return token.text;
+    },
+  },
+  async walkTokens(token) {
+    if (token.type !== "code") {
+      return;
+    }
+    // token は marked.Token のユニオン型。type ガード済みなので Tokens.Code へ明示キャストし、
+    // 将来の marked アップグレード時に型エラーを検出できるようにする。
+    const codeToken = token as Tokens.Code;
+    const info = parseCodeInfo(codeToken.lang ?? "");
+    const highlighted = await highlightCode(codeToken.text, info.lang);
+    codeToken.escaped = true;
+    codeToken.text = buildCodeBlock(highlighted, info);
+  },
+});
+
 export const markdownToHtml = async (markdown: string): Promise<string> => {
   if (!markdown.trim()) {
     return "";
   }
 
-  const marked = new Marked({ async: true, gfm: true });
-  marked.use({
-    renderer: {
-      // walkTokens で生成済みの HTML 文字列をそのまま返す（marked のデフォルト整形を回避）。
-      code(token) {
-        return token.text;
-      },
-    },
-    async walkTokens(token) {
-      if (token.type !== "code") {
-        return;
-      }
-      // marked のトークン型はプロパティが any 寄りなので、typeof で string に絞ってから扱う。
-      const lang = typeof token.lang === "string" ? token.lang : "";
-      const code = typeof token.text === "string" ? token.text : "";
-      const info = parseCodeInfo(lang);
-      const highlighted = await highlightCode(code, info.lang);
-      token.escaped = true;
-      token.text = buildCodeBlock(highlighted, info);
-    },
-  });
-
   const rawHtml = await marked.parse(markdown);
+  const withLinkCards = await transformLinkCards(rawHtml);
 
-  return wrapStandaloneImages(transformLinkCards(rawHtml));
+  return wrapStandaloneImages(withLinkCards);
 };

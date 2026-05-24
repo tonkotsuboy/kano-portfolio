@@ -1,4 +1,5 @@
-/* 記事末尾のシェアバー。chrome 系のガラスピル（DESIGN.md の react-btn 相当）。 */
+/* 記事末尾のシェアバー。ThemeToggle / nav pill と同じ chrome ガラスピル。
+   hover は background + color のみで差別化し、深さ（translateY / scale）は足さない（DESIGN.md §6）。 */
 .shareBar {
   display: flex;
   align-items: center;
@@ -20,18 +21,12 @@
   cursor: pointer;
   transition:
     background var(--dur-base) var(--ease-liquid),
-    color var(--dur-base) var(--ease-liquid),
-    transform var(--dur-fast) var(--ease-liquid);
+    color var(--dur-base) var(--ease-liquid);
 }
 
 .shareButton:hover {
   background: var(--glass-card-hover-bg);
-  color: var(--text-primary);
-  transform: translateY(-1px);
-}
-
-.shareButton:active {
-  transform: translateY(0) scale(0.97);
+  color: var(--liquid-primary);
 }
 
 .icon {

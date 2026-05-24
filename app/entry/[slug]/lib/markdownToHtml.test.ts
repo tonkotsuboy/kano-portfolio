@@ -17,9 +17,12 @@ describe("parseCodeInfo", () => {
   });
 });
 
+// ネットワークを叩かないよう OG 取得は常にスタブを注入する。
+const noOg = (): Promise<null | string> => Promise.resolve(null);
+
 describe("transformLinkCards", () => {
-  test("段落だけの外部リンクをリンクカードへ変換する", () => {
-    const output = transformLinkCards('<p><a href="https://example.com/path">タイトル</a></p>');
+  test("段落だけの外部リンクをリンクカードへ変換する（OG画像なし）", async () => {
+    const output = await transformLinkCards('<p><a href="https://example.com/path">タイトル</a></p>', noOg);
     expect(output).toContain("data-linkcard");
     expect(output).toContain('href="https://example.com/path"');
     expect(output).toContain("タイトル");
@@ -27,14 +30,38 @@ describe("transformLinkCards", () => {
     expect(output).not.toContain("<p>");
   });
 
-  test("http(s) 以外のスキームは変換しない", () => {
-    const input = '<p><a href="mailto:a@example.com">mail</a></p>';
-    expect(transformLinkCards(input)).toBe(input);
+  test("OG画像を取得できたらサムネ img を差し込む", async () => {
+    const output = await transformLinkCards(
+      '<p><a href="https://example.com">t</a></p>',
+      () => Promise.resolve("https://img.example.com/og.png"),
+    );
+    expect(output).toContain('<img src="https://img.example.com/og.png"');
+    expect(output).toContain("data-has-image");
   });
 
-  test("段落内に本文があるリンクは変換しない", () => {
+  test("OG画像を取得できないブランド（Amazon）はアイコンへフォールバックする", async () => {
+    const output = await transformLinkCards(
+      '<p><a href="https://www.amazon.co.jp/dp/4297156288">本</a></p>',
+      noOg,
+    );
+    expect(output).toContain("data-brand");
+    expect(output).toContain("<svg");
+  });
+
+  test("ブランド未登録ホストは OG 画像なしでホスト名の頭文字を出す", async () => {
+    const output = await transformLinkCards('<p><a href="https://example.com">t</a></p>', noOg);
+    expect(output).toContain(">E</span>");
+    expect(output).not.toContain("data-brand");
+  });
+
+  test("http(s) 以外のスキームは変換しない", async () => {
+    const input = '<p><a href="mailto:a@example.com">mail</a></p>';
+    expect(await transformLinkCards(input, noOg)).toBe(input);
+  });
+
+  test("段落内に本文があるリンクは変換しない", async () => {
     const input = '<p>前置き <a href="https://example.com">link</a> 後ろ</p>';
-    expect(transformLinkCards(input)).toBe(input);
+    expect(await transformLinkCards(input, noOg)).toBe(input);
   });
 });
 
@@ -42,7 +69,6 @@ describe("wrapStandaloneImages", () => {
   test("段落だけの画像を figure でラップする", () => {
     const output = wrapStandaloneImages('<p><img src="/a.png" alt="A"></p>');
     expect(output).toContain("data-figure");
-    expect(output).toContain("data-lightbox");
     expect(output).toContain('src="/a.png"');
   });
 
@@ -55,6 +81,19 @@ describe("wrapStandaloneImages", () => {
   test("title 属性があるときキャプションを付ける", () => {
     const output = wrapStandaloneImages('<p><img src="/c.png" alt="C" title="図1"></p>');
     expect(output).toContain("<figcaption>図1</figcaption>");
+  });
+
+  test("本文画像は遅延読み込み属性を付ける（below-the-fold）", () => {
+    const output = wrapStandaloneImages('<p><img src="/a.png" alt="A"></p>');
+    expect(output).toContain('loading="lazy"');
+    expect(output).toContain('decoding="async"');
+  });
+
+  test("拡大用の dialog やトリガーボタンは生成しない（クリック拡大なし）", () => {
+    const output = wrapStandaloneImages('<p><img src="/a.png" alt="A"></p>');
+    expect(output).not.toContain("<dialog");
+    expect(output).not.toContain("command=");
+    expect(output).not.toContain("data-lightbox");
   });
 });
 

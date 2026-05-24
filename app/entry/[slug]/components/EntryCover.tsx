@@ -1,6 +1,5 @@
 "use client";
 
-import { ZoomIn } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -23,22 +22,17 @@ export const EntryCover: FC<Props> = ({ alt, coverSrc }) => {
 
   return (
     <figure className={styles.cover}>
-      <button type="button" className={styles.coverButton} data-lightbox aria-label="画像を拡大">
-        <Image
-          src={coverSrc}
-          alt={alt}
-          width={1200}
-          height={630}
-          sizes="(max-width: 768px) 100vw, 720px"
-          className={styles.coverImage}
-          priority
-          unoptimized
-          onError={() => setFailed(true)}
-        />
-        <span className={styles.zoomBadge} aria-hidden="true">
-          <ZoomIn size={16} />
-        </span>
-      </button>
+      <Image
+        src={coverSrc}
+        alt={alt}
+        width={1200}
+        height={630}
+        sizes="(max-width: 768px) 100vw, 720px"
+        className={styles.coverImage}
+        priority
+        unoptimized
+        onError={() => setFailed(true)}
+      />
     </figure>
   );
 };
