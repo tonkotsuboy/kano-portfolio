@@ -23,15 +23,18 @@ describe("parseCodeInfo", () => {
 });
 
 describe("transformSizedImages", () => {
-  test("=WxH 記法（幅のみ）を style 付き img へ変換する", () => {
+  test("=WxH 記法（幅のみ）を width 属性と style 付き img へ変換する", () => {
     const out = transformSizedImages("![代替](/a.png =300x)");
     expect(out).toContain('<img src="/a.png" alt="代替"');
+    expect(out).toContain('width="300"');
     expect(out).toContain('style="width: 300px"');
-    expect(out).not.toContain("height:");
+    expect(out).not.toContain("height");
   });
 
-  test("幅と高さの両方を指定できる", () => {
+  test("幅と高さの両方を width/height 属性と style に反映する", () => {
     const out = transformSizedImages("![代替](/a.png =300x200)");
+    expect(out).toContain('width="300"');
+    expect(out).toContain('height="200"');
     expect(out).toContain("width: 300px");
     expect(out).toContain("height: 200px");
   });

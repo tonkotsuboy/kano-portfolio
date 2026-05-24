@@ -93,8 +93,11 @@ export const transformSizedImages = (markdown: string): string =>
       );
       const styleAttr = dimensions.length > 0 ? ` style="${dimensions.join("; ")}"` : "";
       const titleAttr = title ? ` title="${escapeAttr(title)}"` : "";
+      // width/height 属性でアスペクト比を予約し CLS を防ぐ（style は CSS の width: fit-content を上書きする実寸指定）。
+      const widthAttr = width ? ` width="${width}"` : "";
+      const heightAttr = height ? ` height="${height}"` : "";
 
-      return `<img src="${escapeAttr(url)}" alt="${escapeAttr(alt)}"${titleAttr}${styleAttr}>`;
+      return `<img src="${escapeAttr(url)}" alt="${escapeAttr(alt)}"${titleAttr}${widthAttr}${heightAttr}${styleAttr}>`;
     },
   );
 
