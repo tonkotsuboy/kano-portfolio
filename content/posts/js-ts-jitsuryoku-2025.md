@@ -5,7 +5,7 @@ date: "2025-09-01T00:00+09:00"
 published: true
 tags: []
 categories: []
-medium: "執筆記事"
+medium: "書籍"
 thumbnail: "/images/og/js-ts-jitsuryoku-2025.jpg"
 slides: ""
 linkUrl: "https://gihyo.jp/book/2025/978-4-297-15194-2"
