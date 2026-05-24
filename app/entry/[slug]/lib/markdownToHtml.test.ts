@@ -1,7 +1,12 @@
 import { describe, expect, test } from "vitest";
 
 import { transformLinkCards } from "./linkCard";
-import { markdownToHtml, parseCodeInfo, wrapStandaloneImages } from "./markdownToHtml";
+import {
+  markdownToHtml,
+  parseCodeInfo,
+  transformSizedImages,
+  wrapStandaloneImages,
+} from "./markdownToHtml";
 
 describe("parseCodeInfo", () => {
   test("言語のみの info から言語名を取り出す", () => {
@@ -14,6 +19,38 @@ describe("parseCodeInfo", () => {
 
   test("空文字のときは text にフォールバックする", () => {
     expect(parseCodeInfo("")).toEqual({ lang: "text", title: "" });
+  });
+});
+
+describe("transformSizedImages", () => {
+  test("=WxH 記法（幅のみ）を style 付き img へ変換する", () => {
+    const out = transformSizedImages("![代替](/a.png =300x)");
+    expect(out).toContain('<img src="/a.png" alt="代替"');
+    expect(out).toContain('style="width: 300px"');
+    expect(out).not.toContain("height:");
+  });
+
+  test("幅と高さの両方を指定できる", () => {
+    const out = transformSizedImages("![代替](/a.png =300x200)");
+    expect(out).toContain("width: 300px");
+    expect(out).toContain("height: 200px");
+  });
+
+  test("title を保持する（figcaption 用）", () => {
+    const out = transformSizedImages('![代替](/a.png =300x "コードファイル")');
+    expect(out).toContain('title="コードファイル"');
+    expect(out).toContain('style="width: 300px"');
+  });
+
+  test("サイズ記法のない画像はそのまま（marked に委ねる）", () => {
+    expect(transformSizedImages("![a](/a.png)")).toBe("![a](/a.png)");
+    expect(transformSizedImages('![a](/a.png "t")')).toBe('![a](/a.png "t")');
+  });
+
+  test("属性値の特殊文字をエスケープする", () => {
+    const out = transformSizedImages('![a&b](/a.png =100x "x<y>")');
+    expect(out).toContain("a&amp;b");
+    expect(out).toContain("x&lt;y&gt;");
   });
 });
 
@@ -112,6 +149,14 @@ describe("markdownToHtml", () => {
     expect(html).toContain("a.ts");
     expect(html).toContain('class="shiki');
     expect(html).toContain("data-code-copy");
+  });
+
+  test("zenn 式サイズ記法を width 付きの figure 画像に変換する", async () => {
+    const html = await markdownToHtml('![コード](/x.png =300x "コード")');
+    expect(html).toContain("data-figure");
+    expect(html).toContain("width: 300px");
+    expect(html).toContain("<figcaption>コード</figcaption>");
+    expect(html).toContain('loading="lazy"');
   });
 
   test("空文字は空文字を返す", async () => {

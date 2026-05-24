@@ -70,6 +70,34 @@ const highlightCode = (code: string, lang: string): Promise<string> =>
     ],
   });
 
+const escapeAttr = (value: string): string =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
+// zenn 互換の画像サイズ記法 `![alt](url =WxH "title")` を width/height 付き <img> へ変換する。
+// marked は `=WxH` を含む画像 destination をパースできずリテラル化する（画像にならない）ため、
+// parse に渡す前に前処理して生 <img> に展開する。幅・高さはいずれも省略可（`=300x` は幅のみ）。
+// CSS 側の figure img は `width: fit-content` のため、実寸指定はインライン style で上書きする
+// （max-width: 100% は CSS が担保するのでレスポンシブは保たれる）。
+const SIZED_IMAGE = /!\[([^\]]*)\]\((\S+?)\s+=(\d+)?x(\d+)?\s*(?:"([^"]*)")?\)/g;
+
+export const transformSizedImages = (markdown: string): string =>
+  markdown.replace(
+    SIZED_IMAGE,
+    (_match, alt: string, url: string, width: string, height: string, title: string) => {
+      const dimensions = [width ? `width: ${width}px` : "", height ? `height: ${height}px` : ""].filter(
+        Boolean,
+      );
+      const styleAttr = dimensions.length > 0 ? ` style="${dimensions.join("; ")}"` : "";
+      const titleAttr = title ? ` title="${escapeAttr(title)}"` : "";
+
+      return `<img src="${escapeAttr(url)}" alt="${escapeAttr(alt)}"${titleAttr}${styleAttr}>`;
+    },
+  );
+
 // 本文画像はすべてヒーロー画像（LCP 候補）より下にあるため遅延読み込みにする。
 // modern-web-guidance（optimize-image-priority）: below-the-fold 画像は loading="lazy" のみで
 // 十分で、fetchpriority は付けない（スクロール到達時に通常優先度で読ませる）。
@@ -119,7 +147,7 @@ export const markdownToHtml = async (markdown: string): Promise<string> => {
     return "";
   }
 
-  const rawHtml = await marked.parse(markdown);
+  const rawHtml = await marked.parse(transformSizedImages(markdown));
   const withLinkCards = await transformLinkCards(rawHtml);
 
   return wrapStandaloneImages(withLinkCards);
