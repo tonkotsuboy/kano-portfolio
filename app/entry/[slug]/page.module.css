@@ -267,7 +267,7 @@
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   border-left: 3px solid var(--liquid-primary);
   margin: 0;
-  background: linear-gradient(to right, oklch(0.787 0.158 79 / 0.08), transparent 60%);
+  background: linear-gradient(in oklch to right, oklch(0.787 0.158 79 / 0.08), transparent 60%);
   color: var(--text-secondary);
   font-size: 1.0625rem;
   line-height: 1.85;
@@ -287,7 +287,7 @@
   height: 1px;
   border: 0;
   margin: var(--space-2xl) 0;
-  background: linear-gradient(to right, transparent, var(--glass-card-border), transparent);
+  background: linear-gradient(in oklch to right, transparent, var(--glass-card-border), transparent);
 }
 
 /* テーブル（GFM） */

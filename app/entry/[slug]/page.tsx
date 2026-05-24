@@ -53,7 +53,7 @@ const loadMarkdownBody = (slug: string): string => {
     return "";
   }
 
-  return parts.slice(2).join("---\n");
+  return parts.slice(2).join("---");
 };
 
 type Params = { params: Promise<{ slug: string }> }

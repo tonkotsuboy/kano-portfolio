@@ -53,7 +53,11 @@ export const fetchOgImage = async (url: string): Promise<null | string> => {
     }
 
     return image;
-  } catch {
+  } catch (error) {
+    // タイムアウト・ボット遮断は想定内だが、予期しないエラー（fetch 実装差異など）も
+    // ここで握りつぶされるため、ビルドログで追跡できるよう記録する（SSG 時のみ実行）。
+    console.error(`[ogImage] failed to fetch og:image from ${url}`, error);
+
     return null;
   }
 };

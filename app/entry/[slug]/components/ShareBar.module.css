@@ -26,7 +26,10 @@
 
 .shareButton:hover {
   background: var(--glass-card-hover-bg);
-  color: var(--liquid-primary);
+
+  /* 前景色は --liquid-primary-accessible を使う（--liquid-primary（黄色）は背景専用で、
+     ライトのガラス面上だと WCAG AA 3:1 を割る）。DESIGN.md §2 / §9 参照。 */
+  color: var(--liquid-primary-accessible);
 }
 
 .icon {

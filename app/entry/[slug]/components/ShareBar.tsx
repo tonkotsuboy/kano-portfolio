@@ -29,7 +29,7 @@ export const ShareBar: FC<Props> = ({ title, url }) => {
   const [canShare, setCanShare] = useState(false);
 
   useEffect(() => {
-    setCanShare(typeof navigator !== "undefined" && typeof navigator.share === "function");
+    setCanShare(typeof navigator.share === "function");
   }, []);
 
   const shareTargets = [
