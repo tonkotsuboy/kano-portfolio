@@ -62,7 +62,11 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
   const { slug } = await params;
   const post = getPost(slug);
   const title = `${post.title}${WithSiteTitle}`;
-  const description = `${post.title} - 鹿野壮のポートフォリオ`;
+  // frontmatter で description を指定していればそれを使い、未設定時はタイトルからフォールバック生成する。
+  const description =
+    typeof post.description === "string" && post.description.length > 0
+      ? post.description
+      : `${post.title} - 鹿野壮のポートフォリオ`;
   // 記事のサムネ（メインビジュアル）を OG 画像にする。未設定時はサイト既定にフォールバック。
   const ogImage = typeof post.thumbnail === "string" && post.thumbnail.length > 0 ? post.thumbnail : ogImageUrl;
 
