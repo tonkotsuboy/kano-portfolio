@@ -182,11 +182,6 @@
     font-size-adjust: from-font;
   }
 
-  /* Baseline 2024: 本文の最終行が孤立しないように調整 */
-  p {
-    text-wrap: pretty;
-  }
-
   /* Ambient Mesh Background */
   body::before {
     content: '';
@@ -204,12 +199,14 @@
     background-size: cover;
   }
 
-  /* Typography */
+  /* Typography
+     和文の見出しには text-wrap: balance を使わない。balance は欧文の単語境界での均等割りを
+     想定した機能で、単語境界のない和文では文字列を中央付近でぶつ切りにし「早すぎる改行」
+     （右側に大きな余白）を生む。ブラウザ既定の greedy 折り返しに任せる（zenn 見出しと同方針）。 */
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.02em;
-    text-wrap: balance;
   }
 
   h1 {

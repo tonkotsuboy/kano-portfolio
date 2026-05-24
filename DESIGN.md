@@ -81,7 +81,7 @@
 | `.ds-small` | `0.875rem` | 400 | 1.6 | 0 |
 | `.ds-eyebrow` | `0.75rem` | 700 | — | 0.12em caps |
 
-見出しは `text-wrap: balance`、本文は `text-wrap: pretty` + `line-height: 2`（日本語ゆったり）。
+和文の見出し・本文には `text-wrap: balance` / `pretty` や `word-break: auto-phrase` を使わない（和文では行頭が早すぎる位置・不自然な位置で割れて違和感が出るため）。ブラウザ既定の CJK greedy 折り返しに任せ、本文は `line-height: 2` でゆったり（zenn 本文 CSS と同方針: `line-height` + `text-autospace: normal` のみで折り返しは既定）。
 
 ## 4. Component Stylings
 
