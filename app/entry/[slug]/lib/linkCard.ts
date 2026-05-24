@@ -67,12 +67,18 @@ export const transformLinkCards = async (
   if (matches.length === 0) {
     return html;
   }
-  const images = await Promise.all(matches.map((match) => fetchOg(match[1] ?? "")));
+  // LINK_PATTERN の 2 グループはともに必須なので必ず捕捉される（?? は noUncheckedIndexedAccess 用）。
+  const links = matches.map((match) => ({
+    href: match[1] ?? "",
+    raw: match[0],
+    text: match[2] ?? "",
+  }));
+  const images = await Promise.all(links.map(({ href }) => fetchOg(href)));
 
-  return matches.reduce((acc, match, index) => {
-    const card = buildLinkCard(match[1] ?? "", match[2] ?? "", images[index] ?? null);
+  return links.reduce((acc, { href, raw, text }, index) => {
+    const card = buildLinkCard(href, text, images[index] ?? null);
 
     // 置換文字列内の `$` 特殊解釈を避けるため関数置換にする。
-    return acc.replace(match[0], () => card);
+    return acc.replace(raw, () => card);
   }, html);
 };
