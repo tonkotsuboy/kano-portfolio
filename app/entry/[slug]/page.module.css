@@ -1,7 +1,19 @@
+/* =====================================================================
+ * 記事詳細ページ — Variant A「Classic Minimal Reader」
+ * 中央 1 カラム（720px）の読み物ビュー。content layer はガラスで包まない
+ * （DESIGN.md: Liquid Glass は chrome 専用）。トークンは globals.css を参照。
+ * ===================================================================== */
+
 /* 読書進捗バー（装飾・JS ゼロ）。スクロール量に応じて scaleX(0→1)。
-   装飾要素なので JSX 側で aria-hidden を付与。Firefox 等 scroll-driven 未対応では
-   .progress にスタイルが当たらず非表示のまま（graceful degradation）。
-   reduced-motion 時は適用しない（globals の universal リセットで満タン固定化されるのを回避）。 */
+   tcm が @media/@supports 内のクラスを拾わないため、型生成用に基底をトップレベルで宣言する。
+   実際のスタイルは scroll-driven 対応かつ reduced-motion でないときだけ適用（graceful degradation）。 */
+.progress {
+  position: fixed;
+  z-index: 200;
+  height: 3px;
+  inset: 0 0 auto;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: scroll()) {
     @keyframes growProgress {
@@ -11,15 +23,9 @@
     }
 
     .progress {
-      /* z-index はヘッダー（z-index:100）より前面。読書進捗バーはビューポート最上部に
-         見せる必要があり、背面に置くと全幅ヘッダーに隠れて見えなくなるため意図的。 */
-      position: fixed;
-      z-index: 200;
-      height: 3px;
       animation: growProgress auto linear;
       animation-timeline: scroll();
       background: linear-gradient(in oklch 90deg, var(--liquid-primary), var(--liquid-primary-vibrant));
-      inset: 0 0 auto;
       transform-origin: 0 0;
     }
   }
@@ -29,10 +35,6 @@
   min-height: 100vh;
   padding: clamp(var(--space-md), 4vw, var(--space-2xl));
   padding-top: calc(64px + var(--space-lg));
-  background:
-    radial-gradient(in oklch circle at 20% 20%, var(--bg-gradient-1), transparent 30%),
-    radial-gradient(in oklch circle at 80% 10%, var(--bg-orb-1), transparent 30%),
-    var(--bg-primary);
 }
 
 @media (width <= 768px) {
@@ -41,159 +43,492 @@
   }
 }
 
+.article {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+/* =====================================================================
+ * ヘッダーブロック（カテゴリー＋日付 → タイトル → タグ）
+ * ===================================================================== */
 .hero {
-  display: grid;
-  max-width: 960px;
-  margin: 0 auto clamp(var(--space-md), 3vw, var(--space-lg));
-  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  gap: var(--space-xs) var(--space-sm);
 }
 
 .medium {
-  width: fit-content;
-  padding: var(--space-xs) var(--space-xs);
-  border-radius: 999px;
-  background: oklch(from var(--liquid-primary) l c h / 0.1);
-  color: var(--liquid-primary-accessible);
-  font-size: 0.75rem;
-  font-weight: 700;
+  display: inline-flex;
+  height: 24px;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-full);
+  background: var(--glass-card-bg);
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.date {
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
 }
 
 .title {
+  margin: 0;
   color: var(--text-primary);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.875rem, 3.5vw, 2.5rem);
   font-weight: 800;
-  line-height: 1.3;
-}
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 
-.publishedDate {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
+  /* 和文は text-wrap: balance/pretty・word-break: auto-phrase を使わない（行頭が早すぎる位置で
+     割れて違和感が出るため）。ブラウザ既定の CJK greedy 折り返しに任せる（zenn 本文と同方針）。 */
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
+  margin-top: var(--space-sm);
   gap: var(--space-xs);
 }
 
-.tagChip {
-  padding: var(--space-xs) var(--space-xs);
+.tag {
+  display: inline-flex;
+  height: 24px;
+  align-items: center;
+  padding: 0 10px;
   border: 1px solid var(--glass-card-border);
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--glass-card-bg);
-  color: var(--text-primary);
+  color: var(--text-secondary);
   font-size: 0.75rem;
 }
 
-.article {
-  display: grid;
-  max-width: 960px;
-  padding: clamp(var(--space-sm), 3vw, var(--space-lg));
-  border: 1px solid var(--glass-card-border);
-  border-radius: var(--radius-lg);
-  margin: 0 auto;
-  background: var(--glass-card-bg);
-  box-shadow: var(--shadow-rest);
-  gap: var(--space-md);
-}
-
+/* =====================================================================
+ * ヒーロー画像（タイトル直下）
+ * ===================================================================== */
 .cover {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: clamp(240px, 40vw, 420px);
-  border-radius: 18px;
-  background: var(--glass-bg-medium);
+  margin: var(--space-md) 0 0;
 }
 
 .coverImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: var(--shadow-rest);
+}
+
+/* =====================================================================
+ * 本文（注入 HTML はすべて要素 / data 属性セレクタで装飾する）
+ * ===================================================================== */
+.body {
+  margin-top: var(--space-xl);
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 2;
+}
+
+/* flow（lobotomized owl）: 隣接要素の「間」にだけ余白を入れる。見出しの前後で量を変え、
+   「見出し前は広く・直後の本文は狭く」して『見出し + 本文』を 1 つの島に見せる（近接）。
+   子のブロックマージンは 0 に揃え、間隔は owl ルール自身（同詳細度・後勝ち）で作る。 */
+.body > * {
+  margin-block: 0;
+}
+
+.body > * + * {
+  margin-block-start: 1.6em;
+}
+
+.body > * + :is(h2, h3) {
+  margin-block-start: 3em;
+}
+
+.body > :is(h2, h3) + * {
+  margin-block-start: 0.5em;
+}
+
+.body h2 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  scroll-margin-top: 80px;
+}
+
+.body h3 {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  scroll-margin-top: 80px;
+}
+
+.body strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.body em {
+  color: var(--liquid-primary-accessible);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.body a:not([data-linkcard]) {
+  color: var(--liquid-primary-accessible);
+  text-decoration: underline;
+  text-decoration-color: oklch(0.787 0.158 79 / 0.4);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--dur-base) var(--ease-liquid);
+}
+
+.body a:not([data-linkcard]):hover {
+  text-decoration-color: var(--liquid-primary-vibrant);
+}
+
+.body :not(pre) > code {
+  padding: 0.12em 0.42em;
+  border: 1px solid var(--glass-card-border);
+  border-radius: 6px;
+  background: var(--glass-bg-medium);
+  color: var(--text-primary);
+  font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+.body ul,
+.body ol {
+  padding-left: 0;
+  margin-left: 0;
+  list-style: none;
+}
+
+.body ul > li {
+  position: relative;
+  padding-left: 1.6em;
+  margin-top: 0.6em;
+}
+
+.body ul > li::before {
+  position: absolute;
+  top: 0.85em;
+  left: 0.4em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  content: "";
+}
+
+.body ol {
+  counter-reset: olist;
+}
+
+.body ol > li {
+  position: relative;
+  padding-left: 2.2em;
+  margin-top: 0.8em;
+  counter-increment: olist;
+}
+
+.body ol > li::before {
+  position: absolute;
+  top: 0.15em;
+  left: 0;
+  display: flex;
+  width: 1.6em;
+  height: 1.6em;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: linear-gradient(in oklch 180deg, oklch(0.88 0.16 90), var(--liquid-primary));
+  box-shadow: var(--shadow-rest);
+  color: var(--text-on-yellow);
+  content: counter(olist);
+  font-size: 0.78em;
+  font-weight: 700;
+}
+
+.body blockquote {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-left: 3px solid var(--liquid-primary);
+  margin: 0;
+  background: linear-gradient(in oklch to right, oklch(0.787 0.158 79 / 0.08), transparent 60%);
+  color: var(--text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.body blockquote p {
+  margin: 0;
+}
+
+.body blockquote footer {
+  margin-top: var(--space-sm);
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+}
+
+.body hr {
+  height: 1px;
+  border: 0;
+  margin: var(--space-2xl) 0;
+  background: linear-gradient(in oklch to right, transparent, var(--glass-card-border), transparent);
+}
+
+/* テーブル（GFM） */
+.body table {
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: var(--shadow-rest);
+  font-size: 0.9rem;
+}
+
+.body th,
+.body td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--glass-card-border);
+  text-align: left;
+}
+
+.body th {
+  background: var(--glass-bg-medium);
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.body tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* 図版（Markdown 画像 → figure。data 属性で注入される）。クリック拡大はしない。
+   block マージンは owl（.body > * + *）に委ね、figure の左右デフォルトマージンだけ打ち消す。 */
+.body [data-figure] {
+  margin-inline: 0;
+}
+
+.body [data-figure] img {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  height: auto;
+  box-shadow: var(--shadow-rest);
+  margin-inline: auto;
+}
+
+.body [data-figure] figcaption {
+  margin-top: var(--space-xs);
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* コードブロック（marked + Shiki。常時ダーク） */
+.body [data-code] {
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.06);
+  border-radius: var(--radius-md);
+  margin: 0;
+  background: oklch(0.18 0.012 256);
+  box-shadow: var(--shadow-rest);
+}
+
+.body [data-code-bar] {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgb(255 255 255 / 0.06);
+  background: oklch(0.22 0.012 256);
+  gap: var(--space-sm);
+}
+
+.body [data-code-lang] {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: oklch(0.787 0.158 79 / 0.2);
+
+  /* コードブロックは常時ダーク背景（oklch(0.18 …)）のため、前景に --liquid-primary を使う。
+     DESIGN.md の「前景テキストには --liquid-primary-accessible」は明背景向けの規約で、
+     ここではダーク背景に対し十分なコントラストが取れるため意図的に primary を使用している。 */
+  color: var(--liquid-primary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.body [data-code-file] {
+  color: oklch(0.7 0.012 256);
+  font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+
+.body [data-code-copy] {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  border-radius: var(--radius-full);
+  margin-left: auto;
+  background: rgb(255 255 255 / 0.06);
+  color: oklch(0.85 0.012 256);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: background var(--dur-base) var(--ease-liquid);
+}
+
+.body [data-code-copy]:hover {
+  background: rgb(255 255 255 / 0.12);
+}
+
+.body [data-copy-idle],
+.body [data-copy-done] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* `[data-code-copy] span` より詳細度を上げて隠す（span 指定に負けないように）。 */
+.body [data-code-copy] [data-copy-done] {
+  display: none;
+}
+
+.body [data-code-copy][data-copied] [data-copy-idle] {
+  display: none;
+}
+
+.body [data-code-copy][data-copied] [data-copy-done] {
+  display: inline-flex;
+}
+
+.body [data-code] pre {
+  padding: 18px 20px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+.body [data-code] pre code {
+  font-size: 13px;
+}
+
+/* OGP 風リンクカード（段落リンクから注入される）。TOP 一覧カード（ArticleGrid .card）と
+   同じ寸法感: 横並び flex + パディング内に 16:9 サムネ + 1.125rem タイトル。 */
+.body [data-linkcard] {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  padding: var(--space-sm);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  box-shadow: var(--shadow-rest);
+  color: var(--text-primary);
+  gap: var(--space-sm);
+  text-decoration: none;
+  transition:
+    background var(--dur-base) var(--ease-liquid),
+    border-color var(--dur-base) var(--ease-liquid);
+}
+
+.body > [data-linkcard] + [data-linkcard] {
+  margin-top: var(--space-sm);
+}
+
+.body [data-linkcard]:hover {
+  border-color: var(--glass-card-hover-border);
+  background: var(--glass-card-hover-bg);
+}
+
+.body [data-linkcard-thumb] {
+  display: flex;
+  overflow: hidden;
+  width: clamp(100px, 25%, 192px);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(in oklch 135deg, var(--liquid-primary), oklch(0.93 0.04 240 / 0.7));
+  color: var(--text-on-yellow);
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+/* og:image を取得できたときのサムネ画像（取得不可ならグラデ＋アイコン/頭文字のまま）。 */
+.body [data-linkcard-thumb] img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.body {
-  color: var(--text-primary);
-  font-size: 1rem;
-
-  /* Baseline 2023: 英文混じり段落で自動ハイフネーション。
-     `hyphenate-character` は付けない — 各 OS のデフォルト記号 (-) が
-     一番読みやすく、独自記号にすると分割位置で違和感が出るため。 */
-  hyphens: auto;
-  line-height: 1.85;
-
-  p {
-    margin-bottom: 1rem;
-    text-wrap: pretty;
-  }
-
-  h2,
-  h3,
-  h4 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-    font-weight: 800;
-    letter-spacing: -0.01em;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-  }
-
-  h4 {
-    font-size: 1.1rem;
-  }
-
-  ul,
-  ol {
-    padding-left: 1.25rem;
-    margin-bottom: 1rem;
-  }
-
-  a {
-    color: var(--liquid-primary-accessible);
-    font-weight: 600;
-    text-decoration: underline;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin: 1rem 0;
-  }
-
-  code {
-    padding: 0.2em 0.4em;
-    border-radius: 6px;
-    background-color: var(--glass-bg-medium);
-    font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  pre {
-    padding: 1rem;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    background-color: var(--glass-bg-medium);
-    overflow-x: auto;
-
-    code {
-      padding: 0;
-      background-color: transparent;
-    }
-  }
+/* og:image を取得できないサイト（Amazon 等のボット遮断）向けの Lucide 汎用アイコン。
+   色は持ち込まず currentColor（--text-on-yellow）で塗り、頭文字プレースホルダーと見た目を揃える。 */
+.body [data-linkcard-thumb] svg {
+  width: 48px;
+  height: 48px;
 }
 
+.body [data-linkcard-body] {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3xs);
+}
+
+.body [data-linkcard-title] {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.body [data-linkcard-host] {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  gap: 5px;
+}
+
+/* =====================================================================
+ * スライドセクション / 末尾リンクカード（JSX 側・post.slides / post.linkUrl）
+ * ===================================================================== */
 .sectionCard {
   display: grid;
-  padding: var(--space-sm);
+  padding: var(--space-md);
   border: 1px solid var(--glass-card-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-xl);
   background: var(--glass-card-bg);
   box-shadow: var(--shadow-rest);
   gap: var(--space-xs);
@@ -209,42 +544,48 @@
   word-break: break-all;
 }
 
-.linkCardStandalone,
-.linkCardInline {
+.linkCard {
   display: grid;
-  align-items: center;
-  padding: var(--space-sm);
+  overflow: hidden;
   border: 1px solid var(--glass-card-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-xl);
+  backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
-  gap: var(--space-sm);
+  box-shadow: var(--shadow-rest);
+  color: var(--text-primary);
   grid-template-columns: 120px 1fr;
+  text-decoration: none;
+  transition:
+    background var(--dur-base) var(--ease-liquid),
+    border-color var(--dur-base) var(--ease-liquid);
+}
+
+.linkCard:hover {
+  border-color: var(--glass-card-hover-border);
+  background: var(--glass-card-hover-bg);
 }
 
 .linkThumb {
   display: grid;
   overflow: hidden;
-  width: 100%;
-  border-radius: var(--radius-sm);
   aspect-ratio: 1 / 1;
   background: var(--glass-bg-medium);
   color: var(--text-secondary);
   font-weight: 700;
   place-items: center;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 }
 
 .linkThumbImage {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .linkMeta {
   display: grid;
+  align-content: center;
+  padding: var(--space-sm) var(--space-md);
   gap: var(--space-xs);
 }
 
@@ -260,3 +601,13 @@
   word-break: break-all;
 }
 
+/* =====================================================================
+ * 記事末尾シェア
+ * ===================================================================== */
+.footerShare {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--glass-card-border);
+  margin-top: var(--space-2xl);
+}

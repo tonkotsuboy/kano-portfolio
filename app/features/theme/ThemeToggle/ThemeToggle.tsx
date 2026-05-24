@@ -16,6 +16,12 @@ const options = [
   { icon: Monitor, label: "システム", value: "system" },
 ] as const;
 
+// Invoker Commands（command / commandfor）は Safari 26.2 / Firefox 144 以降。未対応ブラウザでは
+// command 属性が無視されメニューを開けないため、Popover API の toggle/hidePopover で代替する
+// （Popover 自体は広くサポート）。ネイティブ対応時は command が処理するので二重発火させない。
+const supportsInvokerCommands = (): boolean =>
+  typeof HTMLButtonElement !== "undefined" && "commandForElement" in HTMLButtonElement.prototype;
+
 export const ThemeToggle: FC = () => {
   const { mode, setMode, theme } = useTheme();
   const ButtonIcon = theme === "dark" ? Moon : Sun;
@@ -26,10 +32,15 @@ export const ThemeToggle: FC = () => {
         type="button"
         className={styles.toggle}
         data-theme={theme}
-        commandFor={POPOVER_ID}
+        commandfor={POPOVER_ID}
         command="toggle-popover"
         aria-haspopup="menu"
         aria-label="テーマを切り替え"
+        onClick={() => {
+          if (!supportsInvokerCommands()) {
+            document.getElementById(POPOVER_ID)?.togglePopover?.();
+          }
+        }}
       >
         <span className={styles.icon}>
           <ButtonIcon size={18} />
@@ -50,9 +61,14 @@ export const ThemeToggle: FC = () => {
               role="menuitemradio"
               aria-checked={mode === option.value}
               className={styles.menuItem}
-              commandFor={POPOVER_ID}
+              commandfor={POPOVER_ID}
               command="hide-popover"
-              onClick={() => setMode(option.value)}
+              onClick={() => {
+                setMode(option.value);
+                if (!supportsInvokerCommands()) {
+                  document.getElementById(POPOVER_ID)?.hidePopover?.();
+                }
+              }}
             >
               <option.icon className={styles.menuIcon} size={16} />
               <span className={styles.menuLabel}>{option.label}</span>

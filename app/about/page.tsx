@@ -60,6 +60,12 @@ const socialLinks = [
 
 const publications = [
   {
+    cover: "/images/books/ts-code-recipe.jpg",
+    href: "https://gihyo.jp/book/2026/978-4-297-15628-2",
+    publisher: "技術評論社",
+    title: "TypeScriptコードレシピ集",
+  },
+  {
     cover: "/images/books/js-ts-jitsuryoku.png",
     href: "https://gihyo.jp/book/2025/978-4-297-15194-2",
     publisher: "技術評論社",

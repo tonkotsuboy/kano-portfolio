@@ -11,22 +11,31 @@ type Props = {
 }
 
 export const EntryMeta: FC<Props> = ({ date, formattedDate, medium, tags, title }) => {
+  const hasDate = Boolean(date) && Boolean(formattedDate);
+  const hasMeta = Boolean(medium) || hasDate;
+
   return (
     <div className={styles.hero}>
-      {medium ? <p className={styles.medium}>{medium}</p> : null}
-      <h1 className={styles.title}>{title}</h1>
-      {date && formattedDate ? (
-        <p className={styles.publishedDate}>
-          <time dateTime={date}>{formattedDate}</time>
-        </p>
+      {hasMeta ? (
+        <div className={styles.metaRow}>
+          {medium ? <span className={styles.medium}>{medium}</span> : null}
+          {hasDate ? (
+            <time className={styles.date} dateTime={date}>
+              {formattedDate}
+            </time>
+          ) : null}
+        </div>
       ) : null}
-      <div className={styles.tags}>
-        {tags.map((tag) => (
-          <span key={tag} className={styles.tagChip}>
-            #{tag}
-          </span>
-        ))}
-      </div>
+      <h1 className={styles.title}>{title}</h1>
+      {tags.length > 0 ? (
+        <div className={styles.tags}>
+          {tags.map((tag) => (
+            <span key={tag} className={styles.tag}>
+              #{tag}
+            </span>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 };

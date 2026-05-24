@@ -1,3 +1,5 @@
+import { Temporal } from "temporal-polyfill-lite";
+
 import { ArticleGrid } from "./ArticleGrid";
 
 import type { Post } from "@/.velite";

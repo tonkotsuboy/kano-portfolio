@@ -1,1 +1,0 @@
-import "temporal-polyfill/global";

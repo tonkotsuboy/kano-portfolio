@@ -1,0 +1,5 @@
+/* 本文のインタラクション層。子要素はそのまま記事のレイアウトに流す（display: contents）。
+   コードコピーのクリック委譲だけを担う（画像のクリック拡大は廃止）。 */
+.interactions {
+  display: contents;
+}

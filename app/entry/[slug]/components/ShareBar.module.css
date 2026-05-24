@@ -1,0 +1,38 @@
+/* 記事末尾のシェアバー。ThemeToggle / nav pill と同じ chrome ガラスピル。
+   hover は background + color のみで差別化し、深さ（translateY / scale）は足さない（DESIGN.md §6）。 */
+.shareBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.shareButton {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(12px);
+  background: var(--glass-card-bg);
+  box-shadow: var(--shadow-rest);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--dur-base) var(--ease-liquid),
+    color var(--dur-base) var(--ease-liquid);
+}
+
+.shareButton:hover {
+  background: var(--glass-card-hover-bg);
+
+  /* 前景色は --liquid-primary-accessible を使う（--liquid-primary（黄色）は背景専用で、
+     ライトのガラス面上だと WCAG AA 3:1 を割る）。DESIGN.md §2 / §9 参照。 */
+  color: var(--liquid-primary-accessible);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}

@@ -1,3 +1,4 @@
+import { Temporal } from "temporal-polyfill-lite";
 import { describe, expect, test } from "vitest";
 
 import { toRfc2822 } from "./toRfc2822";

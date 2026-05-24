@@ -17,7 +17,14 @@ const results = await new PurgeCSS().purge({
       "button",
       "*",
     ],
-    greedy: [/data-/],
+    greedy: [
+      /data-/,
+      // 記事本文（.body）は Markdown を HTML 文字列として注入するため、<strong> / <ol> /
+      // <table> 等のタグは .md の生テキストに現れず PurgeCSS が抽出できない。Markdown / GFM が
+      // 生成する要素を対象にした子孫セレクタ（.body strong 等）は未使用判定から除外する。
+      // コンビネータ直後 + 語境界に限定し、.area や .theme 等のクラス名内の偶然一致は拾わない。
+      /(?:^|[\s>+~])(?:figcaption|figure|blockquote|strong|thead|tbody|footer|table|code|pre|del|sup|sub|img|h[1-6]|em|hr|ul|ol|li|tr|th|td|a|p)(?=$|[\s>+~:.\[])/,
+    ],
   },
 });
 

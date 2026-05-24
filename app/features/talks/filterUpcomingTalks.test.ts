@@ -1,3 +1,4 @@
+import { Temporal } from "temporal-polyfill-lite";
 import { describe, expect, test } from "vitest";
 
 import { filterUpcomingTalks } from "./filterUpcomingTalks";

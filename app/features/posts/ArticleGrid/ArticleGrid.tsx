@@ -1,12 +1,11 @@
 "use client";
 
-import "temporal-polyfill/global";
-
 import clsx from "clsx";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Temporal } from "temporal-polyfill-lite";
 
 import { SiteUrl } from "../../../constants";
 import hoverStyles from "../../../styles/card-hover.module.css";

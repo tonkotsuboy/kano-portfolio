@@ -1,3 +1,5 @@
+import { Temporal } from "temporal-polyfill-lite";
+
 import { basicDescription, SiteUrl } from "./constants";
 import { Footer } from "./features/layout/Footer";
 import { Header } from "./features/layout/Header";

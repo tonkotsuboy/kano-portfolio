@@ -13,6 +13,7 @@ export default defineConfig({
           body: s.markdown().optional(),
           categories: s.array(s.string()).default([]),
           date: s.isodate(),
+          description: s.string().optional(),
           hasDetail: s.boolean().default(false),
           linkUrl: s.string().optional(),
           medium: s.string().default(""),
