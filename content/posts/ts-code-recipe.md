@@ -75,7 +75,7 @@ TypeScriptの大型アップデートであるTypeScript 7が、6月頃にリリ
 
 ![TypeScript 7での検証](/images/posts/ts-code-recipe/ts7.png)
 
-たとえば `--baseUrl`が消えたり、`rootDir` が消えたりといった変更がありますが、各々解説を対応しております。このあたりはZennでもTypeScript 7の解説記事として紹介したところです。
+たとえば `--baseUrl`が廃止されたり、`rootDir`の挙動が変わったりといった変更がありますが、それぞれ解説しています。このあたりはZennでもTypeScript 7の解説記事として紹介しました。
 
 
 [tsgoが公開。TypeScript 7向け新コンパイラのインストール手順と10倍高速化検証](https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew)
