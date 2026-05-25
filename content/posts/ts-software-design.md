@@ -5,7 +5,7 @@ date: "2024-04-18T00:00+09:00"
 published: true
 tags: []
 categories: []
-medium: "執筆記事"
+medium: "書籍"
 thumbnail: "/images/og/ts-software-design.webp"
 slides: ""
 linkUrl: "https://gihyo.jp/magazine/SD/archive/2024/202405"
