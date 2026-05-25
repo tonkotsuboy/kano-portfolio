@@ -2,7 +2,7 @@
 title: "『TypeScriptコードレシピ集』を執筆しました。TypeScript/JavaScript逆引き本"
 slug: "ts-code-recipe"
 date: "2026-05-21T00:00+09:00"
-description: "鹿野壮の著書『TypeScriptコードレシピ集』が技術評論社より発売。やりたいことから逆引きできる全14章177レシピ・680ページの実用書で、JavaScript/TypeScriptの基礎から型システム・非同期処理まで初学者〜中級者向けに解説します。入門書としてもオススメです。"
+description: "鹿野壮の著書『TypeScriptコードレシピ集』が技術評論社より発売。目的から逆引きできる全14章177レシピ・680ページの入門書で、JavaScript/TypeScriptの基礎から型システム・非同期処理まで初学者〜中級者向けに解説します。"
 published: true
 tags: []
 categories: []
@@ -16,7 +16,7 @@ hasDetail: true
 
 鹿野です。『TypeScriptコードレシピ集』を執筆しました。2026年5月28日に技術評論社から発売されます。
 
-## JavaScript・TypeScriptの「いま」を逆引きできる書籍
+## JavaScript・TypeScriptの機能を逆引きできる入門書
 
 本書は、JavaScriptやTypeScriptで実現したいことを逆引きできる書籍です。タイトルはすべて「TypeScriptでオブジェクトを表現したい」「オブジェクトのプロパティを省略可能にしたい」など「〜したい」で統一され、それぞれの項目は料理の調理手順のように「レシピ」と呼んでいます。「〜したい」「利用シーン」「Syntax」を各レシピ冒頭にまとめ、自分の目的から逆引きしやすい構成になっています。全14章・177レシピからなり、総ページ数は680ページとなりました。
 
