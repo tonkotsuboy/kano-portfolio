@@ -30,6 +30,10 @@ export const EntryCover: FC<Props> = ({ alt, coverSrc }) => {
         sizes="(max-width: 768px) 100vw, 720px"
         className={styles.coverImage}
         priority
+        // Next.js の `priority` は eager 読み込みと preload link は付けるが、
+        // <img> 自体の fetchpriority 属性には反映されない（get-img-props は明示 prop のみ素通し）。
+        // LCP 画像なので fetchpriority="high" を明示し、初期描画を最優先にする。
+        fetchPriority="high"
         unoptimized
         onError={() => setFailed(true)}
       />
