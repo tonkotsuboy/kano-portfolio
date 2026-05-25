@@ -52,6 +52,7 @@ export const metadata: Metadata = {
         width: 1200,
       },
     ],
+    locale: "ja_JP",
     siteName: SiteTitle,
     title: SiteTitle,
     type: "website",
