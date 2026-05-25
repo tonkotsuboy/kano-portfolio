@@ -27,7 +27,8 @@ export const metadata: Metadata = {
     title: `自己紹介${WithSiteTitle}`,
     type: "website",
   },
-  title: `自己紹介${WithSiteTitle}`,
+  // title.template の二重適用を absolute で防ぐ（og/twitter は template 対象外なので連結のまま）
+  title: { absolute: `自己紹介${WithSiteTitle}` },
   twitter: {
     description: aboutDescription,
     images: [ogImageUrl],

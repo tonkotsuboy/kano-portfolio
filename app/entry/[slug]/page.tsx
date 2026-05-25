@@ -77,12 +77,17 @@ export const generateMetadata = async ({ params }: Params): Promise<Metadata> =>
     description,
     openGraph: {
       ...metadata.openGraph,
+      authors: ["https://x.com/tonkotsuboy_com"],
       description,
       images: [{ alt: post.title, height: 630, url: ogImage, width: 1200 }],
+      publishedTime: post.date,
       title,
       type: "article",
+      url: `/entry/${slug}`,
     },
-    title,
+    // title は 64 行目で WithSiteTitle 連結済み。layout.tsx の title.template が
+    // 文字列 title に再適用されサフィックスが二重化するのを absolute で防ぐ。
+    title: { absolute: title },
     twitter: {
       ...metadata.twitter,
       description,
