@@ -150,8 +150,10 @@
   margin-block-start: 1.6em;
 }
 
+/* 見出し前は「島」を作るため広めに取るが、em(h2 基準=72px)固定だと viewport で変わらず
+   狭い画面ほど空白が悪目立ちする。rem ベースの clamp で PC 広め・SP 狭め(約 40→56px)に。 */
 .body > * + :is(h2, h3) {
-  margin-block-start: 3em;
+  margin-block-start: clamp(2.5rem, 1.8rem + 2vw, 3.5rem);
 }
 
 .body > :is(h2, h3) + * {
