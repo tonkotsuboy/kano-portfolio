@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Temporal } from "temporal-polyfill-lite";
@@ -14,38 +15,6 @@ function formatDate(dateStr: string): string {
   const zdt = Temporal.Instant.from(dateStr).toZonedDateTimeISO("Asia/Tokyo");
   return `${zdt.year}年${zdt.month}月${zdt.day}日`;
 }
-
-const ExternalIcon: FC = () => (
-  <svg
-    aria-hidden="true"
-    fill="none"
-    height={12}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={12}
-  >
-    <path d="M7 17 17 7M7 7h10v10" />
-  </svg>
-);
-
-const ArrowIcon: FC = () => (
-  <svg
-    aria-hidden="true"
-    fill="none"
-    height={12}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={12}
-  >
-    <path d="M5 12h14M13 6l6 6-6 6" />
-  </svg>
-);
 
 type CardProps = {
   item: PickupItem;
@@ -86,7 +55,11 @@ const PickupCard: FC<CardProps> = ({ item, priority = false }) => {
       <div className={styles.footRow}>
         <span className={styles.registerBtn}>
           {item.ctaLabel}
-          {item.external ? <ExternalIcon /> : <ArrowIcon />}
+          {item.external ? (
+            <ArrowUpRight aria-hidden size={12} />
+          ) : (
+            <ArrowRight aria-hidden size={12} />
+          )}
         </span>
       </div>
     </>
@@ -114,7 +87,7 @@ export const Pickup: FC<Props> = ({ items }) => {
   }
 
   return (
-    <section className={styles.section} aria-label="ピックアップ">
+    <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.sectionHead}>
           <div className={styles.eyebrowRow}>

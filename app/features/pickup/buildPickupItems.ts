@@ -38,13 +38,14 @@ function talkToItem(talk: Talk): PickupItem {
 /**
  * Pickup セクションのアイテムを組み立てる。
  * 先頭にピン留め書籍（常時表示・期限なし）、続けて開催が近い順の登壇予定を並べる。
+ * `publishedPosts` は公開済みに絞り込み済みの記事を受け取る前提（呼び出し側で filter 済み）。
  */
 export function buildPickupItems(
-  posts: Post[],
+  publishedPosts: Post[],
   talks: Talk[],
   now: Temporal.Instant,
 ): PickupItem[] {
-  const book = posts.find((post) => post.slug === PINNED_BOOK_SLUG && post.published);
+  const book = publishedPosts.find((post) => post.slug === PINNED_BOOK_SLUG);
   const talkItems = filterUpcomingTalks(talks, now).sort(compareByDateAsc).map(talkToItem);
 
   return book ? [bookToItem(book), ...talkItems] : talkItems;

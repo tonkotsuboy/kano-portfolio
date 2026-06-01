@@ -28,7 +28,7 @@ const HomePage: FC = () => {
   const publishedPosts: Post[] = posts.filter((post) => post.published).sort(compareByDateDesc);
 
   const now = Temporal.Now.instant();
-  const pickupItems = buildPickupItems(posts, talks, now);
+  const pickupItems = buildPickupItems(publishedPosts, talks, now);
 
   return (
     <div className={styles.root}>
