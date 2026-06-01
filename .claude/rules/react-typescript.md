@@ -17,19 +17,6 @@ globs: ["**/*.tsx", "**/*.ts"]
 - perfectionist プラグインにより、オブジェクト/インターフェースのキーはアルファベット順にソート
 - インポートはグループ間に空行を入れてアルファベット順にソート（builtin → external → internal → parent → sibling → index → object → type）
 
-## バレルファイル（再エクスポート専用の `index.ts`）
-
-- **新規作成しない。** export が 1〜2 個でも作らない。import は実体ファイルから直接行う
-  - 例: `import { Pickup } from "./features/pickup/Pickup"` / `import { buildPickupItems } from "./features/pickup/buildPickupItems"`
-  - ✗ `import { Pickup, buildPickupItems } from "./features/pickup"`（`index.ts` 経由）
-- 既存の barrel は見つけ次第、段階的に撤廃してよい（無関係な大規模変更は別 PR に分ける）
-- 理由（少数 export でも残る構造的コスト）:
-  - "Go to Definition" が `index.ts` を一段噛んで実体に飛びにくくなる
-  - 再エクスポートが増えると循環参照を生みやすい
-  - `"use client"` ファイルと Server 専用ファイルを同じ `index.ts` に混ぜると Client 汚染が起きうる
-  - モジュールグラフに余計なノードが増え、tree-shaking／バンドル解決のコストになる（Next.js が `optimizePackageImports` を用意していること自体、barrel が無料でない証左）
-- 対象は **app 内部のコード**。npm パッケージの公開 API（例: `lucide-react`）はこの限りでなく、Next.js が自動最適化する（`optimizePackageImports` のデフォルト対象）
-
 ## 外部リンク (`target="_blank"`)
 - **`rel="noreferrer"` / `rel="noopener"` は付けない**。`target="_blank"` だけで十分
 - 理由:
