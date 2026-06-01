@@ -2,7 +2,7 @@ import type { Preview } from "@storybook/nextjs-vite";
 
 import "../app/styles/reset.css";
 import "../app/styles/globals.css";
-import { ThemeProvider } from "../app/features/theme/ThemeProvider";
+import { ThemeProvider } from "../app/features/theme/ThemeProvider/ThemeProvider";
 import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const preview: Preview = {

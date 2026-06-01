@@ -6,8 +6,8 @@ import { notFound } from "next/navigation";
 import { Temporal } from "temporal-polyfill-lite";
 
 import { ogImageUrl, SiteUrl, WithSiteTitle } from "../../constants";
-import { Footer } from "../../features/layout/Footer";
-import { Header } from "../../features/layout/Header";
+import { Footer } from "../../features/layout/Footer/Footer";
+import { Header } from "../../features/layout/Header/Header";
 import { metadata } from "../../layout";
 
 import { ArticleInteractions } from "./components/ArticleInteractions";

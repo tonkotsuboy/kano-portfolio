@@ -1,7 +1,7 @@
 ---
 title: "AI時代の私の技術インプットとアウトプット術"
 slug: "slide_ai_input_output_2026"
-date: "2026-05-28T17:05+09:00"
+date: "2026-05-28T18:00+09:00"
 published: true
 tags: ["スライド"]
 categories: []

@@ -12,9 +12,9 @@ import {
   TwitterId,
   WithSiteTitle,
 } from "./constants";
-import { WebVitals } from "./features/analytics/WebVitals";
+import { WebVitals } from "./features/analytics/WebVitals/WebVitals";
 import { ServiceWorkerRegister } from "./features/pwa/ServiceWorkerRegister";
-import { ThemeProvider } from "./features/theme/ThemeProvider";
+import { ThemeProvider } from "./features/theme/ThemeProvider/ThemeProvider";
 
 import type { Metadata, Viewport } from "next";
 import type { JSX } from "react";

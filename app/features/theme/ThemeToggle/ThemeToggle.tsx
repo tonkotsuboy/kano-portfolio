@@ -2,7 +2,7 @@
 
 import { Check, Monitor, Moon, Sun } from "lucide-react";
 
-import { useTheme } from "../ThemeProvider";
+import { useTheme } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./ThemeToggle.module.css";
 

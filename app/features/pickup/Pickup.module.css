@@ -1,4 +1,4 @@
-/* Upcoming Talks section */
+/* Pickup section */
 
 .section {
   padding: var(--space-lg) 0 var(--space-xl);
@@ -137,7 +137,6 @@
   letter-spacing: -0.005em;
   -webkit-line-clamp: 3;
   line-height: 1.55;
-  text-wrap: pretty;
 }
 
 /* Row 4: Footer
@@ -149,7 +148,7 @@
   padding: var(--space-xs) 18px 18px;
 }
 
-.registerBtn {
+.ctaBtn {
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
@@ -167,7 +166,7 @@
   white-space: nowrap;
 }
 
-.card:hover .registerBtn {
+.card:hover .ctaBtn {
   background: var(--liquid-primary);
   color: var(--text-on-yellow);
 }
@@ -182,4 +181,3 @@
     grid-template-columns: 1fr;
   }
 }
-

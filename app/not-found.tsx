@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { Footer } from "./features/layout/Footer";
-import { Header } from "./features/layout/Header";
+import { Footer } from "./features/layout/Footer/Footer";
+import { Header } from "./features/layout/Header/Header";
 import styles from "./not-found.module.css";
 
 import type { Metadata } from "next";

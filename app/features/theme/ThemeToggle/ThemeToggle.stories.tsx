@@ -1,4 +1,4 @@
-import { ThemeProvider } from "../ThemeProvider";
+import { ThemeProvider } from "../ThemeProvider/ThemeProvider";
 
 import { ThemeToggle } from "./ThemeToggle";
 

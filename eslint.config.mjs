@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import tseslint from "typescript-eslint";
 import importPlugin from "eslint-plugin-import";
+import noBarrelFiles from "eslint-plugin-no-barrel-files";
 import perfectionist from "eslint-plugin-perfectionist";
 import testingLibrary from "eslint-plugin-testing-library";
 import vitest from "@vitest/eslint-plugin";
@@ -62,6 +63,7 @@ export default defineConfig([
         },
         plugins: {
             import: importPlugin,
+            "no-barrel-files": noBarrelFiles,
             perfectionist,
             react: reactPlugin,
             "react-hooks": reactHooksPlugin,
@@ -116,6 +118,7 @@ export default defineConfig([
                 groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
                 "newlines-between": "always",
             }],
+            "no-barrel-files/no-barrel-files": "error",
             "perfectionist/sort-objects": ["error", { order: "asc", type: "natural", ignoreCase: true }],
             "perfectionist/sort-interfaces": ["error", { order: "asc", type: "natural", ignoreCase: true }],
             "perfectionist/sort-union-types": ["error", { order: "asc", type: "natural", ignoreCase: true }],
