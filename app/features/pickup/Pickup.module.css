@@ -1,4 +1,4 @@
-/* Upcoming Talks section */
+/* Pickup section */
 
 .section {
   padding: var(--space-lg) 0 var(--space-xl);
@@ -182,4 +182,3 @@
     grid-template-columns: 1fr;
   }
 }
-

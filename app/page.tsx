@@ -3,10 +3,9 @@ import { Temporal } from "temporal-polyfill-lite";
 import { basicDescription, SiteUrl } from "./constants";
 import { Footer } from "./features/layout/Footer";
 import { Header } from "./features/layout/Header";
+import { buildPickupItems, Pickup } from "./features/pickup";
 import { ArticleGrid } from "./features/posts/ArticleGrid";
-import { filterUpcomingTalks } from "./features/talks/filterUpcomingTalks";
-import { UpcomingTalks } from "./features/talks/UpcomingTalks";
-import { compareByDateAsc, compareByDateDesc } from "./lib/dateCompare";
+import { compareByDateDesc } from "./lib/dateCompare";
 import styles from "./page.module.css";
 
 import type { Post } from "@/.velite";
@@ -29,14 +28,14 @@ const HomePage: FC = () => {
   const publishedPosts: Post[] = posts.filter((post) => post.published).sort(compareByDateDesc);
 
   const now = Temporal.Now.instant();
-  const upcomingTalks = filterUpcomingTalks(talks, now).sort(compareByDateAsc);
+  const pickupItems = buildPickupItems(posts, talks, now);
 
   return (
     <div className={styles.root}>
       <Header currentPath="/" />
       <main id="main-content" tabIndex={-1} className={styles.main}>
         <h1 className={styles.visuallyHidden}>鹿野壮のポートフォリオ - WORKS</h1>
-        <UpcomingTalks talks={upcomingTalks} />
+        <Pickup items={pickupItems} />
         <ArticleGrid posts={publishedPosts} />
       </main>
       <Footer />
