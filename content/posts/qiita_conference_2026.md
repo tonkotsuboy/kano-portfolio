@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: ""
+thumbnail: "/images/og/qiita-conference-2026.jpg"
 slides: ""
 linkUrl: "https://qiita.com/official-campaigns/conference/2026"
 targetUrl: "https://qiita.com/official-campaigns/conference/2026"

@@ -6,7 +6,7 @@ published: true
 tags: ["スライド"]
 categories: []
 medium: "スライド"
-thumbnail: ""
+thumbnail: "/images/og/speakerdeck_ai_input_output_2026.jpg"
 slides: ""
 linkUrl: "https://speakerdeck.com/tonkotsuboy_com/aishi-dai-nosi-noji-shu-inpututotoautopututoshu"
 targetUrl: "https://speakerdeck.com/tonkotsuboy_com/aishi-dai-nosi-noji-shu-inpututotoautopututoshu"
