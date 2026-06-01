@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 import styles from "./error.module.css";
-import { Header } from "./features/layout/Header";
+import { Header } from "./features/layout/Header/Header";
 
 type ErrorPageProps = {
   error: Error & { digest?: string };

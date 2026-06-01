@@ -6,8 +6,8 @@ import { siGithub, siQiita, siX, siZenn } from "simple-icons";
 
 import { SimpleIcon } from "../components/ui/icons/SimpleIcon";
 import { ogImageUrl, WithSiteTitle } from "../constants";
-import { Footer } from "../features/layout/Footer";
-import { Header } from "../features/layout/Header";
+import { Footer } from "../features/layout/Footer/Footer";
+import { Header } from "../features/layout/Header/Header";
 import hoverStyles from "../styles/card-hover.module.css";
 
 import styles from "./page.module.css";

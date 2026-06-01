@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { ThemeToggle } from "../../theme/ThemeToggle";
+import { ThemeToggle } from "../../theme/ThemeToggle/ThemeToggle";
 
 import styles from "./Header.module.css";
 import { NavLink } from "./NavLink";

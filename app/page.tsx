@@ -1,11 +1,11 @@
 import { Temporal } from "temporal-polyfill-lite";
 
 import { basicDescription, SiteUrl } from "./constants";
-import { Footer } from "./features/layout/Footer";
-import { Header } from "./features/layout/Header";
+import { Footer } from "./features/layout/Footer/Footer";
+import { Header } from "./features/layout/Header/Header";
 import { buildPickupItems } from "./features/pickup/buildPickupItems";
 import { Pickup } from "./features/pickup/Pickup";
-import { ArticleGrid } from "./features/posts/ArticleGrid";
+import { ArticleGrid } from "./features/posts/ArticleGrid/ArticleGrid";
 import { compareByDateDesc } from "./lib/dateCompare";
 import styles from "./page.module.css";
 
