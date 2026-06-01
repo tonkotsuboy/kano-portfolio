@@ -53,7 +53,7 @@ const PickupCard: FC<CardProps> = ({ item, priority = false }) => {
 
       {/* Row 4: Footer */}
       <div className={styles.footRow}>
-        <span className={styles.registerBtn}>
+        <span className={styles.ctaBtn}>
           {item.ctaLabel}
           {item.external ? (
             <ArrowUpRight aria-hidden size={12} />
@@ -87,14 +87,14 @@ export const Pickup: FC<Props> = ({ items }) => {
   }
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} aria-labelledby="pickup-heading">
       <div className={styles.container}>
         <div className={styles.sectionHead}>
           <div className={styles.eyebrowRow}>
             <span className={styles.eyebrowDot} aria-hidden="true" />
             <span className={styles.eyebrow}>Pickup</span>
           </div>
-          <h2 className={styles.sectionTitle}>ピックアップ</h2>
+          <h2 id="pickup-heading" className={styles.sectionTitle}>ピックアップ</h2>
         </div>
 
         <div className={styles.grid}>
