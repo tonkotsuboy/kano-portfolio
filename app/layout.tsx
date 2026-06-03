@@ -86,6 +86,62 @@ export const viewport: Viewport = {
   ],
 };
 
+// Google ナレッジグラフに「鹿野壮」という人物エンティティを断定的に伝える構造化データ。
+// Person（本体）と WebSite（サイト自体）を @graph で束ね、@id で相互参照させる。
+// sameAs は別ドメインに散った同一人物のプロフィールを一本に束ねる線として最重要。
+// 検証は Rich Results Test / Schema Markup Validator で行う。
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": `${SiteUrl}/#person`,
+      "@type": "Person",
+      alternateName: ["かの たけし", "tonkotsuboy"],
+      description: basicDescription,
+      image: `${SiteUrl}/profile.jpg`,
+      jobTitle: "Staff Product Engineer",
+      knowsAbout: [
+        "CSS",
+        "TypeScript",
+        "JavaScript",
+        "Web フロントエンド",
+        "Web 標準",
+        "アクセシビリティ",
+      ],
+      name: SiteTitle,
+      sameAs: [
+        `https://x.com/${TwitterId}`,
+        "https://github.com/tonkotsuboy",
+        "https://zenn.dev/tonkotsuboy_com",
+        "https://qiita.com/tonkotsuboy_com",
+        "https://speakerdeck.com/tonkotsuboy_com",
+        "https://www.linkedin.com/in/tonkotsuboy/",
+        "https://www.instagram.com/tonkotsuboy_com",
+        "https://www.facebook.com/takeshikano",
+        "https://note.com/tonkotsuboy_com",
+        "https://techfeed.io/people/@tonkotsuboy_com",
+        "https://youtrust.jp/users/tonkotsuboy_com",
+        "https://67.org/ws/instructor/kano.html",
+        "https://gihyo.jp/author/%E9%B9%BF%E9%87%8E%E5%A3%AE",
+      ],
+      url: SiteUrl,
+      worksFor: {
+        "@type": "Organization",
+        name: "Ubie株式会社",
+      },
+    },
+    {
+      "@id": `${SiteUrl}/#website`,
+      "@type": "WebSite",
+      description: basicDescription,
+      inLanguage: "ja-JP",
+      name: SiteTitle,
+      publisher: { "@id": `${SiteUrl}/#person` },
+      url: SiteUrl,
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -94,6 +150,14 @@ export default function RootLayout({
   return (
     <html lang="ja" className={clsx(inter.variable, notoSansJP.variable)} suppressHydrationWarning>
       <body>
+        {/* 構造化データ（JSON-LD）。Next.js 公式推奨どおり <script> で出力し、
+            XSS 対策として "<" を < にエスケープする。 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
         {/* 描画前にテーマを確定させ FOUC を防ぐ。beforeInteractive で <head> 内に
             同期実行される。ThemeProvider（useEffect）より先に data-theme を設定。 */}
         <Script src="/theme-init.js" strategy="beforeInteractive" />
