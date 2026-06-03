@@ -106,7 +106,8 @@ const structuredData = {
         "JavaScript",
         "Web フロントエンド",
         "Web 標準",
-        "アクセシビリティ",
+        "AIエージェント",
+        "Claude Code",
       ],
       name: SiteTitle,
       sameAs: [
