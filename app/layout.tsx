@@ -100,7 +100,8 @@ const structuredData = {
       alternateName: ["鹿野 壮", "かの たけし", "tonkotsuboy", "tonkotsuboy_com"],
       // Person は「人物」の説明。サイト説明の basicDescription（WebSite 側で使用）とは分け、
       // about ページの自己紹介と一致させる（捧造なし）。
-      description: "Ubie株式会社の Staff Product Engineer。TypeScript・CSS を軸にプロダクト開発・執筆・登壇を行う。",
+      // Person は「人物」の説明。サイト説明の basicDescription（WebSite 側で使用）とは分け、
+      // about ページの自己紹介と一致させる（捏造なし）。
       familyName: "鹿野",
       givenName: "壮",
       image: {
