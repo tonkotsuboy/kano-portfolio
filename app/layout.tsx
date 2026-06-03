@@ -7,6 +7,7 @@ import Script from "next/script";
 import {
   basicDescription,
   ogImageUrl,
+  PersonName,
   SiteTitle,
   SiteUrl,
   TwitterId,
@@ -100,7 +101,12 @@ const structuredData = {
       description: basicDescription,
       familyName: "鹿野",
       givenName: "壮",
-      image: `${SiteUrl}/profile.jpg`,
+      image: {
+        "@type": "ImageObject",
+        height: 1194,
+        url: `${SiteUrl}/profile.jpg`,
+        width: 1194,
+      },
       jobTitle: "Staff Product Engineer",
       knowsAbout: [
         "CSS",
@@ -111,7 +117,7 @@ const structuredData = {
         "AIエージェント",
         "Claude Code",
       ],
-      name: SiteTitle,
+      name: PersonName,
       sameAs: [
         `https://x.com/${TwitterId}`,
         "https://github.com/tonkotsuboy",
@@ -132,6 +138,7 @@ const structuredData = {
       worksFor: {
         "@type": "Organization",
         name: "Ubie株式会社",
+        url: "https://ubie.life",
       },
     },
     {
@@ -146,6 +153,10 @@ const structuredData = {
   ],
 };
 
+// JSON-LD 文字列はモジュール読み込み時に 1 度だけ生成する。SSR/SSG のたびに
+// JSON.stringify + replace を再計算させない（XSS 対策として "<" を < にエスケープ）。
+const structuredDataJson = JSON.stringify(structuredData).replace(/</g, "\\u003c");
+
 export default function RootLayout({
   children,
 }: {
@@ -154,12 +165,12 @@ export default function RootLayout({
   return (
     <html lang="ja" className={clsx(inter.variable, notoSansJP.variable)} suppressHydrationWarning>
       <body>
-        {/* 構造化データ（JSON-LD）。Next.js 公式推奨どおり <script> で出力し、
-            XSS 対策として "<" を < にエスケープする。 */}
+        {/* 構造化データ（JSON-LD）。Next.js 公式推奨どおり <script> で出力する。
+            文字列化はモジュールレベルで 1 度だけ行う（structuredDataJson 参照）。 */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+            __html: structuredDataJson,
           }}
         />
         {/* 描画前にテーマを確定させ FOUC を防ぐ。beforeInteractive で <head> 内に

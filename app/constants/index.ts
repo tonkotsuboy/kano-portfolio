@@ -1,5 +1,8 @@
 export const SiteTitle = "鹿野壮";
 
+/** 人物（Person）の固有名。サイトタイトルとは意味的に別物として扱う */
+export const PersonName = "鹿野壮";
+
 export const WithSiteTitle = ` - ${SiteTitle}`;
 
 /** サイトURL */
