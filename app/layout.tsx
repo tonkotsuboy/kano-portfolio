@@ -7,6 +7,7 @@ import Script from "next/script";
 import {
   basicDescription,
   ogImageUrl,
+  PersonName,
   SiteTitle,
   SiteUrl,
   TwitterId,
@@ -86,6 +87,79 @@ export const viewport: Viewport = {
   ],
 };
 
+// Google ナレッジグラフに「鹿野壮」という人物エンティティを断定的に伝える構造化データ。
+// Person（本体）と WebSite（サイト自体）を @graph で束ね、@id で相互参照させる。
+// sameAs は別ドメインに散った同一人物のプロフィールを一本に束ねる線として最重要。
+// 検証は Rich Results Test / Schema Markup Validator で行う。
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": `${SiteUrl}/#person`,
+      "@type": "Person",
+      alternateName: ["鹿野 壮", "かの たけし", "tonkotsuboy", "tonkotsuboy_com"],
+      // Person は「人物」の説明。サイト説明の basicDescription（WebSite 側で使用）とは分け、
+      // about ページの自己紹介と一致させる（捧造なし）。
+      // Person は「人物」の説明。サイト説明の basicDescription（WebSite 側で使用）とは分け、
+      // about ページの自己紹介と一致させる（捏造なし）。
+      familyName: "鹿野",
+      givenName: "壮",
+      image: {
+        "@type": "ImageObject",
+        height: 1194,
+        url: `${SiteUrl}/profile.jpg`,
+        width: 1194,
+      },
+      jobTitle: "Staff Product Engineer",
+      knowsAbout: [
+        "CSS",
+        "TypeScript",
+        "JavaScript",
+        "Web Frontend",
+        "Web Standards",
+        "AI Agents",
+        "Claude Code",
+      ],
+      name: PersonName,
+      sameAs: [
+        `https://x.com/${TwitterId}`,
+        "https://github.com/tonkotsuboy",
+        "https://codepen.io/tonkotsuboy",
+        "https://zenn.dev/tonkotsuboy_com",
+        "https://qiita.com/tonkotsuboy_com",
+        "https://speakerdeck.com/tonkotsuboy_com",
+        "https://www.linkedin.com/in/tonkotsuboy/",
+        "https://www.instagram.com/tonkotsuboy_com",
+        "https://www.facebook.com/takeshikano",
+        "https://note.com/tonkotsuboy_com",
+        "https://techfeed.io/people/@tonkotsuboy_com",
+        "https://youtrust.jp/users/tonkotsuboy_com",
+        "https://67.org/ws/instructor/kano.html",
+        "https://gihyo.jp/author/%E9%B9%BF%E9%87%8E%E5%A3%AE",
+      ],
+      url: SiteUrl,
+      worksFor: {
+        "@type": "Organization",
+        name: "Ubie株式会社",
+        url: "https://ubie.life",
+      },
+    },
+    {
+      "@id": `${SiteUrl}/#website`,
+      "@type": "WebSite",
+      description: basicDescription,
+      inLanguage: "ja-JP",
+      name: SiteTitle,
+      publisher: { "@id": `${SiteUrl}/#person` },
+      url: SiteUrl,
+    },
+  ],
+};
+
+// JSON-LD 文字列はモジュール読み込み時に 1 度だけ生成する。SSR/SSG のたびに
+// JSON.stringify + replace を再計算させない（XSS 対策として "<" を < にエスケープ）。
+const structuredDataJson = JSON.stringify(structuredData).replace(/</g, "\\u003c");
+
 export default function RootLayout({
   children,
 }: {
@@ -94,6 +168,14 @@ export default function RootLayout({
   return (
     <html lang="ja" className={clsx(inter.variable, notoSansJP.variable)} suppressHydrationWarning>
       <body>
+        {/* 構造化データ（JSON-LD）。Next.js 公式推奨どおり <script> で出力する。
+            文字列化はモジュールレベルで 1 度だけ行う（structuredDataJson 参照）。 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: structuredDataJson,
+          }}
+        />
         {/* 描画前にテーマを確定させ FOUC を防ぐ。beforeInteractive で <head> 内に
             同期実行される。ThemeProvider（useEffect）より先に data-theme を設定。 */}
         <Script src="/theme-init.js" strategy="beforeInteractive" />
