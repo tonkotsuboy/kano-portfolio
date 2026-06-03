@@ -156,10 +156,19 @@ const AboutPage: NextPage = () => {
               <div className={styles.photoGridBottom}>
                 <div className={styles.photoCell}>
                   <Image
+                    src="/profile.jpg"
+                    alt="鹿野 壮の顔写真"
+                    fill
+                    sizes="(max-width: 768px) 25vw, 160px"
+                    className={styles.photo}
+                  />
+                </div>
+                <div className={styles.photoCell}>
+                  <Image
                     src="/images/about/lecture-hall.jpg"
                     alt="大規模勉強会で登壇中の様子"
                     fill
-                    sizes="(max-width: 768px) 33vw, 213px"
+                    sizes="(max-width: 768px) 25vw, 160px"
                     className={styles.photo}
                   />
                 </div>
@@ -168,7 +177,7 @@ const AboutPage: NextPage = () => {
                     src="/images/about/cssnite-osaka.jpg"
                     alt="CSS Nite in Osaka vol.59 集合写真"
                     fill
-                    sizes="(max-width: 768px) 33vw, 213px"
+                    sizes="(max-width: 768px) 25vw, 160px"
                     className={styles.photo}
                   />
                 </div>
@@ -177,7 +186,7 @@ const AboutPage: NextPage = () => {
                     src="/images/about/full-throttle.jpg"
                     alt="Full Throttle but Safe イベントでの鹿野 壮"
                     fill
-                    sizes="(max-width: 768px) 33vw, 213px"
+                    sizes="(max-width: 768px) 25vw, 160px"
                     className={styles.photo}
                   />
                 </div>
