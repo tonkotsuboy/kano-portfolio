@@ -112,6 +112,7 @@ const structuredData = {
       sameAs: [
         `https://x.com/${TwitterId}`,
         "https://github.com/tonkotsuboy",
+        "https://codepen.io/tonkotsuboy",
         "https://zenn.dev/tonkotsuboy_com",
         "https://qiita.com/tonkotsuboy_com",
         "https://speakerdeck.com/tonkotsuboy_com",
