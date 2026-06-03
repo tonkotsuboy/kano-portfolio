@@ -96,8 +96,10 @@ const structuredData = {
     {
       "@id": `${SiteUrl}/#person`,
       "@type": "Person",
-      alternateName: ["かの たけし", "tonkotsuboy"],
+      alternateName: ["鹿野 壮", "かの たけし", "tonkotsuboy"],
       description: basicDescription,
+      familyName: "鹿野",
+      givenName: "壮",
       image: `${SiteUrl}/profile.jpg`,
       jobTitle: "Staff Product Engineer",
       knowsAbout: [
