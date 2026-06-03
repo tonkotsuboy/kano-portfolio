@@ -96,7 +96,7 @@ const structuredData = {
     {
       "@id": `${SiteUrl}/#person`,
       "@type": "Person",
-      alternateName: ["鹿野 壮", "かの たけし", "tonkotsuboy"],
+      alternateName: ["鹿野 壮", "かの たけし", "tonkotsuboy", "tonkotsuboy_com"],
       description: basicDescription,
       familyName: "鹿野",
       givenName: "壮",
