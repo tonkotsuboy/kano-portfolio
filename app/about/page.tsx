@@ -161,6 +161,7 @@ const AboutPage: NextPage = () => {
                     fill
                     sizes="(max-width: 768px) 25vw, 160px"
                     className={styles.photo}
+                    priority
                   />
                 </div>
                 <div className={styles.photoCell}>
