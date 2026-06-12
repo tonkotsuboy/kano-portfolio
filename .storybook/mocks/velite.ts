@@ -42,4 +42,4 @@ export type Talk = {
   title: string;
 };
 
-export const talks: Talk[] = [];
+export const pickup: Talk[] = [];

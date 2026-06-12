@@ -13,7 +13,7 @@ import type { Post } from "@/.velite";
 import type { Metadata } from "next";
 import type { FC } from "react";
 
-import { posts, talks } from "@/.velite";
+import { pickup, posts } from "@/.velite";
 
 export const revalidate = 3600;
 
@@ -29,7 +29,7 @@ const HomePage: FC = () => {
   const publishedPosts: Post[] = posts.filter((post) => post.published).sort(compareByDateDesc);
 
   const now = Temporal.Now.instant();
-  const pickupItems = buildPickupItems(publishedPosts, talks, now);
+  const pickupItems = buildPickupItems(publishedPosts, pickup, now);
 
   return (
     <div className={styles.root}>

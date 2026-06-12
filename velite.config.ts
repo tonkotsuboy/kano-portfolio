@@ -5,6 +5,19 @@ import { defineConfig, s } from "velite";
 
 export default defineConfig({
   collections: {
+    pickup: {
+      name: "Talk",
+      pattern: "pickup/**/*.md",
+      schema: s.object({
+        date: s.isodate(),
+        eventName: s.string(),
+        published: s.boolean().default(true),
+        registerUrl: s.string(),
+        slug: s.string(),
+        thumbnail: s.string().default(""),
+        title: s.string(),
+      }),
+    },
     posts: {
       name: "Post",
       pattern: "posts/**/*.md",
@@ -29,19 +42,6 @@ export default defineConfig({
           ...data,
           permalink: data.targetUrl ?? `/entry/${data.slug}`,
         })),
-    },
-    talks: {
-      name: "Talk",
-      pattern: "talks/**/*.md",
-      schema: s.object({
-        date: s.isodate(),
-        eventName: s.string(),
-        published: s.boolean().default(true),
-        registerUrl: s.string(),
-        slug: s.string(),
-        thumbnail: s.string().default(""),
-        title: s.string(),
-      }),
     },
   },
   markdown: {
