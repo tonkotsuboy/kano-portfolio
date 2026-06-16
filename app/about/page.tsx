@@ -230,13 +230,16 @@ const AboutPage: NextPage = () => {
             <h2 className={styles.sectionLabel}>自己紹介</h2>
             <div className={styles.bioCard}>
               <p className={styles.bioText}>
-                鹿野 壮（かの たけし）といいます。
+                Webフロントエンドエンジニアの鹿野 壮（かの たけし）です。TypeScriptとCSSをこよなく愛しています。福岡県出身、現在は東京都日本橋を拠点に活動しています。
               </p>
               <p className={styles.bioText}>
-                九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でStaff Product Engineerとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。2025年5月にClaude Codeにタスク丸投げおじさんとして転生しました。勉強会・技術SNS・Xなどで積極的に技術情報を発信中。
+                九州大学芸術工学部音響設計学科を卒業後、Webの世界へ。制作会社ICSではテックリードを務め、マネーフォワードでは開発部の副部長兼フロントエンドチームリーダーとして、組織づくりと大規模プロダクトのフロントエンド開発を牽引しました。現在はUbie株式会社でStaff Product Engineerとして、プロダクト開発に取り組んでいます。
               </p>
               <p className={styles.bioText}>
-                CSS Niteベストセッション受賞。「JavaScriptコードレシピ集」著者。TechFeed Proプロダクトアドバイザー・公認エキスパート。
+                とくにTypeScript・CSSを軸としたWebプラットフォーム技術が好きで、暇さえあればコードを書いています。2025年5月にはClaude Codeにタスクを丸投げするおじさんへと転生しました。勉強会・技術SNS・Xなどを通じて、日々学んだことを積極的に発信しています。
+              </p>
+              <p className={styles.bioText}>
+                著書に「TypeScriptコードレシピ集」「JavaScript &amp; TypeScript実力強化書」「JavaScriptコードレシピ集」（いずれも技術評論社）。これまでの登壇は50回を超え、CSS Niteベストセッションを受賞。TechFeed Proプロダクトアドバイザー・公認エキスパートも務めています。
               </p>
             </div>
           </section>
