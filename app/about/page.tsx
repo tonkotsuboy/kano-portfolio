@@ -230,7 +230,7 @@ const AboutPage: NextPage = () => {
             <h2 className={styles.sectionLabel}>鹿野 壮（かのたけし）とは</h2>
             <div className={styles.bioCard}>
               <p className={styles.bioText}>
-                Ubie株式会社のStaff Product Engineer。福岡県出身、現在は東京都日本橋を拠点に活動しています。
+                Ubie株式会社のStaff Product Engineer。福岡県出身、現在は東京都日本橋を拠点に活動している。
               </p>
               <p className={styles.bioText}>
                 2024年にUbie株式会社に入社。九州大学でメディアアートを学んだ後、テックリードやフロントエンドチームリーダーを経験する。現在はUbieでフロントエンド・バックエンド問わずフルスタックにプロダクト開発をしている。
