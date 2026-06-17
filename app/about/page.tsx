@@ -210,7 +210,10 @@ const AboutPage: NextPage = () => {
                   ) : social.iconType === "lucide-codepen" ? (
                     <Codepen className={styles.socialPillIcon} aria-hidden />
                   ) : social.iconType === "lucide-presentation" ? (
-                    <Presentation className={styles.socialPillIcon} aria-hidden />
+                    <Presentation
+                      className={styles.socialPillIcon}
+                      aria-hidden
+                    />
                   ) : social.iconPath ? (
                     <SimpleIcon
                       path={social.iconPath}
@@ -230,18 +233,21 @@ const AboutPage: NextPage = () => {
             <h2 className={styles.sectionLabel}>鹿野 壮（かのたけし）とは</h2>
             <div className={styles.bioCard}>
               <p className={styles.bioText}>
-                Ubie株式会社のStaff Product Engineer。福岡県出身、現在は東京都日本橋を拠点に活動している。
+                Ubie株式会社のStaff Product
+                Engineer。福岡県出身、現在は東京都日本橋を拠点に活動している。
               </p>
               <p className={styles.bioText}>
-                2024年にUbie株式会社に入社。九州大学でメディアアートを学んだ後、テックリードやフロントエンドチームリーダーを経験する。現在はUbieでフロントエンド・バックエンド問わずフルスタックにプロダクト開発をしている。
-                
-                九州大学芸術工学部音響設計学科を卒業後、ウェブ制作会社にてテックリードを務め、前職マネーフォワードでは開発部の副部長兼フロントエンドチームリーダーを担う。現在はUbie株式会社にて、フロントエンド開発、バックエンド開発、モバイルアプリ開発まで幅広く行う。
+                九州大学芸術工学部音響設計学科を卒業後、ウェブ制作会社にてテックリードを務め、前職マネーフォワードでは開発部の副部長兼フロントエンドチームリーダーを担う。現在はUbie株式会社にて、フロントエンド開発、バックエンド開発、モバイルアプリ開発ド問わずフルスタックにプロダクト開発をしている。
               </p>
               <p className={styles.bioText}>
-                とくにTypeScript・CSSを軸としたWebプラットフォーム技術を好み、暇さえあればコードを書いている。近年はAIエージェントを中心とした開発をしており、2025年5月にはClaude Codeにタスクを丸投げするおじさんへと転生。
+                とくにTypeScript・CSSを軸としたWebプラットフォーム技術を好み、暇さえあればコードを書いている。近年はAIエージェントを中心とした開発をしており、2025年5月にはClaude
+                Codeにタスクを丸投げするおじさんへと転生。
               </p>
               <p className={styles.bioText}>
-                著書に『TypeScriptコードレシピ集』『JavaScript & TypeScript実力強化書』『JavaScriptコードレシピ集』（いずれも技術評論社）。これまでの登壇は50回を超え、CSS Niteベストセッションを受賞。単独でのイベントでは最大1,200名を集客。TechFeed Proプロダクトアドバイザー・公認エキスパートも務める。
+                著書に『TypeScriptコードレシピ集』『JavaScript &
+                TypeScript実力強化書』『JavaScriptコードレシピ集』（いずれも技術評論社）。これまでの登壇は50回を超え、CSS
+                Niteベストセッションを受賞。単独でのイベントでは最大1,200名を集客。TechFeed
+                Proプロダクトアドバイザー・公認エキスパートも務める。
               </p>
             </div>
           </section>
@@ -267,7 +273,9 @@ const AboutPage: NextPage = () => {
                     />
                   </div>
                   <div className={styles.bookInfo}>
-                    <h3 className={clsx(styles.bookTitle, hoverStyles.title)}>{item.title}</h3>
+                    <h3 className={clsx(styles.bookTitle, hoverStyles.title)}>
+                      {item.title}
+                    </h3>
                     <p className={styles.bookPublisher}>{item.publisher}</p>
                   </div>
                   <div className={hoverStyles.arrow}>
@@ -284,9 +292,19 @@ const AboutPage: NextPage = () => {
             <ul className={styles.timelineList}>
               {interviews.map((item) => (
                 <li key={item.title}>
-                  <Link href={item.href} target="_blank" className={clsx(styles.timelineItem, hoverStyles.card)}>
-                    <span className={clsx(styles.timelineTitle, hoverStyles.title)}>{item.title}</span>
-                    <div className={clsx(styles.timelineArrow, hoverStyles.arrow)}>
+                  <Link
+                    href={item.href}
+                    target="_blank"
+                    className={clsx(styles.timelineItem, hoverStyles.card)}
+                  >
+                    <span
+                      className={clsx(styles.timelineTitle, hoverStyles.title)}
+                    >
+                      {item.title}
+                    </span>
+                    <div
+                      className={clsx(styles.timelineArrow, hoverStyles.arrow)}
+                    >
                       <ChevronRight size={20} aria-hidden />
                     </div>
                   </Link>
