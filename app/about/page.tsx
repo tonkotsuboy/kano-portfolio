@@ -210,7 +210,10 @@ const AboutPage: NextPage = () => {
                   ) : social.iconType === "lucide-codepen" ? (
                     <Codepen className={styles.socialPillIcon} aria-hidden />
                   ) : social.iconType === "lucide-presentation" ? (
-                    <Presentation className={styles.socialPillIcon} aria-hidden />
+                    <Presentation
+                      className={styles.socialPillIcon}
+                      aria-hidden
+                    />
                   ) : social.iconPath ? (
                     <SimpleIcon
                       path={social.iconPath}
@@ -227,16 +230,24 @@ const AboutPage: NextPage = () => {
 
           {/* Bio */}
           <section className={styles.section}>
-            <h2 className={styles.sectionLabel}>自己紹介</h2>
+            <h2 className={styles.sectionLabel}>鹿野 壮（かのたけし）とは</h2>
             <div className={styles.bioCard}>
               <p className={styles.bioText}>
-                鹿野 壮（かの たけし）といいます。
+                Ubie株式会社のStaff Product
+                Engineer。福岡県出身、現在は東京都日本橋を拠点に活動している。
               </p>
               <p className={styles.bioText}>
-                九州大学芸術工学部音響設計学科を卒業後、Ubie株式会社でStaff Product Engineerとして働いています。とくにTypeScript・CSSが好きで、暇があればコードを書いています。2025年5月にClaude Codeにタスク丸投げおじさんとして転生しました。勉強会・技術SNS・Xなどで積極的に技術情報を発信中。
+                九州大学芸術工学部音響設計学科を卒業後、ウェブ制作会社にてテックリードを務め、前職マネーフォワードでは開発部の副部長兼フロントエンドチームリーダーを担う。現在はUbie株式会社にて、フロントエンド開発、バックエンド開発、モバイルアプリ開発ド問わずフルスタックにプロダクト開発をしている。
               </p>
               <p className={styles.bioText}>
-                CSS Niteベストセッション受賞。「JavaScriptコードレシピ集」著者。TechFeed Proプロダクトアドバイザー・公認エキスパート。
+                とくにTypeScript・CSSを軸としたWebプラットフォーム技術を好み、暇さえあればコードを書いている。近年はAIエージェントを中心とした開発をしており、2025年5月にはClaude
+                Codeにタスクを丸投げするおじさんへと転生。
+              </p>
+              <p className={styles.bioText}>
+                著書に『TypeScriptコードレシピ集』『JavaScript &
+                TypeScript実力強化書』『JavaScriptコードレシピ集』（いずれも技術評論社）。これまでの登壇は50回を超え、CSS
+                Niteベストセッションを受賞。単独でのイベントでは最大1,200名を集客。TechFeed
+                Proプロダクトアドバイザー・公認エキスパートも務める。
               </p>
             </div>
           </section>
@@ -262,7 +273,9 @@ const AboutPage: NextPage = () => {
                     />
                   </div>
                   <div className={styles.bookInfo}>
-                    <h3 className={clsx(styles.bookTitle, hoverStyles.title)}>{item.title}</h3>
+                    <h3 className={clsx(styles.bookTitle, hoverStyles.title)}>
+                      {item.title}
+                    </h3>
                     <p className={styles.bookPublisher}>{item.publisher}</p>
                   </div>
                   <div className={hoverStyles.arrow}>
@@ -279,9 +292,19 @@ const AboutPage: NextPage = () => {
             <ul className={styles.timelineList}>
               {interviews.map((item) => (
                 <li key={item.title}>
-                  <Link href={item.href} target="_blank" className={clsx(styles.timelineItem, hoverStyles.card)}>
-                    <span className={clsx(styles.timelineTitle, hoverStyles.title)}>{item.title}</span>
-                    <div className={clsx(styles.timelineArrow, hoverStyles.arrow)}>
+                  <Link
+                    href={item.href}
+                    target="_blank"
+                    className={clsx(styles.timelineItem, hoverStyles.card)}
+                  >
+                    <span
+                      className={clsx(styles.timelineTitle, hoverStyles.title)}
+                    >
+                      {item.title}
+                    </span>
+                    <div
+                      className={clsx(styles.timelineArrow, hoverStyles.arrow)}
+                    >
                       <ChevronRight size={20} aria-hidden />
                     </div>
                   </Link>
