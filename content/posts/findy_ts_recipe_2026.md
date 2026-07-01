@@ -1,7 +1,7 @@
 ---
 title: "Findy「鹿野さんに聞く！TypeScriptコードレシピ集で磨く実践力」に登壇"
 slug: "findy_ts_recipe_2026"
-date: "2026-06-30T12:00:00+09:00"
+date: "2026-06-30T12:00+09:00"
 published: true
 tags: []
 categories: []
