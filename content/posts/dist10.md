@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/dist10.png"
-slides: ""
 linkUrl: "https://dist.connpass.com/event/24320/"
 targetUrl: "/entry/dist10"
 hasDetail: true

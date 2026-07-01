@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "インタビュー"
 thumbnail: "/images/og/qiita_fm_2025.png"
-slides: ""
 linkUrl: "https://open.spotify.com/episode/2YxkejjzHTYyNJMf2ODHNp"
 targetUrl: "https://open.spotify.com/episode/2YxkejjzHTYyNJMf2ODHNp"
 hasDetail: false

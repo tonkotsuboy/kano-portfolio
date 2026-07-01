@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: "/images/og/speakerdeck_css_subgrid.jpg"
-slides: ""
 linkUrl: "https://speakerdeck.com/tonkotsuboy_com/css-subgridgasui-niquan-burauzadui-ying-xin-shi-dai-noguritudodezainwoxue-bou"
 targetUrl: "https://speakerdeck.com/tonkotsuboy_com/css-subgridgasui-niquan-burauzadui-ying-xin-shi-dai-noguritudodezainwoxue-bou"
 hasDetail: false

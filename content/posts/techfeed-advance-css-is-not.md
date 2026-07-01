@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://techfeed.io/entries/63db5a9aaf090a2b746321a4"
 targetUrl: "https://techfeed.io/entries/63db5a9aaf090a2b746321a4"
 hasDetail: false

@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: "/images/og/note-frontend-2018.jpg"
-slides: ""
 linkUrl: "https://note.com/tonkotsuboy_com/n/nb5ee9ef83dc5"
 targetUrl: "https://note.com/tonkotsuboy_com/n/nb5ee9ef83dc5"
 hasDetail: false

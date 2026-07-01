@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "https://images.ctfassets.net/z2i4e5quuqk1/IRJXbiq1jCXLUMMdf4eQ2/ceafc9d9e1e602a87239273957a4b98d/Dt3dnAOUwAEq8Pc.jpeg"
-slides: ""
 linkUrl: "https://web.archive.org/web/20190823231335/https://2018.kfug.jp/"
 targetUrl: "https://web.archive.org/web/20190823231335/https://2018.kfug.jp/"
 hasDetail: false

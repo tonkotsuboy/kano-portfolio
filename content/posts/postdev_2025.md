@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/postdev_2025.png"
-slides: ""
 linkUrl: "https://lp.nijibox.jp/cp/postdev/"
 targetUrl: "https://lp.nijibox.jp/cp/postdev/"
 hasDetail: false

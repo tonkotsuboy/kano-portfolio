@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/cssnite_asamade2_2025.png"
-slides: ""
 linkUrl: "https://cssnite.doorkeeper.jp/events/179874"
 targetUrl: "https://cssnite.doorkeeper.jp/events/179874"
 hasDetail: false

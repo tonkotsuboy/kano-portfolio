@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/techfeed-conference-2022.png"
-slides: ""
 linkUrl: "https://techfeed.io/events/techfeed-conference-2022"
 targetUrl: "https://techfeed.io/events/techfeed-conference-2022"
 hasDetail: false

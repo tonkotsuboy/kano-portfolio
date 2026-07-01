@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/qiita_night.png"
-slides: ""
 linkUrl: "https://increments.connpass.com/event/261907/"
 targetUrl: "/entry/qiita_night"
 hasDetail: true

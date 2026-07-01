@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/html5js-25th.png"
-slides: ""
 linkUrl: "https://html5js.connpass.com/event/33011/"
 targetUrl: "/entry/html5js-25th"
 hasDetail: true

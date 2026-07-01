@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/moneyforward/articles/css-subgrid-all-browsers"
 targetUrl: "https://zenn.dev/moneyforward/articles/css-subgrid-all-browsers"
 hasDetail: false

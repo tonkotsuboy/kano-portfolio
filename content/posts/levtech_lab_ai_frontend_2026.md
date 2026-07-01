@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/levtech_lab_ai_frontend_2026.png"
-slides: ""
 linkUrl: "https://levtechlab.connpass.com/event/379346/"
 targetUrl: "https://levtechlab.connpass.com/event/379346/"
 hasDetail: false

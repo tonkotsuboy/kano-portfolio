@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: "/images/og/speakerdeck_ai_guardrail.jpg"
-slides: ""
 linkUrl: "https://speakerdeck.com/tonkotsuboy_com/ainiyorugao-su-kai-fa-wodouzhi-yu-suruka-gadorerushe-zhi-dekai-fa-su-du-topin-zhi-woliang-li-sasetatimunoshi-li-e0ffdab6-45d1-4b04-af2b-8e42e8ddcec4"
 targetUrl: "https://speakerdeck.com/tonkotsuboy_com/ainiyorugao-su-kai-fa-wodouzhi-yu-suruka-gadorerushe-zhi-dekai-fa-su-du-topin-zhi-woliang-li-sasetatimunoshi-li-e0ffdab6-45d1-4b04-af2b-8e42e8ddcec4"
 hasDetail: false

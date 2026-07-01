@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: "/images/og/speakerdeck_css_trend_2025.jpg"
-slides: ""
 linkUrl: "https://speakerdeck.com/tonkotsuboy_com/cssnozui-xin-torendo-ver-dot-2025"
 targetUrl: "https://speakerdeck.com/tonkotsuboy_com/cssnozui-xin-torendo-ver-dot-2025"
 hasDetail: false

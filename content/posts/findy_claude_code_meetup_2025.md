@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/findy_claude_code_meetup_2025.png"
-slides: ""
 linkUrl: "https://findy.connpass.com/event/359987/"
 targetUrl: "https://findy.connpass.com/event/359987/"
 hasDetail: false

@@ -31,7 +31,6 @@ export default defineConfig({
           linkUrl: s.string().optional(),
           medium: s.string().default(""),
           published: s.boolean().default(true),
-          slides: s.string().optional(),
           slug: s.string(),
           tags: s.array(s.string()).default([]),
           targetUrl: s.string().optional(),

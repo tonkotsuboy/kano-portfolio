@@ -7,7 +7,6 @@ tags: ["動画"]
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/findy_css_video_2026.jpg"
-slides: ""
 linkUrl: "https://findy-code.io/events/XoUo4W5bNLMuS?fr=event_archive_20260514"
 targetUrl: "https://findy-code.io/events/XoUo4W5bNLMuS?fr=event_archive_20260514"
 hasDetail: false

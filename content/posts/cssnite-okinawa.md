@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "https://images.ctfassets.net/z2i4e5quuqk1/4OvtD9gcTgcY3o1Qrxz1Kk/a4093eac511a91a8bbad0288eb191ae9/EDROAfoWsAE3F1O.jpeg"
-slides: ""
 linkUrl: "https://cssniteokinawa10.peatix.com/?lang=ja"
 targetUrl: "https://cssniteokinawa10.peatix.com/?lang=ja"
 hasDetail: false

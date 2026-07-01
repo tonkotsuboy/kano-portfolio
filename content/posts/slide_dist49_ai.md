@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: ""
-slides: ""
 linkUrl: "https://eminent-saver-5df.notion.site/dist-49-ai"
 targetUrl: "https://eminent-saver-5df.notion.site/dist-49-ai"
 hasDetail: false

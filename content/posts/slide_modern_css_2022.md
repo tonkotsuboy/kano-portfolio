@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: "/images/og/speakerdeck_modern_css_2022.jpg"
-slides: ""
 linkUrl: "https://speakerdeck.com/tonkotsuboy_com/2022nian-falsemodancssgai"
 targetUrl: "https://speakerdeck.com/tonkotsuboy_com/2022nian-falsemodancssgai"
 hasDetail: false
