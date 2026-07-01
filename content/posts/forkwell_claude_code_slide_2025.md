@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: "/images/og/forkwell_claude_code_2025.png"
+thumbnail: "/images/og/forkwell_claude_code_slide_2025.png"
 slides: ""
 linkUrl: "https://tonkotsuboy.github.io/20250731-forkwell-claude-code/"
 targetUrl: "https://tonkotsuboy.github.io/20250731-forkwell-claude-code/"

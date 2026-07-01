@@ -7,7 +7,7 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/forkwell_claude_code_2025.png"
-slides: "https://tonkotsuboy.github.io/20250731-forkwell-claude-code/"
+slides: ""
 linkUrl: "https://forkwell.connpass.com/event/361574/"
 targetUrl: "https://forkwell.connpass.com/event/361574/"
 hasDetail: false
