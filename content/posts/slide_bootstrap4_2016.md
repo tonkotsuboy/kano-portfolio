@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: "/images/og/bootstrap4-2016-slide.png"
-slides: ""
 linkUrl: "https://tonkotsuboy.github.io/160325_bootstrap_4/160325_bootstrap_4.pdf"
 targetUrl: "https://tonkotsuboy.github.io/160325_bootstrap_4/160325_bootstrap_4.pdf"
 hasDetail: false

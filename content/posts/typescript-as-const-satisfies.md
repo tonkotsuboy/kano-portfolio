@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/moneyforward/articles/typescript-as-const-satisfies"
 targetUrl: "https://zenn.dev/moneyforward/articles/typescript-as-const-satisfies"
 hasDetail: false

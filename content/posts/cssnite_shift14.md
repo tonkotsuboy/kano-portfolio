@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "https://images.ctfassets.net/z2i4e5quuqk1/53EJNXUXmqzM5wFCHhvqxM/88ecf0de182ad8888eff9eda82df1fdb/CSSNiteShift14-logo_pc.png"
-slides: ""
 linkUrl: "https://cssnite.doorkeeper.jp/events/114220"
 targetUrl: "https://cssnite.doorkeeper.jp/events/114220"
 hasDetail: false

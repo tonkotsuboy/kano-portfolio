@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/findy-ts-recipe-20260630.png"
-slides: "https://speakerdeck.com/tonkotsuboy_com/lu-ye-sanniwen-ku-typescriptkodoresipiji-demo-kushi-jian-li"
 linkUrl: "https://findy.connpass.com/event/396860/"
 targetUrl: "https://findy.connpass.com/event/396860/"
 hasDetail: false

@@ -8,7 +8,6 @@ tags: []
 categories: []
 medium: "書籍"
 thumbnail: "/images/og/ts-code-recipe.jpg"
-slides: ""
 linkUrl: ""
 targetUrl: "/entry/ts-code-recipe"
 hasDetail: true

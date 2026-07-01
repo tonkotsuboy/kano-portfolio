@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/ubie_dev/articles/kiro-claude-code"
 targetUrl: "https://zenn.dev/ubie_dev/articles/kiro-claude-code"
 hasDetail: false

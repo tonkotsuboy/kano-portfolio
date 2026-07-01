@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/qiita_conference_2025.png"
-slides: ""
 linkUrl: "https://qiita.com/official-campaigns/conference/2025"
 targetUrl: "https://qiita.com/official-campaigns/conference/2025"
 hasDetail: false

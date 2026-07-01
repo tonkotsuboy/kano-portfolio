@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/moneyforward/articles/svh-dvh-lvh-for-all-browser"
 targetUrl: "https://zenn.dev/moneyforward/articles/svh-dvh-lvh-for-all-browser"
 hasDetail: false

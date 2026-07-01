@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/cssnite_best_session_2018.png"
-slides: ""
 linkUrl: "https://cssnite.jp/archives/best-session2018.html#best3"
 targetUrl: "https://cssnite.jp/archives/best-session2018.html#best3"
 hasDetail: false

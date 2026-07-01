@@ -103,7 +103,6 @@ const Page = async ({ params }: Params) => {
   const bodyHtml = await markdownToHtml(loadMarkdownBody(slug));
   const coverSrc = typeof post.thumbnail === "string" ? post.thumbnail : "";
   const isCoverAvailable = coverSrc.length > 0;
-  const isSlidesAvailable = typeof post.slides === "string" && post.slides.trim().length > 0;
   const isLinkUrlAvailable = typeof post.linkUrl === "string" && post.linkUrl.trim().length > 0;
 
   const zdt = Temporal.Instant.from(post.date).toZonedDateTimeISO("Asia/Tokyo");
@@ -132,15 +131,6 @@ const Page = async ({ params }: Params) => {
                 className={styles.body}
                 dangerouslySetInnerHTML={{ __html: bodyHtml }}
               />
-            ) : null}
-
-            {isSlidesAvailable ? (
-              <div className={styles.sectionCard}>
-                <div className={styles.sectionTitle}>スライド</div>
-                <a className={styles.rawLink} href={post.slides} target="_blank">
-                  {post.slides}
-                </a>
-              </div>
             ) : null}
 
             {isLinkUrlAvailable ? (

@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: "/images/og/salesforce-slack.png"
-slides: ""
 linkUrl: "https://www.salesforce.com/jp/blog/jp-influencer-slack-utilization/"
 targetUrl: "https://www.salesforce.com/jp/blog/jp-influencer-slack-utilization/"
 hasDetail: false

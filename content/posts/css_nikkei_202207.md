@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/"
 targetUrl: "https://info.nikkeibp.co.jp/media/NSW/atcl/mag/071200037/"
 hasDetail: true

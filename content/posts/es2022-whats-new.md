@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/moneyforward/articles/es2022-whats-new"
 targetUrl: "https://zenn.dev/moneyforward/articles/es2022-whats-new"
 hasDetail: false

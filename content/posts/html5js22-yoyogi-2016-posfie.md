@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/html5js22-posfie.jpg"
-slides: ""
 linkUrl: "https://posfie.com/@nyamogera/p/EwhXySF"
 targetUrl: "https://posfie.com/@nyamogera/p/EwhXySF"
 hasDetail: false

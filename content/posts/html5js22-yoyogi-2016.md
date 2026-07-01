@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: ""
-slides: ""
 hasDetail: true
 ---
 

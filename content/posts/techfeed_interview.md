@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "インタビュー"
 thumbnail: "/images/og/techfeed_interview.jpg"
-slides: ""
 linkUrl: "https://www.youtube.com/watch?v=tigookU0CoI"
 targetUrl: "https://www.youtube.com/watch?v=tigookU0CoI"
 hasDetail: false

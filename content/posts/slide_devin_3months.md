@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: ""
-slides: ""
 linkUrl: "https://eminent-saver-5df.notion.site/Devin-3-1c2e50380e988030a267d8ddf1ae5bd3"
 targetUrl: "https://eminent-saver-5df.notion.site/Devin-3-1c2e50380e988030a267d8ddf1ae5bd3"
 hasDetail: false

@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: ""
-slides: ""
 linkUrl: "https://eminent-saver-5df.notion.site/qiita-kano-output"
 targetUrl: "https://eminent-saver-5df.notion.site/qiita-kano-output"
 hasDetail: false

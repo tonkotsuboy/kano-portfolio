@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "https://images.ctfassets.net/z2i4e5quuqk1/5i1TWe3cqcAwH75rNHQ0X3/842bdbdeca7d1dc37eaf31e699b1030a/____________________________2020-08-10_16.43.43.png"
-slides: ""
 linkUrl: "https://schoo.jp/course/4808"
 targetUrl: "https://schoo.jp/course/4808"
 hasDetail: false

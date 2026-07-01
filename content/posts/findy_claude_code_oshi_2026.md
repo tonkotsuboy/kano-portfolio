@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/findy_claude_code_oshi_2026.png"
-slides: ""
 linkUrl: "https://findy.connpass.com/event/384179/"
 targetUrl: "https://findy.connpass.com/event/384179/"
 hasDetail: false
