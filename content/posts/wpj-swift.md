@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://www.webprofessional.jp/lesson/swift4designers/"
 targetUrl: "https://www.webprofessional.jp/lesson/swift4designers/"
 hasDetail: true

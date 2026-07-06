@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/experts_night.png"
-slides: ""
 linkUrl: "https://techfeed.io/events/techfeed-experts-night-20220727"
 targetUrl: "https://techfeed.io/events/techfeed-experts-night-20220727"
 hasDetail: false

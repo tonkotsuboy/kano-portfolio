@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/moneyforward/articles/margin-inline_auto"
 targetUrl: "https://zenn.dev/moneyforward/articles/margin-inline_auto"
 hasDetail: false

@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/moneyforward/articles/css-nesting-without-sass"
 targetUrl: "https://zenn.dev/moneyforward/articles/css-nesting-without-sass"
 hasDetail: false

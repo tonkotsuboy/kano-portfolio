@@ -7,7 +7,6 @@ tags: ["スライド"]
 categories: []
 medium: "スライド"
 thumbnail: "/images/og/speakerdeck_container_query.jpg"
-slides: ""
 linkUrl: "https://speakerdeck.com/tonkotsuboy_com/quan-burauzadui-ying-sita-container-queryhahe-gasugoinoka"
 targetUrl: "https://speakerdeck.com/tonkotsuboy_com/quan-burauzadui-ying-sita-container-queryhahe-gasugoinoka"
 hasDetail: false

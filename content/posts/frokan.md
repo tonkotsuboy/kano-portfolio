@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/frokan.png"
-slides: ""
 linkUrl: "https://frokan.connpass.com/event/65990/"
 targetUrl: "/entry/frokan"
 hasDetail: true

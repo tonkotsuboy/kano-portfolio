@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "インタビュー"
 thumbnail: "/images/og/levetech-column-3.jpg"
-slides: ""
 linkUrl: "https://levtech.jp/media/article/column/detail_371/"
 targetUrl: "https://levtech.jp/media/article/column/detail_371/"
 hasDetail: false

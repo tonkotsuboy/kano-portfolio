@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "インタビュー"
 thumbnail: "/images/og/techfeed_css_expert_2025.png"
-slides: ""
 linkUrl: "https://techfeed.io/entries/6879eaf840e993088811f277"
 targetUrl: "https://techfeed.io/entries/6879eaf840e993088811f277"
 hasDetail: false

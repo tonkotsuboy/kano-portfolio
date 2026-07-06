@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/findy_css_2026.png"
-slides: ""
 linkUrl: "https://findy.connpass.com/event/390152/"
 targetUrl: "https://findy.connpass.com/event/390152/"
 hasDetail: false

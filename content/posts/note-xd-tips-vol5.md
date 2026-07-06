@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: "/images/og/note-xd-tips-vol5.png"
-slides: ""
 linkUrl: "https://note.com/tonkotsuboy_com/n/n9ee66c198e2d"
 targetUrl: "https://note.com/tonkotsuboy_com/n/n9ee66c198e2d"
 hasDetail: false

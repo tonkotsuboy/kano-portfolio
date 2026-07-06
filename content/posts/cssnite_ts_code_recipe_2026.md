@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/cssnite-20260603.png"
-slides: ""
 linkUrl: "https://cssnite.doorkeeper.jp/events/197436"
 targetUrl: "https://cssnite.doorkeeper.jp/events/197436"
 hasDetail: false

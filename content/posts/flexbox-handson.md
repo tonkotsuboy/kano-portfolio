@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/flexbox-handson.png"
-slides: ""
 linkUrl: "https://connpass.com/event/40602/"
 targetUrl: "https://connpass.com/event/40602/"
 hasDetail: false

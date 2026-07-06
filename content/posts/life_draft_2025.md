@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "インタビュー"
 thumbnail: "/images/og/life_draft_2025.jpg"
-slides: ""
 linkUrl: "https://life.job-draft.jp/2025/04/30/801/"
 targetUrl: "https://life.job-draft.jp/2025/04/30/801/"
 hasDetail: false

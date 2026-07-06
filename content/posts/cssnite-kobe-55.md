@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "https://images.ctfassets.net/z2i4e5quuqk1/1WpncdQ5LlIDrM5YEx8VFI/16337718944d900caa15512ed4e9b86f/ER6sl5WU0AAdI7n.jpg"
-slides: ""
 linkUrl: "http://cssnite-kobe.jp/vol55/vol55list/vol55outline.html"
 targetUrl: "http://cssnite-kobe.jp/vol55/vol55list/vol55outline.html"
 hasDetail: false

@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://qiita.com/tonkotsuboy_com/items/a23ef99041880a698e9f"
 targetUrl: "https://qiita.com/tonkotsuboy_com/items/a23ef99041880a698e9f"
 hasDetail: false

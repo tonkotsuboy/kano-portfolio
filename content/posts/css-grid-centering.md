@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/moneyforward/articles/css-grid-centering"
 targetUrl: "https://zenn.dev/moneyforward/articles/css-grid-centering"
 hasDetail: false

@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: ""
-slides: ""
 linkUrl: "https://zenn.dev/ubie_dev/articles/ts-infer-type-predicates"
 targetUrl: "https://zenn.dev/ubie_dev/articles/ts-infer-type-predicates"
 hasDetail: false

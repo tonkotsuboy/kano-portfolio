@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "書籍"
 thumbnail: "/images/og/ts-software-design.webp"
-slides: ""
 linkUrl: "https://gihyo.jp/magazine/SD/archive/2024/202405"
 targetUrl: "https://gihyo.jp/magazine/SD/archive/2024/202405"
 hasDetail: false

@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "インタビュー"
 thumbnail: "/images/og/techfeed-product-advisor.jpg"
-slides: ""
 linkUrl: "https://prtimes.jp/main/html/rd/p/000000019.000040343.html"
 targetUrl: "https://prtimes.jp/main/html/rd/p/000000019.000040343.html"
 hasDetail: false

@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "執筆記事"
 thumbnail: "/images/og/gihyo-tfc005-modern-css.png"
-slides: ""
 linkUrl: "https://gihyo.jp/article/2022/08/tfc005-modern_css"
 targetUrl: "https://gihyo.jp/article/2022/08/tfc005-modern_css"
 hasDetail: false

@@ -523,29 +523,8 @@
 }
 
 /* =====================================================================
- * スライドセクション / 末尾リンクカード（JSX 側・post.slides / post.linkUrl）
+ * 末尾リンクカード（JSX 側・post.linkUrl）
  * ===================================================================== */
-.sectionCard {
-  display: grid;
-  padding: var(--space-md);
-  border: 1px solid var(--glass-card-border);
-  border-radius: var(--radius-md);
-  margin-top: var(--space-xl);
-  background: var(--glass-card-bg);
-  box-shadow: var(--shadow-rest);
-  gap: var(--space-xs);
-}
-
-.sectionTitle {
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-.rawLink {
-  color: var(--liquid-primary-accessible);
-  word-break: break-all;
-}
-
 .linkCard {
   display: grid;
   overflow: hidden;

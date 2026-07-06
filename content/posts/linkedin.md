@@ -7,7 +7,6 @@ tags: []
 categories: []
 medium: "登壇"
 thumbnail: "https://images.ctfassets.net/z2i4e5quuqk1/5CsOA3sgNTGrgygB8sCfcn/3b35b06a2d46245ec664e14293b119ec/____________________________2020-08-10_16.39.51.png"
-slides: ""
 linkUrl: "https://jp.linkedin.com/learning/learning-flexbox"
 targetUrl: "https://jp.linkedin.com/learning/learning-flexbox"
 hasDetail: false

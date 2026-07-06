@@ -7,7 +7,6 @@ tags: ["動画"]
 categories: []
 medium: "登壇"
 thumbnail: "/images/og/findy_claude_code_oshi_video_2026.jpg"
-slides: ""
 linkUrl: "https://findy-code.io/events/eGsLcRQTBp4u9?fr=event_archive_20260311"
 targetUrl: "https://findy-code.io/events/eGsLcRQTBp4u9?fr=event_archive_20260311"
 hasDetail: false
