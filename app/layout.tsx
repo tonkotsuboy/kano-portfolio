@@ -42,6 +42,14 @@ export const metadata: Metadata = {
     },
   },
   description: basicDescription,
+  icons: {
+    apple: "/apple-touch-icon.png",
+    icon: [
+      { sizes: "any", url: "/favicon.ico" },
+      { sizes: "16x16", type: "image/png", url: "/favicon-16x16.png" },
+      { sizes: "32x32", type: "image/png", url: "/favicon-32x32.png" },
+    ],
+  },
   metadataBase: new URL(SiteUrl),
   openGraph: {
     description: basicDescription,
