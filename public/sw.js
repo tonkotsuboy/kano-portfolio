@@ -53,6 +53,12 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
 
   const url = new URL(request.url);
+
+  // PDF/ZIP などのダウンロード資産は Cache Storage に載せずネットワークに任せる。
+  // 数十MB になり得るうえ、下の Cache First はファイル名にハッシュを持たない
+  // このての資産だと差し替え後も古い版を返し続けてしまう。
+  if (/\.(pdf|zip)$/i.test(url.pathname)) return;
+
   const isHtmlNavigation =
     request.mode === "navigate" ||
     request.headers.get("accept")?.includes("text/html");
