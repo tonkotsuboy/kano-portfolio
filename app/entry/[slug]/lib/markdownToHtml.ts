@@ -7,6 +7,7 @@
 import { Marked, type Tokens } from "marked";
 import { bundledLanguages, codeToHtml } from "shiki";
 
+import { transformDownloadCards } from "./downloadCard";
 import { transformLinkCards } from "./linkCard";
 
 const CODE_THEME = "github-dark";
@@ -151,7 +152,9 @@ export const markdownToHtml = async (markdown: string): Promise<string> => {
   }
 
   const rawHtml = await marked.parse(transformSizedImages(markdown));
+  // 外部リンク（https?://）と ローカルファイル（/foo.pdf）で狙うパターンが排他なので順序は問わない。
   const withLinkCards = await transformLinkCards(rawHtml);
+  const withDownloadCards = transformDownloadCards(withLinkCards);
 
-  return wrapStandaloneImages(withLinkCards);
+  return wrapStandaloneImages(withDownloadCards);
 };

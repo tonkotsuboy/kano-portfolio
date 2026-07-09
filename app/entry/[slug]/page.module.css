@@ -188,7 +188,9 @@
   font-weight: 500;
 }
 
-.body a:not([data-linkcard]) {
+/* 下線は本文中のインラインリンクだけに引く。カード化されたリンクは除外する
+   （DESIGN.md「本文以外での下線装飾」を避ける）。 */
+.body a:not([data-linkcard], [data-downloadcard]) {
   color: var(--liquid-primary-accessible);
   text-decoration: underline;
   text-decoration-color: oklch(0.787 0.158 79 / 0.4);
@@ -197,7 +199,7 @@
   transition: text-decoration-color var(--dur-base) var(--ease-liquid);
 }
 
-.body a:not([data-linkcard]):hover {
+.body a:not([data-linkcard], [data-downloadcard]):hover {
   text-decoration-color: var(--liquid-primary-vibrant);
 }
 
@@ -520,6 +522,68 @@
   color: var(--text-tertiary);
   font-size: 0.75rem;
   gap: 5px;
+}
+
+/* ローカルファイルのダウンロードカード（段落リンクから注入される）。
+   content layer の要素なので backdrop-filter は使わず、bg + border + shadow-rest の最小構成にする
+   （DESIGN.md「Liquid Glass の使用範囲」）。 */
+.body [data-downloadcard] {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-md);
+  background: var(--glass-card-bg);
+  box-shadow: var(--shadow-rest);
+  color: var(--text-primary);
+  gap: var(--space-sm);
+  text-decoration: none;
+  transition:
+    background var(--dur-base) var(--ease-liquid),
+    border-color var(--dur-base) var(--ease-liquid);
+}
+
+.body [data-downloadcard]:hover {
+  border-color: var(--glass-card-hover-border);
+  background: var(--glass-card-hover-bg);
+}
+
+.body [data-downloadcard-icon] {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--liquid-primary);
+  color: var(--text-on-yellow);
+}
+
+.body [data-downloadcard-icon] svg {
+  width: 28px;
+  height: 28px;
+}
+
+.body [data-downloadcard-body] {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.body [data-downloadcard-title] {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.body [data-downloadcard-meta] {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
 }
 
 /* =====================================================================

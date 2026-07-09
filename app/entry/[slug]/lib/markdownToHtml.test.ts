@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 
+import { formatFileSize, transformDownloadCards } from "./downloadCard";
 import { transformLinkCards } from "./linkCard";
 import {
   markdownToHtml,
@@ -102,6 +103,60 @@ describe("transformLinkCards", () => {
   test("段落内に本文があるリンクは変換しない", async () => {
     const input = '<p>前置き <a href="https://example.com">link</a> 後ろ</p>';
     expect(await transformLinkCards(input, noOg)).toBe(input);
+  });
+});
+
+// ファイルシステムを触らないよう、サイズ取得は常にスタブを注入する。
+const stubSize = (): number => 21_760_426;
+
+describe("formatFileSize", () => {
+  test("1MB 以上は MB 表記（小数第 1 位）にする", () => {
+    expect(formatFileSize(21_760_426)).toBe("20.8 MB");
+  });
+
+  test("1MB 未満は KB 表記にする", () => {
+    expect(formatFileSize(512 * 1024)).toBe("512 KB");
+  });
+
+  test("極小サイズでも 0 KB とは表示しない", () => {
+    expect(formatFileSize(10)).toBe("1 KB");
+  });
+});
+
+describe("transformDownloadCards", () => {
+  test("段落だけのローカル PDF リンクをダウンロードカードへ変換する", () => {
+    const output = transformDownloadCards('<p><a href="/downloads/a.pdf">抜粋版</a></p>', stubSize);
+    expect(output).toContain("data-downloadcard");
+    expect(output).toContain('href="/downloads/a.pdf"');
+    expect(output).toContain("download>");
+    expect(output).toContain("抜粋版");
+    expect(output).toContain("PDF・20.8 MB");
+    expect(output).not.toContain("<p>");
+  });
+
+  test("zip も拡張子ラベル付きで変換する", () => {
+    const output = transformDownloadCards('<p><a href="/downloads/a.zip">素材</a></p>', stubSize);
+    expect(output).toContain("ZIP・20.8 MB");
+  });
+
+  test("外部リンクは変換しない（linkCard の担当）", () => {
+    const input = '<p><a href="https://example.com/a.pdf">外部</a></p>';
+    expect(transformDownloadCards(input, stubSize)).toBe(input);
+  });
+
+  test("対象外の拡張子は変換しない", () => {
+    const input = '<p><a href="/downloads/a.png">画像</a></p>';
+    expect(transformDownloadCards(input, stubSize)).toBe(input);
+  });
+
+  test("段落内に本文があるリンクは変換しない", () => {
+    const input = '<p>前置き <a href="/downloads/a.pdf">link</a> 後ろ</p>';
+    expect(transformDownloadCards(input, stubSize)).toBe(input);
+  });
+
+  test("public/ の外を指す相対パスは変換しない", () => {
+    const input = '<p><a href="/../secret.pdf">秘密</a></p>';
+    expect(transformDownloadCards(input, stubSize)).toBe(input);
   });
 });
 
