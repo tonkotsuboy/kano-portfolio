@@ -139,6 +139,19 @@ describe("transformDownloadCards", () => {
     expect(output).toContain("ZIP・20.8 MB");
   });
 
+  test("拡張子の大文字小文字を問わない（sw.js のキャッシュ除外判定と同基準）", () => {
+    const output = transformDownloadCards('<p><a href="/downloads/a.PDF">抜粋版</a></p>', stubSize);
+    expect(output).toContain("data-downloadcard");
+    expect(output).toContain("PDF・20.8 MB");
+  });
+
+  // getFileSize を注入せず既定の readFileSize を走らせ、実ファイル欠落でビルドが落ちることを確かめる。
+  test("リンク先が public/ に無ければ throw する（リンク切れのまま公開させない）", () => {
+    expect(() => transformDownloadCards('<p><a href="/downloads/no-such-file.pdf">無い</a></p>')).toThrow(
+      /public\/ にありません/,
+    );
+  });
+
   test("外部リンクは変換しない（linkCard の担当）", () => {
     const input = '<p><a href="https://example.com/a.pdf">外部</a></p>';
     expect(transformDownloadCards(input, stubSize)).toBe(input);

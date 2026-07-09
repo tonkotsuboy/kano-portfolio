@@ -17,7 +17,8 @@ const fileDownIconSvg =
 // href はサイトルート起点の相対パスに限定する。`:` を含まないことでスキーム付き URL を弾き、
 // `..` は下の isSafePath でさらに弾く（public/ の外を指させない）。
 // text は marked がエスケープ済みなので再エスケープしない（二重エンコード回避）。
-const DOWNLOAD_PATTERN = /<p><a href="(\/[^":]+\.(pdf|zip))"[^>]*>(.*?)<\/a><\/p>/g;
+// 拡張子は大文字小文字を問わない（public/sw.js のキャッシュ除外判定と基準を揃える）。
+const DOWNLOAD_PATTERN = /<p><a href="(\/[^":]+\.(pdf|zip))"[^>]*>(.*?)<\/a><\/p>/gi;
 
 const isSafePath = (urlPath: string): boolean => !urlPath.includes("..");
 
