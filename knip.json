@@ -8,6 +8,9 @@
   "ignore": [
     ".storybook/**"
   ],
+  "ignoreDependencies": [
+    "@typescript/native"
+  ],
   "project": [
     "app/**/*.ts",
     "app/**/*.tsx"
