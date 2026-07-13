@@ -243,6 +243,7 @@ const AboutPage: NextPage = () => {
                 とくにTypeScript・CSSを軸としたWebプラットフォーム技術を好み、暇さえあればコードを書いている。近年はAIエージェントを中心とした開発をしており、2025年5月にはClaude
                 Codeにタスクを丸投げするおじさんへと転生。
               </p>
+              <p className={styles.bioText}>こんにちはおじさん。</p>
               <p className={styles.bioText}>
                 著書に『TypeScriptコードレシピ集』『JavaScript &
                 TypeScript実力強化書』『JavaScriptコードレシピ集』（いずれも技術評論社）。これまでの登壇は50回を超え、CSS
