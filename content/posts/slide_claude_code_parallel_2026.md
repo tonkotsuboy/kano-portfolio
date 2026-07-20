@@ -6,7 +6,7 @@ published: true
 tags: ["スライド"]
 categories: []
 medium: "スライド"
-thumbnail: ""
+thumbnail: "/images/og/speakerdeck_claude_code_parallel_2026.jpg"
 linkUrl: "https://speakerdeck.com/tonkotsuboy_com/claude-code-parallel-2026-07-15"
 targetUrl: "https://speakerdeck.com/tonkotsuboy_com/claude-code-parallel-2026-07-15"
 hasDetail: false
