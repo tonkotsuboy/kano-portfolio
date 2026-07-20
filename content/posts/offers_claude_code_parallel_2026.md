@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "登壇"
-thumbnail: "/images/og/offers_claude_code_parallel_2026.png"
+thumbnail: "/images/og/offers_claude_code_parallel_video_2026.png"
 linkUrl: "https://offers-jp.connpass.com/event/395255/"
 targetUrl: "https://offers-jp.connpass.com/event/395255/"
 hasDetail: false
