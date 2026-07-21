@@ -8,6 +8,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Temporal } from "temporal-polyfill-lite";
 
 import { SiteUrl } from "../../../constants";
+import { getThumbnailUrl, isLogoLikeThumbnail } from "../../../lib/thumbnail";
 import hoverStyles from "../../../styles/card-hover.module.css";
 
 import styles from "./ArticleGrid.module.css";
@@ -116,36 +117,6 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
     };
   }, [filteredPosts.length]);
 
-  const getHostname = (url: string): string => {
-    try {
-      const safeUrl = typeof url === "string" ? url : String(url ?? "");
-      const base = new URL(SiteUrl);
-      const resolved = new URL(String(safeUrl || base.href), String(base.href));
-      return resolved.hostname;
-    } catch {
-      return "";
-    }
-  };
-
-  const getThumbnailUrl = (post: Post, href: string): string => {
-    if (post.thumbnail) { return post.thumbnail; }
-    const host = getHostname(href);
-    if (host === "qiita.com" || host === "www.qiita.com") {
-      return "/images/og/qiita-default.svg";
-    }
-    if (host === "zenn.dev" || host === "www.zenn.dev") {
-      return "/images/og/zenn-default.svg";
-    }
-    return "/ogimage.png";
-  };
-
-  const isLogoLikeThumbnail = (post: Post, href: string): boolean => {
-    if (post.thumbnail) { return false; }
-    const host = getHostname(href);
-    return host === "qiita.com" || host === "www.qiita.com" ||
-      host === "zenn.dev" || host === "www.zenn.dev";
-  };
-
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -206,8 +177,8 @@ export const ArticleGrid: FC<Props> = ({ posts }) => {
             {visiblePosts.map((post: Post) => {
               const { href, isExternal } = resolveLink(post);
               const { day, full, month } = formatArticleDate(post.date);
-              const thumbnailUrl = getThumbnailUrl(post, href);
-              const isLogoLike = isLogoLikeThumbnail(post, href);
+              const thumbnailUrl = getThumbnailUrl(post.thumbnail, href, SiteUrl);
+              const isLogoLike = isLogoLikeThumbnail(post.thumbnail, href, SiteUrl);
               const category = post.medium || (post.tags[0] ?? "");
 
               const cardContent = (

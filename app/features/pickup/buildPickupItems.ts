@@ -1,4 +1,6 @@
+import { SiteUrl } from "../../constants";
 import { compareByDateAsc } from "../../lib/dateCompare";
+import { getThumbnailUrl, isLogoLikeThumbnail } from "../../lib/thumbnail";
 import { filterUpcomingTalks } from "../talks/filterUpcomingTalks";
 
 import type { PickupItem } from "./PickupItem";
@@ -18,8 +20,9 @@ function postToItem(post: Post): PickupItem {
     date: post.date,
     external,
     href: post.permalink,
+    isLogoLikeThumbnail: isLogoLikeThumbnail(post.thumbnail, post.permalink, SiteUrl),
     slug: post.slug,
-    thumbnail: post.thumbnail,
+    thumbnail: getThumbnailUrl(post.thumbnail, post.permalink, SiteUrl),
     title: post.title,
   };
 }
@@ -30,6 +33,7 @@ function talkToItem(talk: Talk): PickupItem {
     date: talk.date,
     external: true,
     href: talk.registerUrl,
+    isLogoLikeThumbnail: false,
     slug: talk.slug,
     thumbnail: talk.thumbnail,
     title: talk.title,
