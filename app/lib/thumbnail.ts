@@ -1,3 +1,10 @@
+const LOGO_DEFAULT_THUMBNAILS: Record<string, string> = {
+  "qiita.com": "/images/og/qiita-default.svg",
+  "www.qiita.com": "/images/og/qiita-default.svg",
+  "www.zenn.dev": "/images/og/zenn-default.svg",
+  "zenn.dev": "/images/og/zenn-default.svg",
+};
+
 function getHostname(url: string, siteUrl: string): string {
   try {
     const base = new URL(siteUrl);
@@ -8,11 +15,6 @@ function getHostname(url: string, siteUrl: string): string {
   }
 }
 
-function isLogoDefaultHost(host: string): boolean {
-  return host === "qiita.com" || host === "www.qiita.com" ||
-    host === "zenn.dev" || host === "www.zenn.dev";
-}
-
 /**
  * サムネイル未設定の記事に対し、リンク先ホストに応じたデフォルト画像
  * （Zenn/Qiitaのロゴ等）を返す。設定済みならそのまま返す。
@@ -20,13 +22,7 @@ function isLogoDefaultHost(host: string): boolean {
 export function getThumbnailUrl(thumbnail: string, href: string, siteUrl: string): string {
   if (thumbnail) { return thumbnail; }
   const host = getHostname(href, siteUrl);
-  if (host === "qiita.com" || host === "www.qiita.com") {
-    return "/images/og/qiita-default.svg";
-  }
-  if (host === "zenn.dev" || host === "www.zenn.dev") {
-    return "/images/og/zenn-default.svg";
-  }
-  return "/ogimage.png";
+  return LOGO_DEFAULT_THUMBNAILS[host] ?? "/ogimage.png";
 }
 
 /**
@@ -34,5 +30,5 @@ export function getThumbnailUrl(thumbnail: string, href: string, siteUrl: string
  */
 export function isLogoLikeThumbnail(thumbnail: string, href: string, siteUrl: string): boolean {
   if (thumbnail) { return false; }
-  return isLogoDefaultHost(getHostname(href, siteUrl));
+  return getHostname(href, siteUrl) in LOGO_DEFAULT_THUMBNAILS;
 }
