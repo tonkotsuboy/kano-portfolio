@@ -8,6 +8,7 @@ export type PickupItem = {
   date: string;
   external: boolean;
   href: string;
+  isLogoLikeThumbnail: boolean;
   slug: string;
   thumbnail: string;
   title: string;

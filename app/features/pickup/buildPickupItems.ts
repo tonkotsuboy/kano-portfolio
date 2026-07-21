@@ -1,4 +1,6 @@
+import { SiteUrl } from "../../constants";
 import { compareByDateAsc } from "../../lib/dateCompare";
+import { getThumbnailUrl, isLogoLikeThumbnail } from "../../lib/thumbnail";
 import { filterUpcomingTalks } from "../talks/filterUpcomingTalks";
 
 import type { PickupItem } from "./PickupItem";
@@ -6,20 +8,22 @@ import type { Post, Talk } from "@/.velite";
 import type { Temporal } from "temporal-polyfill-lite";
 
 /**
- * 特別枠としてピン留めする書籍の slug。
+ * 特別枠としてピン留めする記事・書籍の slug（先頭からの表示順）。
  * 登壇と違い日付フィルタを通さず常に先頭へ固定するため、時間が経っても消えない。
  */
-const PINNED_BOOK_SLUG = "ts-code-recipe";
+const PINNED_POST_SLUGS = ["ts-code-recipe", "modern-web-guidance"];
 
-function bookToItem(book: Post): PickupItem {
+function postToItem(post: Post): PickupItem {
+  const external = post.permalink.startsWith("http");
   return {
-    ctaLabel: "詳しく見る",
-    date: book.date,
-    external: false,
-    href: book.permalink,
-    slug: book.slug,
-    thumbnail: book.thumbnail,
-    title: book.title,
+    ctaLabel: external ? "記事を読む" : "詳しく見る",
+    date: post.date,
+    external,
+    href: post.permalink,
+    isLogoLikeThumbnail: isLogoLikeThumbnail(post.thumbnail, post.permalink, SiteUrl),
+    slug: post.slug,
+    thumbnail: getThumbnailUrl(post.thumbnail, post.permalink, SiteUrl),
+    title: post.title,
   };
 }
 
@@ -29,6 +33,7 @@ function talkToItem(talk: Talk): PickupItem {
     date: talk.date,
     external: true,
     href: talk.registerUrl,
+    isLogoLikeThumbnail: false,
     slug: talk.slug,
     thumbnail: talk.thumbnail,
     title: talk.title,
@@ -37,7 +42,7 @@ function talkToItem(talk: Talk): PickupItem {
 
 /**
  * Pickup セクションのアイテムを組み立てる。
- * 先頭にピン留め書籍（常時表示・期限なし）、続けて開催が近い順の登壇予定を並べる。
+ * 先頭にピン留め記事・書籍（常時表示・期限なし）、続けて開催が近い順の登壇予定を並べる。
  * `publishedPosts` は公開済みに絞り込み済みの記事を受け取る前提（呼び出し側で filter 済み）。
  */
 export function buildPickupItems(
@@ -45,8 +50,12 @@ export function buildPickupItems(
   talks: Talk[],
   now: Temporal.Instant,
 ): PickupItem[] {
-  const book = publishedPosts.find((post) => post.slug === PINNED_BOOK_SLUG);
+  const pinnedItems = PINNED_POST_SLUGS.map((slug) =>
+    publishedPosts.find((post) => post.slug === slug),
+  )
+    .filter((post) => post !== undefined)
+    .map(postToItem);
   const talkItems = filterUpcomingTalks(talks, now).sort(compareByDateAsc).map(talkToItem);
 
-  return book ? [bookToItem(book), ...talkItems] : talkItems;
+  return [...pinnedItems, ...talkItems];
 }

@@ -34,7 +34,7 @@ const PickupCard: FC<CardProps> = ({ item, priority = false }) => {
             src={item.thumbnail}
             alt=""
             fill
-            className={styles.thumbImg}
+            className={clsx(styles.thumbImg, item.isLogoLikeThumbnail && styles.thumbImgContain)}
             sizes="(max-width: 768px) 100vw, 50vw"
             priority={priority}
           />
