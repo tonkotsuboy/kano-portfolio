@@ -60,7 +60,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-testing-library": "^7.16.2",
     "jsdom": "^28.1.0",
-    "knip": "^5.88.1",
+    "knip": "^6.26.0",
     "lefthook": "^2.1.10",
     "markuplint": "^4.18.3",
     "postcss-flexbugs-fixes": "^5.0.2",
