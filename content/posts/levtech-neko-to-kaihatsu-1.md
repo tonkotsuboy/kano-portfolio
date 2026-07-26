@@ -5,7 +5,7 @@ date: "2026-07-24T00:00+09:00"
 published: true
 tags: []
 categories: []
-medium: "インタビュー"
+medium: "執筆記事"
 thumbnail: "/images/og/levtech-neko-to-kaihatsu-1.jpg"
 linkUrl: "https://levtech.jp/media/detail_897/"
 targetUrl: "https://levtech.jp/media/detail_897/"
