@@ -9,3 +9,4 @@
 
 追記: `gh stack rebase --upstack` の動作確認のために、この行を追加しました。
 追記2: `gh stack push` の動作確認のために、この行を追加しました。
+追記3: `gh stack push` の動作確認のために、この行を追加しました。
