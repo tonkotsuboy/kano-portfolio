@@ -1,5 +1,5 @@
 ---
-title: "GitHubにスタックプルリクエストが登場。gh stackでPRを分割して積み上げよう"
+title: "GitHubにスタック型プルリクエストが登場。gh stackでPRを分割して積み上げよう"
 slug: "gh-stack-introduction"
 date: "2026-07-31T00:00+09:00"
 published: true
