@@ -11,7 +11,7 @@ import type { Temporal } from "temporal-polyfill-lite";
  * 特別枠としてピン留めする記事・書籍の slug（先頭からの表示順）。
  * 登壇と違い日付フィルタを通さず常に先頭へ固定するため、時間が経っても消えない。
  */
-const PINNED_POST_SLUGS = ["ts-code-recipe", "modern-web-guidance"];
+const PINNED_POST_SLUGS = ["ts-code-recipe", "gh-stack-introduction"];
 
 function postToItem(post: Post): PickupItem {
   const external = post.permalink.startsWith("http");
