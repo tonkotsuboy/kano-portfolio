@@ -26,10 +26,6 @@
     --text-on-yellow: oklch(0.152 0.018 79);
     --liquid-primary-accessible: oklch(0.407 0.087 64); /* WCAG AA for small text on light bg: 6.06:1 ✅ */
 
-    /* Specular Highlights（白の鏡面ハイライトは rgba を維持） */
-    --highlight-top: rgba(255, 255, 255, 0.9);
-    --highlight-edge: rgba(255, 255, 255, 0.6);
-
     /* Header — Apple Liquid Glass (chrome layer)
        透過した板 + 強い blur + hairline border の 3 要素のみ。
        reflection overlay や specular line は撤去（HIG: use materials sparingly） */
@@ -102,10 +98,6 @@
     --text-secondary: oklch(0.704 0.005 286);
     --text-tertiary: oklch(0.707 0.022 261);
     --liquid-primary-accessible: oklch(0.645 0.139 71); /* standard amber - passes on dark bg */
-
-    /* Specular Highlights */
-    --highlight-top: rgba(255, 255, 255, 0.2);
-    --highlight-edge: rgba(255, 255, 255, 0.1);
 
     /* Header — Dark Liquid Glass
        紫みを除いてほぼ純黒寄りに。透過率を下げて不透明寄りに振り、
