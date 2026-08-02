@@ -178,13 +178,60 @@
   color: var(--text-on-yellow);
 }
 
-/* Responsive */
+/* Responsive
+   モバイルでは縦積みカードがファーストビューを占領してしまうため、
+   ArticleGrid（WORKS）と同じ「左サムネ + 右テキスト」の横並びコンパクトカードに切り替える。
+   subgrid は 1 カラムでは行揃えの役目がないので解除し、素の 2 カラムグリッドとして組み直す。 */
 @media (width <= 768px) {
+  /* WORKS 側の padding-top（--space-sm）と合算した見た目の隙間を 64px → 40px に詰める */
+  .section {
+    padding-bottom: var(--space-md);
+  }
+
   .container {
     padding: 0 var(--space-sm);
   }
 
   .grid {
+    gap: var(--space-sm);
     grid-template-columns: 1fr;
+  }
+
+  /* 4 行 subgrid → 「サムネ | 日付 / タイトル」の 2 列 2 行へ。
+     row/column で gap が別軸になるため、row-gap 単独指定ではなく gap の 2 値指定にする。 */
+  .card {
+    align-items: center;
+    padding: var(--space-sm) var(--space-xs);
+    border-radius: var(--radius-md);
+    gap: var(--space-3xs) var(--space-sm);
+    grid-row: auto;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  /* デスクトップの `margin: 14px 14px 0` を残すと 100px 列を食い潰して下にズレる */
+  .thumb {
+    border-radius: var(--radius-sm);
+    margin: 0;
+    grid-row: span 2;
+  }
+
+  /* デスクトップの `padding: 0 18px` はテキスト列を二重にインデントしてしまう */
+  .date {
+    padding: 0;
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+
+  .title {
+    padding: 0;
+    font-size: 0.9375rem;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  /* カード全体がリンクなので CTA ピルは省略できる（WORKS カードにも CTA はない） */
+  .footRow {
+    display: none;
   }
 }
