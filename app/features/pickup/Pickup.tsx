@@ -13,7 +13,13 @@ import type { FC, ReactNode } from "react";
 
 function formatDate(dateStr: string): string {
   const zdt = Temporal.Instant.from(dateStr).toZonedDateTimeISO("Asia/Tokyo");
-  return `${zdt.year}年${zdt.month}月${zdt.day}日`;
+  // 手組みの `${year}年${month}月${day}日` ではなく Intl に寄せる（ArticleGrid と同じ組み方）。
+  // ja-JP の month: "short" は手組みと同一出力（1 桁・2 桁とも実測で一致）。
+  return zdt.toLocaleString("ja-JP", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 }
 
 type CardProps = {

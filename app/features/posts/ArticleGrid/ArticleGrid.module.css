@@ -65,7 +65,6 @@
   box-shadow: var(--shadow-rest);
   color: var(--text-primary);
   font-size: 0.875rem;
-  outline: none;
   transition: border-color 0.2s var(--ease-liquid), box-shadow 0.2s var(--ease-liquid);
 }
 
