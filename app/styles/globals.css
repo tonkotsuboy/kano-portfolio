@@ -47,6 +47,10 @@
     --glass-card-hover-bg: rgba(255, 255, 255, 0.7);
     --glass-card-hover-border: oklch(0.787 0.158 79 / 0.3);
 
+    /* Thumbnail hairline — 画像コンテナの内枠 1px。
+       Pickup / ArticleGrid / About の書影で共有する（黒の透過なので rgba を維持）。 */
+    --thumbnail-hairline: rgba(0, 0, 0, 0.05);
+
     /* Animation Timing */
     --ease-liquid: cubic-bezier(0.4, 0.0, 0.2, 1);
     --dur-fast: 0.15s;

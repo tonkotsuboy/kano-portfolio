@@ -83,8 +83,9 @@
   background: var(--glass-card-bg);
 
   /* ArticleGrid（WORKS）カードと同一。内側ハイライト（inset 0 1px 0 var(--highlight-top)）を
-     入れると上端だけ明るい罫線が走り、隣接する WORKS カードと縁の見え方が揃わない。 */
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);
+     入れると上端だけ明るい罫線が走り、隣接する WORKS カードと縁の見え方が揃わない。
+     影はベタ書きせず --shadow-rest を参照する（テーマ連動。ダークでは light の約 5 倍濃い）。 */
+  box-shadow: var(--shadow-rest);
   color: inherit;
   grid-row: span 4;
   grid-template-rows: subgrid;
@@ -96,11 +97,11 @@
 .thumb {
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: var(--radius-sm);
   margin: 14px 14px 0;
   aspect-ratio: 16 / 9;
   background: var(--bg-gradient-1);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.05);
+  box-shadow: inset 0 0 0 1px var(--thumbnail-hairline);
 }
 
 .thumbImg {
@@ -211,7 +212,6 @@
 
   /* デスクトップの `margin: 14px 14px 0` を残すと 100px 列を食い潰して下にズレる */
   .thumb {
-    border-radius: var(--radius-sm);
     margin: 0;
     grid-row: span 2;
   }
