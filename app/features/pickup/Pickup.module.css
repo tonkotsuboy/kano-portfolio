@@ -81,10 +81,10 @@
   border-radius: var(--radius-lg);
   backdrop-filter: blur(12px);
   background: var(--glass-card-bg);
-  box-shadow:
-    inset 0 1px 0 var(--highlight-top),
-    inset 0 -1px 0 rgb(0 0 0 / 0.04),
-    0 4px 24px rgb(0 0 0 / 0.05);
+
+  /* ArticleGrid（WORKS）カードと同一。内側ハイライト（inset 0 1px 0 var(--highlight-top)）を
+     入れると上端だけ明るい罫線が走り、隣接する WORKS カードと縁の見え方が揃わない。 */
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);
   color: inherit;
   grid-row: span 4;
   grid-template-rows: subgrid;
