@@ -88,8 +88,8 @@
 ### Glass Card (`.ds-glass`)
 - bg: `--glass-card-bg` / border: `--glass-card-border` / radius: `28px`
 - `backdrop-filter: blur(12px)`（`saturate(180%)` は不要、ヘッダー系専用）
-- shadow (rest): `0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)` + `inset 0 1px 0 rgba(255,255,255,0.9)`
-- **Hover**: border → `oklch(0.787 0.158 79 / 0.30)`, shadow → elevated, title → `--liquid-primary`
+- shadow (rest): `var(--shadow-rest)` のみ（**内側ハイライトは焼かない** — §6 参照）
+- **Hover**: border → `oklch(0.787 0.158 79 / 0.30)`, shadow → `var(--shadow-elevated)`, title → `--liquid-primary`
 
 ### Primary Button (`.ds-btn-primary`)
 - bg: `linear-gradient(in oklch 180deg, oklch(0.88 0.16 90), oklch(0.787 0.158 79))` / text: `var(--text-on-yellow)`
@@ -149,7 +149,11 @@ Apple HIG Materials は **Liquid Glass を content layer に使わない／spari
 | `shadow-elevated` | `0 10px 30px -5px rgba(0,0,0,0.10), 0 4px 8px -2px rgba(0,0,0,0.04)` | ホバー・開いたメニュー・ヘッダー |
 | `glow-yellow` | `0 0 0 1px oklch(0.787 0.158 79 / 0.25), 0 8px 24px oklch(0.787 0.158 79 / 0.28)` | **`:focus-visible` 時のみ** 点灯（rest 状態で常時光らせない） |
 
-**内側ハイライト** (ガラスの厚み): `inset 0 1px 0 rgba(255,255,255,0.9)`、底辺に `inset 0 -1px 0 rgba(0,0,0,0.05)`。
+**内側ハイライトは content layer のカードに焼かない**（`inset 0 1px 0 rgba(255,255,255,0.9)` のような "ガラスの厚み" 表現）。上端 1px だけが明るく光り、内側ハイライトを持たない隣のカードと縁の見え方が揃わないため。とくにダークテーマでは白 20% の線がはっきり浮く。カード面は `border: 1px solid var(--glass-card-border)` + `var(--shadow-rest)` の 2 点で十分。
+
+**影は必ずトークン参照で書く**（`var(--shadow-rest)` / `var(--shadow-elevated)`）。同じ見た目の値をベタ書きすると、これらのトークンが**テーマ連動**であることを取りこぼす（dark の `--shadow-rest` は light の約 5 倍濃い）。過去に ArticleGrid が `0 2px 8px rgb(0 0 0 / 0.04)` をベタ書きしており、ダークテーマでカードがほぼ無影になっていた。
+
+**サムネイル等の画像コンテナの内枠**は `inset 0 0 0 1px var(--thumbnail-hairline)` を使う（Pickup / ArticleGrid / About 書影で共有）。
 
 **Chrome elevation の統一ルール**: ヘッダー周りの chrome 要素（logo avatar / nav pill / ThemeToggle）は全て `var(--shadow-rest)` に揃える。**active 状態は背景色（`--active-pill-bg` 等）で差別化し、shadow で深さを変えない**。色付き glow を hand-rolled でこれらに焼くと §7 の「光るオブジェクト」アンチパターンに陥る。
 
@@ -159,7 +163,7 @@ Apple HIG Materials は **Liquid Glass を content layer に使わない／spari
 - 色相を持つ値は `oklch()` で書く
 - グラデーションは `linear-gradient(in oklch ...)` のように補間色空間を明示する
 - 背景アンビエントメッシュを必ず敷く
-- カードには **blur + 内側ハイライト** の 2 点セットを守る（`saturate(180%)` はヘッダー系専用）
+- カード面は **`border` + `backdrop-filter: blur(12px)` + `var(--shadow-rest)`** の 3 点で組む（`saturate(180%)` はヘッダー系専用）
 - 動きは `cubic-bezier(0.4, 0, 0.2, 1)` (`--ease-liquid`) を基本に
 - chrome 要素（avatar / nav pill / ThemeToggle）は `var(--shadow-rest)` で立体感を統一する
 - `prefers-reduced-motion` で全モーションを無効化（`globals.css` の universal リセットで `*, *::before, *::after` の `animation-duration` / `transition-duration` を 0.01ms に。**個別コンポーネントで重複ガードを書かない**）
@@ -176,6 +180,9 @@ Apple HIG Materials は **Liquid Glass を content layer に使わない／spari
 - **背景オーブを 4 球以上重ねない**（多色 mesh は AI スタートアップ LP の量産パターン）
 - **`--glow-yellow` を rest 状態の常時シャドウに使わない**（focus-visible 時のみ点灯）
 - **色のついた glow / ドロップシャドウを chrome 要素に hand-roll しない**（`0 4px 12px oklch(0.787 0.158 79 / 0.30)` のような）。chrome は `var(--shadow-rest)` で揃える。色付き影は "光るオブジェクト" として浮いて AI 系 SaaS LP の量産パターンになる
+- **カードに内側ハイライト（`inset 0 1px 0 rgba(255,255,255,...)`）を焼かない**。上端 1px だけが光り、隣り合うカードで縁の見え方が揃わなくなる（§6 参照）
+- **影の値をベタ書きしない**。`var(--shadow-rest)` / `var(--shadow-elevated)` / `var(--thumbnail-hairline)` を参照する。ベタ書きは見た目が同じでも**テーマ連動を失う**（dark の影は light の約 5 倍濃い）
+- **黄色背景（`--liquid-primary`）の上に `white` を置かない**。テキストもアイコンも `var(--text-on-yellow)` を使う（white は 1.99:1 で WCAG 1.4.11 の 3:1 に不足、`--text-on-yellow` なら約 9.9:1）
 - 個別コンポーネントで `:focus-visible` や `@media (prefers-reduced-motion)` を重複指定しない（`globals.css` の universal rule がすでにある）
 - **外部リンクに `rel="noreferrer"` / `rel="noopener"` を付けない**。`target="_blank"` だけで十分。`noopener` は modern browsers が自動付与（ESLint `no-restricted-syntax` で明示も禁止）、`noreferrer` は Referrer-Policy デフォルト `strict-origin-when-cross-origin` で path は元から漏れない（こちらは ESLint 対象外・規約のみ）。origin まで消すと kano.codes 由来のリファラ計測を妨げて先方の Analytics に損。詳細は [`.claude/rules/react-typescript.md`](.claude/rules/react-typescript.md)
 - 絵文字を UI 装飾に散りばめる
