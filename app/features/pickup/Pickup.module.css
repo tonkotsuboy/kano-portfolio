@@ -142,6 +142,7 @@
   font-weight: 700;
   letter-spacing: -0.005em;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   line-height: 1.55;
 }
 
