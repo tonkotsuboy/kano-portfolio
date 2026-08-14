@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "インタビュー"
-thumbnail: ""
+thumbnail: "/images/og/ai-professionals-interview-2.jpg"
 linkUrl: "https://ai.freelance-job.com/article/6a703f314ddb25dd629b527d"
 targetUrl: "https://ai.freelance-job.com/article/6a703f314ddb25dd629b527d"
 hasDetail: false

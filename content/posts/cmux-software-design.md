@@ -6,7 +6,7 @@ published: true
 tags: []
 categories: []
 medium: "書籍"
-thumbnail: ""
+thumbnail: "/images/og/cmux-software-design.jpg"
 linkUrl: "https://gihyo.jp/magazine/SD/archive/2026/202609"
 targetUrl: "https://gihyo.jp/magazine/SD/archive/2026/202609"
 hasDetail: false
