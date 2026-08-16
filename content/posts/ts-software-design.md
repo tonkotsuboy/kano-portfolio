@@ -1,5 +1,5 @@
 ---
-title: "Software Design 2024年5月号で「もっとTypeScriptの力を引き出そう」"
+title: "Software Design 2024年5月号「もっとTypeScriptの力を引き出そう」"
 slug: "ts-software-design"
 date: "2024-04-18T00:00+09:00"
 published: true
