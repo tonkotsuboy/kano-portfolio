@@ -37,6 +37,12 @@ describe("isLogoLikeThumbnail", () => {
     expect(isLogoLikeThumbnail("/images/og/example.jpg", "https://zenn.dev/example", SITE_URL)).toBe(false);
   });
 
+  test("書影（/images/books/）は縦長なので true", () => {
+    expect(isLogoLikeThumbnail("/images/books/nikkei-202109.png", "https://info.nikkeibp.co.jp/", SITE_URL)).toBe(
+      true,
+    );
+  });
+
   test("zenn.dev のデフォルト画像は true", () => {
     expect(isLogoLikeThumbnail("", "https://zenn.dev/ubie_dev/articles/example", SITE_URL)).toBe(true);
   });
