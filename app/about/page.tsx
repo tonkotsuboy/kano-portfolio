@@ -79,6 +79,13 @@ const publications = [
     title: "JavaScriptコードレシピ集",
   },
   {
+    cover: "/images/books/sd-202609.jpg",
+    href: "https://gihyo.jp/magazine/SD/archive/2026/202609",
+    publisher: "技術評論社",
+    title:
+      "Software Design 2026年9月号「cmux - AIエージェントと並走する、CLIで操れるターミナル」",
+  },
+  {
     cover: "/images/books/sd-202405.jpg",
     href: "https://gihyo.jp/magazine/SD/archive/2024/202405",
     publisher: "技術評論社",

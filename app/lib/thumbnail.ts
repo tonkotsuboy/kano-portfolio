@@ -26,9 +26,11 @@ export function getThumbnailUrl(thumbnail: string, href: string, siteUrl: string
 }
 
 /**
- * getThumbnailUrl が返す画像がロゴ由来（余白を持たせて contain 表示すべき）かどうか。
+ * getThumbnailUrl が返す画像が、余白を持たせて contain 表示すべきかどうか。
+ * ロゴ（Zenn/Qiita のデフォルト画像）に加え、縦長の書影も対象。
+ * サムネ枠は 16:9 の cover なので、書影をそのまま入れると中央だけ切り取られてしまう。
  */
 export function isLogoLikeThumbnail(thumbnail: string, href: string, siteUrl: string): boolean {
-  if (thumbnail) { return false; }
+  if (thumbnail) { return thumbnail.startsWith("/images/books/"); }
   return getHostname(href, siteUrl) in LOGO_DEFAULT_THUMBNAILS;
 }
