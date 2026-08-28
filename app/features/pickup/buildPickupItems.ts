@@ -14,8 +14,8 @@ import type { Temporal } from "temporal-polyfill-lite";
  */
 const PINNED_POST_SLUGS = [
   "cmux-software-design",
-  "ai-professionals-interview-1",
-  "gh-stack-introduction",
+  "levtech-neko-to-kaihatsu-2",
+  "miidas-claude-code-study-session",
 ];
 
 /**
