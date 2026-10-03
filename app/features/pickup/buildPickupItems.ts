@@ -13,8 +13,7 @@ import type { Temporal } from "temporal-polyfill-lite";
  * 表示は日付の新しい順に並べ替えるので、この配列の並びは表示順に影響しない。
  */
 const PINNED_POST_SLUGS = [
-  "cmux-software-design",
-  "levtech-neko-to-kaihatsu-2",
+  "levtech-neko-to-kaihatsu-3",
   "miidas-claude-code-study-session",
 ];
 
