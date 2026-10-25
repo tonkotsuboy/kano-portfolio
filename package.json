@@ -68,7 +68,7 @@
     "postcss-preset-env": "^11.3.2",
     "prettier": "^3.9.5",
     "purgecss": "^8.0.0",
-    "storybook": "10.5.4",
+    "storybook": "10.6.2",
     "stylelint": "^16.26.1",
     "stylelint-config-idiomatic-order": "^10.0.0",
     "stylelint-config-standard": "^39.0.1",
