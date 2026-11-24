@@ -9,13 +9,10 @@ import type { Temporal } from "temporal-polyfill-lite";
 
 /**
  * 特別枠としてピン留めする記事・書籍の slug。
- * 登壇と違い日付フィルタを通さず常に先頭へ固定するため、時間が経っても消えない。
+ * 登壇予定（Upcoming）と違い日付フィルタを通さないため、時間が経っても消えない。
  * 表示は日付の新しい順に並べ替えるので、この配列の並びは表示順に影響しない。
  */
-const PINNED_POST_SLUGS = [
-  "levtech-neko-to-kaihatsu-3",
-  "miidas-claude-code-study-session",
-];
+const PINNED_POST_SLUGS = ["miidas-claude-code-study-session"];
 
 /**
  * ピン留めの中でも常設の代表作として、日付順に関係なく末尾へ置く slug。
@@ -52,15 +49,11 @@ function talkToItem(talk: Talk): PickupItem {
 
 /**
  * Pickup セクションのアイテムを組み立てる。
- * 先頭にピン留め記事・書籍（常時表示・期限なし）を日付の新しい順で並べ、
- * その後ろに常設枠の `TRAILING_PINNED_POST_SLUG`、続けて開催が近い順の登壇予定を並べる。
+ * ピン留め記事・書籍（常時表示・期限なし）を日付の新しい順で並べ、
+ * その後ろに常設枠の `TRAILING_PINNED_POST_SLUG` を置く。
  * `publishedPosts` は公開済みに絞り込み済みの記事を受け取る前提（呼び出し側で filter 済み）。
  */
-export function buildPickupItems(
-  publishedPosts: Post[],
-  talks: Talk[],
-  now: Temporal.Instant,
-): PickupItem[] {
+export function buildPickupItems(publishedPosts: Post[]): PickupItem[] {
   const pinnedItems = PINNED_POST_SLUGS.map((slug) =>
     publishedPosts.find((post) => post.slug === slug),
   )
@@ -69,7 +62,11 @@ export function buildPickupItems(
     .map(postToItem);
   const trailingPost = publishedPosts.find((post) => post.slug === TRAILING_PINNED_POST_SLUG);
   const trailingItems = trailingPost === undefined ? [] : [postToItem(trailingPost)];
-  const talkItems = filterUpcomingTalks(talks, now).sort(compareByDateAsc).map(talkToItem);
 
-  return [...pinnedItems, ...trailingItems, ...talkItems];
+  return [...pinnedItems, ...trailingItems];
+}
+
+/** Upcoming セクションのアイテムを、開催が近い順で組み立てる。 */
+export function buildUpcomingItems(talks: Talk[], now: Temporal.Instant): PickupItem[] {
+  return filterUpcomingTalks(talks, now).sort(compareByDateAsc).map(talkToItem);
 }

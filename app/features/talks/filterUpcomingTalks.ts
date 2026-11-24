@@ -1,15 +1,13 @@
 import { Temporal } from "temporal-polyfill-lite";
 
-const GRACE_PERIOD = Temporal.Duration.from({ hours: 48 });
-
 type TalkLike = {
   date: string;
   published: boolean;
 };
 
 /**
- * Filters talks to show only upcoming ones, including a 2-day grace period
- * after the event date so the card stays visible on the event day and the day after.
+ * 公開済みの登壇のうち、開催日（日本時間）が終わっていないものだけを返す。
+ * 開催当日は申し込み導線を残すため、開始時刻ではなく日付の変わり目で区切る。
  */
 export function filterUpcomingTalks<T extends TalkLike>(
   talks: T[],
@@ -19,7 +17,11 @@ export function filterUpcomingTalks<T extends TalkLike>(
     if (!talk.published) {
       return false;
     }
-    const eventDeadline = Temporal.Instant.from(talk.date).add(GRACE_PERIOD);
-    return Temporal.Instant.compare(eventDeadline, now) >= 0;
+    const endOfEventDay = Temporal.Instant.from(talk.date)
+      .toZonedDateTimeISO("Asia/Tokyo")
+      .startOfDay()
+      .add({ days: 1 })
+      .toInstant();
+    return Temporal.Instant.compare(now, endOfEventDay) < 0;
   });
 }
