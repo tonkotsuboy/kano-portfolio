@@ -62,9 +62,9 @@ const highlightCode = (code: string, lang: string): Promise<string> =>
       {
         pre(node) {
           // Shiki がインラインで付ける background-color を除去し、CSS 側の暗色を活かす。
-          const style = node.properties["style"];
+          const style = node.properties.style;
           if (typeof style === "string") {
-            node.properties["style"] = style.replace(/background-color:[^;]+;?/, "");
+            node.properties.style = style.replace(/background-color:[^;]+;?/, "");
           }
         },
       },
