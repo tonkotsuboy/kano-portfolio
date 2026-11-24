@@ -25,4 +25,13 @@ describe("buildUpcomingItems", () => {
     const items = buildUpcomingItems(talks, Temporal.Instant.from("2026-11-25T00:00:00Z"));
     expect(items.map((item) => item.slug)).toEqual(["sooner", "later"]);
   });
+
+  test("開催日の翌日（日本時間）には、終わった登壇を含めない", () => {
+    const talks = [
+      makeTalk("finished", "2026-11-26T10:00:00.000Z"),
+      makeTalk("next", "2026-12-12T03:00:00.000Z"),
+    ];
+    const items = buildUpcomingItems(talks, Temporal.Instant.from("2026-11-27T00:00:00+09:00"));
+    expect(items.map((item) => item.slug)).toEqual(["next"]);
+  });
 });
