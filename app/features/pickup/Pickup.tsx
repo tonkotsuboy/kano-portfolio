@@ -84,28 +84,33 @@ const PickupCard: FC<CardProps> = ({ item, priority = false }) => {
 };
 
 type Props = {
+  eyebrow: string;
+  headingId: string;
   items: PickupItem[];
+  /** 先頭カードの画像を優先読み込みするか。ページ内で最初に表示されるセクションだけ true にする */
+  priority?: boolean;
+  title: string;
 }
 
-export const Pickup: FC<Props> = ({ items }) => {
+export const Pickup: FC<Props> = ({ eyebrow, headingId, items, priority = false, title }) => {
   if (items.length === 0) {
     return null;
   }
 
   return (
-    <section className={styles.section} aria-labelledby="pickup-heading">
+    <section className={styles.section} aria-labelledby={headingId}>
       <div className={styles.container}>
         <div className={styles.sectionHead}>
           <div className={styles.eyebrowRow}>
             <span className={styles.eyebrowDot} aria-hidden="true" />
-            <span className={styles.eyebrow}>Pickup</span>
+            <span className={styles.eyebrow}>{eyebrow}</span>
           </div>
-          <h2 id="pickup-heading" className={styles.sectionTitle}>ピックアップ</h2>
+          <h2 id={headingId} className={styles.sectionTitle}>{title}</h2>
         </div>
 
         <div className={styles.grid}>
           {items.map((item, index) => (
-            <PickupCard key={item.slug} item={item} priority={index === 0} />
+            <PickupCard key={item.slug} item={item} priority={priority && index === 0} />
           ))}
         </div>
       </div>

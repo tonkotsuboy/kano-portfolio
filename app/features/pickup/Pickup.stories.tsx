@@ -51,6 +51,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    eyebrow: "Pickup",
+    headingId: "pickup-heading",
     items: SAMPLE_ITEMS,
+    title: "ピックアップ",
   },
 };
