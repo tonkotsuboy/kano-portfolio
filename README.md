@@ -124,3 +124,6 @@ Type completion is available via `import type { Post } from "@/.velite"`.
 - 🐙 GitHub: [@tonkotsuboy](https://github.com/tonkotsuboy)
 - 📝 Zenn: [tonkotsuboy_com](https://zenn.dev/tonkotsuboy_com)
 - 📘 Books / 著書: 『JavaScript & TypeScript 実力強化書』『JavaScript コードレシピ集』(技術評論社)
+
+<!-- verification note: gh CLI v2.99.0 --attach 検証用 PR -->
+
